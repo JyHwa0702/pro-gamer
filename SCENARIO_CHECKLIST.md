@@ -55,10 +55,11 @@
 | **2026-11-02 15:12** | Riot DDragon 15챔피언 LCK 픽창 & 시너지 | `index.html` + `verify_scenario_pipeline.py` | ✅ ALL PASS | 15종 아이콘 내장, 3대 조합 시너지 |
 | **2026-11-02 15:20** | 스탯 130 초월 및 LCK 정규 순위표 | `index.html` + `verify_scenario_pipeline.py` | ✅ ALL PASS | 소프트캡 완화, 세트득실 순위표 |
 | **2026-11-02 15:33** | v1.6.0 히든 히로인 3인 & 6강 PO & 드래프트 | `verify_scenario_pipeline.py` | ✅ ALL PASS | 13히로인, LCK 6강 브라켓, 2회차 드래프트 전수 통과 |
+| **2026-11-02 15:39** | QA Playtester 정밀 시뮬레이션 및 TDZ 핫픽스 | `simulate_seasons.js` + `build_apk.py` | ✅ ALL PASS | rating TDZ 런타임 오류 픽스 및 APK 재패키징 완료 (0 Crash) |
 
 ---
 
 ## 📝 4. 다음 작업 큐 (Next Pipeline Queue)
-1. **[빌드 & 패키징]**: v1.6.0 신규 에셋 및 소스 반영 프로덕션 APK 빌드 (`build_apk.py`)
-2. **[하위 에이전트 검증]**: `scenario-playtester` 가동하여 6강 플레이오프 및 히든 히로인, New Game+ 자동 시뮬레이션
+1. **[빌드 & 패키징]**: v1.6.0 신규 에셋 및 소스 반영 프로덕션 APK 빌드 완료 (`pro-gamer.apk`)
+2. **[하위 에이전트 검증]**: `scenario-playtester` 3시즌 전수 시뮬레이션 완료 및 Sign-off 승인
 3. **[버전 관리]**: Git 커밋 및 배포 완료

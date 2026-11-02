@@ -1877,6 +1877,12 @@ async function playMatch(opp, label, big = false) {
   const win = bdWin ? true : Math.random() < sig(adv / 2.2);
   if (win && deaths > 3) deaths = 3;
 
+  let pogBonus = P.equippedSkin === 'skin_epic' || P.equippedSkin === 'skin_mythic' ? 0.6 : 0;
+  const rating = clamp(6 + perf * 0.9 + (win ? .7 : -.6) + pogBonus + rnd(-.3, .3), 1, 10);
+  const mvp = win && rating >= 8.3;
+  P.hist.games++; if (win) P.hist.wins++; if (mvp) P.hist.mvp++;
+  P.ratings.push(rating);
+
   let mySetW, mySetL;
   if (win) {
     if (adv >= 2.2 || rating >= 8.2) {
@@ -1891,12 +1897,6 @@ async function playMatch(opp, label, big = false) {
       mySetW = 0; mySetL = 2;
     }
   }
-
-  let pogBonus = P.equippedSkin === 'skin_epic' || P.equippedSkin === 'skin_mythic' ? 0.6 : 0;
-  const rating = clamp(6 + perf * 0.9 + (win ? .7 : -.6) + pogBonus + rnd(-.3, .3), 1, 10);
-  const mvp = win && rating >= 8.3;
-  P.hist.games++; if (win) P.hist.wins++; if (mvp) P.hist.mvp++;
-  P.ratings.push(rating);
 
   let fanMul = 1;
   if (P.bonds?.sora?.aff >= 50) fanMul += 0.6;
@@ -2053,7 +2053,7 @@ async function weekEnd() {
     await ask(`<div class="em">🎆</div><h3>${P.year}년차 시즌 시작</h3><p class="c">${P.name} 선수 ${P.age}세. 새로운 시즌이 밝았다!</p>`);
   }
   const nph = phaseOf(P.week);
-  if (nph.t === 'reg' && nph.r === 1) { for (const t of P.pro.concat(P.aca)) { t.w = 0; t.l = 0; } P.ratings = []; }
+  if (nph.t === 'reg' && nph.r === 1) { for (const t of P.pro.concat(P.aca)) { t.w = 0; t.l = 0; t.setW = 0; t.setL = 0; } P.ratings = []; }
 }
 
 // 질투/삼자대면 이벤트
