@@ -1179,7 +1179,7 @@ async function checkHeroineUnlocks() {
       <p class="c" style="color:#a855f7;font-weight:900">✨ [히든 히로인 해금] 천재 솔랭전사 나유나와의 인연이 열렸습니다!</p>`,
       [{ t: '듀오 수락', cls: 'pink' }], 'assets/nayuna_date.jpg', '심야 솔랭 벙커');
   }
-  if (P.bonds.elena && !P.bonds.elena.unlocked && (P.hist.worlds > 0 || P.fans >= 20000 || P.hist.titles.some(t => t.includes('우승')))) {
+  if (P.bonds.elena && !P.bonds.elena.unlocked && (P.hist.worlds > 0 || P.fans >= 20000 || P.hist.titles.some(t => t.endsWith('우승')))) {
     P.bonds.elena.unlocked = true;
     P.bonds.elena.aff = 25;
     await showHeroineCutscene('elena', `<h3>🚁 [히든 히로인] 유럽 억만장자 구단주의 전용기 초대</h3>
@@ -1895,7 +1895,9 @@ async function playMatch(opp, label, big = false) {
   const bp = await showLckChampionSelectModal(opp);
   const main = $('#main');
   const my = teamPow(), op = opp.str;
-  let adv = (my - op) * 0.08, perf = 0, kills = 0, deaths = 0, assists = 0, bdWin = null;
+  const isCounter = !!bp?.isCounter;
+  const synergy = bp?.synergy;
+  let adv = (my - op) * 0.08 + (isCounter ? 1.5 : 0), perf = 0, kills = 0, deaths = 0, assists = 0, bdWin = null;
   let phaseWins = 0;
   const myName = teamName();
 
@@ -1966,7 +1968,11 @@ async function playMatch(opp, label, big = false) {
       });
     });
 
-    const sv = statMix(choice.st) * condF();
+    let sv = statMix(choice.st) * condF();
+    if (pi === 0 && isCounter) sv *= 1.15;
+    if (pi === 0 && synergy?.key === 'poke') sv *= 1.18;
+    if ((pi === 1 || pi === 2) && synergy?.key === 'dive') sv *= 1.18;
+    if (pi === 2 && synergy?.key === 'wombo') sv *= 1.22;
     const oppStat = op * 0.96;
     let score = (sv * 0.45 + my * 0.55 - oppStat) / 9 + gauss() * 0.75 * mentalVar;
 
@@ -3496,18 +3502,18 @@ const DM_TEMPLATES = [
     ]
   },
   {
-    id: 'dm_sora_luxury',
-    sender: '윤소라 💎',
-    badge: '재벌 3세',
+    id: 'dm_sea_luxury',
+    sender: '한세아 💎',
+    badge: '재벌 3세 & 구단주대행',
     tagCls: 'tag-heroine',
-    avatar: 'assets/sora.jpg',
-    fallback: 'sora.jpg',
+    avatar: 'assets/sea.jpg',
+    fallback: 'sea.jpg',
     category: 'heroine',
-    req: p => p.bonds?.sora?.unlocked,
+    req: p => p.bonds?.sea?.unlocked,
     msg: '"다음 주에 한성 펜트하우스에서 프라이빗 와인 파티가 있어. 내 에스코트 파트너는 너로 정했으니까 일정 비워둬. 드레스코드는 턱시도, 맞춤 수트는 내가 보냈어."',
     choices: [
-      { t: '🍷 "소라 파트너 자리는 당연히 내 거지. 기대할게."', gain: '💖 소라 호감도 +15 · 💰 맞춤 수트 (1,000만원 상당)', act: p => { p.bonds.sora.aff = Math.min(100, (p.bonds.sora.aff || 0) + 15); p.money += 10000000; } },
-      { t: '💼 "비즈니스 얘기만 할 거면 안 가고, 단둘이면 갈게."', gain: '💖 소라 호감도 +20 · 매력도 상승', act: p => { p.bonds.sora.aff = Math.min(100, (p.bonds.sora.aff || 0) + 20); } }
+      { t: '🍷 "세아 파트너 자리는 당연히 내 거지. 기대할게."', gain: '💖 세아 호감도 +15 · 💰 맞춤 수트 (1,000만원 상당)', act: p => { p.bonds.sea.aff = Math.min(100, (p.bonds.sea.aff || 0) + 15); p.money += 10000000; } },
+      { t: '💼 "비즈니스 얘기만 할 거면 안 가고, 단둘이면 갈게."', gain: '💖 세아 호감도 +20 · 매력도 상승', act: p => { p.bonds.sea.aff = Math.min(100, (p.bonds.sea.aff || 0) + 20); } }
     ]
   }
 ];
@@ -4337,9 +4343,13 @@ async function showLckChampionSelectModal(opp) {
       toast(`⚡ [AI 최적 픽] ${selectedChamp.n} 자동 선택 완료!`);
     }
 
+    const finalIsCounter = (selectedChamp.strongVs || []).includes(oppLaner.id);
+    const finalFullTeam = Object.values(myTeamRoster).concat([selectedChamp]);
+    const finalSynergy = analyzeCompSynergy(finalFullTeam);
     addChampMastery(selectedChamp.id, 100);
-    const bonusVal = isCounter ? 15 : 5;
-    return { myChamp: selectedChamp, bannedChamp: oppRoster.mid?.id, bonus: bonusVal };
+    P.currentChamp = selectedChamp;
+    const bonusVal = finalIsCounter ? 15 : 5;
+    return { myChamp: selectedChamp, bannedChamp: oppRoster.mid?.id, bonus: bonusVal, isCounter: finalIsCounter, synergy: finalSynergy };
   }
 }
 
