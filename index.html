@@ -135,8 +135,8 @@ input.name{width:100%;background:#0b0f1c;border:1px solid #2a3252;border-radius:
 .bg-blue{background:#1e3a8a;color:#60a5fa;border:1px solid #3b82f6}
 
 /* 비주얼 노벨 전용 스타일 */
-.vn-portrait{width:100%;height:180px;border-radius:12px;overflow:hidden;margin-bottom:10px;background:#0b0f1c;position:relative;box-shadow:0 4px 18px rgba(0,0,0,.6)}
-.vn-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 15%;transition:transform .4s}
+.vn-portrait{width:100%;min-height:220px;max-height:280px;height:240px;border-radius:12px;overflow:hidden;margin-bottom:10px;background:linear-gradient(180deg,#1e1b4b,#0b0f1c);position:relative;box-shadow:0 4px 20px rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center}
+.vn-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 10%;transition:transform .4s}
 .vn-tag{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.82);backdrop-filter:blur(4px);padding:3px 10px;border-radius:99px;font-size:11px;font-weight:800;color:#f472b6;box-shadow:0 2px 6px rgba(0,0,0,.5);z-index:2}
 .vn-scene{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.82);backdrop-filter:blur(4px);padding:3px 10px;border-radius:99px;font-size:11px;font-weight:800;color:#38bdf8;box-shadow:0 2px 6px rgba(0,0,0,.5);z-index:2}
 .vn-speaker{display:inline-block;background:linear-gradient(90deg,#ec4899,#8b5cf6);padding:3px 12px;border-radius:6px;font-weight:900;font-size:13px;margin-bottom:6px;color:#fff;box-shadow:0 2px 8px rgba(236,72,153,.35)}
@@ -936,8 +936,11 @@ function newLeague(aca) {
   });
 }
 function makePlayer(name, pos, base) {
+  const initChamps = (typeof CHAMPIONS !== 'undefined') ? CHAMPIONS.filter(c => c.role === pos) : [];
+  const defChamp = initChamps[0] || (typeof CHAMPIONS !== 'undefined' ? CHAMPIONS[0] : null);
   return {
     name, pos, age: 17, year: 1, week: 1,
+    currentChamp: defChamp,
     s: base, hp: 100, stress: 10, money: 500000, fans: 50,
     rank: { t: 4, lp: 30 }, bestT: 4,
     stage: 'ama', teamId: -1, salary: 0, syn: 0,
@@ -1206,7 +1209,7 @@ async function showHeroineCutscene(hid, bodyHtml, btns = [{ t: '확인', cls: 'p
 
   const portraitHtml = `
     <div class="vn-portrait">
-      <img src="${imgSrc}" onerror="this.src='${fallbackSrc}'" alt="${h.name}">
+      <img src="${imgSrc}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${fallbackSrc}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${fallbackSrc}';}else{this.onerror=null;this.src='icon-512.png';}" alt="${h.name}">
       <span class="vn-tag">${h.tag}</span>
       ${labelHtml}
     </div>
@@ -1853,41 +1856,184 @@ async function negotiateSalary(team, baseSal, isRenew) {
 // ======================================================================
 // 경기 엔진
 // ======================================================================
-const PHASES = [
-  { n: '라인전 단계 (0~14분)', opts: [
-    { t: '⚔️ 공격적인 딜교환', d: '피지컬·라인전 · 고위험', st: { mech: .5, lane: .5 }, risk: 1.5,
-      g: ['상대의 스킬이 빠진 틈을 놓치지 않고 솔로킬! 라인 주도권을 완전히 가져왔다.', '과감한 딜교환으로 상대 체력을 반 이상 깎고 귀환시켰다.'],
-      b: ['딜교환 각을 잘못 봤다. 상대 정글이 덮쳐 데스...', '무리한 공격이 역으로 당했다. 퍼스트 블러드를 내줬다.'] },
-    { t: '🌾 안정적인 CS 파밍', d: '라인전 · 저위험', st: { lane: 1 }, risk: .6,
-      g: ['완벽한 CS 관리로 15분 CS 차이 +20을 만들었다.', '침착하게 라인을 관리하며 성장 우위를 챙겼다.'],
-      b: ['상대의 견제에 CS를 많이 놓쳤다.', '라인 관리에 실패해 다이브 압박을 받았다.'] },
-    { t: '🗺️ 정글과 합류 · 로밍', d: '운영·한타 · 중위험', st: { macro: .5, team: .5 }, risk: 1.0,
-      g: ['절묘한 타이밍의 로밍! 옆 라인에서 2킬을 만들어냈다.', '정글과 호흡을 맞춰 상대 정글을 카정으로 잡아냈다.'],
-      b: ['로밍 동선을 읽혔다. 라인 손해만 크게 봤다.', '합류가 한 박자 늦어 아군이 먼저 잘렸다.'] }
-  ]},
-  { n: '중반 오브젝트 (15~25분)', opts: [
-    { t: '🐉 드래곤 한타 강행', d: '한타·피지컬 · 고위험', st: { team: .6, mech: .4 }, risk: 1.4,
-      g: ['드래곤 앞 한타 대승! 에이스와 함께 드래곤까지 챙겼다.', '상대 핵심 딜러를 먼저 물어 한타를 완벽하게 이겼다.'],
-      b: ['한타 진입이 엇갈렸다. 드래곤과 함께 3명이 잡혔다.', '상대의 역이니시에 크게 무너졌다.'] },
-    { t: '👁️ 시야 장악 후 운영', d: '운영 · 저위험', st: { macro: .8, team: .2 }, risk: .7,
-      g: ['깔끔한 시야 장악으로 상대를 가두고 오브젝트를 무혈입성했다.', '운영으로 포탑 2개를 연달아 밀어냈다.'],
-      b: ['시야 싸움에서 밀려 오브젝트를 내줬다.', '어정쩡한 운영으로 템포를 잃었다.'] },
-    { t: '🏃 스플릿 푸시', d: '피지컬·라인전·운영', st: { mech: .35, lane: .35, macro: .3 }, risk: 1.1,
-      g: ['사이드에서 상대 2명을 끌어당기며 억제기까지 밀었다!', '1:1 대결에서 이기고 사이드를 완전히 장악했다.'],
-      b: ['사이드에서 잘리며 4:5 한타가 터졌다.', '스플릿 도중 갇혀서 데스. 바론을 내줬다.'] }
-  ]},
-  { n: '최종 한타 (30분~)', opts: [
-    { t: '🔥 과감한 이니시에이팅', d: '한타·피지컬 · 고위험', st: { team: .55, mech: .45 }, risk: 1.6,
-      g: ['환상적인 이니시! 상대 진영을 갈라놓고 에이스를 띄웠다!', '결정적인 진입으로 상대 딜러 둘을 순식간에 지웠다.'],
-      b: ['진입했지만 아무도 따라오지 않았다... 그대로 역관광.', '이니시가 빗나갔다. 상대가 그대로 바론을 가져갔다.'] },
-    { t: '🛡️ 안전한 포지셔닝', d: '피지컬·운영·한타 · 저위험', st: { mech: .4, macro: .3, team: .3 }, risk: .8,
-      g: ['끝까지 살아남으며 딜을 쏟아냈다. 한타 승리!', '완벽한 포지셔닝으로 아군을 지키며 한타를 이겼다.'],
-      b: ['너무 소극적이었다. 아군이 먼저 무너졌다.', '포지션을 잡다가 상대에게 물려 한타 패배.'] },
-    { t: '🏴 백도어 시도', d: '운영 · 초고위험 (성공 시 즉시 승리)', st: { macro: .7, mech: .3 }, risk: 2.2, bd: true,
-      g: ['상대가 눈치채지 못했다! 넥서스 백도어 성공!!! 경기장이 뒤집어졌다!'],
-      b: ['백도어가 발각됐다. 상대가 4:5로 한타를 이기고 그대로 밀고 들어온다...'] }
-  ]}
-];
+// 라인(포지션)별 맞춤형 경기 3단계 페이즈 선택지
+const PHASES_BY_POS = {
+  adc: [
+    { n: '라인전 단계 (0~14분)', opts: [
+      { t: '⚔️ 서폿 호흡 바텀 2:2 킬각', d: '피지컬·라인전 · 고위험', st: { mech: .55, lane: .45 }, risk: 1.5,
+        g: ['서포터의 기습 그랩에 완벽 호응! 적 원딜을 처치하고 포탑 방패를 채굴했다.', '과감한 앞점멸 딜교환으로 바텀 듀오를 둘 다 빈사 상태로 몰아넣었다.'],
+        b: ['딜교환 중 상대 서폿 CC기에 적중당했다. 힐을 뺐지만 퍼블을 내줬다...', '상대 정글의 3인 바텀 다이브에 대처하지 못하고 더블킬을 헌납했다.'] },
+      { t: '🌾 안정적 CS 파밍 & 코어템 완성', d: '라인전 · 저위험', st: { lane: .9, macro: .1 }, risk: .6,
+        g: ['분당 CS 10개를 유지하며 상대 원딜보다 1코어를 2분 빠르게 완성했다.', '라인을 완벽히 프리징하여 상대 바텀을 말려 죽였다.'],
+        b: ['상대 바텀 듀오의 거센 압박에 CS 격차가 15개 이상 벌어졌다.', '타워에 갇혀 CS를 받아먹다 포탑 방패를 일방적으로 뜯겼다.'] },
+      { t: '🤝 서폿 미드 로밍 & 1v2 라인 홀딩', d: '운영·피지컬 · 중위험', st: { macro: .6, mech: .4 }, risk: 1.0,
+        g: ['서포터를 미드로 올려보내 퍼블을 만들고, 본인은 1v2에서 생존하며 이득을 굴렸다!', '상대의 2v1 다이브 시도를 환상적인 무빙으로 역관광 1킬 달성!'],
+        b: ['혼자 라인에 남았다가 상대 듀오에게 물려 고립 데스를 기록했다.', '서폿 로밍 턴 동안 CS를 크게 버려야만 했다.'] }
+    ]},
+    { n: '중반 오브젝트 (15~25분)', opts: [
+      { t: '🐉 용 앞 대치 원거리 포킹', d: '한타·피지컬 · 고위험', st: { team: .5, mech: .5 }, risk: 1.4,
+        g: ['최대 사거리에서 쏟아낸 폭딜! 상대 앞라인을 녹이고 3용을 확보했다.', '상대 딜러진에게 치명적인 치명타를 꽂아 한타를 완벽히 지배했다.'],
+        b: ['포킹 도중 상대 브루저에게 기습당해 점멸이 빠지고 한타가 터졌다.', '상대 이니시에 물려 아무 딜도 넣지 못하고 쓰러졌다.'] },
+      { t: '🏰 미드 선푸시 & 안전 사이드 파밍', d: '운영 · 저위험', st: { macro: .8, lane: .2 }, risk: .7,
+        g: ['미드 1차를 빠르게 철거하고 안전하게 3코어 인피 타이밍을 앞당겼다.', '철저한 시야 확보 속에서 안정적으로 성장 우위를 굳혔다.'],
+        b: ['미드 대치 중 템포를 잃고 상대에게 바론 시야를 완전히 내줬다.', '소극적인 파밍으로 아군이 4:5 압박에 시달렸다.'] },
+      { t: '🎯 부쉬 매복 상대 서폿 기습 컷', d: '피지컬·운영 · 중위험', st: { mech: .6, macro: .4 }, risk: 1.2,
+        g: ['시야 지우러 온 상대 서포터를 0.5초 만에 폭사시키고 5:4 한타 승리!', '암살 성공 후 그대로 바론 버스트까지 연결했다.'],
+        b: ['매복이 들통났다. 상대 3명이 덮쳐 역으로 잘리고 말았다.', '기습 딜이 부족해 상대가 플래시로 생존하고 역관광을 당했다.'] }
+    ]},
+    { n: '최종 한타 (30분~)', opts: [
+      { t: '⚡ 앞점멸 상대 후방 딜러 폭격', d: '피지컬·한타 · 초고위험', st: { mech: .7, team: .3 }, risk: 1.7,
+        g: ['과감한 앞점멸 돌진!! 상대 미드와 원딜을 1초 만에 지우고 펜타킬 에이스!', '모두가 경악한 미친 피지컬! 홀로 적 3명을 정리하며 승리를 굳혔다!'],
+        b: ['앞점멸이 악수가 됐다... 상대 진영 한가운데서 폭사하며 한타 대패.', '상대 탈진과 CC기에 묶여 허무하게 산화했다.'] },
+      { t: '🛡️ 사거리 유지 카이팅 & 프리딜', d: '피지컬·운영 · 저위험', st: { mech: .5, macro: .5 }, risk: .8,
+        g: ['단 1데스도 허용하지 않는 명품 카이팅! 끝까지 살아남아 전원 처치 에이스!', '상대 돌진기를 전부 피하며 딜량 1위를 찍고 넥서스를 파괴했다.'],
+        b: ['너무 뒤에 자리 잡았다. 아군 앞라인이 전부 녹을 때까지 딜을 못 넣었다.', '상대 암살자의 기습 플랭킹에 후방에서 잘리고 말았다.'] },
+      { t: '👑 팀원 올인 케어받고 장로 버스트', d: '한타·운영 · 고위험 (성공 시 즉시 승리)', st: { team: .7, macro: .3 }, risk: 1.5, bd: true,
+        g: ['장로 드래곤 버스트 성공! 장로 버프의 처형 레이저로 넥서스까지 직진!', '아군 4명의 목숨 건 케어 속에서 적 전원을 쓸어 담았다!'],
+        b: ['장로를 상대에게 스틸당했다. 역으로 쓸려나가며 역전패...'] }
+    ]}
+  ],
+  top: [
+    { n: '라인전 단계 (0~14분)', opts: [
+      { t: '⚔️ 탑 1:1 진검승부 솔로킬', d: '피지컬·라인전 · 고위험', st: { mech: .5, lane: .5 }, risk: 1.5,
+        g: ['칼 대 칼 승부에서 완벽한 솔로킬! 탑의 주도권을 완전히 손에 넣었다.', '상대 스킬을 무빙으로 피하고 킬을 따내며 1차 포탑까지 밀었다.'],
+        b: ['딜교환 각을 잘못 봤다. 솔로킬을 허용하며 탑 라인이 터졌다...', '무리한 딜교 중 상대 정글의 갱킹에 당해 연거푸 데스를 기록했다.'] },
+      { t: '🌾 라인 프리징 & CS 디나이', d: '라인전 · 저위험', st: { lane: .9, macro: .1 }, risk: .6,
+        g: ['완벽한 라인 관리로 상대를 타워에 묶고 CS 차이를 30개 벌렸다.', '갱킹에 면역인 안전 구도를 만들며 단단하게 성장했다.'],
+        b: ['라인 관리가 꼬여 상대에게 빅웨이브 다이브 각을 내줬다.', '소극적인 태도로 상대 탑에게 자유로운 전령 턴을 줬다.'] },
+      { t: '🚀 텔레포트 바텀 4인 다이브 합류', d: '운영·한타 · 중위험', st: { macro: .6, team: .4 }, risk: 1.1,
+        g: ['예술적인 바텀 텔포! 상대 바텀 듀오를 처치하고 용까지 챙겼다!', '탑에서 손해를 감수하고 바텀을 완전히 터뜨려 게임을 터뜨렸다.'],
+        b: ['텔포를 탔지만 상대가 이미 빠졌다. 탑 타워만 공짜로 밀렸다.', '합류 호흡이 맞지 않아 역으로 바텀에서 3명이 잡혔다.'] }
+    ]},
+    { n: '중반 오브젝트 (15~25분)', opts: [
+      { t: '🏃 사이드 철권 통치 스플릿 푸시', d: '피지컬·라인전 · 고위험', st: { mech: .4, lane: .3, macro: .3 }, risk: 1.4,
+        g: ['사이드에서 1v2를 드리블하며 억제기 타워까지 박살 냈다!', '사이드 주도권으로 상대 2명을 묶어두어 본대가 바론을 공짜로 먹었다.'],
+        b: ['사이드에서 깊게 들어갔다 잘렸다. 바론을 그대로 헌납했다.', '상대 본대의 빠른 이니시를 막지 못하고 4:5로 본대가 터졌다.'] },
+      { t: '🐉 오브젝트 한타 앞라인 탱킹', d: '한타 · 저위험', st: { team: .6, macro: .4 }, risk: .7,
+        g: ['단단한 앞라인 벽! 상대 스킬을 전부 흡수하며 아군 딜러를 완벽 보좌했다.', '용 둥지 길목을 완벽히 봉쇄하여 용을 무혈입성했다.'],
+        b: ['상대의 집중 포화에 앞라인이 순식간에 녹아내렸다.', '포지션이 애매해 아군 딜러가 물리는 것을 방치했다.'] },
+      { t: '🎣 부쉬 매복 상대 딜러 암살', d: '피지컬·운영 · 중위험', st: { mech: .6, macro: .4 }, risk: 1.2,
+        g: ['사이드로 빠지던 상대 미드를 단독 솔로킬! 수적 우위를 만들었다.', '부쉬 기습으로 상대 정글을 잘라내고 전령을 독식했다.'],
+        b: ['시야에 발각되어 역으로 포위당해 데스를 기록했다.', '기습했지만 상대의 존야에 막히고 지원군에 잡혔다.'] }
+    ]},
+    { n: '최종 한타 (30분~)', opts: [
+      { t: '🔥 플랭킹 텔포 적 딜러진 붕괴', d: '한타·피지컬 · 고위험', st: { team: .6, mech: .4 }, risk: 1.6,
+        g: ['뒤에서 덮친 기습 텔포! 적 원딜과 미드를 쓸어 담으며 한타를 폭파시켰다!', '완벽한 진영 붕괴! 상대 딜러진을 고립시키고 에이스를 띄웠다.'],
+        b: ['진입했지만 호응이 늦어 혼자 고립 폭사했다.', '상대 서폿의 탈진과 CC기에 묶여 아무것도 못 하고 쓰러졌다.'] },
+      { t: '🛡️ 국밥 앞라인 탱킹 & 어그로 핑퐁', d: '한타·운영 · 저위험', st: { team: .5, macro: .5 }, risk: .8,
+        g: ['체력 10%로 살아남는 기적의 어그로 핑퐁! 아군 딜러들이 프리딜을 꽂았다.', '상대 모든 궁극기를 받아내고 승리! 통곡의 벽 그 자체였다.'],
+        b: ['탱킹력이 부족해 한타 시작 2초 만에 녹아버렸다.', '소극적인 포지션으로 아군 후방이 먼저 뚫렸다.'] },
+      { t: '🏰 단독 넥서스 백도어 시도', d: '운영 · 초고위험 (성공 시 즉시 승리)', st: { macro: .7, mech: .3 }, risk: 2.2, bd: true,
+        g: ['본대가 장로에서 버티는 사이 넥서스 백도어 성공! 기적의 대역전승!', '상대가 눈치채지 못했다! 빈집을 털어내며 게임을 끝냈다!'],
+        b: ['백도어가 막히고 본대마저 쓸려나가며 허무하게 패배했다...'] }
+    ]}
+  ],
+  jg: [
+    { n: '라인전 단계 (0~14분)', opts: [
+      { t: '🏹 3캠프 고속 바텀 갱킹', d: '피지컬·라인전 · 고위험', st: { mech: .55, macro: .45 }, risk: 1.5,
+        g: ['날카로운 3렙 갱킹! 바텀 더블킬을 만들며 게임의 판도를 바꿨다.', '상대 플래시를 전부 빼고 퍼스트 블러드를 아군 원딜에게 먹였다.'],
+        b: ['역갱을 맞았다! 바텀 2:3 교전에서 참패하며 정글 주도권을 잃었다.', '갱킹 실패 후 정글 캠프가 전부 털려 성장이 말렸다.'] },
+      { t: '🌲 풀캠프 고속 6렙 정글링', d: '운영 · 저위험', st: { macro: .8, lane: .2 }, risk: .6,
+        g: ['상대보다 1분 빠르게 6레벨 달성! 궁극기로 미드를 터뜨렸다.', '안정적인 정글링으로 레벨과 코어템 우위를 점했다.'],
+        b: ['정글만 도는 사이 아군 라이너들이 연거푸 솔로킬을 당했다.', '라이너들의 백업 요청을 무시하다가 팀 분위기가 험악해졌다.'] },
+      { t: '🦹 상대 정글 카정 & 시야 차단', d: '피지컬·운영 · 중위험', st: { mech: .5, macro: .5 }, risk: 1.1,
+        g: ['상대 버프를 뺏고 상대 정글까지 솔로킬! 적 정글을 완전히 지웠다.', '상대 정글 동선을 100% 읽어내며 모든 갱킹을 무력화했다.'],
+        b: ['카정 도중 상대 라이너들의 빠른 합류에 포위당해 전사했다.', '상대 정글 낚시에 걸려 킬을 내주고 오브젝트를 뺏겼다.'] }
+    ]},
+    { n: '중반 오브젝트 (15~25분)', opts: [
+      { t: '🐉 오브젝트 0.1초 칼강타 버스트', d: '피지컬·운영 · 고위험', st: { mech: .6, macro: .4 }, risk: 1.4,
+        g: ['체력 800 남은 상황에서 완벽한 칼강타 스틸! 용 스택을 완성했다!', '상대 정글의 스마이트를 피지컬로 찍어누르고 바론을 챙겼다.'],
+        b: ['0.1초 차이로 강타 스틸을 당했다... 바론을 상대에게 헌납했다.', '버스트 도중 강타가 빗나가며 상대에게 오브젝트를 뺏겼다.'] },
+      { t: '👁️ 상대 정글 시야 장악 & 낚시 덫', d: '운영 · 저위험', st: { macro: .8, team: .2 }, risk: .7,
+        g: ['치밀한 시야 낚시! 지나가던 상대 미드를 자르고 바론을 공짜로 먹었다.', '시야 우위로 상대 진입로를 완벽 봉쇄하며 오브젝트를 독점했다.'],
+        b: ['시야 싸움에서 밀려 도리어 아군 서폿이 잘리고 말았다.', '어설픈 낚시로 본대와 거리가 벌어져 한타가 터졌다.'] },
+      { t: '🎯 사이드 라이너 기습 암살 갱', d: '피지컬·라인전 · 중위험', st: { mech: .65, lane: .35 }, risk: 1.1,
+        g: ['스플릿 돌던 상대 탑을 완벽 차단! 수적 우위를 바탕으로 타워 철거!', '기습 갱킹으로 핵심 제압 골드를 챙겼다.'],
+        b: ['상대 사이드 라이너의 1v2 역관광에 휘말려 킬을 내줬다.', '사이드에 발이 묶인 사이 본대가 미드에서 터졌다.'] }
+    ]},
+    { n: '최종 한타 (30분~)', opts: [
+      { t: '💥 배달 이니시 & 장로 스틸', d: '피지컬·한타 · 초고위험', st: { mech: .7, team: .3 }, risk: 1.7,
+        g: ['기적의 인섹킥/이니시로 적 에이스를 배달하고 장로까지 스틸! 게임 종료!', '보고도 믿을 수 없는 클러치 강타 스틸! 협곡이 폭발했다!'],
+        b: ['스틸 실패와 함께 허무하게 폭사했다. 넥서스가 밀린다...', '진입 도중 CC기에 걸려 강타도 못 누르고 사망했다.'] },
+      { t: '🛡️ 아군 원딜 호위 & 암살자 마크', d: '한타·운영 · 저위험', st: { team: .6, macro: .4 }, risk: .8,
+        g: ['적 암살자의 진입을 완벽 차단! 아군 원딜이 프리딜로 펜타킬 달성!', '원딜을 물려던 상대 브루저를 역기절시키며 한타 승리.'],
+        b: ['호위가 늦었다. 아군 원딜이 먼저 삭제되며 한타가 무너졌다.', '앞라인과 원딜 사이에서 갈팡질팡하다가 각개격파당했다.'] },
+      { t: '⚡ 상대 후방 딜러 기습 암살', d: '피지컬·운영 · 고위험 (성공 시 대승)', st: { mech: .6, macro: .4 }, risk: 1.5, bd: true,
+        g: ['어둠 속에서 덮친 암살! 적 원딜을 0.5초 만에 지우고 게임을 끝냈다!', '완벽한 측면 침투로 적 진영을 와해시키며 승리!'],
+        b: ['암살에 실패하고 적 진영 한가운데 고립되어 패배했다...'] }
+    ]}
+  ],
+  mid: [
+    { n: '라인전 단계 (0~14분)', opts: [
+      { t: '⚔️ 미드 1:1 솔로킬 압박', d: '피지컬·라인전 · 고위험', st: { mech: .55, lane: .45 }, risk: 1.5,
+        g: ['상대의 스킬이 빠진 틈을 타 과감한 솔로킬! 미드 주도권을 완벽 장악했다.', '화려한 콤보로 상대를 타워 밑으로 몰아넣고 솔로킬 달성!'],
+        b: ['딜교환 각을 잘못 봤다. 상대 정글이 덮쳐 퍼블 데스...', '무리한 킬각 노림수가 역으로 솔로킬을 허용하고 말았다.'] },
+      { t: '🌾 안정적인 CS 파밍 & 템포 우위', d: '라인전 · 저위험', st: { lane: .9, macro: .1 }, risk: .6,
+        g: ['완벽한 CS 관리로 15분 CS 차이 +25를 만들며 1코어를 완성했다.', '침착하게 웨이브를 지우며 상대의 로밍을 봉쇄했다.'],
+        b: ['상대 미드의 거센 견제에 CS를 많이 흘렸다.', '라인 관리에 실패해 상대 정글의 다이브 압박에 시달렸다.'] },
+      { t: '🗺️ 정글과 합류 · 바텀 로밍', d: '운영·한타 · 중위험', st: { macro: .6, team: .4 }, risk: 1.0,
+        g: ['절묘한 타이밍의 바텀 4인 다이브 로밍! 2킬을 아군에게 먹였다.', '정글과 손잡고 상대 정글을 잡아내며 협곡의 지배권을 쥐었다.'],
+        b: ['로밍 동선이 와드에 읽혔다. 미드 포탑 방패만 크게 뜯겼다.', '합류가 한 박자 늦어 바텀에서 교전 대패를 당했다.'] }
+    ]},
+    { n: '중반 오브젝트 (15~25분)', opts: [
+      { t: '🐉 용 앞 포킹 & 궁극기 각 재기', d: '한타·피지컬 · 고위험', st: { team: .6, mech: .4 }, risk: 1.4,
+        g: ['용 앞 대치에서 상대 딜러진에게 폭딜 적중! 에이스를 띄웠다.', '치명적인 스킬 연계로 상대 메인 딜러를 빈사로 만들어 퇴각시켰다.'],
+        b: ['포킹 도중 상대의 기습 이니시에 걸려 한타가 터졌다.', '궁극기가 허공을 가르며 아군 진영이 무너졌다.'] },
+      { t: '👁️ 사이드 푸시 & 시야 장악', d: '운영 · 저위험', st: { macro: .8, team: .2 }, risk: .7,
+        g: ['사이드 2차 포탑을 빠르게 밀고 시야를 완벽히 장악했다.', '운영의 묘미로 상대 본대를 흔들며 바론을 공짜로 챙겼다.'],
+        b: ['사이드에서 무리하다가 잘려 바론을 헌납했다.', '미적지근한 운영으로 상대에게 전황의 주도권을 내줬다.'] },
+      { t: '🎯 부쉬 매복 적 미드 기습 암살', d: '피지컬·운영 · 중위험', st: { mech: .6, macro: .4 }, risk: 1.1,
+        g: ['부쉬 낚시 대성공! 상대 미드를 0.5초 만에 지우고 5:4 한타 승리!', '암살 성공 후 억제기까지 직진했다.'],
+        b: ['기습이 간파당해 도리어 상대 지원군에 포위당했다.', '스킬 연계가 빗나가며 역으로 데스를 헌납했다.'] }
+    ]},
+    { n: '최종 한타 (30분~)', opts: [
+      { t: '🔥 점멸 5인 대박 궁극기 이니시', d: '한타·피지컬 · 초고위험', st: { team: .55, mech: .45 }, risk: 1.6,
+        g: ['환상적인 5인궁 작렬!! 상대 진영을 공중에 띄우며 펜타킬 에이스!', '모두를 경악하게 만든 명품 이니시로 게임을 끝냈다!'],
+        b: ['이니시가 빗나갔다... 상대가 그대로 바론과 넥서스를 밀고 들어왔다.', '진입했지만 존야를 켜기도 전에 폭사했다.'] },
+      { t: '🛡️ 사거리 유지 지속 폭딜', d: '피지컬·운영 · 저위험', st: { mech: .5, macro: .5 }, risk: .8,
+        g: ['끝까지 살아남아 전장에 폭딜을 쏟아냈다! 침착한 한타 대승!', '완벽한 거리 조절로 상대 돌진기를 무력화하며 넥서스 파괴.'],
+        b: ['너무 소극적이었다. 아군 앞라인이 무너질 때까지 딜을 못 넣었다.', '포지션을 잡다가 상대 암살자에게 물려 패배.'] },
+      { t: '🏴 넥서스 백도어 시도', d: '운영 · 초고위험 (성공 시 즉시 승리)', st: { macro: .7, mech: .3 }, risk: 2.2, bd: true,
+        g: ['상대가 눈치채지 못했다! 넥서스 백도어 성공! 경기장이 뒤집어졌다!', '기적의 단독 철거로 대역전승을 일궈냈다!'],
+        b: ['백도어가 발각됐다. 상대가 4:5 한타를 이기고 그대로 밀고 들어왔다...'] }
+    ]}
+  ],
+  sup: [
+    { n: '라인전 단계 (0~14분)', opts: [
+      { t: '⚓ 필살 그랩 & 바텀 퍼블 유도', d: '피지컬·라인전 · 고위험', st: { mech: .6, lane: .4 }, risk: 1.5,
+        g: ['상대 원딜을 정확히 낚아채 퍼블을 만들었다! 바텀 라인전 완승!', '벽 너머 예측 그랩 성공! 아군 원딜에게 더블킬을 떠먹여 줬다.'],
+        b: ['그랩이 빗나가고 쿨타임 동안 상대 듀오에게 두들겨 맞아 데스...', '무리하게 진입했다가 상대 원딜에게 퍼블을 헌납했다.'] },
+      { t: '🌾 원딜 완벽 케어 & 라인 관리', d: '운영 · 저위험', st: { lane: .8, team: .2 }, risk: .6,
+        g: ['철통 방어로 원딜이 노데스로 1코어를 완성하도록 지켜냈다.', '적절한 실드와 힐로 상대의 모든 견제를 무력화했다.'],
+        b: ['케어에 실패해 아군 원딜이 솔로킬을 당했다.', '소극적인 자세로 라인 주도권을 완전히 빼앗겼다.'] },
+      { t: '🗺️ 기습 미드 로밍 & 정글 백업', d: '운영·한타 · 중위험', st: { macro: .7, team: .3 }, risk: 1.0,
+        g: ['미드로 깜짝 로밍! 상대 미드를 점멸 플래시로 묶어 퍼블을 만들어냈다!', '정글 교전에 칼같이 합류해 상대 정글을 잡아냈다.'],
+        b: ['로밍 간 사이 홀로 남은 아군 원딜이 다이브를 당해 전사했다.', '로밍 동선을 들켜 허무하게 턴만 낭비했다.'] }
+    ]},
+    { n: '중반 오브젝트 (15~25분)', opts: [
+      { t: '👁️ 오브젝트 시야 100% 장악', d: '운영 · 저위험', st: { macro: .8, team: .2 }, risk: .7,
+        g: ['용 앞 핑크와드 도배! 시야의 우위로 상대 진입을 완벽 차단했다.', '시야로 적의 움직임을 손바닥 보듯 읽어내며 오브젝트를 독식했다.'],
+        b: ['와딩 도중 상대 3명에게 잘려 용을 내주고 말았다.', '시야 싸움에서 밀려 상대의 기습 이니시에 당했다.'] },
+      { t: '🛡️ 기습 선진입 이니시에이팅', d: '한타·피지컬 · 고위험', st: { team: .6, mech: .4 }, risk: 1.4,
+        g: ['상대 핵심 딜러에게 정확한 CC기 연계! 한타를 지배했다.', '점멸 궁극기로 적 3명을 묶어 아군 딜러들의 광역 딜 각을 만들었다.'],
+        b: ['진입했지만 아군 호응이 닿지 않았다. 혼자 산화하고 한타 패배.', '스킬이 빗나가며 역으로 아군 딜러가 노출되었다.'] },
+      { t: '🚑 물린 아군 슈퍼세이브', d: '피지컬·팀워크 · 중위험', st: { team: .7, mech: .3 }, risk: 1.1,
+        g: ['기적의 랜턴/실드 세이브! 잘릴 뻔한 원딜을 살려내고 역관광 승리!', '몸으로 상대 스킬을 다 막아내며 원딜의 쿼드라킬을 완성시켰다.'],
+        b: ['세이브에 실패하고 둘 다 함께 쓸려나갔다.', '스킬 분배가 꼬여 아군 딜러를 지키지 못했다.'] }
+    ]},
+    { n: '최종 한타 (30분~)', opts: [
+      { t: '🔥 플래시 기습 이니시 딜러 납치', d: '한타·피지컬 · 고위험', st: { mech: .6, team: .4 }, risk: 1.6,
+        g: ['점멸 그랩/CC기로 적 원딜을 0.1초 만에 납치! 한타를 완벽히 끝냈다!', '상대 진영을 산산조각 내며 에이스를 이끌어냈다!'],
+        b: ['상대 수은/정화에 풀리고 역으로 포위당해 패배했다.', '이니시가 빗나가며 진영이 무너졌다.'] },
+      { t: '🛡️ 원딜 목숨 건 헌신적 케어', d: '팀워크·운영 · 저위험', st: { team: .7, macro: .3 }, risk: .8,
+        g: ['탈진+기절+몸빵 3단 방어로 원딜이 노데스 펜타킬을 달성했다!', '서포터의 숭고한 희생 속에서 아군 딜러들이 넥서스를 밀어냈다.'],
+        b: ['상대 암살자의 진입을 막지 못해 원딜이 즉사했다.', '원딜을 지키려다 본대 전체가 휩쓸려 패배했다.'] },
+      { t: '👑 완벽한 바론/장로 둥지 시야 오더', d: '운영 · 고위험 (성공 시 승리)', st: { macro: .8, team: .2 }, risk: 1.5, bd: true,
+        g: ['완벽한 오더로 상대의 장로 시도를 낚아채고 한타 대승!', '시야 트릭으로 상대를 속이고 넥서스까지 직진!'],
+        b: ['오더 미스로 장로를 상대에게 스틸당하고 역전패...'] }
+    ]}
+  ]
+};
 
 function teamName() { const t = myTeam(); return t ? t.name : '아마추어'; }
 
@@ -1925,7 +2071,8 @@ async function playMatch(opp, label, big = false) {
   await sleep(400);
   const mentalVar = (1.25 - P.s.mental / 200) * (big ? 1.15 : 1);
 
-  for (let pi = 0; pi < PHASES.length; pi++) {
+  const curPhases = PHASES_BY_POS[P.pos || 'mid'] || PHASES_BY_POS.mid;
+  for (let pi = 0; pi < curPhases.length; pi++) {
     // 3단계 직전 클러치 QTE: 팽팽하거나 중요한 승부처일 때 확률적 등장
     if (pi === 2 && Math.random() < 0.5) {
       try {
@@ -1938,7 +2085,7 @@ async function playMatch(opp, label, big = false) {
         console.error('QTE error:', err);
       }
     }
-    const ph = PHASES[pi];
+    const ph = curPhases[pi];
     let fastSkipped = false;
     const choice = await new Promise(res => {
       draw(`<div class="card choices">
@@ -2718,7 +2865,7 @@ async function ending(natural) {
     // 하렘 챔피언 엔딩
     const imgsHtml = loves80.map(k => `
       <div style="flex:1;max-width:90px;height:115px;border-radius:8px;overflow:hidden;border:1px solid #f472b6">
-        <img src="${HEROINES[k].img}" onerror="this.src='${HEROINES[k].fallback}'" style="width:100%;height:100%;object-fit:cover;object-position:top">
+        <img src="${HEROINES[k].img}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${HEROINES[k].fallback}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${HEROINES[k].fallback}';}else{this.onerror=null;this.src='icon-512.png';}" style="width:100%;height:100%;object-fit:cover;object-position:top">
       </div>
     `).join('');
 
@@ -2740,7 +2887,7 @@ async function ending(natural) {
       <div style="margin-top:14px;padding:12px;background:#231733;border:1px solid #db2777;border-radius:12px;text-align:center">
         <h4 style="color:#f472b6;margin:0 0 6px">💍 [인연 웨딩 엔딩] ${rh.name}과의 영원한 약속</h4>
         <div style="width:100px;height:120px;border-radius:10px;overflow:hidden;margin:0 auto 8px">
-          <img src="${rh.img}" onerror="this.src='${rh.fallback}'" style="width:100%;height:100%;object-fit:cover;object-position:top">
+          <img src="${rh.img}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${rh.fallback}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${rh.fallback}';}else{this.onerror=null;this.src='icon-512.png';}" style="width:100%;height:100%;object-fit:cover;object-position:top">
         </div>
         <p style="font-size:13px;line-height:1.6;color:#fbcfe8;margin:0">
           은퇴 후, 당신의 곁에는 가장 빛나는 순간과 가장 힘들었던 순간을 함께해 준 <b>${rh.name}</b>이(가) 있습니다.<br>
@@ -2995,7 +3142,7 @@ async function showBondsModal() {
     return `
       <div class="h-card ${un ? '' : 'locked'}">
         <div class="h-thumb">
-          <img src="${h.img}" onerror="this.src='${h.fallback}'" alt="${h.name}">
+          <img src="${h.img}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${h.fallback}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${h.fallback}';}else{this.onerror=null;this.src='icon-512.png';}" alt="${h.name}">
         </div>
         <div class="h-info">
           <div class="h-name">
@@ -3221,22 +3368,200 @@ async function showBanPickModal(opp) {
   return { myChamp, bannedChamp };
 }
 
+// 챔피언별 시그니처 클러치 QTE 데이터베이스
+const CHAMP_QTE_TABLE = {
+  // --- 원딜 (ADC) ---
+  kaisa: {
+    hero: '카이사',
+    opts: [
+      { t: '⚡ [사냥본능 돌진] 적 원딜 후방 급습 & 0.5초 암살!', desc: '플라즈마 스택 확인 후 적 원딜 뒤로 궁극기 돌진!', cls: 'red' },
+      { t: '🏹 [이케시아 폭우] 탱커부터 차례대로 녹이는 완벽한 카이팅', desc: '사거리 유지하며 안정적으로 프리딜을 쏟아붓습니다.', cls: 'gold' },
+      { t: '🛡️ [고속충전 투명화] 적 핵심 스킬 흘리고 진형 붕괴', desc: '은신으로 어그로를 핑퐁하며 생존합니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "앞점멸 사냥본능 돌진!! 피하면서 때리고 다 잡습니다! 쿼드라에 이어... 펜타키이이일!!"',
+    sub: '사냥본능 · 앞점멸 1v5 카이팅 펜타킬'
+  },
+  zeri: {
+    hero: '제리',
+    opts: [
+      { t: '⚡ [번개 방출 폭주] 이속 800 무빙 1v5 카이팅 펜타킬!', desc: '스파크 폭주 켜고 적 스킬을 전부 피하며 극한의 딜링!', cls: 'red' },
+      { t: '🎯 [스파크 레이저] 벽 너머 장로 저격 & 역전 딜링', desc: '벽 관통 레이저로 상대 체력을 초토화합니다.', cls: 'gold' },
+      { t: '💨 [스파크 돌진] 벽 넘기 카이팅으로 적 어그로 분산', desc: '벽을 타고 넘나들며 끝까지 살아남습니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "제리가 번개를 뿜습니다! 손가락이 안 보여요! 전원 처치 에이스으으!!"',
+    sub: '번개 방출 폭주 · 무빙 카이팅 펜타킬'
+  },
+  jinx: {
+    hero: '징크스',
+    opts: [
+      { t: '🚀 [초강력 로켓 난사] 장로 드래곤 스틸 & 신난다 펜타킬!', desc: '궁극기로 장로를 뺏고 이속 폭발로 협곡을 휩씁니다!', cls: 'red' },
+      { t: '💣 [와작와작 덫 진형] 상대 돌진 차단 후 미니건 난사', desc: '돌진기를 덫으로 막고 안전하게 폭딜을 넣습니다.', cls: 'gold' },
+      { t: '🎯 [사거리 700 로켓 폭격] 안전거리 유지 적 진영 초토화', desc: '최대 사거리에서 상대를 일방적으로 두들깁니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "신난다 발동!! 징크스가 날아다닙니다! 펜타킬! 넥서스까지 부숩니다!!"',
+    sub: '초강력 로켓 난사 · 신난다 펜타킬'
+  },
+
+  // --- 미드 (MID) ---
+  azir: {
+    hero: '아지르',
+    opts: [
+      { t: '👑 [황제의 진형] 슈리마 셔플 5인 배달 토스!', desc: 'E-Q-플래시-R 연계로 적 5명을 아군 진영으로 완벽 배달!', cls: 'red' },
+      { t: '⚔️ [모래 병사 전장 장악] 최대 사거리 1,000 지속 폭딜', desc: '모래 병사들을 조종해 상대 진영을 갈라놓습니다.', cls: 'gold' },
+      { t: '🏰 [태양 포탑 건설] 바론 앞 진지 구축 및 시간 지연', desc: '패시브 포탑으로 전장을 유리하게 통제합니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "황제의 진형이 다섯 명을 띄웠습니다아아악!! 에이스!! 펜타키이이일!!"',
+    sub: '황제의 진형 · 슈리마 셔플 5인궁'
+  },
+  orianna: {
+    hero: '오리아나',
+    opts: [
+      { t: '🌀 [명품 충격파] 아군 진입에 맞춘 4인 충격파 작렬!', desc: '공 배달 환상 연계로 상대 딜러진을 순식간에 공중에 띄웁니다!', cls: 'red' },
+      { t: '🛡️ [방어 구체 실드] 위기의 아군 원딜 슈퍼세이브', desc: '원딜에게 구체를 달고 보호막과 이속을 지원합니다.', cls: 'gold' },
+      { t: '🔮 [구체 지역 장악] 좁은 골목 시야 차단 & 포킹', desc: '구체 위치를 조절해 상대 진입을 원천 차단합니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "충격파 대박!! 공이 다섯 명을 모았습니다! 게임 끝났습니다아아악!!"',
+    sub: '명품 충격파 · 4인 한타 에이스'
+  },
+  zed: {
+    hero: '제드',
+    opts: [
+      { t: '🗡️ [죽음의 표식] 적 원딜 0.2초 삭제 후 그림자 탈출!', desc: '궁극기로 상대 에이스 딜러를 흔적도 없이 지워버립니다!', cls: 'red' },
+      { t: '👥 [그림자 어그로 핑퐁] 주요 스킬 3개 흘리고 탈출', desc: '그림자 스왑으로 상대의 점멸과 궁을 허비시킵니다.', cls: 'gold' },
+      { t: '🏃 [사이드 초고속 철거] 억제기 밀고 백도어 압박', desc: '사이드 주도권으로 상대 본대를 강제로 찢어놓습니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "제드 그림자 쇼!! 상대 원딜이 사라졌습니다! 혼자서 진영을 찢어놓습니다!!"',
+    sub: '죽음의 표식 · 0.2초 암살 슈퍼플레이'
+  },
+  sylas: {
+    hero: '사일러스',
+    opts: [
+      { t: '⛓️ [궁극기 강탈] 적 메인 이니시 궁 강탈 5인 에어본!', desc: '상대 궁을 뺏어 역으로 상대 본대에 내리꽂습니다!', cls: 'red' },
+      { t: '🩸 [국왕시해자 피흡] 체력 5% 역전 1v3 차력쇼', desc: '극한의 피흡으로 죽지 않는 언데드가 되어 버팁니다.', cls: 'gold' },
+      { t: '🛡️ [사슬 납치] 적 원딜 끌고 와서 전장 이탈', desc: '사슬로 적 딜러를 낚아채 잘라먹습니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "사일러스가 안 죽어요! 궁극기를 뺏어서 역관광! 이게 바로 에이스입니다!!"',
+    sub: '궁극기 강탈 · 1v3 차력쇼'
+  },
+  leblanc: {
+    hero: '르블랑',
+    opts: [
+      { t: '🎭 [환영 왜곡 암살] 사각지대 왜곡 적 미드 순삭!', desc: 'W-Q-R-E 콤보로 0.3초 만에 딜러를 지우고 귀환!', cls: 'red' },
+      { t: '🌀 [환영 사슬 속박] 아군 딜러 무는 브루저 차단', desc: '사슬을 걸어 상대 진입을 철저히 막아냅니다.', cls: 'gold' },
+      { t: '👥 [분신 트릭 낚시] 상대 궁극기 2개 허공에 빼기', desc: '패시브 분신으로 상대의 핵심 스킬을 낭비시킵니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "보고도 못 피합니다! 르블랑이 협곡을 가지고 놉니다! 퍼펙트 에이스!!"',
+    sub: '환영 왜곡 · 0.3초 암살'
+  },
+  yasuo: {
+    hero: '야스오',
+    opts: [
+      { t: '🌪️ [최후의 숨결] 5인 회오리 에어본 연계!', desc: '대박 에어본에 즉시 반응해 궁극기로 전원을 묶습니다!', cls: 'red' },
+      { t: '💨 [바람 장막] 상대 원딜 모든 투사체 완전 차단', desc: '장막으로 상대 딜을 100% 무효화하여 한타를 승리합니다.', cls: 'gold' },
+      { t: '⚔️ [질풍검 카이팅] 미니언 타고 적 진영 휘젓기', desc: '적 스킬을 E 스킬로 흘리며 딜러진을 압박합니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "소리에게돈!! 야스오의 바람 장막이 투사체를 지우고 5인을 베어버립니다!!" ',
+    sub: '최후의 숨결 · 바람 장막 한타 캐리'
+  },
+
+  // --- 정글 (JG) ---
+  leesin: {
+    hero: '리 신',
+    opts: [
+      { t: '🦵 [인섹킥] 와드 방호 점멸 적 딜러 아군 진영 배달!', desc: '0.1초의 망설임도 없는 플래시 킥으로 적 딜러 납치!', cls: 'red' },
+      { t: '🛡️ [방호 슈퍼세이브] 물린 아군 원딜 구출 & 역이니시', desc: '방호와 실드로 원딜을 살려내고 역관광을 겁니다.', cls: 'gold' },
+      { t: '🐉 [0.1초 칼강타] 상대 정글 찍어누르고 장로 스틸!', desc: '음파로 들어가며 완벽한 스마이트로 스틸 성공!', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "용의 분노오오옥!! 적 원딜을 걷어찹니다! 바론 스틸에 이어 에이스으으!!" ',
+    sub: '인섹킥 배달 & 기적의 강타 스틸'
+  },
+  vi: {
+    hero: '바이',
+    opts: [
+      { t: '👊 [기동타격 록온] 상대 에이스 원딜에게 확정 돌진!', desc: 'CC 면역으로 상대 앞라인을 뚫고 적 원딜을 내리꽂습니다!', cls: 'red' },
+      { t: '🛡️ [과충전 펀치] 아군 진영 침투한 암살자 역기절', desc: '원딜을 물러 온 적을 펀치로 넉백시켜 지킵니다.', cls: 'gold' },
+      { t: '🐉 [과충전 강타 버스트] 오브젝트 0.1초 컷', desc: '높은 단일 딜로 오브젝트를 빠르게 녹입니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "기동타격 록온!! 피할 수가 없습니다! 적 원딜 바닥에 꽂히면서 한타 대승!!"',
+    sub: '기동타격 록온 · 적 원딜 분쇄'
+  },
+
+  // --- 탑 (TOP) ---
+  aatrox: {
+    hero: '아트록스',
+    opts: [
+      { t: '⚔️ [세계의 종결자] 피흡 무한 갱신 1v5 학살쇼!', desc: '적진 한가운데서 다르킨의 검 3타로 에어본을 꽂으며 학살!', cls: 'red' },
+      { t: '🛡️ [선봉장 앞라인 탱킹] 적 핵심 CC기 3개 흡수', desc: '몸으로 모든 스킬을 받아내며 아군 딜러 프리딜 각을 엽니다.', cls: 'gold' },
+      { t: '🏃 [사이드 텔포 백도어] 상대 묶고 넥서스 파괴', desc: '본대가 버티는 사이 넥서스를 철거합니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "아트록스 대재앙 강림!! 죽지를 않습니다! 1v5를 갈아마시는 다르킨의 검!!"',
+    sub: '세계의 종결자 · 1v5 불사신 학살'
+  },
+  ksante: {
+    hero: '크산테',
+    opts: [
+      { t: '🛡️ [총공세 납치] 적 에이스를 벽 너머로 날려 솔로킬!', desc: '궁극기로 상대 메인 딜러를 한타에서 강제 격리시킵니다!', cls: 'red' },
+      { t: '🧱 [불굴의 방패] 아군 딜러 앞 가로막고 투사체 차단', desc: 'W 방패로 적 돌진을 튕겨내며 완벽 케어.', cls: 'gold' },
+      { t: '🎣 [엔토포 3타 연계] 적 진영을 흐트러뜨리는 에어본', desc: 'Q3 회오리로 적 다수를 띄워 한타를 개시합니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "벽을 넘겼습니다!! 크산테가 적 딜러를 납치해버렸어요! 완벽한 차력쇼!!"',
+    sub: '총공세 벽 납치 · 단독 격리 솔로킬'
+  },
+
+  // --- 서폿 (SUP) ---
+  nautilus: {
+    hero: '노틸러스',
+    opts: [
+      { t: '⚓ [폭뢰 닻줄 이니시] 적 딜러 확정 에어본 투척!', desc: '점멸 평타 속박과 폭뢰로 적 딜러진을 완전히 묶습니다!', cls: 'red' },
+      { t: '🛡️ [타이탄의 분노] 온몸으로 스킬 흡수하며 원딜 호위', desc: '거대한 덩치로 아군을 보호하고 어그로를 끕니다.', cls: 'gold' },
+      { t: '👁️ [부쉬 매복 닻줄] 시야 없는 골목에서 기습', desc: '지나가던 적을 끌어당겨 즉시 잘라먹습니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "폭뢰가 꽂힙니다!! 피할 수 없는 확정 CC! 서포터가 게임을 캐리합니다아아악!!"',
+    sub: '폭뢰 닻줄 · 확정 CC 한타 캐리'
+  },
+  thresh: {
+    hero: '쓰레쉬',
+    opts: [
+      { t: '⚓ [사형선고 적중] 예측 그랩으로 적 딜러 납치!', desc: '점멸 쓰는 적 딜러의 동선을 예측해 그랩 성공!', cls: 'red' },
+      { t: '🏮 [슈퍼세이브 랜턴] 물린 아군 원딜 0.1초 구출', desc: '완벽한 랜턴 투척으로 아군을 안전하게 빼냅니다.', cls: 'gold' },
+      { t: '🕸️ [영혼의 감옥] 5인 결계로 퇴로 완전 차단', desc: '궁극기로 상대 진영을 가두어 전원 처치를 이끕니다.', cls: 'purple' }
+    ],
+    shout: '🎙️ 전용준: "그랩 적중!! 그리고 완벽한 랜턴 구출까지!! 매드라이프의 재림입니다아아악!!"',
+    sub: '사형선고 적중 · 슈퍼세이브 랜턴'
+  }
+};
+
 async function triggerClutchQTE() {
   playJackpotSound();
-  const c = P.currentChamp || CHAMPIONS[0];
+  const pos = P.pos || 'mid';
+  const myRoleChamps = CHAMPIONS.filter(c => c.role === pos);
+  const c = P.currentChamp || myRoleChamps[0] || CHAMPIONS[0];
+  P.currentChamp = c; // 동기화 보장
+
+  const qteData = CHAMP_QTE_TABLE[c.id] || {
+    hero: c.n,
+    opts: [
+      { t: `🔥 ${c.n} [시그니처 필살기 작렬!] (피지컬 판정)`, desc: '최고의 집중력으로 한타를 지배합니다!', cls: 'red' },
+      { t: `🎯 [적 핵심 딜러 기습 마크!] (판단 판정)`, desc: '냉철한 상황 판단으로 승기를 잡습니다.', cls: 'gold' },
+      { t: `🛡️ [장로/바론 오브젝트 집중!] (운영 판정)`, desc: '팀플레이와 운영으로 이득을 확정 짓습니다.', cls: 'purple' }
+    ],
+    shout: `🎙️ 전용준: "${c.n}의 슈퍼플레이 작렬!! 협곡을 뒤집어놓습니다아아악!!"`,
+    sub: `${c.n} 슈퍼플레이 캐리`
+  };
+
   const qteIdx = await ask(`
     <div class="clutch-box">
       <div style="font-size:38px">⚡🚨</div>
       <h3 style="color:#fde047;margin:4px 0">승부처! 장로 드래곤 클러치 한타!</h3>
       <p style="color:#fecaca;font-size:13px;line-height:1.5;margin:6px 0">
-        경기 시간 38분, 팽팽한 대치 상황! ${c.n}의 손끝에 경기의 운명이 걸렸습니다!
+        경기 시간 38분, 팽팽한 대치 상황! <b style="color:#fff">[${POS[pos]?.n || '프로'}]</b> <b>${c.n}</b>의 손끝에 경기의 운명이 걸렸습니다!
       </p>
+      <div style="font-size:11px;color:#93c5fd">선택한 행동에 따라 경기 골드와 KDA가 즉시 변동됩니다.</div>
     </div>
-  `, [
-    { t: `🔥 ${c.n} [점멸 5인 궁극기 이니시!] (피지컬 판정)`, cls: 'red' },
-    { t: `🎯 [적 원딜 기습 암살 후 탈출!] (판단 판정)`, cls: 'gold' },
-    { t: `🛡️ [바론/장로 스틸 점멸 스마이트!] (운영 판정)`, cls: 'purple' }
-  ]);
+  `, qteData.opts.map(opt => ({
+    t: `${opt.t}<small style="display:block;font-size:11px;color:#cbd5e1;font-weight:400;margin-top:2px">${opt.desc}</small>`,
+    cls: opt.cls
+  })));
 
   const success = Math.random() < clamp(sig((ovr() - 50) / 4.5), 0.35, 0.90);
   if (success) {
@@ -3245,8 +3570,9 @@ async function triggerClutchQTE() {
     await ask(`
       <div style="text-align:center">
         <div style="font-size:52px">🔥👑</div>
-        <h3 style="color:#4ade80">슈퍼플레이 작렬! 펜타킬 에이스!</h3>
-        <p class="c">해설진: "말도 안 되는 피지컬입니다! ${P.name}이 혼자서 협곡을 뒤집어버립니다!!"</p>
+        <h3 style="color:#4ade80">슈퍼플레이 작렬! ${qteData.sub}!</h3>
+        <p class="c">${qteData.shout}</p>
+        <p class="c" style="color:#cbd5e1;font-size:12px">해설진: "말도 안 되는 피지컬입니다! ${P.name} 선수가 혼자서 전장을 지배합니다!!"</p>
       </div>
     `, [{ t: '승리를 확정짓는다!', cls: 'gold' }]);
     return { adv: 2.5, kills: 2, assists: 1, success: true };
@@ -3495,7 +3821,7 @@ const DM_TEMPLATES = [
     fallback: 'serin.jpg',
     category: 'heroine',
     req: p => p.bonds?.serin?.unlocked,
-    msg: '"선수님! 이번 주말 롤파크 직관 티켓 1열 구했어요!! 제가 직접 만든 [${p.name} 사랑해] 야광 응원봉 들고 갈 거니까 무대에서 꼭 봐주셔야 해요 헤헤 💖"',
+    msg: '"선수님! 이번 주말 롤파크 직관 티켓 1열 구했어요!! 제가 직접 만든 [사랑해요!] 야광 응원봉 들고 갈 거니까 무대에서 꼭 봐주셔야 해요 헤헤 💖"',
     choices: [
       { t: '💌 "세린이 응원봉 바로 찾아볼게! 오늘 무조건 POG 받는다!"', gain: '💖 세린 호감도 +18 · 멘탈 +3 · 피로도 회복', act: p => { p.bonds.serin.aff = Math.min(100, (p.bonds.serin.aff || 0) + 18); grow('mental', 3); p.stress = Math.max(0, p.stress - 25); } },
       { t: '🥤 "경기 끝나고 비상구에서 잠깐 볼까? 커피 사줄게!"', gain: '💖 세린 호감도 +22 · 👥 팬 +5,000', act: p => { p.bonds.serin.aff = Math.min(100, (p.bonds.serin.aff || 0) + 22); p.fans += 5000; } }
@@ -3755,7 +4081,7 @@ async function openSendDmModal() {
 
   const mIdx = await ask(`
     <div style="display:flex;align-items:center;gap:12px;background:#11162a;padding:10px;border-radius:12px;margin-bottom:10px">
-      <img src="${h.img}" onerror="this.src='${h.fallback}'" style="width:48px;height:48px;border-radius:50%;object-fit:cover">
+      <img src="${h.img}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${h.fallback}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${h.fallback}';}else{this.onerror=null;this.src='icon-512.png';}" style="width:48px;height:48px;border-radius:50%;object-fit:cover">
       <div>
         <div style="font-weight:900;color:#fff">${h.name}에게 보낼 메시지</div>
         <div style="font-size:11.5px;color:#94a3b8">${h.tag}</div>
@@ -3872,7 +4198,7 @@ async function showSnsModal() {
         body += P.dms.list.map((d, idx) => `
           <div class="dm-card ${d.read ? '' : 'unread'}" data-dmidx="${idx}">
             ${d.read ? '' : '<div class="badge-unread"></div>'}
-            <div class="dm-avatar"><img src="${d.avatar}" onerror="this.src='${d.fallback}'" alt="${d.sender}"></div>
+            <div class="dm-avatar"><img src="${d.avatar}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${d.fallback}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${d.fallback}';}else{this.onerror=null;this.src='icon-512.png';}" alt="${d.sender}"></div>
             <div class="dm-info">
               <div class="dm-sender">
                 ${d.sender} <span class="${d.tagCls}">${d.badge}</span>
@@ -3954,7 +4280,7 @@ async function openDmChat(idx) {
 
   const chatHtml = `
     <div style="display:flex;align-items:center;gap:12px;background:#11162a;padding:12px;border-radius:12px;margin-bottom:12px">
-      <div class="dm-avatar" style="width:52px;height:52px"><img src="${d.avatar}" onerror="this.src='${d.fallback}'"></div>
+      <div class="dm-avatar" style="width:52px;height:52px"><img src="${d.avatar}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${d.fallback}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${d.fallback}';}else{this.onerror=null;this.src='icon-512.png';}"></div>
       <div>
         <div style="font-weight:900;font-size:15px;color:#fff">${d.sender} <span class="${d.tagCls}">${d.badge}</span></div>
         <div style="font-size:11.5px;color:#38bdf8">${d.time} 수신</div>
@@ -4668,8 +4994,8 @@ function renderCreate() {
 // ======================================================================
 // 회사 로고 오프닝 비디오 연출 & 인앱 자동 업데이트 (v1.7.0)
 // ======================================================================
-const CURRENT_VERSION = '1.8.2';
-const CURRENT_VERSION_CODE = 6;
+const CURRENT_VERSION = '1.8.4';
+const CURRENT_VERSION_CODE = 7;
 
 function initIntroVideo() {
   const splash = document.getElementById('introSplash');

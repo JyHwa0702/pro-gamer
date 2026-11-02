@@ -1,15 +1,15 @@
 {
-  "version": "1.8.2",
-  "versionCode": 6,
+  "version": "1.8.4",
+  "versionCode": 7,
   "releaseDate": "2026-11-02",
   "title": "로드 투 월즈 (Road to Worlds)",
   "mandatory": false,
   "changelog": [
-    "인스타그램 피드 직접 올리기 기능 추가 (사진·캡션 선택 & 좋아요·팬 실시간 폭발)",
-    "피드 댓글 답글 달기(인터랙션) 시스템 추가 (성숙한 프로형/스타형/하트 반응)",
-    "원하는 인연에게 직접 선톡(DM) 보내기 기능 신설 (실시간 달달한 답장 수신)",
-    "모달 우측 상단 고정 [✕] 닫기 버튼 통일 적용 (한 손 모바일 조작 최적화)",
-    "PC방 토너먼트 8강 대진표 브래킷(Bracket UI) 시각화 적용"
+    "포지션(라인: 탑·정글·미드·원딜·서폿)별 3단계 경기 맞춤형 선택지 전면 개편",
+    "챔피언별 시그니처 클러치 QTE 시스템 탑재 (원딜 카이사/제리/징크스 전용 스킬 & 샤우팅)",
+    "캐릭터 생성 및 아마추어 단계 포지션 기본 챔피언 자동 동기화 (원딜 시 아지르 고정 해결)",
+    "히로인 일러스트 다단계 자동 복구(Fallback) 안전장치 적용 (이미지 미출력 원천 차단)",
+    "비주얼 노벨 컷씬 프레임 220px 상향 조정 (상반신 및 표정 시원한 뷰포트 확보)"
   ],
   "downloadUrl": "https://github.com/JyHwa0702/pro-gamer/releases/latest/download/pro-gamer.apk",
   "webUrl": "https://jyhwa0702.github.io/pro-gamer/"
