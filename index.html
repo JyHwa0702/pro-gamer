@@ -215,6 +215,26 @@ tr.me td{background:#1d2a52;font-weight:800}
 .gallery-item img{width:100%;height:100%;object-fit:cover}
 .gallery-tag{position:absolute;bottom:4px;left:4px;background:rgba(0,0,0,0.75);font-size:10px;color:#fff;padding:1px 5px;border-radius:4px;font-weight:700}
 
+
+/* ⚔️ LCK 챔피언 선택창 & 조합 시너지 스타일 */
+.lck-draft-box{background:#0c111e;border:1px solid #1f2b48;border-radius:14px;padding:12px;margin-bottom:10px}
+.draft-teams{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.draft-team-col{background:#11182c;border-radius:10px;padding:8px;border:1px solid #233054}
+.draft-team-col.my-col{border-color:#3b82f6;background:linear-gradient(180deg,#111c38,#0d152a)}
+.draft-team-col.opp-col{border-color:#ef4444;background:linear-gradient(180deg,#2b1118,#1c0d12)}
+.draft-slot{display:flex;align-items:center;gap:6px;padding:4px 6px;border-radius:6px;margin-bottom:4px;font-size:11.5px}
+.draft-slot.my-slot{background:#1e3a8a;border:1px solid #60a5fa;box-shadow:0 0 8px rgba(96,165,250,0.4)}
+.draft-slot.opp-target{background:#7f1d1d;border:1px solid #f87171}
+.draft-slot img{width:26px;height:26px;border-radius:4px;object-fit:cover}
+.draft-slot .pos-tag{font-size:10px;font-weight:900;color:#94a3b8;width:24px}
+.synergy-badge{display:inline-block;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:800;margin-top:4px}
+.champ-pick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-height:240px;overflow-y:auto;padding-right:2px;margin:8px 0}
+.champ-pick-card{background:#11162a;border:2px solid #263354;border-radius:10px;padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;transition:all .2s}
+.champ-pick-card:hover, .champ-pick-card.sel{border-color:#f59e0b;background:#241d3b;box-shadow:0 0 10px rgba(245,158,11,0.5)}
+.champ-pick-card img{width:48px;height:48px;border-radius:8px;object-fit:cover;margin-bottom:4px}
+.champ-pick-card b{font-size:12.5px;color:#fff;display:block}
+.champ-pick-card small{font-size:10px;color:#94a3b8}
+
 </style>
 </head>
 <body>
@@ -1596,7 +1616,7 @@ const PHASES = [
 function teamName() { const t = myTeam(); return t ? t.name : '아마추어'; }
 
 async function playMatch(opp, label, big = false) {
-  const bp = await showBanPickModal(opp);
+  const bp = await showLckChampionSelectModal(opp);
   const main = $('#main');
   const my = teamPow(), op = opp.str;
   let adv = (my - op) * 0.12, perf = 0, kills = 0, deaths = 0, assists = 0, bdWin = null;
@@ -1795,6 +1815,7 @@ async function weekEnd() {
   checkAchievements();
 
   checkWeeklyDM();
+  checkEndgameMilestones();
   P.week++;
   if (P.week > YEAR_WEEKS) {
     P.week = 1; P.year++; P.age++;
@@ -3311,6 +3332,243 @@ async function openPhotoGalleryPicker() {
       postToInsta(selPhoto.title, selPhoto.img, selPhoto.caption);
       break;
     }
+  }
+}
+
+
+// ======================================================================
+// ⚔️ Riot API 공식 연동 LCK 챔피언 선택 & 조합 시너지 시스템
+// ======================================================================
+
+const TEAM_COMPS = {
+  dive: { name: '🔥 돌진·이니시 조합 (Dive)', desc: '한타 개시력 +18% · 킬 캐치', champs: ['vi', 'nautilus', 'kaisa', 'sylas', 'aatrox'] },
+  wombo: { name: '🛡️ 밸런스 한타 조합 (Wombo)', desc: '후반 30분 한타 승률 +22%', champs: ['orianna', 'azir', 'ksante', 'jinx', 'thresh'] },
+  poke: { name: '⚡ 포킹·암살 조합 (Poke & Pick)', desc: '초반 라인전 주도권 +18%', champs: ['zed', 'leblanc', 'zeri', 'leesin', 'yasuo'] }
+};
+
+function getChampIcon(c) {
+  return `assets/champs/${c.id}.png`;
+}
+
+function analyzeCompSynergy(champList) {
+  const ids = champList.map(c => c.id);
+  for (const [k, comp] of Object.entries(TEAM_COMPS)) {
+    const matchCount = ids.filter(id => comp.champs.includes(id)).length;
+    if (matchCount >= 2) {
+      return { key: k, ...comp, count: matchCount };
+    }
+  }
+  return { key: 'standard', name: '⚖️ 스탠다드 밸런스 조합', desc: '모든 국면 안정적인 경기력', count: 1 };
+}
+
+async function showLckChampionSelectModal(opp) {
+  const myPos = P.pos || 'mid';
+  const posOrder = ['top', 'jg', 'mid', 'adc', 'sup'];
+
+  // 상대팀 5인 픽 생성
+  const oppRoster = {};
+  posOrder.forEach(p => {
+    const cand = CHAMPIONS.filter(c => c.role === p);
+    oppRoster[p] = cand.length > 0 ? pick(cand) : pick(CHAMPIONS);
+  });
+
+  // 우리팀 4인 픽 생성 (내 포지션 제외)
+  const myTeamRoster = {};
+  posOrder.forEach(p => {
+    if (p !== myPos) {
+      const cand = CHAMPIONS.filter(c => c.role === p && c.id !== oppRoster[p]?.id);
+      myTeamRoster[p] = cand.length > 0 ? pick(cand) : pick(CHAMPIONS);
+    }
+  });
+
+  const oppLaner = oppRoster[myPos] || CHAMPIONS[0];
+
+  // 추천 기본 픽
+  const myCandidates = CHAMPIONS.filter(c => c.role === myPos);
+  let selectedChamp = myCandidates.sort((a,b) => getChampMastery(b.id).lv - getChampMastery(a.id).lv)[0] || CHAMPIONS[0];
+
+  while (true) {
+    const fullMyTeam = Object.values(myTeamRoster).concat([selectedChamp]);
+    const synergy = analyzeCompSynergy(fullMyTeam);
+    const isCounter = (selectedChamp.strongVs || []).includes(oppLaner.id);
+
+    const draftHtml = `
+      <h3>⚔️ LCK 공식 밴픽 &amp; 챔피언 선택</h3>
+      <div class="c" style="color:#9aa4b2;font-size:12px;margin-bottom:8px">
+        상대: <b>${opp.name}</b> (전력 ${opp.str}) vs 우리 팀 (전력 ${Math.round(teamPow())})
+      </div>
+
+      <!-- 양 팀 픽 현황 -->
+      <div class="draft-teams">
+        <div class="draft-team-col my-col">
+          <div style="font-weight:900;font-size:12px;color:#60a5fa;margin-bottom:6px">🔵 우리 팀 조합</div>
+          ${posOrder.map(p => {
+            const isMe = p === myPos;
+            const c = isMe ? selectedChamp : myTeamRoster[p];
+            return `
+              <div class="draft-slot ${isMe ? 'my-slot' : ''}">
+                <span class="pos-tag">${p.toUpperCase()}</span>
+                <img src="${getChampIcon(c)}" onerror="this.src='champs/${c.id}.png'">
+                <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                  <b>${c.n}</b> ${isMe ? '<span style="color:#fde047;font-size:10px">[MY]</span>' : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        <div class="draft-team-col opp-col">
+          <div style="font-weight:900;font-size:12px;color:#f87171;margin-bottom:6px">🔴 ${opp.name}</div>
+          ${posOrder.map(p => {
+            const c = oppRoster[p];
+            const isOppLaner = p === myPos;
+            return `
+              <div class="draft-slot ${isOppLaner ? 'opp-target' : ''}">
+                <span class="pos-tag">${p.toUpperCase()}</span>
+                <img src="${getChampIcon(c)}" onerror="this.src='champs/${c.id}.png'">
+                <div style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                  <b>${c.n}</b> ${isOppLaner ? '<span style="color:#fca5a5;font-size:10px">[맞라이너]</span>' : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+
+      <!-- 상성 & 시너지 분석 박스 -->
+      <div style="background:#11182c;border:1px solid #28375c;border-radius:10px;padding:9px 12px;margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
+          <span>맞라인 상성:</span>
+          <b>${isCounter ? `<span style="color:#4ade80">🎯 카운터 우세! (${selectedChamp.n} > ${oppLaner.n} 라인전 +15%)</span>` : `<span style="color:#cbd5e1">⚖️ 팽팽한 호각세</span>`}</b>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-top:4px">
+          <span>팀 시너지:</span>
+          <b style="color:#fde047">${synergy.name} <small style="color:#94a3b8">(${synergy.desc})</small></b>
+        </div>
+      </div>
+
+      <!-- 챔피언 선택 그리드 -->
+      <div style="font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:4px">내 챔피언 선택 (Riot Data Dragon 연동):</div>
+      <div class="champ-pick-grid">
+        ${myCandidates.map(c => {
+          const isSel = c.id === selectedChamp.id;
+          const cm = getChampMastery(c.id);
+          const counterAdv = (c.strongVs || []).includes(oppLaner.id);
+          return `
+            <div class="champ-pick-card ${isSel ? 'sel' : ''}" data-cid="${c.id}">
+              <img src="${getChampIcon(c)}" onerror="this.src='champs/${c.id}.png'">
+              <b>${c.n}</b>
+              <small style="color:${counterAdv ? '#4ade80' : '#94a3b8'}">${counterAdv ? '⭐카운터' : `Lv.${cm.lv}`}</small>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+
+    const choiceIdx = await new Promise(res => {
+      $('#mBody').innerHTML = draftHtml;
+
+      $('#mBody').querySelectorAll('[data-cid]').forEach(card => {
+        card.onclick = () => {
+          const cObj = CHAMPIONS.find(x => x.id === card.dataset.cid);
+          if (cObj) {
+            selectedChamp = cObj;
+            res({ type: 'reselect' });
+          }
+        };
+      });
+
+      const f = $('#mBtns'); f.innerHTML = '';
+      const btns = [
+        { t: `✨ [${selectedChamp.n}] 출전 확정!`, cls: 'gold', type: 'confirm' },
+        { t: '⚡ [AI 최적 추천 픽으로 즉시 출전]', cls: 'purple', type: 'auto' }
+      ];
+      btns.forEach((b, i) => {
+        const e = document.createElement('button');
+        e.className = 'btn ' + (b.cls || '');
+        e.innerHTML = b.t;
+        e.onclick = () => { $('#modal').classList.add('hidden'); res(b); };
+        f.appendChild(e);
+      });
+      $('#modal').classList.remove('hidden');
+    });
+
+    if (choiceIdx.type === 'reselect') continue;
+
+    if (choiceIdx.type === 'auto') {
+      // 카운터 또는 최고 숙련도 픽
+      const counterPick = myCandidates.find(c => (c.strongVs || []).includes(oppLaner.id));
+      selectedChamp = counterPick || myCandidates[0];
+      toast(`⚡ [AI 최적 픽] ${selectedChamp.n} 자동 선택 완료!`);
+    }
+
+    addChampMastery(selectedChamp.id, 100);
+    const bonusVal = isCounter ? 15 : 5;
+    return { myChamp: selectedChamp, bannedChamp: oppRoster.mid?.id, bonus: bonusVal };
+  }
+}
+
+// ======================================================================
+// 👑 월즈 우승 시그니처 헌정 스킨 & e스포츠 명예의 전당 (후반 엔드 콘텐츠)
+// ======================================================================
+
+async function craftWorldsSkinModal() {
+  if (P.signatureSkin) return; // 이미 제작됨
+  const myPos = P.pos || 'mid';
+  const myChamps = CHAMPIONS.filter(c => c.role === myPos).sort((a,b) => getChampMastery(b.id).lv - getChampMastery(a.id).lv);
+  const bestChamp = myChamps[0] || CHAMPIONS[0];
+
+  const skinName = `${P.stage === 'pro' && P.pro[P.teamId] ? P.pro[P.teamId].name : 'LCK'} ${P.name} ${bestChamp.n}`;
+
+  await ask(`
+    <div style="text-align:center">
+      <div style="font-size:54px;animation:pop .4s ease-out">👑🏆</div>
+      <div style="background:linear-gradient(90deg,#f59e0b,#ec4899);color:#fff;padding:6px 18px;border-radius:99px;font-weight:900;font-size:16px;display:inline-block;margin:8px 0">
+        월드 챔피언십 우승자 시그니처 스킨 헌정!
+      </div>
+      <p class="c">라이엇 게임즈 본사: "세계 정점에 선 ${P.name} 선수의 시그니처 챔피언 <b>[${bestChamp.n}]</b> 헌정 스킨을 전 세계에 동시 출시합니다!"</p>
+      <div style="background:#11162a;border:2px solid #ffd23f;border-radius:12px;padding:12px;margin:12px 0">
+        <img src="${getChampIcon(bestChamp)}" style="width:72px;height:72px;border-radius:12px;margin-bottom:6px">
+        <div style="font-weight:900;font-size:16px;color:#ffd23f">${skinName}</div>
+        <div style="font-size:12px;color:#4ade80;margin-top:4px">💰 전 세계 스킨 판매 로열티: 매주 +₩35,000,000원 영구 지급</div>
+      </div>
+    </div>
+  `, [{ t: '영광의 스킨 출시 승인!', cls: 'gold' }]);
+
+  P.signatureSkin = {
+    champId: bestChamp.id,
+    name: skinName,
+    weeklyRoyalty: 35000000
+  };
+  playJackpotSound();
+  toast(`👑 [${skinName}] 전 세계 출시! 매주 로열티가 입금됩니다.`);
+}
+
+function checkEndgameMilestones() {
+  if (!P.signatureSkin && P.hist && P.hist.titles && P.hist.titles.some(t => t.includes('월드 챔피언십'))) {
+    craftWorldsSkinModal();
+  }
+
+  // 매주 스킨 로열티 입금
+  if (P.signatureSkin && P.signatureSkin.weeklyRoyalty) {
+    P.money += P.signatureSkin.weeklyRoyalty;
+  }
+
+  // e스포츠 명예의 전당 (Hall of Fame)
+  if (!P.hallOfFame && P.fans >= 500000 && (P.hist?.titles || []).length >= 3) {
+    P.hallOfFame = true;
+    playJackpotSound();
+    ask(`
+      <div style="text-align:center">
+        <div style="font-size:54px">🏛️🌟</div>
+        <div style="background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff;padding:6px 18px;border-radius:99px;font-weight:900;font-size:16px;display:inline-block;margin:8px 0">
+          대한민국 e스포츠 명예의 전당 (Hall of Fame) 헌액!
+        </div>
+        <p class="c">종각 롤파크 명예의 전당에 당신의 이름과 유니폼이 영구 결번으로 새겨졌습니다.<br>전 스탯 +10 영구 초월 및 국가 연금 매주 +₩5,000만 원 지급!</p>
+      </div>
+    `, [{ t: '전설의 자리에 오르다', cls: 'gold' }]);
+    
+    Object.keys(P.s).forEach(k => P.s[k] += 10);
   }
 }
 

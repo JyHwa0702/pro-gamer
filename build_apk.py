@@ -138,8 +138,12 @@ public class MainActivity extends Activity {
     # 5. Copy web assets into assets/
     shutil.copy(r"d:\antigravity\pro-gamer\index.html", os.path.join(assets_dir, "index.html"))
     shutil.copytree(r"d:\antigravity\pro-gamer\assets", os.path.join(assets_dir, "assets"), dirs_exist_ok=True)
+    if os.path.exists(r"d:\antigravity\pro-gamer\champs"):
+        shutil.copytree(r"d:\antigravity\pro-gamer\champs", os.path.join(assets_dir, "champs"), dirs_exist_ok=True)
     for img in os.listdir(r"d:\antigravity\pro-gamer\assets"):
-        shutil.copy(os.path.join(r"d:\antigravity\pro-gamer\assets", img), os.path.join(assets_dir, img))
+        img_p = os.path.join(r"d:\antigravity\pro-gamer\assets", img)
+        if os.path.isfile(img_p):
+            shutil.copy(img_p, os.path.join(assets_dir, img))
 
     # 6. AAPT2 Compile
     compiled_res = os.path.join(work_dir, "compiled_res.zip")

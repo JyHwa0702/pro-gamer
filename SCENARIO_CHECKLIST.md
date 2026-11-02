@@ -48,6 +48,7 @@
 | **2026-11-02 13:27** | 5단계 전수 자동화 검증 파이프라인 | `verify_scenario_pipeline.py` | ✅ ALL PASS | 10히로인, 15챔프, 장비/스킨, APK 전수 통과 |
 | **2026-11-02 13:28** | 최신 통합 프로덕션 APK 빌드 | `build_apk.py` (20.53 MB) | ✅ PASS | 서명 완료 및 ZIP 배포팩 갱신 |
 | **2026-11-02 14:45** | 체력 시인성 & 원클릭 UI/UX 개편 | `index.html` + `verify_scenario_pipeline.py` | ✅ ALL PASS | 상단 고정 체력바, 1클릭 턴/밴픽, 이미지 경로 동기화 (22.01MB APK) |
+| **2026-11-02 15:02** | 매드무비 시네마틱 & 인스타 앨범 보관함 | `index.html` + `verify_scenario_pipeline.py` | ✅ ALL PASS | 포지션별 펜타킬/슈퍼세이브 클립, 인스타 사진첩 선택 게시, 리얼 캐스터 중계 (22.02MB APK) |
 
 ---
 
