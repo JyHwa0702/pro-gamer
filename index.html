@@ -211,33 +211,71 @@ tr.me td{background:#1d2a52;font-weight:800}
   font-weight:800;font-size:14px;pointer-events:none;opacity:0;transition:opacity .25s;z-index:20;white-space:nowrap;border:1px solid #2f3756}
 #toast.show{opacity:1}
 
-/* 📸 인스타그램 & 💬 DM 전용 스타일 */
-.sns-profile{display:flex;align-items:center;gap:14px;background:#11162a;padding:12px;border-radius:12px;margin-bottom:10px}
-.sns-avatar{width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #ec4899;flex-shrink:0}
-.sns-avatar img{width:100%;height:100%;object-fit:cover}
-.sns-stats{display:flex;gap:14px;font-size:12px;color:#cbd5e1}
-.sns-stats b{display:block;font-size:14px;color:#fff}
-.feed-card{background:#0e1322;border:1px solid #232c48;border-radius:14px;overflow:hidden;margin-bottom:12px}
-.feed-head{display:flex;align-items:center;gap:8px;padding:9px 12px;font-size:12.5px;font-weight:700}
-.feed-img{width:100%;max-height:220px;object-fit:cover;display:block}
-.feed-body{padding:10px 12px}
-.feed-actions{display:flex;gap:10px;margin-bottom:6px;font-size:14px}
-.feed-caption{font-size:12.5px;color:#f1f5f9;line-height:1.5;margin-bottom:8px}
-.feed-comments{border-top:1px solid #1c233a;padding-top:6px;font-size:11.5px}
-.comment-item{margin-bottom:4px;color:#cbd5e1}
-.comment-item b{color:#38bdf8;margin-right:4px}
-.dm-card{display:flex;align-items:center;gap:10px;background:#11162a;border:1px solid #232c48;border-radius:12px;padding:10px;margin-bottom:7px;cursor:pointer;position:relative}
-.dm-card.unread{border-color:#ec4899;background:linear-gradient(90deg,#19152b,#11162a)}
-.dm-card .badge-unread{width:8px;height:8px;border-radius:50%;background:#ef4444;position:absolute;top:8px;right:8px}
-.dm-avatar{width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0}
-.dm-avatar img{width:100%;height:100%;object-fit:cover}
-.dm-info{flex:1;min-width:0}
-.dm-sender{font-size:13px;font-weight:800;color:#fff;display:flex;align-items:center;gap:4px}
-.dm-preview{font-size:11.5px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
-.tag-celeb{background:#854d0e;color:#fef08a;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:800}
-.tag-streamer{background:#581c87;color:#e9d5ff;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:800}
-.tag-heroine{background:#831843;color:#fbcfe8;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:800}
+/* 📸 인스타그램(GamerGram) 리얼 UI & DM 전용 스타일 */
+.insta-wrap { background: #000; border-radius: 16px; border: 1px solid #262626; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+.insta-top-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #1a1a1a; background: #050505; }
+.insta-brand-logo { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.insta-nav-icons { display: flex; gap: 14px; align-items: center; font-size: 17px; }
+.insta-nav-btn { background: none; border: none; color: #fff; cursor: pointer; padding: 2px; position: relative; font-size: 17px; }
+.insta-nav-btn.act { color: #ec4899; }
+.insta-badge-dot { position: absolute; top: -2px; right: -4px; width: 8px; height: 8px; background: #ef4444; border-radius: 50%; border: 1.5px solid #000; }
 
+/* 스토리 바 */
+.insta-stories-container { display: flex; gap: 12px; padding: 12px 14px; overflow-x: auto; border-bottom: 1px solid #1a1a1a; background: #080808; -webkit-overflow-scrolling: touch; }
+.insta-stories-container::-webkit-scrollbar { display: none; }
+.insta-story-item { display: flex; flex-direction: column; align-items: center; gap: 5px; flex-shrink: 0; cursor: pointer; }
+.insta-story-ring { width: 62px; height: 62px; border-radius: 50%; padding: 2.5px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); display: flex; align-items: center; justify-content: center; transition: transform .15s; }
+.insta-story-ring:active { transform: scale(0.92); }
+.insta-story-ring.my-ring { background: #262626; border: 1.5px dashed #64748b; padding: 2px; }
+.insta-story-img { width: 100%; height: 100%; border-radius: 50%; border: 2px solid #000; object-fit: cover; }
+.insta-story-user { font-size: 10.5px; color: #e5e5e5; max-width: 62px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; }
+
+/* 내 프로필 요약 카드 */
+.insta-profile-bar { display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
+.insta-p-avatar { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; border: 2px solid #ec4899; flex-shrink: 0; }
+.insta-p-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.insta-p-info { flex: 1; }
+.insta-p-name { font-size: 14px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 4px; }
+.insta-p-badge { color: #38bdf8; font-size: 13px; }
+.insta-p-bio { font-size: 11.5px; color: #8e8e8e; margin-top: 2px; }
+.insta-p-stats { display: flex; gap: 14px; margin-top: 6px; font-size: 11.5px; color: #a8a8a8; }
+.insta-p-stats b { color: #fff; font-weight: 700; }
+
+/* 피드 카드 (1:1 정사각형 리얼 인스타) */
+.insta-card { background: #000; border-bottom: 1px solid #1a1a1a; margin-bottom: 14px; }
+.insta-card-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; }
+.insta-card-author { display: flex; align-items: center; gap: 10px; }
+.insta-author-avatar { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1.5px solid #ec4899; }
+.insta-author-meta { font-size: 12.5px; font-weight: 700; color: #fff; }
+.insta-author-loc { font-size: 10.5px; color: #8e8e8e; font-weight: 400; }
+.insta-card-img-wrap { position: relative; width: 100%; aspect-ratio: 1 / 1; background: #121212; overflow: hidden; }
+.insta-card-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.insta-card-actions { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px 6px; }
+.insta-actions-left { display: flex; gap: 14px; font-size: 20px; }
+.insta-action-btn { background: none; border: none; color: #fff; cursor: pointer; padding: 0; font-size: 19px; transition: transform .1s; }
+.insta-action-btn:active { transform: scale(1.2); }
+.insta-likes-row { padding: 0 14px 6px; font-size: 12.5px; font-weight: 700; color: #f5f5f5; }
+.insta-caption-row { padding: 0 14px 6px; font-size: 12px; line-height: 1.45; color: #e5e5e5; }
+.insta-caption-row b { font-weight: 700; margin-right: 6px; color: #fff; }
+.insta-hashtags { color: #0095f6; font-size: 11.5px; margin-top: 2px; }
+.insta-comments-wrap { padding: 0 14px 10px; font-size: 11.5px; }
+.insta-comment-line { margin-bottom: 4px; color: #d4d4d4; }
+.insta-comment-line b { color: #fff; font-weight: 700; margin-right: 6px; }
+.insta-time-row { padding: 0 14px 12px; font-size: 10px; color: #737373; text-transform: uppercase; letter-spacing: 0.3px; }
+.insta-reply-box { margin: 6px 14px 12px; display: flex; gap: 6px; }
+.insta-reply-input { flex: 1; background: #141414; border: 1px solid #262626; border-radius: 20px; padding: 6px 12px; font-size: 11.5px; color: #fff; outline: none; }
+.insta-reply-btn { background: #0095f6; color: #fff; border: none; border-radius: 20px; padding: 6px 14px; font-size: 11px; font-weight: 700; cursor: pointer; }
+
+/* DM 수신함 */
+.insta-dm-item { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #141414; cursor: pointer; transition: background .15s; position: relative; }
+.insta-dm-item:active { background: #141414; }
+.insta-dm-item.unread { background: #161224; }
+.insta-dm-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.insta-dm-meta { flex: 1; min-width: 0; }
+.insta-dm-header { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700; color: #fff; }
+.insta-dm-badge { font-size: 10px; padding: 1px 6px; border-radius: 99px; margin-left: 6px; }
+.insta-dm-preview { font-size: 11.5px; color: #8e8e8e; margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.insta-dm-item.unread .insta-dm-preview { color: #fff; font-weight: 600; }
 
 /* 🎬 매드무비 시네마틱 & 📸 인스타 앨범 전용 스타일 */
 .mm-screen{position:relative;width:100%;height:220px;background:#050811;border-radius:14px;overflow:hidden;border:2px solid #3b82f6;box-shadow:0 0 25px rgba(59,130,246,0.3);margin-bottom:10px}
@@ -440,7 +478,7 @@ function ask(html, btns = [{ t: '확인' }]) {
 // ======================================================================
 const HEROINES = {
   jieun: {
-    id: 'jieun', name: '이지은', age: 18,
+    id: 'jieun', name: '이지은', age: 18, baseAge: 18,
     img: 'assets/jieun.jpg', fallback: 'jieun.jpg',
     tag: '소꿉친구 & 헌신적인 1호 팬',
     unlockDesc: '어릴 적부터 당신의 꿈을 응원해 온 소꿉친구 (기본 해금)',
@@ -479,7 +517,7 @@ const HEROINES = {
     ]
   },
   harin: {
-    id: 'harin', name: '강하린', age: 19,
+    id: 'harin', name: '강하린', age: 19, baseAge: 19,
     img: 'assets/harin.jpg', fallback: 'harin.jpg',
     tag: '챌린저 1위 & 쿨데레 스트리머',
     unlockDesc: '솔로랭크 다이아몬드 이상 달성 시 천상계 매칭으로 만남',
@@ -2761,6 +2799,12 @@ async function weekEnd(isFastAuto = false) {
   P.week++;
   if (P.week > YEAR_WEEKS) {
     P.week = 1; P.year++; P.age++;
+    syncHeroineAges();
+    if (P.year === 2) {
+      toast(`🎉 [성인 해금] 챌린저 스트리머 강하린(19세 ➔ 20세)이 스무 살 성인이 되었습니다! 새로운 프라이빗 어른의 데이트가 해금되었습니다!`);
+    } else if (P.year === 3) {
+      toast(`🎉 [성인 해금] 소꿉친구 이지은(19세 ➔ 20세)이 스무 살 성인이 되었습니다! 비밀 자취방 심야 밀착 스킨십 데이트가 해금되었습니다!`);
+    }
     P.worldsQ = false; P.springChamp = -1;
     for (const t of P.pro) { t.str = clamp(t.str + rint(-5, 5), 56, 86); t.starter = clamp(t.str + rint(-10, 2), 50, 92); }
     for (const t of P.aca) t.str = clamp(t.str + rint(-4, 4), 36, 60);
@@ -4686,33 +4730,203 @@ function checkWeeklyDM() {
   toast(`[새 메시지] ${picked.sender}님으로부터 메시지가 도착했습니다!`);
 }
 
-function postToInsta(title, img, caption, comments = []) {
-  if (!P.sns) P.sns = { posts: [], followers: 120 };
-  const id = 'post_' + Date.now();
-  const likes = rint(3000, 15000) + Math.round((P.fans || 0) * 0.35);
+
+// ======================================================================
+// 🌸 히로인 나이 동기화 & 스무 살 성인 해금 시스템
+// ======================================================================
+
+function getHeroineAge(k) {
+  const h = HEROINES[k];
+  if (!h) return 20;
+  const base = h.baseAge || h.age || 20;
+  const yearOffset = (P ? P.year - 1 : 0);
+  return base + yearOffset;
+}
+
+function isHeroineAdult(k) {
+  return getHeroineAge(k) >= 20;
+}
+
+function updateHeroineAdultContent(key) {
+  if (key === 'jieun') {
+    HEROINES.jieun.age = getHeroineAge('jieun');
+    HEROINES.jieun.dates = [
+      {
+        id: "jieun_secret",
+        n: "🔥 [성인 해금] 둘만의 자취방 심야 밀착 스킨십",
+        c: 60000,
+        aff: 28,
+        hp: 20,
+        st: -35,
+        img: "assets/jieun_night.jpg",
+        fallback: "jieun_night.jpg",
+        loc: "불 꺼진 은밀한 자취방",
+        outfit: "👗 아찔한 실크 슬립 홈웨어",
+        sensual: true,
+        dialogue: "\"나 이제 스무 살 성인인 거 알지? 어릴 때부터 네 옆자리는 항상 내 거였어... 오늘은 손만 잡고 있지 말자.\""
+      },
+      { id: 'cafe', n: '☕ 오후 햇살 카페 데이트', c: 30000, aff: 12, hp: 12, st: -25,
+        img: 'assets/jieun_cafe.jpg', fallback: 'jieun_cafe.jpg', loc: '단골 베이커리 카페',
+        dialogue: '"여기 딸기 라떼 진짜 맛있다! 너랑 이렇게 마주 앉아 있으니까 고등학교 때 쉬는 시간 같네."' },
+      { id: 'night', n: '🌙 쌀쌀한 저녁 캔커피 밤 산책', c: 15000, aff: 10, hp: 10, st: -30,
+        img: 'assets/jieun_night.jpg', fallback: 'jieun_night.jpg', loc: '가로등 켜진 공원 길',
+        dialogue: '"손 시렵지? 자, 따뜻한 캔커피! ...네 손이 너무 차가워서, 내 패딩 주머니에 같이 넣고 걸을까?"' }
+    ];
+  } else if (key === 'harin') {
+    HEROINES.harin.age = getHeroineAge('harin');
+    HEROINES.harin.dates = [
+      {
+        id: "harin_secret",
+        n: "🔥 [성인 해금] 방송 종료 후 프라이빗 침대 듀오",
+        c: 100000,
+        aff: 30,
+        hp: 20,
+        st: -40,
+        img: "assets/harin_home.jpg",
+        fallback: "harin_home.jpg",
+        loc: "하린의 비밀 침실",
+        outfit: "🐾 앙큼 냥이 란제리 코스프레",
+        sensual: true,
+        dialogue: "\"방송 카메라 완전히 껐어. 나도 이제 스무 살 성인인데... 온전히 네 여자친구야. 협곡 말고 내 침대에서 밤새 듀오 해줄 거지?\""
+      },
+      { id: 'pc', n: '🎮 PC방 나란히 앉아 듀오 & 라면 먹방', c: 25000, aff: 14, hp: 10, st: -25,
+        img: 'assets/harin_pc.jpg', fallback: 'harin_pc.jpg', loc: 'VIP 게이밍 PC방',
+        dialogue: '"야야 미드 커버 가잖아! ㅋㅋㅋ 아 네 플레이 옆에서 직접 보니까 개사기네. 야 라면 한 입 줄게, 아 해봐."' },
+      { id: 'home', n: '🍗 방바닥에 편하게 앉아 치킨 먹방', c: 35000, aff: 15, hp: 18, st: -30,
+        img: 'assets/harin_home.jpg', fallback: 'harin_home.jpg', loc: '하린이의 방송 방',
+        dialogue: '"방송 끄고 너랑 단둘이 먹는 치킨이 제일 맛있다. 뼈 치킨 닭다리 너한테 주는 거... 내 인생 처음인 거 알지?"' }
+    ];
+  }
+}
+
+function syncHeroineAges() {
+  if (!P) return;
+  if (HEROINES.jieun) {
+    HEROINES.jieun.age = getHeroineAge('jieun');
+    if (isHeroineAdult('jieun')) updateHeroineAdultContent('jieun');
+  }
+  if (HEROINES.harin) {
+    HEROINES.harin.age = getHeroineAge('harin');
+    if (isHeroineAdult('harin')) updateHeroineAdultContent('harin');
+  }
+}
+
+// ======================================================================
+// 📊 인스타그램 인지도 & 능력 기반 정밀 좋아요/댓글/팔로워 계산 엔진
+// ======================================================================
+
+function calculateInstaMetrics(postType = 'normal') {
+  const fans = P.fans || 0;
+  const isPerkFame = P.perk === 'fame';
+  const bonusMult = isPerkFame ? 1.6 : 1.0;
   
-  const defaultComments = [
-    { u: 'lol_pro_fan', t: '와 미쳤다 진짜 ㄷㄷ 다음 경기도 캐리 가즈아!!' },
-    { u: 'esports_today', t: '오늘 경기 폼 미쳤던데요, 인터뷰도 최고였습니다 🔥' }
-  ];
+  let baseLikesMin, baseLikesMax, followerGainMin, followerGainMax;
+  let commentsPool = [];
+
+  if (fans < 500) {
+    // 1단계: 무명 아마추어 / 아카데미 연습생
+    baseLikesMin = 6;
+    baseLikesMax = 28;
+    followerGainMin = 2;
+    followerGainMax = 10;
+    commentsPool = [
+      { u: 'jieun_1st_fan', t: '오늘도 고생했어! 밥 꼭 챙겨먹고 힘내 🍱❤️' },
+      { u: 'pc_bang_part', t: '3번 자리 손님 오늘 피지컬 미쳤던데요 ㅋㅋ' },
+      { u: 'solo_rank_kr', t: '아까 솔랭 같은 팀이었는데 잘하시네요' },
+      { u: 'friend_minwoo', t: '야 롤 그만하고 피방비 갚아라 ㅋㅋ' }
+    ];
+  } else if (fans < 5000) {
+    // 2단계: 챌린저스 리그 / 2군 유망주
+    baseLikesMin = 50;
+    baseLikesMax = 280;
+    followerGainMin = 25;
+    followerGainMax = 120;
+    commentsPool = [
+      { u: 'cl_watcher', t: '2군에 피지컬 괴물 신인 하나 떴다던데' },
+      { u: 'team_coach_p', t: '스크림 리플레이 복기하고 일찍 자도록.' },
+      { u: 'harin_ch', t: '오 피드 올렸네? 방종하고 솔랭 듀오 한 판 ㄱ?' },
+      { u: 'lol_inven_user', t: '플레이 스타일이 전성기 쇼메이커 느낌 나네' }
+    ];
+  } else if (fans < 50000) {
+    // 3단계: LCK 1군 주전 데뷔
+    baseLikesMin = 900;
+    baseLikesMax = 4800;
+    followerGainMin = 280;
+    followerGainMax = 1500;
+    commentsPool = [
+      { u: 'lck_official_fan', t: '오늘 단독 POG 인터뷰 보고 입덕했습니다 🔥' },
+      { u: 'serin_cheer', t: '오늘 롤파크 관중석에서 목터져라 응원했어요! 💖' },
+      { u: 'esports_press', t: '경기 후 기자회견 코멘트 인상 깊었습니다.' },
+      { u: 'highlight_tv', t: '3세트 바론 앞 한타 슈퍼플레이 쇼츠 각 ㄷㄷ' }
+    ];
+  } else if (fans < 300000) {
+    // 4단계: LCK 올스타 & 결승 진출권 에이스
+    baseLikesMin = 12000;
+    baseLikesMax = 55000;
+    followerGainMin = 2800;
+    followerGainMax = 12000;
+    commentsPool = [
+      { u: 'sora_announcer', t: '오늘 경기 승리 인터뷰 수고 많으셨습니다 ✨' },
+      { u: 'overseas_lol', t: 'This guy is insane!! Best player in the world' },
+      { u: 'korea_lck_fandom', t: '제발 이번 시즌 우승 트로피 들어올리자!! 🏆' },
+      { u: 'chloe_reporter', t: '글로벌 중계진에서도 리액션 폭발했어요! 최고!' }
+    ];
+  } else {
+    // 5단계: 월드 챔피언십(롤드컵) 우승 & GOAT
+    baseLikesMin = 80000;
+    baseLikesMax = 320000;
+    followerGainMin = 18000;
+    followerGainMax = 75000;
+    commentsPool = [
+      { u: 'riotgames_official', t: 'THE UNKILLABLE DEMON KING IS HERE. 👑' },
+      { u: 'sea_chairman', t: '월즈 우승 보너스 및 전용기 파티 준비 완료했습니다 🥂' },
+      { u: 'global_fan_br', t: 'GOAT!! Greetings from Brazil 🇧🇷 Love you!' },
+      { u: 'world_mvp_club', t: '역대 최고의 선수. 역사를 썼다.' }
+    ];
+  }
+
+  const abilityScore = ((P.phy || 50) + (P.men || 50) + (P.lane || 50)) / 150;
+  const fanBonus = Math.round(fans * 0.05);
+  
+  const rawLikes = Math.round((rint(baseLikesMin, baseLikesMax) + fanBonus) * abilityScore * bonusMult);
+  const likes = Math.max(3, rawLikes);
+  
+  const rawFollowers = Math.round((rint(followerGainMin, followerGainMax) + Math.round(fans * 0.003)) * bonusMult);
+  const followerGain = Math.max(1, rawFollowers);
+
+  const shuffled = commentsPool.sort(() => 0.5 - Math.random());
+  const comments = shuffled.slice(0, rint(2, 3));
+
+  return { likes, followerGain, comments };
+}
+
+function postToInsta(title, img, caption, comments = []) {
+  if (!P.sns) P.sns = { posts: [], followers: 35 };
+  syncHeroineAges();
+  
+  const id = 'post_' + Date.now();
+  const metrics = calculateInstaMetrics();
+  const finalLikes = metrics.likes;
+  const finalFollowers = metrics.followerGain;
+  const finalComments = comments.length > 0 ? comments : metrics.comments;
 
   P.sns.posts.unshift({
     id,
     title,
     img: img || 'assets/jieun_cafe.jpg',
     caption,
-    likes,
-    comments: comments.length > 0 ? comments : defaultComments,
+    likes: finalLikes,
+    comments: finalComments,
     time: `${P.year}년차 ${P.week}주차`
   });
 
-  const followerGain = rint(500, 2500) + Math.round((P.fans || 0) * 0.05);
-  P.sns.followers = (P.sns.followers || 120) + followerGain;
-  P.fans = (P.fans || 0) + Math.round(followerGain * 0.8);
+  P.sns.followers = (P.sns.followers || 35) + finalFollowers;
+  P.fans = (P.fans || 0) + Math.round(finalFollowers * 0.85);
 
   playJackpotSound();
-  toast(`📸 인스타 피드 게시 완료! (❤️ 좋아요 +${num(likes)} / 팔로워 +${num(followerGain)})`);
+  toast(`📸 GamerGram 피드 게시 완료! (❤️ 좋아요 ${num(finalLikes)}개 / 새 팔로워 +${num(finalFollowers)}명)`);
 }
+
 
 let activeSnsTab = 'feed';
 
@@ -4930,191 +5144,266 @@ async function openSendDmModal() {
 
 async function showSnsModal() {
   if (P) {
-    if (!P.sns) P.sns = { posts: [], followers: 120 };
+    if (!P.sns) P.sns = { posts: [], followers: 35 };
     if (!P.dms) P.dms = { unread: 0, list: [] };
   }
+  syncHeroineAges();
 
   while (true) {
     const unreadCount = P.dms.list.filter(d => !d.read).length;
+    const followersNum = (P.sns.followers || 35) + Math.round((P.fans || 0) * 1.2);
+    
+    // 해금된 히로인 스토리 목록 추출
+    const unlockedHeroines = Object.keys(HEROINES).filter(k => P.bonds?.[k]?.unlocked);
+    const storyItems = unlockedHeroines.map(k => {
+      const h = HEROINES[k];
+      return `
+        <div class="insta-story-item" data-storyhid="${k}">
+          <div class="insta-story-ring">
+            <img class="insta-story-img" src="${h.img}" onerror="this.src='assets/${h.fallback}'" alt="${h.name}">
+          </div>
+          <span class="insta-story-user">${h.name}</span>
+        </div>
+      `;
+    }).join('');
+
     let body = `
-      <div class="tab-row" style="margin-bottom:12px">
-        <button class="${activeSnsTab === 'feed' ? 'act' : ''}" id="tabFeed">📸 인스타 피드 (${P.sns.posts.length})</button>
-        <button class="${activeSnsTab === 'dm' ? 'act' : ''}" id="tabDm">💬 DM 수신함 ${unreadCount > 0 ? `<span style="background:#ef4444;color:#fff;border-radius:99px;padding:2px 7px;font-size:11px">${unreadCount}</span>` : ''}</button>
-      </div>
+      <div class="insta-wrap">
+        <!-- 인스타 최상단 네비게이션 헤더 -->
+        <div class="insta-top-bar">
+          <div class="insta-brand-logo">GamerGram</div>
+          <div class="insta-nav-icons">
+            <button class="insta-nav-btn ${activeSnsTab === 'feed' ? 'act' : ''}" id="tabFeed" title="피드">📸 피드</button>
+            <button class="insta-nav-btn ${activeSnsTab === 'dm' ? 'act' : ''}" id="tabDm" title="다이렉트 메시지">
+              💬 DM
+              ${unreadCount > 0 ? `<span class="insta-badge-dot"></span>` : ''}
+            </button>
+          </div>
+        </div>
     `;
 
-    let btns = [];
-
     if (activeSnsTab === 'feed') {
-      const followersNum = (P.sns.followers || 120) + Math.round((P.fans || 0) * 1.5);
       body += `
-        <div class="sns-profile">
-          <div class="sns-avatar"><img src="assets/jieun.jpg" onerror="this.src='jieun.jpg'"></div>
-          <div>
-            <div style="font-weight:900;font-size:15px;color:#fff">${P.name} <span style="color:#38bdf8">✓</span></div>
-            <div style="font-size:12px;color:#94a3b8;margin-top:2px">PRO GAMER · ${stageName()}</div>
-            <div class="sns-stats" style="margin-top:8px">
+        <!-- 상단 인스타 스토리 바 -->
+        <div class="insta-stories-container">
+          <div class="insta-story-item" id="bMyStory">
+            <div class="insta-story-ring my-ring">
+              <img class="insta-story-img" src="icon-192.png" alt="내 스토리">
+            </div>
+            <span class="insta-story-user">내 스토리 ➕</span>
+          </div>
+          ${storyItems}
+        </div>
+
+        <!-- 내 프로필 헤더 요약 바 -->
+        <div class="insta-profile-bar">
+          <div class="insta-p-avatar">
+            <img src="icon-512.png" alt="프로필">
+          </div>
+          <div class="insta-p-info">
+            <div class="insta-p-name">
+              @${(P.name || 'player').toLowerCase()}_pro
+              <span class="insta-p-badge">✓</span>
+            </div>
+            <div class="insta-p-bio">🏆 ${POS[P.pos]?.n || '선수'} · ${stageName()} 소속 프로게이머</div>
+            <div class="insta-p-stats">
               <div>게시물 <b>${P.sns.posts.length}</b></div>
               <div>팔로워 <b>${num(followersNum)}</b></div>
-              <div>팔로잉 <b>10</b></div>
+              <div>팔로잉 <b>${unlockedHeroines.length + 5}</b></div>
             </div>
           </div>
         </div>
-        <div style="display:flex;gap:6px;margin-bottom:12px">
-          <button class="btn gold" id="bCreatePost" style="flex:1;padding:8px 4px;font-size:12.5px">➕ 새 피드 올리기</button>
-          <button class="btn pink" id="bPickGallery" style="flex:1;padding:8px 4px;font-size:12.5px">📸 앨범 사진 선택</button>
+
+        <!-- 새 피드 올리기 액션 버튼 -->
+        <div style="display:flex;gap:6px;padding:8px 12px;background:#050505;border-bottom:1px solid #1a1a1a">
+          <button class="btn gold" id="bCreatePost" style="flex:1;padding:7px;font-size:12px;font-weight:800">➕ 새 사진 피드 올리기</button>
+          <button class="btn pink" id="bPickGallery" style="flex:1;padding:7px;font-size:12px;font-weight:800">🎬 매드무비 사진 선택</button>
         </div>
+
+        <!-- 피드 목록 -->
+        <div style="max-height:460px;overflow-y:auto;padding-top:4px">
       `;
 
       if (P.sns.posts.length === 0) {
-        body += `<div class="c" style="padding:26px 10px;color:#94a3b8;font-size:13px">아직 게시한 피드가 없습니다.<br>상단의 <b>[➕ 새 피드 올리기]</b>를 눌러 첫 게시물을 올려보세요!</div>`;
-      } else {
-        body += P.sns.posts.map(p => `
-          <div class="feed-card">
-            <div class="feed-head">
-              <span style="color:#ec4899">📸</span> <b>${P.name}</b> <small style="color:#64748b;margin-left:auto">${p.time}</small>
-            </div>
-            <img class="feed-img" src="${p.img}" onerror="this.src='icon-512.png'" alt="피드 사진">
-            <div class="feed-body">
-              <div class="feed-actions">
-                <span style="color:#ef4444">❤️</span> <b style="font-size:12.5px">${num(p.likes)}명이 좋아합니다</b>
-              </div>
-              <div class="feed-caption"><b>${P.name}</b> ${p.caption}</div>
-              <div class="feed-comments">
-                ${(p.comments || []).map(c => `<div class="comment-item"><b>${c.u}</b> ${c.t}</div>`).join('')}
-              </div>
-              <button class="btn-reply" data-replyid="${p.id}" style="margin-top:8px;width:100%;background:#1e2640;border:1px solid #33406a;border-radius:8px;padding:6px;color:#38bdf8;font-size:12px;font-weight:700;cursor:pointer">💬 팬 댓글에 답글 달기 (소통 + 팬덤 UP)</button>
-            </div>
+        body += `
+          <div style="text-align:center;padding:48px 16px;color:#8e8e8e">
+            <div style="font-size:36px;margin-bottom:10px">📸</div>
+            <b style="color:#fff;font-size:14px">아직 게시물이 없습니다</b>
+            <p style="font-size:12px;margin-top:6px;color:#64748b">상단의 <b>[➕ 새 사진 피드 올리기]</b>를 눌러<br>첫 일상이나 승리 인증샷을 공유해보세요!</p>
           </div>
-        `).join('');
+        `;
+      } else {
+        body += P.sns.posts.map(p => {
+          const hashtags = p.caption.includes('#') ? '' : '<div class="insta-hashtags">#LOL #LCK #RoadToWorlds #ProGamer</div>';
+          return `
+            <div class="insta-card">
+              <div class="insta-card-header">
+                <div class="insta-card-author">
+                  <img class="insta-author-avatar" src="icon-192.png" alt="아바타">
+                  <div>
+                    <div class="insta-author-meta">${(P.name || 'player').toLowerCase()}_pro <span style="color:#38bdf8">✓</span></div>
+                    <div class="insta-author-loc">📍 LoL Park, Seoul</div>
+                  </div>
+                </div>
+                <span style="color:#8e8e8e;font-size:16px;cursor:pointer">···</span>
+              </div>
+              <div class="insta-card-img-wrap">
+                <img class="insta-card-img" src="${p.img}" onerror="this.src='icon-512.png'" alt="피드">
+              </div>
+              <div class="insta-card-actions">
+                <div class="insta-actions-left">
+                  <button class="insta-action-btn" data-likeid="${p.id}" title="좋아요">❤️</button>
+                  <button class="insta-action-btn" data-replyid="${p.id}" title="댓글">💬</button>
+                  <button class="insta-action-btn" title="공유">🚀</button>
+                </div>
+                <button class="insta-action-btn" title="저장">🔖</button>
+              </div>
+              <div class="insta-likes-row">좋아요 ${num(p.likes)}개</div>
+              <div class="insta-caption-row">
+                <b>${(P.name || 'player').toLowerCase()}_pro</b> ${p.caption}
+                ${hashtags}
+              </div>
+              <div class="insta-comments-wrap">
+                ${(p.comments || []).map(c => `<div class="insta-comment-line"><b>${c.u}</b> ${c.t}</div>`).join('')}
+              </div>
+              <div class="insta-time-row">${p.time}</div>
+              <div class="insta-reply-box">
+                <input type="text" class="insta-reply-input" placeholder="댓글 달기..." data-inputid="${p.id}">
+                <button class="insta-reply-btn" data-replyid="${p.id}">게시</button>
+              </div>
+            </div>
+          `;
+        }).join('');
       }
+
+      body += `</div>`;
 
     } else {
       // DM Tab
       body += `
-        <div style="margin-bottom:10px">
-          <button class="btn purple" id="bSendNewDm" style="width:100%;padding:10px;font-size:13.5px">✉️ 인연에게 먼저 DM(선톡) 보내기</button>
+        <div style="padding:12px 14px;border-bottom:1px solid #1a1a1a;display:flex;justify-content:space-between;align-items:center;background:#080808">
+          <span style="font-size:13px;font-weight:800;color:#fff">메시지 (${P.dms.list.length})</span>
+          <button class="btn purple" id="bSendNewDm" style="padding:5px 12px;font-size:11.5px;font-weight:700">✉️ 새 메시지 보내기</button>
         </div>
+        <div style="max-height:480px;overflow-y:auto">
       `;
       if (P.dms.list.length === 0) {
-        body += `<div class="c" style="padding:40px 10px;color:#94a3b8;font-size:13px">수신된 다이렉트 메시지(DM)가 없습니다.<br>상단의 <b>[✉️ 선톡 보내기]</b>로 먼저 말을 걸어보세요!</div>`;
+        body += `<div style="text-align:center;padding:50px 16px;color:#8e8e8e;font-size:13px">수신된 다이렉트 메시지가 없습니다.<br>인연을 맺은 히로인들에게 먼저 말을 걸어보세요!</div>`;
       } else {
         body += P.dms.list.map((d, idx) => `
-          <div class="dm-card ${d.read ? '' : 'unread'}" data-dmidx="${idx}">
-            ${d.read ? '' : '<div class="badge-unread"></div>'}
-            <div class="dm-avatar"><img src="${d.avatar}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${d.fallback}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${d.fallback}';}else{this.onerror=null;this.src='icon-512.png';}" alt="${d.sender}"></div>
-            <div class="dm-info">
-              <div class="dm-sender">
-                ${d.sender} <span class="${d.tagCls}">${d.badge}</span>
-                <small style="color:#64748b;margin-left:auto;font-weight:400">${d.time}</small>
+          <div class="insta-dm-item ${d.read ? '' : 'unread'}" data-dmidx="${idx}">
+            <img class="insta-dm-avatar" src="${d.avatar}" onerror="this.src='icon-512.png'" alt="${d.sender}">
+            <div class="insta-dm-meta">
+              <div class="insta-dm-header">
+                <span>${d.sender} <span class="${d.tagCls} insta-dm-badge">${d.badge}</span></span>
+                <small style="color:#737373;font-weight:400;font-size:10px">${d.time}</small>
               </div>
-              <div class="dm-preview">${d.msg}</div>
+              <div class="insta-dm-preview">${d.msg}</div>
             </div>
           </div>
         `).join('');
       }
+      body += `</div>`;
     }
 
-    btns.push({ t: '닫기', cls: 'gray', type: 'close' });
+    body += `</div>`; // Close .insta-wrap
 
-    // ask 모달 띄우기
+    let btns = [{ t: '닫기', cls: 'gray', type: 'close' }];
+
     const choiceIdx = await new Promise(res => {
-      $('#mBody').innerHTML = `<h3>📱 인스타그램 &amp; DM 센터</h3>${body}`;
-      
+      $('#mBody').innerHTML = `<h3>📱 인스타그램 (GamerGram)</h3>${body}`;
+
       const tabF = $('#mBody #tabFeed');
       const tabD = $('#mBody #tabDm');
-      if (tabF) tabF.onclick = () => { activeSnsTab = 'feed'; showSnsModal(); };
-      if (tabD) tabD.onclick = () => { activeSnsTab = 'dm'; showSnsModal(); };
+      if (tabF) tabF.onclick = () => { activeSnsTab = 'feed'; res('re-render'); };
+      if (tabD) tabD.onclick = () => { activeSnsTab = 'dm'; res('re-render'); };
 
-      const createBtn = $('#mBody #bCreatePost');
-      if (createBtn) createBtn.onclick = () => { $('#modal').classList.add('hidden'); res({ type: 'createPost' }); };
-
-      const pickBtn = $('#mBody #bPickGallery');
-      if (pickBtn) pickBtn.onclick = () => { $('#modal').classList.add('hidden'); res({ type: 'pickFromGallery' }); };
-
-      const sendDmBtn = $('#mBody #bSendNewDm');
-      if (sendDmBtn) sendDmBtn.onclick = () => { $('#modal').classList.add('hidden'); res({ type: 'sendNewDm' }); };
-
-      // DM 카드 클릭 이벤트
-      $('#mBody').querySelectorAll('[data-dmidx]').forEach(card => {
-        card.onclick = () => {
-          const idx = parseInt(card.dataset.dmidx);
-          $('#modal').classList.add('hidden');
-          openDmChat(idx).then(() => showSnsModal());
+      // 스토리 클릭 이벤트 (히로인 스토리 보기)
+      $('#mBody .insta-story-item[data-storyhid]').forEach(el => {
+        el.onclick = () => {
+          const hid = el.dataset.storyhid;
+          const h = HEROINES[hid];
+          if (h) {
+            toast(`✨ [${h.name}의 스토리] "${h.name}: ${h.dates?.[0]?.dialogue?.replace(/"/g, '') || '오늘도 화이팅이야!'}"`);
+          }
         };
       });
 
-      // 댓글 답글 버튼 클릭 이벤트
-      $('#mBody').querySelectorAll('[data-replyid]').forEach(btn => {
-        btn.onclick = () => {
-          const pid = btn.dataset.replyid;
-          $('#modal').classList.add('hidden');
-          replyToFeedComment(pid).then(() => showSnsModal());
+      const bMyStory = $('#mBody #bMyStory');
+      if (bMyStory) bMyStory.onclick = () => {
+        toast(`📸 [내 스토리] 오늘의 훈련 일과가 스토리에 24시간 동안 공유되었습니다!`);
+      };
+
+      const bCreate = $('#mBody #bCreatePost');
+      if (bCreate) bCreate.onclick = () => res('create');
+
+      const bPickGal = $('#mBody #bPickGallery');
+      if (bPickGal) bPickGal.onclick = () => res('pick_gallery');
+
+      const bDm = $('#mBody #bSendNewDm');
+      if (bDm) bDm.onclick = () => res('send_dm');
+
+      // 좋아요 버튼 클릭 이벤트
+      $('#mBody .insta-action-btn[data-likeid]').forEach(b => {
+        b.onclick = () => {
+          const pid = b.dataset.likeid;
+          const post = P.sns.posts.find(p => p.id === pid);
+          if (post) {
+            post.likes += 1;
+            playJackpotSound();
+            toast(`❤️ [좋아요] 회원님이 이 게시물을 좋아합니다!`);
+            res('re-render');
+          }
         };
       });
 
-      const f = $('#mBtns'); f.innerHTML = '';
-      btns.forEach((b, i) => {
-        const e = document.createElement('button');
-        e.className = 'btn ' + (b.cls || '');
-        e.innerHTML = b.t;
-        e.onclick = () => { $('#modal').classList.add('hidden'); res(b); };
-        f.appendChild(e);
+      // 댓글 달기 버튼
+      $('#mBody [data-replyid]').forEach(b => {
+        b.onclick = async () => {
+          const pid = b.dataset.replyid;
+          const inputEl = $(`#mBody input[data-inputid="${pid}"]`);
+          const customReply = inputEl?.value?.trim();
+          if (customReply) {
+            const post = P.sns.posts.find(p => p.id === pid);
+            if (post) {
+              if (!post.comments) post.comments = [];
+              post.comments.push({ u: (P.name || 'player').toLowerCase() + '_pro', t: customReply });
+              P.fans = (P.fans || 0) + rint(10, 50);
+              toast(`💬 댓글 등록 완료! (팬들과의 소통으로 팬덤 증가)`);
+              res('re-render');
+            }
+          } else {
+            await handleReplyToComments(pid);
+            res('re-render');
+          }
+        };
       });
-      $('#modal').classList.remove('hidden');
+
+      $('#mBody .insta-dm-item').forEach(el => {
+        el.onclick = async () => {
+          const idx = parseInt(el.dataset.dmidx, 10);
+          await openDmChat(idx);
+          res('re-render');
+        };
+      });
+
+      renderButtons(btns, res);
     });
 
-    if (!choiceIdx || choiceIdx.type === 'close') break;
-
-    if (choiceIdx.type === 'createPost') {
+    if (choiceIdx === 'create') {
       await openCreatePostModal();
-    } else if (choiceIdx.type === 'pickFromGallery') {
-      await openPhotoGalleryPicker();
-    } else if (choiceIdx.type === 'sendNewDm') {
+    } else if (choiceIdx === 'pick_gallery') {
+      await openPickGalleryModal();
+    } else if (choiceIdx === 'send_dm') {
       await openSendDmModal();
+    } else if (choiceIdx === 'close' || choiceIdx === 0) {
+      break;
     }
   }
 }
 
-async function openDmChat(idx) {
-  const d = P.dms.list[idx];
-  if (!d) return;
-  d.read = true;
-  P.dms.unread = P.dms.list.filter(x => !x.read).length;
-
-  const chatHtml = `
-    <div style="display:flex;align-items:center;gap:12px;background:#11162a;padding:12px;border-radius:12px;margin-bottom:12px">
-      <div class="dm-avatar" style="width:52px;height:52px"><img src="${d.avatar}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${d.fallback}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${d.fallback}';}else{this.onerror=null;this.src='icon-512.png';}"></div>
-      <div>
-        <div style="font-weight:900;font-size:15px;color:#fff">${d.sender} <span class="${d.tagCls}">${d.badge}</span></div>
-        <div style="font-size:11.5px;color:#38bdf8">${d.time} 수신</div>
-      </div>
-    </div>
-    <div style="background:#0e1322;border:1px solid #232c48;border-radius:12px;padding:14px;font-size:14px;line-height:1.65;color:#f1f5f9;margin-bottom:12px">
-      ${d.msg}
-    </div>
-    <div style="font-size:12px;color:#cbd5e1;margin-bottom:6px">💬 답장 선택지를 골라주세요:</div>
-  `;
-
-  const btns = d.choices.map((c, i) => ({
-    t: `<b>${c.t}</b><small style="display:block;color:#4ade80;font-size:11px;margin-top:2px">${c.gain}</small>`,
-    cls: i === 0 ? 'gold' : 'gray',
-    act: c.act
-  }));
-  btns.push({ t: '나중에 답장하기', cls: 'gray' });
-
-  const chosenIdx = await ask(chatHtml, btns);
-  const chosen = btns[chosenIdx];
-  if (chosen && chosen.act) {
-    chosen.act(P);
-    playDateSound();
-    toast('💬 답장을 전송했습니다!');
-    save(); render();
-  }
-}
 
 
-// ======================================================================
 // 🎬 e스포츠 매드무비 시네마틱 & 📸 인스타 사진 보관함 갤러리 시스템
 // ======================================================================
 
@@ -5306,6 +5595,10 @@ async function openPhotoGalleryPicker() {
   }
 }
 
+
+// ======================================================================
+// ⚔️ Riot API 공식 연동 LCK 챔피언 선택 & 조합 시너지 시스템
+// ======================================================================
 
 // ======================================================================
 // ⚔️ Riot API 공식 연동 LCK 챔피언 선택 & 조합 시너지 시스템
