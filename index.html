@@ -848,12 +848,31 @@ function teamPow() {
 
 function grow(k, base) {
   const cur = P.s[k];
-  let g = base * gearB() * (0.55 + 0.45 * P.hp / 100) * (1 - P.stress / 220) * (1 - cur / 104) * rnd(.75, 1.25) * (P.talent || 1);
-  if (P.bonds?.seolah?.aff >= 75) g *= 2.0;
-  else if (P.bonds?.seolah?.aff >= 25) g *= 1.35;
-  if (k === 'mental') g = base * (1 - cur / 104) * rnd(.75, 1.25);
-  g = Math.max(0, g);
-  P.s[k] = Math.min(99, cur + g);
+  let decay;
+  if (cur < 60) {
+    decay = 1.0;
+  } else if (cur < 85) {
+    decay = 1.0 - (cur - 60.0) / 45.0;
+  } else if (cur < 100) {
+    decay = 0.44 * (1.0 - (cur - 85.0) / 25.0);
+  } else {
+    decay = 0.15 * Math.exp(-(cur - 100.0) / 20.0);
+  }
+
+  let g = base * gearB() * (0.55 + 0.45 * P.hp / 100) * (1 - P.stress / 220) * decay * rnd(.85, 1.15) * (P.talent || 1);
+  if (P.bonds?.seolah?.aff >= 75) g *= 1.4;
+  else if (P.bonds?.seolah?.aff >= 25) g *= 1.2;
+  if (k === 'mental') g = base * decay * rnd(.85, 1.15);
+
+  g = Math.max(0.05, g);
+  const nextVal = +(cur + g).toFixed(2);
+  P.s[k] = Math.min(130, nextVal);
+
+  if (cur < 100 && P.s[k] >= 100) {
+    playJackpotSound();
+    toast(`⚡ [스탯 초월] ${STATS[k].n} 100 돌파! 초월의 경지에 올랐습니다!`);
+  }
+
   checkAchievements();
   return g;
 }
@@ -1731,10 +1750,26 @@ function simRound(league, skipIds) {
   const others = shuffle(league.filter(t => !skipIds.includes(t.id)));
   for (let i = 0; i + 1 < others.length; i += 2) {
     const a = others[i], b = others[i + 1];
-    if (simGame(a, b)) { a.w++; b.l++; } else { b.w++; a.l++; }
+    if (!a.setW) { a.setW = a.w * 2; a.setL = a.l * 2; }
+    if (!b.setW) { b.setW = b.w * 2; b.setL = b.l * 2; }
+    const winA = simGame(a, b);
+    const sweep = Math.random() < 0.65;
+    if (winA) {
+      a.w++; b.l++;
+      a.setW += 2; a.setL += sweep ? 0 : 1;
+      b.setW += sweep ? 0 : 1; b.setL += 2;
+    } else {
+      b.w++; a.l++;
+      b.setW += 2; b.setL += sweep ? 0 : 1;
+      a.setW += sweep ? 0 : 1; a.setL += 2;
+    }
   }
 }
-const standings = lg => lg.slice().sort((a, b) => b.w - a.w || a.l - b.l || b.str - a.str);
+const standings = lg => lg.slice().sort((a, b) => {
+  const diffA = (a.setW || a.w * 2) - (a.setL || a.l * 2);
+  const diffB = (b.setW || b.w * 2) - (b.setL || b.l * 2);
+  return (b.w - a.w) || (diffB - diffA) || (b.str - a.str);
+});
 
 // ======================================================================
 // 주간 진행
@@ -3682,11 +3717,55 @@ async function showAchievementsModal() {
 function showStandings() {
   const mk = (lg, key, title) => {
     const st = standings(lg);
-    return `<h4 style="margin:8px 0 4px">${title}</h4><table><tr><th>#</th><th class="l">팀</th><th>전력</th><th>승</th><th>패</th></tr>
-      ${st.map((t, i) => `<tr class="${P.stage === key && P.teamId === t.id ? 'me' : ''}"><td>${i + 1}</td><td class="l">${t.name}</td><td>${t.str}</td><td>${t.w}</td><td>${t.l}</td></tr>`).join('')}</table>`;
+    return `
+      <div style="background:#11162a;border:1px solid #233054;border-radius:12px;padding:10px;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <b style="font-size:13.5px;color:#fde047">${title}</b>
+          <span style="font-size:11px;color:#94a3b8">정규시즌 공식 순위표</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:28px">#</th>
+              <th class="l">팀명</th>
+              <th>매치</th>
+              <th>승률</th>
+              <th>세트 득실</th>
+              <th>시드</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${st.map((t, i) => {
+              const isMe = P.stage === key && P.teamId === t.id;
+              const totalGames = t.w + t.l;
+              const winRate = totalGames > 0 ? Math.round(t.w / totalGames * 100) : 0;
+              const diff = (t.setW || t.w * 2) - (t.setL || t.l * 2);
+              const diffTxt = diff > 0 ? `+${diff}` : `${diff}`;
+              const seedTxt = (i < 2) ? '<span style="color:#4ade80;font-weight:900;font-size:10.5px">PO 2R</span>' :
+                              (i < 6) ? '<span style="color:#fde047;font-weight:900;font-size:10.5px">PO 1R</span>' :
+                              '<span style="color:#64748b;font-size:10px">탈락</span>';
+              return `
+                <tr class="${isMe ? 'me' : ''}" style="${i === 5 ? 'border-bottom:2px dashed #3b82f6;' : ''}">
+                  <td><b>${i + 1}</b></td>
+                  <td class="l"><b>${t.name}</b> ${isMe ? '<span style="color:#ffd23f;font-size:10px">[MY]</span>' : ''}</td>
+                  <td>${t.w}승 ${t.l}패</td>
+                  <td style="color:${winRate >= 60 ? '#4ade80' : winRate < 40 ? '#f87171' : '#cbd5e1'}">${winRate}%</td>
+                  <td style="color:${diff > 0 ? '#60a5fa' : diff < 0 ? '#f87171' : '#94a3b8'}">${diffTxt}</td>
+                  <td>${seedTxt}</td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+        <div style="font-size:10.5px;color:#94a3b8;margin-top:6px;display:flex;justify-content:space-between">
+          <span>🟢 1~2위: PO 2라운드 직행</span>
+          <span>🟡 3~6위: 1라운드 진출</span>
+        </div>
+      </div>
+    `;
   };
-  const first = P.stage === 'aca' ? mk(P.aca, 'aca', '🏫 KCL 챌린저스 (2군)') + mk(P.pro, 'pro', '🏟️ KCL (1군)') : mk(P.pro, 'pro', '🏟️ KCL (1군)') + mk(P.aca, 'aca', '🏫 KCL 챌린저스 (2군)');
-  ask(`<h3>📊 리그 순위</h3>${first}<p style="color:#9aa4b2;font-size:12px">정규시즌 상위 4팀 플레이오프 진출 · 서머 결승 진출팀 또는 스프링 우승팀은 월즈 진출</p>`);
+  const body = P.stage === 'aca' ? mk(P.aca, 'aca', '🏫 챌린저스 2군 리그 순위') + mk(P.pro, 'pro', '🏟️ LCK 1군 공식 순위') : mk(P.pro, 'pro', '🏟️ LCK 1군 공식 순위') + mk(P.aca, 'aca', '🏫 챌린저스 2군 리그 순위');
+  ask(`<h3>📊 LCK 공식 리그 순위 &amp; 플레이오프 시드</h3>${body}`, [{ t: '닫기', cls: 'gray' }]);
 }
 
 async function showRecord() {
