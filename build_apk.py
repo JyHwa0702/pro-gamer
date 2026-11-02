@@ -41,15 +41,15 @@ def build():
         f.write('''<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.progamer.road"
-    android:versionCode="3"
-    android:versionName="1.7.0">
+    android:versionCode="4"
+    android:versionName="1.8.0">
 
     <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="35" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:label="프로의 길"
+        android:label="로드 투 월즈"
         android:icon="@mipmap/ic_launcher"
         android:hardwareAccelerated="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
@@ -70,7 +70,7 @@ def build():
     with open(os.path.join(values_dir, "strings.xml"), "w", encoding="utf-8") as f:
         f.write('''<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">프로의 길</string>
+    <string name="app_name">로드 투 월즈</string>
 </resources>''')
 
     # 3. Create app icon (ic_launcher.png)

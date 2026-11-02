@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
-<title>프로의 길 : 인연 (PRO ROAD : BONDS)</title>
+<title>로드 투 월즈 (Road to Worlds)</title><link rel="icon" type="image/png" href="icon-512.png">
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#070910;color:#e8ecf4;overflow:hidden;
@@ -241,7 +241,7 @@ tr.me td{background:#1d2a52;font-weight:800}
 <div id="introSplash" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#080c16;z-index:999999;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity 0.35s ease;cursor:pointer">
   <div id="introLogoFallback" style="text-align:center;padding:20px;z-index:1;user-select:none">
     <div style="font-size:56px;margin-bottom:8px;animation:pulse 1s infinite">🔨</div>
-    <h2 style="font-size:24px;font-weight:900;background:linear-gradient(135deg,#fde047,#f59e0b,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 6px">PRO ROAD GAMING</h2>
+    <h2 style="font-size:24px;font-weight:900;background:linear-gradient(135deg,#fde047,#f59e0b,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 6px">ROAD TO WORLDS</h2>
     <div style="font-size:12px;color:#94a3b8;letter-spacing:1.5px">소환사의 협곡으로 입장하는 중...</div>
   </div>
   <video id="introVideo" playsinline muted autoplay style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:2;opacity:0;transition:opacity 0.3s ease"></video>
@@ -2711,7 +2711,7 @@ if (P) {
     if (!P.dms) P.dms = { unread: 0, list: [] };
   }
 function renderTop() {
-  if (!P) { $('#top').innerHTML = `<div class="l1"><span class="nm">프로의 길 : 인연</span></div>`; return; }
+  if (!P) { $('#top').innerHTML = `<div class="l1"><span class="nm">로드 투 월즈</span></div>`; return; }
   const ph = phaseOf(P.week);
   const hpAlert = P.hp < 30 ? 'animation:pulse 1s infinite;' : '';
   const stAlert = P.stress >= 75 ? 'animation:pulse 1s infinite;' : '';
@@ -4232,7 +4232,7 @@ function renderCreate() {
   if (!cr) cr = { name: '', pos: 'mid', perk: 'mech', base: rollBase('mid'), talent: +rnd(.9, 1.15).toFixed(2) };
   const o = ovr({ pos: cr.pos, s: cr.base });
   $('#main').innerHTML = `
-    <div class="title"><div class="logo">🎮</div><h1>프로의 길 : 인연</h1><p>솔랭 아마추어에서 월드 챔피언, 그리고 사랑까지</p></div>
+    <div class="title"><div class="logo">🏆</div><h1>로드 투 월즈</h1><p>아마추어 연습생에서 전설의 월드 챔피언까지</p></div>
     <div class="card"><h4>선수 이름 (닉네임)</h4><input class="name" id="nm" maxlength="12" placeholder="예: Faker아님" value="${cr.name}"></div>
     <div class="card"><h4>포지션 선택</h4><div class="poss">${Object.keys(POS).map(k => `<button class="pos ${cr.pos === k ? 'sel' : ''}" data-p="${k}"><span>${POS[k].ic}</span>${POS[k].n}</button>`).join('')}</div></div>
     <div class="card">
@@ -4284,8 +4284,8 @@ function renderCreate() {
 // ======================================================================
 // 회사 로고 오프닝 비디오 연출 & 인앱 자동 업데이트 (v1.7.0)
 // ======================================================================
-const CURRENT_VERSION = '1.7.0';
-const CURRENT_VERSION_CODE = 3;
+const CURRENT_VERSION = '1.8.0';
+const CURRENT_VERSION_CODE = 4;
 
 function initIntroVideo() {
   const splash = document.getElementById('introSplash');

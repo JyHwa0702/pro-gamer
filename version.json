@@ -1,12 +1,15 @@
 {
-  "version": "1.7.0",
-  "versionCode": 3,
+  "version": "1.8.0",
+  "versionCode": 4,
   "releaseDate": "2026-11-02",
+  "title": "로드 투 월즈 (Road to Worlds)",
   "mandatory": false,
   "changelog": [
-    "게임 시작 시 망치 타격 회사 오프닝 로고 연출 (가로/세로 자동 대응 & 배속/스킵)",
-    "외부 네트워크 친구 배포 지원 (전 세계 다이렉트 고속 다운로드)",
-    "앱 시작 시 최신 버전 자동 감지 & 인앱 업데이트 팝업"
+    "공식 게임 타이틀 리브랜딩: '로드 투 월즈 (Road to Worlds)'",
+    "황금 월즈 트로피 & 마법공학 블루 크레스트 공식 앱 아이콘 적용",
+    "모바일 노치/상단바 모달 클리핑(정수리/태그 짤림) 100% 개선",
+    "경기 중 빠른 연타 및 모달 바깥 터치 시 화면 멈춤(소프트락) 완전 해결",
+    "LCK 5:5 밴픽 및 맞라이너 카운터 상성 (+15%) 밸런스 최적화"
   ],
   "downloadUrl": "https://github.com/JyHwa0702/pro-gamer/releases/latest/download/pro-gamer.apk",
   "webUrl": "https://jyhwa0702.github.io/pro-gamer/"
