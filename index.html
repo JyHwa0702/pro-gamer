@@ -285,18 +285,32 @@ function won(n) {
 }
 const num = n => Math.round(n).toLocaleString();
 let toastT;
-function toast(m) { const t = $('#toast');
+function toast(m) {
+  const t = $('#toast');
+  if (!t) return;
+  t.textContent = m;
+  t.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove('show'), 1800);
+}
 
-// 💡 모달 바깥 배경 터치 시 즉시 닫기 (클릭 피로도 절감)
+let currentAskResolve = null;
+
+// 💡 모달 바깥 배경 터치 시 즉시 닫기 (클릭 피로도 절감 & 화면 멈춤/소프트락 100% 방지)
 $('#modal').onclick = e => {
   if (e.target === $('#modal')) {
     $('#modal').classList.add('hidden');
+    if (currentAskResolve) {
+      const cb = currentAskResolve;
+      currentAskResolve = null;
+      cb(0); // 기본 선택으로 즉시 완료 처리하여 비동기 대기 멈춤 방지
+    }
   }
 };
- t.textContent = m; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 1800); }
 
 function ask(html, btns = [{ t: '확인' }]) {
   return new Promise(res => {
+    currentAskResolve = res;
     $('#mBody').innerHTML = html;
     const f = $('#mBtns'); f.innerHTML = '';
     const modalBox = $('#modal .box');
@@ -307,7 +321,11 @@ function ask(html, btns = [{ t: '확인' }]) {
       const e = document.createElement('button');
       e.className = 'btn ' + (b.cls || '');
       e.innerHTML = b.t; e.disabled = !!b.disabled;
-      e.onclick = () => { $('#modal').classList.add('hidden'); res(i); };
+      e.onclick = () => {
+        $('#modal').classList.add('hidden');
+        currentAskResolve = null;
+        res(i);
+      };
       f.appendChild(e);
     });
     $('#modal').classList.remove('hidden');
@@ -1866,6 +1884,8 @@ async function playMatch(opp, label, big = false) {
       const skipBtn = document.querySelector('#bFastSkip');
       if (skipBtn) skipBtn.onclick = () => { fastSkipped = true; res(ph.opts[0]); };
       main.querySelectorAll('.choices .btn').forEach(b => b.onclick = () => {
+        if (b.disabled) return;
+        main.querySelectorAll('.choices .btn').forEach(btn => btn.disabled = true);
         let i = b.dataset.i;
         if (i === 'auto') { let best = 0, bv = -1; ph.opts.forEach((o, j) => { if (o.bd) return; const v = statMix(o.st) - o.risk * 3; if (v > bv) { bv = v; best = j; } }); i = best; }
         res(ph.opts[+i]);
