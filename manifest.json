@@ -1,0 +1,17 @@
+{
+  "name": "프로의 길 : 인연",
+  "short_name": "프로의길",
+  "description": "LoL 프로게이머 육성 & 7인의 미소녀 연애 시뮬레이션",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070910",
+  "theme_color": "#0e1220",
+  "icons": [
+    {
+      "src": "assets/jieun.jpg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

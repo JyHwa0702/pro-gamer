@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>프로의 길 : 인연 - APK 다운로드 센터</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, sans-serif; }
+body { background: #080c16; color: #f1f5f9; min-height: 100vh; padding: 20px 16px; display: flex; justify-content: center; }
+.container { width: 100%; max-width: 480px; margin: 0 auto; }
+.badge { display: inline-block; background: #3b82f6; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 999px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.card { background: #111728; border: 1px solid #222d48; border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+.header { text-align: center; padding: 10px 0 16px; }
+.logo-icon { font-size: 42px; margin-bottom: 6px; }
+h1 { font-size: 24px; font-weight: 900; background: linear-gradient(135deg, #fde047, #f59e0b, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; }
+.sub-title { font-size: 13.5px; color: #94a3b8; line-height: 1.5; }
+
+.btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 15px; border-radius: 12px; font-size: 15px; font-weight: 800; text-decoration: none; text-align: center; border: none; cursor: pointer; transition: transform 0.1s, opacity 0.2s; margin-bottom: 10px; }
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; box-shadow: 0 4px 16px rgba(37,99,235,0.4); }
+.btn-zip { background: linear-gradient(135deg, #475569, #334155); color: #f1f5f9; border: 1px solid #475569; }
+.btn-web { background: linear-gradient(135deg, #ec4899, #be185d); color: #fff; box-shadow: 0 4px 16px rgba(236,72,153,0.35); }
+
+.guide-step { display: flex; gap: 12px; margin-top: 12px; align-items: flex-start; }
+.step-num { width: 26px; height: 26px; border-radius: 50%; background: #2563eb; color: #fff; font-weight: 900; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.step-content { font-size: 13px; line-height: 1.5; color: #cbd5e1; }
+.step-content b { color: #fde047; }
+
+.qr-box { background: #0d1220; border: 1px dashed #334155; border-radius: 12px; padding: 16px; text-align: center; margin-top: 8px; }
+.qr-img { width: 160px; height: 160px; border-radius: 8px; background: #fff; padding: 6px; margin: 0 auto 10px; display: block; }
+
+.heroines-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 10px; }
+.h-mini { width: 100%; aspect-ratio: 1; border-radius: 8px; overflow: hidden; background: #1e293b; border: 1px solid #334155; }
+.h-mini img { width: 100%; height: 100%; object-fit: cover; }
+
+.footer { text-align: center; font-size: 12px; color: #64748b; padding: 10px 0 20px; }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="header">
+    <div class="logo-icon">🎮</div>
+    <span class="badge">v1.2.0 정식 패키지</span>
+    <h1>프로의 길 : 인연</h1>
+    <p class="sub-title">10인의 히로인 · e스포츠 커리어 · 주식 &amp; 부동산 육성 시뮬레이션</p>
+  </div>
+
+  <!-- 다운로드 메인 액션 카드 -->
+  <div class="card" style="border: 1px solid #3b82f6; background: linear-gradient(180deg, #131c36 0%, #0e1424 100%);">
+    <div style="font-weight: 800; font-size: 16px; margin-bottom: 4px; color: #60a5fa;">📱 스마트폰 설치 파일 다운로드</div>
+    <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 16px;">원하는 방식을 선택하여 탭하세요. 즉시 다운로드가 시작됩니다.</div>
+
+    <a href="pro-gamer.apk" download="pro-gamer.apk" class="btn btn-primary">
+      <span>📥</span> <b>APK 직접 다운로드 (20.5 MB)</b>
+    </a>
+
+    <a href="pro-gamer-apk.zip" download="pro-gamer-apk.zip" class="btn btn-zip">
+      <span>📦</span> <b>카톡·메신저용 ZIP 다운로드 (19.8 MB)</b>
+    </a>
+
+    <a href="index.html" class="btn btn-web">
+      <span>🌐</span> <b>웹 브라우저에서 바로 플레이하기</b>
+    </a>
+  </div>
+
+  <!-- QR 코드 스캔 공유 카드 -->
+  <div class="card">
+    <div style="font-weight: 800; font-size: 15px; margin-bottom: 4px; color: #fde047;">📸 친구 스마트폰 카메라로 QR 스캔</div>
+    <div style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">옆에 있는 친구의 기본 카메라로 아래 QR 코드를 비추면 즉시 다운로드 창이 열립니다.</div>
+    <div class="qr-box">
+      <img id="qrImg" class="qr-img" src="" alt="다운로드 QR 코드">
+      <div id="qrUrlTxt" style="font-size: 11.5px; color: #38bdf8; word-break: break-all; font-weight: 700;"></div>
+    </div>
+  </div>
+
+  <!-- 초간단 안드로이드 설치 가이드 -->
+  <div class="card">
+    <div style="font-weight: 800; font-size: 15px; margin-bottom: 6px; color: #4ade80;">⚙️ 10초 안드로이드 설치 방법</div>
+    
+    <div class="guide-step">
+      <div class="step-num">1</div>
+      <div class="step-content">상단의 <b>[APK 직접 다운로드]</b> 버튼을 누르고 다운로드가 완료되면 알림창의 파일을 터치합니다.</div>
+    </div>
+
+    <div class="guide-step">
+      <div class="step-num">2</div>
+      <div class="step-content"><b>'보안상의 이유로 알 수 없는 앱을 설치할 수 없습니다'</b> 팝업이 뜨면 <b>[설정]</b>을 누르고 <b>[이 출처 허용]</b> 토글을 켭니다.</div>
+    </div>
+
+    <div class="guide-step">
+      <div class="step-num">3</div>
+      <div class="step-content">뒤로가기를 누른 뒤 <b>[설치]</b>를 누르면 설치 완료! 바탕화면의 <b>[프로의 길]</b> 아이콘으로 플레이하세요.</div>
+    </div>
+  </div>
+
+  <!-- 10인 히로인 소개 -->
+  <div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px">
+      <div style="font-weight: 800; font-size: 14.5px; color: #f472b6;">💖 10인의 히로인 라인업</div>
+      <span style="font-size:11px; color:#cbd5e1">100% 풀 일러스트 탑재</span>
+    </div>
+    <div style="font-size: 12px; color: #94a3b8; line-height: 1.5; margin-bottom: 10px;">
+      이지은, 하린, 윤소라, 강미나, 장세아, 클로이, 백설아, 미야모토 린, 카밀라, 서예진
+    </div>
+    <div class="heroines-grid">
+      <div class="h-mini"><img src="jieun.jpg" alt="지은"></div>
+      <div class="h-mini"><img src="harin.jpg" alt="하린"></div>
+      <div class="h-mini"><img src="sora.jpg" alt="소라"></div>
+      <div class="h-mini"><img src="mina.jpg" alt="미나"></div>
+      <div class="h-mini"><img src="sea.jpg" alt="세아"></div>
+      <div class="h-mini"><img src="chloe.jpg" alt="클로이"></div>
+      <div class="h-mini"><img src="seolah.jpg" alt="설아"></div>
+      <div class="h-mini"><img src="rin.jpg" alt="린"></div>
+      <div class="h-mini"><img src="camila.jpg" alt="카밀라"></div>
+      <div class="h-mini"><img src="yejin.jpg" alt="예진"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    프로의 길 : 인연 v1.2.0 · Made with Google Antigravity
+  </div>
+
+</div>
+
+<script>
+  // 현재 접속 중인 주소를 기반으로 QR 코드 자동 생성
+  const currentUrl = window.location.href.split('?')[0];
+  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=4&data=' + encodeURIComponent(currentUrl);
+  document.getElementById('qrImg').src = qrUrl;
+  document.getElementById('qrUrlTxt').textContent = currentUrl;
+</script>
+</body>
+</html>

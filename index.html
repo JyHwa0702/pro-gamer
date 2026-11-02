@@ -1,0 +1,3264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0e1220">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<title>프로의 길 : 인연 (7인의 로맨스 & 대박 잭팟)</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#070910;color:#e8ecf4;overflow:hidden;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,"Helvetica Neue","Segoe UI","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;letter-spacing:-0.015em;
+  -webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;border:0;cursor:pointer;touch-action:manipulation}
+#app{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:480px;margin:0 auto;background:#0e1220}
+#top{padding:9px 12px;padding-top:calc(9px + env(safe-area-inset-top));background:#161b2e;font-size:13px}
+#top .l1{display:flex;align-items:center;gap:6px;font-weight:800}
+#top .l1 .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px}
+#top .l2{color:#9aa4b2;margin-top:3px;font-size:12.5px;display:flex;justify-content:space-between}
+.pill{background:#0b0f1c;padding:4px 9px;border-radius:999px;white-space:nowrap;font-size:12.5px}
+#main{flex:1;overflow-y:auto;padding:10px;user-select:none;-webkit-user-select:none}
+.card{background:#171d31;border-radius:14px;padding:12px;margin-bottom:9px}
+.card h4{margin:0 0 8px;font-size:13px;color:#9aa4b2;font-weight:700}
+.prof{display:flex;gap:12px;align-items:center}
+.ovr{width:74px;height:74px;border-radius:16px;background:linear-gradient(135deg,#3b82f6,#7c3aed);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;flex-shrink:0}
+.ovr b{font-size:30px;line-height:1}.ovr small{font-size:11px;opacity:.85}
+.prof .info{flex:1;min-width:0;font-size:13px;line-height:1.65}
+.tier{font-weight:800}
+.bars{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px}
+.bar{font-size:12px}
+.bar .lab{display:flex;justify-content:space-between;margin-bottom:3px;color:#c9d1e3}
+.bar .lab b{color:#fff}
+.bar .tr{height:7px;background:#0b0f1c;border-radius:99px;overflow:hidden}
+.bar .fi{height:100%;border-radius:99px;transition:width .4s}
+.cond{display:flex;gap:10px;margin-top:10px}.cond>.bar{flex:1}
+.sched{display:flex;align-items:center;gap:8px;font-size:13px}
+.sched .ic{font-size:22px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.act{background:#1f2640;border-radius:12px;padding:10px;text-align:left;border:1px solid #2a3252}
+.act:active{transform:scale(.97)}
+.act b{display:block;font-size:14px}
+.act small{display:block;color:#9aa4b2;font-size:11.5px;margin-top:3px;line-height:1.35}
+.act.rec{border-color:#f59e0b}
+.act.pink{border-color:#f472b6;background:linear-gradient(145deg,#231c36,#2c1e40)}
+.act:disabled{opacity:.4}
+.sub{display:flex;gap:5px;margin-top:2px}.sub>button{flex:1;padding:10px 2px;font-size:12.5px}
+.btn{background:linear-gradient(#3b82f6,#2563eb);padding:11px 12px;border-radius:11px;font-weight:800;font-size:14px}
+.btn.gray{background:#252c46}.btn.gold{background:linear-gradient(#f59e0b,#d97706)}
+.btn.red{background:linear-gradient(#ef4444,#b91c1c)}.btn.green{background:linear-gradient(#10b981,#059669)}
+.btn.purple{background:linear-gradient(#a855f7,#7c3aed)}.btn.pink{background:linear-gradient(#ec4899,#db2777)}
+.btn:disabled{background:#252c46;color:#6b7390}
+.wide{width:100%;margin-bottom:7px}
+/* 생성 화면 */
+.title{text-align:center;padding:14px 0 6px}
+.title .logo{font-size:52px}.title h1{margin:4px 0;font-size:26px;letter-spacing:1px}
+.title p{color:#9aa4b2;margin:4px 0;font-size:13px}
+input.name{width:100%;background:#0b0f1c;border:1px solid #2a3252;border-radius:10px;padding:12px;color:#fff;font:inherit;font-size:16px;margin-bottom:8px}
+.poss{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.pos{background:#1f2640;border-radius:10px;padding:8px 2px;text-align:center;border:2px solid transparent;font-size:12.5px;font-weight:700}
+.pos span{display:block;font-size:22px}
+.pos.sel{border-color:#3b82f6;background:#24305a}
+/* 경기 */
+.mhead{display:flex;align-items:center;justify-content:space-between;text-align:center;gap:6px}
+.mhead .tm{flex:1;font-weight:800;font-size:14px}
+.mhead .tm small{display:block;color:#9aa4b2;font-weight:600;font-size:12px;margin-top:2px}
+.mhead .vs{font-size:20px;font-weight:900;color:#f59e0b}
+.mlabel{text-align:center;font-size:12.5px;color:#f59e0b;font-weight:800;margin-bottom:6px}
+.gold{margin-top:10px}
+.gold .tr{height:12px;background:#ef4444;border-radius:99px;overflow:hidden;position:relative}
+.gold .fi{height:100%;background:#3b82f6;transition:width .6s}
+.gold .gl{display:flex;justify-content:space-between;font-size:12px;margin-top:4px;color:#c9d1e3}
+.log{font-size:13.5px;line-height:1.6}
+.log p{margin:0 0 8px;padding:8px 10px;background:#11162a;border-radius:10px;animation:fade .35s}
+.log p.good{border-left:3px solid #22c55e}.log p.bad{border-left:3px solid #ef4444}.log p.neu{border-left:3px solid #64748b}
+.log p .ph{display:block;font-size:11.5px;font-weight:800;color:#9aa4b2;margin-bottom:2px}
+.choices .btn{display:block;width:100%;text-align:left;margin-bottom:7px;background:#1f2640;border:1px solid #33406a}
+.choices .btn small{display:block;font-weight:500;color:#9aa4b2;font-size:12px;margin-top:2px}
+.result{text-align:center;padding:6px 0}
+.result .big{font-size:44px;font-weight:900}
+.win{color:#3b82f6}.lose{color:#ef4444}
+.kda{display:flex;justify-content:center;gap:16px;margin:8px 0;font-size:13px}
+.kda b{display:block;font-size:20px}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* 모달 & 비주얼 노벨 */
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;z-index:10;padding:14px}
+#modal.hidden{display:none}
+#modal .box{background:#171d31;border-radius:16px;padding:16px;width:100%;max-width:440px;max-height:92vh;overflow:auto;animation:pop .22s ease-out;position:relative}
+#mBody{font-size:14px;line-height:1.6}
+#mBody h3{margin:0 0 8px;text-align:center}
+#mBody .em{font-size:46px;text-align:center;line-height:1.2}
+#mBody .c{text-align:center}
+#mBtns{display:flex;flex-direction:column;gap:7px;margin-top:12px}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+
+
+/* 방향 1~4 확장 스타일 */
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+.champ-card{background:#13182a;border:1px solid #283354;border-radius:10px;padding:8px;text-align:left;cursor:pointer}
+.champ-card.sel{border-color:#f59e0b;background:#241d3b}
+.champ-card b{display:block;font-size:13px;color:#fff}
+.champ-card small{display:block;font-size:11px;color:#94a3b8;margin-top:2px}
+.clutch-box{background:linear-gradient(135deg,#450a0a,#7f1d1d);border:2px solid #ef4444;border-radius:14px;padding:12px;text-align:center;animation:pop .25s ease-out;margin:10px 0}
+.stock-row{display:flex;justify-content:space-between;align-items:center;background:#11162a;padding:8px 10px;border-radius:10px;margin-bottom:6px;font-size:12.5px}
+.stock-row b{color:#fff}
+.prop-card{background:#11162a;border:1px solid #283354;border-radius:10px;padding:9px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+
+/* 편의성 카테고리 탭 & 퀵 액션 & 뱃지 */
+.cat-tabs{display:flex;gap:4px;margin-bottom:8px;background:#0b0f1c;padding:3px;border-radius:10px}
+.cat-tab{flex:1;padding:7px 2px;border-radius:8px;background:none;font-size:12px;font-weight:800;color:#94a3b8;text-align:center;border:0;cursor:pointer}
+.cat-tab.active{background:#232d4b;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.quick-action-bar{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#181432,#25133a);border:1px solid #8b5cf6;border-radius:12px;padding:8px 12px;margin-bottom:8px}
+.badge-pill{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11.5px;font-weight:800;margin:2px;letter-spacing:-0.02em}
+.bg-green{background:#14532d;color:#4ade80;border:1px solid #22c55e}
+.bg-gold{background:#713f12;color:#fde047;border:1px solid #eab308}
+.bg-pink{background:#831843;color:#f472b6;border:1px solid #ec4899}
+.bg-purple{background:#581c87;color:#c084fc;border:1px solid #a855f7}
+.bg-red{background:#7f1d1d;color:#f87171;border:1px solid #ef4444}
+.bg-blue{background:#1e3a8a;color:#60a5fa;border:1px solid #3b82f6}
+
+/* 비주얼 노벨 전용 스타일 */
+.vn-portrait{width:100%;height:230px;border-radius:12px;overflow:hidden;margin-bottom:12px;background:#0b0f1c;position:relative;box-shadow:0 4px 18px rgba(0,0,0,.6)}
+.vn-portrait img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s}
+.vn-tag{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);padding:3px 9px;border-radius:99px;font-size:11px;font-weight:800;color:#f472b6}
+.vn-scene{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);padding:3px 9px;border-radius:99px;font-size:11px;font-weight:800;color:#38bdf8}
+.vn-speaker{display:inline-block;background:linear-gradient(90deg,#ec4899,#8b5cf6);padding:3px 12px;border-radius:6px;font-weight:900;font-size:13px;margin-bottom:6px;color:#fff}
+.vn-dialogue{background:#0e1324;border:1px solid #283354;border-radius:12px;padding:12px;font-size:14px;line-height:1.65;color:#f1f5f9;margin-bottom:10px}
+/* 인연 카드 */
+.h-card{display:flex;gap:12px;background:#13182a;border-radius:14px;padding:10px;margin-bottom:8px;border:1px solid #263050;position:relative}
+.h-card.locked{opacity:.45;filter:grayscale(.7)}
+.h-thumb{width:76px;height:94px;border-radius:10px;overflow:hidden;flex-shrink:0;background:#0b0f1c}
+.h-thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.h-info{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between}
+.h-name{display:flex;justify-content:space-between;align-items:center}
+.h-name b{font-size:15px;color:#fff}
+.h-name .status{font-size:11.5px;padding:2px 7px;border-radius:99px;font-weight:800}
+.status.s0{background:#334155;color:#94a3b8}
+.status.s1{background:#831843;color:#f472b6}
+.status.s2{background:#be185d;color:#fbcfe8}
+.status.s3{background:#ec4899;color:#fff;box-shadow:0 0 10px rgba(236,72,153,.6)}
+.h-buff{font-size:11.5px;color:#cbd5e1;line-height:1.4;margin:4px 0}
+.h-buff b{color:#38bdf8}
+.h-bar{height:6px;background:#0b0f1c;border-radius:99px;overflow:hidden;margin-top:3px}
+.h-bar-fill{height:100%;background:linear-gradient(90deg,#f472b6,#ec4899);transition:width .4s}
+/* 상점 & 업적 */
+.tab-row{display:flex;gap:4px;margin-bottom:12px;background:#0b0f1c;padding:3px;border-radius:10px}
+.tab-row button{flex:1;padding:8px 0;border-radius:8px;background:none;font-size:12.5px;font-weight:700;color:#94a3b8}
+.tab-row button.act{background:#232d4b;color:#fff}
+.shopi{display:flex;align-items:center;gap:10px;background:#11162a;border-radius:10px;padding:9px;margin-bottom:6px;text-align:left}
+.shopi .t{flex:1;font-size:13px}.shopi .t small{display:block;color:#9aa4b2}
+.shopi.skin-legend{border:1px solid #a855f7}.shopi.skin-mythic{border:1px solid #facc15;background:linear-gradient(135deg,#1b172a,#2c2014)}
+.skin-tag{display:inline-block;padding:2px 6px;border-radius:4px;font-size:10.5px;font-weight:900;margin-right:4px}
+.tag-normal{background:#475569;color:#fff}.tag-epic{background:#2563eb;color:#fff}.tag-legend{background:#9333ea;color:#fff}.tag-mythic{background:#ca8a04;color:#fff}
+.ach-card{display:flex;align-items:center;gap:10px;background:#11162a;border-radius:10px;padding:9px;margin-bottom:6px;text-align:left}
+.ach-card.done{border-left:3px solid #22c55e}.ach-card.locked{opacity:.5}
+.ach-card .ic{font-size:26px;width:34px;text-align:center}
+.ach-card .info{flex:1;min-width:0;font-size:13px}
+.ach-card .info small{display:block;color:#9aa4b2;font-size:11.5px}
+.ach-card .reward{color:#ffd23f;font-weight:800;font-size:12.5px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{padding:6px 4px;text-align:center;border-bottom:1px solid #222a44}
+th{color:#9aa4b2;font-weight:700;font-size:12px}
+td.l{text-align:left}
+tr.me td{background:#1d2a52;font-weight:800}
+.kv{display:flex;justify-content:space-between;padding:4px 0;font-size:13.5px;border-bottom:1px solid #222a44}
+.kv b{color:#ffd23f}
+.delta{font-size:13px;line-height:1.7;background:#11162a;border-radius:10px;padding:8px 10px;margin-top:8px}
+.up{color:#4ade80}.dn{color:#f87171}
+#toast{position:fixed;left:50%;top:16%;transform:translateX(-50%);background:rgba(15,19,34,.95);padding:9px 16px;border-radius:999px;
+  font-weight:800;font-size:14px;pointer-events:none;opacity:0;transition:opacity .25s;z-index:20;white-space:nowrap;border:1px solid #2f3756}
+#toast.show{opacity:1}
+
+/* 📸 인스타그램 & 💬 DM 전용 스타일 */
+.sns-profile{display:flex;align-items:center;gap:14px;background:#11162a;padding:12px;border-radius:12px;margin-bottom:10px}
+.sns-avatar{width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #ec4899;flex-shrink:0}
+.sns-avatar img{width:100%;height:100%;object-fit:cover}
+.sns-stats{display:flex;gap:14px;font-size:12px;color:#cbd5e1}
+.sns-stats b{display:block;font-size:14px;color:#fff}
+.feed-card{background:#0e1322;border:1px solid #232c48;border-radius:14px;overflow:hidden;margin-bottom:12px}
+.feed-head{display:flex;align-items:center;gap:8px;padding:9px 12px;font-size:12.5px;font-weight:700}
+.feed-img{width:100%;max-height:220px;object-fit:cover;display:block}
+.feed-body{padding:10px 12px}
+.feed-actions{display:flex;gap:10px;margin-bottom:6px;font-size:14px}
+.feed-caption{font-size:12.5px;color:#f1f5f9;line-height:1.5;margin-bottom:8px}
+.feed-comments{border-top:1px solid #1c233a;padding-top:6px;font-size:11.5px}
+.comment-item{margin-bottom:4px;color:#cbd5e1}
+.comment-item b{color:#38bdf8;margin-right:4px}
+.dm-card{display:flex;align-items:center;gap:10px;background:#11162a;border:1px solid #232c48;border-radius:12px;padding:10px;margin-bottom:7px;cursor:pointer;position:relative}
+.dm-card.unread{border-color:#ec4899;background:linear-gradient(90deg,#19152b,#11162a)}
+.dm-card .badge-unread{width:8px;height:8px;border-radius:50%;background:#ef4444;position:absolute;top:8px;right:8px}
+.dm-avatar{width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.dm-avatar img{width:100%;height:100%;object-fit:cover}
+.dm-info{flex:1;min-width:0}
+.dm-sender{font-size:13px;font-weight:800;color:#fff;display:flex;align-items:center;gap:4px}
+.dm-preview{font-size:11.5px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
+.tag-celeb{background:#854d0e;color:#fef08a;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:800}
+.tag-streamer{background:#581c87;color:#e9d5ff;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:800}
+.tag-heroine{background:#831843;color:#fbcfe8;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:800}
+
+</style>
+</head>
+<body>
+<div id="app">
+  <header id="top"></header>
+  <main id="main"></main>
+</div>
+<div id="modal" class="hidden"><div class="box"><div id="mBody"></div><div id="mBtns"></div></div></div>
+<div id="toast"></div>
+<script>
+// ======================================================================
+// 유틸
+// ======================================================================
+const $ = s => document.querySelector(s);
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+  del(k) { try { localStorage.removeItem(k); } catch (e) {} }
+};
+const rnd = (a, b) => a + Math.random() * (b - a);
+const rint = (a, b) => Math.floor(rnd(a, b + 1));
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const sig = x => 1 / (1 + Math.exp(-x));
+const gauss = () => { let u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = rint(0, i); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+function won(n) {
+  n = Math.round(n);
+  const s = n < 0 ? '-' : ''; n = Math.abs(n);
+  if (n >= 1e8) return s + (n / 1e8).toFixed(n >= 1e9 ? 0 : 1) + '억';
+  if (n >= 1e4) return s + Math.round(n / 1e4).toLocaleString() + '만';
+  return s + n.toLocaleString();
+}
+const num = n => Math.round(n).toLocaleString();
+let toastT;
+function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 1800); }
+
+function ask(html, btns = [{ t: '확인' }]) {
+  return new Promise(res => {
+    $('#mBody').innerHTML = html;
+    const f = $('#mBtns'); f.innerHTML = '';
+    btns.forEach((b, i) => {
+      const e = document.createElement('button');
+      e.className = 'btn ' + (b.cls || '');
+      e.innerHTML = b.t; e.disabled = !!b.disabled;
+      e.onclick = () => { $('#modal').classList.add('hidden'); res(i); };
+      f.appendChild(e);
+    });
+    $('#modal').classList.remove('hidden');
+  });
+}
+
+// ======================================================================
+// 히로인 데이터 & 장면 CG 목록
+// ======================================================================
+const HEROINES = {
+  jieun: {
+    id: 'jieun', name: '이지은', age: 18,
+    img: 'assets/jieun.jpg', fallback: 'jieun.jpg',
+    tag: '소꿉친구 & 헌신적인 1호 팬',
+    unlockDesc: '어릴 적부터 당신의 꿈을 응원해 온 소꿉친구 (기본 해금)',
+    buff: '휴식 체력 회복 +40%, 스트레스 대폭 감소, 번아웃 방지',
+    dates: [
+      { id: 'cafe', n: '☕ 오후 햇살 카페 데이트', c: 30000, aff: 12, hp: 12, st: -25,
+        img: 'assets/jieun_cafe.jpg', fallback: 'jieun_cafe.jpg', loc: '단골 베이커리 카페',
+        dialogue: '"여기 딸기 라떼 진짜 맛있다! 헤헤, 너랑 이렇게 마주 앉아 있으니까 고등학교 때 쉬는 시간 같네."' },
+      { id: 'night', n: '🌙 쌀쌀한 저녁 캔커피 밤 산책', c: 15000, aff: 10, hp: 10, st: -30,
+        img: 'assets/jieun_night.jpg', fallback: 'jieun_night.jpg', loc: '가로등 켜진 공원 길',
+        dialogue: '"손 시렵지? 자, 따뜻한 캔커피! ...네 손이 너무 차가워서, 내 패딩 주머니에 같이 넣고 걸을까?"' }
+    ],
+    gifts: [
+      { n: '🍪 수제 쿠키 & 딸기 라떼', c: 30000, aff: 12, msg: '"우와! 내가 좋아하는 거 어떻게 알았어? 고마워, 맛있게 먹을게!"' },
+      { n: '🌸 파스텔 꽃다발 & 롤 쪽지', c: 90000, aff: 25, msg: '"꽃 진짜 예쁘다... 네가 쓴 쪽지 평생 방에 간직할 거야."' },
+      { n: '🧥 따뜻한 커플 롱패딩', c: 300000, aff: 50, msg: '"이거... 커플 패딩이야?! 앞으로 네 경기 응원 갈 때 맨날 입을게!"' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '분식집과 1호 팬', img: 'assets/jieun_cafe.jpg', fallback: 'jieun_cafe.jpg',
+        dialogue: '"너 프로게이머 준비한다고 했을 때, 다들 말렸잖아? 근데 난 네가 진짜 될 줄 알았어. 자, 네가 제일 좋아하는 떡볶이랑 튀김이야. 힘내!"',
+        choice: ['"지은아, 고마워. 너 때문에 힘이 난다."', '"나 진짜 꼭 세계 챔피언 될게."'],
+        gain: '체력 +20 · 스트레스 -20' },
+      { lv: 2, req: 50, title: '밤공기와 따뜻한 캔커피', img: 'assets/jieun_night.jpg', fallback: 'jieun_night.jpg',
+        dialogue: '"솔랭 연패해서 속상하지? 밤바람 좀 쐬자. 너 맨날 컴퓨터 앞에만 앉아있잖아. 가끔은 이렇게 나랑 산책도 하고 그래야지, 바보야."',
+        choice: ['지은이의 손을 살포시 잡는다', '따뜻한 캔커피를 건네며 미소 짓는다'],
+        gain: '스트레스 -35 · 멘탈 +2' },
+      { lv: 3, req: 75, title: '첫 공식전 티켓과 고백', img: 'assets/jieun_night.jpg', fallback: 'jieun_night.jpg',
+        dialogue: '"나 이번 네 경기장 맨 앞자리 예매했어! 무대 위에서 헤드셋 낀 네 모습... 진짜 너무 멋있더라. 나... 네 1호 팬만 하는 걸론 이제 안 될 것 같아."',
+        choice: ['"그럼 이제 내 1호 여자친구 해줄래?"', '지은이를 꼭 끌어안는다'],
+        gain: '💖 [연인 관계 시작] 영구 체력 소모 -15%' },
+      { lv: 4, req: 100, title: '언제나 곁에 있어준 사람', img: 'assets/jieun_cafe.jpg', fallback: 'jieun_cafe.jpg',
+        dialogue: '"화려한 무대 위의 너도 멋있지만, 내 곁에서 편하게 웃는 네가 제일 좋아. 앞으로 네 모든 길을 평생 함께 걸어갈게."',
+        choice: ['약속의 반지를 끼워준다', '"평생 곁에 있어줘."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 전용 웨딩 엔딩 확정' }
+    ]
+  },
+  harin: {
+    id: 'harin', name: '강하린', age: 19,
+    img: 'assets/harin.jpg', fallback: 'harin.jpg',
+    tag: '챌린저 1위 & 쿨데레 스트리머',
+    unlockDesc: '솔로랭크 다이아몬드 이상 달성 시 천상계 매칭으로 만남',
+    buff: '솔랭 듀오 가능, 피지컬/라인전 훈련 효율 +25%, 챔프폭 전수',
+    dates: [
+      { id: 'pc', n: '🎮 PC방 나란히 앉아 듀오 & 라면 먹방', c: 25000, aff: 14, hp: 10, st: -25,
+        img: 'assets/harin_pc.jpg', fallback: 'harin_pc.jpg', loc: 'VIP 게이밍 PC방',
+        dialogue: '"야야 미드 커버 가잖아! ㅋㅋㅋ 아 네 플레이 옆에서 직접 보니까 개사기네. 야 라면 한 입 줄게, 아 해봐."' },
+      { id: 'home', n: '🍗 방바닥에 편하게 앉아 치킨 먹방', c: 35000, aff: 15, hp: 18, st: -30,
+        img: 'assets/harin_home.jpg', fallback: 'harin_home.jpg', loc: '하린이의 방송 방',
+        dialogue: '"방송 끄고 너랑 단둘이 먹는 치킨이 제일 맛있다. 뼈 치킨 닭다리 너한테 주는 거... 내 인생 처음인 거 알지?"' }
+    ],
+    gifts: [
+      { n: '⚡ 한정판 에너지 드링크 1박스', c: 35000, aff: 12, msg: '"오 솔랭 밤샘 랭크 돌릴 때 딱 필요했는데! 센스 있네?"' },
+      { n: '⌨️ 커스텀 아티산 메탈 키캡', c: 120000, aff: 28, msg: '"이거 구하기 개빡센 한정판인데?! 내 Q스킬 자리에 꽂아야겠다!"' },
+      { n: '🎧 플래그십 무선 게이밍 헤드셋', c: 380000, aff: 55, msg: '"이걸로 네 보이스 들으면 발소리까지 귓가에 속삭이는 것 같겠다..."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '천상계 듀오의 탄생', img: 'assets/harin_pc.jpg', fallback: 'harin_pc.jpg',
+        dialogue: '"솔직히 프로 지망생들 중에 너만큼 피지컬 깔끔한 애 처음 봤어. 앞으로 나랑 듀오 고정이다? 딴 년이랑 돌리면 죽는다 진짜."',
+        choice: ['"하린이랑 듀오 돌리면 무조건 1등이지."', '"언제든 불러, 바로 갈게."'],
+        gain: '솔랭 승률 +10% · 피지컬 +2' },
+      { lv: 2, req: 50, title: '방송 끈 방 안에서', img: 'assets/harin_home.jpg', fallback: 'harin_home.jpg',
+        dialogue: '"방송 켜면 텐션 높여야 해서 가끔 지치거든... 근데 너랑 있으면 그냥 아무 말 안 해도 편해. 너 나한테 좀 특별한 거 같아."',
+        choice: ['하린이의 머리를 쓰다듬어준다', '"나도 너랑 있을 때가 제일 편해."'],
+        gain: '스트레스 -40 · 라인전 +2' },
+      { lv: 3, req: 75, title: '협곡 밖의 고백', img: 'assets/harin_pc.jpg', fallback: 'harin_pc.jpg',
+        dialogue: '"나 남한테 이런 감정 생겨본 적 없는데... 경기 끝나고 네 생각만 나. 야, 너 내 봇듀오 말고... 내 진짜 남친 할래?"',
+        choice: ['"기다렸던 말이야. 우리 사귀자."', '하린이를 꼭 안아준다'],
+        gain: '💖 [연인 관계 시작] 훈련 효율 상시 +25%' },
+      { lv: 4, req: 100, title: '최강의 듀오이자 하나뿐인 짝', img: 'assets/harin_home.jpg', fallback: 'harin_home.jpg',
+        dialogue: '"협곡에서도 최강, 현실에서도 최고의 짝. 너 은퇴하면 같이 합동 방송하면서 평생 게임하자. 약속 도장 쾅 찍어."',
+        choice: ['새끼손가락 걸고 키스한다', '"평생 내 1순위 서포터가 되어줘."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 스타 게이머 부부 엔딩' }
+    ]
+  },
+  sora: {
+    id: 'sora', name: '한소라', age: 22,
+    img: 'assets/sora.jpg', fallback: 'sora.jpg',
+    tag: '인기 스타 아나운서 & 방송인',
+    unlockDesc: '정규 리그(1군/2군) 첫 승리 인터뷰 후 인연 언락',
+    buff: '팬 유입량 +60%, 스폰서 제의 2배, 개인 방송 수익 1.6배',
+    dates: [
+      { id: 'dinner', n: '🍷 5성급 호텔 스카이라인 촛불 디너', c: 80000, aff: 18, hp: 15, st: -35,
+        img: 'assets/sora_dinner.jpg', fallback: 'sora_dinner.jpg', loc: '시그니엘 79층 레스토랑',
+        dialogue: '"서울 야경 진짜 예쁘다... 하지만 오늘 밤은 야경보다 슈트 입은 네 모습이 훨씬 멋있는걸? 샴페인 한 잔 더 할까?"' },
+      { id: 'drive', n: '🚗 한강 잠원지구 심야 드라이브', c: 40000, aff: 15, hp: 12, st: -30,
+        img: 'assets/sora_drive.jpg', fallback: 'sora_drive.jpg', loc: '한강 야경 드라이브 코스',
+        dialogue: '"음악 소리 좋지? 방송 스튜디오 벗어나서 이렇게 단둘이 드라이브하니까 가슴이 뻥 뚫린다. 손잡아도 돼?"' }
+    ],
+    gifts: [
+      { n: '💄 프랑스 명품 립스틱 세트', c: 90000, aff: 18, msg: '"어머! 내가 이번 방송에서 바르고 싶었던 신상 컬러인데! 센스 대박이다~"' },
+      { n: '🍾 빈티지 최고급 샴페인', c: 280000, aff: 35, msg: '"오늘 밤 우리 둘만의 축하 파티에서 같이 오픈하자!"' },
+      { n: '💎 이탈리아 디자이너 실크 스카프', c: 650000, aff: 65, msg: '"다음 주 생방송 인터뷰 때 꼭 두르고 나갈게. 우리 둘만의 암호야."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '카메라 밖의 시선', img: 'assets/sora.jpg', fallback: 'sora.jpg',
+        dialogue: '"생방송 인터뷰할 때 카메라 너머로 네 눈빛을 봤어. 다른 선수들이랑 다르게 깊고 단단하더라. 사석에서 밥 한 끼 사주고 싶었어."',
+        choice: ['"소라 누나 덕분에 긴장이 싹 풀렸어요."', '"다음 경기 때도 이겨서 인터뷰하러 올게요."'],
+        gain: '팬 +2,000 · 멘탈 +2' },
+      { lv: 2, req: 50, title: '심야 한강의 비밀', img: 'assets/sora_drive.jpg', fallback: 'sora_drive.jpg',
+        dialogue: '"기자들 눈 피해서 이렇게 한강에서 만나는 거... 좀 떨리지 않아? 나 연예인이나 아나운서 친구들 많지만, 너만큼 솔직한 사람은 처음이야."',
+        choice: ['소라의 손을 지그시 잡는다', '"누나와 함께라면 어디든 좋아요."'],
+        gain: '팬 +5,000 · 스트레스 -30' },
+      { lv: 3, req: 75, title: '무대 뒤의 비밀 연애', img: 'assets/sora_drive.jpg', fallback: 'sora_drive.jpg',
+        dialogue: '"다음 주 경기 끝나고... 나랑 심야 드라이브 갈래? 아무도 모르는 곳으로. 너랑 둘이서만 있고 싶어."',
+        choice: ['소라를 품에 안고 입을 맞춘다', '"누나랑 평생 함께 달리고 싶어요."'],
+        gain: '💖 [연인 관계 시작] 팬 유입량 2배' },
+      { lv: 4, req: 100, title: '세기의 커플', img: 'assets/sora_dinner.jpg', fallback: 'sora_dinner.jpg',
+        dialogue: '"세계 무대에서 우승하고 인터뷰할 때, 네가 날 바라보던 그 눈빛... 평생 잊지 못할 거야. 이제 우리 둘만의 미래를 시작하자."',
+        choice: ['스튜디오에서 꽃다발과 함께 청혼한다', '"내 모든 승리의 이유는 누나였어요."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 스타 아나운서 부부 엔딩' }
+    ]
+  },
+  mina: {
+    id: 'mina', name: '유민아', age: 21,
+    img: 'assets/mina.jpg', fallback: 'mina.jpg',
+    tag: '소속 구단 엘리트 총괄 매니저',
+    unlockDesc: '프로팀(연습생/1군) 입단 및 숙소 합류 시 인연 언락',
+    buff: '팀 호흡(시너지) 상시 +2, 팀 불화 방지, 연봉 협상 우대',
+    dates: [
+      { id: 'rooftop', n: '✨ 숙소 옥상 별빛 아래 따뜻한 티타임', c: 15000, aff: 14, hp: 12, st: -30,
+        img: 'assets/mina_rooftop.jpg', fallback: 'mina_rooftop.jpg', loc: '게이밍 하우스 루프탑',
+        dialogue: '"밤바람 시원하지? 자, 따뜻한 캐모마일 차야. 스크림 피드백 듣느라 고생했어... 누나한테는 힘들다고 투정 부려도 돼."' },
+      { id: 'lounge', n: '🏆 경기 후 빈 선수 대기실 둘만의 시간', c: 20000, aff: 16, hp: 15, st: -35,
+        img: 'assets/mina_lounge.jpg', fallback: 'mina_lounge.jpg', loc: '아레나 백스테이지 대기실',
+        dialogue: '"경기 끝나고 다들 퇴근했는데, 너 혼자 리플레이 보고 있을 줄 알았어. 이리 와... 오늘 진짜 장했어. 누나가 안아줄게."' }
+    ],
+    gifts: [
+      { n: '💊 프리미엄 멀티비타민 & 영양제', c: 45000, aff: 14, msg: '"항상 선수들만 챙기다가 선물 받으니까... 마음이 뭉클하네, 고마워."' },
+      { n: '💆 무선 온열 목·어깨 안마기', c: 160000, aff: 32, msg: '"숙소 사무실에서 쓰기 딱 좋다! 누나 피로가 싹 풀린다~"' },
+      { n: '🖋️ 이름 각인 명품 만년필', c: 500000, aff: 60, msg: '"선수 재계약서 쓸 때마다 이걸로 사인할게. 우리 평생 함께야."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '따뜻한 숙소 야식', img: 'assets/mina_rooftop.jpg', fallback: 'mina_rooftop.jpg',
+        dialogue: '"새벽 2시까지 스크림 피드백하느라 고생 많았어. 손목 찜질팩이랑 따뜻한 꿀물 챙겨왔어. 누나가 옆에서 도울 테니 무리하진 마."',
+        choice: ['"민아 누나 덕분에 팀이 돌아가요. 고마워요."', '"누나도 늦게까지 고생 많으세요."'],
+        gain: '팀 호흡 +1 · 체력 +15' },
+      { lv: 2, req: 50, title: '선수 대기실에서의 온기', img: 'assets/mina_lounge.jpg', fallback: 'mina_lounge.jpg',
+        dialogue: '"경기 지고 혼자 삭히지 마. 난 매니저이기도 하지만... 네가 다치는 게 제일 속상한 사람이야. 이리 와, 안아줄게."',
+        choice: ['민아의 품에 얼굴을 묻고 위로를 받는다', '민아의 손을 꽉 잡으며 의지를 다진다'],
+        gain: '스트레스 -40 · 멘탈 +3' },
+      { lv: 3, req: 75, title: '사내 연애는 비밀!', img: 'assets/mina_rooftop.jpg', fallback: 'mina_rooftop.jpg',
+        dialogue: '"감독님이랑 코치님 눈 피해서 숙소 옥상에서 만나니까... 진짜 스릴 넘치네. 나 너 선수로만 보이는 게 아니야. 한 남자로 좋아해."',
+        choice: ['옥상 달빛 아래에서 키스한다', '"감독님께 들켜도 상관없을 만큼 누나가 좋아요."'],
+        gain: '💖 [연인 관계 시작] 팀 시너지 상시 MAX' },
+      { lv: 4, req: 100, title: '팀의 영광, 그리고 우리', img: 'assets/mina_lounge.jpg', fallback: 'mina_lounge.jpg',
+        dialogue: '"처음 입단했을 때부터 네가 전설이 될 줄 알았어. 이제 우리 함께 구단 역사에 영원히 남을 명문 가문을 만들어가자."',
+        choice: ['구단 반지와 함께 청혼한다', '"평생 내 전속 매니저이자 아내가 되어줘."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 명문 구단 파트너 엔딩' }
+    ]
+  },
+  sea: {
+    id: 'sea', name: '한세아', age: 23,
+    img: 'assets/sea.jpg', fallback: 'sea.jpg',
+    tag: '재벌 3세 & 구단주 대행 메가 플렉서',
+    unlockDesc: '1군 프로팀 소속으로 공식 경기 1승 이상 달성 시 스폰서 VIP 갈라 파티에서 만남',
+    buff: '모든 수입 +100% (2배), 구단 재계약 시 백지수표 치트 옵션 해금, 주간 용돈 지급',
+    dates: [
+      { id: 'yacht', n: '🍾 프라이빗 슈퍼 요트 선셋 샴페인 디너', c: 150000, aff: 25, hp: 20, st: -45,
+        img: 'assets/sea_yacht.jpg', fallback: 'sea.jpg', loc: '인천 마리나 프라이빗 요트',
+        dialogue: '"요트 위에서 보는 노을 예쁘지? 바쁜 경기 일정 끝나면 언제든 말해. 오빠 하나만을 위해 태평양이라도 띄워줄 테니까."' },
+      { id: 'penthouse', n: '🏙️ 펜트하우스 최상층 VIP 프라이빗 파티', c: 100000, aff: 20, hp: 25, st: -40,
+        img: 'assets/sea.jpg', fallback: 'sea.jpg', loc: '시그니엘 최고층 펜트하우스',
+        dialogue: '"오빠, 내 옆에 앉아. 세상에서 제일 비싼 와인 따뒀어. 네가 협곡에서 승리하는 모습... 진짜 섹시하더라."' }
+    ],
+    gifts: [
+      { n: '💎 프랑스 오트쿠튀르 실크 스카프', c: 500000, aff: 30, msg: '"어머, 제법 안목 있네? 오빠가 선물해 준 거니까 매일 두르고 다닐게."' },
+      { n: '💍 한정판 플래티넘 다이아몬드 브로치', c: 1800000, aff: 65, msg: '"내가 다이아 많은 건 알겠지만... 오빠가 준 건 가치가 달라. 내 심장 바로 위에 달게."' },
+      { n: '👑 영국 왕실 공급 명품 손목시계', c: 6000000, aff: 120, msg: '"오빠... 이걸 사려고 상금을 다 털었다고? 바보야, 넌 그냥 내 곁에만 있어주면 되는데..."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: 'VIP 갈라 파티의 유혹', img: 'assets/sea.jpg', fallback: 'sea.jpg',
+        dialogue: '"우리 가문이 e스포츠 구단에 투자한 건 단순한 취미였는데... 네 플레이를 보고 생각이 바뀌었어. 넌 내 최고의 투자처야."',
+        choice: ['"기대에 부응해 보이겠습니다, 아가씨."', '"제 가치를 알아봐 주셔서 감사합니다."'],
+        gain: '💰 스폰서 계약금 2,000만 원 · 위상 +5,000' },
+      { lv: 2, req: 50, title: '슈퍼카와 차 키', img: 'assets/sea.jpg', fallback: 'sea.jpg',
+        dialogue: '"오빠, 아직도 택시 타고 다녀? 자, 이거 받아. 포르쉐 911 GT 스마트키야. 내 남친이 지하철 타고 다니는 꼴, 내 자존심이 허락 못 해."',
+        choice: ['키를 받으며 세아의 허리를 감싸 안는다', '"세아 씨의 남친이라니... 과분한 영광입니다."'],
+        gain: '🚗 슈퍼카 획득 (이동 피로 0) · 스트레스 -50' },
+      { lv: 3, req: 75, title: '요트 위의 선셋 키스', img: 'assets/sea_yacht.jpg', fallback: 'sea.jpg',
+        dialogue: '"돈으로 살 수 없는 게 세상에 딱 하나 있더라. 바로 내 심장을 이렇게 뛰게 만드는 너야. 세계 최고의 왕관을 쓰게 해줄게, 내 사랑."',
+        choice: ['노을빛 아래에서 뜨겁게 입을 맞춘다', '"너만의 챔피언이 될게."'],
+        gain: '💖 [연인 관계 시작] 모든 수입 2배 & 주간 용돈 1,000만 원' },
+      { lv: 4, req: 100, title: '구단을 소유한 황제', img: 'assets/sea.jpg', fallback: 'sea.jpg',
+        dialogue: '"우리 가문 이사회에 공식 발표했어. 이 구단은 전적으로 네 거야. 그리고... 내 모든 인생도 전부 네 거야."',
+        choice: ['다이아몬드 반지와 함께 청혼한다', '"평생 날 지배해 줘, 나의 여왕님."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 재벌가 구단주 부마 엔딩' }
+    ]
+  },
+  chloe: {
+    id: 'chloe', name: '클로에 발렌타인', age: 20,
+    img: 'assets/chloe.jpg', fallback: 'chloe.jpg',
+    tag: '글로벌 LCK 해외 리포터 & 직진녀',
+    unlockDesc: '공식전 누적 3승 이상 달성 시 글로벌 LCK 무대 단독 인터뷰로 만남',
+    buff: '해외 슈퍼팀(LEC/LCS) 특별 러브콜 해금, 글로벌 팬 유입 +80%, 멘탈 붕괴 100% 방어',
+    dates: [
+      { id: 'interview', n: '🎙️ 백스테이지 비공개 방송 부스 & 셀카', c: 30000, aff: 16, hp: 14, st: -30,
+        img: 'assets/chloe_interview.jpg', fallback: 'chloe_interview.jpg', loc: '글로벌 방송 중계 부스',
+        dialogue: '"Hey, 슈퍼스타! 방송 끝났으니까 우리 둘만의 비밀 셀카 찍자! 윙크해 봐, 찰칵~ 완전 귀여워!"' },
+      { id: 'hongdae', n: '🎸 홍대 펍 타코 & 야간 버스킹 나이트', c: 45000, aff: 18, hp: 16, st: -35,
+        img: 'assets/chloe.jpg', fallback: 'chloe.jpg', loc: '홍대 감성 펍 & 거리',
+        dialogue: '"한국 길거리 음식 최고야! 타코 한 입 베어물고 나랑 길거리 춤출래? 음악에 몸을 맡겨봐, 달링!"' }
+    ],
+    gifts: [
+      { n: '🎧 커스텀 골드 도금 방송 인이어', c: 180000, aff: 25, msg: '"Oh my god! 네가 준 인이어 끼고 오늘 글로벌 중계 들어갈게, 러키 참이야!"' },
+      { n: '🗽 뉴욕 브로드웨이 빈티지 가죽재킷', c: 550000, aff: 48, msg: '"완전 내 취향 저격이야! 한국 남자들은 다 이렇게 스윗해, 아니면 너만 그런 거야?"' },
+      { n: '✈️ 유럽 퍼스트클래스 왕복 항공권 세트', c: 2000000, aff: 90, msg: '"시즌 끝나면 나랑 같이 파리 가자! 에펠탑 꼭대기에서 너랑 키스할 거야."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '글로벌 인터뷰와 윙크', img: 'assets/chloe_interview.jpg', fallback: 'chloe_interview.jpg',
+        dialogue: '"전 세계 레딧이랑 트위터가 온통 네 슈퍼플레이 얘기뿐이야! LCK 중계하면서 너 볼 때마다 내 심장이 바운스 바운스해!"',
+        choice: ['"클로에 덕분에 인터뷰가 항상 즐거워요."', '"영어로도 멋있게 소감 말해볼게요."'],
+        gain: '글로벌 팬 +10,000 · 멘탈 +3' },
+      { lv: 2, req: 50, title: '한국어 과외와 비밀 귓속말', img: 'assets/chloe.jpg', fallback: 'chloe.jpg',
+        dialogue: `"나 한국어 배웠어. 오빠, 오늘 밤 나랑 치맥 할래? 발음 어때? 완벽하지? 오늘 밤 거절하면 나 삐칠 거야!"`,
+        choice: ['클로에의 볼을 콕 찌르며 웃는다', '"치맥뿐만 아니라 밤새 같이 있자."'],
+        gain: '팬 +20,000 · 스트레스 -40' },
+      { lv: 3, req: 75, title: '무대 조명 아래 기습 키스', img: 'assets/chloe_interview.jpg', fallback: 'chloe_interview.jpg',
+        dialogue: '"미국에선 좋아하는 사람한테 숨기지 않아. I love you, baby. 전 세계 카메라가 다 꺼진 지금, 내 진짜 마음을 줄게."',
+        choice: ['클로에를 끌어당겨 진하게 키스한다', '"나도 너에게 푹 빠졌어, 클로에."'],
+        gain: '💖 [연인 관계 시작] 멘탈 붕괴 100% 면역 & 해외 오퍼 해금' },
+      { lv: 4, req: 100, title: '전 세계의 파워 커플', img: 'assets/chloe.jpg', fallback: 'chloe.jpg',
+        dialogue: '"롤드컵 결승전 무대에서 세계 챔피언 트로피를 들어 올린 내 남자친구... 이제 전 세계가 공인한 우리 사랑을 영원히 축하할 시간이야!"',
+        choice: ['우승 트로피 앞에서 반지를 건넨다', '"전 세계를 누비며 평생 함께하자."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 글로벌 스타 파워 커플 엔딩' }
+    ]
+  },
+  seolah: {
+    id: 'seolah', name: '백설아', age: 26,
+    img: 'assets/seolah.jpg', fallback: 'seolah.jpg',
+    tag: '1세대 전설 출신 스포츠 닥터 누나',
+    unlockDesc: '피지컬/멘탈 훈련 누적 5회 이상 또는 체력 50 이하 상태에서 전문 스포츠 클리닉 방문으로 만남',
+    buff: '부상/슬럼프 100% 영구 면역, 훈련 피지컬 성장률 2배, 경기 중 집중력 클러치 역전 +35%',
+    dates: [
+      { id: 'clinic', n: '🌿 심야 전담 클리닉 프라이빗 아로마 손목 케어', c: 25000, aff: 16, hp: 35, st: -45,
+        img: 'assets/seolah_clinic.jpg', fallback: 'seolah_clinic.jpg', loc: '스포츠 메디컬 전용 클리닉',
+        dialogue: '"손목에 힘 완전히 빼요... 내가 천천히 풀어줄게요. 많이 아팠죠? 당신의 몸은 소중하니까, 내가 끝까지 책임질게요."' },
+      { id: 'forest', n: '🌲 피톤치드 편백나무 숲 힐링 산책', c: 35000, aff: 18, hp: 30, st: -40,
+        img: 'assets/seolah.jpg', fallback: 'seolah.jpg', loc: '근교 힐링 자연휴양림',
+        dialogue: '"맑은 공기 깊게 들이마셔 봐요. 협곡의 긴장감은 잠시 잊고... 내 손잡고 천천히 걸어요. 누나가 곁에 있으니까 괜찮아요."' }
+    ],
+    gifts: [
+      { n: '☕ 파나마 게이샤 원두 & 드립 세트', c: 90000, aff: 20, msg: '"원두 향이 정말 깊네요... 야간 진료할 때 당신 생각하면서 감사히 마실게요."' },
+      { n: '🌿 최고급 천연 유기농 에센셜 오일 키트', c: 300000, aff: 40, msg: '"이 아로마 오일, 당신 손목 테라피 해줄 때 써야겠어요. 벌써 설레네요."' },
+      { n: '🔬 독일 최첨단 신경 반응 정밀 측정기', c: 1200000, aff: 85, msg: '"이렇게 값비싼 연구 장비를... 고마워요. 당신의 신체 능력을 인류 최고로 끌어올려 드릴게요."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '지친 손목에 닿은 온기', img: 'assets/seolah_clinic.jpg', fallback: 'seolah_clinic.jpg',
+        dialogue: '"나도 1세대 프로게이머 출신이라 알아요. 승리를 위해 몸을 깎아 먹는 그 고통... 내가 당신의 주치의이자 든든한 쉼터가 되어줄게요."',
+        choice: ['"선생님의 손길이 정말 따뜻해요."', '"앞으로 제 몸은 선생님께 다 맡길게요."'],
+        gain: '최대 체력 +15 · 피지컬 +3' },
+      { lv: 2, req: 50, title: '심야 클리닉의 속삭임', img: 'assets/seolah_clinic.jpg', fallback: 'seolah_clinic.jpg',
+        dialogue: '"진료실 불을 끄고 둘만 남으니까... 심장 박동 소리가 들리네요. 환자로서 챙겨주던 마음이 어느새 특별한 설렘으로 변했어요."',
+        choice: ['설아의 가운 소매를 조심스럽게 잡는다', '"누나가 절 볼 때마다 제 심장도 뛰어요."'],
+        gain: '멘탈 +5 · 스트레스 영구 -30' },
+      { lv: 3, req: 75, title: '치유를 넘어 사랑으로', img: 'assets/seolah.jpg', fallback: 'seolah.jpg',
+        dialogue: '"선수 생명이 끝나는 날까지, 아니 그 후에도... 평생 당신만을 곁에서 돌봐주고 사랑하고 싶어요. 내 고백을 받아줄래요?"',
+        choice: ['설아를 와락 끌어안고 이마에 입맞춘다', '"평생 제 곁에서 저를 치료해 주세요."'],
+        gain: '💖 [연인 관계 시작] 부상/슬럼프 100% 완전 면역' },
+      { lv: 4, req: 100, title: '영원한 수호천사', img: 'assets/seolah_clinic.jpg', fallback: 'seolah_clinic.jpg',
+        dialogue: '"세계 챔피언 트로피를 안고 무사히 내게 돌아와 줘서 고마워요. 당신의 건강과 영혼은 영원히 나의 가장 귀한 보물이에요."',
+        choice: ['청진기 위에 약속의 반지를 얹어준다', '"제 인생의 영원한 주치의가 되어주세요."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 전담 닥터 힐링 홈 엔딩' }
+    ]
+  },
+  rin: {
+    id: 'rin', name: '미야모토 린', age: 21,
+    img: 'assets/rin.jpg', fallback: 'rin.jpg',
+    tag: '일본 LJL 최강 여고수 & 코스플레이어',
+    unlockDesc: 'PC방 대회 1회 이상 우승 또는 국제전 진출 시 도쿄 e스포츠 교류전에서 만남',
+    buff: '라인전/기습 갱킹 성공률 +35%, 일본 현지 독점 스폰서 계약금 지급',
+    dates: [
+      { id: 'akiba', n: '🌸 아키하바라 메이드 카페 & 레트로 오락실', c: 40000, aff: 18, hp: 15, st: -35,
+        img: 'assets/rin_date.jpg', fallback: 'rin_date.jpg', loc: '도쿄 아키하바라 전자상가',
+        dialogue: '"선배~ 저 오늘 아리 코스프레하고 나왔는데 어때요? 오늘 하루 종일 선배만의 전속 서포터 해줄게요!"' },
+      { id: 'ramen', n: '🍜 심야 골목 정통 라멘 & 가챠 뽑기', c: 25000, aff: 16, hp: 20, st: -30,
+        img: 'assets/rin.jpg', fallback: 'rin.jpg', loc: '신주쿠 심야 라멘 골목',
+        dialogue: '"여기 돈코츠 라멘 국물 진짜 진하죠? 선배가 뽑아준 레어 피규어, 평생 침대 옆에 두고 잘 거예요 헤헤."' }
+    ],
+    gifts: [
+      { n: '🎀 한정판 롤 챔피언 봉제인형', c: 60000, aff: 18, msg: '"꺅! 이거 품절 대란 난 인형인데! 선배 최고예요 다이스키!"' },
+      { n: '🌸 교토 명품 수제 유카타 세트', c: 250000, aff: 40, msg: '"여름 축제 불꽃놀이 갈 때 선배 앞에서만 입을게요 약속!"' },
+      { n: '👑 도쿄 하이엔드 게이밍 셋업 풀세트', c: 800000, aff: 85, msg: '"선배랑 24시간 듀오 돌릴 수 있는 최고의 장비예요! 평생 모실게요!"' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '도쿄 아레나의 만남', img: 'assets/rin.jpg', fallback: 'rin.jpg',
+        dialogue: '"선배 플레이 영상 보면서 프로 데뷔 꿈꿨어요. 저랑 개인 듀오 연습... 한 번만 해주시면 안 돼요?"',
+        choice: ['"린이랑 듀오라면 언제든 환영이지."', '"플레이 실력 진짜 매력적인데?"'],
+        gain: '라인전 +2 · 챔프폭 +3' },
+      { lv: 2, req: 50, title: '단둘만의 코스프레 촬영', img: 'assets/rin_date.jpg', fallback: 'rin_date.jpg',
+        dialogue: '"스튜디오에 둘만 남았네요... 선배가 가까이 오니까 심장이 너무 뛰어서 코스프레 표정 관리가 안 돼요."',
+        choice: ['린의 허리를 감싸 안고 미소 짓는다', '"린은 언제 봐도 정말 사랑스러워."'],
+        gain: '팬 +15,000 · 스트레스 -40' },
+      { lv: 3, req: 75, title: '국경을 넘은 사랑 고백', img: 'assets/rin_date.jpg', fallback: 'rin_date.jpg',
+        dialogue: '"한국과 일본, 비행기 거리 따위 상관없어요. 제 마음은 이미 선배에게 완전히 갱킹당했는걸요. 사귀어주세요!"',
+        choice: ['린을 품에 안고 입을 맞춘다', '"평생 내 1순위 파트너가 되어줘."'],
+        gain: '💖 [연인 관계 시작] 일본 독점 스폰서 3,000만 원' },
+      { lv: 4, req: 100, title: '도쿄 돔의 챔피언 부부', img: 'assets/rin.jpg', fallback: 'rin.jpg',
+        dialogue: '"세계 정상에서 선배와 손을 잡고 서 있는 지금이 제 인생 최고의 순간이에요. 평생 함께 게임해요!"',
+        choice: ['사쿠라 꽃잎 아래에서 반지를 끼워준다', '"평생 날 웃게 해줘, 나의 아이돌."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 글로벌 e스포츠 아이돌 부부 엔딩' }
+    ]
+  },
+  camila: {
+    id: 'camila', name: '카밀라 노바', age: 24,
+    img: 'assets/camila.jpg', fallback: 'camila.jpg',
+    tag: '브라질 출신 피트니스 모델 & 전담 트레이너',
+    unlockDesc: '피지컬 훈련 8회 이상 또는 체력 40 이하 시 전담 트레이닝 센터에서 만남',
+    buff: '최대 체력 영구 +40, 피지컬 훈련 성장률 3배, 손목 부상 원천 차단',
+    dates: [
+      { id: 'pt', n: '💪 VIP 프라이빗 1:1 피트니스 & 스트레칭', c: 35000, aff: 18, hp: 35, st: -40,
+        img: 'assets/camila_date.jpg', fallback: 'camila_date.jpg', loc: '시그니엘 피트니스 클럽',
+        dialogue: '"몸에 힘 완전히 풀어요, 챔피언. 내 손길에 근육을 맡겨봐요. 후끈하게 달아오르죠? 승리하려면 몸부터 완벽해야 해요."' },
+      { id: 'pool', n: '🏊 야외 루프탑 인피니티 풀 선셋 스위밍', c: 50000, aff: 20, hp: 30, st: -45,
+        img: 'assets/camila.jpg', fallback: 'camila.jpg', loc: '호텔 루프탑 인피니티 풀',
+        dialogue: '"물속에서 보는 노을 죽이지? 게임만 하느라 굳었던 어깨 내가 다 주물러줄게. 이리 가까이 와봐요."' }
+    ],
+    gifts: [
+      { n: '🥤 최고급 천연 유기농 프로틴 세트', c: 80000, aff: 20, msg: '"오! 근성장에 딱 필요한 완벽한 포뮬러예요! 챔피언 센스 최고!"' },
+      { n: '👟 한정판 하이엔드 트레이닝화', c: 300000, aff: 45, msg: '"이거 신고 나랑 아침 조깅 데이트 매일 뛰어야 해요 알겠죠?"' },
+      { n: '💎 스위스 명품 스포츠 스마트워치', c: 1100000, aff: 85, msg: '"당신의 심박수와 체온... 매 순간 내 폰으로 실시간 체크할게요 사랑해요."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '땀방울과 첫 만남', img: 'assets/camila_date.jpg', fallback: 'camila_date.jpg',
+        dialogue: '"한국 e스포츠 선수들은 다 말랐을 줄 알았는데... 당신 눈빛은 진짜 야수 같네요. 내가 당신을 완벽한 피지컬 몬스터로 만들어줄게요."',
+        choice: ['"카밀라 선생님만 믿고 따라갈게요."', '"앞으로 매일 같이 땀 흘려요."'],
+        gain: '최대 체력 +20 · 피지컬 +3' },
+      { lv: 2, req: 50, title: '루프탑 수영장의 온기', img: 'assets/camila.jpg', fallback: 'camila.jpg',
+        dialogue: '"선수와 트레이너 사이엔 넘지 말아야 할 선이 있다지만... 물속에서 당신 품에 안기니까 심장이 터질 것 같아요."',
+        choice: ['카밀라를 끌어당겨 귓가에 속삭인다', '"그 선, 내가 먼저 넘을게요."'],
+        gain: '피지컬 +4 · 스트레스 영구 -40' },
+      { lv: 3, req: 75, title: '야성의 라틴 키스', img: 'assets/camila_date.jpg', fallback: 'camila_date.jpg',
+        dialogue: '"브라질에선 사랑을 숨기지 않아요. You are mine, champion. 내 모든 에너지와 심장을 당신에게 바칠게요."',
+        choice: ['뜨겁고 격정적인 키스로 화답한다', '"평생 내 전담 코치이자 여자가 되어줘."'],
+        gain: '💖 [연인 관계 시작] 피지컬 훈련 성장률 3배' },
+      { lv: 4, req: 100, title: '완벽한 육체, 영원한 반려', img: 'assets/camila.jpg', fallback: 'camila.jpg',
+        dialogue: '"세계 챔피언의 피지컬을 완성한 건 나지만, 내 영혼을 사로잡은 건 오직 당신뿐이에요. 영원히 함께 달려요!"',
+        choice: ['근육 위에 약속의 골드 링을 얹는다', '"평생 날 건강하게 지켜줘, 나의 여신."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 글로벌 피트니스 파워 부부 엔딩' }
+    ]
+  },
+  yejin: {
+    id: 'yejin', name: '서예진', age: 27,
+    img: 'assets/yejin.jpg', fallback: 'yejin.jpg',
+    tag: 'e스포츠 전문 로펌 대표 변호사 & 에이전시 CEO',
+    unlockDesc: '1군 프로팀 소속으로 연봉 협상 1회 완료 시 전속 법률 대리인으로 만남',
+    buff: '연봉 협상 성공률 100% 보장, 주간 에이전시 수익 1,500만 원, 불공정 조항 원천 파기',
+    dates: [
+      { id: 'suite', n: '🍷 한강뷰 로펌 펜트하우스 프라이빗 와인 파티', c: 120000, aff: 22, hp: 20, st: -45,
+        img: 'assets/yejin_date.jpg', fallback: 'yejin_date.jpg', loc: '테헤란로 로펌 탑층 스위트룸',
+        dialogue: '"재계약서 서명은 완벽하게 끝냈어. 수십억 보장받았으니 이제 일 얘기는 그만. 오늘 밤은 오롯이 날 위해 시간 내줄 거지?"' },
+      { id: 'drive', n: '🚗 심야 고속도로 스포츠카 드라이브 & 브런치', c: 80000, aff: 20, hp: 15, st: -40,
+        img: 'assets/yejin.jpg', fallback: 'yejin.jpg', loc: '영종도 해안도로 드라이브',
+        dialogue: '"어릴 적엔 승소만 바라보고 달렸는데... 네 손을 잡고 달리는 밤공기가 세상에서 제일 달콤하네. 나한테 기대도 돼."' }
+    ],
+    gifts: [
+      { n: '🖋️ 몽블랑 마이스터스튁 한정판 만년필', c: 450000, aff: 28, msg: '"네 100억 계약서 쓸 때마다 이걸로 사인할게. 아주 훌륭한 안목이야."' },
+      { n: '💎 까르띠에 플래티넘 다이아몬드 이어링', c: 1500000, aff: 65, msg: '"대표실 거울 볼 때마다 네 얼굴이 떠오르겠네... 오늘 밤 우리 집으로 올래?"' },
+      { n: '🍷 샤토 무통 로칠드 그랑크뤼 빈티지', c: 3500000, aff: 100, msg: '"세상에서 가장 귀한 와인... 오직 네 입술과 함께 마실 가치가 있어."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '법률 대리인의 서명', img: 'assets/yejin.jpg', fallback: 'yejin.jpg',
+        dialogue: '"구단 놈들이 널 노예처럼 묶어두려던 악질 조항들, 내가 전부 찢어발겼어. 넌 협곡에서 플레이만 해. 널 지키는 건 내 몫이야."',
+        choice: ['"예진 대표님, 정말 든든합니다."', '"대표님만 믿고 게임에 집중할게요."'],
+        gain: '연봉 보너스 +30% · 멘탈 +3' },
+      { lv: 2, req: 50, title: '새벽 집무실의 밀담', img: 'assets/yejin_date.jpg', fallback: 'yejin_date.jpg',
+        dialogue: '"대표 변호사 서예진이 아니라... 한 여자로서 네 곁에 있고 싶어. 6살 연상 누나라 부담스러워? 아니면... 마음에 드니?"',
+        choice: ['예진의 안경을 벗겨주고 깊게 눈을 맞춘다', '"누나의 성숙한 매력에 푹 빠졌어요."'],
+        gain: '자산 +3,000만 원 · 스트레스 -40' },
+      { lv: 3, req: 75, title: '계약서 밖의 서약', img: 'assets/yejin_date.jpg', fallback: 'yejin_date.jpg',
+        dialogue: '"세상 모든 계약엔 유효기간이 있지만... 너와 나의 사랑엔 영원히 해지 불가 조항을 넣을 거야. 넌 평생 내 전부야."',
+        choice: ['펜트하우스 창가에서 뜨겁게 포옹하며 키스한다', '"누나를 평생의 유일한 대리인이자 아내로 삼을게요."'],
+        gain: '💖 [연인 관계 시작] 주간 법률 자문료 1,500만 원 지급' },
+      { lv: 4, req: 100, title: '거대한 제국을 함께 쥔 두 사람', img: 'assets/yejin.jpg', fallback: 'yejin.jpg',
+        dialogue: '"너는 세계 최고의 챔피언, 나는 대한민국 최고의 에이전시 대표. 이제 우리 둘만의 거대한 e스포츠 제국을 완성하자."',
+        choice: ['플래티넘 다이아몬드 반지로 영원을 약속한다', '"평생 내 뒤를 지켜줘, 나의 대표님."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 거대 e스포츠 엔터 제국 대표 부부 엔딩' }
+    ]
+  }
+};
+
+const ACHIEVES = [
+  { k: 'a_building', n: '강남 빌딩 건물주 🏢', d: '테헤란로 12층 빌딩 매입 달성', r: '영구 칭호 & 💰 1억 원', m: 100000000, check: () => (P.properties || []).includes('building') },
+  { k: 'a_asian', n: '아시아의 별 🥇', d: '아시안게임 e스포츠 금메달 획득', r: '체육훈장 & 👥 팬 +5만', check: () => !!P.asianGold, f: () => P.fans += 50000 },
+  { k: 'a_mastery', n: '원챔 장인의 품격 ⭐', d: '어느 챔피언이든 숙련도 Lv.5 달성', r: '피지컬 +5 · 💰 1,000만 원', m: 10000000, check: () => Object.values(P.champs || {}).some(c => c.lv >= 5), f: () => grow('mech', 5) },
+  { k: 'a_10harem', n: '협곡의 절대 신 (10인의 여인) 👑', d: '10명의 히로인과 모두 인연 해금', r: '전설의 트로피 & 💰 1억 원', m: 100000000, check: () => Object.values(P.bonds || {}).filter(b => b.unlocked).length >= 10 },
+  { k: 'a_pcbang', n: '동네 PC방 패왕 🏆', d: 'PC방 아마추어 토너먼트 1회 우승', r: '피지컬 +3 · 💰 300만 원', m: 3000000, check: () => (P.pcBangWins || 0) >= 1, f: () => grow('mech', 3) },
+  { k: 'a_pcbang3', n: '전국구 아마추어 전설 ⭐', d: 'PC방 대회 3회 우승 달성', r: '피지컬 +5 · 💰 500만 원', m: 5000000, check: () => (P.pcBangWins || 0) >= 3, f: () => grow('mech', 5) },
+  { k: 'a_jackpot', n: '인생 역전! 계 탔다! 🎉', d: '데이트 또는 선물 중 대박 잭팟 1회 달성', r: '💰 2,000만 원', m: 20000000, check: () => (P.jackpotCount || 0) >= 1 },
+  { k: 'a_sea', n: '재벌가의 연인 👑', d: '한세아 호감도 75 달성', r: '💰 3,000만 원 · 위상 +1만', m: 30000000, check: () => P.bonds?.sea?.aff >= 75, f: () => P.fans += 10000 },
+  { k: 'a_chloe', n: '국경을 넘은 사랑 🌍', d: '클로에 호감도 75 달성', r: '멘탈 +10 · 💰 2,000만 원', m: 20000000, check: () => P.bonds?.chloe?.aff >= 75, f: () => grow('mental', 10) },
+  { k: 'a_seolah', n: '나만의 수호 닥터 🩺', d: '백설아 호감도 75 달성', r: '피지컬 +10 · 멘탈 +10', check: () => P.bonds?.seolah?.aff >= 75, f: () => { grow('mech', 10); grow('mental', 10); } },
+  { k: 'a_grand_harem', n: '협곡의 절대 하렘 군주 👑', d: '5명 이상의 히로인과 연인(호감도 75+) 달성', r: '전설의 하렘 트로피 · 💰 5,000만 원', m: 50000000, check: () => Object.values(P.bonds || {}).filter(b => b.aff >= 75).length >= 5 },
+  { k: 'a_solo', n: '소환사의 첫걸음', d: '솔로랭크 1회 플레이', r: '💰 50만 원', m: 500000, check: () => P.hist.games >= 0 && P.rank.lp !== 30 },
+  { k: 'a_dia', n: '천상계의 문턱', d: '솔로랭크 다이아몬드 달성', r: '멘탈 +2 · 💰 100만 원', m: 1000000, check: () => P.bestT >= 6, f: () => grow('mental', 2) },
+  { k: 'a_master', n: '진정한 고수', d: '솔로랭크 마스터 이상 달성', r: '💰 300만 원 · 👥 팬 +500', m: 3000000, check: () => P.bestT >= 7, f: () => P.fans += 500 },
+  { k: 'a_pro', n: '꿈의 무대', d: '프로 2군 또는 1군 입단', r: '💰 500만 원', m: 5000000, check: () => P.stage !== 'ama' },
+  { k: 'a_win1', n: '첫 승리의 맛', d: '공식 경기 1승 달성', r: '멘탈 +3 · 💰 500만 원', m: 5000000, check: () => P.hist.wins >= 1, f: () => grow('mental', 3) },
+  { k: 'a_pog5', n: '에이스의 증명', d: 'POG(MVP) 5회 수상', r: '피지컬 +3 · 💰 1,000만 원', m: 10000000, check: () => P.hist.mvp >= 5, f: () => grow('mech', 3) },
+  { k: 'a_title', n: '리그의 지배자', d: '정규 리그 우승 트로피 획득', r: '💰 3,000만 원 · 👥 팬 +1만', m: 30000000, check: () => P.hist.titles.some(t => t.includes('우승')), f: () => P.fans += 10000 },
+  { k: 'a_worlds', n: '소환사의 컵', d: '월드 챔피언십 우승 제패', r: '💰 1억 원 · 영구 전설 칭호', m: 100000000, check: () => P.hist.titles.some(t => t.includes('월드 챔피언십 우승')) },
+  { k: 'a_date', n: '설레는 만남', d: '인연 데이트 1회 완료', r: '스트레스 -30', check: () => Object.values(P.bonds).some(b => b.aff > 20), f: () => stressAdd(-30) },
+  { k: 'a_love', n: '우리 사귑니다', d: '어느 히로인이든 호감도 75 달성', r: '멘탈 +5 · 💰 1,000만 원', m: 10000000, check: () => Object.values(P.bonds).some(b => b.aff >= 75), f: () => grow('mental', 5) },
+  { k: 'a_harem', n: '협곡의 마성남', d: '3명 이상의 히로인과 연인 달성', r: '멘탈 +10 · 💰 2,000만 원', m: 20000000, check: () => Object.values(P.bonds).filter(b => b.aff >= 75).length >= 3, f: () => grow('mental', 10) },
+  { k: 'a_marry', n: '영원한 서약', d: '히로인 호감도 100 달성', r: '💍 결혼 반지 트로피', check: () => Object.values(P.bonds).some(b => b.aff >= 100) }
+];
+
+// ======================================================================
+// 리그 기본 상수
+// ======================================================================
+const SAVE = 'proRoadSave_v4';
+const POS = {
+  top: { n: '탑', ic: '🛡️', w: { mech: .25, lane: .3, macro: .15, team: .2, pool: .1 } },
+  jg:  { n: '정글', ic: '🌲', w: { mech: .15, lane: .05, macro: .4, team: .25, pool: .15 } },
+  mid: { n: '미드', ic: '🔮', w: { mech: .3, lane: .25, macro: .2, team: .15, pool: .1 } },
+  adc: { n: '원딜', ic: '🏹', w: { mech: .35, lane: .25, macro: .1, team: .2, pool: .1 } },
+  sup: { n: '서폿', ic: '💖', w: { mech: .1, lane: .15, macro: .3, team: .35, pool: .1 } }
+};
+const STATS = {
+  mech:   { n: '피지컬', c: '#f87171' },
+  lane:   { n: '라인전', c: '#fb923c' },
+  macro:  { n: '운영', c: '#60a5fa' },
+  team:   { n: '한타', c: '#a78bfa' },
+  pool:   { n: '챔프폭', c: '#34d399' },
+  mental: { n: '멘탈', c: '#facc15' }
+};
+const TIERS = ['아이언', '브론즈', '실버', '골드', '플래티넘', '에메랄드', '다이아몬드', '마스터', '그랜드마스터', '챌린저'];
+const TIER_C = ['#8b8b8b', '#b0794a', '#b8c4d0', '#f5c542', '#4fd1c5', '#34d399', '#7dd3fc', '#c084fc', '#f87171', '#fde047'];
+const TIER_SK = [8, 16, 24, 32, 40, 47, 54];
+
+const PRO_TEAMS = ['한빛 타이탄즈', '스카이 블레이즈', '네온 울브즈', '레드 피닉스', '오로라 게이밍', '아이언 나이츠', '스톰 시커스', '블랙 팬서스', '퀀텀 e스포츠', '드래곤 하츠'];
+const INTL = [['상하이 썬더', 'CN', 84], ['베이징 레전즈', 'CN', 81], ['청두 판다스', 'CN', 77], ['베를린 바이킹스', 'EU', 75],
+  ['파리 로열', 'EU', 71], ['LA 코메츠', 'NA', 67], ['타이베이 드래곤즈', 'PCS', 64], ['호치민 타이거즈', 'VN', 62]];
+const YEAR_WEEKS = 26;
+const RETIRE_AGE = 26;
+
+function phaseOf(w) {
+  if (w <= 8) return { sp: '스프링', t: 'reg', r: w };
+  if (w === 9) return { sp: '스프링', t: 'po' };
+  if (w <= 11) return { sp: '휴식기', t: 'brk' };
+  if (w <= 19) return { sp: '서머', t: 'reg', r: w - 11 };
+  if (w === 20) return { sp: '서머', t: 'po' };
+  if (w === 21) return { sp: '월즈', t: 'wg' };
+  if (w === 22) return { sp: '월즈', t: 'wk' };
+  if (w === 23) return { sp: '월즈', t: 'wf' };
+  if (w === 24) return { sp: '스토브리그', t: 'con' };
+  return { sp: '비시즌', t: 'off' };
+}
+
+// ======================================================================
+// 상태
+// ======================================================================
+let P = null;
+let activeActCat = "all";
+function newLeague(aca) {
+  return PRO_TEAMS.map((n, i) => {
+    const str = aca ? rint(38, 56) : rint(58, 84);
+    return { id: i, name: aca ? n.split(' ')[0] + ' 챌린저스' : n, str, starter: aca ? 0 : clamp(str + rint(-10, 2), 50, 90), w: 0, l: 0, d: 0 };
+  });
+}
+function makePlayer(name, pos, base) {
+  return {
+    name, pos, age: 17, year: 1, week: 1,
+    s: base, hp: 100, stress: 10, money: 500000, fans: 50,
+    rank: { t: 4, lp: 30 }, bestT: 4,
+    stage: 'ama', teamId: -1, salary: 0, syn: 0,
+    gear: {}, skins: {}, equippedSkin: null, achieves: {},
+    pro: newLeague(false), aca: newLeague(true),
+    springChamp: -1, worldsQ: false, worldsAlive: false, worldsWins: 0,
+    ratings: [], scoutCD: 0, lastOffer: 0,
+    bonds: {
+      jieun: { aff: 20, lv: 0, unlocked: true },
+      harin: { aff: 0, lv: 0, unlocked: false },
+      sora:  { aff: 0, lv: 0, unlocked: false },
+      mina:  { aff: 0, lv: 0, unlocked: false },
+      sea:   { aff: 0, lv: 0, unlocked: false },
+      chloe: { aff: 0, lv: 0, unlocked: false },
+      seolah:{ aff: 0, lv: 0, unlocked: false },
+      rin:   { aff: 0, lv: 0, unlocked: false },
+      camila:{ aff: 0, lv: 0, unlocked: false },
+      yejin: { aff: 0, lv: 0, unlocked: false }
+    },
+    hist: { games: 0, wins: 0, titles: [], worlds: 0, mvp: 0, bestStage: 'ama', log: [] }
+  };
+}
+function save() { if (P) store.set(SAVE, JSON.stringify(P)); }
+function load() {
+  try {
+    let r = store.get(SAVE) || store.get('proRoadSave_v3') || store.get('proRoadSave_v2') || store.get('proRoadSave_v1');
+    if (r) {
+      const p = JSON.parse(r);
+      if (!p.bonds) p.bonds = {};
+      for (const k of Object.keys(HEROINES)) {
+        if (!p.bonds[k]) {
+          p.bonds[k] = { aff: k === 'jieun' ? 20 : 0, lv: 0, unlocked: k === 'jieun' };
+        }
+      }
+      if (!p.skins) p.skins = {};
+      if (!p.achieves) p.achieves = {};
+      return p;
+    }
+  } catch (e) {}
+  return null;
+}
+
+// ======================================================================
+// 계산 & 버프 (모든 연인 버프 중첩 가능!)
+// ======================================================================
+function skinStatBonus(k) {
+  if (!P || !P.equippedSkin) return 0;
+  const s = SKINS.find(x => x.k === P.equippedSkin);
+  return s?.st?.[k] || 0;
+}
+function ovr(p = P) {
+  if (!p || !p.pos || !p.s) return 0;
+  const posConfig = POS[p.pos];
+  if (!posConfig || !posConfig.w) return 0;
+  const w = posConfig.w; let t = 0;
+  for (const k in w) t += (p.s[k] + skinStatBonus(k)) * w[k];
+  return t;
+}
+const condF = () => (0.8 + 0.2 * P.hp / 100) * (1 - Math.max(0, P.stress - 50) / 250);
+function gearB() {
+  let b = 1 + Object.keys(P.gear).reduce((a, k) => a + (GEAR.find(g => g.k === k)?.b || 0), 0);
+  if (P.bonds?.harin?.aff >= 50) b += 0.25; // 하린 훈련 보너스
+  return b;
+}
+function tierName(r = P.rank) { return `${TIERS[r.t]} ${Math.floor(r.lp)}LP`; }
+function tierSkill(r = P.rank) {
+  if (r.t < 7) return TIER_SK[r.t] + r.lp / 100 * 7;
+  return 61 + r.lp / 45;
+}
+function myTeam() {
+  if (P.stage === 'pro') return P.pro[P.teamId];
+  if (P.stage === 'aca') return P.aca[P.teamId];
+  return null;
+}
+function teamPow() {
+  const t = myTeam();
+  let baseSyn = P.syn;
+  if (P.bonds?.mina?.aff >= 50) baseSyn = Math.min(5, baseSyn + 2); // 민아 시너지 보너스
+  let skinBonus = P.equippedSkin === 'skin_legend' ? 2 : P.equippedSkin === 'skin_mythic' ? 5 : 0;
+  return t.str * 0.62 + ovr() * condF() * 0.38 + baseSyn + skinBonus;
+}
+
+function grow(k, base) {
+  const cur = P.s[k];
+  let g = base * gearB() * (0.55 + 0.45 * P.hp / 100) * (1 - P.stress / 220) * (1 - cur / 104) * rnd(.75, 1.25) * (P.talent || 1);
+  if (P.bonds?.seolah?.aff >= 75) g *= 2.0;
+  else if (P.bonds?.seolah?.aff >= 25) g *= 1.35;
+  if (k === 'mental') g = base * (1 - cur / 104) * rnd(.75, 1.25);
+  g = Math.max(0, g);
+  P.s[k] = Math.min(99, cur + g);
+  checkAchievements();
+  return g;
+}
+function addLP(d) {
+  const r = P.rank;
+  r.lp += d;
+  if (r.t < 7) {
+    while (r.lp >= 100 && r.t < 7) { r.lp -= 100; r.t++; if (r.t === 7) { r.lp = Math.max(0, r.lp); } }
+    while (r.lp < 0 && r.t > 0) { r.t--; r.lp += 100; r.lp = Math.min(r.lp, 75); }
+    if (r.t === 0) r.lp = Math.max(0, r.lp);
+  }
+  if (r.t >= 7) {
+    if (r.lp < 0) { r.t = 6; r.lp = 75; }
+    else r.t = r.lp >= 500 ? 9 : r.lp >= 200 ? 8 : 7;
+  }
+  P.bestT = Math.max(P.bestT, r.t);
+  checkHeroineUnlocks();
+  checkAchievements();
+}
+function stressAdd(v) {
+  let mult = (1.25 - P.s.mental / 160);
+  if (P.bonds?.jieun?.aff >= 50 && v > 0) mult *= 0.6; // 지은 힐링 보너스
+  P.stress = clamp(P.stress + v * mult, 0, 100);
+}
+function hpAdd(v) {
+  if (v < 0 && P.gear.chair1) v *= .85;
+  if (v < 0 && P.bonds?.jieun?.aff >= 75) v *= .85;
+  if (v > 0 && P.bonds?.jieun?.aff >= 25) v *= 1.4;
+  P.hp = clamp(P.hp + v, 0, 100);
+}
+
+function checkAchievements() {
+  if (!P || !P.achieves) return;
+  for (const ach of ACHIEVES) {
+    if (!P.achieves[ach.k] && ach.check()) {
+      P.achieves[ach.k] = Date.now();
+      if (ach.m) P.money += ach.m;
+      if (ach.f) ach.f();
+      toast(`🏆 업적 달성: [${ach.n}] ${ach.r}`);
+      save();
+    }
+  }
+}
+
+// 히로인 언락 체크
+async function checkHeroineUnlocks() {
+  if (!P.bonds) return;
+  if (!P.bonds.harin.unlocked && P.bestT >= 6) {
+    P.bonds.harin.unlocked = true;
+    P.bonds.harin.aff = 15;
+    await showHeroineCutscene('harin', `<h3>🎮 천상계 솔랭에서의 만남</h3>
+      <div class="vn-dialogue">솔랭 천상계 매칭에서 미드 1:1로 맞붙은 상대 닉네임 [스트리머강하린]. 경기 후 그녀에게서 귓속말이 왔다!<br><br><b>강하린:</b> "야, 너 플레이 좀 치네? 방송 시청자들이 네 닉네임 뭔지 물어보고 난리 났어. 나랑 듀오 할래?"</div>
+      <p class="c" style="color:#f472b6;font-weight:800">💖 강하린(스트리머)과의 인연이 열렸습니다!</p>`,
+      [{ t: '확인', cls: 'pink' }], 'assets/harin_pc.jpg', '솔랭 천상계 PC방');
+  }
+  if (!P.bonds.sora.unlocked && P.hist.wins > 0) {
+    P.bonds.sora.unlocked = true;
+    P.bonds.sora.aff = 15;
+    await showHeroineCutscene('sora', `<h3>🎙️ 무대 위 공식 인터뷰</h3>
+      <div class="vn-dialogue">경기 종료 후 승리팀 POG 단독 인터뷰 무대. KCL 간판 아나운서 한소라가 눈부신 미소로 마이크를 건넨다.<br><br><b>한소라:</b> "오늘 환상적인 플레이 보여주신 ${P.name} 선수 모셨습니다! 카메라 보시고 팬분들께 인사 부탁드릴게요~"</div>
+      <p class="c" style="color:#f472b6;font-weight:800">💖 한소라(아나운서)와의 인연이 열렸습니다!</p>`,
+      [{ t: '확인', cls: 'pink' }], 'assets/sora.jpg', 'KCL 공식 인터뷰 무대');
+  }
+  if (!P.bonds.mina.unlocked && P.stage !== 'ama') {
+    P.bonds.mina.unlocked = true;
+    P.bonds.mina.aff = 20;
+    await showHeroineCutscene('mina', `<h3>🏢 구단 숙소 합류</h3>
+      <div class="vn-dialogue">프로팀 게이밍 하우스에 짐을 풀고 첫날. 단정한 유니폼 재킷을 입은 매니저 유민아가 따뜻하게 맞이한다.<br><br><b>유민아:</b> "어서 와요, ${P.name} 선수! 숙소 생활이나 컨디션 관리 필요한 거 있으면 언제든 누나한테 편하게 말해요."</div>
+      <p class="c" style="color:#f472b6;font-weight:800">💖 유민아(팀 매니저)와의 인연이 열렸습니다!</p>`,
+      [{ t: '확인', cls: 'pink' }], 'assets/mina_rooftop.jpg', '팀 게이밍 하우스');
+  }
+  if (!P.bonds.sea.unlocked && P.stage === 'pro' && P.hist.wins >= 1) {
+    P.bonds.sea.unlocked = true;
+    P.bonds.sea.aff = 15;
+    await showHeroineCutscene('sea', `<h3>🥂 스폰서 VIP 갈라 파티</h3>
+      <div class="vn-dialogue">1군 공식전 승리 후 구단 메인 스폰서 VIP 연회장. 와인빛 드레스를 입은 재벌 3세 한세아가 샴페인 잔을 기울이며 다가온다.<br><br><b>한세아:</b> "네가 바로 이번 경기 에이스 ${P.name}? 마음에 드네. 앞으로 네 뒤는 내 가문이 전폭 지원해 줄게."</div>
+      <p class="c" style="color:#f472b6;font-weight:800">💖 한세아(재벌 3세 & 구단주 대행)와의 인연이 열렸습니다!</p>`,
+      [{ t: '확인', cls: 'pink' }], 'assets/sea.jpg', '시그니엘 VIP 연회장');
+  }
+  if (!P.bonds.chloe.unlocked && P.hist.wins >= 3) {
+    P.bonds.chloe.unlocked = true;
+    P.bonds.chloe.aff = 15;
+    await showHeroineCutscene('chloe', `<h3>🌍 글로벌 LCK 단독 인터뷰</h3>
+      <div class="vn-dialogue">공식전 연승 가도를 달리자 글로벌 중계진의 단독 인터뷰 요청이 들어왔다. 금발의 외국인 리포터 클로에가 활짝 웃으며 손을 흔든다.<br><br><b>클로에:</b> "Hi there! I am Chloe! 전 세계 팬들이 네 플레이에 열광하고 있어! 오늘 인터뷰 잘 부탁해, 슈퍼스타!"</div>
+      <p class="c" style="color:#f472b6;font-weight:800">💖 클로에 발렌타인(글로벌 리포터)과의 인연이 열렸습니다!</p>`,
+      [{ t: '확인', cls: 'pink' }], 'assets/chloe_interview.jpg', '글로벌 방송 스튜디오');
+  }
+  if (!P.bonds.seolah.unlocked && (P.hp <= 60 || P.hist.games >= 6)) {
+    P.bonds.seolah.unlocked = true;
+    P.bonds.seolah.aff = 20;
+    await showHeroineCutscene('seolah', `<h3>🩺 e스포츠 스포츠 메디컬 클리닉</h3>
+      <div class="vn-dialogue">반복된 스크림과 연습으로 지친 손목을 진료받으러 찾은 전용 메디컬 센터. 단아한 흰 가운의 백설아 원장이 부드럽게 손목을 짚는다.<br><br><b>백설아:</b> "반가워요, ${P.name} 선수. 저도 1세대 프로 출신이라 당신이 겪는 통증을 누구보다 잘 알아요. 오늘부터 제가 당신의 전담 주치의예요."</div>
+      <p class="c" style="color:#f472b6;font-weight:800">💖 백설아(스포츠 의학 전문의)와의 인연이 열렸습니다!</p>`,
+      [{ t: '확인', cls: 'pink' }], 'assets/seolah_clinic.jpg', '스포츠 메디컬 클리닉');
+  }
+}
+
+// 비주얼 노벨 컷씬 팝업 (상황별 CG 연동)
+async function showHeroineCutscene(hid, bodyHtml, btns = [{ t: '확인', cls: 'pink' }], sceneImg = null, sceneLabel = null) {
+  const h = HEROINES[hid];
+  const imgSrc = sceneImg || h.img;
+  const fallbackSrc = h.fallback;
+  const labelHtml = sceneLabel ? `<span class="vn-scene">📍 ${sceneLabel}</span>` : '';
+
+  const portraitHtml = `
+    <div class="vn-portrait">
+      <img src="${imgSrc}" onerror="this.src='${fallbackSrc}'" alt="${h.name}">
+      <span class="vn-tag">${h.tag}</span>
+      ${labelHtml}
+    </div>
+    <div class="c"><span class="vn-speaker">${h.name} (${h.age}세)</span></div>
+  `;
+  return await ask(portraitHtml + bodyHtml, btns);
+}
+
+// ======================================================================
+// 행동
+// ======================================================================
+const ACTS = [
+  { k: 'solo', n: '🎮 솔로랭크', cat: 'match', d: '티어 상승 · 피지컬/라인전/챔프폭', hp: -18, st: 9 },
+  { k: 'pcbang', n: '🏆 PC방 토너먼트', cat: 'match', d: '동네 8강 대회 · 상금 & 스카우트 눈도장 (₩3만)', hp: -16, st: 5, cost: 30000 },
+  { k: 'scrim', n: '🤝 팀 스크림', cat: 'match', d: '한타↑↑ 운영↑ 팀 호흡↑ (프로 전용)', hp: -15, st: 7, team: true },
+  { k: 'lane', n: '⚔️ 라인전 연습', cat: 'train', d: '라인전↑↑ 피지컬↑ 딜교환 극대화', hp: -14, st: 6 },
+  { k: 'mech', n: '🎯 피지컬 단련', cat: 'train', d: '피지컬↑↑ 동체시력과 반응속도', hp: -14, st: 6 },
+  { k: 'vod', n: '📺 경기 분석', cat: 'train', d: '운영↑↑ 한타 시야와 오더 능력', hp: -7, st: 4 },
+  { k: 'pool', n: '📚 챔프폭 연습', cat: 'train', d: '챔프폭↑↑ 밴픽 조커 카드 연구', hp: -10, st: 5 },
+  { k: 'date', n: '💌 인연 데이트', cat: 'life', d: '7인 히로인 밀착 데이트 & 대박 잭팟', hp: 5, st: -25, pink: true },
+  { k: 'stream', n: '📡 개인 방송', cat: 'life', d: '돈 · 팬 획득 (소라 버프 연동)', hp: -8, st: 3 },
+  { k: 'rest', n: '😴 꿀잠 휴식', cat: 'life', d: '체력 +45 · 스트레스 -30 회복', hp: 45, st: -30 },
+  { k: 'care', n: '🧘 멘탈 케어', cat: 'life', d: '멘탈↑ 스트레스↓ (₩30만)', hp: 10, st: -20, cost: 300000 }
+];
+
+
+// ======================================================================
+// 🏆 PC방 아마추어 토너먼트 시스템 (8강 -> 4강 -> 결승)
+// ======================================================================
+async function playPcBangTournament() {
+  const isPro = P.stage !== 'ama';
+  const tourCount = (P.pcBangWins || 0) + 1;
+  const tourName = isPro ? '전국 PC방 올스타 초청전' : `제${tourCount}회 우리동네 PC방 롤 최강자전`;
+
+  const rounds = [
+    { name: '8강전', opp: pick(['역곡동 불주먹팀', '고딩 야자탈출단', '신림동 롤선생들', '수유리 PC방 알바연합']), diff: isPro ? 70 : 26 },
+    { name: '4강 준결승', opp: pick(['신촌 챌린저 유망주', '대학생 랭커 연합', '부천 천상계 클랜', '전국 PC방 랭킹 1위팀']), diff: isPro ? 77 : 33 },
+    { name: '결승전 (FINAL)', opp: pick(['강남 아카데미 연습생팀', '전직 프로 지망생 연합', '전국 올스타 챔피언팀']), diff: isPro ? 83 : 40 }
+  ];
+
+  let roundResults = [];
+  let reachedFinal = true;
+  let wonFinal = false;
+
+  const playerPower = ovr() * condF() + (P.hasSupercar ? 4 : 0);
+
+  for (let idx = 0; idx < rounds.length; idx++) {
+    const r = rounds[idx];
+    const winProb = clamp(sig((playerPower - r.diff) / 5.2), 0.25, 0.92);
+    const win = Math.random() < winProb;
+
+    if (win) {
+      roundResults.push(`✅ <b>${r.name} vs ${r.opp}</b>: <span style="color:#4ade80;font-weight:800">승리!</span>`);
+      if (idx === 2) wonFinal = true;
+    } else {
+      roundResults.push(`❌ <b>${r.name} vs ${r.opp}</b>: <span style="color:#f87171;font-weight:800">아쉬운 석패</span>`);
+      reachedFinal = false;
+      break;
+    }
+  }
+
+  playCoinSound();
+
+  if (wonFinal) {
+    playJackpotSound();
+    P.pcBangWins = (P.pcBangWins || 0) + 1;
+    const prize = isPro ? 5000000 : 2500000;
+    const fansGain = isPro ? 8000 : 3000;
+    P.money += prize;
+    P.fans += fansGain;
+    grow('mech', 2.2);
+    grow('lane', 2.2);
+    grow('mental', 2.5);
+    P.scoutCD = 0; // 즉시 스카우트 활성화
+
+    let scoutComment = isPro 
+      ? '현장의 팬들이 환호성을 지르며 전국의 팬덤이 급증했습니다!'
+      : '<span style="color:#fde047;font-weight:800">💡 현장에 있던 프로팀 스카우터가 당신의 플레이에 매료되었습니다! (스카우트 확률 대폭 상승)</span>';
+
+    return `
+      <div style="text-align:center;margin-bottom:8px">
+        <span style="background:linear-gradient(90deg,#f59e0b,#fbbf24);color:#000;font-weight:900;padding:4px 14px;border-radius:99px;font-size:13.5px">🥇 우승 챔피언 트로피 획득!</span>
+        <h3 style="color:#fde047;margin:6px 0">${tourName}</h3>
+      </div>
+      <div style="background:#11162a;padding:10px;border-radius:10px;font-size:13px;line-height:1.7;margin-bottom:8px">
+        ${roundResults.join('<br>')}
+      </div>
+      <div style="font-size:12.5px;color:#cbd5e1;line-height:1.5;margin-bottom:8px">
+        ${scoutComment}
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <span class="badge-pill bg-gold">💰 상금 +${won(prize)}원</span>
+        <span class="badge-pill bg-green">👥 팬 +${num(fansGain)}</span>
+        <span class="badge-pill bg-purple">⚡ 피지컬 +2.2</span>
+        <span class="badge-pill bg-purple">⚔️ 라인전 +2.2</span>
+        <span class="badge-pill bg-purple">🧠 멘탈 +2.5</span>
+      </div>
+    `;
+  } else if (reachedFinal) {
+    const prize = isPro ? 2000000 : 900000;
+    P.money += prize;
+    P.fans += 1200;
+    grow('mech', 1.4);
+    grow('lane', 1.4);
+    return `
+      <div style="text-align:center;margin-bottom:8px">
+        <span style="background:#64748b;color:#fff;font-weight:900;padding:4px 12px;border-radius:99px;font-size:12.5px">🥈 결승 준우승</span>
+        <h3 style="color:#e2e8f0;margin:6px 0">${tourName}</h3>
+      </div>
+      <div style="background:#11162a;padding:10px;border-radius:10px;font-size:13px;line-height:1.7;margin-bottom:8px">
+        ${roundResults.join('<br>')}
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <span class="badge-pill bg-gold">💰 준우승 상금 +${won(prize)}원</span>
+        <span class="badge-pill bg-green">👥 팬 +1,200</span>
+        <span class="badge-pill bg-purple">⚡ 피지컬 +1.4</span>
+      </div>
+    `;
+  } else {
+    grow('mech', 0.9);
+    return `
+      <div style="text-align:center;margin-bottom:8px">
+        <span style="background:#334155;color:#94a3b8;font-weight:800;padding:3px 10px;border-radius:99px;font-size:12px">대회 참가 완료</span>
+        <h4 style="color:#cbd5e1;margin:6px 0">${tourName}</h4>
+      </div>
+      <div style="background:#11162a;padding:10px;border-radius:10px;font-size:13px;line-height:1.7;margin-bottom:8px">
+        ${roundResults.join('<br>')}
+      </div>
+      <div style="color:#94a3b8;font-size:12.5px;margin-bottom:6px">동네 고수들의 벽을 느꼈지만 값진 실전 경험을 쌓았습니다.</div>
+      <span class="badge-pill bg-purple">⚡ 피지컬 +0.9</span>
+    `;
+  }
+}
+
+async function doAction(k) {
+  const a = ACTS.find(x => x.k === k);
+  const before = JSON.parse(JSON.stringify(P.s)), r0 = { ...P.rank }, m0 = P.money, f0 = P.fans;
+  let extra = '';
+  if (a.cost) P.money -= a.cost;
+
+  if (k === 'date') {
+    return await handleDatingAction();
+  }
+
+  if (k === 'pcbang') {
+    hpAdd(a.hp); stressAdd(a.st);
+    return await playPcBangTournament();
+  }
+
+  switch (k) {
+    case 'solo': {
+      let w = 0, l = 0;
+      const n = 15;
+      let eff = ovr() * condF();
+      if (P.bonds?.harin?.aff >= 30) eff += 3;
+      for (let i = 0; i < n; i++) {
+        const p = clamp(sig((eff - tierSkill()) / 5.5), .15, .85);
+        const master = P.rank.t >= 7;
+        if (Math.random() < p) { w++; addLP(master ? rint(12, 18) : rint(18, 24)); }
+        else { l++; addLP(master ? -rint(12, 18) : -rint(16, 21)); }
+      }
+      grow('mech', 1.3); grow('lane', 1.1); grow('pool', .7);
+      if (P.rank.t >= 7) P.fans += Math.round((P.rank.t - 6) * 40 * rnd(.6, 1.4));
+      extra = `<div>📊 ${w}승 ${l}패 (승률 ${Math.round(w / n * 100)}%)</div>`;
+      if (l > w + 3) stressAdd(8);
+      break;
+    }
+    case 'lane': grow('lane', 2.6); grow('mech', 1.0); break;
+    case 'mech': grow('mech', 2.7); break;
+    case 'vod': grow('macro', 2.6); grow('team', .9); break;
+    case 'pool': grow('pool', 3.0); break;
+    case 'scrim': grow('team', 2.5); grow('macro', 1.4); P.syn = Math.min(5, P.syn + 1); break;
+    case 'stream': {
+      let mul = 1;
+      if (P.bonds?.sora?.aff >= 30) mul = 1.6;
+      const inc = (100000 + P.fans * 25 * rnd(.7, 1.3)) * mul;
+      P.money += inc; P.fans += Math.round((20 + P.fans * .04 * rnd(.5, 1.5)) * mul); grow('mech', .3);
+      break;
+    }
+    case 'rest': break;
+    case 'care': grow('mental', 2.2); break;
+  }
+  hpAdd(a.hp); stressAdd(a.st);
+  if (k !== 'scrim' && P.stage !== 'ama') P.syn = Math.max(0, P.syn - .3);
+
+  let statBadges = [];
+  for (const s in STATS) {
+    const d = P.s[s] - before[s];
+    if (d >= .05) statBadges.push(`<span class="badge-pill bg-purple">${STATS[s].n} +${d.toFixed(1)}</span>`);
+  }
+  let rankHtml = '';
+  if (k === 'solo') {
+    const up = P.rank.t > r0.t ? ' 🎉 승급!' : P.rank.t < r0.t ? ' 😢 강등' : '';
+    rankHtml = `<div style="margin:4px 0">🏅 <span style="color:${TIER_C[r0.t]}">${tierName(r0)}</span> → <b style="color:${TIER_C[P.rank.t]}">${tierName()}</b>${up}</div>`;
+  }
+  let moneyBadge = P.money !== m0 ? `<span class="badge-pill ${P.money > m0 ? 'bg-gold' : 'bg-red'}">💰 ${P.money > m0 ? '+' : ''}${won(P.money - m0)}원</span>` : '';
+  let fanBadge = P.fans !== f0 ? `<span class="badge-pill bg-green">👥 팬 +${num(P.fans - f0)}</span>` : '';
+  let hpBadge = `<span class="badge-pill ${a.hp >= 0 ? 'bg-green' : 'bg-red'}">❤️ 체력 ${a.hp >= 0 ? '+' : ''}${a.hp}</span>`;
+  let stBadge = `<span class="badge-pill ${a.st <= 0 ? 'bg-green' : 'bg-red'}">😵 스트레스 ${a.st <= 0 ? '' : '+'}${a.st}</span>`;
+
+  return `
+    <div class="delta" style="padding:10px">
+      ${extra}
+      ${rankHtml}
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">
+        ${hpBadge}${stBadge}${moneyBadge}${fanBadge}
+        ${statBadges.join('')}
+      </div>
+    </div>
+  `;
+}
+
+// 인연 데이트 & 상황별 CG 연동
+
+// ======================================================================
+// Web Audio 사운드 신디사이저 (외부 파일 없이 순수 JS로 구현)
+// ======================================================================
+let audioCtx = null;
+function getAudioCtx() {
+  if (!audioCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) audioCtx = new AudioContext();
+  }
+  if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+
+function playSoundTone(freq, type = 'sine', duration = 0.15, gainVal = 0.1, delay = 0) {
+  try {
+    const ctx = getAudioCtx();
+    if (!ctx) return;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, ctx.currentTime + delay);
+    gain.gain.setValueAtTime(gainVal, ctx.currentTime + delay);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + delay + duration);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(ctx.currentTime + delay);
+    osc.stop(ctx.currentTime + delay + duration);
+  } catch (e) {}
+}
+
+function playJackpotSound() {
+  // 경쾌하고 화려한 팡파레 아르페지오 (C5 - E5 - G5 - C6 - E6 - G6)
+  const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+  notes.forEach((freq, idx) => {
+    playSoundTone(freq, 'triangle', 0.28, 0.18, idx * 0.08);
+  });
+}
+
+function playDateSound() {
+  // 로맨틱한 하프 화음 (F5 - A5 - C6)
+  [698.46, 880.00, 1046.50].forEach((freq, idx) => {
+    playSoundTone(freq, 'sine', 0.45, 0.12, idx * 0.1);
+  });
+}
+
+function playCoinSound() {
+  playSoundTone(987.77, 'square', 0.1, 0.08, 0);
+  playSoundTone(1318.51, 'square', 0.2, 0.08, 0.08);
+}
+
+// ======================================================================
+// 대박 잭팟! "계타는 이벤트 (Jackpot Windfall)" 시스템
+// ======================================================================
+async function triggerDatingJackpot(targetId) {
+  const h = HEROINES[targetId];
+  const b = P.bonds[targetId];
+  
+  // 35% 기본 확률 + 호감도 50 이상 시 20% 추가 보너스
+  const chance = 0.35 + (b.aff >= 50 ? 0.2 : 0.05);
+  if (Math.random() > chance) return false;
+
+  const jackpots = {
+    sea: [
+      {
+        title: '🏎️ "오빠, 차 키 받아. 내 남친이 지하철 타고 다니는 꼴 못 봐."',
+        desc: '한세아가 최고급 슈퍼카 [포르쉐 911 GT]의 스마트키를 쥐어주었습니다!',
+        reward: '💰 현금 3,000만 원 · 팬 +30,000 · 이동 피로 영구 감소!',
+        f: () => { P.money += 30000000; P.fans += 30000; stressAdd(-40); P.hasSupercar = true; }
+      },
+      {
+        title: '💳 "내 남친 기죽는 건 내가 용납 못 해. 한도 없는 블랙카드야."',
+        desc: '한세아가 재벌가 법인 무제한 블랙카드로 통 큰 플렉스를 선사했습니다!',
+        reward: '💰 현금 1억 원(100,000,000원) 즉시 입금!',
+        f: () => { P.money += 100000000; }
+      },
+      {
+        title: '🏙️ "오빠 숙소 너무 좁잖아? 성수동 펜트하우스 1개 층 통째로 줄게."',
+        desc: '성수동 럭셔리 펜트하우스를 연습실 겸 개인 휴식처로 무상 제공받았습니다!',
+        reward: '체력 영구 상한 +30 · 매주 체력 +15 자동 회복!',
+        f: () => { P.maxHp = (P.maxHp || 100) + 30; P.hp = P.maxHp; P.hasPenthouse = true; }
+      }
+    ],
+    chloe: [
+      {
+        title: '🌍 "OMG! 우리 둘이 찍은 릴스 챌린지 1억 뷰 터졌어!!"',
+        desc: '클로에와 찍은 백스테이지 영상이 전 세계 실시간 트렌드 1위에 올랐습니다!',
+        reward: '글로벌 팬 +70,000명 폭증 · 글로벌 스폰서 계약금 💰 4,500만 원!',
+        f: () => { P.fans += 70000; P.money += 45000000; }
+      },
+      {
+        title: '🎧 "레이저/로지텍 본사에서 네 전용 24K 골드 에디션 보냈대!"',
+        desc: '글로벌 게이밍 기어 본사에서 시그니처 커스텀 기어를 무상 헌정했습니다!',
+        reward: '피지컬 +10 · 라인전 +10 · 반응속도 극대화!',
+        f: () => { grow('mech', 10); grow('lane', 10); }
+      },
+      {
+        title: '✈️ "해외 슈퍼팀 구단주가 널 백지수표로 영입하겠대!"',
+        desc: '클로에의 전 세계 e스포츠 인맥을 통해 초대형 해외 러브콜을 받았습니다!',
+        reward: '💰 특별 지원금 5,000만 원 · 위상 대폭 상승!',
+        f: () => { P.money += 50000000; P.fans += 40000; }
+      }
+    ],
+    seolah: [
+      {
+        title: '💉 "내가 3년간 개발한 신인류 피지컬 각성제예요. 단 한 방으로..."',
+        desc: '백설아 원장의 최첨단 바이오 테라피 주사로 신경계와 동체시력이 극한까지 개화했습니다!',
+        reward: '피지컬 +15 · 멘탈 +15 · 운영(오더) +10 영구 폭등!',
+        f: () => { grow('mech', 15); grow('mental', 15); grow('macro', 10); }
+      },
+      {
+        title: '🍵 "천년 묵은 산삼과 18가지 영약으로 3일 밤낮 달였어요."',
+        desc: '설아 누나의 정성이 담긴 전설의 한방 비약으로 피로와 통증이 거짓말처럼 사라졌습니다!',
+        reward: '최대 체력 영구 +35 · 손목 부상 및 슬럼프 영구 완전 면역!',
+        f: () => { P.maxHp = (P.maxHp || 100) + 35; P.hp = P.maxHp; P.immuneInjury = true; }
+      },
+      {
+        title: '🧠 "1:1 심층 마인드풀니스 최면... 이제 어떤 무대도 두렵지 않아요."',
+        desc: '완벽한 멘탈 요새화 테라피를 받아 심장이 얼음처럼 차분해졌습니다!',
+        reward: '멘탈 +20 · 스트레스 영구 초기화!',
+        f: () => { grow('mental', 20); P.stress = 0; }
+      }
+    ],
+    jieun: [
+      {
+        title: '🎟️ "대박대박!! 너랑 재미로 샀던 로또가 2등 당첨됐어!!"',
+        desc: '지은이가 건넨 복권이 2등에 당첨되어 거액의 당첨금을 함께 받았습니다!',
+        reward: '💰 즉시 당첨금 5,500만 원 획득!',
+        f: () => { P.money += 55000000; }
+      },
+      {
+        title: '🧿 "우리 할머니가 물려주신 승리의 백금 펜던트야. 꼭 쥐고 경기해."',
+        desc: '지은이 가문의 행운이 담긴 수호 펜던트가 협곡에서 기적의 한타를 부릅니다!',
+        reward: '라인전 +8 · 한타 팀워크 +8 · 승률 대폭 상승!',
+        f: () => { grow('lane', 8); grow('team', 8); }
+      }
+    ],
+    harin: [
+      {
+        title: '📜 "야, 이건 페이커도 모르는 내 극비 챔프 카운터 족보인데... 너한테만 푼다."',
+        desc: '천상계 1위 하린이의 극비 라인전 딜교환 알고리즘을 완벽 전수받았습니다!',
+        reward: '라인전 +12 · 피지컬 +10 · 솔랭 승률 +35%!',
+        f: () => { grow('lane', 12); grow('mech', 10); }
+      },
+      {
+        title: '🔥 "오늘 방송 듀오 슈퍼챗 미쳤다 ㅋㅋㅋ 네 지분 반띵이야!"',
+        desc: '하린이와의 천상계 듀오 방송이 유튜브 알고리즘을 타며 도네이션 대폭발!',
+        reward: '💰 방송 수익 분배 3,000만 원 · 스트레스 -30!',
+        f: () => { P.money += 30000000; stressAdd(-30); }
+      }
+    ],
+    sora: [
+      {
+        title: '📺 "내가 PD님 졸라서 너 단독 특집 다큐 편성 땄어! 지금 실검 1위야!"',
+        desc: '지상파 황금시간대 e스포츠 특집 다큐멘터리 단독 주인공으로 방영되었습니다!',
+        reward: '팬 +75,000명 폭증 · 단독 CF 모델료 💰 4,000만 원!',
+        f: () => { P.fans += 75000; P.money += 40000000; }
+      },
+      {
+        title: '✨ "내 라이브 방송에 오빠 목소리 잠깐 나왔는데 후원금 폭발했어!"',
+        desc: '소라의 실시간 방송 팬들이 당신에게 엄청난 응원 슈퍼챗을 쏟아부었습니다!',
+        reward: '💰 라이브 후원금 2,500만 원 · 팬 +20,000!',
+        f: () => { P.money += 25000000; P.fans += 20000; }
+      }
+    ],
+    mina: [
+      {
+        title: '📑 "구단 비밀 금고에 보관된 명장 감독의 전설적인 밴픽 족보야."',
+        desc: '민아가 팀 데이터베이스 깊숙한 곳에서 발굴한 우승 공식 전술 바인더를 건넸습니다!',
+        reward: '운영(오더) +15 · 팀워크 +12 · 팀 시너지 영구 MAX!',
+        f: () => { grow('macro', 15); grow('team', 12); }
+      },
+      {
+        title: '💰 "구단주님 찾아가서 우리 에이스 기 살려달라고 특별 보너스 결재받았어!"',
+        desc: '민아의 전폭적인 지지로 구단 긴급 격려금이 통장에 입금되었습니다!',
+        reward: '💰 특별 공로금 4,000만 원 즉시 입금!',
+        f: () => { P.money += 40000000; }
+      }
+    ]
+  };
+
+  const pool = jackpots[targetId];
+  if (!pool || pool.length === 0) return false;
+  const jp = pool[Math.floor(Math.random() * pool.length)];
+
+  jp.f();
+  P.jackpotCount = (P.jackpotCount || 0) + 1;
+  playJackpotSound();
+
+  await ask(`
+    <div style="text-align:center">
+      <div style="font-size:52px;animation:pop .4s ease-out">🎰🎉</div>
+      <div style="background:linear-gradient(135deg,#f59e0b,#fbbf24,#d97706);color:#000;padding:6px 18px;border-radius:99px;font-weight:900;font-size:16px;display:inline-block;margin:8px 0;box-shadow:0 0 16px rgba(245,158,11,.6)">
+        대박 잭팟! 계 탔다!!
+      </div>
+      <h3 style="color:#ffd23f;margin:8px 0">${jp.title}</h3>
+      <p style="color:#e2e8f0;font-size:14px;line-height:1.6;margin:8px 0">${jp.desc}</p>
+      <div style="background:#1e1b4b;border:2px solid #818cf8;border-radius:12px;padding:12px;margin-top:12px;text-align:center">
+        <div style="color:#a5b4fc;font-size:12px;font-weight:700">🎁 잭팟 횡재 보상 획득</div>
+        <div style="color:#4ade80;font-weight:900;font-size:15px;margin-top:4px">${jp.reward}</div>
+      </div>
+    </div>
+  `, [{ t: '대박이다!! (계타기 성공)', cls: 'gold' }]);
+
+  toast('🎰 초대박 잭팟 달성!!');
+  checkAchievements();
+  save();
+  return true;
+}
+
+async function handleDatingAction() {
+  const un = Object.keys(HEROINES).filter(k => P.bonds[k]?.unlocked);
+  const btns = un.map(k => {
+    const h = HEROINES[k], b = P.bonds[k];
+    const lvTxt = b.lv >= 3 ? '💖' : '🌸';
+    return { t: `${lvTxt} ${h.name} (${h.tag}) — 호감도 ${b.aff}♥`, cls: 'pink' };
+  });
+  btns.push({ t: '취소', cls: 'gray' });
+
+  const idx = await ask(`<h3>💌 누구를 만날까요?</h3><p class="c" style="color:#9aa4b2">누구든 자유롭게 여러 명과 동시에 인연을 쌓을 수 있습니다.</p>`, btns);
+  if (idx >= un.length) return `<div class="delta">일정을 취소했습니다.</div>`;
+
+  const targetId = un[idx];
+  const h = HEROINES[targetId];
+  const bond = P.bonds[targetId];
+
+  // 상황별 데이트 장소 선택지
+  const dChoices = h.dates.map(d => ({
+    t: `${d.n}<br><small style="font-weight:500;color:#93c5fd">📍 ${d.loc} · 💰${won(d.c)}원</small>`,
+    cls: 'pink', disabled: P.money < d.c, date: d, type: 'sceneDate'
+  }));
+  dChoices.push({
+    t: `🎁 ${h.name}에게 맞춤 선물하기<br><small style="font-weight:500;color:#fde047">취향 저격 아이템으로 호감도 대폭 상승</small>`,
+    cls: 'gold', type: 'giftShop'
+  });
+  dChoices.push({ t: '뒤로가기', cls: 'gray' });
+
+  const dIdx = await showHeroineCutscene(targetId, `
+    <div class="vn-dialogue">"오늘 시간 내줘서 고마워. 우리 어디 갈까? 너랑 함께라면 어디든 좋아!"</div>
+    <div class="c" style="color:#9aa4b2;font-size:12px;margin-bottom:6px">보유 자산: 💰${won(P.money)}원</div>
+  `, dChoices);
+
+  if (dIdx >= dChoices.length - 1) return `<div class="delta">데이트를 다음으로 미뤘습니다.</div>`;
+
+  const sel = dChoices[dIdx];
+
+  // 1) 선물하기
+  if (sel.type === 'giftShop') {
+    const gList = h.gifts.map(g => ({
+      t: `${g.n} <small>+${g.aff}♥</small><br><b style="color:#ffd23f">💰${won(g.c)}원</b>`,
+      cls: 'gold', disabled: P.money < g.c
+    }));
+    gList.push({ t: '취소', cls: 'gray' });
+
+    const gIdx = await showHeroineCutscene(targetId, `
+      <h4 style="color:#f472b6;margin:0 0 8px;text-align:center">🎁 ${h.name}을(를) 위한 선물 고르기</h4>
+      <div class="vn-dialogue">"선물...? 나 주는 거야? 고마워, 뭐가 들었을지 너무 기대된다!"</div>
+      <div class="c" style="color:#9aa4b2;font-size:12px;margin-bottom:6px">보유 자산: 💰${won(P.money)}원</div>
+    `, gList);
+
+    if (gIdx >= h.gifts.length) return `<div class="delta">선물 고르기를 취소했습니다.</div>`;
+
+    const gift = h.gifts[gIdx];
+    P.money -= gift.c;
+    bond.aff = Math.min(100, bond.aff + gift.aff);
+    stressAdd(-25);
+
+    await showHeroineCutscene(targetId, `
+      <h4 style="color:#f472b6;margin:0 0 8px;text-align:center">✨ 감동의 순간</h4>
+      <div class="vn-dialogue">${gift.msg}</div>
+      <div class="c" style="color:#4ade80;font-weight:800">💖 호감도 +${gift.aff}♥ (현재 ${bond.aff}/100)</div>
+    `);
+
+    playCoinSound();
+    await checkBondMilestone(targetId);
+    await triggerDatingJackpot(targetId);
+    checkAchievements();
+
+    return `<div class="delta">
+      <div style="color:#f472b6;font-weight:800">🎁 ${h.name}에게 ${gift.n} 선물!</div>
+      <div>호감도 <span class="up">+${gift.aff}♥</span> (현재 ${bond.aff}/100) · 스트레스 -25</div>
+    </div>`;
+  }
+
+  // 2) 상황별 장면 데이트 (실제 CG 출력)
+  const dt = sel.date;
+  P.money -= dt.c;
+  bond.aff = Math.min(100, bond.aff + dt.aff);
+  hpAdd(dt.hp);
+  stressAdd(dt.st);
+
+  await showHeroineCutscene(targetId, `
+    <h4 style="color:#f472b6;margin:0 0 8px;text-align:center">✨ [데이트] ${dt.n}</h4>
+    <div class="vn-dialogue">${dt.dialogue}</div>
+    <div class="c" style="color:#4ade80;font-weight:800">💖 호감도 +${dt.aff}♥ (현재 ${bond.aff}/100) · 체력 +${dt.hp} · 스트레스 ${dt.st}</div>
+  `, [{ t: '달콤한 시간', cls: 'pink' }], dt.img, dt.loc);
+
+  playDateSound();
+  await checkBondMilestone(targetId);
+  await triggerDatingJackpot(targetId);
+  checkAchievements();
+
+  return `<div class="delta">
+    <div style="color:#f472b6;font-weight:800">💖 ${h.name}과(와)의 ${dt.loc} 데이트</div>
+    <div>호감도 <span class="up">+${dt.aff}♥</span> (현재 ${bond.aff}/100) · 체력 +${dt.hp} · 스트레스 ${dt.st}</div>
+  </div>`;
+}
+
+async function checkBondMilestone(hid) {
+  const h = HEROINES[hid], b = P.bonds[hid];
+  for (const st of h.story) {
+    if (b.aff >= st.req && b.lv < st.lv) {
+      b.lv = st.lv;
+      const chBtns = st.choice.map((c, i) => ({ t: c, cls: i === 0 ? 'pink' : 'purple' }));
+      await showHeroineCutscene(hid, `
+        <h4 style="color:#f472b6;margin:4px 0 8px;text-align:center">✨ [인연 스토리] ${st.title}</h4>
+        <div class="vn-dialogue">${st.dialogue}</div>
+        <div class="c" style="color:#4ade80;font-size:12.5px;font-weight:700;margin-bottom:6px">효과: ${st.gain}</div>
+      `, chBtns, st.img, st.title);
+      toast(`💖 ${h.name} 인연 Lv.${b.lv} 달성!`);
+      save();
+    }
+  }
+}
+
+// ======================================================================
+// 연봉 협상 밀당 시스템
+// ======================================================================
+async function negotiateSalary(team, baseSal, isRenew) {
+  let sal = baseSal;
+  const o = ovr();
+  const avg = P.ratings.length ? P.ratings.reduce((a, b) => a + b, 0) / P.ratings.length : 6;
+  const hasMina = P.bonds?.mina?.aff >= 50;
+
+  const html = `
+    <div class="em">💼</div>
+    <h3>${team.name} 연봉 협상 테이블</h3>
+    <div class="c" style="color:#9aa4b2;margin-bottom:10px">
+      종합 전력 ${Math.round(o)} · 시즌 평균 평점 ${avg.toFixed(1)} · 팬 ${num(P.fans)}명
+    </div>
+    <div style="background:#0e1324;border:1px solid #283354;border-radius:12px;padding:12px;margin-bottom:10px">
+      <div class="kv"><span>구단 기본 제시 주급</span><b>${won(sal)}원</b></div>
+      <div class="kv"><span>연간 환산 연봉</span><b>💰 ${won(sal * YEAR_WEEKS)}원</b></div>
+    </div>
+    <p class="c" style="font-size:12.5px;color:#cbd5e1">어떤 협상 전략으로 계약에 임할까요?</p>
+  `;
+
+  const stratBtns = [
+    { t: '✍️ 1. 제시액에 만족하고 즉시 서명<br><small style="font-weight:500;color:#94a3b8">안전 · 구단 신뢰도↑ (팀 호흡 +1)</small>', cls: 'green' },
+    { t: '📈 2. 활약상 어필 (+25% 인상 요구)<br><small style="font-weight:500;color:#94a3b8">평점과 실력에 근거한 정당한 인상 요구</small>', cls: 'gold' },
+    { t: '🎰 3. 초대박 배짱 튕기기 (+50% 파격 인상)<br><small style="font-weight:500;color:#94a3b8">성공 시 대박! 실패 시 구단 난색 & 삭감 리스크</small>', cls: 'purple' },
+    { t: '🏆 4. 성과급 인센티브 옵션 계약<br><small style="font-weight:500;color:#94a3b8">+10% 기본급 + 우승/POG 추가 수당</small>', cls: 'gray' }
+  ];
+
+  if (hasMina) {
+    stratBtns.unshift({
+      t: '💖 [민아 찬스] 매니저 민아의 막후 중재 협상<br><small style="font-weight:500;color:#fbcfe8">100% 안전하게 +30% 인상 & 옵션 보장</small>',
+      cls: 'pink'
+    });
+  }
+
+  const cIdx = await ask(html, stratBtns);
+  let choice = stratBtns[cIdx].t;
+
+  if (choice.includes('민아 찬스')) {
+    sal = Math.round(sal * 1.3);
+    await showHeroineCutscene('mina', `
+      <div class="vn-dialogue">"단장님이랑 프런트 회의 다녀왔어! 네 경기 지표랑 해외 오퍼 루머 들이밀면서 설득했지. 30% 파격 인상에 성공했어! 누나 멋있지?"</div>
+      <div class="c" style="color:#ffd23f;font-weight:900;font-size:16px">최종 주급 ${won(sal)}원 (연봉 ${won(sal * YEAR_WEEKS)}원) 확정!</div>
+    `, [{ t: '고마워요 누나!', cls: 'pink' }], 'assets/mina_lounge.jpg', '선수 대기실');
+    P.syn = Math.min(5, P.syn + 2);
+  } else if (choice.includes('1.')) {
+    await ask(`<h3>✍️ 즉시 계약 체결</h3><p class="c">구단 프런트: "${P.name} 선수의 팀을 생각하는 마음에 감사드립니다. 이번 시즌 함께 영광을 만들어갑시다!"</p>`, [{ t: '서명 완료', cls: 'green' }]);
+    P.syn = Math.min(5, P.syn + 1);
+  } else if (choice.includes('2.')) {
+    const chance = clamp(50 + (avg - 6.5) * 25 + (o - team.str) * 2 + (P.fans / 20000) * 10, 20, 95);
+    if (Math.random() * 100 < chance) {
+      sal = Math.round(sal * 1.25);
+      await ask(`<div class="em">🎉</div><h3>인상안 전격 수용!</h3><p class="c">구단 프런트: "${P.name} 선수의 지난 시즌 지표와 팬덤을 감안해 25% 인상 요구를 승인합니다!"</p><div class="c" style="color:#ffd23f;font-size:16px;font-weight:900">최종 주급 ${won(sal)}원</div>`, [{ t: '계약 체결', cls: 'gold' }]);
+    } else {
+      await ask(`<div class="em">😅</div><h3>인상안 반려</h3><p class="c">구단 프런트: "예산 한계로 추가 인상은 어렵습니다. 원안 그대로 진행하시겠습니까?"</p>`, [{ t: '원안 수락', cls: 'gray' }]);
+    }
+  } else if (choice.includes('3.')) {
+    const chance = clamp(25 + (avg - 7.5) * 35 + (P.hist.mvp >= 3 ? 20 : 0) + (P.worldsQ ? 20 : 0), 10, 80);
+    if (Math.random() * 100 < chance) {
+      sal = Math.round(sal * 1.5);
+      await ask(`<div class="em">🔥💰</div><h3>초대박 계약 성사!</h3><p class="c">구단주 긴급 승인: "다른 팀에 뺏길 수 없다! 50% 파격 인상안 전격 수용!"</p><div class="c" style="color:#ffd23f;font-size:18px;font-weight:900">최종 주급 ${won(sal)}원 (연봉 ${won(sal * YEAR_WEEKS)}원)</div>`, [{ t: '전설의 계약', cls: 'purple' }]);
+    } else {
+      sal = Math.round(sal * 0.9);
+      stressAdd(15);
+      await ask(`<div class="em">📉</div><h3>협상 난항 & 삭감</h3><p class="c">구단 프런트: "무리한 요구로 협상 분위기가 냉각되었습니다. 재조정된 10% 삭감안이 최종 통보입니다."</p><div class="c" style="color:#ef4444;font-size:15px;font-weight:800">조정 주급 ${won(sal)}원</div>`, [{ t: '어쩔 수 없이 서명', cls: 'red' }]);
+    }
+  } else if (choice.includes('4.')) {
+    sal = Math.round(sal * 1.1);
+    await ask(`<div class="em">🏆</div><h3>인센티브 옵션 계약</h3><p class="c">기본 주급 10% 인상 + 대회 승리/우승 시 대폭 보너스 지급 옵션이 추가되었습니다!</p><div class="c" style="color:#ffd23f;font-size:16px;font-weight:900">최종 주급 ${won(sal)}원</div>`, [{ t: '옵션 서명', cls: 'gold' }]);
+  }
+
+  return sal;
+}
+
+// ======================================================================
+// 경기 엔진
+// ======================================================================
+const PHASES = [
+  { n: '라인전 단계 (0~14분)', opts: [
+    { t: '⚔️ 공격적인 딜교환', d: '피지컬·라인전 · 고위험', st: { mech: .5, lane: .5 }, risk: 1.5,
+      g: ['상대의 스킬이 빠진 틈을 놓치지 않고 솔로킬! 라인 주도권을 완전히 가져왔다.', '과감한 딜교환으로 상대 체력을 반 이상 깎고 귀환시켰다.'],
+      b: ['딜교환 각을 잘못 봤다. 상대 정글이 덮쳐 데스...', '무리한 공격이 역으로 당했다. 퍼스트 블러드를 내줬다.'] },
+    { t: '🌾 안정적인 CS 파밍', d: '라인전 · 저위험', st: { lane: 1 }, risk: .6,
+      g: ['완벽한 CS 관리로 15분 CS 차이 +20을 만들었다.', '침착하게 라인을 관리하며 성장 우위를 챙겼다.'],
+      b: ['상대의 견제에 CS를 많이 놓쳤다.', '라인 관리에 실패해 다이브 압박을 받았다.'] },
+    { t: '🗺️ 정글과 합류 · 로밍', d: '운영·한타 · 중위험', st: { macro: .5, team: .5 }, risk: 1.0,
+      g: ['절묘한 타이밍의 로밍! 옆 라인에서 2킬을 만들어냈다.', '정글과 호흡을 맞춰 상대 정글을 카정으로 잡아냈다.'],
+      b: ['로밍 동선을 읽혔다. 라인 손해만 크게 봤다.', '합류가 한 박자 늦어 아군이 먼저 잘렸다.'] }
+  ]},
+  { n: '중반 오브젝트 (15~25분)', opts: [
+    { t: '🐉 드래곤 한타 강행', d: '한타·피지컬 · 고위험', st: { team: .6, mech: .4 }, risk: 1.4,
+      g: ['드래곤 앞 한타 대승! 에이스와 함께 드래곤까지 챙겼다.', '상대 핵심 딜러를 먼저 물어 한타를 완벽하게 이겼다.'],
+      b: ['한타 진입이 엇갈렸다. 드래곤과 함께 3명이 잡혔다.', '상대의 역이니시에 크게 무너졌다.'] },
+    { t: '👁️ 시야 장악 후 운영', d: '운영 · 저위험', st: { macro: .8, team: .2 }, risk: .7,
+      g: ['깔끔한 시야 장악으로 상대를 가두고 오브젝트를 무혈입성했다.', '운영으로 포탑 2개를 연달아 밀어냈다.'],
+      b: ['시야 싸움에서 밀려 오브젝트를 내줬다.', '어정쩡한 운영으로 템포를 잃었다.'] },
+    { t: '🏃 스플릿 푸시', d: '피지컬·라인전·운영', st: { mech: .35, lane: .35, macro: .3 }, risk: 1.1,
+      g: ['사이드에서 상대 2명을 끌어당기며 억제기까지 밀었다!', '1:1 대결에서 이기고 사이드를 완전히 장악했다.'],
+      b: ['사이드에서 잘리며 4:5 한타가 터졌다.', '스플릿 도중 갇혀서 데스. 바론을 내줬다.'] }
+  ]},
+  { n: '최종 한타 (30분~)', opts: [
+    { t: '🔥 과감한 이니시에이팅', d: '한타·피지컬 · 고위험', st: { team: .55, mech: .45 }, risk: 1.6,
+      g: ['환상적인 이니시! 상대 진영을 갈라놓고 에이스를 띄웠다!', '결정적인 진입으로 상대 딜러 둘을 순식간에 지웠다.'],
+      b: ['진입했지만 아무도 따라오지 않았다... 그대로 역관광.', '이니시가 빗나갔다. 상대가 그대로 바론을 가져갔다.'] },
+    { t: '🛡️ 안전한 포지셔닝', d: '피지컬·운영·한타 · 저위험', st: { mech: .4, macro: .3, team: .3 }, risk: .8,
+      g: ['끝까지 살아남으며 딜을 쏟아냈다. 한타 승리!', '완벽한 포지셔닝으로 아군을 지키며 한타를 이겼다.'],
+      b: ['너무 소극적이었다. 아군이 먼저 무너졌다.', '포지션을 잡다가 상대에게 물려 한타 패배.'] },
+    { t: '🏴 백도어 시도', d: '운영 · 초고위험 (성공 시 즉시 승리)', st: { macro: .7, mech: .3 }, risk: 2.2, bd: true,
+      g: ['상대가 눈치채지 못했다! 넥서스 백도어 성공!!! 경기장이 뒤집어졌다!'],
+      b: ['백도어가 발각됐다. 상대가 4:5로 한타를 이기고 그대로 밀고 들어온다...'] }
+  ]}
+];
+
+function teamName() { const t = myTeam(); return t ? t.name : '아마추어'; }
+
+async function playMatch(opp, label, big = false) {
+  const bp = await showBanPickModal(opp);
+  const main = $('#main');
+  const my = teamPow(), op = opp.str;
+  let adv = (my - op) * 0.12, perf = 0, kills = 0, deaths = 0, assists = 0, bdWin = null;
+  const myName = teamName();
+
+  let skinNameTxt = '';
+  if (P.equippedSkin) {
+    const sk = SKINS.find(x => x.k === P.equippedSkin);
+    if (sk) skinNameTxt = `<span class="skin-tag ${sk.tagCls}" style="margin-left:6px">${sk.n} 착용</span>`;
+  }
+
+  const renderHead = () => {
+    const pct = clamp(sig(adv / 3) * 100, 4, 96);
+    const gd = adv * 1000;
+    return `<div class="card"><div class="mlabel">${label} ${skinNameTxt}</div>
+      <div class="mhead"><div class="tm">${myName}<small>전력 ${my.toFixed(1)}</small></div><div class="vs">VS</div>
+      <div class="tm">${opp.name}<small>전력 ${op.toFixed(1)}</small></div></div>
+      <div class="gold"><div class="tr"><div class="fi" style="width:${pct}%"></div></div>
+      <div class="gl"><span>골드 ${gd >= 0 ? '+' + num(gd) : ''}</span><span>${gd < 0 ? '+' + num(-gd) : ''}</span></div></div></div>`;
+  };
+  let log = '';
+  const draw = (choices = '') => {
+    main.innerHTML = renderHead() + `<div class="card log">${log || '<p class="neu">경기가 시작됩니다. 소환사의 협곡에 오신 것을 환영합니다!</p>'}</div>` + choices;
+    main.scrollTop = main.scrollHeight;
+  };
+  draw();
+  await sleep(400);
+  const mentalVar = (1.25 - P.s.mental / 200) * (big ? 1.15 : 1);
+
+  for (let pi = 0; pi < PHASES.length; pi++) {
+    if (pi === 2 && Math.random() < 0.6) { adv += await triggerClutchQTE(); }
+    const ph = PHASES[pi];
+    let fastSkipped = false;
+    const choice = await new Promise(res => {
+      draw(`<div class="card choices">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <h4 style="margin:0">${ph.n} — 어떻게 할까요?</h4>
+          <button class="badge-pill bg-gold" id="bFastSkip" style="border:0;cursor:pointer;padding:4px 10px">⚡ 빠른 결과 보기</button>
+        </div>
+        ${ph.opts.map((o, i) =>
+        `<button class="btn" data-i="${i}">${o.t}<small>${o.d} · 내 능력 ${Math.round(statMix(o.st))}</small></button>`).join('')}
+        <button class="btn gray" data-i="auto" style="text-align:center">🤖 자동 선택</button></div>`);
+      const skipBtn = document.querySelector('#bFastSkip');
+      if (skipBtn) skipBtn.onclick = () => { fastSkipped = true; res(ph.opts[0]); };
+      main.querySelectorAll('.choices .btn').forEach(b => b.onclick = () => {
+        let i = b.dataset.i;
+        if (i === 'auto') { let best = 0, bv = -1; ph.opts.forEach((o, j) => { if (o.bd) return; const v = statMix(o.st) - o.risk * 3; if (v > bv) { bv = v; best = j; } }); i = best; }
+        res(ph.opts[+i]);
+      });
+    });
+    const sv = statMix(choice.st) * condF();
+    const oppStat = op * 0.96;
+    let score = (sv * 0.45 + my * 0.55 - oppStat) / 9 + gauss() * 0.75 * mentalVar;
+
+    if (P.equippedSkin === 'skin_mythic' && pi === 2 && score < 0) {
+      score = 1.6;
+      log += `<p class="good" style="border-left-color:#facc15"><span class="ph">✨ [초월급 스킨] 불멸의 황제 강림!</span>황금빛 이펙트와 함께 협곡을 뒤흔드는 궁극기로 전황을 단번에 뒤집었다!</p>`;
+    }
+
+    let good = score > 0;
+    if (choice.bd) {
+      good = score > 1.35;
+      if (good) bdWin = true; else { adv -= 4; score = -1.5; }
+    } else {
+      adv += score * choice.risk * 1.6;
+    }
+    perf += score * choice.risk;
+    if (good) { kills += rint(0, 2) + (score > .8 ? 1 : 0); assists += rint(1, 3); } else { deaths += rint(1, 2); assists += rint(0, 1); }
+    const txt = pick(good ? choice.g : choice.b);
+    log += `<p class="${good ? 'good' : 'bad'}"><span class="ph">${ph.n} · ${choice.t}</span>${txt}</p>`;
+    draw(); await sleep(500);
+    if (bdWin) break;
+  }
+  const win = bdWin ? true : Math.random() < sig(adv / 2.2);
+  if (win && deaths > 3) deaths = 3;
+
+  let pogBonus = P.equippedSkin === 'skin_epic' || P.equippedSkin === 'skin_mythic' ? 0.6 : 0;
+  const rating = clamp(6 + perf * 0.9 + (win ? .7 : -.6) + pogBonus + rnd(-.3, .3), 1, 10);
+  const mvp = win && rating >= 8.3;
+  P.hist.games++; if (win) P.hist.wins++; if (mvp) P.hist.mvp++;
+  P.ratings.push(rating);
+
+  let fanMul = 1;
+  if (P.bonds?.sora?.aff >= 50) fanMul += 0.6;
+  if (P.bonds?.chloe?.aff >= 50) fanMul += 1.0;
+  else if (P.bonds?.chloe?.aff >= 25) fanMul += 0.5;
+  if (P.bonds?.sea?.aff >= 50) fanMul += 0.5;
+  if (P.equippedSkin === 'skin_normal') fanMul += 0.15;
+  if (P.equippedSkin === 'skin_mythic') fanMul += 0.5;
+
+  const fanGain = Math.round((win ? 1 : .3) * (P.stage === 'pro' ? 600 : 120) * (big ? 2.5 : 1) * (mvp ? 2 : 1) * fanMul * rnd(.7, 1.3));
+  P.fans += fanGain;
+  if (win) stressAdd(-6); else stressAdd(big ? 14 : 8);
+  hpAdd(-8);
+  grow('team', .5); grow('mental', .25);
+
+  log += `<div class="result"><div class="big ${win ? 'win' : 'lose'}">${win ? '승리' : '패배'}</div>
+    <div class="kda"><div><b>${kills}/${deaths}/${assists}</b>KDA</div><div><b>${rating.toFixed(1)}</b>평점</div><div><b>+${num(fanGain)}</b>팬</div></div>
+    ${mvp ? '<div style="color:#fde047;font-weight:900">🏅 POG(Player of the Game) 선정!</div>' : ''}</div>`;
+  draw(`<button class="btn wide" id="nextBtn">계속</button>`);
+  await new Promise(r => $('#nextBtn').onclick = r);
+
+  if (win) await checkHeroineUnlocks();
+  checkAchievements();
+
+  return { win, rating };
+}
+function statMix(st) { let t = 0; for (const k in st) t += P.s[k] * st[k]; return t; }
+
+function simGame(a, b) { return Math.random() < sig((a.str - b.str) / 6); }
+function simRound(league, skipIds) {
+  const others = shuffle(league.filter(t => !skipIds.includes(t.id)));
+  for (let i = 0; i + 1 < others.length; i += 2) {
+    const a = others[i], b = others[i + 1];
+    if (simGame(a, b)) { a.w++; b.l++; } else { b.w++; a.l++; }
+  }
+}
+const standings = lg => lg.slice().sort((a, b) => b.w - a.w || a.l - b.l || b.str - a.str);
+
+// ======================================================================
+// 주간 진행
+// ======================================================================
+let busy = false;
+async function takeTurn(k) {
+  P.lastAction = k;
+  if (busy) return;
+  const a = ACTS.find(x => x.k === k);
+  if (a.cost && P.money < a.cost) { toast('돈이 부족해요'); return; }
+  busy = true;
+  try {
+    const summary = await doAction(k);
+    await ask(`<h3>${a.n}</h3><div class="c" style="color:#9aa4b2">${P.year}년차 ${P.week}주차</div>${summary}`, [{ t: '다음' }]);
+    await weekEnd();
+  } finally { busy = false; save(); render(); }
+}
+
+async function weekEnd() {
+  const ph = phaseOf(P.week);
+  const lg = P.stage === 'pro' ? P.pro : P.stage === 'aca' ? P.aca : null;
+
+  if (lg && ph.t === 'reg') {
+    const me = myTeam();
+    const opps = lg.filter(t => t.id !== me.id);
+    const opp = opps[(ph.r - 1 + P.year) % opps.length];
+    const res = await playMatch(opp, `${P.stage === 'pro' ? 'KCL' : 'KCL 챌린저스'} ${ph.sp} ${ph.r}라운드`);
+    if (res.win) { me.w++; opp.l++; } else { me.l++; opp.w++; }
+    simRound(lg, [me.id, opp.id]);
+    if (P.stage === 'aca') await checkCallUp();
+  }
+  if (ph.t === 'reg') {
+    if (P.stage !== 'pro') simRound(P.pro, []);
+    if (P.stage !== 'aca') simRound(P.aca, []);
+  }
+  if (ph.t === 'po') await playoffs(ph.sp);
+  if (ph.t === 'wg' || ph.t === 'wk' || ph.t === 'wf') await worlds(ph.t);
+  if (ph.t === 'con') await contracts();
+
+  if (P.salary) P.money += P.salary;
+
+  if (P.properties && P.properties.length > 0) {
+    const weeklyRent = P.properties.reduce((sum, id) => {
+      const pr = REAL_ESTATE.find(r => r.id === id);
+      return sum + (pr ? pr.rent : 0);
+    }, 0);
+    if (weeklyRent > 0) {
+      P.money += weeklyRent;
+    }
+  }
+  updateStockMarket();
+  await checkAsianGames();
+
+
+  if (P.stress >= 100) {
+    if (P.bonds?.jieun?.aff >= 75) {
+      P.stress = 60;
+      await showHeroineCutscene('jieun', `<h3>💖 지은이의 따뜻한 간호</h3><div class="vn-dialogue">"너 번아웃 온 것 같아서 숙소 앞으로 바로 뛰어왔어. 오늘은 아무 생각도 하지 말고 푹 쉬어... 내가 곁에 있어줄게."<br><br><b>소꿉친구 지은의 헌신으로 번아웃 위기를 넘겼습니다!</b></div>`, [{ t: '고마워 지은아', cls: 'pink' }], 'assets/jieun_night.jpg', '숙소 앞 밤거리');
+    } else {
+      P.stress = 55; P.hp = Math.min(P.hp, 40);
+      if (P.stage === 'ama') addLP(-60);
+      await ask(`<div class="em">🫠</div><h3>번아웃</h3><p class="c">스트레스가 한계에 달했다. 아무것도 손에 잡히지 않는다...</p><p class="c" style="color:#9aa4b2">체력·티어 하락. 휴식과 인연 데이트를 챙기세요.</p>`);
+    }
+  } else if (P.hp <= 0) {
+    P.hp = 35; stressAdd(10);
+    await ask(`<div class="em">🤒</div><h3>몸살</h3><p class="c">무리한 일정에 몸이 버티지 못했다.</p>`);
+  }
+
+  // 복수 연인 질투/삼자대면 이벤트 (호감도 50 이상 히로인이 2명 이상일 때)
+  const highLoves = Object.keys(P.bonds).filter(k => P.bonds[k].aff >= 50);
+  if (highLoves.length >= 2 && Math.random() < 0.2) {
+    await triggerJealousyEvent(highLoves);
+  } else if (ph.t !== 'po' && !ph.t.startsWith('w') && Math.random() < .45) {
+    await randomEvent();
+  }
+
+  await scouting();
+  checkAchievements();
+
+  checkWeeklyDM();
+  P.week++;
+  if (P.week > YEAR_WEEKS) {
+    P.week = 1; P.year++; P.age++;
+    P.worldsQ = false; P.springChamp = -1;
+    for (const t of P.pro) { t.str = clamp(t.str + rint(-5, 5), 56, 86); t.starter = clamp(t.str + rint(-10, 2), 50, 92); }
+    for (const t of P.aca) t.str = clamp(t.str + rint(-4, 4), 36, 60);
+    if (P.age >= RETIRE_AGE) { await ending(true); return; }
+    await ask(`<div class="em">🎆</div><h3>${P.year}년차 시즌 시작</h3><p class="c">${P.name} 선수 ${P.age}세. 새로운 시즌이 밝았다!</p>`);
+  }
+  const nph = phaseOf(P.week);
+  if (nph.t === 'reg' && nph.r === 1) { for (const t of P.pro.concat(P.aca)) { t.w = 0; t.l = 0; } P.ratings = []; }
+}
+
+// 질투/삼자대면 이벤트
+async function triggerJealousyEvent(loves) {
+  const [a, b] = shuffle(loves).slice(0, 2);
+  const ha = HEROINES[a], hb = HEROINES[b];
+
+  await showHeroineCutscene(a, `
+    <h4 style="color:#f472b6;margin:0 0 8px;text-align:center">⚡ [깜짝 질투] 소문의 진실은?!</h4>
+    <div class="vn-dialogue">"너 요즘... <b>${hb.name}</b> 씨랑 엄청 가깝게 지낸다는 소문 들었는데, 진짜야? 나한테 숨기는 거 없지?"</div>
+    <div class="c" style="color:#ffd23f;font-weight:700">위기의 순간! 어떻게 대처할까요?</div>
+  `, [
+    { t: '💖 "내 마음속 1순위는 언제나 너야." (다정하게 포옹)', cls: 'pink' },
+    { t: '🎮 "프로게이머로서의 비즈니스 관계일 뿐이야!" (철벽 해명)', cls: 'gray' },
+    { t: '🎁 "너 주려고 산 선물이 있는데..." (선물로 위기 모면)', cls: 'gold' }
+  ], ha.dates[0].img, '질투의 순간');
+
+  toast(`💖 ${ha.name}의 질투를 무사히 넘겼습니다!`);
+}
+
+async function checkCallUp() {
+  const pro = P.pro[P.teamId];
+  if (ovr() >= pro.starter - 1 && Math.random() < .6) {
+    await ask(`<div class="em">📞</div><h3>1군 콜업!</h3><p class="c">${pro.name} 감독: "요즘 폼이 좋더라. 다음 경기부터 1군 주전으로 뛰어보자."</p>
+      <p class="c" style="color:#9aa4b2">기존 주전(${Math.round(pro.starter)})을 밀어냈다!</p>`, [{ t: '1군 합류!', cls: 'gold' }]);
+    P.stage = 'pro'; P.hist.bestStage = 'pro';
+    P.salary = salaryFor(pro); P.syn = 1;
+    pro.starter = Math.max(pro.starter, ovr());
+    P.hist.log.push(`${P.year}년차 ${pro.name} 1군 콜업`);
+    await checkHeroineUnlocks();
+    checkAchievements();
+  }
+}
+
+function salaryFor(team) {
+  if (P.stage === 'aca') return 300000;
+  const o = ovr();
+  let sal = (800000 + Math.pow(Math.max(0, o - 50), 2) * 18000 + P.fans * 8);
+  if (P.bonds?.mina?.aff >= 50) sal *= 1.25;
+  return Math.round(sal / 10000) * 10000;
+}
+
+async function playoffs(sp) {
+  for (const key of ['pro', 'aca']) {
+    const lg = P[key];
+    const top = standings(lg).slice(0, 4);
+    const mine = P.stage === key ? myTeam() : null;
+    const lname = key === 'pro' ? 'KCL' : 'KCL 챌린저스';
+    const inPO = mine && top.includes(mine);
+    if (mine && !inPO) {
+      await ask(`<div class="em">📉</div><h3>플레이오프 진출 실패</h3><p class="c">${lname} ${sp} 정규시즌 ${standings(lg).indexOf(mine) + 1}위로 마감했다.</p>`);
+      stressAdd(10);
+    }
+    const play = async (a, b, label) => {
+      if (inPO && (a === mine || b === mine)) {
+        const opp = a === mine ? b : a;
+        const r = await playMatch(opp, label, true);
+        return r.win ? mine : opp;
+      }
+      return simGame(a, b) ? a : b;
+    };
+    if (inPO) await ask(`<div class="em">🏟️</div><h3>${lname} ${sp} 플레이오프</h3><p class="c">정규시즌 ${top.indexOf(mine) + 1}위로 플레이오프 진출!</p>`, [{ t: '경기장으로', cls: 'gold' }]);
+    const f1 = await play(top[0], top[3], `${lname} ${sp} 준결승`);
+    const f2 = await play(top[1], top[2], `${lname} ${sp} 준결승`);
+    const finalist = mine && (f1 === mine || f2 === mine);
+    if (inPO && !finalist) {
+      await ask(`<div class="em">😭</div><h3>준결승 탈락</h3><p class="c">아쉽게 결승 문턱에서 멈췄다.</p>`);
+    }
+    const champ = await play(f1, f2, `${lname} ${sp} 결승전`);
+    if (key === 'pro') {
+      if (sp === '스프링') P.springChamp = champ.id;
+      if (sp === '서머' && mine && key === P.stage) {
+        P.worldsQ = finalist || P.springChamp === mine.id;
+      }
+    }
+    if (mine && champ === mine) {
+      const title = `${P.year}년차 ${lname} ${sp} 우승`;
+      P.hist.titles.push(title); P.hist.log.push(title);
+      const bonus = key === 'pro' ? 30000000 : 3000000;
+      P.money += bonus; P.fans += key === 'pro' ? 15000 : 1500; stressAdd(-30);
+      await ask(`<div class="em">🏆</div><h3>${lname} ${sp} 우승!!!</h3><p class="c">${mine.name}가 정상에 올랐다!<br>상금 💰${won(bonus)}원 · 팬 대폭 증가</p>`, [{ t: '최고다!', cls: 'gold' }]);
+      checkAchievements();
+    } else if (finalist) {
+      await ask(`<div class="em">🥈</div><h3>준우승</h3><p class="c">결승에서 아쉽게 패배했다. 다음엔 반드시...</p>`);
+      P.money += key === 'pro' ? 10000000 : 1000000;
+    }
+    if (key === 'pro' && sp === '서머' && P.stage === 'pro' && P.worldsQ) {
+      P.worldsAlive = true; P.worldsWins = 0;
+      await ask(`<div class="em">🌍</div><h3>월드 챔피언십 진출!</h3><p class="c">KCL 대표로 세계 무대에 선다!</p>`, [{ t: '가자!', cls: 'gold' }]);
+    }
+  }
+}
+
+function intlTeams() { return INTL.map(([n, r, s]) => ({ name: `${n} (${r})`, str: s + rint(-3, 3) })); }
+async function worlds(t) {
+  if (!(P.stage === 'pro' && P.worldsQ && P.worldsAlive)) return;
+  const pool = intlTeams();
+  if (t === 'wg') {
+    P.hist.worlds++;
+    const grp = shuffle(pool).slice(0, 3);
+    let w = 0;
+    for (let i = 0; i < 3; i++) { const r = await playMatch(grp[i], `월즈 그룹 스테이지 ${i + 1}경기`, true); if (r.win) w++; }
+    if (w >= 2) await ask(`<div class="em">✅</div><h3>그룹 스테이지 통과! (${w}승)</h3><p class="c">8강 진출!</p>`, [{ t: '8강으로', cls: 'gold' }]);
+    else { P.worldsAlive = false; await ask(`<div class="em">💔</div><h3>그룹 스테이지 탈락 (${w}승)</h3><p class="c">세계의 벽은 높았다...</p>`); }
+  } else if (t === 'wk') {
+    const sorted = pool.sort((a, b) => a.str - b.str);
+    for (const [lab, opp] of [['월즈 8강', sorted[rint(2, 4)]], ['월즈 4강', sorted[rint(5, 6)]]]) {
+      const r = await playMatch(opp, lab, true);
+      if (!r.win) { P.worldsAlive = false; await ask(`<div class="em">💔</div><h3>${lab} 탈락</h3><p class="c">${opp.name}에게 패배했다. 세계 ${lab === '월즈 8강' ? '8' : '4'}강!</p>`); return; }
+      P.fans += 8000;
+      await ask(`<div class="em">🔥</div><h3>${lab} 승리!</h3>`, [{ t: '다음 경기', cls: 'gold' }]);
+    }
+  } else if (t === 'wf') {
+    const opp = pool.sort((a, b) => b.str - a.str)[rint(0, 1)];
+    const r = await playMatch(opp, '🏆 월드 챔피언십 결승전 🏆', true);
+    P.worldsAlive = false;
+    if (r.win) {
+      const title = `${P.year}년차 월드 챔피언십 우승`;
+      P.hist.titles.push(title); P.hist.log.push('🌍 ' + title);
+      P.money += 150000000; P.fans += 100000; stressAdd(-50);
+      await ask(`<div class="em">🌍🏆</div><h3>월드 챔피언!!!</h3><p class="c">${P.name}, 세계 최고의 자리에 오르다!<br>소환사의 컵을 들어올렸다!<br><br>상금 💰1.5억 원 · 팬 +10만</p>`, [{ t: '전설의 시작', cls: 'gold' }]);
+      checkAchievements();
+    } else {
+      P.money += 50000000; P.fans += 30000;
+      await ask(`<div class="em">🥈</div><h3>월즈 준우승</h3><p class="c">세계 2위. 충분히 대단하지만... 너무 아쉽다.</p>`);
+    }
+  }
+}
+
+async function contracts() {
+  const o = ovr();
+  if (P.stage === 'ama') return;
+  const avg = P.ratings.length ? P.ratings.reduce((a, b) => a + b, 0) / P.ratings.length : 6;
+  const offers = [];
+  if (P.stage === 'pro') {
+    const cur = P.pro[P.teamId];
+    if (avg >= 5 || o >= cur.starter) offers.push({ team: cur, renew: true });
+    for (const t of shuffle(P.pro)) {
+      if (t.id === cur.id || offers.length >= 3) continue;
+      if (o >= t.starter - 2 && Math.random() < .55) offers.push({ team: t });
+    }
+  } else {
+    for (const t of shuffle(P.pro)) {
+      if (offers.length >= 2) break;
+      if (o >= t.starter - 3 && Math.random() < .6) offers.push({ team: t, pro: true });
+    }
+    offers.push({ team: P.aca[P.teamId], renew: true, aca: true });
+  }
+  if (!offers.length) {
+    const t = P.aca[P.teamId];
+    await ask(`<div class="em">📉</div><h3>재계약 불발</h3><p class="c">${P.pro[P.teamId].name}이 재계약을 하지 않았다.<br>${t.name}(2군)로 내려간다.</p>`);
+    P.stage = 'aca'; P.salary = 300000; return;
+  }
+  const html = `<div class="em">📝</div><h3>스토브리그 - 계약 제안</h3><p class="c" style="color:#9aa4b2">시즌 평균 평점 ${avg.toFixed(1)} · 종합 ${Math.round(o)}</p>`;
+  const btns = offers.map(of => {
+    const isPro = !of.aca;
+    let sal = isPro ? Math.round((800000 + Math.pow(Math.max(0, o - 50), 2) * 18000 + P.fans * 8) * (of.renew ? 1 : 1.1) * (1 + (of.team.str - 70) / 60) / 10000) * 10000 : 300000;
+    if (P.bonds?.mina?.aff >= 50) sal = Math.round(sal * 1.2);
+    of.sal = sal;
+    return { t: `${of.renew ? '🔁 재계약' : '✉️ 이적'} ${of.team.name}${isPro ? '' : ' (2군)'}<br><small style="font-weight:500">팀 전력 ${of.team.str} · 기본 제시 ${won(sal * YEAR_WEEKS)}원/년</small>`, cls: of.renew ? 'gray' : 'purple' };
+  });
+  const i = await ask(html, btns);
+  const of = offers[i];
+
+  const finalSal = await negotiateSalary(of.team, of.sal, of.renew);
+  P.salary = finalSal;
+
+  if (of.aca) { P.stage = 'aca'; }
+  else {
+    if (P.teamId !== of.team.id || P.stage !== 'pro') P.syn = 0;
+    P.stage = 'pro'; P.teamId = of.team.id; P.hist.bestStage = 'pro';
+    of.team.starter = Math.max(of.team.starter, o);
+    if (!of.renew) P.hist.log.push(`${P.year}년차 ${of.team.name} 이적`);
+  }
+  toast('계약 완료!');
+}
+
+async function scouting() {
+  if (P.scoutCD > 0) { P.scoutCD--; return; }
+  const ph = phaseOf(P.week);
+  if (ph.t === 'po' || ph.t.startsWith('w')) return;
+  const o = ovr();
+  const canScout = P.stage === 'ama' && (P.rank.t >= 7 || (P.rank.t >= 6 && (P.pcBangWins || 0) >= 1));
+  if (canScout) {
+    const direct = P.pro.filter(t => o >= t.starter - 1).sort((a, b) => b.str - a.str);
+    if (P.rank.t >= 8 && direct.length && Math.random() < .45) {
+      const t = direct[0];
+      const i = await ask(`<div class="em">📨</div><h3>1군 직행 스카우트!</h3><p class="c"><b>${t.name}</b>(전력 ${t.str}) 감독에게서 연락이 왔다.<br>"솔랭 ${TIERS[P.rank.t]} 아이디 맞으시죠? 바로 주전으로 쓰고 싶습니다."</p>`,
+        [{ t: '연봉 협상 및 입단!', cls: 'gold' }, { t: '좀 더 고민한다', cls: 'gray' }]);
+      if (i === 0) {
+        const base = salaryFor(t);
+        const finalSal = await negotiateSalary(t, base, false);
+        P.stage = 'pro'; P.teamId = t.id; P.salary = finalSal; P.hist.bestStage = 'pro';
+        t.starter = Math.max(t.starter, o);
+        P.hist.log.push(`${P.year}년차 ${t.name} 1군 입단 (직행)`);
+        await checkHeroineUnlocks();
+        checkAchievements();
+      } else P.scoutCD = 4;
+      return;
+    }
+    if (Math.random() < .4) {
+      const t = pick(P.aca);
+      const i = await ask(`<div class="em">📨</div><h3>스카우트 제안</h3><p class="c"><b>${t.name}</b>(${P.pro[t.id].name} 2군)에서 입단 테스트 제안이 왔다!<br>"${TIERS[P.rank.t]} 찍으셨던데, 연습생으로 와보실래요?"</p>
+        <p class="c" style="color:#9aa4b2">2군에서 활약하면 1군 콜업 기회!</p>`,
+        [{ t: '입단한다', cls: 'gold' }, { t: '거절 (더 높은 곳을 노린다)', cls: 'gray' }]);
+      if (i === 0) {
+        P.stage = 'aca'; P.teamId = t.id; P.salary = 300000; P.syn = 0; P.hist.bestStage = 'aca';
+        P.hist.log.push(`${P.year}년차 ${t.name} 입단 (연습생)`);
+        await ask(`<div class="em">🎉</div><h3>프로 연습생이 되었다!</h3><p class="c">이제 매주 주말 KCL 챌린저스 경기에 출전합니다.<br>🤝 팀 스크림으로 팀 호흡을 맞추세요.</p>`);
+        await checkHeroineUnlocks();
+        checkAchievements();
+      } else P.scoutCD = 3;
+    }
+  }
+}
+
+// ======================================================================
+// 랜덤 이벤트
+// ======================================================================
+const EVENTS = [
+  // 1. 단골 PC방 라면 야식 럭키 찬스
+  { c: () => P.stage === 'ama' || Math.random() < 0.4, f: async () => {
+    await ask(`<div class="em">🍜</div><h3>단골 PC방 사장님의 럭키 야식!</h3>
+      <p class="c">"총각, 밤새 연습하느라 고생하네! 이건 서비스야. 든든하게 먹고 해!"<br>
+      <b>특제 치즈라면 + 공기밥 + 웰치스 세트</b>를 받았습니다!</p>
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
+        <span class="badge-pill bg-green">❤️ 체력 +30</span>
+        <span class="badge-pill bg-green">😵 스트레스 -20</span>
+      </div>`, [{ t: '잘 먹겠습니다! (감사 인사)', cls: 'gold' }]);
+    hpAdd(30); stressAdd(-20);
+  }},
+  // 2. 아카데미 연습생의 1:1 맞짱 내기
+  { c: () => P.bestT >= 5, f: async () => {
+    const oppTier = TIERS[Math.min(9, P.rank.t + 1)];
+    const i = await ask(`<div class="em">⚔️</div><h3>아카데미 연습생의 도발!</h3>
+      <p class="c">다른 구단 아카데미 2군 연습생이 귓속말을 걸어왔습니다.<br>
+      "님 소문 듣고 왔는데 미드 1:1 퍼블빵 80만 원 내기빵 콜?"</p>`,
+      [{ t: '💪 1:1 맞짱 수락 (피지컬 승부)', cls: 'red' }, { t: '✋ 솔랭에 집중한다 (거절)', cls: 'gray' }]);
+    if (i === 0) {
+      if (Math.random() < clamp(sig((P.s.mech - 35) / 5.0), 0.35, 0.85)) {
+        playJackpotSound();
+        P.money += 800000; grow('mech', 2.0); grow('lane', 2.0);
+        await ask(`<div class="em">🎉</div><h3>1:1 압승!</h3><p class="c">화려한 콤보로 3분 만에 솔로킬을 따냈습니다!<br>
+        💰 +80만 원 획득 · 피지컬/라인전 +2.0!</p>`);
+      } else {
+        P.money = Math.max(0, P.money - 400000); stressAdd(15);
+        toast('아쉽게 석패했습니다... 스트레스↑');
+      }
+    }
+  }},
+  // 3. 천상계 저격 매칭 역전승 & 숏폼 떡상
+  { c: () => P.rank.t >= 6, f: async () => {
+    playJackpotSound();
+    P.fans += 8000; grow('mental', 2.5);
+    await ask(`<div class="em">🔥</div><h3>천상계 혈투 숏폼 떡상!</h3>
+      <p class="c">솔랭에서 프로게이머 3명과 매칭된 50분 명경기에서 대역전승을 거두었습니다!<br>
+      당신의 한타 슈퍼플레이 클립이 유튜브 쇼츠 조회수 200만을 돌파했습니다!</p>
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
+        <span class="badge-pill bg-green">👥 팬 +8,000</span>
+        <span class="badge-pill bg-purple">🧠 멘탈 +2.5</span>
+      </div>`, [{ t: '영상 확인하기', cls: 'gold' }]);
+  }},
+  // 4. OP 신메타 꿀통 발굴
+  { c: () => true, f: async () => {
+    addLP(30); grow('lane', 2.0);
+    await ask(`<div class="em">💡</div><h3>OP 신메타 빌드 꿀통 발견!</h3>
+      <p class="c">밤샘 리플레이 분석 중 사기적인 룬과 아이템 트리 조합을 찾아냈습니다!<br>
+      솔로랭크에서 7연승을 달리며 점수를 폭풍 복사했습니다!</p>
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
+        <span class="badge-pill bg-green">🏅 솔랭 LP +30</span>
+        <span class="badge-pill bg-purple">⚔️ 라인전 +2.0</span>
+      </div>`, [{ t: '기분 최고다!', cls: 'gold' }]);
+  }},
+  // 5. 열혈팬의 기프티콘과 장비 조공
+  { c: () => P.fans > 500, f: async () => {
+    hpAdd(20); stressAdd(-15); grow('mech', 1.0);
+    await ask(`<div class="em">🎁</div><h3>열혈팬의 서프라이즈 선물</h3>
+      <p class="c">팬 한 분이 "선수님 늘 응원해요!"라며 프리미엄 비타민 박스와 최고급 마우스패드를 보내왔습니다.</p>
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
+        <span class="badge-pill bg-green">❤️ 체력 +20</span>
+        <span class="badge-pill bg-green">😵 스트레스 -15</span>
+        <span class="badge-pill bg-purple">🎯 피지컬 +1.0</span>
+      </div>`, [{ t: '감사히 받는다', cls: 'gold' }]);
+  }},
+  // 6. 소꿉친구/연인의 기습 도시락 방문
+  { c: () => Object.values(P.bonds || {}).some(b => b.unlocked && b.aff >= 30), f: async () => {
+    const unHeroines = Object.keys(P.bonds || {}).filter(k => P.bonds[k]?.unlocked && P.bonds[k]?.aff >= 30);
+    const hid = unHeroines.length > 0 ? pick(unHeroines) : 'jieun';
+    const h = HEROINES[hid] || HEROINES.jieun;
+    if (P.bonds && P.bonds[hid]) P.bonds[hid].aff = Math.min(100, (P.bonds[hid].aff || 0) + 8);
+    hpAdd(25); stressAdd(-30);
+    await showHeroineCutscene(hid, `<h3>🍱 사랑이 담긴 깜짝 도시락!</h3>
+      <div class="vn-dialogue">"너 맨날 컵라면만 먹는 거 다 알아. 밥은 든든하게 먹으면서 연습해야지! 내가 좋아하는 반찬 가득 싸왔어, 얼른 먹어봐!"</div>
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:8px">
+        <span class="badge-pill bg-pink">💖 ${h.name} 호감도 +8♥</span>
+        <span class="badge-pill bg-green">❤️ 체력 +25</span>
+        <span class="badge-pill bg-green">😵 스트레스 -30</span>
+      </div>`, [{ t: '너무 감동이야', cls: 'pink' }], h.dates[0].img, '연습실 방문');
+  }},
+  // 7. 라이엇 서버 긴급 롤백 점검으로 꿀잠
+  { c: () => Math.random() < 0.35, f: async () => {
+    hpAdd(40); stressAdd(-25);
+    await ask(`<div class="em">⚡</div><h3>라이엇 서버 긴급 점검</h3>
+      <p class="c">서버 긴급 롤백 패치로 협곡이 6시간 동안 닫혔습니다.<br>
+      어쩔 수 없이 일찍 침대에 누워 모처럼 꿀잠을 잤습니다.</p>
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
+        <span class="badge-pill bg-green">❤️ 체력 +40</span>
+        <span class="badge-pill bg-green">😵 스트레스 -25</span>
+      </div>`, [{ t: '개운하다!', cls: 'gold' }]);
+  }},
+  // 8. 한방 스포츠 명의의 손목 침술 봉사
+  { c: () => true, f: async () => {
+    hpAdd(25); grow('mech', 1.8);
+    await ask(`<div class="em">🩺</div><h3>스포츠 의학 명의의 특별 케어</h3>
+      <p class="c">프로 선수 전담 한의학 명의가 방문하여 손목 신경 테라피 침술을 놓아주었습니다.<br>
+      손목 피로가 씻은 듯이 풀리며 손가락이 가벼워졌습니다!</p>
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
+        <span class="badge-pill bg-green">❤️ 체력 +25</span>
+        <span class="badge-pill bg-purple">🎯 피지컬 +1.8</span>
+      </div>`, [{ t: '감사합니다 선생님!', cls: 'gold' }]);
+  }},
+  // 9. 악플 테러 대처
+  { c: () => P.fans > 800, f: async () => {
+    const i = await ask(`<div class="em">💬</div><h3>악플 테러</h3><p class="c">"쟤 왜 프로함?" "손이 느려졌네" 커뮤니티에 비난 글이 올라왔습니다.</p>`,
+      [{ t: '😶 무시한다 (멘탈 판정)' }, { t: '📡 방송에서 정면 반박' }, { t: '📴 SNS를 끊고 연습' }]);
+    if (i === 0) { if (Math.random() < P.s.mental / 100) { grow('mental', 1.5); toast('흔들리지 않았다! 멘탈↑'); } else { stressAdd(20); toast('신경이 쓰인다... 스트레스↑'); } }
+    if (i === 1) { if (Math.random() < .5) { P.fans += Math.round(P.fans * .08); toast('사이다 반박! 팬 증가'); } else { P.fans = Math.round(P.fans * .95); stressAdd(15); toast('역풍을 맞았다...'); } }
+    if (i === 2) { stressAdd(-5); P.fans = Math.round(P.fans * .98); toast('조용히 연습에 집중한다'); }
+  }},
+  // 10. 스폰서 브랜드 제안
+  { c: () => P.fans > 2000, f: async () => {
+    let mul = 1;
+    if (P.bonds?.sora?.aff >= 30) mul = 2;
+    if (P.bonds?.sea?.aff >= 75) { P.money += 10000000; }
+    if (P.hasSupercar) { stressAdd(-8); }
+    if (P.hasPenthouse) { hpAdd(15); }
+    const amt = (Math.round(P.fans * rnd(90, 180) / 10000) * 10000 + 800000) * mul;
+    await ask(`<div class="em">🤑</div><h3>스폰서 제안</h3><p class="c">게이밍 기어 브랜드에서 개인 스폰서 제안이 왔습니다!<br>💰 +${won(amt)}원 ${mul > 1 ? '(소라 버프 2배)' : ''}</p>`, [{ t: '감사합니다!', cls: 'gold' }]);
+    P.money += amt;
+  }},
+  // 11. 팀원과의 갈등 (프로 전용)
+  { c: () => P.stage !== 'ama', f: async () => {
+    if (P.bonds?.mina?.aff >= 30) {
+      toast('매니저 민아가 팀원 간의 소통을 원활히 조율했습니다.');
+      return;
+    }
+    const i = await ask(`<div class="em">😤</div><h3>팀원과의 갈등</h3><p class="c">스크림 도중 콜 문제로 정글러와 언성을 높였습니다.</p>`,
+      [{ t: '🗣️ 먼저 대화를 청한다' }, { t: '😑 그냥 참는다' }, { t: '📢 코치에게 말한다' }]);
+    if (i === 0) { P.syn = Math.min(5, P.syn + 1); grow('team', 1); toast('오해를 풀었다. 팀 호흡↑'); }
+    if (i === 1) { stressAdd(15); }
+    if (i === 2) { if (Math.random() < .5) { P.syn = Math.min(5, P.syn + .5); toast('코치가 잘 중재했다'); } else { P.syn = Math.max(0, P.syn - 1); stressAdd(8); toast('분위기가 더 어색해졌다...'); } }
+  }}
+];
+async function randomEvent() {
+  const ev = shuffle(EVENTS).find(e => e.c());
+  if (ev) await ev.f();
+}
+
+// ======================================================================
+// 엔딩 (멀티 로맨스 / 하렘 엔딩 지원)
+// ======================================================================
+async function ending(natural) {
+  const h = P.hist;
+  const worldsT = h.titles.filter(t => t.includes('월드')).length;
+  const leagueT = h.titles.filter(t => t.includes('KCL ') && !t.includes('챌린저스')).length;
+  let grade, desc;
+  if (worldsT >= 2) { grade = '🐐 GOAT'; desc = '역사상 최고의 선수. 모두가 당신의 이름을 기억한다.'; }
+  else if (worldsT === 1) { grade = '👑 전설'; desc = '월드 챔피언. 명예의 전당에 이름을 올렸다.'; }
+  else if (leagueT >= 2) { grade = '⭐ 레전드'; desc = 'KCL을 지배한 선수.'; }
+  else if (leagueT === 1 || h.worlds > 0) { grade = '🏅 스타 플레이어'; desc = '정상에 오른 경험이 있는 선수.'; }
+  else if (h.bestStage === 'pro') { grade = '🎽 프로게이머'; desc = '꿈의 무대에 섰던 선수.'; }
+  else if (h.bestStage === 'aca') { grade = '🌱 연습생 출신'; desc = '프로의 문턱까지 갔었다.'; }
+  else { grade = '🎮 솔랭 고수'; desc = `최고 ${TIERS[P.bestT]}. 프로의 꿈은 이루지 못했다.`; }
+
+  const loves80 = Object.keys(P.bonds).filter(k => P.bonds[k].aff >= 70);
+  let romanceHtml = '';
+
+  if (loves80.length >= 2) {
+    // 하렘 챔피언 엔딩
+    const imgsHtml = loves80.map(k => `
+      <div style="flex:1;max-width:90px;height:115px;border-radius:8px;overflow:hidden;border:1px solid #f472b6">
+        <img src="${HEROINES[k].img}" onerror="this.src='${HEROINES[k].fallback}'" style="width:100%;height:100%;object-fit:cover;object-position:top">
+      </div>
+    `).join('');
+
+    romanceHtml = `
+      <div style="margin-top:14px;padding:12px;background:#281534;border:2px solid #ec4899;border-radius:14px;text-align:center">
+        <h4 style="color:#f472b6;margin:0 0 6px">👑 [하렘 트루 엔딩] 모두에게 사랑받는 전설의 황제</h4>
+        <div style="display:flex;justify-content:center;gap:6px;margin:8px 0">
+          ${imgsHtml}
+        </div>
+        <p style="font-size:13px;line-height:1.6;color:#fbcfe8;margin:0">
+          소환사의 협곡에서 모든 트로피를 들어 올린 당신의 곁에는, 당신을 진심으로 사랑하는 ${loves80.map(k => `<b>${HEROINES[k].name}</b>`).join(', ')}이(가) 언제나 함께하고 있습니다.<br>
+          그녀들의 따뜻한 사랑 속에서 당신은 프로로서도, 한 사람으로서도 완벽한 전설이 되었습니다!
+        </p>
+      </div>
+    `;
+  } else if (loves80.length === 1) {
+    const rh = HEROINES[loves80[0]];
+    romanceHtml = `
+      <div style="margin-top:14px;padding:12px;background:#231733;border:1px solid #db2777;border-radius:12px;text-align:center">
+        <h4 style="color:#f472b6;margin:0 0 6px">💍 [인연 웨딩 엔딩] ${rh.name}과의 영원한 약속</h4>
+        <div style="width:100px;height:120px;border-radius:10px;overflow:hidden;margin:0 auto 8px">
+          <img src="${rh.img}" onerror="this.src='${rh.fallback}'" style="width:100%;height:100%;object-fit:cover;object-position:top">
+        </div>
+        <p style="font-size:13px;line-height:1.6;color:#fbcfe8;margin:0">
+          은퇴 후, 당신의 곁에는 가장 빛나는 순간과 가장 힘들었던 순간을 함께해 준 <b>${rh.name}</b>이(가) 있습니다.<br>
+          소환사의 협곡을 떠나, 이제 두 사람만의 행복하고 따뜻한 새로운 인생이 시작됩니다.
+        </p>
+      </div>
+    `;
+  }
+
+  const html = `<div class="em">🎬</div><h3>${natural ? '은퇴' : '커리어 종료'}</h3>
+    <div class="c" style="font-size:24px;font-weight:900;margin:6px 0">${grade}</div><p class="c">${desc}</p>
+    <div class="kv"><span>선수</span><b>${P.name} (${POS[P.pos].n})</b></div>
+    <div class="kv"><span>최종 종합 능력</span><b>${Math.round(ovr())}</b></div>
+    <div class="kv"><span>최고 티어</span><b>${TIERS[P.bestT]}</b></div>
+    <div class="kv"><span>공식 경기</span><b>${h.games}전 ${h.wins}승</b></div>
+    <div class="kv"><span>POG</span><b>${h.mvp}회</b></div>
+    <div class="kv"><span>월즈 진출</span><b>${h.worlds}회</b></div>
+    <div class="kv"><span>팬</span><b>${num(P.fans)}</b></div>
+    <div class="kv"><span>자산</span><b>${won(P.money)}원</b></div>
+    ${h.titles.length ? '<h4 style="margin:10px 0 4px">🏆 우승 기록</h4>' + h.titles.map(t => `<div>· ${t}</div>`).join('') : ''}
+    ${romanceHtml}`;
+
+  await ask(html, [{ t: '새 커리어 시작', cls: 'gold' }]);
+  store.del(SAVE); P = null; render();
+}
+
+// ======================================================================
+// 화면 렌더링
+// ======================================================================
+function bar(label, v, color, max = 100, showMax = false) {
+  return `<div class="bar"><div class="lab"><span>${label}</span><b>${Math.floor(v)}${showMax ? '/' + max : ''}</b></div>
+    <div class="tr"><div class="fi" style="width:${clamp(v / max * 100, 0, 100)}%;background:${color}"></div></div></div>`;
+}
+function stageName() {
+  if (P.stage === 'pro') return `🏟️ ${P.pro[P.teamId].name} <b>1군</b>`;
+  if (P.stage === 'aca') return `🏫 ${P.aca[P.teamId].name} <b>(2군)</b>`;
+  return '🎮 아마추어';
+}
+function nextSchedule() {
+  const ph = phaseOf(P.week);
+  const me = myTeam();
+  if (!me) {
+    if (P.rank.t >= 7) return ['📨', '마스터 이상! 프로팀 스카우트 연락을 기다리는 중...'];
+    return ['🎯', `목표: <b>마스터</b> 달성 → 프로팀 스카우트 (현재 ${TIERS[P.rank.t]})`];
+  }
+  const lg = P.stage === 'pro' ? P.pro : P.aca;
+  if (ph.t === 'reg') {
+    const opps = lg.filter(t => t.id !== me.id);
+    const opp = opps[(ph.r - 1 + P.year) % opps.length];
+    return ['⚔️', `이번 주말: <b>vs ${opp.name}</b> (전력 ${opp.str})<br><small style="color:#9aa4b2">${ph.sp} ${ph.r}R · 우리 팀 전력 ${teamPow().toFixed(1)} · 현재 ${me.w}승 ${me.l}패</small>`];
+  }
+  if (ph.t === 'po') return ['🏟️', `이번 주말: <b>${ph.sp} 플레이오프</b>`];
+  if (ph.t.startsWith('w')) return P.stage === 'pro' && P.worldsQ && P.worldsAlive ? ['🌍', '<b>월드 챔피언십</b> 진행 중!'] : ['📺', '월즈 기간 (관전 중)'];
+  if (ph.t === 'con') return ['📝', '이번 주말: <b>스토브리그 계약</b>'];
+  return ['🌴', `${ph.sp} - 다음 시즌 준비 기간`];
+}
+function recommend() {
+  if (P.hp < 30) return 'rest';
+  if (P.stress > 75) return 'date';
+  if (P.stage === 'ama') return 'solo';
+  if (P.syn < 2) return 'scrim';
+  return null;
+}
+if (!P.sns) P.sns = { posts: [], followers: 120 };
+  if (!P.dms) P.dms = { unread: 0, list: [] };
+function renderTop() {
+  if (!P) { $('#top').innerHTML = `<div class="l1"><span class="nm">프로의 길 : 인연</span></div>`; return; }
+  const ph = phaseOf(P.week);
+  $('#top').innerHTML = `<div class="l1"><span class="nm">${POS[P.pos].ic} ${P.name}</span>
+    <span class="pill">💰 ${won(P.money)}</span><span class="pill">👥 ${num(P.fans)}</span></div>
+    <div class="l2"><span>${P.age}세 · ${P.year}년차 ${P.week}주차</span><span>${ph.sp}</span></div>`;
+}
+
+function render() {
+  renderTop();
+  if (!P) return renderCreate();
+  const o = ovr(), rec = recommend(), [sic, stxt] = nextSchedule();
+
+  let skinBadge = '';
+  if (P.equippedSkin) {
+    const sk = SKINS.find(x => x.k === P.equippedSkin);
+    if (sk) skinBadge = `<span class="skin-tag ${sk.tagCls}" style="margin-left:4px">${sk.n}</span>`;
+  }
+
+  $('#main').innerHTML = `
+    <div class="card"><div class="prof">
+      <div class="ovr"><small>종합</small><b>${Math.round(o)}</b><small>${POS[P.pos].n}</small></div>
+      <div class="info">${stageName()}${skinBadge}<br>
+        <span class="tier" style="color:${TIER_C[P.rank.t]}">🏅 ${tierName()}</span><br>
+        <span style="color:#9aa4b2">${P.stage !== 'ama' ? `팀 호흡 ${'●'.repeat(Math.round(P.syn))}${'○'.repeat(5 - Math.round(P.syn))}` : `최고 티어 ${TIERS[P.bestT]}`}</span></div></div>
+      <div class="cond">${bar('❤️ 체력', P.hp, P.hp < 30 ? '#ef4444' : '#22c55e')}${bar('😵 스트레스', P.stress, P.stress > 70 ? '#ef4444' : '#f59e0b')}</div></div>
+      ${P.stress >= 75 ? `<div style="background:#450a0a;border:1px solid #ef4444;color:#fca5a5;padding:6px 10px;border-radius:10px;font-size:12px;font-weight:700;margin-bottom:8px;text-align:center">⚠️ 스트레스 위험! 꿀잠 휴식이나 인연 데이트로 번아웃을 예방하세요.</div>` : ''}
+      ${P.hp <= 30 ? `<div style="background:#451a03;border:1px solid #f97316;color:#fdba74;padding:6px 10px;border-radius:10px;font-size:12px;font-weight:700;margin-bottom:8px;text-align:center">⚠️ 체력 고갈 경고! 무리한 일정은 부상으로 이어집니다.</div>` : ''}
+      ${P.stage === 'ama' ? `<div style="background:#131d33;border:1px solid #3b82f6;border-radius:10px;padding:7px 10px;margin-bottom:8px;font-size:12px;display:flex;align-items:center;justify-content:space-between">
+        <div><b>🌱 데뷔 로드맵:</b> ${(P.pcBangWins || 0) > 0 ? `<span style="color:#4ade80">PC방 우승 ${P.pcBangWins}회 달성! (다이아몬드 스카우트 활성화)</span>` : `<span style="color:#fde047">🏆 PC방 토너먼트 우승 시 조기 스카우트 해금!</span>`}</div>
+      </div>` : ''}
+    <div class="card sched"><div class="ic">${sic}</div><div>${stxt}</div></div>
+    <div class="card"><h4>능력치 (스킨/장비 보너스 반영)</h4><div class="bars">${Object.keys(STATS).map(k => bar(STATS[k].n, P.s[k] + skinStatBonus(k), STATS[k].c)).join('')}</div></div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h4 style="margin:0">이번 주 일정 선택</h4>
+        <span style="font-size:11px;color:#fde047">⭐ 추천 일정</span>
+      </div>
+
+      <!-- 일정 카테고리 탭 -->
+      <div class="cat-tabs">
+        <button class="cat-tab ${activeActCat === 'all' ? 'active' : ''}" data-cat="all">전체</button>
+        <button class="cat-tab ${activeActCat === 'match' ? 'active' : ''}" data-cat="match">⚔️ 대회·솔랭</button>
+        <button class="cat-tab ${activeActCat === 'train' ? 'active' : ''}" data-cat="train">🎯 집중훈련</button>
+        <button class="cat-tab ${activeActCat === 'life' ? 'active' : ''}" data-cat="life">💖 인연·여가</button>
+      </div>
+
+      <!-- 직전 행동 1클릭 퀵 반복 바 -->
+      ${P.lastAction ? `
+        <div class="quick-action-bar">
+          <div style="flex:1;min-width:0;font-size:12.5px;color:#cbd5e1">
+            <span style="color:#c084fc;font-weight:800">⚡ 직전 일정:</span> <b>${(ACTS.find(x => x.k === P.lastAction) || {}).n || ''}</b>
+          </div>
+          <button class="btn purple" id="bQuickRepeat" style="padding:6px 14px;font-size:12px;border-radius:8px">
+            🔁 1클릭 반복
+          </button>
+        </div>
+      ` : ''}
+
+      <div class="acts">
+        ${ACTS.filter(a => (!a.team || P.stage !== 'ama') && (activeActCat === 'all' || a.cat === activeActCat)).map(a => `<button class="act ${a.pink ? 'pink' : ''} ${rec === a.k ? 'rec' : ''}" data-a="${a.k}" ${a.cost && P.money < a.cost ? 'disabled' : ''}>
+          <b>${a.n}${rec === a.k ? ' ⭐' : ''}</b><small>${a.d}</small></button>`).join('')}
+      </div>
+    </div>
+
+    <!-- 하단 독 메뉴바 -->
+    <div class="sub">
+      <button class="btn pink" id="bBond">💖 인연</button>
+      <button class="btn green" id="bWealth">🏢 자산/주식</button>
+      <button class="btn gold" id="bShop">🛒 상점/스킨</button>
+      <button class="btn purple" id="bAch">🏆 업적</button>
+      <button class="btn gray" id="bStand">📊 순위</button>
+      <button class="btn gray" id="bRec">📜 기록</button>
+    </div>
+    <div style="height:10px"></div>`;
+
+  $('#main').querySelectorAll('[data-a]').forEach(b => b.onclick = () => takeTurn(b.dataset.a));
+  $('#main').querySelectorAll('[data-cat]').forEach(b => b.onclick = () => { activeActCat = b.dataset.cat; render(); });
+  const qBtn = $('#bQuickRepeat');
+  if (qBtn && P.lastAction) qBtn.onclick = () => takeTurn(P.lastAction);
+  $('#bBond').onclick = showBondsModal;
+  const snsBtn = $('#bSns'); if (snsBtn) { snsBtn.onclick = showSnsModal; if (P.dms && P.dms.unread > 0) snsBtn.innerHTML = `📸 인스타·DM <span style="background:#ef4444;color:#fff;border-radius:99px;padding:1px 6px;font-size:10px">${P.dms.unread}</span>`; }
+  $('#bWealth').onclick = showWealthModal;
+  $('#bShop').onclick = showHubShop;
+  $('#bAch').onclick = showAchievementsModal;
+  $('#bStand').onclick = showStandings;
+  $('#bRec').onclick = showRecord;
+}
+
+// 인연 목록 모달
+async function showBondsModal() {
+  const cards = Object.keys(HEROINES).map(k => {
+    const h = HEROINES[k], b = P.bonds[k];
+    const un = b?.unlocked;
+    const aff = b?.aff || 0;
+    const lv = b?.lv || 0;
+    const statusTxt = lv >= 4 ? '💍 영원한 약속' : lv >= 3 ? '💖 연인' : lv >= 2 ? '🌸 썸' : un ? '🌱 호감' : '🔒 미해금';
+    const sCls = lv >= 3 ? 's3' : lv >= 2 ? 's2' : un ? 's1' : 's0';
+
+    return `
+      <div class="h-card ${un ? '' : 'locked'}">
+        <div class="h-thumb">
+          <img src="${h.img}" onerror="this.src='${h.fallback}'" alt="${h.name}">
+        </div>
+        <div class="h-info">
+          <div class="h-name">
+            <b>${h.name} <small style="color:#94a3b8;font-size:12px">(${h.age}세)</small></b>
+            <span class="status ${sCls}">${statusTxt}</span>
+          </div>
+          <div style="font-size:11.5px;color:#f472b6;font-weight:700">${h.tag}</div>
+          <div class="h-buff"><b>인연 효과:</b> ${un ? h.buff : '🔒 ' + h.unlockDesc}</div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:#cbd5e1">
+              <span>호감도</span><b>${aff} / 100 ♥</b>
+            </div>
+            <div class="h-bar"><div class="h-bar-fill" style="width:${aff}%"></div></div>
+            <div style="font-size:11px;color:#fde047;margin-top:3px">${(() => {
+              const nextM = h.story.find(s => s.req > aff);
+              return nextM ? `📖 다음 스토리: 호감도 ${nextM.req}♥ (Lv.${nextM.lv})` : `👑 모든 인연 스토리 완독`;
+            })()}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  await ask(`<h3>💖 인연 라인업 (멀티 공략 가능)</h3>
+    <p class="c" style="color:#9aa4b2;font-size:12px;margin-bottom:10px">모든 히로인과 동시에 인연을 맺고 버프를 전부 중첩 적용받을 수 있습니다.</p>
+    ${cards}`,
+    [{ t: '닫기', cls: 'gray' }]
+  );
+}
+
+// 상점 통합 모달
+
+// ======================================================================
+// 🖱️ 게이밍 기어 & 🎨 챔피언 스킨 데이터베이스
+// ======================================================================
+const GEAR = [
+  { k: 'mouse1', n: '프로 옵티컬 게이밍 마우스', c: 150000, b: 0.08, d: '피지컬 훈련 효율 +8%' },
+  { k: 'kb1', n: '하이엔드 기계식 텐키리스 키보드', c: 220000, b: 0.12, d: '피지컬 훈련 효율 +12%' },
+  { k: 'mon1', n: '240Hz e스포츠 전용 게이밍 모니터', c: 650000, b: 0.18, d: '모든 훈련 효율 +18%' },
+  { k: 'chair1', n: '인체공학 게이밍 체어', c: 1200000, b: 0.25, d: '훈련 효율 +25% & 스트레스 감쇄' },
+  { k: 'pc1', n: '초고사양 커스텀 수랭 게이밍 PC', c: 4500000, b: 0.40, d: '훈련 효율 +40% 및 집중력 극대화' }
+];
+
+const SKINS = [
+  { k: 'skin_epic', n: '도전자 스킨', c: 1000000, tagCls: 'tag-epic', st: { mech: 2, lane: 2 }, d: '피지컬 +2, 라인전 +2' },
+  { k: 'skin_legend', n: '불사대마왕 헌정 스킨', c: 5000000, tagCls: 'tag-legend', st: { mech: 4, lane: 4, macro: 4, team: 4 }, d: '전 스탯 +4' },
+  { k: 'skin_mythic', n: '월즈 챔피언 기념 스킨', c: 20000000, tagCls: 'tag-mythic', st: { mech: 8, lane: 8, macro: 8, team: 8 }, d: '전 스탯 +8 (월즈 우승 시 50% 할인)' }
+];
+
+// ======================================================================
+// ⚔️ 15종 챔피언 데이터베이스 & 숙련도 시스템 (방향 1)
+// ======================================================================
+const CHAMPIONS = [
+  { id: 'azir', n: '아지르', role: 'mid', t: '황제의 진형', st: { macro: 1.3, team: 1.2 }, strongVs: ['sylas', 'zed'] },
+  { id: 'orianna', n: '오리아나', role: 'mid', t: '명품 충격파', st: { team: 1.4, lane: 1.1 }, strongVs: ['azir', 'leblanc'] },
+  { id: 'zed', n: '제드', role: 'mid', t: '그림자 암살', st: { mech: 1.4, lane: 1.2 }, strongVs: ['orianna', 'azir'] },
+  { id: 'sylas', n: '사일러스', role: 'mid', t: '궁극기 강탈', st: { mech: 1.3, team: 1.3 }, strongVs: ['orianna', 'yasuo'] },
+  { id: 'leblanc', n: '르블랑', role: 'mid', t: '환영 왜곡', st: { lane: 1.4, mech: 1.2 }, strongVs: ['zed', 'sylas'] },
+  { id: 'yasuo', n: '야스오', role: 'mid', t: '바람 장막', st: { mech: 1.5, team: 1.1 }, strongVs: ['orianna', 'azir'] },
+  { id: 'kaisa', n: '카이사', role: 'adc', t: '사냥본능 돌진', st: { mech: 1.3, team: 1.3 }, strongVs: ['jinx', 'zeri'] },
+  { id: 'zeri', n: '제리', role: 'adc', t: '스파크 카이팅', st: { mech: 1.4, team: 1.2 }, strongVs: ['kaisa'] },
+  { id: 'jinx', n: '징크스', role: 'adc', t: '신난다 난사', st: { team: 1.5, lane: 1.0 }, strongVs: ['zeri'] },
+  { id: 'leesin', n: '리 신', role: 'jg', t: '용의 분노 킥', st: { mech: 1.4, macro: 1.2 }, strongVs: ['vi'] },
+  { id: 'vi', n: '바이', role: 'jg', t: '기동타격 록온', st: { team: 1.3, macro: 1.2 }, strongVs: ['leesin'] },
+  { id: 'nautilus', n: '노틸러스', role: 'sup', t: '폭뢰 닻줄', st: { team: 1.4, lane: 1.1 }, strongVs: ['thresh'] },
+  { id: 'thresh', n: '쓰레쉬', role: 'sup', t: '사형선고 랜턴', st: { mech: 1.3, macro: 1.3 }, strongVs: ['nautilus'] },
+  { id: 'aatrox', n: '아트록스', role: 'top', t: '세계의 종말', st: { mech: 1.3, lane: 1.3 }, strongVs: ['ksante'] },
+  { id: 'ksante', n: '크산테', role: 'top', t: '총공세 격퇴', st: { team: 1.4, lane: 1.2 }, strongVs: ['aatrox'] }
+];
+
+function getChampMastery(id) {
+  if (!P.champs) P.champs = {};
+  return P.champs[id] || { lv: 1, pts: 0 };
+}
+
+function addChampMastery(id, pts = 100) {
+  if (!P.champs) P.champs = {};
+  if (!P.champs[id]) P.champs[id] = { lv: 1, pts: 0 };
+  const cm = P.champs[id];
+  cm.pts += pts;
+  if (cm.pts >= cm.lv * 300 && cm.lv < 7) {
+    cm.lv++;
+    toast(`⭐ ${CHAMPIONS.find(c => c.id === id)?.n || id} 숙련도 Lv.${cm.lv} 달성!`);
+  }
+}
+
+// ======================================================================
+// 🏢 부동산, 주식/코인 재테크 & 럭셔리 라이프 (방향 3)
+// ======================================================================
+const STOCKS = [
+  { id: 't1', n: 'T1 e스포츠 홀딩스', p: 45000, base: 45000, vol: 0.08, d: '안정적인 국내 1위 전통 명문' },
+  { id: 'geng', n: '젠지 글로벌 엔터', p: 32000, base: 32000, vol: 0.12, d: '글로벌 자본 유치 고성장주' },
+  { id: 'riot', n: '라이엇 테크놀로지', p: 180000, base: 180000, vol: 0.05, d: '안정 배당 우량주' },
+  { id: 'lolcoin', n: '협곡 비트코인 (LoL Token)', p: 850000, base: 850000, vol: 0.35, d: '초고위험 초고수익 급등락 코인' }
+];
+
+const REAL_ESTATE = [
+  { id: 'room', n: '신림동 풀옵션 원룸', c: 60000000, rent: 600000, d: '첫 독립의 추억. 주간 월세 60만 원' },
+  { id: 'officetel', n: '강남 신축 오피스텔', c: 250000000, rent: 2800000, d: '프로 선수들의 워너비. 주간 월세 280만 원' },
+  { id: 'apt', n: '성수동 한강뷰 트리마제 아파트', c: 1500000000, rent: 18000000, d: '초호화 한강 조망. 신혼집 가능! 주간 월세 1,800만 원' },
+  { id: 'penthouse', n: '한남동 더힐 최고급 펜트하우스', c: 4500000000, rent: 55000000, d: '상위 0.1% 펜트하우스. 주간 월세 5,500만 원' },
+  { id: 'building', n: '강남 테헤란로 12층 빌딩', c: 12000000000, rent: 160000000, d: '꿈의 건물주 등극! 주간 월세 1억 6천만 원 불로소득' }
+];
+
+function updateStockMarket() {
+  if (!P.stocks) P.stocks = {};
+  for (const s of STOCKS) {
+    const change = rnd(-s.vol, s.vol);
+    s.p = Math.max(1000, Math.round(s.p * (1 + change)));
+  }
+}
+
+// ======================================================================
+// 👑 아시안게임 국가대표 & 2회차 계승 (방향 4)
+// ======================================================================
+async function checkAsianGames() {
+  if (P.week === 13 && (P.year === 2 || P.year === 4) && P.stage === 'pro' && ovr() >= 60) {
+    const i = await ask(`<div class="em">🇰🇷</div><h3>대한민국 e스포츠 국가대표 발탁!</h3>
+      <p class="c">국가대표 선발위원회: "국내 최고의 기량을 입증한 ${P.name} 선수를 아시안게임 태극마크 에이스로 선발합니다!"</p>`,
+      [{ t: '태극마크를 달고 출전한다!', cls: 'gold' }, { t: '컨디션 조절을 위해 사양한다', cls: 'gray' }]);
+    if (i === 0) {
+      await playAsianGamesTournament();
+    }
+  }
+}
+
+async function playAsianGamesTournament() {
+  await ask(`<div class="em">🏟️</div><h3>아시안게임 e스포츠 본선 개막</h3>
+    <p class="c">태극기를 가슴에 품고 아시안게임 무대에 섭니다.<br>4강전(대만) ➔ 결승전(한중전) 금메달 결정전!</p>`, [{ t: '4강전 출전', cls: 'gold' }]);
+
+  const resSemi = await playMatch({ name: '차이니즈 타이베이', str: 76 }, '아시안게임 4강전');
+  if (!resSemi.win) {
+    await ask(`<div class="em">🥉</div><h3>아시안게임 동메달</h3><p class="c">4강에서 아쉽게 석패하여 동메달을 목에 걸었습니다.</p>`);
+    return;
+  }
+
+  await ask(`<div class="em">🔥</div><h3>결승전 진출: 운명의 한중전!</h3><p class="c">금메달과 체육훈장, 병역 특례가 걸린 최종 결전입니다!</p>`, [{ t: '결승전 격돌!', cls: 'red' }]);
+  const resFinal = await playMatch({ name: '중국 국가대표 드림팀', str: 84 }, '아시안게임 결승전 (FINAL)', true);
+
+  if (resFinal.win) {
+    playJackpotSound();
+    P.asianGold = true;
+    P.fans += 50000;
+    P.money += 50000000;
+    grow('mental', 10);
+    P.hist.titles.push(`${P.year}년차 아시안게임 금메달 🥇`);
+    await ask(`
+      <div style="text-align:center">
+        <div style="font-size:54px;animation:pop .4s ease-out">🥇🇰🇷</div>
+        <div style="background:linear-gradient(90deg,#f59e0b,#ef4444);color:#fff;padding:6px 16px;border-radius:99px;font-weight:900;font-size:16px;display:inline-block;margin:8px 0">
+          대한민국 e스포츠 아시안게임 금메달 제패!
+        </div>
+        <p class="c">전 국민이 당신의 이름을 연호합니다! 체육훈장 청룡장 수여 & 병역 특례 혜택!</p>
+        <div style="display:flex;justify-content:center;gap:6px">
+          <span class="badge-pill bg-gold">💰 포상금 +5,000만 원</span>
+          <span class="badge-pill bg-green">👥 국민 팬 +50,000</span>
+          <span class="badge-pill bg-purple">👑 국가대표 영웅 칭호</span>
+        </div>
+      </div>
+    `, [{ t: '대한민국 만세!!', cls: 'gold' }]);
+    checkAchievements();
+  } else {
+    P.money += 20000000;
+    P.fans += 20000;
+    await ask(`<div class="em">🥈</div><h3>아시안게임 은메달</h3><p class="c">치열한 접전 끝에 값진 은메달을 획득했습니다!</p>`);
+  }
+}
+
+// ======================================================================
+// ⚔️ 경기 전 밴픽 & 클러치 슈퍼플레이 QTE (방향 1)
+// ======================================================================
+async function showBanPickModal(opp) {
+  const oppChamps = shuffle(CHAMPIONS).slice(0, 3);
+  let bannedChamp = null;
+  let myChamp = CHAMPIONS[0];
+
+  const banBtns = oppChamps.map(c => ({
+    t: `🚫 [밴] ${c.n} (${c.t})`,
+    cls: 'red',
+    champ: c
+  }));
+
+  const banIdx = await ask(`
+    <h3>⚔️ 경기 전 밴픽 전략 회의</h3>
+    <p class="c" style="color:#9aa4b2">상대 <b>${opp.name}</b>의 주요 시그니처 카드 중 1개를 필밴하세요.</p>
+  `, banBtns);
+
+  bannedChamp = oppChamps[banIdx]?.id || oppChamps[0].id;
+
+  const pickBtns = CHAMPIONS.filter(c => c.id !== bannedChamp).map(c => {
+    const cm = getChampMastery(c.id);
+    return {
+      t: `⭐ ${c.n} <small>Lv.${cm.lv}</small><br><small style="color:#93c5fd">${c.t}</small>`,
+      cls: 'gold',
+      champ: c
+    };
+  });
+
+  const pickIdx = await ask(`
+    <h3>🎯 나의 출전 챔피언 선택</h3>
+    <p class="c" style="color:#9aa4b2">오늘 승부를 결정지을 나의 챔피언을 선택하세요.</p>
+  `, pickBtns.slice(0, 6));
+
+  myChamp = pickBtns[pickIdx]?.champ || CHAMPIONS[0];
+  addChampMastery(myChamp.id, 150);
+  P.currentChamp = myChamp;
+  toast(`⚔️ ${myChamp.n} 픽 완료! (상대 ${CHAMPIONS.find(c => c.id === bannedChamp)?.n} 밴)`);
+  return { myChamp, bannedChamp };
+}
+
+async function triggerClutchQTE() {
+  playJackpotSound();
+  const c = P.currentChamp || CHAMPIONS[0];
+  const qteIdx = await ask(`
+    <div class="clutch-box">
+      <div style="font-size:38px">⚡🚨</div>
+      <h3 style="color:#fde047;margin:4px 0">승부처! 장로 드래곤 클러치 한타!</h3>
+      <p style="color:#fecaca;font-size:13px;line-height:1.5;margin:6px 0">
+        경기 시간 38분, 팽팽한 대치 상황! ${c.n}의 손끝에 경기의 운명이 걸렸습니다!
+      </p>
+    </div>
+  `, [
+    { t: `🔥 ${c.n} [점멸 5인 궁극기 이니시!] (피지컬 판정)`, cls: 'red' },
+    { t: `🎯 [적 원딜 기습 암살 후 탈출!] (판단 판정)`, cls: 'gold' },
+    { t: `🛡️ [바론/장로 스틸 점멸 스마이트!] (운영 판정)`, cls: 'purple' }
+  ]);
+
+  const success = Math.random() < clamp(sig((ovr() - 50) / 4.5), 0.4, 0.95);
+  if (success) {
+    playJackpotSound();
+    grow('mech', 2.0); grow('mental', 2.0);
+    await ask(`
+      <div style="text-align:center">
+        <div style="font-size:52px">🔥👑</div>
+        <h3 style="color:#4ade80">슈퍼플레이 작렬! 펜타킬 에이스!</h3>
+        <p class="c">해설진: "말도 안 되는 피지컬입니다! ${P.name}이 혼자서 협곡을 뒤집어버립니다!!"</p>
+      </div>
+    `, [{ t: '승리를 확정짓는다!', cls: 'gold' }]);
+    return 15;
+  } else {
+    stressAdd(10);
+    toast('상대의 거센 반격에 아쉽게 슈퍼플레이가 막혔습니다!');
+    return -5;
+  }
+}
+
+// ======================================================================
+// 🏢 자산 관리 & 주식 거래소 모달 (방향 3 UI)
+// ======================================================================
+let assetTab = 'stocks';
+async function showWealthModal() {
+  while (true) {
+    if (!P.stocks) P.stocks = {};
+    if (!P.properties) P.properties = [];
+
+    let totalRent = P.properties.reduce((sum, id) => {
+      const prop = REAL_ESTATE.find(r => r.id === id);
+      return sum + (prop ? prop.rent : 0);
+    }, 0);
+
+    let body = `
+      <div class="tab-row">
+        <button class="${assetTab === 'stocks' ? 'act' : ''}" id="tabStk">📈 e스포츠 주식/코인</button>
+        <button class="${assetTab === 'real' ? 'act' : ''}" id="tabReal">🏢 부동산 매입</button>
+      </div>
+      <div class="c" style="color:#9aa4b2;font-size:12.5px;margin-bottom:8px">
+        보유 현금: 💰<b>${won(P.money)}원</b> · 매주 불로소득(월세): 💰<b>+${won(totalRent)}원</b>
+      </div>
+    `;
+
+    let btns = [];
+
+    if (assetTab === 'stocks') {
+      const stockHtml = STOCKS.map(s => {
+        const owned = P.stocks[s.id] || 0;
+        const totalVal = owned * s.p;
+        return `
+          <div class="stock-row">
+            <div>
+              <b>${s.n}</b>
+              <small style="color:#94a3b8;display:block">${s.d}</small>
+              <span style="color:#ffd23f">현재가: ₩${num(s.p)}</span> · <span style="color:#a78bfa">보유: ${owned}주 (${won(totalVal)}원)</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      body += stockHtml;
+      STOCKS.forEach(s => {
+        btns.push({ t: `💵 ${s.n} 10주 매수 (₩${num(s.p * 10)})`, sId: s.id, type: 'buy', cls: 'gold', disabled: P.money < s.p * 10 });
+        btns.push({ t: `📤 ${s.n} 전량 매도`, sId: s.id, type: 'sell', cls: 'gray', disabled: !(P.stocks[s.id] > 0) });
+      });
+    } else {
+      const propHtml = REAL_ESTATE.map(r => {
+        const has = P.properties.includes(r.id);
+        return `
+          <div class="prop-card">
+            <div>
+              <b>${r.n}</b>
+              <small style="color:#94a3b8;display:block">${r.d}</small>
+              <span style="color:#4ade80">매주 월세: +₩${won(r.rent)}원</span>
+            </div>
+            <div>
+              ${has ? '<span class="badge-pill bg-green">소유 중</span>' : `<span style="color:#ffd23f;font-weight:800;font-size:12px">₩${won(r.c)}원</span>`}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      body += propHtml;
+      REAL_ESTATE.filter(r => !P.properties.includes(r.id)).forEach(r => {
+        btns.push({ t: `🏢 ${r.n} 매입 (₩${won(r.c)})`, pId: r.id, type: 'buyProp', cls: 'purple', disabled: P.money < r.c });
+      });
+    }
+
+    btns.push({ t: '닫기', cls: 'gray', type: 'close' });
+
+    const idx = await ask(`<h3>🏢 자산 관리 & 재테크 센터</h3>${body}`, btns);
+    const sel = btns[idx];
+
+    if (!sel || sel.type === 'close') break;
+
+    if (sel.type === 'buy') {
+      const s = STOCKS.find(x => x.id === sel.sId);
+      const cost = s.p * 10;
+      P.money -= cost;
+      P.stocks[s.id] = (P.stocks[s.id] || 0) + 10;
+      playCoinSound();
+      toast(`📈 ${s.n} 10주 매수 완료!`);
+    } else if (sel.type === 'sell') {
+      const s = STOCKS.find(x => x.id === sel.sId);
+      const owned = P.stocks[s.id] || 0;
+      const gain = owned * s.p;
+      P.money += gain;
+      P.stocks[s.id] = 0;
+      playCoinSound();
+      toast(`📤 ${s.n} 전량 매도! +${won(gain)}원 입금`);
+    } else if (sel.type === 'buyProp') {
+      const pr = REAL_ESTATE.find(x => x.id === sel.pId);
+      P.money -= pr.c;
+      P.properties.push(pr.id);
+      playJackpotSound();
+      toast(`🏢 ${pr.n} 매입 완료! 이제 건물주입니다.`);
+      checkAchievements();
+    }
+    save();
+  }
+}
+
+
+// ======================================================================
+// 📸 인스타그램 (SNS) & 💬 다이렉트 메시지 (DM) 시스템
+// ======================================================================
+
+const DM_TEMPLATES = [
+  {
+    id: 'dm_junwoo',
+    sender: '아이돌 준우 🌟',
+    badge: '연예인',
+    tagCls: 'tag-celeb',
+    avatar: 'assets/harin.jpg',
+    fallback: 'harin.jpg',
+    category: 'celeb',
+    req: p => p.stage !== 'ama',
+    msg: '"형님! 오늘 경기 5인궁 하이라이트 보고 소름 돋았습니다 ㄷㄷ 숙소에서 멤버들이랑 환호성 질렀어요! 담에 시간 되실 때 숙소 놀러오세요 삼겹살 쏩니다 🥩"',
+    choices: [
+      { t: '🌟 [유쾌한 화답] "고마워 준우야! 다음 컴백 앨범 나오면 내가 1등 스트리밍 돌려줄게 ㅎㅎ"', gain: '👥 팬 +8,000 · 스트레스 -15', act: p => { p.fans += 8000; p.stress = Math.max(0, p.stress - 15); } },
+      { t: '🤝 [겸손한 감사] "응원 와줘서 진짜 큰 힘 됐어. 조만간 밥 한번 먹자!"', gain: '멘탈 +2 · 스트레스 -20', act: p => { grow('mental', 2); p.stress = Math.max(0, p.stress - 20); } }
+    ]
+  },
+  {
+    id: 'dm_hanlabong',
+    sender: 'BJ 한라봉 🍊',
+    badge: '인플루언서',
+    tagCls: 'tag-streamer',
+    avatar: 'assets/mina.jpg',
+    fallback: 'mina.jpg',
+    category: 'streamer',
+    req: p => (p.stage === 'pro' || (p.pcBangWins || 0) >= 1),
+    msg: '"선생님 안녕하십니까! 150만 게임 유튜버 한라봉입니다. 이번 주말 [천상계 장인 초대석] 1시간 듀오 합방 가능하십니까? 출연료 800만원 + 영상 수익 5:5 쌉가능입니다!"',
+    choices: [
+      { t: '🤝 [합방 수락] 800만 원 받고 1시간 꿀잼 듀오 합방 진행', gain: '💰 +800만 원 · 👥 팬 +25,000 · 피로도 +10', act: p => { p.money += 8000000; p.fans += 25000; p.hp = Math.max(10, p.hp - 10); playCoinSound(); } },
+      { t: '🙅 [정중히 고사] 스크림 집중을 위해 정중히 거절', gain: '집중력 유지 · 프로 멘탈 +3', act: p => { grow('mental', 3); } }
+    ]
+  },
+  {
+    id: 'dm_sehee',
+    sender: 'BJ 꿀세히 🎀',
+    badge: '인기 여캠',
+    tagCls: 'tag-streamer',
+    avatar: 'assets/rin.jpg',
+    fallback: 'rin.jpg',
+    category: 'streamer',
+    req: p => ovr(p) >= 55,
+    msg: '"선수님~ 어제 솔랭에서 상대 미드로 만났는데 무빙에 완전 반했어요 🥺 혹시 저 승급전 듀오 버스 한 번만 태워주시면 안 될까요...? 황금 올리브 치킨 5마리 쏠게요 헤헤 🍗"',
+    choices: [
+      { t: '🎮 [듀오 수락] 가볍게 2판 승급전 버스 태워주기', gain: '👥 팬 +12,000 · 🍗 치킨 쿠폰 (스트레스 -20)', act: p => { p.fans += 12000; p.stress = Math.max(0, p.stress - 20); } },
+      { t: '🛡️ [팀 규정상 거절] 숙소 외부 듀오 금지 규정 전달', gain: '기본기 +2 · 프로 마인드 확립', act: p => { grow('lane', 2); } }
+    ]
+  },
+  {
+    id: 'dm_taemin',
+    sender: '배우 서태민 🎬',
+    badge: '한류스타',
+    tagCls: 'tag-celeb',
+    avatar: 'assets/yejin.jpg',
+    fallback: 'yejin.jpg',
+    category: 'celeb',
+    req: p => p.stage === 'pro',
+    msg: '"안녕하세요 선수님! 드라마 촬영 틈틈이 경기 챙겨보는 찐팬 배우 서태민입니다. 제가 요즘 골드에서 허덕이고 있는데... 라인전 피드백 한 번만 해주시면 최고급 한우 오마카세 대접하겠습니다 🥩"',
+    choices: [
+      { t: '🥩 [한우 오마카세 수락] 1:1 디스코드 코칭 & 식사 약속', gain: 'VIP 인맥 형성 · 💰 명품 선물 수령 · 스트레스 -30', act: p => { p.stress = Math.max(0, p.stress - 30); p.money += 3000000; } },
+      { t: '💬 [친절한 팁 전수] 채팅으로 꿀팁 3줄 요약 전수', gain: '뇌지컬 +2 · 팬덤 호감도 상승', act: p => { grow('macro', 2); p.fans += 5000; } }
+    ]
+  },
+  {
+    id: 'dm_jieun_sweet',
+    sender: '이지은 🌸',
+    badge: '소꿉친구',
+    tagCls: 'tag-heroine',
+    avatar: 'assets/jieun.jpg',
+    fallback: 'jieun.jpg',
+    category: 'heroine',
+    req: p => p.bonds?.jieun?.aff >= 20,
+    msg: '"오늘 밖에서 연습하느라 힘들었지? 네가 좋아하는 바나나우유랑 삼각김밥 책상 위에 두고 갈게! 밤샐 땐 스트레칭 꼭 해 🥺"',
+    choices: [
+      { t: '💌 "고마워 지은아, 네가 있어서 진짜 힘이 나!"', gain: '💖 지은 호감도 +10 · 체력 +15', act: p => { p.bonds.jieun.aff = Math.min(100, (p.bonds.jieun.aff || 0) + 10); p.hp = Math.min(100, p.hp + 15); } },
+      { t: '☕ "이따 잠깐 산책할래? 캔커피 사줄게"', gain: '💖 지은 호감도 +15 · 스트레스 -25', act: p => { p.bonds.jieun.aff = Math.min(100, (p.bonds.jieun.aff || 0) + 15); p.stress = Math.max(0, p.stress - 25); } }
+    ]
+  },
+  {
+    id: 'dm_harin_selfie',
+    sender: '하린 💖',
+    badge: '걸그룹 센터',
+    tagCls: 'tag-heroine',
+    avatar: 'assets/harin.jpg',
+    fallback: 'harin.jpg',
+    category: 'heroine',
+    req: p => p.bonds?.harin?.unlocked,
+    msg: '"방금 음악방송 사전녹화 끝났어! 대기실에서 심심해서 너 생각하다가 셀카 한 장 보낸당 📸 (전송된 사진: 윙크하는 하린) 이번 주 경기 꼭 이겨야 해!"',
+    choices: [
+      { t: '📸 "오늘 메이크업 레전드다... 심쿵했잖아"', gain: '💖 하린 호감도 +15 · 멘탈 +3', act: p => { p.bonds.harin.aff = Math.min(100, (p.bonds.harin.aff || 0) + 15); grow('mental', 3); } },
+      { t: '🏆 "네 응원 받았으니까 무조건 캐리하고 온다!"', gain: '💖 하린 호감도 +12 · 집중력 버프', act: p => { p.bonds.harin.aff = Math.min(100, (p.bonds.harin.aff || 0) + 12); grow('mech', 2); } }
+    ]
+  },
+  {
+    id: 'dm_sora_luxury',
+    sender: '윤소라 💎',
+    badge: '재벌 3세',
+    tagCls: 'tag-heroine',
+    avatar: 'assets/sora.jpg',
+    fallback: 'sora.jpg',
+    category: 'heroine',
+    req: p => p.bonds?.sora?.unlocked,
+    msg: '"다음 주에 한성 펜트하우스에서 프라이빗 와인 파티가 있어. 내 에스코트 파트너는 너로 정했으니까 일정 비워둬. 드레스코드는 턱시도, 맞춤 수트는 내가 보냈어."',
+    choices: [
+      { t: '🍷 "소라 파트너 자리는 당연히 내 거지. 기대할게."', gain: '💖 소라 호감도 +15 · 💰 맞춤 수트 (1,000만원 상당)', act: p => { p.bonds.sora.aff = Math.min(100, (p.bonds.sora.aff || 0) + 15); p.money += 10000000; } },
+      { t: '💼 "비즈니스 얘기만 할 거면 안 가고, 단둘이면 갈게."', gain: '💖 소라 호감도 +20 · 매력도 상승', act: p => { p.bonds.sora.aff = Math.min(100, (p.bonds.sora.aff || 0) + 20); } }
+    ]
+  }
+];
+
+function checkWeeklyDM() {
+  if (!P.dms) P.dms = { unread: 0, list: [] };
+  if (!P.sns) P.sns = { posts: [], followers: 120 };
+
+  // 읽지 않은 DM이 2개 이상이면 추가 발송 대기
+  if (P.dms.unread >= 2) return;
+
+  // 40% 확률로 새 DM 수신
+  if (Math.random() > 0.40) return;
+
+  const validTemplates = DM_TEMPLATES.filter(t => {
+    if (!t.req(P)) return false;
+    // 최근 3개 안에 같은 템플릿이 없으면 가능
+    return !P.dms.list.slice(0, 3).some(m => m.templateId === t.id);
+  });
+
+  if (validTemplates.length === 0) return;
+  const picked = pick(validTemplates);
+
+  const newDm = {
+    id: 'dm_' + Date.now(),
+    templateId: picked.id,
+    sender: picked.sender,
+    badge: picked.badge,
+    tagCls: picked.tagCls,
+    avatar: picked.avatar,
+    fallback: picked.fallback,
+    msg: picked.msg,
+    choices: picked.choices,
+    read: false,
+    time: `${P.year}년차 ${P.week}주차`
+  };
+
+  P.dms.list.unshift(newDm);
+  P.dms.unread = (P.dms.unread || 0) + 1;
+  toast(`💬 [새 DM 도착] ${picked.sender}님으로부터 메시지가 도착했습니다!`);
+}
+
+function postToInsta(title, img, caption, comments = []) {
+  if (!P.sns) P.sns = { posts: [], followers: 120 };
+  const id = 'post_' + Date.now();
+  const likes = rint(3000, 15000) + Math.round((P.fans || 0) * 0.35);
+  
+  const defaultComments = [
+    { u: 'lol_pro_fan', t: '와 미쳤다 진짜 ㄷㄷ 다음 경기도 캐리 가즈아!!' },
+    { u: 'esports_today', t: '오늘 폼 대박이던데 인터뷰 멋있었어요 🔥' }
+  ];
+
+  P.sns.posts.unshift({
+    id,
+    title,
+    img: img || 'assets/jieun_cafe.jpg',
+    caption,
+    likes,
+    comments: comments.length > 0 ? comments : defaultComments,
+    time: `${P.year}년차 ${P.week}주차`
+  });
+
+  const followerGain = rint(500, 2500) + Math.round((P.fans || 0) * 0.05);
+  P.sns.followers = (P.sns.followers || 120) + followerGain;
+  P.fans = (P.fans || 0) + Math.round(followerGain * 0.8);
+
+  playJackpotSound();
+  toast(`📸 인스타 피드 게시 완료! (❤️ 좋아요 +${num(likes)} / 팔로워 +${num(followerGain)})`);
+}
+
+let activeSnsTab = 'feed';
+
+async function showSnsModal() {
+  if (!P.sns) P.sns = { posts: [], followers: 120 };
+  if (!P.dms) P.dms = { unread: 0, list: [] };
+
+  while (true) {
+    const unreadCount = P.dms.list.filter(d => !d.read).length;
+    let body = `
+      <div class="tab-row" style="margin-bottom:12px">
+        <button class="${activeSnsTab === 'feed' ? 'act' : ''}" id="tabFeed">📸 인스타 피드 (${P.sns.posts.length})</button>
+        <button class="${activeSnsTab === 'dm' ? 'act' : ''}" id="tabDm">💬 DM 수신함 ${unreadCount > 0 ? `<span style="background:#ef4444;color:#fff;border-radius:99px;padding:2px 7px;font-size:11px">${unreadCount}</span>` : ''}</button>
+      </div>
+    `;
+
+    let btns = [];
+
+    if (activeSnsTab === 'feed') {
+      const followersNum = (P.sns.followers || 120) + Math.round((P.fans || 0) * 1.5);
+      body += `
+        <div class="sns-profile">
+          <div class="sns-avatar"><img src="assets/jieun.jpg" onerror="this.src='jieun.jpg'"></div>
+          <div>
+            <div style="font-weight:900;font-size:15px;color:#fff">${P.name} <span style="color:#38bdf8">✓</span></div>
+            <div style="font-size:12px;color:#94a3b8;margin-top:2px">PRO GAMER · ${stageName()}</div>
+            <div class="sns-stats" style="margin-top:8px">
+              <div>게시물 <b>${P.sns.posts.length}</b></div>
+              <div>팔로워 <b>${num(followersNum)}</b></div>
+              <div>팔로잉 <b>10</b></div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      if (P.sns.posts.length === 0) {
+        body += `<div class="c" style="padding:30px 10px;color:#94a3b8;font-size:13px">아직 게시한 피드가 없습니다.<br>PC방 대회 우승, 데이트, 명경기 후 스토리를 올려보세요!</div>`;
+      } else {
+        body += P.sns.posts.map(p => `
+          <div class="feed-card">
+            <div class="feed-head">
+              <span style="color:#ec4899">📸</span> <b>${P.name}</b> <small style="color:#64748b;margin-left:auto">${p.time}</small>
+            </div>
+            <img class="feed-img" src="${p.img}" onerror="this.src='assets/jieun_cafe.jpg'" alt="피드 사진">
+            <div class="feed-body">
+              <div class="feed-actions">
+                <span style="color:#ef4444">❤️</span> <b style="font-size:12.5px">${num(p.likes)}명이 좋아합니다</b>
+              </div>
+              <div class="feed-caption"><b>${P.name}</b> ${p.caption}</div>
+              <div class="feed-comments">
+                ${p.comments.map(c => `<div class="comment-item"><b>${c.u}</b> ${c.t}</div>`).join('')}
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      btns.push({ t: '✨ 일상 스토리/사진 올리기', cls: 'pink', type: 'postNow' });
+
+    } else {
+      // DM Tab
+      if (P.dms.list.length === 0) {
+        body += `<div class="c" style="padding:40px 10px;color:#94a3b8;font-size:13px">수신된 다이렉트 메시지(DM)가 없습니다.<br>대회 출전, 솔랭 활약, 데이트를 진행하면 연예인/BJ/히로인에게서 연락이 옵니다!</div>`;
+      } else {
+        body += P.dms.list.map((d, idx) => `
+          <div class="dm-card ${d.read ? '' : 'unread'}" data-dmidx="${idx}">
+            ${d.read ? '' : '<div class="badge-unread"></div>'}
+            <div class="dm-avatar"><img src="${d.avatar}" onerror="this.src='${d.fallback}'" alt="${d.sender}"></div>
+            <div class="dm-info">
+              <div class="dm-sender">
+                ${d.sender} <span class="${d.tagCls}">${d.badge}</span>
+                <small style="color:#64748b;margin-left:auto;font-weight:400">${d.time}</small>
+              </div>
+              <div class="dm-preview">${d.msg}</div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    btns.push({ t: '닫기', cls: 'gray', type: 'close' });
+
+    // ask 모달 띄우기
+    const choiceIdx = await new Promise(res => {
+      $('#mBody').innerHTML = `<h3>📱 인스타그램 &amp; DM 센터</h3>${body}`;
+      
+      const tabF = $('#mBody #tabFeed');
+      const tabD = $('#mBody #tabDm');
+      if (tabF) tabF.onclick = () => { activeSnsTab = 'feed'; showSnsModal(); };
+      if (tabD) tabD.onclick = () => { activeSnsTab = 'dm'; showSnsModal(); };
+
+      // DM 카드 클릭 이벤트 바인딩
+      $('#mBody').querySelectorAll('[data-dmidx]').forEach(card => {
+        card.onclick = () => {
+          const idx = parseInt(card.dataset.dmidx);
+          $('#modal').classList.add('hidden');
+          openDmChat(idx).then(() => showSnsModal());
+        };
+      });
+
+      const f = $('#mBtns'); f.innerHTML = '';
+      btns.forEach((b, i) => {
+        const e = document.createElement('button');
+        e.className = 'btn ' + (b.cls || '');
+        e.innerHTML = b.t;
+        e.onclick = () => { $('#modal').classList.add('hidden'); res(b); };
+        f.appendChild(e);
+      });
+      $('#modal').classList.remove('hidden');
+    });
+
+    if (!choiceIdx || choiceIdx.type === 'close') break;
+
+    if (choiceIdx.type === 'postNow') {
+      const heroKeys = Object.keys(P.bonds || {}).filter(k => P.bonds[k]?.unlocked);
+      const randomHeroine = heroKeys.length > 0 ? pick(heroKeys) : 'jieun';
+      const hObj = HEROINES[randomHeroine];
+
+      const feedPresets = [
+        { title: '훈련 후 셀카', img: hObj?.dates?.[0]?.img || 'assets/jieun_cafe.jpg', caption: '오늘도 스크림 & 솔랭 완료! 지치지만 응원해주는 분들이 있어 달립니다 🔥' },
+        { title: '휴식 카페', img: hObj?.dates?.[1]?.img || 'assets/jieun_night.jpg', caption: '오랜만에 조용한 카페에서 힐링 중 ☕ 다음 경기 컨디션 최고조!' },
+        { title: '승리의 순간', img: 'assets/harin_stage.jpg', caption: '응원해주신 모든 분들 진심으로 감사드립니다! 소환사의 컵을 향해 끝까지 달릴게요 🏆' }
+      ];
+      const pChoice = pick(feedPresets);
+      postToInsta(pChoice.title, pChoice.img, pChoice.caption);
+    }
+  }
+}
+
+async function openDmChat(idx) {
+  const d = P.dms.list[idx];
+  if (!d) return;
+  d.read = true;
+  P.dms.unread = P.dms.list.filter(x => !x.read).length;
+
+  const chatHtml = `
+    <div style="display:flex;align-items:center;gap:12px;background:#11162a;padding:12px;border-radius:12px;margin-bottom:12px">
+      <div class="dm-avatar" style="width:52px;height:52px"><img src="${d.avatar}" onerror="this.src='${d.fallback}'"></div>
+      <div>
+        <div style="font-weight:900;font-size:15px;color:#fff">${d.sender} <span class="${d.tagCls}">${d.badge}</span></div>
+        <div style="font-size:11.5px;color:#38bdf8">${d.time} 수신</div>
+      </div>
+    </div>
+    <div style="background:#0e1322;border:1px solid #232c48;border-radius:12px;padding:14px;font-size:14px;line-height:1.65;color:#f1f5f9;margin-bottom:12px">
+      ${d.msg}
+    </div>
+    <div style="font-size:12px;color:#cbd5e1;margin-bottom:6px">💬 답장 선택지를 골라주세요:</div>
+  `;
+
+  const btns = d.choices.map((c, i) => ({
+    t: `<b>${c.t}</b><small style="display:block;color:#4ade80;font-size:11px;margin-top:2px">${c.gain}</small>`,
+    cls: i === 0 ? 'gold' : 'gray',
+    act: c.act
+  }));
+  btns.push({ t: '나중에 답장하기', cls: 'gray' });
+
+  const chosenIdx = await ask(chatHtml, btns);
+  const chosen = btns[chosenIdx];
+  if (chosen && chosen.act) {
+    chosen.act(P);
+    playDateSound();
+    toast('💬 답장을 전송했습니다!');
+    save(); render();
+  }
+}
+
+let shopTab = 'gear';
+async function showHubShop() {
+  while (true) {
+    let body = `
+      <div class="tab-row">
+        <button class="${shopTab === 'gear' ? 'act' : ''}" id="stGear">🖱️ 게이밍 기어</button>
+        <button class="${shopTab === 'skin' ? 'act' : ''}" id="stSkin">🎨 챔피언 스킨</button>
+      </div>
+      <div class="c" style="color:#9aa4b2;font-size:12px;margin-bottom:8px">보유 자산: 💰<b>${won(P.money)}원</b></div>
+    `;
+
+    let btns = [];
+    if (shopTab === 'gear') {
+      const items = GEAR.map(g => {
+        const own = P.gear[g.k];
+        return `<div class="shopi"><div class="t"><b>${g.n}</b><small>${g.d}</small></div>${own ? '<b style="color:#22c55e">보유 중</b>' : `<span>💰${won(g.c)}</span>`}</div>`;
+      }).join('');
+      body += `<div>${items}</div>`;
+      const avail = GEAR.filter(g => !P.gear[g.k]);
+      btns = avail.map(g => ({ t: `${g.n} (${won(g.c)}원)`, cls: 'gold', disabled: P.money < g.c, item: g, type: 'gear' }));
+    } else {
+      const isWorldsChamp = P.hist.titles.some(t => t.includes('월드 챔피언십 우승'));
+      const items = SKINS.map(s => {
+        const own = P.skins[s.k];
+        const isEq = P.equippedSkin === s.k;
+        let cost = s.c;
+        if (s.k === 'skin_mythic' && isWorldsChamp) cost = Math.round(cost * 0.5);
+
+        return `
+          <div class="shopi ${s.k === 'skin_legend' ? 'skin-legend' : s.k === 'skin_mythic' ? 'skin-mythic' : ''}">
+            <div class="t">
+              <b><span class="skin-tag ${s.tagCls}">${s.tag}</span> ${s.n}</b>
+              <small>${s.d}</small>
+            </div>
+            ${isEq ? '<b style="color:#ffd23f">착용 중</b>' : own ? '<b style="color:#22c55e">보유</b>' : `<span>💰${won(cost)}</span>`}
+          </div>
+        `;
+      }).join('');
+      body += `<div>${items}</div>`;
+
+      SKINS.forEach(s => {
+        const own = P.skins[s.k];
+        const isEq = P.equippedSkin === s.k;
+        let cost = s.c;
+        if (s.k === 'skin_mythic' && isWorldsChamp) cost = Math.round(cost * 0.5);
+
+        if (own) {
+          if (!isEq) btns.push({ t: `✨ [${s.n}] 장착하기`, cls: 'purple', skin: s, type: 'equip' });
+        } else {
+          btns.push({ t: `🎨 ${s.n} 구매 (${won(cost)}원)`, cls: 'gold', disabled: P.money < cost, skin: s, cost, type: 'buySkin' });
+        }
+      });
+      if (P.equippedSkin) {
+        btns.push({ t: '기본 스킨으로 해제', cls: 'gray', type: 'unequip' });
+      }
+    }
+    btns.push({ t: '닫기', cls: 'gray' });
+
+    const i = await ask(`<h3>🛒 종합 e스포츠 상점</h3>${body}`, btns);
+    const chosen = btns[i];
+    if (!chosen || chosen.t === '닫기') break;
+
+    if (chosen.type === 'gear') {
+      P.money -= chosen.item.c;
+      P.gear[chosen.item.k] = 1;
+      toast(`${chosen.item.n} 구매 완료!`);
+    } else if (chosen.type === 'buySkin') {
+      P.money -= chosen.cost;
+      P.skins[chosen.skin.k] = 1;
+      P.equippedSkin = chosen.skin.k;
+      toast(`🎨 ${chosen.skin.n} 스킨 구매 및 장착!`);
+    } else if (chosen.type === 'equip') {
+      P.equippedSkin = chosen.skin.k;
+      toast(`${chosen.skin.n} 스킨을 장착했습니다!`);
+    } else if (chosen.type === 'unequip') {
+      P.equippedSkin = null;
+      toast('스킨 장착을 해제했습니다.');
+    }
+    save(); renderTop();
+  }
+  render();
+}
+
+// 업적 모달
+async function showAchievementsModal() {
+  checkAchievements();
+  const list = ACHIEVES.map(a => {
+    const done = !!P.achieves[a.k];
+    return `
+      <div class="ach-card ${done ? 'done' : 'locked'}">
+        <div class="ic">${done ? '🏆' : '🔒'}</div>
+        <div class="info">
+          <b>${a.n}</b>
+          <small>${a.d}</small>
+        </div>
+        <div class="reward">${done ? '<span style="color:#22c55e">달성 완료</span>' : a.r}</div>
+      </div>
+    `;
+  }).join('');
+
+  await ask(`<h3>🏆 업적 & 명예의 전당</h3>
+    <p class="c" style="color:#9aa4b2;font-size:12px;margin-bottom:8px">도전 과제를 달성하여 영구 보상과 상금을 획득하세요.</p>
+    <div>${list}</div>`,
+    [{ t: '닫기', cls: 'gray' }]
+  );
+}
+
+function showStandings() {
+  const mk = (lg, key, title) => {
+    const st = standings(lg);
+    return `<h4 style="margin:8px 0 4px">${title}</h4><table><tr><th>#</th><th class="l">팀</th><th>전력</th><th>승</th><th>패</th></tr>
+      ${st.map((t, i) => `<tr class="${P.stage === key && P.teamId === t.id ? 'me' : ''}"><td>${i + 1}</td><td class="l">${t.name}</td><td>${t.str}</td><td>${t.w}</td><td>${t.l}</td></tr>`).join('')}</table>`;
+  };
+  const first = P.stage === 'aca' ? mk(P.aca, 'aca', '🏫 KCL 챌린저스 (2군)') + mk(P.pro, 'pro', '🏟️ KCL (1군)') : mk(P.pro, 'pro', '🏟️ KCL (1군)') + mk(P.aca, 'aca', '🏫 KCL 챌린저스 (2군)');
+  ask(`<h3>📊 리그 순위</h3>${first}<p style="color:#9aa4b2;font-size:12px">정규시즌 상위 4팀 플레이오프 진출 · 서머 결승 진출팀 또는 스프링 우승팀은 월즈 진출</p>`);
+}
+
+async function showRecord() {
+  const h = P.hist;
+  const i = await ask(`<h3>📜 커리어 기록</h3>
+    <div class="kv"><span>공식 경기</span><b>${h.games}전 ${h.wins}승 ${h.games - h.wins}패</b></div>
+    <div class="kv"><span>POG</span><b>${h.mvp}회</b></div>
+    <div class="kv"><span>최고 티어</span><b>${TIERS[P.bestT]}</b></div>
+    <div class="kv"><span>월즈 진출</span><b>${h.worlds}회</b></div>
+    <div class="kv"><span>주급</span><b>${won(P.salary)}원</b></div>
+    <div class="kv"><span>은퇴까지</span><b>${RETIRE_AGE - P.age}년</b></div>
+    <h4 style="margin:10px 0 4px">주요 사건</h4>${h.log.length ? h.log.map(l => `<div>· ${l}</div>`).join('') : '<div style="color:#9aa4b2">아직 없음</div>'}`,
+    [{ t: '닫기' }, { t: '은퇴하기 (커리어 종료)', cls: 'red' }]);
+  if (i === 1) {
+    const c = await ask(`<h3>정말 은퇴할까요?</h3><p class="c">커리어가 종료되고 결과가 정산됩니다.</p>`, [{ t: '취소', cls: 'gray' }, { t: '은퇴', cls: 'red' }]);
+    if (c === 1) await ending(false);
+  }
+}
+
+// ---------- 캐릭터 생성 ----------
+
+const START_PERKS = [
+  { k: 'mech', n: '⚡ 피지컬 천재', d: '피지컬 +8 · 라인전 +5 (초반 솔랭 학살)', apply: (p) => { p.s.mech += 8; p.s.lane += 5; } },
+  { k: 'fame', n: '🌟 스타 인플루언서', d: '초기 팬 3,000명 · 자금 +150만 원', apply: (p) => { p.fans += 3000; p.money += 1500000; } },
+  { k: 'love', n: '💖 지은의 헌신적 내조', d: '지은 호감도 45♥ 시작 · 힐링 효율 강화', apply: (p) => { p.bonds.jieun.aff = 45; } },
+  { k: 'rich', n: '💰 금수저 개인 후원', d: '시작 자금 💰 500만 원 (고급 기어/스킨 바로 구매)', apply: (p) => { p.money += 5000000; } }
+];
+
+let cr = null;
+function rollBase(pos) {
+  const b = { mech: rint(14, 30), lane: rint(14, 30), macro: rint(12, 28), team: rint(12, 28), pool: rint(10, 26), mental: rint(25, 55) };
+  const w = POS[pos].w;
+  const best = Object.keys(w).sort((a, c) => w[c] - w[a])[0];
+  b[best] += 6;
+  return b;
+}
+function renderCreate() {
+  if (!cr) cr = { name: '', pos: 'mid', perk: 'mech', base: rollBase('mid'), talent: +rnd(.9, 1.15).toFixed(2) };
+  const o = ovr({ pos: cr.pos, s: cr.base });
+  $('#main').innerHTML = `
+    <div class="title"><div class="logo">🎮</div><h1>프로의 길 : 인연</h1><p>솔랭 아마추어에서 월드 챔피언, 그리고 사랑까지</p></div>
+    <div class="card"><h4>선수 이름 (닉네임)</h4><input class="name" id="nm" maxlength="12" placeholder="예: Faker아님" value="${cr.name}"></div>
+    <div class="card"><h4>포지션 선택</h4><div class="poss">${Object.keys(POS).map(k => `<button class="pos ${cr.pos === k ? 'sel' : ''}" data-p="${k}"><span>${POS[k].ic}</span>${POS[k].n}</button>`).join('')}</div></div>
+    <div class="card">
+      <h4>시작 특성 (플레이스타일)</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        ${START_PERKS.map(p => `
+          <button class="act ${cr.perk === p.k ? 'rec' : ''}" data-perk="${p.k}" style="padding:9px;background:${cr.perk === p.k ? '#2a1e44' : '#171d31'};border-color:${cr.perk === p.k ? '#f59e0b' : '#2a3252'}">
+            <b>${p.n}</b>
+            <small style="color:#cbd5e1;font-size:11px;margin-top:2px">${p.d}</small>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+    <div class="card"><h4>타고난 재능 · 종합 ${Math.round(o)} · 성장 재능 ×${cr.talent}</h4>
+      <div class="bars">${Object.keys(STATS).map(k => bar(STATS[k].n, cr.base[k], STATS[k].c)).join('')}</div>
+      <button class="btn gray wide" id="reroll" style="margin-top:10px">🎲 재능 다시 굴리기</button></div>
+    <button class="btn gold wide" id="start" style="padding:14px;font-size:16px">커리어 시작</button>
+    <div style="background:#151b2e;border:1px solid #334155;border-radius:12px;padding:12px;margin-top:12px;text-align:center">
+      <div style="font-weight:800;font-size:13.5px;color:#38bdf8;margin-bottom:4px">📱 스마트폰 앱(APK) 다운로드 &amp; 친구 공유</div>
+      <div style="font-size:11.5px;color:#94a3b8;margin-bottom:10px">카톡/메신저 전송용 ZIP 또는 안드로이드 전용 APK 파일을 직접 다운로드할 수 있습니다.</div>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+        <a href="pro-gamer.apk" download="pro-gamer.apk" class="btn" style="text-decoration:none;font-size:12px;padding:8px 14px;border-radius:8px;display:inline-block">📥 APK 다운로드 (20.5MB)</a>
+        <a href="pro-gamer-apk.zip" download="pro-gamer-apk.zip" class="btn gray" style="text-decoration:none;font-size:12px;padding:8px 14px;border-radius:8px;display:inline-block">📦 ZIP 압축팩 다운로드</a>
+      </div>
+    </div>
+    <p style="text-align:center;color:#9aa4b2;font-size:12px;line-height:1.6">17세 · 플래티넘에서 시작합니다.<br>🏆 PC방 대회 우승 시 다이아몬드에서도 프로 스카우트가 찾아옵니다.<br>10명의 개성 넘치는 히로인과 인연을 맺고 동거·결혼 & 대박 잭팟을 노려보세요!</p>`;
+  $('#nm').oninput = e => cr.name = e.target.value;
+  $('#main').querySelectorAll('[data-p]').forEach(b => b.onclick = () => { cr.pos = b.dataset.p; cr.base = rollBase(cr.pos); renderCreate(); });
+  $('#main').querySelectorAll('[data-perk]').forEach(b => b.onclick = () => { cr.perk = b.dataset.perk; renderCreate(); });
+  $('#reroll').onclick = () => { cr.base = rollBase(cr.pos); cr.talent = +rnd(.9, 1.15).toFixed(2); renderCreate(); };
+  $('#start').onclick = async () => {
+    const name = (cr.name || '').trim() || '무명';
+    P = makePlayer(name, cr.pos, cr.base); P.talent = cr.talent;
+    const perk = START_PERKS.find(x => x.k === cr.perk);
+    if (perk) perk.apply(P);
+    cr = null;
+    save(); render();
+    await showHeroineCutscene('jieun', `
+      <div class="vn-dialogue">"드디어 프로게이머 도전하는구나! ${name}, 넌 분명히 할 수 있어. 내가 언제나 네 1호 팬으로 응원할게!"</div>
+      <p class="c" style="color:#9aa4b2">매주 훈련과 <b>🏆 PC방 대회</b>로 명성을 쌓고 프로팀에 입단하세요.<br>지치고 힘들 땐 <b>💌 인연 데이트</b>로 힐링과 대박 잭팟을 노려보세요!</p>
+    `, [{ t: '꿈을 향해 출발!', cls: 'gold' }], 'assets/jieun_cafe.jpg', '단골 베이커리 카페');
+  };
+}
+
+// ======================================================================
+// 시작
+// ======================================================================
+P = load();
+render();
+addEventListener('pagehide', save);
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+</script>
+</body>
+</html>
