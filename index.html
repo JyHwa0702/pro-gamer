@@ -238,13 +238,18 @@ tr.me td{background:#1d2a52;font-weight:800}
 </style>
 </head>
 <body>
-<div id="introSplash" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000;z-index:999999;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity 0.4s ease">
-  <video id="introVideo" playsinline muted autoplay style="width:100%;height:100%;object-fit:cover;object-position:center;background:#000"></video>
+<div id="introSplash" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#080c16;z-index:999999;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity 0.35s ease;cursor:pointer">
+  <div id="introLogoFallback" style="text-align:center;padding:20px;z-index:1;user-select:none">
+    <div style="font-size:56px;margin-bottom:8px;animation:pulse 1s infinite">🔨</div>
+    <h2 style="font-size:24px;font-weight:900;background:linear-gradient(135deg,#fde047,#f59e0b,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 6px">PRO ROAD GAMING</h2>
+    <div style="font-size:12px;color:#94a3b8;letter-spacing:1.5px">소환사의 협곡으로 입장하는 중...</div>
+  </div>
+  <video id="introVideo" playsinline muted autoplay style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:2;opacity:0;transition:opacity 0.3s ease"></video>
   <button id="skipIntroBtn" style="position:absolute;top:20px;right:20px;background:rgba(0,0,0,0.7);border:1px solid rgba(255,255,255,0.35);color:#fff;font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;cursor:pointer;backdrop-filter:blur(6px);z-index:10;display:flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(0,0,0,0.5)">
     <span>건너뛰기</span> ⏩
   </button>
-  <div style="position:absolute;bottom:24px;left:0;right:0;text-align:center;color:rgba(255,255,255,0.6);font-size:11.5px;letter-spacing:1px;pointer-events:none">
-    화면을 터치하면 스킵하거나 소리를 켤 수 있습니다
+  <div style="position:absolute;bottom:24px;left:0;right:0;text-align:center;color:rgba(255,255,255,0.7);font-size:12px;letter-spacing:1px;z-index:10;pointer-events:none">
+    화면을 터치하면 즉시 게임을 시작합니다
   </div>
 </div>
 <div id="app">
@@ -909,6 +914,8 @@ function makePlayer(name, pos, base) {
       elena: { aff: 0, lv: 0, unlocked: false },
       serin: { aff: 0, lv: 0, unlocked: false }
     },
+    sns: { posts: [], followers: 120 },
+    dms: { unread: 0, list: [] },
     hist: { games: 0, wins: 0, titles: [], worlds: 0, mvp: 0, bestStage: 'ama', log: [] }
   };
 }
@@ -2675,8 +2682,10 @@ function recommend() {
   if (P.syn < 2) return 'scrim';
   return null;
 }
-if (!P.sns) P.sns = { posts: [], followers: 120 };
-  if (!P.dms) P.dms = { unread: 0, list: [] };
+if (P) {
+    if (!P.sns) P.sns = { posts: [], followers: 120 };
+    if (!P.dms) P.dms = { unread: 0, list: [] };
+  }
 function renderTop() {
   if (!P) { $('#top').innerHTML = `<div class="l1"><span class="nm">프로의 길 : 인연</span></div>`; return; }
   const ph = phaseOf(P.week);
@@ -3404,8 +3413,10 @@ function postToInsta(title, img, caption, comments = []) {
 let activeSnsTab = 'feed';
 
 async function showSnsModal() {
-  if (!P.sns) P.sns = { posts: [], followers: 120 };
-  if (!P.dms) P.dms = { unread: 0, list: [] };
+  if (P) {
+    if (!P.sns) P.sns = { posts: [], followers: 120 };
+    if (!P.dms) P.dms = { unread: 0, list: [] };
+  }
 
   while (true) {
     const unreadCount = P.dms.list.filter(d => !d.read).length;
@@ -4256,22 +4267,7 @@ function initIntroVideo() {
   const splash = document.getElementById('introSplash');
   const video = document.getElementById('introVideo');
   const skipBtn = document.getElementById('skipIntroBtn');
-  if (!splash || !video) return;
-
-  // 화면 방향 감지: 세로(portrait) vs 가로(landscape)
-  const isPortrait = window.innerHeight > window.innerWidth;
-  const videoSrc = isPortrait ? 'assets/logo_portrait.mp4' : 'assets/logo_landscape.mp4';
-  const fallbackSrc = isPortrait ? 'logo_portrait.mp4' : 'logo_landscape.mp4';
-
-  video.src = videoSrc;
-  video.onerror = () => {
-    if (video.src.indexOf('assets/') !== -1) {
-      video.src = fallbackSrc;
-      video.play().catch(() => {});
-    } else {
-      dismissSplash();
-    }
-  };
+  if (!splash) return;
 
   let dismissed = false;
   function dismissSplash() {
@@ -4279,20 +4275,17 @@ function initIntroVideo() {
     dismissed = true;
     splash.style.opacity = '0';
     setTimeout(() => {
-      splash.style.display = 'none';
-      splash.remove();
-      // 인트로 종료 즉시 백그라운드 자동 업데이트 확인 실행
+      try {
+        splash.style.display = 'none';
+        splash.remove();
+      } catch (e) {}
       checkForUpdates(true);
-    }, 400);
+    }, 350);
   }
 
-  // 배속 설정: 6초 영상을 약 3.5초 만에 신속하고 임팩트 있게 재생 (1.65배속)
-  video.playbackRate = 1.65;
-  video.onloadedmetadata = () => {
-    video.playbackRate = 1.65;
-  };
-
-  video.onended = () => {
+  // 1-터치 즉시 스킵: 화면 어디든 탭하면 바로 게임으로 진입
+  splash.onclick = (e) => {
+    e.stopPropagation();
     dismissSplash();
   };
 
@@ -4303,31 +4296,49 @@ function initIntroVideo() {
     };
   }
 
-  let tapCount = 0;
-  splash.onclick = () => {
-    tapCount++;
-    if (video.muted) {
-      video.muted = false; // 소리 재생 시도
-    }
-    if (tapCount >= 2) {
-      dismissSplash();
-    }
-  };
+  if (video) {
+    const isPortrait = window.innerHeight > window.innerWidth;
+    const videoSrc = isPortrait ? 'assets/logo_portrait.mp4' : 'assets/logo_landscape.mp4';
+    const fallbackSrc = isPortrait ? 'logo_portrait.mp4' : 'logo_landscape.mp4';
 
-  // 안전 타임아웃 (최대 4.5초 후 자동 종료)
+    video.src = videoSrc;
+    video.playbackRate = 1.65;
+
+    // 비디오가 정상 재생 시작되면 부드럽게 페이드인 노출
+    video.onplaying = () => {
+      video.style.opacity = '1';
+    };
+
+    video.onended = () => {
+      dismissSplash();
+    };
+
+    video.onerror = () => {
+      // 비디오 재생 실패 시 조용히 스플래시 종료하여 게임 화면 즉시 표시
+      if (video.src.indexOf('assets/') !== -1) {
+        video.src = fallbackSrc;
+        video.play().catch(() => { dismissSplash(); });
+      } else {
+        dismissSplash();
+      }
+    };
+
+    const p = video.play();
+    if (p !== undefined) {
+      p.catch(() => {
+        video.muted = true;
+        video.play().catch(() => {
+          // 비디오 재생 불가능한 기기에서는 1.5초 후 자동 게임 진입
+          setTimeout(dismissSplash, 1500);
+        });
+      });
+    }
+  }
+
+  // 안전 타임아웃: 어떤 기기든 최대 3.0초 후 무조건 게임 메인 화면 노출 보장!
   setTimeout(() => {
     dismissSplash();
-  }, 4500);
-
-  const playPromise = video.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(() => {
-      video.muted = true;
-      video.play().catch(() => {
-        dismissSplash();
-      });
-    });
-  }
+  }, 3000);
 }
 
 async function checkForUpdates(silent = true) {

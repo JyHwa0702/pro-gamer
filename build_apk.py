@@ -223,32 +223,35 @@ public class MainActivity extends Activity {
     if res.returncode != 0:
         raise Exception(f"zipalign failed: {res.stderr}")
 
-    # 12. Create debug keystore
-    keystore = os.path.join(work_dir, "debug.keystore")
+    # 12. Release Keystore
+    keystore = r"d:\antigravity\pro_road_release.keystore"
     if not os.path.exists(keystore):
         cmd_key = [
             keytool, "-genkeypair", "-v",
             "-keystore", keystore,
-            "-storepass", "android",
-            "-alias", "androiddebugkey",
-            "-keypass", "android",
+            "-storepass", "proroad2026!",
+            "-alias", "proroadrelease",
+            "-keypass", "proroad2026!",
             "-keyalg", "RSA",
             "-keysize", "2048",
             "-validity", "10000",
-            "-dname", "CN=Android Debug,O=Android,C=US"
+            "-dname", "CN=ProGamer Road,OU=Game Studio,O=ProGamer Inc,L=Seoul,ST=Seoul,C=KR"
         ]
         res = subprocess.run(cmd_key, capture_output=True, text=True)
         if res.returncode != 0:
             raise Exception(f"keytool failed: {res.stderr}")
 
-    # 13. Apksigner
+    # 13. Apksigner with v1, v2, v3 schemes
     final_apk = r"d:\antigravity\pro-gamer\pro-gamer.apk"
     cmd_sign = [
         "cmd.exe", "/c", apksigner, "sign",
         "--ks", keystore,
-        "--ks-pass", "pass:android",
-        "--ks-key-alias", "androiddebugkey",
-        "--key-pass", "pass:android",
+        "--ks-pass", "pass:proroad2026!",
+        "--ks-key-alias", "proroadrelease",
+        "--key-pass", "pass:proroad2026!",
+        "--v1-signing-enabled", "true",
+        "--v2-signing-enabled", "true",
+        "--v3-signing-enabled", "true",
         "--out", final_apk,
         aligned_apk
     ]
