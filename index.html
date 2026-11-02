@@ -236,7 +236,15 @@ function won(n) {
 }
 const num = n => Math.round(n).toLocaleString();
 let toastT;
-function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 1800); }
+function toast(m) { const t = $('#toast');
+
+// 💡 모달 바깥 배경 터치 시 즉시 닫기 (클릭 피로도 절감)
+$('#modal').onclick = e => {
+  if (e.target === $('#modal')) {
+    $('#modal').classList.add('hidden');
+  }
+};
+ t.textContent = m; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 1800); }
 
 function ask(html, btns = [{ t: '확인' }]) {
   return new Promise(res => {
@@ -2255,9 +2263,28 @@ if (!P.sns) P.sns = { posts: [], followers: 120 };
 function renderTop() {
   if (!P) { $('#top').innerHTML = `<div class="l1"><span class="nm">프로의 길 : 인연</span></div>`; return; }
   const ph = phaseOf(P.week);
-  $('#top').innerHTML = `<div class="l1"><span class="nm">${POS[P.pos].ic} ${P.name}</span>
-    <span class="pill">💰 ${won(P.money)}</span><span class="pill">👥 ${num(P.fans)}</span></div>
-    <div class="l2"><span>${P.age}세 · ${P.year}년차 ${P.week}주차</span><span>${ph.sp}</span></div>`;
+  const hpAlert = P.hp < 30 ? 'animation:pulse 1s infinite;' : '';
+  const stAlert = P.stress >= 75 ? 'animation:pulse 1s infinite;' : '';
+  $('#top').innerHTML = `
+    <div class="l1"><span class="nm">${POS[P.pos].ic} ${P.name}</span>
+      <span class="pill">💰 ${won(P.money)}</span><span class="pill">👥 ${num(P.fans)}</span></div>
+    <div class="l2"><span>${P.age}세 · ${P.year}년차 ${P.week}주차</span><span>${ph.sp}</span></div>
+    <!-- 💡 상단 항상 고정 체력 & 스트레스 게이지 -->
+    <div style="display:flex;gap:8px;margin-top:6px;padding-top:4px;border-top:1px solid #232d4b">
+      <div style="flex:1;display:flex;align-items:center;gap:6px;background:#0b0f1c;padding:3px 8px;border-radius:99px;border:1px solid ${P.hp < 30 ? '#ef4444' : '#1e3a5f'};${hpAlert}">
+        <span style="font-size:11.5px;font-weight:900;color:${P.hp < 30 ? '#f87171' : '#4ade80'}">❤️ ${Math.round(P.hp)}%</span>
+        <div style="flex:1;height:5px;background:#172036;border-radius:99px;overflow:hidden">
+          <div style="height:100%;width:${clamp(P.hp, 0, 100)}%;background:${P.hp < 30 ? '#ef4444' : '#22c55e'};transition:width .3s"></div>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;align-items:center;gap:6px;background:#0b0f1c;padding:3px 8px;border-radius:99px;border:1px solid ${P.stress >= 75 ? '#ef4444' : '#422006'};${stAlert}">
+        <span style="font-size:11.5px;font-weight:900;color:${P.stress >= 75 ? '#f87171' : '#fde047'}">😵 ${Math.round(P.stress)}%</span>
+        <div style="flex:1;height:5px;background:#172036;border-radius:99px;overflow:hidden">
+          <div style="height:100%;width:${clamp(P.stress, 0, 100)}%;background:${P.stress >= 75 ? '#ef4444' : '#f59e0b'};transition:width .3s"></div>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 function render() {
@@ -2284,6 +2311,18 @@ function render() {
         <div><b>🌱 데뷔 로드맵:</b> ${(P.pcBangWins || 0) > 0 ? `<span style="color:#4ade80">PC방 우승 ${P.pcBangWins}회 달성! (다이아몬드 스카우트 활성화)</span>` : `<span style="color:#fde047">🏆 PC방 토너먼트 우승 시 조기 스카우트 해금!</span>`}</div>
       </div>` : ''}
     <div class="card sched"><div class="ic">${sic}</div><div>${stxt}</div></div>
+    <!-- ⚡ 1클릭 추천 액션 카드 (클릭 피로도 최소화) -->
+    <div style="background:linear-gradient(135deg,#1b1736,#241438);border:1px solid #8b5cf6;border-radius:12px;padding:11px 14px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-size:11px;color:#c084fc;font-weight:800">⚡ 1클릭 추천 일정</div>
+        <b style="font-size:14.5px;color:#fff">${(() => {
+          const actObj = { solo: '솔로랭크 질주 ⚔️', scrim: '팀 스크림 훈련 🎯', match: '대회 출전 🏟️', rest: '꿀잠 휴식 😴', date: '인연 힐링 데이트 💖' };
+          return actObj[rec] || '집중 훈련 🎯';
+        })()}</b>
+        <small style="display:block;color:#cbd5e1;font-size:11.5px;margin-top:2px">${P.hp < 30 ? '체력 고갈! 휴식이 절실합니다' : P.stress > 75 ? '스트레스 위험! 힐링이 필요합니다' : '현재 컨디션 최적의 추천 행동'}</small>
+      </div>
+      <button class="btn gold" id="bFastTurn" style="padding:10px 16px;font-size:13px;font-weight:900;border-radius:8px;white-space:nowrap">즉시 진행 ➔</button>
+    </div>
     <div class="card"><h4>능력치 (스킨/장비 보너스 반영)</h4><div class="bars">${Object.keys(STATS).map(k => bar(STATS[k].n, P.s[k] + skinStatBonus(k), STATS[k].c)).join('')}</div></div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
@@ -2330,6 +2369,8 @@ function render() {
 
   $('#main').querySelectorAll('[data-a]').forEach(b => b.onclick = () => takeTurn(b.dataset.a));
   $('#main').querySelectorAll('[data-cat]').forEach(b => b.onclick = () => { activeActCat = b.dataset.cat; render(); });
+  const fastBtn = $('#bFastTurn');
+  if (fastBtn) fastBtn.onclick = () => takeTurn(recommend());
   const qBtn = $('#bQuickRepeat');
   if (qBtn && P.lastAction) qBtn.onclick = () => takeTurn(P.lastAction);
   $('#bBond').onclick = showBondsModal;
@@ -2537,12 +2578,27 @@ async function showBanPickModal(opp) {
     champ: c
   }));
 
+  // AI 자동 원클릭 밴픽 옵션
+  banBtns.unshift({
+    t: '⚡ [AI 자동 밴픽 & 즉시 출전] 추천 밴/픽으로 1클릭 시작',
+    cls: 'gold',
+    autoQuick: true
+  });
+
   const banIdx = await ask(`
     <h3>⚔️ 경기 전 밴픽 전략 회의</h3>
     <p class="c" style="color:#9aa4b2">상대 <b>${opp.name}</b>의 주요 시그니처 카드 중 1개를 필밴하세요.</p>
   `, banBtns);
 
-  bannedChamp = oppChamps[banIdx]?.id || oppChamps[0].id;
+  if (banBtns[banIdx]?.autoQuick) {
+    // 1클릭 원패스: 상대 최강 픽 밴 + 내 최고 숙련도 챔피언 자동 출전
+    bannedChamp = oppChamps[0].id;
+    const bestMyChamp = CHAMPIONS.filter(c => c.id !== bannedChamp).sort((a,b) => (getChampMastery(b.id).lv - getChampMastery(a.id).lv))[0] || CHAMPIONS[0];
+    addChampMastery(bestMyChamp.id, 80);
+    toast(`⚡ [AI 자동 밴픽] ${bestMyChamp.n} 픽 (숙련도 Lv.${getChampMastery(bestMyChamp.id).lv}) 출전!`);
+    return { myChamp: bestMyChamp, bannedChamp, bonus: 8 };
+  }
+  bannedChamp = oppChamps[banIdx - 1]?.id || oppChamps[0].id;
 
   const pickBtns = CHAMPIONS.filter(c => c.id !== bannedChamp).map(c => {
     const cm = getChampMastery(c.id);
