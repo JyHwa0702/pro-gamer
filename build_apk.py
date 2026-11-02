@@ -41,8 +41,8 @@ def build():
         f.write('''<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.progamer.road"
-    android:versionCode="2"
-    android:versionName="2.0.0">
+    android:versionCode="3"
+    android:versionName="1.7.0">
 
     <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="35" />
     <uses-permission android:name="android.permission.INTERNET" />

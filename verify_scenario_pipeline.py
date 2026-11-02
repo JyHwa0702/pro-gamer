@@ -78,7 +78,7 @@ def test_champions_and_stages():
             log(f"챔피언 {champ}가 코드에서 누락되었습니다!", "FAIL")
             return False
 
-    for stage_keyword in ['playAsianGamesTournament', 'showLckChampionSelectModal', 'triggerClutchQTE', 'showWealthModal', 'updateStockMarket', 'showSnsModal', 'checkWeeklyDM', 'playMadMovie', 'openPhotoGalleryPicker', 'craftWorldsSkinModal', 'startOwnerModeDraft']:
+    for stage_keyword in ['playAsianGamesTournament', 'showLckChampionSelectModal', 'triggerClutchQTE', 'showWealthModal', 'updateStockMarket', 'showSnsModal', 'checkWeeklyDM', 'playMadMovie', 'openPhotoGalleryPicker', 'craftWorldsSkinModal', 'startOwnerModeDraft', 'initIntroVideo', 'checkForUpdates']:
         if stage_keyword not in code:
             log(f"핵심 시스템 함수 {stage_keyword}가 누락되었습니다!", "FAIL")
             return False

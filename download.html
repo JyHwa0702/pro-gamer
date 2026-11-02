@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>프로의 길 : 인연 - APK 다운로드 센터</title>
+<title>프로의 길 : 인연 - 공식 다운로드 센터 (v1.7.0)</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, sans-serif; }
@@ -19,6 +19,7 @@ h1 { font-size: 24px; font-weight: 900; background: linear-gradient(135deg, #fde
 .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 15px; border-radius: 12px; font-size: 15px; font-weight: 800; text-decoration: none; text-align: center; border: none; cursor: pointer; transition: transform 0.1s, opacity 0.2s; margin-bottom: 10px; }
 .btn:active { transform: scale(0.98); }
 .btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; box-shadow: 0 4px 16px rgba(37,99,235,0.4); }
+.btn-github { background: linear-gradient(135deg, #10b981, #059669); color: #fff; box-shadow: 0 4px 16px rgba(16,185,129,0.35); }
 .btn-zip { background: linear-gradient(135deg, #475569, #334155); color: #f1f5f9; border: 1px solid #475569; }
 .btn-web { background: linear-gradient(135deg, #ec4899, #be185d); color: #fff; box-shadow: 0 4px 16px rgba(236,72,153,0.35); }
 
@@ -41,37 +42,54 @@ h1 { font-size: 24px; font-weight: 900; background: linear-gradient(135deg, #fde
 <div class="container">
   
   <div class="header">
-    <div class="logo-icon">🎮</div>
-    <span class="badge">v1.2.0 정식 패키지</span>
+    <div class="logo-icon">🔨</div>
+    <span class="badge">v1.7.0 공식 배포 패키지</span>
     <h1>프로의 길 : 인연</h1>
-    <p class="sub-title">10인의 히로인 · e스포츠 커리어 · 주식 &amp; 부동산 육성 시뮬레이션</p>
+    <p class="sub-title">망치 오프닝 로고 연출 · 13인 히로인 · LCK 6강 PO · 자동 업데이트</p>
   </div>
 
   <!-- 다운로드 메인 액션 카드 -->
   <div class="card" style="border: 1px solid #3b82f6; background: linear-gradient(180deg, #131c36 0%, #0e1424 100%);">
     <div style="font-weight: 800; font-size: 16px; margin-bottom: 4px; color: #60a5fa;">📱 스마트폰 설치 파일 다운로드</div>
-    <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 16px;">원하는 방식을 선택하여 탭하세요. 즉시 다운로드가 시작됩니다.</div>
+    <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 16px;">어느 네트워크(5G/LTE/타 와이파이)에서나 초고속으로 다운로드됩니다.</div>
 
+    <!-- 전 세계 공용 GitHub Release 다이렉트 고속 다운로드 -->
+    <a href="https://github.com/JyHwa0702/pro-gamer/releases/latest/download/pro-gamer.apk" class="btn btn-github">
+      <span>🚀</span> <b>[추천] 전 세계 초고속 다이렉트 다운로드 (APK)</b>
+    </a>
+
+    <!-- 로컬/자체 호스팅 다이렉트 다운로드 -->
     <a href="pro-gamer.apk" download="pro-gamer.apk" class="btn btn-primary">
-      <span>📥</span> <b>APK 직접 다운로드 (20.5 MB)</b>
+      <span>📥</span> <b>서버 직접 다운로드 (APK)</b>
     </a>
 
+    <!-- 카톡/메신저용 ZIP -->
     <a href="pro-gamer-apk.zip" download="pro-gamer-apk.zip" class="btn btn-zip">
-      <span>📦</span> <b>카톡·메신저용 ZIP 다운로드 (19.8 MB)</b>
+      <span>📦</span> <b>카톡·메신저 공유용 ZIP 파일 다운로드</b>
     </a>
 
-    <a href="index.html" class="btn btn-web">
-      <span>🌐</span> <b>웹 브라우저에서 바로 플레이하기</b>
+    <!-- 웹 브라우저 즉시 플레이 -->
+    <a href="https://jyhwa0702.github.io/pro-gamer/" class="btn btn-web">
+      <span>🌐</span> <b>설치 없이 웹 브라우저에서 즉시 플레이하기</b>
     </a>
   </div>
 
   <!-- QR 코드 스캔 공유 카드 -->
   <div class="card">
     <div style="font-weight: 800; font-size: 15px; margin-bottom: 4px; color: #fde047;">📸 친구 스마트폰 카메라로 QR 스캔</div>
-    <div style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">옆에 있는 친구의 기본 카메라로 아래 QR 코드를 비추면 즉시 다운로드 창이 열립니다.</div>
+    <div style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">옆에 있는 친구의 기본 카메라로 아래 QR 코드를 비추면 즉시 다운로드 페이지가 열립니다.</div>
     <div class="qr-box">
       <img id="qrImg" class="qr-img" src="" alt="다운로드 QR 코드">
       <div id="qrUrlTxt" style="font-size: 11.5px; color: #38bdf8; word-break: break-all; font-weight: 700;"></div>
+    </div>
+  </div>
+
+  <!-- 인앱 자동 업데이트 안내 -->
+  <div class="card" style="border: 1px solid #10b981; background: #0c1a24;">
+    <div style="font-weight: 800; font-size: 15px; margin-bottom: 4px; color: #34d399;">🔄 인앱 실시간 자동 업데이트 지원</div>
+    <div style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">
+      게임을 실행하면 시작할 때 최신 버전 여부를 자동으로 감지합니다.<br>
+      새로운 패치가 출시되면 앱 안에서 <b>원클릭</b>으로 최신 APK를 다운로드받아 즉시 업데이트할 수 있습니다.
     </div>
   </div>
 
@@ -81,7 +99,7 @@ h1 { font-size: 24px; font-weight: 900; background: linear-gradient(135deg, #fde
     
     <div class="guide-step">
       <div class="step-num">1</div>
-      <div class="step-content">상단의 <b>[APK 직접 다운로드]</b> 버튼을 누르고 다운로드가 완료되면 알림창의 파일을 터치합니다.</div>
+      <div class="step-content">상단의 <b>[전 세계 초고속 다이렉트 다운로드]</b>를 누르고 다운로드가 완료되면 알림창의 파일을 터치합니다.</div>
     </div>
 
     <div class="guide-step">
@@ -95,14 +113,14 @@ h1 { font-size: 24px; font-weight: 900; background: linear-gradient(135deg, #fde
     </div>
   </div>
 
-  <!-- 10인 히로인 소개 -->
+  <!-- 13인 히로인 소개 -->
   <div class="card">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px">
-      <div style="font-weight: 800; font-size: 14.5px; color: #f472b6;">💖 10인의 히로인 라인업</div>
-      <span style="font-size:11px; color:#cbd5e1">100% 풀 일러스트 탑재</span>
+      <div style="font-weight: 800; font-size: 14.5px; color: #f472b6;">💖 13인의 히로인 풀 라인업</div>
+      <span style="font-size:11px; color:#cbd5e1">히든 3인 포함 100% 탑재</span>
     </div>
     <div style="font-size: 12px; color: #94a3b8; line-height: 1.5; margin-bottom: 10px;">
-      이지은, 하린, 윤소라, 강미나, 장세아, 클로이, 백설아, 미야모토 린, 카밀라, 서예진
+      이지은, 강하린, 윤소라, 강미나, 장세아, 클로이, 백설아, 미야모토 린, 카밀라, 서예진 + <b>[히든] 나유나, 엘레나 로마노바, 유세린</b>
     </div>
     <div class="heroines-grid">
       <div class="h-mini"><img src="jieun.jpg" alt="지은"></div>
@@ -115,21 +133,24 @@ h1 { font-size: 24px; font-weight: 900; background: linear-gradient(135deg, #fde
       <div class="h-mini"><img src="rin.jpg" alt="린"></div>
       <div class="h-mini"><img src="camila.jpg" alt="카밀라"></div>
       <div class="h-mini"><img src="yejin.jpg" alt="예진"></div>
+      <div class="h-mini"><img src="nayuna.jpg" alt="나유나"></div>
+      <div class="h-mini"><img src="elena.jpg" alt="엘레나"></div>
+      <div class="h-mini"><img src="serin.jpg" alt="유세린"></div>
     </div>
   </div>
 
   <div class="footer">
-    프로의 길 : 인연 v1.2.0 · Made with Google Antigravity
+    프로의 길 : 인연 v1.7.0 · Made with Google Antigravity
   </div>
 
 </div>
 
 <script>
-  // 현재 접속 중인 주소를 기반으로 QR 코드 자동 생성
-  const currentUrl = window.location.href.split('?')[0];
-  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=4&data=' + encodeURIComponent(currentUrl);
+  // GitHub Pages 기반 전 세계 공용 다운로드 주소
+  const publicShareUrl = 'https://jyhwa0702.github.io/pro-gamer/download.html';
+  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=4&data=' + encodeURIComponent(publicShareUrl);
   document.getElementById('qrImg').src = qrUrl;
-  document.getElementById('qrUrlTxt').textContent = currentUrl;
+  document.getElementById('qrUrlTxt').textContent = publicShareUrl;
 </script>
 </body>
 </html>
