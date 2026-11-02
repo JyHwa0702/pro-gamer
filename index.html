@@ -200,6 +200,21 @@ tr.me td{background:#1d2a52;font-weight:800}
 .tag-streamer{background:#581c87;color:#e9d5ff;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:800}
 .tag-heroine{background:#831843;color:#fbcfe8;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:800}
 
+
+/* 🎬 매드무비 시네마틱 & 📸 인스타 앨범 전용 스타일 */
+.mm-screen{position:relative;width:100%;height:220px;background:#050811;border-radius:14px;overflow:hidden;border:2px solid #3b82f6;box-shadow:0 0 25px rgba(59,130,246,0.3);margin-bottom:10px}
+.mm-canvas{width:100%;height:100%;display:block}
+.mm-overlay{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.mm-kill-banner{font-size:28px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#ffd23f;text-shadow:0 0 20px #f59e0b, 0 0 40px #ef4444;animation:pop .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);background:rgba(0,0,0,0.65);padding:6px 18px;border-radius:99px;border:1px solid #ffd23f;margin-bottom:6px}
+.mm-sub-banner{font-size:13px;font-weight:800;color:#fff;background:rgba(239,68,68,0.85);padding:3px 12px;border-radius:99px;letter-spacing:0.5px}
+.mm-caster-box{background:#0e1424;border-left:4px solid #ef4444;border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.6;color:#f8fafc;margin-bottom:10px}
+.mm-caster-tag{color:#38bdf8;font-weight:800;margin-right:6px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:7px;margin:10px 0;max-height:280px;overflow-y:auto;padding-right:2px}
+.gallery-item{aspect-ratio:1;border-radius:10px;overflow:hidden;background:#151c30;border:2px solid #232d48;cursor:pointer;position:relative;transition:border-color .2s}
+.gallery-item:hover, .gallery-item.sel{border-color:#ec4899;box-shadow:0 0 12px rgba(236,72,153,0.5)}
+.gallery-item img{width:100%;height:100%;object-fit:cover}
+.gallery-tag{position:absolute;bottom:4px;left:4px;background:rgba(0,0,0,0.75);font-size:10px;color:#fff;padding:1px 5px;border-radius:4px;font-weight:700}
+
 </style>
 </head>
 <body>
@@ -2995,7 +3010,7 @@ async function showSnsModal() {
         `).join('');
       }
 
-      btns.push({ t: '✨ 일상 스토리/사진 올리기', cls: 'pink', type: 'postNow' });
+      btns.push({ t: '📸 앨범에서 명장면/추억 골라 올리기', cls: 'pink', type: 'pickFromGallery' });
 
     } else {
       // DM Tab
@@ -3051,7 +3066,9 @@ async function showSnsModal() {
 
     if (!choiceIdx || choiceIdx.type === 'close') break;
 
-    if (choiceIdx.type === 'postNow') {
+    if (choiceIdx.type === 'pickFromGallery') {
+      await openPhotoGalleryPicker();
+    } else if (choiceIdx.type === 'postNow') {
       const heroKeys = Object.keys(P.bonds || {}).filter(k => P.bonds[k]?.unlocked);
       const randomHeroine = heroKeys.length > 0 ? pick(heroKeys) : 'jieun';
       const hObj = HEROINES[randomHeroine];
@@ -3101,6 +3118,199 @@ async function openDmChat(idx) {
     playDateSound();
     toast('💬 답장을 전송했습니다!');
     save(); render();
+  }
+}
+
+
+// ======================================================================
+// 🎬 e스포츠 매드무비 시네마틱 & 📸 인스타 사진 보관함 갤러리 시스템
+// ======================================================================
+
+function initGallery() {
+  if (!P.gallery) P.gallery = [];
+  if (P.gallery.length === 0) {
+    P.gallery.push({
+      id: 'gal_start',
+      title: '방구석 솔랭의 추억 ☕',
+      img: 'assets/jieun_cafe.jpg',
+      caption: 'PC방 27번 좌석에서 프로를 꿈꾸던 시절... 응원해준 지은이 고마워!',
+      tag: '초심',
+      date: '1년차 1주차'
+    });
+  }
+}
+
+function addGalleryPhoto(p) {
+  initGallery();
+  if (!P.gallery.some(g => g.id === p.id)) {
+    P.gallery.unshift(p);
+    toast(`📸 [새 사진 보관] "${p.title}" 사진이 인스타 앨범에 저장되었습니다!`);
+  }
+}
+
+const HIGHLIGHT_SCRIPTS = {
+  mid: {
+    banner: 'PENTAKILL!',
+    sub: '황제의 진형 · 점멸 5인궁 대박',
+    caster: '🎙️ 전용준: "충격파가 다섯 명을 띄웠습니다아아악!! 에이스!! 펜타키이이일!!"',
+    analyst: '🎙️ 클템: "아니 이게 말이 됩니까?! 보고도 믿을 수가 없어요! 완벽한 차력쇼입니다!!"',
+    img: 'assets/harin_stage.jpg'
+  },
+  adc: {
+    banner: 'PENTAKILL!',
+    sub: '사냥본능 · 앞점멸 1v5 카이팅',
+    caster: '🎙️ 전용준: "앞점멸 돌진!! 피하면서 때리고 다 잡습니다! 쿼드라에 이어... 펜타킬!!"',
+    analyst: '🎙️ 강미나 해설: "손가락 떨림이 0.1초도 없었어요! 이 선수는 심장이 얼어붙었습니다!"',
+    img: 'assets/harin_home.jpg'
+  },
+  jg: {
+    banner: 'BARON STEAL & ACE!',
+    sub: '0.1초 기적의 강타 & 용의 분노 킥',
+    caster: '🎙️ 전용준: "바론 체력 천오백, 팔백... 스틸!! 바론을 뺏고 적 원딜을 걷어찹니다!!"',
+    analyst: '🎙️ 클템: "협곡의 지배자 탄생입니다! 정글 차이가 우주 끝까지 벌어졌어요!!"',
+    img: 'assets/mina_lounge.jpg'
+  },
+  sup: {
+    banner: 'SUPER PLAY!',
+    sub: '영혼을 낚는 사형선고 & 슈퍼세이브 랜턴',
+    caster: '🎙️ 전용준: "사형선고가 정확히 꽂힙니다! 점멸 랜턴으로 아군 원딜 살려내고 한타 압승!!"',
+    analyst: '🎙️ 강미나 해설: "서포터가 게임을 캐리합니다! 보고도 눈을 의심케 하는 환상적인 시야 장악!"',
+    img: 'assets/sea_yacht.jpg'
+  },
+  top: {
+    banner: 'LEGENDARY DEFENSE!',
+    sub: '통곡의 벽 · 타워 1v3 역관광',
+    caster: '🎙️ 전용준: "타워 끼고 버팁니다! 이걸 살아남으면서 적 둘을 데려가나요?! 탑의 낭만!!"',
+    analyst: '🎙️ 클템: "이게 바로 국밥 탑라이너의 위엄입니다! 상대팀 멘탈 완전히 가루가 됐어요!"',
+    img: 'assets/mina_rooftop.jpg'
+  }
+};
+
+async function playMadMovie(type = null) {
+  initGallery();
+  playJackpotSound();
+  const posKey = P.pos || 'mid';
+  const hl = HIGHLIGHT_SCRIPTS[posKey] || HIGHLIGHT_SCRIPTS.mid;
+
+  const modalHtml = `
+    <div style="text-align:center">
+      <div style="display:inline-block;background:linear-gradient(90deg,#ef4444,#f59e0b);color:#fff;padding:3px 12px;border-radius:99px;font-size:11px;font-weight:900;letter-spacing:1px;margin-bottom:6px">
+        🔴 LCK OFFICIAL MATCH HIGHLIGHT
+      </div>
+      <div class="mm-screen" id="mmScreen">
+        <canvas class="mm-canvas" id="mmCanvas" width="400" height="220"></canvas>
+        <div class="mm-overlay">
+          <div class="mm-kill-banner">${hl.banner}</div>
+          <div class="mm-sub-banner">${hl.sub}</div>
+        </div>
+      </div>
+      <div class="mm-caster-box">
+        <div><span class="mm-caster-tag">캐스터</span> ${hl.caster}</div>
+        <div style="margin-top:4px"><span class="mm-caster-tag" style="color:#f59e0b">해설위원</span> ${hl.analyst}</div>
+      </div>
+      <div style="font-size:12px;color:#94a3b8;margin-bottom:8px">
+        🔥 슈퍼플레이 달성! 팬덤 <b>+15,000</b> · 피지컬 <b>+3</b> · 인스타 앨범에 사진 보관됨
+      </div>
+    </div>
+  `;
+
+  // 보상 지급
+  P.fans = (P.fans || 0) + 15000;
+  grow('mech', 3);
+  grow('team', 2);
+  P.stress = Math.max(0, P.stress - 20);
+
+  // 갤러리에 저장
+  const photoId = 'highlight_' + Date.now();
+  const photoTitle = `[명장면] ${POS[P.pos]?.n || '프로'} ${hl.banner}`;
+  addGalleryPhoto({
+    id: photoId,
+    title: photoTitle,
+    img: hl.img,
+    caption: `오늘 경기 손가락 상태 실화냐... ${hl.sub}! 응원해주신 팬분들 진심으로 감사드립니다 🔥`,
+    tag: '슈퍼플레이',
+    date: `${P.year}년차 ${P.week}주차`
+  });
+
+  const choice = await ask(modalHtml, [
+    { t: '📸 이 명장면 인스타에 바로 올리기', cls: 'pink', action: 'post' },
+    { t: '계속하기', cls: 'gold', action: 'continue' }
+  ]);
+
+  if (choice === 0) {
+    postToInsta(photoTitle, hl.img, `오늘 협곡 찢었습니다... ${hl.sub}! 🔥 모두 팬 여러분 덕분입니다!`);
+  }
+}
+
+// ======================================================================
+// 📸 인스타 앨범에서 사진 골라 게시하기 모달
+// ======================================================================
+async function openPhotoGalleryPicker() {
+  initGallery();
+  if (P.gallery.length === 0) {
+    toast('보관된 사진이 없습니다. 경기나 데이트를 통해 사진을 모아보세요!');
+    return;
+  }
+
+  let selectedIdx = 0;
+
+  while (true) {
+    const selPhoto = P.gallery[selectedIdx] || P.gallery[0];
+
+    const gridHtml = P.gallery.map((g, i) => `
+      <div class="gallery-item ${i === selectedIdx ? 'sel' : ''}" data-gidx="${i}">
+        <img src="${g.img}" onerror="this.src='assets/jieun_cafe.jpg'" alt="${g.title}">
+        <div class="gallery-tag">${g.tag || '사진'}</div>
+      </div>
+    `).join('');
+
+    const pickerHtml = `
+      <h3>📸 인스타 피드 게시할 사진 선택</h3>
+      <div class="c" style="color:#9aa4b2;font-size:12px;margin-bottom:6px">보관함에서 원하는 명장면/추억 사진을 탭하세요.</div>
+      
+      <div class="gallery-grid">${gridHtml}</div>
+
+      <!-- 선택된 사진 프리뷰 & 문구 -->
+      <div style="background:#0e1322;border:1px solid #232c48;border-radius:12px;padding:10px;margin-top:10px">
+        <div style="font-weight:800;font-size:13.5px;color:#fff;margin-bottom:4px">선택: ${selPhoto.title}</div>
+        <div style="font-size:12px;color:#cbd5e1;line-height:1.5;background:#151c30;padding:8px 10px;border-radius:8px">
+          "<b>${selPhoto.caption}</b>"
+        </div>
+      </div>
+    `;
+
+    const choiceIdx = await new Promise(res => {
+      $('#mBody').innerHTML = pickerHtml;
+      
+      $('#mBody').querySelectorAll('[data-gidx]').forEach(item => {
+        item.onclick = () => {
+          selectedIdx = parseInt(item.dataset.gidx);
+          res({ type: 'reselect' });
+        };
+      });
+
+      const f = $('#mBtns'); f.innerHTML = '';
+      const btns = [
+        { t: '✨ 이 사진으로 피드 게시하기!', cls: 'pink', type: 'publish' },
+        { t: '취소', cls: 'gray', type: 'cancel' }
+      ];
+      btns.forEach((b, i) => {
+        const e = document.createElement('button');
+        e.className = 'btn ' + (b.cls || '');
+        e.innerHTML = b.t;
+        e.onclick = () => { $('#modal').classList.add('hidden'); res(b); };
+        f.appendChild(e);
+      });
+      $('#modal').classList.remove('hidden');
+    });
+
+    if (!choiceIdx || choiceIdx.type === 'cancel') break;
+    if (choiceIdx.type === 'reselect') continue;
+
+    if (choiceIdx.type === 'publish') {
+      postToInsta(selPhoto.title, selPhoto.img, selPhoto.caption);
+      break;
+    }
   }
 }
 
