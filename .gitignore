@@ -11,3 +11,9 @@ __pycache__/
 .DS_Store
 Thumbs.db
 *.idsig
+
+# Release Binaries (kept locally / uploaded to Google Play Console)
+*.apk
+*.aab
+*.zip
+keystore/

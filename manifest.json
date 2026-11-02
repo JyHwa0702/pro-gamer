@@ -1,7 +1,7 @@
 {
-  "name": "로드 투 월즈 (Road to Worlds)",
-  "short_name": "로드투월즈",
-  "description": "LoL e스포츠 프로게이머 육성 & 롤드컵 우승 시뮬레이션",
+  "name": "켠김에 GOAT까지",
+  "short_name": "켠김에GOAT까지",
+  "description": "흙수저 솔랭전사에서 롤드컵 우승, 10인의 히로인 인연까지! e스포츠 프로게이머 육성 시뮬레이션",
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",

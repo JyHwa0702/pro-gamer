@@ -4,18 +4,28 @@ import shutil
 import zipfile
 
 def build():
-    sdk = r"C:\Users\user\AppData\Local\Android\Sdk"
-    bt = os.path.join(sdk, "build-tools", "35.0.0")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    
+    # 1. SDK, Build Tools & JDK paths from Unity Editor
+    unity_android = r"C:\Program Files\Unity\Hub\Editor\6000.3.14f1\Editor\Data\PlaybackEngines\AndroidPlayer"
+    sdk = os.path.join(unity_android, "SDK")
+    bt = os.path.join(sdk, "build-tools", "36.0.0")
     android_jar = os.path.join(sdk, "platforms", "android-35", "android.jar")
+    
+    # JDK: Use Java 17
     jdk_bin = r"C:\Program Files\Java\jdk-17\bin"
+    java_exe = os.path.join(jdk_bin, "java.exe")
     javac = os.path.join(jdk_bin, "javac.exe")
     keytool = os.path.join(jdk_bin, "keytool.exe")
+    jarsigner = os.path.join(jdk_bin, "jarsigner.exe")
+    
     aapt2 = os.path.join(bt, "aapt2.exe")
-    d8 = os.path.join(bt, "d8.bat")
+    d8_jar = os.path.join(bt, "lib", "d8.jar")
     zipalign = os.path.join(bt, "zipalign.exe")
-    apksigner = os.path.join(bt, "apksigner.bat")
+    apksigner_jar = os.path.join(bt, "lib", "apksigner.jar")
+    bundletool = os.path.join(unity_android, "Tools", "bundletool-all-1.17.2.jar")
 
-    work_dir = r"d:\antigravity\apk_build_tmp"
+    work_dir = os.path.join(BASE_DIR, "apk_build_tmp")
     if os.path.exists(work_dir):
         shutil.rmtree(work_dir, ignore_errors=True)
     os.makedirs(work_dir, exist_ok=True)
@@ -35,22 +45,23 @@ def build():
     os.makedirs(gen_dir, exist_ok=True)
     os.makedirs(bin_dir, exist_ok=True)
 
-    # 1. AndroidManifest.xml
+    # 1. AndroidManifest.xml (versionCode bumped to 10, versionName bumped to 2.0.0 for smooth updates)
     manifest_path = os.path.join(work_dir, "AndroidManifest.xml")
     with open(manifest_path, "w", encoding="utf-8") as f:
         f.write('''<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.progamer.road"
-    android:versionCode="6"
-    android:versionName="1.8.2">
+    android:versionCode="10"
+    android:versionName="2.0.0">
 
     <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="35" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:label="로드 투 월즈"
+        android:label="켠김에 GOAT까지"
         android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:hardwareAccelerated="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         <activity
@@ -70,24 +81,15 @@ def build():
     with open(os.path.join(values_dir, "strings.xml"), "w", encoding="utf-8") as f:
         f.write('''<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">로드 투 월즈</string>
+    <string name="app_name">켠김에 GOAT까지</string>
 </resources>''')
 
-    # 3. Create app icon (ic_launcher.png)
-    from PIL import Image
-    src_icon_path = r"d:\antigravity\pro-gamer\icon-512.png"
-    if os.path.exists(src_icon_path):
-        base_icon = Image.open(src_icon_path)
-    else:
-        from PIL import ImageDraw
-        base_icon = Image.new("RGBA", (512, 512), (14, 18, 32, 255))
-        d = ImageDraw.Draw(base_icon)
-        d.ellipse([16, 16, 496, 496], fill=(30, 25, 60, 255), outline=(245, 158, 11, 255), width=16)
-
-    # Save to mipmap
-    icon_192 = base_icon.resize((192, 192), Image.Resampling.LANCZOS)
-    icon_192.save(os.path.join(mipmap_dir, "ic_launcher.png"))
-    icon_192.save(os.path.join(mipmap_dir, "ic_launcher_round.png"))
+    # 3. Copy app icon (ic_launcher.png)
+    src_192 = os.path.join(BASE_DIR, "icon-192.png")
+    if not os.path.exists(src_192):
+        src_192 = os.path.join(BASE_DIR, "assets", "icon-192.png")
+    shutil.copy(src_192, os.path.join(mipmap_dir, "ic_launcher.png"))
+    shutil.copy(src_192, os.path.join(mipmap_dir, "ic_launcher_round.png"))
 
     # 4. MainActivity.java
     java_file = os.path.join(src_dir, "MainActivity.java")
@@ -144,14 +146,18 @@ public class MainActivity extends Activity {
 ''')
 
     # 5. Copy web assets into assets/
-    shutil.copy(r"d:\antigravity\pro-gamer\index.html", os.path.join(assets_dir, "index.html"))
-    shutil.copytree(r"d:\antigravity\pro-gamer\assets", os.path.join(assets_dir, "assets"), dirs_exist_ok=True)
-    if os.path.exists(r"d:\antigravity\pro-gamer\champs"):
-        shutil.copytree(r"d:\antigravity\pro-gamer\champs", os.path.join(assets_dir, "champs"), dirs_exist_ok=True)
-    for img in os.listdir(r"d:\antigravity\pro-gamer\assets"):
-        img_p = os.path.join(r"d:\antigravity\pro-gamer\assets", img)
-        if os.path.isfile(img_p):
-            shutil.copy(img_p, os.path.join(assets_dir, img))
+    shutil.copy(os.path.join(BASE_DIR, "index.html"), os.path.join(assets_dir, "index.html"))
+    assets_src = os.path.join(BASE_DIR, "assets")
+    if os.path.exists(assets_src):
+        shutil.copytree(assets_src, os.path.join(assets_dir, "assets"), dirs_exist_ok=True)
+        for img in os.listdir(assets_src):
+            img_p = os.path.join(assets_src, img)
+            if os.path.isfile(img_p):
+                shutil.copy(img_p, os.path.join(assets_dir, img))
+
+    champs_src = os.path.join(BASE_DIR, "champs")
+    if os.path.exists(champs_src):
+        shutil.copytree(champs_src, os.path.join(assets_dir, "champs"), dirs_exist_ok=True)
 
     # 6. AAPT2 Compile
     compiled_res = os.path.join(work_dir, "compiled_res.zip")
@@ -160,7 +166,7 @@ public class MainActivity extends Activity {
     if res.returncode != 0:
         raise Exception(f"aapt2 compile failed: {res.stderr}")
 
-    # 7. AAPT2 Link
+    # 7. AAPT2 Link (Generate standard binary APK)
     unaligned_apk = os.path.join(bin_dir, "unaligned.apk")
     cmd_link = [
         aapt2, "link",
@@ -198,7 +204,7 @@ public class MainActivity extends Activity {
                 class_files.append(os.path.join(root, f))
 
     cmd_d8 = [
-        "cmd.exe", "/c", d8,
+        java_exe, "-cp", d8_jar, "com.android.tools.r8.D8",
         "--lib", android_jar,
         "--output", bin_dir
     ] + class_files
@@ -223,31 +229,34 @@ public class MainActivity extends Activity {
     if res.returncode != 0:
         raise Exception(f"zipalign failed: {res.stderr}")
 
-    # 12. Release Keystore
-    keystore = r"d:\antigravity\pro_road_release.keystore"
+    # 12. Release Keystore (Store permanently in project keystore directory)
+    keystore_dir = os.path.join(BASE_DIR, "keystore")
+    os.makedirs(keystore_dir, exist_ok=True)
+    keystore = os.path.join(keystore_dir, "progamer-release.jks")
+
     if not os.path.exists(keystore):
         cmd_key = [
             keytool, "-genkeypair", "-v",
             "-keystore", keystore,
             "-storepass", "proroad2026!",
-            "-alias", "proroadrelease",
+            "-alias", "progamerkey",
             "-keypass", "proroad2026!",
             "-keyalg", "RSA",
             "-keysize", "2048",
             "-validity", "10000",
-            "-dname", "CN=ProGamer Road,OU=Game Studio,O=ProGamer Inc,L=Seoul,ST=Seoul,C=KR"
+            "-dname", "CN=켠김에 GOAT까지,OU=Game Studio,O=ProGamer Inc,L=Seoul,ST=Seoul,C=KR"
         ]
         res = subprocess.run(cmd_key, capture_output=True, text=True)
         if res.returncode != 0:
             raise Exception(f"keytool failed: {res.stderr}")
 
     # 13. Apksigner with v1, v2, v3 schemes
-    final_apk = r"d:\antigravity\pro-gamer\pro-gamer.apk"
+    final_apk = os.path.join(BASE_DIR, "pro-gamer.apk")
     cmd_sign = [
-        "cmd.exe", "/c", apksigner, "sign",
+        java_exe, "-jar", apksigner_jar, "sign",
         "--ks", keystore,
         "--ks-pass", "pass:proroad2026!",
-        "--ks-key-alias", "proroadrelease",
+        "--ks-key-alias", "progamerkey",
         "--key-pass", "pass:proroad2026!",
         "--v1-signing-enabled", "true",
         "--v2-signing-enabled", "true",
@@ -259,18 +268,26 @@ public class MainActivity extends Activity {
     if res.returncode != 0:
         raise Exception(f"apksigner failed: {res.stderr}")
 
+    # Copy to zip
+    zip_copy = os.path.join(BASE_DIR, "pro-gamer.zip")
+    shutil.copy(final_apk, zip_copy)
+
+    # Also make a pro-gamer-apk.zip for web download convenience
+    apk_zip_copy = os.path.join(BASE_DIR, "pro-gamer-apk.zip")
+    shutil.copy(final_apk, apk_zip_copy)
+
+    # Copy to artifact directory if exists
+    artifact_dir = r"C:\Users\livm2\.gemini\antigravity\brain\36ca6a7a-bcec-45de-bcf4-52e501097eee"
+    if os.path.exists(artifact_dir):
+        shutil.copy(final_apk, os.path.join(artifact_dir, "pro-gamer.apk"))
+
     try:
         shutil.rmtree(work_dir, ignore_errors=True)
     except:
         pass
 
-    # Copy to zip and artifact
-    zip_copy = r"d:\antigravity\pro-gamer\pro-gamer.zip"
-    shutil.copy(final_apk, zip_copy)
-    shutil.copy(final_apk, r"C:\Users\user\.gemini\antigravity\brain\17ba901c-f92b-4a0f-8c20-604ed502baa4\pro-gamer.apk")
-
     apk_size = os.path.getsize(final_apk)
-    print(f"SUCCESS: Generated signed APK at {final_apk} ({apk_size / (1024*1024):.2f} MB)")
+    print(f"SUCCESS: Generated signed APK v2.0.0 (code 10) at {final_apk} ({apk_size / (1024*1024):.2f} MB)")
 
 if __name__ == "__main__":
     build()

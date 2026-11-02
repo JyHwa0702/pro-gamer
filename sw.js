@@ -1,5 +1,5 @@
 // Service Worker for Automatic Updates & Offline Play
-const CACHE_NAME = 'progamer-road-v1';
+const CACHE_NAME = 'progamer-road-v2-release';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
@@ -16,7 +16,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Network first, fallback to cache for auto-updates
+  // Network first with fresh bypass, fallback to cache for offline
   event.respondWith(
     fetch(event.request)
       .then((response) => {

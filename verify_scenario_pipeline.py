@@ -5,7 +5,7 @@
 """
 import os, sys, re, subprocess
 
-WORKSPACE = r'd:\antigravity\pro-gamer'
+WORKSPACE = os.path.dirname(os.path.abspath(__file__))
 
 def log(msg, status="INFO"):
     print(f"[{status}] {msg}")
@@ -28,7 +28,7 @@ def test_syntax():
     # Node.js Function 생성자를 통해 브라우저 API 실행 없이 순수 구문(Syntax & AST) 검증
     checker_js = """
     const fs = require('fs');
-    const html = fs.readFileSync('d:/antigravity/pro-gamer/index.html', 'utf8');
+    const html = fs.readFileSync('index.html', 'utf8');
     const scriptMatch = html.match(/<script>([\\s\\S]*?)<\\/script>/);
     try {
         new Function(scriptMatch[1]);
