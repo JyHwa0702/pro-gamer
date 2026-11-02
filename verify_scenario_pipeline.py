@@ -46,8 +46,8 @@ def test_syntax():
     return True
 
 def test_heroines_and_assets():
-    log("2. 10인 히로인 시나리오 데이터 및 에셋 파일 검증 시작...")
-    expected_heroines = ['jieun', 'harin', 'sora', 'mina', 'sea', 'chloe', 'seolah', 'rin', 'camila', 'yejin']
+    log("2. 13인 히로인 시나리오 데이터 및 에셋 파일 검증 시작...")
+    expected_heroines = ['jieun', 'harin', 'sora', 'mina', 'sea', 'chloe', 'seolah', 'rin', 'camila', 'yejin', 'nayuna', 'elena', 'serin']
     html_path = os.path.join(WORKSPACE, 'index.html')
     with open(html_path, 'r', encoding='utf-8') as f:
         code = f.read()
@@ -57,14 +57,14 @@ def test_heroines_and_assets():
             log(f"히로인 {h} 데이터가 코드에서 누락되었습니다!", "FAIL")
             return False
         
-        # 초상화 파일 존재 여부 검사
+        # 초상화 파일 존재 여부 검사 (루트 및 assets 양쪽)
         img_path = os.path.join(WORKSPACE, f"{h}.jpg")
         assets_img_path = os.path.join(WORKSPACE, "assets", f"{h}.jpg")
-        if not (os.path.exists(img_path) or os.path.exists(assets_img_path)):
+        if not (os.path.exists(img_path) and os.path.exists(assets_img_path)):
             log(f"히로인 {h} 초상화 파일({h}.jpg)이 누락되었습니다!", "FAIL")
             return False
 
-    log(f"-> 10인 히로인 전원 코드 및 에셋 무결성 확인 완료 ({len(expected_heroines)}명)", "PASS")
+    log(f"-> 13인 히로인(히든 3인 포함) 전원 코드 및 에셋 무결성 확인 완료 ({len(expected_heroines)}명)", "PASS")
     return True
 
 def test_champions_and_stages():
@@ -78,12 +78,12 @@ def test_champions_and_stages():
             log(f"챔피언 {champ}가 코드에서 누락되었습니다!", "FAIL")
             return False
 
-    for stage_keyword in ['playAsianGamesTournament', 'showLckChampionSelectModal', 'triggerClutchQTE', 'showWealthModal', 'updateStockMarket', 'showSnsModal', 'checkWeeklyDM', 'playMadMovie', 'openPhotoGalleryPicker', 'craftWorldsSkinModal']:
+    for stage_keyword in ['playAsianGamesTournament', 'showLckChampionSelectModal', 'triggerClutchQTE', 'showWealthModal', 'updateStockMarket', 'showSnsModal', 'checkWeeklyDM', 'playMadMovie', 'openPhotoGalleryPicker', 'craftWorldsSkinModal', 'startOwnerModeDraft']:
         if stage_keyword not in code:
             log(f"핵심 시스템 함수 {stage_keyword}가 누락되었습니다!", "FAIL")
             return False
 
-    log("-> 15종 챔피언 마스터리 및 밴픽/클러치/아시안게임/주식 시스템 정상 작동 확인", "PASS")
+    log("-> 15종 챔피언, LCK 6강 플레이오프, 2회차 구단주 모드 드래프트 정상 작동 확인", "PASS")
     return True
 
 def test_packages():
