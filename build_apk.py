@@ -74,12 +74,20 @@ def build():
 </resources>''')
 
     # 3. Create app icon (ic_launcher.png)
-    from PIL import Image, ImageDraw
-    icon = Image.new("RGBA", (192, 192), (14, 18, 32, 255))
-    draw = ImageDraw.Draw(icon)
-    draw.ellipse([8, 8, 184, 184], fill=(30, 25, 60, 255), outline=(245, 158, 11, 255), width=6)
-    draw.text((96, 96), "LOL", fill=(255, 215, 0, 255), anchor="mm")
-    icon.save(os.path.join(mipmap_dir, "ic_launcher.png"))
+    from PIL import Image
+    src_icon_path = r"d:\antigravity\pro-gamer\icon-512.png"
+    if os.path.exists(src_icon_path):
+        base_icon = Image.open(src_icon_path)
+    else:
+        from PIL import ImageDraw
+        base_icon = Image.new("RGBA", (512, 512), (14, 18, 32, 255))
+        d = ImageDraw.Draw(base_icon)
+        d.ellipse([16, 16, 496, 496], fill=(30, 25, 60, 255), outline=(245, 158, 11, 255), width=16)
+
+    # Save to mipmap
+    icon_192 = base_icon.resize((192, 192), Image.Resampling.LANCZOS)
+    icon_192.save(os.path.join(mipmap_dir, "ic_launcher.png"))
+    icon_192.save(os.path.join(mipmap_dir, "ic_launcher_round.png"))
 
     # 4. MainActivity.java
     java_file = os.path.join(src_dir, "MainActivity.java")
