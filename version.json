@@ -1,15 +1,15 @@
 {
-  "version": "1.8.1",
-  "versionCode": 5,
+  "version": "1.8.2",
+  "versionCode": 6,
   "releaseDate": "2026-11-02",
   "title": "로드 투 월즈 (Road to Worlds)",
   "mandatory": false,
   "changelog": [
-    "LCK 경기 승패 판정 & KDA 개연성 엔진 전면 개편 (다 지는데 2:0 이기는 모순 100% 차단)",
-    "3페이즈(라인전·오브젝트·한타) 전패 시 상대 강팀 상대로 0:2 완패 정상 적용",
-    "클러치 QTE 골드 왜곡 버그 해결 및 펜타킬 시 본인 킬/어시스트 정상 연동",
-    "0/3/1 부진 시 평점 1점대 추락, 팬 이탈 및 해설진 일침·버스 탑승 시스템 적용",
-    "하드캐리(3전 전승) 시에만 압도적 2:0 완승 및 POG 만장일치 선정"
+    "인스타그램 피드 직접 올리기 기능 추가 (사진·캡션 선택 & 좋아요·팬 실시간 폭발)",
+    "피드 댓글 답글 달기(인터랙션) 시스템 추가 (성숙한 프로형/스타형/하트 반응)",
+    "원하는 인연에게 직접 선톡(DM) 보내기 기능 신설 (실시간 달달한 답장 수신)",
+    "모달 우측 상단 고정 [✕] 닫기 버튼 통일 적용 (한 손 모바일 조작 최적화)",
+    "PC방 토너먼트 8강 대진표 브래킷(Bracket UI) 시각화 적용"
   ],
   "downloadUrl": "https://github.com/JyHwa0702/pro-gamer/releases/latest/download/pro-gamer.apk",
   "webUrl": "https://jyhwa0702.github.io/pro-gamer/"

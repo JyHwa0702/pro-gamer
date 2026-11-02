@@ -86,6 +86,19 @@ input.name{width:100%;background:#0b0f1c;border:1px solid #2a3252;border-radius:
 .kda b{display:block;font-size:20px}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 /* 모달 & 비주얼 노벨 (모바일 노치/상단바 및 화면 잘림 100% 방지) */
+.modal-close-btn{position:absolute;top:10px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);color:#94a3b8;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:50;transition:all .15s}
+.modal-close-btn:active{transform:scale(.9);background:rgba(239,68,68,.3);color:#ef4444}
+/* 토너먼트 대진표 브래킷 UI */
+.bracket-wrapper{background:#0e1322;border:1px solid #232c48;border-radius:14px;padding:12px;margin:10px 0}
+.bracket-grid{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.bracket-step{flex:1;display:flex;flex-direction:column;gap:6px}
+.bracket-node{background:#151c30;border:1px solid #28375c;border-radius:8px;padding:6px 4px;text-align:center;font-size:11px;font-weight:700;color:#cbd5e1}
+.bracket-node.me{border-color:#38bdf8;background:#1a2744;color:#fff}
+.bracket-node.win{border-color:#22c55e;background:#143823;color:#4ade80}
+.bracket-node.loss{border-color:#ef4444;background:#3b1313;color:#fca5a5}
+.bracket-node.champ{border-color:#eab308;background:linear-gradient(135deg,#3b270a,#5c3d0b);color:#fde047;box-shadow:0 0 10px rgba(234,179,8,0.3)}
+.bracket-arrow{color:#64748b;font-weight:900;font-size:12px}
+
 #modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:flex-start;justify-content:center;z-index:9999;padding:max(16px,env(safe-area-inset-top,16px)) 12px max(20px,env(safe-area-inset-bottom,20px)) 12px;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box}
 #modal.hidden{display:none}
 #modal .box{background:#171d31;border-radius:16px;padding:14px 15px;width:100%;max-width:430px;margin:auto 0;max-height:calc(100dvh - 36px);max-height:calc(100vh - 36px);overflow-y:auto;overscroll-behavior:contain;animation:pop .2s ease-out;position:relative;box-shadow:0 10px 40px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.08);box-sizing:border-box}
@@ -256,7 +269,7 @@ tr.me td{background:#1d2a52;font-weight:800}
   <header id="top"></header>
   <main id="main"></main>
 </div>
-<div id="modal" class="hidden"><div class="box"><div id="mBody"></div><div id="mBtns"></div></div></div>
+<div id="modal" class="hidden"><div class="box"><button class="modal-close-btn" id="mCloseBtn" aria-label="닫기">✕</button><div id="mBody"></div><div id="mBtns"></div></div></div>
 <div id="toast"></div>
 <script>
 // ======================================================================
@@ -303,10 +316,21 @@ $('#modal').onclick = e => {
     if (currentAskResolve) {
       const cb = currentAskResolve;
       currentAskResolve = null;
-      cb(0); // 기본 선택으로 즉시 완료 처리하여 비동기 대기 멈춤 방지
+      cb(0);
     }
   }
 };
+const mCloseBtn = $('#mCloseBtn');
+if (mCloseBtn) {
+  mCloseBtn.onclick = () => {
+    $('#modal').classList.add('hidden');
+    if (currentAskResolve) {
+      const cb = currentAskResolve;
+      currentAskResolve = null;
+      cb(0);
+    }
+  };
+}
 
 function ask(html, btns = [{ t: '확인' }]) {
   return new Promise(res => {
@@ -1212,6 +1236,33 @@ const ACTS = [
 // ======================================================================
 // 🏆 PC방 아마추어 토너먼트 시스템 (8강 -> 4강 -> 결승)
 // ======================================================================
+function getBracketHtml(roundResults, wonFinal, reachedFinal) {
+  const r0Win = roundResults[0] && roundResults[0].includes('승리');
+  const r1Win = roundResults[1] && roundResults[1].includes('승리');
+  return `
+    <div class="bracket-wrapper">
+      <div style="font-weight:900;font-size:12px;color:#fde047;margin-bottom:8px;text-align:center">🏆 8강 토너먼트 대진표 (Tournament Bracket)</div>
+      <div class="bracket-grid">
+        <div class="bracket-step">
+          <div style="font-size:10px;color:#94a3b8;text-align:center">8강전</div>
+          <div class="bracket-node me">🔵 ${P.name}팀</div>
+          <div class="bracket-node ${r0Win ? 'win' : 'loss'}">${r0Win ? '8강 승리 ➔' : '8강 탈락'}</div>
+        </div>
+        <div class="bracket-arrow">➔</div>
+        <div class="bracket-step">
+          <div style="font-size:10px;color:#94a3b8;text-align:center">4강 준결승</div>
+          <div class="bracket-node ${reachedFinal ? 'win' : (roundResults.length > 1 ? 'loss' : '')}">${reachedFinal ? '4강 승리 ➔' : (roundResults.length > 1 ? '4강 탈락' : '-')}</div>
+        </div>
+        <div class="bracket-arrow">➔</div>
+        <div class="bracket-step">
+          <div style="font-size:10px;color:#94a3b8;text-align:center">결승 FINAL</div>
+          <div class="bracket-node ${wonFinal ? 'champ' : (reachedFinal ? 'loss' : '')}">${wonFinal ? '👑 챔피언 우승!' : (reachedFinal ? '준우승' : '-')}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 async function playPcBangTournament() {
   const isPro = P.stage !== 'ama';
   const tourCount = (P.pcBangWins || 0) + 1;
@@ -1267,6 +1318,7 @@ async function playPcBangTournament() {
         <span style="background:linear-gradient(90deg,#f59e0b,#fbbf24);color:#000;font-weight:900;padding:4px 14px;border-radius:99px;font-size:13.5px">🥇 우승 챔피언 트로피 획득!</span>
         <h3 style="color:#fde047;margin:6px 0">${tourName}</h3>
       </div>
+      ${getBracketHtml(roundResults, wonFinal, reachedFinal)}
       <div style="background:#11162a;padding:10px;border-radius:10px;font-size:13px;line-height:1.7;margin-bottom:8px">
         ${roundResults.join('<br>')}
       </div>
@@ -1292,6 +1344,7 @@ async function playPcBangTournament() {
         <span style="background:#64748b;color:#fff;font-weight:900;padding:4px 12px;border-radius:99px;font-size:12.5px">🥈 결승 준우승</span>
         <h3 style="color:#e2e8f0;margin:6px 0">${tourName}</h3>
       </div>
+      ${getBracketHtml(roundResults, wonFinal, reachedFinal)}
       <div style="background:#11162a;padding:10px;border-radius:10px;font-size:13px;line-height:1.7;margin-bottom:8px">
         ${roundResults.join('<br>')}
       </div>
@@ -1308,6 +1361,7 @@ async function playPcBangTournament() {
         <span style="background:#334155;color:#94a3b8;font-weight:800;padding:3px 10px;border-radius:99px;font-size:12px">대회 참가 완료</span>
         <h4 style="color:#cbd5e1;margin:6px 0">${tourName}</h4>
       </div>
+      ${getBracketHtml(roundResults, wonFinal, reachedFinal)}
       <div style="background:#11162a;padding:10px;border-radius:10px;font-size:13px;line-height:1.7;margin-bottom:8px">
         ${roundResults.join('<br>')}
       </div>
@@ -3526,6 +3580,218 @@ function postToInsta(title, img, caption, comments = []) {
 
 let activeSnsTab = 'feed';
 
+// ======================================================================
+// 📱 인스타그램 피드 & DM 시스템 고도화
+// ======================================================================
+
+async function openCreatePostModal() {
+  const unHeroines = Object.keys(P.bonds || {}).filter(k => P.bonds[k]?.unlocked);
+  const heroKey = unHeroines.length > 0 ? pick(unHeroines) : 'jieun';
+  const h = HEROINES[heroKey] || HEROINES.jieun;
+
+  const photoPresets = [
+    { title: '🏆 대회 트로피 인증샷', img: 'icon-512.png', tag: '대회우승', defaultCaption: '소환사의 컵을 향한 발걸음! 응원해주신 모든 팬분들 사랑합니다 🏆🔥' },
+    { title: '🎮 밤샘 스크림 & 솔랭', img: 'assets/harin_stage.jpg', tag: '선수일상', defaultCaption: '새벽까지 롤 20판 달림... 손가락이 터질 것 같지만 승리만이 살 길이다 ⚡' },
+    { title: `☕ ${h.name}와의 달콤한 카페 데이트`, img: h.dates?.[0]?.img || 'assets/jieun_cafe.jpg', tag: '일상힐링', defaultCaption: '소중한 사람과 함께 보낸 꿀 같은 휴식 ☕ 충전 완료, 다음 경기 찢으러 갑니다!' },
+    { title: `🌙 가로등 아래 밤 산책`, img: h.dates?.[1]?.img || 'assets/jieun_night.jpg', tag: '추억', defaultCaption: '시원한 밤공기 마시며 멘탈 정돈 중... 늘 곁에 있어줘서 고마워 ✨' }
+  ];
+
+  const photoBtns = photoPresets.map(p => ({
+    t: `<b>${p.title}</b><small style="display:block;color:#93c5fd;font-size:11px;margin-top:2px">🏷️ ${p.tag}</small>`,
+    cls: 'pink',
+    preset: p
+  }));
+  photoBtns.push({ t: '취소', cls: 'gray' });
+
+  const selIdx = await ask(`
+    <h3>📸 인스타그램 새 피드 올리기</h3>
+    <p class="c" style="color:#9aa4b2;font-size:12px">팬들과 공유할 오늘의 사진을 골라주세요.</p>
+  `, photoBtns);
+
+  if (selIdx >= photoPresets.length) return;
+  const chosenPhoto = photoPresets[selIdx];
+
+  const captions = [
+    chosenPhoto.defaultCaption,
+    '말보다 결과로 증명하겠습니다. 다음 경기 무조건 2:0 셧아웃 기대해주세요 🔥 #RoadToWorlds',
+    '팬 여러분의 함성 소리 덕분에 오늘도 힘을 냅니다! 항상 과분한 사랑 감사합니다 ❤️ #LCK #프로게이머'
+  ];
+
+  const capBtns = captions.map((cap, i) => ({
+    t: `<small style="font-size:12.5px;line-height:1.4">${cap}</small>`,
+    cls: i === 0 ? 'gold' : 'purple',
+    caption: cap
+  }));
+  capBtns.push({ t: '취소', cls: 'gray' });
+
+  const capIdx = await ask(`
+    <div style="text-align:center;margin-bottom:8px">
+      <img src="${chosenPhoto.img}" onerror="this.src='icon-512.png'" style="width:100%;max-height:160px;object-fit:cover;border-radius:10px">
+      <div style="font-weight:800;color:#fde047;margin-top:6px;font-size:13px">${chosenPhoto.title}</div>
+    </div>
+    <div style="font-size:12px;color:#94a3b8;margin-bottom:6px">피드와 함께 게시할 멘트를 선택하세요:</div>
+  `, capBtns);
+
+  if (capIdx >= captions.length) return;
+  const chosenCaption = captions[capIdx];
+
+  const heroComments = [
+    { u: `${h.id}_official`, t: `오늘 사진 진짜 잘 나왔다 ㅎㅎ 경기 때도 이 텐션 그대로 가자! ❤️` },
+    { u: 'lol_faker_fan', t: '와 분위기 대박... 다음 경기 직관 티켓팅 무조건 성공한다 🔥' },
+    { u: 'esports_digest', t: '오늘도 피지컬 미쳤던데 인터뷰까지 완벽하네요 👏' }
+  ];
+
+  postToInsta(chosenPhoto.title, chosenPhoto.img, chosenCaption, heroComments);
+  stressAdd(-15);
+  grow('mental', 1.0);
+}
+
+async function replyToFeedComment(postId) {
+  const post = (P.sns?.posts || []).find(p => p.id === postId);
+  if (!post) return;
+
+  const replies = [
+    { t: '🙏 "항상 응원해주셔서 진심으로 감사합니다! 더 완벽한 경기력으로 보답하겠습니다."', type: 'pro', gain: '🧠 멘탈 +2 · 👥 팬 +800' },
+    { t: '🔥 "다음 경기는 펜타킬 각이다 ㅋㅋㅋ 다들 기대해주세요!"', type: 'star', gain: '⚡ 피지컬 +1 · 👥 팬 +1,200 · 스트레스 -10' },
+    { t: '❤️ 하트만 쿨하게 남겨 팬들을 설레게 한다.', type: 'heart', gain: '👥 팬 +500 · 호감도 소폭 상승' }
+  ];
+
+  const btns = replies.map(r => ({
+    t: `<b>${r.t}</b><small style="display:block;color:#4ade80;font-size:11px;margin-top:2px">${r.gain}</small>`,
+    cls: 'gold',
+    reply: r
+  }));
+  btns.push({ t: '취소', cls: 'gray' });
+
+  const idx = await ask(`
+    <h3 style="color:#f472b6">💬 팬 댓글에 답글 달기</h3>
+    <div style="background:#0e1322;border:1px solid #28375c;border-radius:10px;padding:10px;margin-bottom:10px;font-size:12.5px">
+      <b>${post.title}</b><br>
+      <span style="color:#94a3b8">${post.caption}</span>
+    </div>
+    <div style="font-size:12px;color:#cbd5e1;margin-bottom:6px">작성자 고정 핀 📌으로 남길 답글을 선택하세요:</div>
+  `, btns);
+
+  if (idx >= replies.length) return;
+  const chosen = replies[idx];
+
+  if (!post.comments) post.comments = [];
+  post.comments.unshift({
+    u: `${P.name} (선수 본인 📌)`,
+    t: chosen.t.replace(/<[^>]*>/g, '')
+  });
+
+  if (chosen.reply.type === 'pro') {
+    grow('mental', 2.0);
+    P.fans += 800;
+  } else if (chosen.reply.type === 'star') {
+    grow('mech', 1.0);
+    stressAdd(-10);
+    P.fans += 1200;
+  } else {
+    P.fans += 500;
+  }
+  playJackpotSound();
+  toast('💬 팬들에게 답글을 남겼습니다! (팬덤 반응 폭발!)');
+}
+
+async function openSendDmModal() {
+  const unHeroines = Object.keys(P.bonds || {}).filter(k => P.bonds[k]?.unlocked);
+  if (unHeroines.length === 0) {
+    toast('아직 연락할 수 있는 인연이 없습니다.');
+    return;
+  }
+
+  const hBtns = unHeroines.map(hid => {
+    const h = HEROINES[hid];
+    const aff = P.bonds[hid]?.aff || 0;
+    return {
+      t: `<b>${h.name}</b> (${h.tag}) · <span style="color:#f472b6">호감도 ${aff}♥</span>`,
+      cls: 'pink',
+      hid: hid
+    };
+  });
+  hBtns.push({ t: '취소', cls: 'gray' });
+
+  const hIdx = await ask(`
+    <h3 style="color:#38bdf8">✉️ 누구에게 먼저 DM을 보낼까요?</h3>
+    <p class="c" style="color:#9aa4b2;font-size:12px">원하는 인연에게 직접 선톡을 보내 대화를 나눌 수 있습니다.</p>
+  `, hBtns);
+
+  if (hIdx >= unHeroines.length) return;
+  const targetHid = unHeroines[hIdx];
+  const h = HEROINES[targetHid];
+
+  const dmChoices = [
+    {
+      msg: `"${h.name}아, 오늘 연습 끝나고 잠깐 시간 돼? 맛있는 거 사줄게!"`,
+      reply: `"${P.name}아! 안 그래도 오늘 네 생각하고 있었는데 대박... 완전 좋아! 연습실 앞으로 마중 나갈게 ❤️"`,
+      aff: 12
+    },
+    {
+      msg: `"${h.name}아, 오늘 네가 응원해준 덕분에 경기(훈련) 진짜 잘 풀렸어. 고마워!"`,
+      reply: `"헤헤 내 응원이 힘이 됐다니 너무 뿌듯하다 🥺 항상 네 뒤에서 제일 크게 응원하는 거 알지? 파이팅이야!"`,
+      aff: 10
+    },
+    {
+      msg: `"손 시려운데 따뜻한 커피 한 잔 마시면서 산책할래?"`,
+      reply: `"좋아 좋아! 따뜻하게 입고 나와, 내가 제일 좋아하는 카페에서 기다릴게 ✨"`,
+      aff: 15
+    }
+  ];
+
+  const msgBtns = dmChoices.map(c => ({
+    t: `<small style="font-size:12.5px;line-height:1.4">${c.msg}</small>`,
+    cls: 'gold',
+    choice: c
+  }));
+  msgBtns.push({ t: '취소', cls: 'gray' });
+
+  const mIdx = await ask(`
+    <div style="display:flex;align-items:center;gap:12px;background:#11162a;padding:10px;border-radius:12px;margin-bottom:10px">
+      <img src="${h.img}" onerror="this.src='${h.fallback}'" style="width:48px;height:48px;border-radius:50%;object-fit:cover">
+      <div>
+        <div style="font-weight:900;color:#fff">${h.name}에게 보낼 메시지</div>
+        <div style="font-size:11.5px;color:#94a3b8">${h.tag}</div>
+      </div>
+    </div>
+  `, msgBtns);
+
+  if (mIdx >= dmChoices.length) return;
+  const chosenDm = dmChoices[mIdx];
+
+  // Send DM and receive reply
+  if (!P.dms) P.dms = { unread: 0, list: [] };
+  P.dms.list.unshift({
+    sender: h.name,
+    badge: '인연',
+    tagCls: 'badge-pill bg-pink',
+    avatar: h.img,
+    fallback: h.fallback,
+    time: `${P.year}년차 ${P.week}주차`,
+    msg: chosenDm.reply,
+    read: true,
+    choices: [
+      { t: '❤️ "다음에 또 연락할게!"', gain: `💖 ${h.name} 호감도 +5♥`, act: p => { p.bonds[targetHid].aff = Math.min(100, (p.bonds[targetHid].aff || 0) + 5); } }
+    ]
+  });
+
+  P.bonds[targetHid].aff = Math.min(100, (P.bonds[targetHid].aff || 0) + chosenDm.aff);
+  stressAdd(-15);
+  playDateSound();
+
+  await ask(`
+    <div style="text-align:center">
+      <div style="font-size:42px">💌💬</div>
+      <h3 style="color:#4ade80">${h.name}님의 실시간 답장 도착!</h3>
+      <div style="background:#0e1322;border:1px solid #ec4899;border-radius:12px;padding:14px;font-size:13.5px;line-height:1.6;color:#fdf2f8;margin:12px 0">
+        <b>${h.name}:</b> ${chosenDm.reply}
+      </div>
+      <div class="c" style="color:#f472b6;font-weight:800">💖 ${h.name} 호감도 +${chosenDm.aff}♥ · 스트레스 -15 해소</div>
+    </div>
+  `, [{ t: '대화 완료', cls: 'pink' }]);
+}
+
 async function showSnsModal() {
   if (P) {
     if (!P.sns) P.sns = { posts: [], followers: 120 };
@@ -3558,36 +3824,44 @@ async function showSnsModal() {
             </div>
           </div>
         </div>
+        <div style="display:flex;gap:6px;margin-bottom:12px">
+          <button class="btn gold" id="bCreatePost" style="flex:1;padding:8px 4px;font-size:12.5px">➕ 새 피드 올리기</button>
+          <button class="btn pink" id="bPickGallery" style="flex:1;padding:8px 4px;font-size:12.5px">📸 앨범 사진 선택</button>
+        </div>
       `;
 
       if (P.sns.posts.length === 0) {
-        body += `<div class="c" style="padding:30px 10px;color:#94a3b8;font-size:13px">아직 게시한 피드가 없습니다.<br>PC방 대회 우승, 데이트, 명경기 후 스토리를 올려보세요!</div>`;
+        body += `<div class="c" style="padding:26px 10px;color:#94a3b8;font-size:13px">아직 게시한 피드가 없습니다.<br>상단의 <b>[➕ 새 피드 올리기]</b>를 눌러 첫 게시물을 올려보세요!</div>`;
       } else {
         body += P.sns.posts.map(p => `
           <div class="feed-card">
             <div class="feed-head">
               <span style="color:#ec4899">📸</span> <b>${P.name}</b> <small style="color:#64748b;margin-left:auto">${p.time}</small>
             </div>
-            <img class="feed-img" src="${p.img}" onerror="this.src='assets/jieun_cafe.jpg'" alt="피드 사진">
+            <img class="feed-img" src="${p.img}" onerror="this.src='icon-512.png'" alt="피드 사진">
             <div class="feed-body">
               <div class="feed-actions">
                 <span style="color:#ef4444">❤️</span> <b style="font-size:12.5px">${num(p.likes)}명이 좋아합니다</b>
               </div>
               <div class="feed-caption"><b>${P.name}</b> ${p.caption}</div>
               <div class="feed-comments">
-                ${p.comments.map(c => `<div class="comment-item"><b>${c.u}</b> ${c.t}</div>`).join('')}
+                ${(p.comments || []).map(c => `<div class="comment-item"><b>${c.u}</b> ${c.t}</div>`).join('')}
               </div>
+              <button class="btn-reply" data-replyid="${p.id}" style="margin-top:8px;width:100%;background:#1e2640;border:1px solid #33406a;border-radius:8px;padding:6px;color:#38bdf8;font-size:12px;font-weight:700;cursor:pointer">💬 팬 댓글에 답글 달기 (소통 + 팬덤 UP)</button>
             </div>
           </div>
         `).join('');
       }
 
-      btns.push({ t: '📸 앨범에서 명장면/추억 골라 올리기', cls: 'pink', type: 'pickFromGallery' });
-
     } else {
       // DM Tab
+      body += `
+        <div style="margin-bottom:10px">
+          <button class="btn purple" id="bSendNewDm" style="width:100%;padding:10px;font-size:13.5px">✉️ 인연에게 먼저 DM(선톡) 보내기</button>
+        </div>
+      `;
       if (P.dms.list.length === 0) {
-        body += `<div class="c" style="padding:40px 10px;color:#94a3b8;font-size:13px">수신된 다이렉트 메시지(DM)가 없습니다.<br>대회 출전, 솔랭 활약, 데이트를 진행하면 연예인/BJ/히로인에게서 연락이 옵니다!</div>`;
+        body += `<div class="c" style="padding:40px 10px;color:#94a3b8;font-size:13px">수신된 다이렉트 메시지(DM)가 없습니다.<br>상단의 <b>[✉️ 선톡 보내기]</b>로 먼저 말을 걸어보세요!</div>`;
       } else {
         body += P.dms.list.map((d, idx) => `
           <div class="dm-card ${d.read ? '' : 'unread'}" data-dmidx="${idx}">
@@ -3616,12 +3890,30 @@ async function showSnsModal() {
       if (tabF) tabF.onclick = () => { activeSnsTab = 'feed'; showSnsModal(); };
       if (tabD) tabD.onclick = () => { activeSnsTab = 'dm'; showSnsModal(); };
 
-      // DM 카드 클릭 이벤트 바인딩
+      const createBtn = $('#mBody #bCreatePost');
+      if (createBtn) createBtn.onclick = () => { $('#modal').classList.add('hidden'); res({ type: 'createPost' }); };
+
+      const pickBtn = $('#mBody #bPickGallery');
+      if (pickBtn) pickBtn.onclick = () => { $('#modal').classList.add('hidden'); res({ type: 'pickFromGallery' }); };
+
+      const sendDmBtn = $('#mBody #bSendNewDm');
+      if (sendDmBtn) sendDmBtn.onclick = () => { $('#modal').classList.add('hidden'); res({ type: 'sendNewDm' }); };
+
+      // DM 카드 클릭 이벤트
       $('#mBody').querySelectorAll('[data-dmidx]').forEach(card => {
         card.onclick = () => {
           const idx = parseInt(card.dataset.dmidx);
           $('#modal').classList.add('hidden');
           openDmChat(idx).then(() => showSnsModal());
+        };
+      });
+
+      // 댓글 답글 버튼 클릭 이벤트
+      $('#mBody').querySelectorAll('[data-replyid]').forEach(btn => {
+        btn.onclick = () => {
+          const pid = btn.dataset.replyid;
+          $('#modal').classList.add('hidden');
+          replyToFeedComment(pid).then(() => showSnsModal());
         };
       });
 
@@ -3638,20 +3930,12 @@ async function showSnsModal() {
 
     if (!choiceIdx || choiceIdx.type === 'close') break;
 
-    if (choiceIdx.type === 'pickFromGallery') {
+    if (choiceIdx.type === 'createPost') {
+      await openCreatePostModal();
+    } else if (choiceIdx.type === 'pickFromGallery') {
       await openPhotoGalleryPicker();
-    } else if (choiceIdx.type === 'postNow') {
-      const heroKeys = Object.keys(P.bonds || {}).filter(k => P.bonds[k]?.unlocked);
-      const randomHeroine = heroKeys.length > 0 ? pick(heroKeys) : 'jieun';
-      const hObj = HEROINES[randomHeroine];
-
-      const feedPresets = [
-        { title: '훈련 후 셀카', img: hObj?.dates?.[0]?.img || 'assets/jieun_cafe.jpg', caption: '오늘도 스크림 & 솔랭 완료! 지치지만 응원해주는 분들이 있어 달립니다 🔥' },
-        { title: '휴식 카페', img: hObj?.dates?.[1]?.img || 'assets/jieun_night.jpg', caption: '오랜만에 조용한 카페에서 힐링 중 ☕ 다음 경기 컨디션 최고조!' },
-        { title: '승리의 순간', img: 'assets/harin_stage.jpg', caption: '응원해주신 모든 분들 진심으로 감사드립니다! 소환사의 컵을 향해 끝까지 달릴게요 🏆' }
-      ];
-      const pChoice = pick(feedPresets);
-      postToInsta(pChoice.title, pChoice.img, pChoice.caption);
+    } else if (choiceIdx.type === 'sendNewDm') {
+      await openSendDmModal();
     }
   }
 }
@@ -4374,8 +4658,8 @@ function renderCreate() {
 // ======================================================================
 // 회사 로고 오프닝 비디오 연출 & 인앱 자동 업데이트 (v1.7.0)
 // ======================================================================
-const CURRENT_VERSION = '1.8.1';
-const CURRENT_VERSION_CODE = 5;
+const CURRENT_VERSION = '1.8.2';
+const CURRENT_VERSION_CODE = 6;
 
 function initIntroVideo() {
   const splash = document.getElementById('introSplash');
