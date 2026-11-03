@@ -1,0 +1,749 @@
+{
+  "careers": 50,
+  "totalWeeks": 3900,
+  "weeksPerCareer": 78,
+  "positions": [
+    "top",
+    "jg",
+    "mid",
+    "adc",
+    "sup"
+  ],
+  "seeds": [
+    17,
+    97,
+    101,
+    333,
+    777
+  ],
+  "policy": "기본 특성·추천 일정·빠른 경기. 양군 모두 실제 제안2개이상이면 두번째 계약 선택. 활동군은매년1/25주 가능한7종활동을시도하되시즌1회·같은이적1회제한. 기존업적활성화.",
+  "control": {
+    "careers": 25,
+    "pro": 25,
+    "academy": 0,
+    "amateur": 0,
+    "medianOvr": 80.3695,
+    "medianMoney": 392160000,
+    "medianFans": 91096,
+    "medianGames": 23,
+    "medianActivitySpend": 0,
+    "maxDirectIncome": 0,
+    "settledRelocations": 0
+  },
+  "activities": {
+    "careers": 25,
+    "pro": 25,
+    "academy": 0,
+    "amateur": 0,
+    "medianOvr": 81.4715,
+    "medianMoney": 387773109,
+    "medianFans": 88282,
+    "medianGames": 22,
+    "medianActivitySpend": 7545005,
+    "maxDirectIncome": 389512,
+    "settledRelocations": 41
+  },
+  "rows": [
+    {
+      "pos": "top",
+      "seed": 17,
+      "control": {
+        "stage": "pro",
+        "ovr": 81.325,
+        "money": 459950000,
+        "fans": 66763,
+        "games": 23,
+        "wins": 11,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 81.4715,
+        "money": 374101566,
+        "fans": 68808,
+        "games": 18,
+        "wins": 9,
+        "spent": 7704294,
+        "directIncome": 235860,
+        "activities": 15,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 97,
+      "control": {
+        "stage": "pro",
+        "ovr": 80.01599999999999,
+        "money": 340760000,
+        "fans": 40841,
+        "games": 16,
+        "wins": 4,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 80.7925,
+        "money": 375910785,
+        "fans": 78351,
+        "games": 18,
+        "wins": 7,
+        "spent": 5324001,
+        "directIncome": 234786,
+        "activities": 15,
+        "relocations": 1
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 101,
+      "control": {
+        "stage": "pro",
+        "ovr": 80.69399999999999,
+        "money": 432000000,
+        "fans": 181555,
+        "games": 28,
+        "wins": 20,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 81.264,
+        "money": 349527226,
+        "fans": 41487,
+        "games": 17,
+        "wins": 6,
+        "spent": 4024218,
+        "directIncome": 211444,
+        "activities": 14,
+        "relocations": 1
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 333,
+      "control": {
+        "stage": "pro",
+        "ovr": 79.28949999999999,
+        "money": 235310000,
+        "fans": 123666,
+        "games": 20,
+        "wins": 17,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 81.60799999999999,
+        "money": 412850665,
+        "fans": 102091,
+        "games": 21,
+        "wins": 12,
+        "spent": 4566656,
+        "directIncome": 257321,
+        "activities": 14,
+        "relocations": 1
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 777,
+      "control": {
+        "stage": "pro",
+        "ovr": 81.2885,
+        "money": 554890000,
+        "fans": 130915,
+        "games": 28,
+        "wins": 21,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 84.12449999999998,
+        "money": 407015827,
+        "fans": 34393,
+        "games": 20,
+        "wins": 8,
+        "spent": 8685697,
+        "directIncome": 211524,
+        "activities": 16,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 17,
+      "control": {
+        "stage": "pro",
+        "ovr": 79.21800000000002,
+        "money": 527070000,
+        "fans": 210523,
+        "games": 31,
+        "wins": 18,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 78.6905,
+        "money": 333018065,
+        "fans": 102005,
+        "games": 14,
+        "wins": 6,
+        "spent": 3368865,
+        "directIncome": 246930,
+        "activities": 14,
+        "relocations": 1
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 97,
+      "control": {
+        "stage": "pro",
+        "ovr": 81.272,
+        "money": 392750000,
+        "fans": 82502,
+        "games": 24,
+        "wins": 6,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 79.00850000000001,
+        "money": 350051106,
+        "fans": 80515,
+        "games": 19,
+        "wins": 8,
+        "spent": 6167083,
+        "directIncome": 238189,
+        "activities": 16,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 101,
+      "control": {
+        "stage": "pro",
+        "ovr": 77.402,
+        "money": 372290000,
+        "fans": 141294,
+        "games": 23,
+        "wins": 18,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 80.158,
+        "money": 320692896,
+        "fans": 115366,
+        "games": 21,
+        "wins": 10,
+        "spent": 6071494,
+        "directIncome": 324390,
+        "activities": 17,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 333,
+      "control": {
+        "stage": "pro",
+        "ovr": 73.65950000000001,
+        "money": 217120000,
+        "fans": 44652,
+        "games": 9,
+        "wins": 6,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 78.7085,
+        "money": 722275241,
+        "fans": 286805,
+        "games": 27,
+        "wins": 23,
+        "spent": 7241179,
+        "directIncome": 306420,
+        "activities": 13,
+        "relocations": 1
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 777,
+      "control": {
+        "stage": "pro",
+        "ovr": 80.88149999999999,
+        "money": 455730000,
+        "fans": 86579,
+        "games": 23,
+        "wins": 7,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 85.1765,
+        "money": 551857531,
+        "fans": 58233,
+        "games": 29,
+        "wins": 16,
+        "spent": 9900622,
+        "directIncome": 348153,
+        "activities": 17,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 17,
+      "control": {
+        "stage": "pro",
+        "ovr": 79.76949999999998,
+        "money": 366190000,
+        "fans": 91096,
+        "games": 17,
+        "wins": 6,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 84.341,
+        "money": 387773109,
+        "fans": 68383,
+        "games": 23,
+        "wins": 14,
+        "spent": 7776329,
+        "directIncome": 239438,
+        "activities": 15,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 97,
+      "control": {
+        "stage": "pro",
+        "ovr": 81.62950000000001,
+        "money": 535680000,
+        "fans": 191321,
+        "games": 28,
+        "wins": 18,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 81.778,
+        "money": 184624535,
+        "fans": 87964,
+        "games": 22,
+        "wins": 16,
+        "spent": 2636674,
+        "directIncome": 241209,
+        "activities": 14,
+        "relocations": 1
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 101,
+      "control": {
+        "stage": "pro",
+        "ovr": 80.47,
+        "money": 340190000,
+        "fans": 81829,
+        "games": 20,
+        "wins": 9,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 82.0065,
+        "money": 378395317,
+        "fans": 69161,
+        "games": 24,
+        "wins": 16,
+        "spent": 4301123,
+        "directIncome": 236440,
+        "activities": 14,
+        "relocations": 1
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 333,
+      "control": {
+        "stage": "pro",
+        "ovr": 79.25050000000002,
+        "money": 294330000,
+        "fans": 59580,
+        "games": 20,
+        "wins": 6,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 79.71050000000001,
+        "money": 312679936,
+        "fans": 91101,
+        "games": 19,
+        "wins": 6,
+        "spent": 6063044,
+        "directIncome": 182980,
+        "activities": 16,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 777,
+      "control": {
+        "stage": "pro",
+        "ovr": 85.147,
+        "money": 649950000,
+        "fans": 158034,
+        "games": 39,
+        "wins": 27,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 85.32400000000001,
+        "money": 647966665,
+        "fans": 132267,
+        "games": 37,
+        "wins": 25,
+        "spent": 10951613,
+        "directIncome": 388278,
+        "activities": 17,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 17,
+      "control": {
+        "stage": "pro",
+        "ovr": 84.6095,
+        "money": 567000000,
+        "fans": 129010,
+        "games": 34,
+        "wins": 19,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 85.962,
+        "money": 600782575,
+        "fans": 181090,
+        "games": 32,
+        "wins": 22,
+        "spent": 9391915,
+        "directIncome": 314490,
+        "activities": 17,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 97,
+      "control": {
+        "stage": "pro",
+        "ovr": 82.964,
+        "money": 371230000,
+        "fans": 117366,
+        "games": 24,
+        "wins": 8,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 83.5635,
+        "money": 461342049,
+        "fans": 156354,
+        "games": 37,
+        "wins": 20,
+        "spent": 8399012,
+        "directIncome": 361061,
+        "activities": 17,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 101,
+      "control": {
+        "stage": "pro",
+        "ovr": 80.2825,
+        "money": 353730000,
+        "fans": 87757,
+        "games": 19,
+        "wins": 8,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 82.50600000000001,
+        "money": 352376770,
+        "fans": 88282,
+        "games": 20,
+        "wins": 7,
+        "spent": 7545005,
+        "directIncome": 251775,
+        "activities": 15,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 333,
+      "control": {
+        "stage": "pro",
+        "ovr": 80.3695,
+        "money": 340820000,
+        "fans": 31926,
+        "games": 22,
+        "wins": 8,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 81.1965,
+        "money": 332232992,
+        "fans": 83174,
+        "games": 22,
+        "wins": 14,
+        "spent": 8026274,
+        "directIncome": 299266,
+        "activities": 17,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 777,
+      "control": {
+        "stage": "pro",
+        "ovr": 83.88300000000001,
+        "money": 463770000,
+        "fans": 67094,
+        "games": 24,
+        "wins": 11,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 84.254,
+        "money": 1023197456,
+        "fans": 268479,
+        "games": 36,
+        "wins": 26,
+        "spent": 12576091,
+        "directIncome": 363547,
+        "activities": 17,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 17,
+      "control": {
+        "stage": "pro",
+        "ovr": 79.61500000000001,
+        "money": 392160000,
+        "fans": 105751,
+        "games": 22,
+        "wins": 13,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 79.541,
+        "money": 537560368,
+        "fans": 146838,
+        "games": 32,
+        "wins": 21,
+        "spent": 9526292,
+        "directIncome": 346660,
+        "activities": 17,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 97,
+      "control": {
+        "stage": "pro",
+        "ovr": 77.96699999999998,
+        "money": 223020000,
+        "fans": 90894,
+        "games": 18,
+        "wins": 17,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 80.4695,
+        "money": 423143689,
+        "fans": 80566,
+        "games": 22,
+        "wins": 15,
+        "spent": 4689648,
+        "directIncome": 243337,
+        "activities": 14,
+        "relocations": 1
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 101,
+      "control": {
+        "stage": "pro",
+        "ovr": 80.304,
+        "money": 561890000,
+        "fans": 270215,
+        "games": 27,
+        "wins": 24,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 81.07249999999999,
+        "money": 934739544,
+        "fans": 310787,
+        "games": 37,
+        "wins": 27,
+        "spent": 11369789,
+        "directIncome": 349333,
+        "activities": 17,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 333,
+      "control": {
+        "stage": "pro",
+        "ovr": 76.1075,
+        "money": 253350000,
+        "fans": 24378,
+        "games": 11,
+        "wins": 7,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 77.9415,
+        "money": 316585962,
+        "fans": 119798,
+        "games": 29,
+        "wins": 19,
+        "spent": 7983550,
+        "directIncome": 389512,
+        "activities": 17,
+        "relocations": 2
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 777,
+      "control": {
+        "stage": "pro",
+        "ovr": 82.652,
+        "money": 484400000,
+        "fans": 98603,
+        "games": 27,
+        "wins": 11,
+        "spent": 0,
+        "directIncome": 0,
+        "activities": 0,
+        "relocations": 0
+      },
+      "activities": {
+        "stage": "pro",
+        "ovr": 83.285,
+        "money": 431682878,
+        "fans": 57092,
+        "games": 23,
+        "wins": 14,
+        "spent": 4775670,
+        "directIncome": 228548,
+        "activities": 14,
+        "relocations": 1
+      }
+    }
+  ],
+  "scope": "지정25조건 쌍 비교. 활동 후 경기/난수경로와총수입이달라질수있으므로최종자산차이를직접활동수익으로해석하지않는다."
+}

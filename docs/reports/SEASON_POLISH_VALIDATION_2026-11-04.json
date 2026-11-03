@@ -1,0 +1,344 @@
+{
+  "date": "2026-11-04",
+  "version": "2.7.0",
+  "versionCode": 19,
+  "sourceSha256": "bfcfa880dea74c3bb70e6d26df1b7143a00ed9a8ce52d2142499477cae45150b",
+  "baselineSha256": "612c25fe76c0113a0fab8bda3cbea42b7b5001017125404924170e7f57842701",
+  "pipeline": "[SUCCESS: ALL TESTS PASSED]",
+  "syntax": "SYNTAX_OK",
+  "versionSync": true,
+  "unitTests": {
+    "total": 165,
+    "pass": 161,
+    "fail": 0,
+    "skip": 4,
+    "skipReason": "이전기능별 기준파일을 지정해야 하는 선택 비교4개. 이번에는 수정 직전v2.6기준을 사용한624주 동일일정/다음난수대조를 별도로 실행했다. 새 추천정책까지 과거정책과 같다고 주장하지 않는다."
+  },
+  "review": {
+    "pass": 33,
+    "remainingImportantFindings": 0,
+    "fixes": [
+      "성인 약속 선택 별도 보존",
+      "금메달 후일담 정확성",
+      "선수교체 뒤 이전턴 정산 차단"
+    ]
+  },
+  "balanceEvidence": "SEASON_POLISH_BALANCE_2026-11-04.json",
+  "browser": {
+    "browser": {
+      "result": "SEASON_POLISH_26_WEEK_BROWSER_PASS",
+      "weeks": 26,
+      "actions": [
+        "scrim",
+        "lane",
+        "scrim",
+        "lane",
+        "lane",
+        "rest",
+        "date",
+        "vod",
+        "lane",
+        "rest",
+        "lane",
+        "lane",
+        "rest",
+        "date",
+        "lane",
+        "rest",
+        "lane",
+        "lane",
+        "rest",
+        "date",
+        "rest",
+        "lane",
+        "lane",
+        "date",
+        "lane",
+        "rest"
+      ],
+      "scenes": [
+        "spring",
+        "summerStart",
+        "summerEnd",
+        "worldsEnd",
+        "final"
+      ],
+      "youthScenes": [
+        {
+          "week": 7,
+          "text": "강하린 · 추천 인연 일정\n\n하린의 첫 리플레이 해설 방송\n비용 3만원 · 체력 -8 · 스트레스 -25\n이번 주 소통으로 기록되며 주간 데이트 1회를 사용합니다."
+        },
+        {
+          "week": 7,
+          "text": "챌린저 1위 & 쿨데레 스트리머\n👗 편안한 일상복\n📍 공개 게이밍 라운지\n강하린 (19세)\n하린의 첫 리플레이 해설 방송\n하린은 승리 클립 대신 실패한 경기까지 설명하는 방송을 준비한다. \"내 플레이도 남 앞에서 설명하려니까 어렵네. 네가 같이 검토해줄래, 연습 상대가 돼줄래?\""
+        },
+        {
+          "week": 14,
+          "text": "강하린 · 추천 인연 일정\n\n겹친 일정, 지킬 수 있는 약속\n비용 3만원 · 체력 -8 · 스트레스 -25\n이번 주 소통으로 기록되며 주간 데이트 1회를 사용합니다."
+        },
+        {
+          "week": 14,
+          "text": "챌린저 1위 & 쿨데레 스트리머\n👗 편안한 일상복\n📍 공개 게이밍 라운지\n강하린 (19세)\n겹친 일정, 지킬 수 있는 약속\n네 스크림과 하린의 리허설 시간이 겹쳤다. 하린은 대신 결정해주기보다, 실제 준비한 자료가 있는지 묻는다. 약속한 준비를 실제 일정에서 마쳤다."
+        },
+        {
+          "week": 20,
+          "text": "강하린 · 추천 인연 일정\n\n틀린 장면까지 담은 첫 해설\n비용 3만원 · 체력 -8 · 스트레스 -25\n이번 주 소통으로 기록되며 주간 데이트 1회를 사용합니다."
+        },
+        {
+          "week": 20,
+          "text": "챌린저 1위 & 쿨데레 스트리머\n👗 편안한 일상복\n📍 공개 게이밍 라운지\n강하린 (19세)\n틀린 장면까지 담은 첫 해설\n방송을 마친 하린이 댓글 창을 보여준다. \"완벽한 플레이보다 왜 틀렸는지 설명한 부분을 좋아하네. 다음 회차 주제는 같이 고르자.\""
+        },
+        {
+          "week": 24,
+          "text": "강하린 · 추천 인연 일정\n\n틀린 장면까지 담은 첫 해설\n비용 3만원 · 체력 -8 · 스트레스 -25\n이번 주 소통으로 기록되며 주간 데이트 1회를 사용합니다."
+        },
+        {
+          "week": 24,
+          "text": "챌린저 1위 & 쿨데레 스트리머\n👗 편안한 일상복\n📍 공개 게이밍 라운지\n강하린 (19세)\n틀린 장면까지 담은 첫 해설\n방송을 마친 하린이 댓글 창을 보여준다. \"완벽한 플레이보다 왜 틀렸는지 설명한 부분을 좋아하네. 다음 회차 주제는 같이 고르자.\""
+        }
+      ],
+      "goal": {
+        "done": true,
+        "label": "훈련 7주 · 인연 소통 4주",
+        "detail": "훈련 15/7 · 소통 4/4"
+      },
+      "contactWeeks": [
+        7,
+        14,
+        20,
+        24
+      ],
+      "youthArc": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "vod",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "하린의 첫 리플레이 해설 방송",
+            "tag": "shared-preparation",
+            "label": "경기 분석 일정으로 리플레이를 함께 검토한다"
+          },
+          {
+            "year": 1,
+            "week": 14,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "틀린 장면까지 담은 첫 해설",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "contract": {
+        "baseSal": 14360000,
+        "pog": 100000,
+        "title": 500000,
+        "cap": 1000000,
+        "year": 2,
+        "signedWeek": 24,
+        "teamId": 0,
+        "stage": "pro",
+        "startGames": 19,
+        "paid": 0
+      },
+      "widths": [
+        320,
+        390,
+        1100
+      ],
+      "readOnlyReplay": true,
+      "reload": true,
+      "pageErrors": []
+    },
+    "weekly-briefing": {
+      "result": "WEEKLY_BRIEFING_BROWSER_PASS",
+      "widths": [
+        320,
+        390,
+        1100
+      ],
+      "readOnlyReplay": true,
+      "reload": true,
+      "matchCount": 1,
+      "pageErrors": []
+    },
+    "weekly-briefing-boundaries": {
+      "result": "BRIEFING_NARRATIVE_BOUNDARIES_PASS",
+      "soloSpeakers": [
+        "미야모토 린 (21세)",
+        "김민정 (21세)",
+        "강하린 (19세)",
+        "나유나 (20세)",
+        "유지민 (21세)",
+        "김채원 (21세)",
+        "유민아 (21세)"
+      ],
+      "burnoutOrder": [
+        "인연 장면",
+        "번아웃 알림",
+        "주간 브리핑"
+      ],
+      "pageErrors": []
+    },
+    "safety-match": {
+      "result": "SAFETY_MANUAL_BROWSER_PASS",
+      "minorChoices": [
+        "응원의 마음을 전한다",
+        "차분하게 이야기를 나눈다"
+      ],
+      "game": {
+        "win": true,
+        "rating": 9.66,
+        "mySetW": 3,
+        "mySetL": 0
+      },
+      "pageErrors": []
+    },
+    "gamergram-touch": "BROWSER_PASS: 피드 진입, 캡션, 키보드 모의 높이, 메뉴 복원, 필터/사진/태그, 공유, 작성 닫기, DM 전환, 재진입 (pageerror 0)",
+    "ui-ux": {
+      "result": "UI_UX_BROWSER_PASS",
+      "viewports": [
+        320,
+        390,
+        1100
+      ],
+      "checks": [
+        "본문/하단 메뉴 분리",
+        "일정 필터",
+        "능력치 접기",
+        "23인 카드/데이트 비용",
+        "기록 접근",
+        "자산/스킨 탭",
+        "Escape/배경 차단 복원"
+      ],
+      "pageErrors": [],
+      "failedResources": []
+    },
+    "result-motion": {
+      "pass": true,
+      "checks": [
+        "역방향 색상",
+        "음수 색상",
+        "원문/aria-label",
+        "숫자 중간 프레임",
+        "800ms 내 완료",
+        "저장/게임 불변",
+        "observer 안정",
+        "DOM 재삽입",
+        "분리 시 취소",
+        "동작 줄이기/진행중 전환"
+      ],
+      "intermediate": 1956,
+      "pageErrors": []
+    },
+    "career-offline": {
+      "result": "CAREER_OFFLINE_PASS",
+      "version": "2.7.0",
+      "scope": "캐시된 게임·세이브 복구, 커리어 평가와 인연 기억 재열람",
+      "pageErrors": []
+    },
+    "bright-theme": {
+      "failures": [],
+      "checks": [
+        {
+          "name": "home 320",
+          "overflow": false,
+          "modalOverflow": false,
+          "bad": []
+        },
+        {
+          "name": "season 320",
+          "overflow": false,
+          "modalOverflow": false,
+          "bad": []
+        },
+        {
+          "name": "home 390",
+          "overflow": false,
+          "modalOverflow": false,
+          "bad": []
+        },
+        {
+          "name": "season 390",
+          "overflow": false,
+          "modalOverflow": false,
+          "bad": []
+        },
+        {
+          "name": "home 1100",
+          "overflow": false,
+          "modalOverflow": false,
+          "bad": []
+        },
+        {
+          "name": "season 1100",
+          "overflow": false,
+          "modalOverflow": false,
+          "bad": []
+        },
+        {
+          "name": "bBond",
+          "overflow": false,
+          "modalOverflow": false,
+          "bad": []
+        },
+        {
+          "name": "bShop",
+          "overflow": false,
+          "modalOverflow": false,
+          "bad": []
+        },
+        {
+          "name": "bWealth",
+          "overflow": false,
+          "modalOverflow": false,
+          "bad": []
+        },
+        {
+          "name": "bSns",
+          "overflow": false,
+          "modalOverflow": false,
+          "bad": []
+        },
+        {
+          "name": "result fixture",
+          "overflow": false,
+          "modalOverflow": false,
+          "bad": []
+        },
+        {
+          "name": "reduced-motion",
+          "animation": "none"
+        }
+      ],
+      "screens": [
+        "work/season-bright-home-390.png",
+        "work/season-bright-home-1100.png",
+        "work/season-bright-result.png"
+      ],
+      "errors": []
+    }
+  },
+  "limits": [
+    "실제 Android/iOS OS키보드 미검증",
+    "전체 사용자 실사용 세이브 수집검증 미실시",
+    "APK/ZIP 재빌드 및 실행 미실시",
+    "실제 사람의 재미와 읽기 피로는 사용자 테스트 필요"
+  ],
+  "deployment": {
+    "committed": false,
+    "pushed": false,
+    "published": false,
+    "apkRebuilt": false
+  }
+}

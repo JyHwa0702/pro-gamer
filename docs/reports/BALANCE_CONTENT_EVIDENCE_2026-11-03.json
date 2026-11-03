@@ -1,0 +1,576 @@
+{
+  "sourceSha256": "9b034e2b80741132187bffab9d13b8c4f7556242555995eb1c83a01d99926043",
+  "method": "실제 inline JS를 Node vm에서 실행. DOM, 소리, 저장, 모달 대기만 대체. 표시/기기/전체 플레이 검증 아님.",
+  "results": {
+    "content_inventory": {
+      "heroines": 23,
+      "dates": 66,
+      "gifts": 69,
+      "stories": 92,
+      "champions": 15,
+      "byRole": {
+        "mid": 6,
+        "adc": 3,
+        "jg": 2,
+        "sup": 2,
+        "top": 2
+      },
+      "gear": 10,
+      "stocks": 4,
+      "properties": 5,
+      "yearWeeks": 26,
+      "retireAge": 28,
+      "gearCost": 26480000,
+      "fullGearMultiplier": 3.48
+    },
+    "late_game_unlocks": {
+      "unlocked": [
+        "jieun",
+        "harin",
+        "sora",
+        "mina",
+        "sea",
+        "chloe",
+        "seolah",
+        "rin",
+        "camila",
+        "yejin",
+        "nayuna",
+        "elena",
+        "serin"
+      ],
+      "locked": [
+        "karina",
+        "wonyoung",
+        "iu",
+        "irene",
+        "chaewon",
+        "suzy",
+        "winter",
+        "miyeon",
+        "giselle",
+        "sohee"
+      ]
+    },
+    "same_week_posts_1000": [
+      {
+        "posts": 1,
+        "year": 1,
+        "week": 1,
+        "fans": 52,
+        "followers": 122,
+        "money": 500000,
+        "hp": 100
+      },
+      {
+        "posts": 10,
+        "year": 1,
+        "week": 1,
+        "fans": 107,
+        "followers": 185,
+        "money": 500000,
+        "hp": 100
+      },
+      {
+        "posts": 100,
+        "year": 1,
+        "week": 1,
+        "fans": 2242,
+        "followers": 2697,
+        "money": 500000,
+        "hp": 100
+      },
+      {
+        "posts": 250,
+        "year": 1,
+        "week": 1,
+        "fans": 798436,
+        "followers": 939393,
+        "money": 500000,
+        "hp": 100
+      },
+      {
+        "posts": 500,
+        "year": 1,
+        "week": 1,
+        "fans": 15626783,
+        "followers": 18384495,
+        "money": 500000,
+        "hp": 100
+      },
+      {
+        "posts": 1000,
+        "year": 1,
+        "week": 1,
+        "fans": 96039373,
+        "followers": 112987518,
+        "money": 500000,
+        "hp": 100
+      }
+    ],
+    "ovr_does_not_change_likes": [
+      {
+        "ovr": 20,
+        "likes": 4954
+      },
+      {
+        "ovr": 100,
+        "likes": 4954
+      }
+    ],
+    "same_week_free_dm": {
+      "year": 1,
+      "week": 1,
+      "aff": 100,
+      "lv": 0,
+      "money": 500000,
+      "hp": 100,
+      "stress": 8.4375,
+      "dmCount": 6
+    },
+    "failed_action_resets_date_limit": {
+      "afterFailed": {
+        "week": 1,
+        "dates": 0,
+        "money": 100000
+      },
+      "afterExtraDate": {
+        "week": 1,
+        "dates": 1,
+        "money": 70000,
+        "aff": 32
+      }
+    },
+    "busy_click_pays_weekly_income": {
+      "week": 1,
+      "money": 60042500,
+      "hp": 100,
+      "weeklyDates": 0
+    },
+    "direct_date_then_schedule_date": {
+      "week": 2,
+      "weeklyDates": 0,
+      "money": 470000,
+      "aff": 32
+    },
+    "age_state_leaks_to_new_career": {
+      "older": {
+        "age": 20,
+        "sensual": true
+      },
+      "fresh": {
+        "playerAge": 17,
+        "heroineAge": 18,
+        "sensual": true
+      }
+    },
+    "adult_scene_button_gate": {
+      "playerAge": 17,
+      "heroineAge": 22,
+      "weeklyDates": 0,
+      "aff": 0,
+      "choices": [
+        {
+          "sensual": true,
+          "disabled": false
+        },
+        {
+          "sensual": false,
+          "disabled": false
+        },
+        {
+          "sensual": false,
+          "disabled": false
+        },
+        {
+          "sensual": false,
+          "disabled": false
+        },
+        {
+          "sensual": false,
+          "disabled": false
+        }
+      ]
+    },
+    "owner_mode_entry": {
+      "ownerCalls": 0,
+      "careerCleared": true
+    },
+    "draft_third_choice": {
+      "name": "박도현",
+      "pos": "mid",
+      "age": 17,
+      "isOwnerMode": true,
+      "stage": "ama",
+      "money": 50000000
+    },
+    "recommend_pro_failure": {
+      "recommendation": null,
+      "error": "Cannot read properties of undefined (reading 'cost')"
+    },
+    "quick_matches_skip_rewards": {
+      "hist": {
+        "games": 0,
+        "wins": 0,
+        "titles": [],
+        "worlds": 0,
+        "mvp": 0,
+        "bestStage": "ama",
+        "log": []
+      },
+      "ratings": 0,
+      "fans": 50,
+      "hp": 100
+    },
+    "max_hp_not_respected": {
+      "maxHp": 140,
+      "hp": 100
+    },
+    "asset_returns": [
+      {
+        "id": "room",
+        "cost": 60000000,
+        "rent": 600000,
+        "weeksToRecover": 100,
+        "weeklyYield": 0.01
+      },
+      {
+        "id": "officetel",
+        "cost": 250000000,
+        "rent": 2800000,
+        "weeksToRecover": 89.28571428571429,
+        "weeklyYield": 0.0112
+      },
+      {
+        "id": "apt",
+        "cost": 1500000000,
+        "rent": 18000000,
+        "weeksToRecover": 83.33333333333333,
+        "weeklyYield": 0.012
+      },
+      {
+        "id": "penthouse",
+        "cost": 4500000000,
+        "rent": 55000000,
+        "weeksToRecover": 81.81818181818181,
+        "weeklyYield": 0.012222222222222223
+      },
+      {
+        "id": "building",
+        "cost": 12000000000,
+        "rent": 160000000,
+        "weeksToRecover": 75,
+        "weeklyYield": 0.013333333333333334
+      }
+    ],
+    "legacy_save_key": {
+      "loaded": false
+    },
+    "action_growth_26_weeks": [
+      {
+        "pos": "mid",
+        "action": "solo",
+        "ovr": 51.02,
+        "stats": {
+          "mech": 67.38,
+          "lane": 61.51,
+          "macro": 30,
+          "team": 30,
+          "pool": 49.25,
+          "mental": 55
+        },
+        "rank": {
+          "t": 6,
+          "lp": 0
+        }
+      },
+      {
+        "pos": "mid",
+        "action": "lane",
+        "ovr": 53.19,
+        "stats": {
+          "mech": 58.19,
+          "lane": 88.92,
+          "macro": 30,
+          "team": 30,
+          "pool": 30,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      },
+      {
+        "pos": "mid",
+        "action": "mech",
+        "ovr": 47.84,
+        "stats": {
+          "mech": 89.48,
+          "lane": 30,
+          "macro": 30,
+          "team": 30,
+          "pool": 30,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      },
+      {
+        "pos": "mid",
+        "action": "vod",
+        "ovr": 45.59,
+        "stats": {
+          "mech": 30,
+          "lane": 30,
+          "macro": 88.92,
+          "team": 55.38,
+          "pool": 30,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      },
+      {
+        "pos": "mid",
+        "action": "pool",
+        "ovr": 36.25,
+        "stats": {
+          "mech": 30,
+          "lane": 30,
+          "macro": 30,
+          "team": 30,
+          "pool": 92.45,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      },
+      {
+        "pos": "jg",
+        "action": "solo",
+        "ovr": 40.07,
+        "stats": {
+          "mech": 67.38,
+          "lane": 61.51,
+          "macro": 30,
+          "team": 30,
+          "pool": 49.25,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 55
+        }
+      },
+      {
+        "pos": "jg",
+        "action": "lane",
+        "ovr": 37.17,
+        "stats": {
+          "mech": 58.19,
+          "lane": 88.92,
+          "macro": 30,
+          "team": 30,
+          "pool": 30,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      },
+      {
+        "pos": "jg",
+        "action": "mech",
+        "ovr": 38.92,
+        "stats": {
+          "mech": 89.48,
+          "lane": 30,
+          "macro": 30,
+          "team": 30,
+          "pool": 30,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      },
+      {
+        "pos": "jg",
+        "action": "vod",
+        "ovr": 59.91,
+        "stats": {
+          "mech": 30,
+          "lane": 30,
+          "macro": 88.92,
+          "team": 55.38,
+          "pool": 30,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      },
+      {
+        "pos": "jg",
+        "action": "pool",
+        "ovr": 39.37,
+        "stats": {
+          "mech": 30,
+          "lane": 30,
+          "macro": 30,
+          "team": 30,
+          "pool": 92.45,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      },
+      {
+        "pos": "sup",
+        "action": "solo",
+        "ovr": 40.39,
+        "stats": {
+          "mech": 67.38,
+          "lane": 61.51,
+          "macro": 30,
+          "team": 30,
+          "pool": 49.25,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 58
+        }
+      },
+      {
+        "pos": "sup",
+        "action": "lane",
+        "ovr": 41.66,
+        "stats": {
+          "mech": 58.19,
+          "lane": 88.92,
+          "macro": 30,
+          "team": 30,
+          "pool": 30,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      },
+      {
+        "pos": "sup",
+        "action": "mech",
+        "ovr": 35.95,
+        "stats": {
+          "mech": 89.48,
+          "lane": 30,
+          "macro": 30,
+          "team": 30,
+          "pool": 30,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      },
+      {
+        "pos": "sup",
+        "action": "vod",
+        "ovr": 56.56,
+        "stats": {
+          "mech": 30,
+          "lane": 30,
+          "macro": 88.92,
+          "team": 55.38,
+          "pool": 30,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      },
+      {
+        "pos": "sup",
+        "action": "pool",
+        "ovr": 36.25,
+        "stats": {
+          "mech": 30,
+          "lane": 30,
+          "macro": 30,
+          "team": 30,
+          "pool": 92.45,
+          "mental": 55
+        },
+        "rank": {
+          "t": 4,
+          "lp": 30
+        }
+      }
+    ],
+    "posts_250_across_100_seeds": {
+      "seeds": 100,
+      "posts": 250,
+      "week": 1,
+      "min": 281015,
+      "median": 755011,
+      "max": 1310839
+    },
+    "fresh_career_initial_ovr": {
+      "seeds": 100,
+      "min": 22.049999999999997,
+      "median": 25.8,
+      "max": 30.6
+    },
+    "pcbang_probability_at_full_condition": [
+      {
+        "ovr": 20,
+        "amateurTitleProbability": 0.015625
+      },
+      {
+        "ovr": 30,
+        "amateurTitleProbability": 0.0614405542563076
+      },
+      {
+        "ovr": 40,
+        "amateurTitleProbability": 0.3650100541632819
+      },
+      {
+        "ovr": 50,
+        "amateurTitleProbability": 0.738468052010776
+      },
+      {
+        "ovr": 60,
+        "amateurTitleProbability": 0.778688
+      },
+      {
+        "ovr": 70,
+        "amateurTitleProbability": 0.778688
+      }
+    ],
+    "date_and_story_assets": {
+      "checkedReferences": 158,
+      "missing": []
+    },
+    "perk_identity_not_saved": {
+      "fans": 10050,
+      "money": 10500000,
+      "perk": null
+    }
+  }
+}

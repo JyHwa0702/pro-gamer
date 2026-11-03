@@ -1,0 +1,2643 @@
+{
+  "version": "2.7.0",
+  "parity": {
+    "careers": 8,
+    "weeks": 624,
+    "result": "CORE_AND_NEXT_RNG_EQUAL",
+    "cases": [
+      {
+        "pos": "top",
+        "seed": 17,
+        "weeks": 78
+      },
+      {
+        "pos": "jg",
+        "seed": 17,
+        "weeks": 78
+      },
+      {
+        "pos": "mid",
+        "seed": 17,
+        "weeks": 78
+      },
+      {
+        "pos": "adc",
+        "seed": 17,
+        "weeks": 78
+      },
+      {
+        "pos": "sup",
+        "seed": 17,
+        "weeks": 78
+      },
+      {
+        "pos": "jg",
+        "seed": 97,
+        "weeks": 78
+      },
+      {
+        "pos": "mid",
+        "seed": 97,
+        "weeks": 78
+      },
+      {
+        "pos": "sup",
+        "seed": 97,
+        "weeks": 78
+      }
+    ]
+  },
+  "recommendation": {
+    "careers": 50,
+    "weeks": 3900,
+    "challenge": {
+      "careers": 25,
+      "pro": 25,
+      "medianOvr": 79.69299999999998,
+      "medianMoney": 348440000,
+      "medianFans": 65909,
+      "medianGames": 20,
+      "completedSeasons": 67,
+      "totalSeasons": 75,
+      "contactWeeks": 2,
+      "askCalls": 1640,
+      "dateActions": 2
+    },
+    "balance": {
+      "careers": 25,
+      "pro": 24,
+      "medianOvr": 80.60699999999999,
+      "medianMoney": 376680000,
+      "medianFans": 76926,
+      "medianGames": 20,
+      "completedSeasons": 75,
+      "totalSeasons": 75,
+      "contactWeeks": 300,
+      "askCalls": 1949,
+      "dateActions": 300
+    }
+  },
+  "matched": {
+    "careersPerVersion": 9,
+    "weeksPerVersion": 702,
+    "before": {
+      "prompts": 1454,
+      "contacts": 0,
+      "completed": 0
+    },
+    "after": {
+      "prompts": 1017,
+      "contacts": 108,
+      "completed": 27
+    },
+    "rows": [
+      {
+        "pos": "mid",
+        "seed": 17,
+        "before": {
+          "prompts": 149,
+          "ovr": 79.76949999999998,
+          "money": 350230000,
+          "stage": "pro",
+          "contacts": 0,
+          "completed": 0
+        },
+        "after": {
+          "prompts": 111,
+          "ovr": 81.9375,
+          "money": 376680000,
+          "stage": "pro",
+          "contacts": 12,
+          "completed": 3
+        }
+      },
+      {
+        "pos": "mid",
+        "seed": 97,
+        "before": {
+          "prompts": 160,
+          "ovr": 78.7045,
+          "money": 332160000,
+          "stage": "pro",
+          "contacts": 0,
+          "completed": 0
+        },
+        "after": {
+          "prompts": 117,
+          "ovr": 81.96900000000001,
+          "money": 433820000,
+          "stage": "pro",
+          "contacts": 12,
+          "completed": 3
+        }
+      },
+      {
+        "pos": "mid",
+        "seed": 101,
+        "before": {
+          "prompts": 155,
+          "ovr": 80.1745,
+          "money": 314100000,
+          "stage": "pro",
+          "contacts": 0,
+          "completed": 0
+        },
+        "after": {
+          "prompts": 127,
+          "ovr": 80.57900000000001,
+          "money": 406780000,
+          "stage": "pro",
+          "contacts": 12,
+          "completed": 3
+        }
+      },
+      {
+        "pos": "jg",
+        "seed": 17,
+        "before": {
+          "prompts": 172,
+          "ovr": 79.141,
+          "money": 505410000,
+          "stage": "pro",
+          "contacts": 0,
+          "completed": 0
+        },
+        "after": {
+          "prompts": 117,
+          "ovr": 76.7355,
+          "money": 308081127.8424449,
+          "stage": "pro",
+          "contacts": 12,
+          "completed": 3
+        }
+      },
+      {
+        "pos": "jg",
+        "seed": 97,
+        "before": {
+          "prompts": 169,
+          "ovr": 79.8435,
+          "money": 344790000,
+          "stage": "pro",
+          "contacts": 0,
+          "completed": 0
+        },
+        "after": {
+          "prompts": 117,
+          "ovr": 78.392,
+          "money": 385840000,
+          "stage": "pro",
+          "contacts": 12,
+          "completed": 3
+        }
+      },
+      {
+        "pos": "jg",
+        "seed": 101,
+        "before": {
+          "prompts": 160,
+          "ovr": 77.27850000000001,
+          "money": 365420000,
+          "stage": "pro",
+          "contacts": 0,
+          "completed": 0
+        },
+        "after": {
+          "prompts": 107,
+          "ovr": 81.07050000000001,
+          "money": 331080000,
+          "stage": "pro",
+          "contacts": 12,
+          "completed": 3
+        }
+      },
+      {
+        "pos": "sup",
+        "seed": 17,
+        "before": {
+          "prompts": 173,
+          "ovr": 81.4675,
+          "money": 515700000,
+          "stage": "pro",
+          "contacts": 0,
+          "completed": 0
+        },
+        "after": {
+          "prompts": 105,
+          "ovr": 81.0995,
+          "money": 371276418.86639035,
+          "stage": "pro",
+          "contacts": 12,
+          "completed": 3
+        }
+      },
+      {
+        "pos": "sup",
+        "seed": 97,
+        "before": {
+          "prompts": 159,
+          "ovr": 77.96699999999998,
+          "money": 223800000,
+          "stage": "pro",
+          "contacts": 0,
+          "completed": 0
+        },
+        "after": {
+          "prompts": 100,
+          "ovr": 76.71450000000002,
+          "money": 196980000,
+          "stage": "pro",
+          "contacts": 12,
+          "completed": 3
+        }
+      },
+      {
+        "pos": "sup",
+        "seed": 101,
+        "before": {
+          "prompts": 157,
+          "ovr": 79.89949999999999,
+          "money": 343080000,
+          "stage": "pro",
+          "contacts": 0,
+          "completed": 0
+        },
+        "after": {
+          "prompts": 116,
+          "ovr": 79.933,
+          "money": 331530000,
+          "stage": "pro",
+          "contacts": 12,
+          "completed": 3
+        }
+      }
+    ]
+  },
+  "scope": "5포지션×5시드×도전/균형. 기본 특성·빠른 경기·기존 업적 활성화·새 추천 버튼과 첫 대화 선택. 소통은 유료 실제 데이트이며 자원 사건에 따라 목표 실패 가능. 비교군 공통일정은 기본 성장/경기/급여/재산/다음 난수 불변 검증용이다. 대화밀도대조9조건은 양쪽 균형목표·원본장면을 사용한다.",
+  "rows": [
+    {
+      "pos": "top",
+      "seed": 17,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 79.13049999999998,
+      "money": 324920000,
+      "fans": 140860,
+      "games": 18,
+      "wins": 8,
+      "prompts": 58,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 31,
+        "vod": 10,
+        "solo": 11,
+        "rest": 17,
+        "pool": 2,
+        "scrim": 7
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 17,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 83.4895,
+      "money": 453090000,
+      "fans": 76926,
+      "games": 27,
+      "wins": 18,
+      "prompts": 82,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 28,
+        "vod": 10,
+        "date": 12,
+        "rest": 11,
+        "solo": 5,
+        "scrim": 10,
+        "pool": 2
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 97,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 79.69299999999998,
+      "money": 336970000,
+      "fans": 25700,
+      "games": 16,
+      "wins": 4,
+      "prompts": 59,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        false
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 30,
+        "vod": 15,
+        "solo": 10,
+        "rest": 12,
+        "pool": 3,
+        "scrim": 8
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 97,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 78.553,
+      "money": 315250000,
+      "fans": 32236,
+      "games": 19,
+      "wins": 16,
+      "prompts": 70,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 30,
+        "vod": 13,
+        "date": 12,
+        "rest": 7,
+        "solo": 6,
+        "pool": 3,
+        "scrim": 7
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 101,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 83.34599999999999,
+      "money": 869755000,
+      "fans": 279265,
+      "games": 34,
+      "wins": 23,
+      "prompts": 83,
+      "contacts": [
+        0,
+        1,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 1,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "",
+        "log": [
+          {
+            "year": 2,
+            "week": 22,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 33,
+        "vod": 16,
+        "rest": 11,
+        "solo": 5,
+        "pool": 6,
+        "scrim": 6,
+        "date": 1
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 101,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 82.46950000000001,
+      "money": 450640000,
+      "fans": 111234,
+      "games": 22,
+      "wins": 13,
+      "prompts": 79,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 25,
+        "vod": 10,
+        "date": 12,
+        "rest": 10,
+        "solo": 6,
+        "pool": 6,
+        "scrim": 9
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 333,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 79.67049999999999,
+      "money": 232980000,
+      "fans": 65909,
+      "games": 20,
+      "wins": 14,
+      "prompts": 65,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        false,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 32,
+        "vod": 16,
+        "mech": 1,
+        "rest": 9,
+        "solo": 10,
+        "pool": 4,
+        "scrim": 6
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 333,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 81.14500000000001,
+      "money": 357630000,
+      "fans": 134861,
+      "games": 18,
+      "wins": 9,
+      "prompts": 80,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 25,
+        "vod": 14,
+        "date": 12,
+        "rest": 10,
+        "mech": 1,
+        "solo": 6,
+        "pool": 4,
+        "scrim": 6
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 777,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 84.4565,
+      "money": 445460000,
+      "fans": 38842,
+      "games": 18,
+      "wins": 12,
+      "prompts": 69,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 34,
+        "vod": 15,
+        "solo": 7,
+        "rest": 11,
+        "pool": 3,
+        "scrim": 8
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 777,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 81.921,
+      "money": 333100000,
+      "fans": 30696,
+      "games": 21,
+      "wins": 8,
+      "prompts": 76,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 28,
+        "vod": 12,
+        "date": 12,
+        "rest": 9,
+        "solo": 6,
+        "scrim": 9,
+        "pool": 2
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 17,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 82.00300000000001,
+      "money": 920970000,
+      "fans": 283329,
+      "games": 45,
+      "wins": 28,
+      "prompts": 89,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "vod": 53,
+        "solo": 5,
+        "pool": 4,
+        "scrim": 7,
+        "rest": 9
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 17,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 76.7355,
+      "money": 308081127.8424449,
+      "fans": 120890,
+      "games": 20,
+      "wins": 13,
+      "prompts": 83,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 46,
+        "date": 12,
+        "rest": 3,
+        "solo": 5,
+        "pool": 4,
+        "stream": 1,
+        "scrim": 7
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 97,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 77.9815,
+      "money": 204200000,
+      "fans": 54730,
+      "games": 19,
+      "wins": 12,
+      "prompts": 60,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "vod": 50,
+        "solo": 3,
+        "pool": 6,
+        "rest": 9,
+        "scrim": 10
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 97,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 78.392,
+      "money": 385840000,
+      "fans": 76232,
+      "games": 26,
+      "wins": 14,
+      "prompts": 81,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 40,
+        "date": 12,
+        "rest": 7,
+        "solo": 3,
+        "pool": 5,
+        "scrim": 11
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 101,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 77.267,
+      "money": 272440000,
+      "fans": 102884,
+      "games": 16,
+      "wins": 10,
+      "prompts": 57,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "vod": 53,
+        "solo": 6,
+        "pool": 8,
+        "rest": 7,
+        "scrim": 4
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 101,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 81.07050000000001,
+      "money": 331080000,
+      "fans": 21295,
+      "games": 18,
+      "wins": 8,
+      "prompts": 71,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 40,
+        "date": 12,
+        "rest": 6,
+        "solo": 5,
+        "pool": 8,
+        "scrim": 7
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 333,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 72.728,
+      "money": 217095000,
+      "fans": 53038,
+      "games": 10,
+      "wins": 7,
+      "prompts": 63,
+      "contacts": [
+        0,
+        1,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 1,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "",
+        "log": [
+          {
+            "year": 2,
+            "week": 22,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 51,
+        "pool": 6,
+        "solo": 9,
+        "date": 1,
+        "rest": 5,
+        "scrim": 6
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 333,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 73.97149999999999,
+      "money": 252470000,
+      "fans": 17114,
+      "games": 9,
+      "wins": 4,
+      "prompts": 71,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 47,
+        "date": 12,
+        "rest": 4,
+        "pool": 6,
+        "solo": 4,
+        "scrim": 5
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 777,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 82.48500000000001,
+      "money": 535520000,
+      "fans": 146787,
+      "games": 30,
+      "wins": 13,
+      "prompts": 71,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "vod": 45,
+        "solo": 5,
+        "pool": 5,
+        "rest": 11,
+        "scrim": 12
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 777,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 83.86600000000001,
+      "money": 965160000,
+      "fans": 312953,
+      "games": 35,
+      "wins": 30,
+      "prompts": 93,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 46,
+        "date": 12,
+        "rest": 6,
+        "solo": 4,
+        "pool": 4,
+        "scrim": 6
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 17,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 80.664,
+      "money": 454460000,
+      "fans": 110247,
+      "games": 27,
+      "wins": 19,
+      "prompts": 63,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 28,
+        "vod": 15,
+        "solo": 8,
+        "mech": 2,
+        "rest": 14,
+        "scrim": 9,
+        "pool": 2
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 17,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 81.9375,
+      "money": 376680000,
+      "fans": 52696,
+      "games": 18,
+      "wins": 7,
+      "prompts": 75,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 24,
+        "vod": 14,
+        "date": 12,
+        "rest": 9,
+        "solo": 5,
+        "mech": 2,
+        "pool": 3,
+        "scrim": 9
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 97,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 79.378,
+      "money": 188210000,
+      "fans": 31271,
+      "games": 18,
+      "wins": 9,
+      "prompts": 56,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 28,
+        "vod": 18,
+        "solo": 7,
+        "rest": 13,
+        "pool": 3,
+        "scrim": 9
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 97,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 81.96900000000001,
+      "money": 433820000,
+      "fans": 143590,
+      "games": 20,
+      "wins": 13,
+      "prompts": 80,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 26,
+        "vod": 15,
+        "date": 12,
+        "rest": 9,
+        "solo": 6,
+        "pool": 3,
+        "scrim": 7
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 101,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 79.38649999999998,
+      "money": 348440000,
+      "fans": 61189,
+      "games": 23,
+      "wins": 7,
+      "prompts": 64,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        false,
+        true,
+        false
+      ],
+      "youth": null,
+      "actions": {
+        "vod": 15,
+        "lane": 28,
+        "rest": 13,
+        "solo": 7,
+        "pool": 6,
+        "scrim": 9
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 101,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 80.57900000000001,
+      "money": 406780000,
+      "fans": 203637,
+      "games": 30,
+      "wins": 17,
+      "prompts": 88,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 14,
+        "lane": 25,
+        "date": 12,
+        "rest": 8,
+        "solo": 3,
+        "pool": 7,
+        "scrim": 9
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 333,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 80.743,
+      "money": 309170000,
+      "fans": 58210,
+      "games": 20,
+      "wins": 10,
+      "prompts": 66,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "vod": 19,
+        "lane": 23,
+        "mech": 2,
+        "solo": 7,
+        "pool": 5,
+        "rest": 11,
+        "scrim": 11
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 333,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 79.63000000000001,
+      "money": 301590000,
+      "fans": 16683,
+      "games": 8,
+      "wins": 3,
+      "prompts": 76,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 18,
+        "lane": 22,
+        "date": 12,
+        "rest": 4,
+        "mech": 3,
+        "solo": 9,
+        "pool": 5,
+        "scrim": 5
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 777,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 82.306,
+      "money": 444920000,
+      "fans": 55971,
+      "games": 26,
+      "wins": 9,
+      "prompts": 64,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        false
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 30,
+        "vod": 12,
+        "solo": 7,
+        "rest": 15,
+        "scrim": 11,
+        "pool": 3
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 777,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 81.5385,
+      "money": 443180000,
+      "fans": 156409,
+      "games": 21,
+      "wins": 12,
+      "prompts": 86,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 27,
+        "vod": 14,
+        "date": 12,
+        "rest": 8,
+        "solo": 8,
+        "pool": 2,
+        "scrim": 7
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 17,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 79.78099999999999,
+      "money": 457060000,
+      "fans": 151173,
+      "games": 27,
+      "wins": 17,
+      "prompts": 70,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 35,
+        "mech": 6,
+        "vod": 11,
+        "solo": 3,
+        "rest": 14,
+        "pool": 3,
+        "scrim": 6
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 17,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 82.1705,
+      "money": 421140000,
+      "fans": 129447,
+      "games": 30,
+      "wins": 12,
+      "prompts": 90,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 31,
+        "mech": 4,
+        "date": 12,
+        "rest": 8,
+        "vod": 5,
+        "solo": 7,
+        "scrim": 8,
+        "pool": 3
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 97,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 81.1475,
+      "money": 384830000,
+      "fans": 108871,
+      "games": 27,
+      "wins": 17,
+      "prompts": 73,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 34,
+        "mech": 3,
+        "vod": 10,
+        "solo": 6,
+        "rest": 12,
+        "pool": 4,
+        "scrim": 9
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 97,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 80.60699999999999,
+      "money": 431450000,
+      "fans": 130012,
+      "games": 21,
+      "wins": 12,
+      "prompts": 82,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 27,
+        "date": 12,
+        "rest": 7,
+        "mech": 6,
+        "vod": 9,
+        "solo": 5,
+        "pool": 3,
+        "scrim": 9
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 101,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 81.71199999999999,
+      "money": 388120000,
+      "fans": 56960,
+      "games": 24,
+      "wins": 14,
+      "prompts": 68,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 34,
+        "rest": 13,
+        "vod": 11,
+        "mech": 3,
+        "solo": 4,
+        "pool": 7,
+        "scrim": 6
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 101,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 80.27900000000001,
+      "money": 415100000,
+      "fans": 88972,
+      "games": 26,
+      "wins": 18,
+      "prompts": 77,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 29,
+        "date": 12,
+        "rest": 7,
+        "vod": 9,
+        "mech": 3,
+        "solo": 5,
+        "pool": 6,
+        "scrim": 7
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 333,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 78.5325,
+      "money": 296130000,
+      "fans": 61600,
+      "games": 16,
+      "wins": 6,
+      "prompts": 62,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 28,
+        "mech": 6,
+        "vod": 13,
+        "rest": 13,
+        "solo": 9,
+        "pool": 4,
+        "scrim": 5
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 333,
+      "focus": "balance",
+      "stage": "aca",
+      "ovr": 74.61949999999999,
+      "money": 47420000,
+      "fans": 595,
+      "games": 0,
+      "wins": 0,
+      "prompts": 64,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 27,
+        "mech": 7,
+        "date": 12,
+        "rest": 4,
+        "vod": 13,
+        "solo": 8,
+        "pool": 5,
+        "scrim": 2
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 777,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 83.1215,
+      "money": 493500000,
+      "fans": 81672,
+      "games": 20,
+      "wins": 6,
+      "prompts": 65,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        false
+      ],
+      "youth": null,
+      "actions": {
+        "lane": 37,
+        "solo": 9,
+        "vod": 8,
+        "mech": 2,
+        "rest": 13,
+        "pool": 2,
+        "scrim": 7
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 777,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 81.361,
+      "money": 386960000,
+      "fans": 4415,
+      "games": 16,
+      "wins": 3,
+      "prompts": 66,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 21,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "lane": 29,
+        "date": 12,
+        "rest": 10,
+        "vod": 10,
+        "solo": 3,
+        "mech": 2,
+        "pool": 3,
+        "scrim": 9
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 17,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 79.908,
+      "money": 350970000,
+      "fans": 71451,
+      "games": 28,
+      "wins": 12,
+      "prompts": 62,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        false
+      ],
+      "youth": null,
+      "actions": {
+        "vod": 45,
+        "solo": 5,
+        "rest": 11,
+        "lane": 2,
+        "scrim": 13,
+        "pool": 2
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 17,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 81.0995,
+      "money": 371276418.86639035,
+      "fans": 61409,
+      "games": 18,
+      "wins": 7,
+      "prompts": 72,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 39,
+        "date": 12,
+        "rest": 7,
+        "solo": 6,
+        "lane": 1,
+        "stream": 2,
+        "scrim": 9,
+        "pool": 2
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 97,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 79.6515,
+      "money": 218860000,
+      "fans": 69257,
+      "games": 18,
+      "wins": 15,
+      "prompts": 63,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        false,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "vod": 48,
+        "lane": 3,
+        "solo": 8,
+        "rest": 7,
+        "pool": 3,
+        "scrim": 9
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 97,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 76.71450000000002,
+      "money": 196980000,
+      "fans": 3624,
+      "games": 4,
+      "wins": 3,
+      "prompts": 73,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 48,
+        "date": 12,
+        "rest": 3,
+        "lane": 4,
+        "solo": 4,
+        "pool": 2,
+        "scrim": 5
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 101,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 79.06049999999999,
+      "money": 363850000,
+      "fans": 64822,
+      "games": 25,
+      "wins": 13,
+      "prompts": 63,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "vod": 47,
+        "solo": 10,
+        "pool": 4,
+        "rest": 9,
+        "scrim": 8
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 101,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 79.933,
+      "money": 331530000,
+      "fans": 91580,
+      "games": 20,
+      "wins": 6,
+      "prompts": 81,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 43,
+        "date": 12,
+        "rest": 6,
+        "solo": 5,
+        "pool": 4,
+        "scrim": 8
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 333,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 75.8145,
+      "money": 256200000,
+      "fans": 24378,
+      "games": 11,
+      "wins": 7,
+      "prompts": 64,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "vod": 49,
+        "solo": 9,
+        "lane": 1,
+        "pool": 4,
+        "rest": 8,
+        "scrim": 7
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 333,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 75.6325,
+      "money": 191350000,
+      "fans": 17508,
+      "games": 5,
+      "wins": 4,
+      "prompts": 73,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 46,
+        "date": 12,
+        "rest": 6,
+        "lane": 1,
+        "solo": 5,
+        "pool": 3,
+        "scrim": 5
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 777,
+      "focus": "challenge",
+      "stage": "pro",
+      "ovr": 78.1705,
+      "money": 277070000,
+      "fans": 68122,
+      "games": 20,
+      "wins": 13,
+      "prompts": 63,
+      "contacts": [
+        0,
+        0,
+        0
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": null,
+      "actions": {
+        "vod": 55,
+        "solo": 5,
+        "rest": 9,
+        "scrim": 8,
+        "pool": 1
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 777,
+      "focus": "balance",
+      "stage": "pro",
+      "ovr": 79.78649999999999,
+      "money": 389940000,
+      "fans": 83485,
+      "games": 29,
+      "wins": 16,
+      "prompts": 80,
+      "contacts": [
+        4,
+        4,
+        4
+      ],
+      "goals": [
+        true,
+        true,
+        true
+      ],
+      "youth": {
+        "schema": 1,
+        "step": 3,
+        "branch": "together",
+        "prepared": true,
+        "task": "rest",
+        "outcome": "kept",
+        "log": [
+          {
+            "year": 1,
+            "week": 7,
+            "title": "학교 축제의 작은 사진 전시",
+            "tag": "shared-preparation",
+            "label": "축제 전에 쉬는 날을 확보한다"
+          },
+          {
+            "year": 1,
+            "week": 13,
+            "title": "겹친 일정, 지킬 수 있는 약속",
+            "tag": "promise-kept",
+            "label": "준비한 내용으로 약속을 이행한다"
+          },
+          {
+            "year": 1,
+            "week": 20,
+            "title": "지은의 첫 전시, 관객이 된 날",
+            "tag": "shared-next-chapter",
+            "label": "다음 주제도 함께 기획한다"
+          }
+        ]
+      },
+      "actions": {
+        "vod": 48,
+        "date": 12,
+        "rest": 5,
+        "solo": 3,
+        "scrim": 6,
+        "lane": 2,
+        "pool": 2
+      }
+    }
+  ]
+}

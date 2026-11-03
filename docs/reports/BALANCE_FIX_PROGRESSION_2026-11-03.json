@@ -1,0 +1,967 @@
+[
+  {
+    "pos": "top",
+    "samples": 20,
+    "joined": 20,
+    "pro": 20,
+    "firstJoinRange": [
+      36,
+      44,
+      59
+    ],
+    "runs": [
+      {
+        "seed": 1,
+        "joined": 43,
+        "pro": 44,
+        "stage": "pro",
+        "ovr": 80.9,
+        "money": 304640000,
+        "tier": 7
+      },
+      {
+        "seed": 2,
+        "joined": 44,
+        "pro": 53,
+        "stage": "pro",
+        "ovr": 80.9,
+        "money": 226070000,
+        "tier": 7
+      },
+      {
+        "seed": 3,
+        "joined": 56,
+        "pro": 57,
+        "stage": "pro",
+        "ovr": 77.2,
+        "money": 179470000,
+        "tier": 7
+      },
+      {
+        "seed": 4,
+        "joined": 39,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 79.9,
+        "money": 252790000,
+        "tier": 7
+      },
+      {
+        "seed": 5,
+        "joined": 51,
+        "pro": 59,
+        "stage": "pro",
+        "ovr": 78.2,
+        "money": 183560000,
+        "tier": 7
+      },
+      {
+        "seed": 6,
+        "joined": 51,
+        "pro": 64,
+        "stage": "pro",
+        "ovr": 78.5,
+        "money": 180720000,
+        "tier": 7
+      },
+      {
+        "seed": 7,
+        "joined": 50,
+        "pro": 55,
+        "stage": "pro",
+        "ovr": 78.7,
+        "money": 260210000,
+        "tier": 7
+      },
+      {
+        "seed": 8,
+        "joined": 59,
+        "pro": 60,
+        "stage": "pro",
+        "ovr": 72.5,
+        "money": 109610000,
+        "tier": 7
+      },
+      {
+        "seed": 9,
+        "joined": 58,
+        "pro": 59,
+        "stage": "pro",
+        "ovr": 77.5,
+        "money": 179760000,
+        "tier": 7
+      },
+      {
+        "seed": 10,
+        "joined": 38,
+        "pro": 43,
+        "stage": "pro",
+        "ovr": 78,
+        "money": 197690000,
+        "tier": 7
+      },
+      {
+        "seed": 11,
+        "joined": 37,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 78.3,
+        "money": 155640000,
+        "tier": 7
+      },
+      {
+        "seed": 12,
+        "joined": 37,
+        "pro": 40,
+        "stage": "pro",
+        "ovr": 82,
+        "money": 343460000,
+        "tier": 7
+      },
+      {
+        "seed": 13,
+        "joined": 44,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 80.1,
+        "money": 201260000,
+        "tier": 7
+      },
+      {
+        "seed": 14,
+        "joined": 40,
+        "pro": 44,
+        "stage": "pro",
+        "ovr": 81.4,
+        "money": 325380000,
+        "tier": 7
+      },
+      {
+        "seed": 15,
+        "joined": 50,
+        "pro": 54,
+        "stage": "pro",
+        "ovr": 80.5,
+        "money": 253000000,
+        "tier": 7
+      },
+      {
+        "seed": 16,
+        "joined": 53,
+        "pro": 55,
+        "stage": "pro",
+        "ovr": 79.9,
+        "money": 262210000,
+        "tier": 7
+      },
+      {
+        "seed": 17,
+        "joined": 36,
+        "pro": 39,
+        "stage": "pro",
+        "ovr": 79.7,
+        "money": 319580000,
+        "tier": 7
+      },
+      {
+        "seed": 18,
+        "joined": 36,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 81.8,
+        "money": 360180000,
+        "tier": 7
+      },
+      {
+        "seed": 19,
+        "joined": 41,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 81.2,
+        "money": 574180000,
+        "tier": 7
+      },
+      {
+        "seed": 20,
+        "joined": 54,
+        "pro": 55,
+        "stage": "pro",
+        "ovr": 76.7,
+        "money": 134700000,
+        "tier": 7
+      }
+    ]
+  },
+  {
+    "pos": "jg",
+    "samples": 20,
+    "joined": 20,
+    "pro": 20,
+    "firstJoinRange": [
+      31,
+      43,
+      56
+    ],
+    "runs": [
+      {
+        "seed": 1,
+        "joined": 43,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 81.2,
+        "money": 267780000,
+        "tier": 7
+      },
+      {
+        "seed": 2,
+        "joined": 53,
+        "pro": 67,
+        "stage": "pro",
+        "ovr": 77.8,
+        "money": 176630000,
+        "tier": 7
+      },
+      {
+        "seed": 3,
+        "joined": 45,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 76,
+        "money": 226300000,
+        "tier": 7
+      },
+      {
+        "seed": 4,
+        "joined": 34,
+        "pro": 38,
+        "stage": "pro",
+        "ovr": 78,
+        "money": 250150000,
+        "tier": 7
+      },
+      {
+        "seed": 5,
+        "joined": 42,
+        "pro": 44,
+        "stage": "pro",
+        "ovr": 77.9,
+        "money": 184750000,
+        "tier": 7
+      },
+      {
+        "seed": 6,
+        "joined": 44,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 80,
+        "money": 257790000,
+        "tier": 7
+      },
+      {
+        "seed": 7,
+        "joined": 52,
+        "pro": 53,
+        "stage": "pro",
+        "ovr": 75.1,
+        "money": 144010000,
+        "tier": 7
+      },
+      {
+        "seed": 8,
+        "joined": 54,
+        "pro": 64,
+        "stage": "pro",
+        "ovr": 75,
+        "money": 133170000,
+        "tier": 7
+      },
+      {
+        "seed": 9,
+        "joined": 44,
+        "pro": 45,
+        "stage": "pro",
+        "ovr": 80.5,
+        "money": 252580000,
+        "tier": 7
+      },
+      {
+        "seed": 10,
+        "joined": 45,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 77.8,
+        "money": 202480000,
+        "tier": 7
+      },
+      {
+        "seed": 11,
+        "joined": 42,
+        "pro": 45,
+        "stage": "pro",
+        "ovr": 79.6,
+        "money": 252950000,
+        "tier": 7
+      },
+      {
+        "seed": 12,
+        "joined": 31,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 79.6,
+        "money": 434710000,
+        "tier": 7
+      },
+      {
+        "seed": 13,
+        "joined": 42,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 80.9,
+        "money": 264180000,
+        "tier": 7
+      },
+      {
+        "seed": 14,
+        "joined": 42,
+        "pro": 43,
+        "stage": "pro",
+        "ovr": 80.7,
+        "money": 378090000,
+        "tier": 7
+      },
+      {
+        "seed": 15,
+        "joined": 56,
+        "pro": 59,
+        "stage": "pro",
+        "ovr": 76.7,
+        "money": 164560000,
+        "tier": 7
+      },
+      {
+        "seed": 16,
+        "joined": 39,
+        "pro": 40,
+        "stage": "pro",
+        "ovr": 78.1,
+        "money": 196050000,
+        "tier": 7
+      },
+      {
+        "seed": 17,
+        "joined": 34,
+        "pro": 38,
+        "stage": "pro",
+        "ovr": 78.3,
+        "money": 288760000,
+        "tier": 7
+      },
+      {
+        "seed": 18,
+        "joined": 41,
+        "pro": 42,
+        "stage": "pro",
+        "ovr": 79.1,
+        "money": 303220000,
+        "tier": 7
+      },
+      {
+        "seed": 19,
+        "joined": 38,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 78.2,
+        "money": 245390000,
+        "tier": 7
+      },
+      {
+        "seed": 20,
+        "joined": 51,
+        "pro": 53,
+        "stage": "pro",
+        "ovr": 73.7,
+        "money": 140900000,
+        "tier": 7
+      }
+    ]
+  },
+  {
+    "pos": "mid",
+    "samples": 20,
+    "joined": 20,
+    "pro": 20,
+    "firstJoinRange": [
+      32,
+      44,
+      57
+    ],
+    "runs": [
+      {
+        "seed": 1,
+        "joined": 36,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 80.5,
+        "money": 270740000,
+        "tier": 7
+      },
+      {
+        "seed": 2,
+        "joined": 38,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 82,
+        "money": 349360000,
+        "tier": 7
+      },
+      {
+        "seed": 3,
+        "joined": 57,
+        "pro": 58,
+        "stage": "pro",
+        "ovr": 76.1,
+        "money": 151840000,
+        "tier": 7
+      },
+      {
+        "seed": 4,
+        "joined": 50,
+        "pro": 54,
+        "stage": "pro",
+        "ovr": 80.9,
+        "money": 212300000,
+        "tier": 7
+      },
+      {
+        "seed": 5,
+        "joined": 39,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 80.1,
+        "money": 198700000,
+        "tier": 7
+      },
+      {
+        "seed": 6,
+        "joined": 44,
+        "pro": 45,
+        "stage": "pro",
+        "ovr": 80.1,
+        "money": 233280000,
+        "tier": 7
+      },
+      {
+        "seed": 7,
+        "joined": 52,
+        "pro": 54,
+        "stage": "pro",
+        "ovr": 80.5,
+        "money": 232120000,
+        "tier": 7
+      },
+      {
+        "seed": 8,
+        "joined": 54,
+        "pro": 57,
+        "stage": "pro",
+        "ovr": 77.6,
+        "money": 152800000,
+        "tier": 7
+      },
+      {
+        "seed": 9,
+        "joined": 52,
+        "pro": 55,
+        "stage": "pro",
+        "ovr": 78.5,
+        "money": 195430000,
+        "tier": 7
+      },
+      {
+        "seed": 10,
+        "joined": 44,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 81.9,
+        "money": 230990000,
+        "tier": 7
+      },
+      {
+        "seed": 11,
+        "joined": 53,
+        "pro": 59,
+        "stage": "pro",
+        "ovr": 79.4,
+        "money": 225700000,
+        "tier": 7
+      },
+      {
+        "seed": 12,
+        "joined": 40,
+        "pro": 41,
+        "stage": "pro",
+        "ovr": 81.9,
+        "money": 366920000,
+        "tier": 7
+      },
+      {
+        "seed": 13,
+        "joined": 52,
+        "pro": 55,
+        "stage": "pro",
+        "ovr": 78.2,
+        "money": 183820000,
+        "tier": 7
+      },
+      {
+        "seed": 14,
+        "joined": 43,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 78,
+        "money": 182520000,
+        "tier": 7
+      },
+      {
+        "seed": 15,
+        "joined": 40,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 80.3,
+        "money": 310950000,
+        "tier": 7
+      },
+      {
+        "seed": 16,
+        "joined": 42,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 82.8,
+        "money": 337400000,
+        "tier": 7
+      },
+      {
+        "seed": 17,
+        "joined": 51,
+        "pro": 53,
+        "stage": "pro",
+        "ovr": 78.9,
+        "money": 211570000,
+        "tier": 7
+      },
+      {
+        "seed": 18,
+        "joined": 34,
+        "pro": 38,
+        "stage": "pro",
+        "ovr": 81.9,
+        "money": 462600000,
+        "tier": 7
+      },
+      {
+        "seed": 19,
+        "joined": 32,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 81,
+        "money": 273400000,
+        "tier": 7
+      },
+      {
+        "seed": 20,
+        "joined": 43,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 77.5,
+        "money": 160900000,
+        "tier": 7
+      }
+    ]
+  },
+  {
+    "pos": "adc",
+    "samples": 20,
+    "joined": 20,
+    "pro": 20,
+    "firstJoinRange": [
+      32,
+      42,
+      53
+    ],
+    "runs": [
+      {
+        "seed": 1,
+        "joined": 32,
+        "pro": 43,
+        "stage": "pro",
+        "ovr": 82,
+        "money": 721250000,
+        "tier": 7
+      },
+      {
+        "seed": 2,
+        "joined": 33,
+        "pro": 34,
+        "stage": "pro",
+        "ovr": 80.6,
+        "money": 250720000,
+        "tier": 7
+      },
+      {
+        "seed": 3,
+        "joined": 40,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 77.3,
+        "money": 453270000,
+        "tier": 7
+      },
+      {
+        "seed": 4,
+        "joined": 36,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 83,
+        "money": 571500000,
+        "tier": 7
+      },
+      {
+        "seed": 5,
+        "joined": 42,
+        "pro": 44,
+        "stage": "pro",
+        "ovr": 80,
+        "money": 248370000,
+        "tier": 7
+      },
+      {
+        "seed": 6,
+        "joined": 42,
+        "pro": 43,
+        "stage": "pro",
+        "ovr": 81.3,
+        "money": 286060000,
+        "tier": 7
+      },
+      {
+        "seed": 7,
+        "joined": 45,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 81.5,
+        "money": 416430000,
+        "tier": 7
+      },
+      {
+        "seed": 8,
+        "joined": 51,
+        "pro": 55,
+        "stage": "pro",
+        "ovr": 75.5,
+        "money": 143240000,
+        "tier": 7
+      },
+      {
+        "seed": 9,
+        "joined": 53,
+        "pro": 76,
+        "stage": "pro",
+        "ovr": 79.5,
+        "money": 76890000,
+        "tier": 7
+      },
+      {
+        "seed": 10,
+        "joined": 40,
+        "pro": 41,
+        "stage": "pro",
+        "ovr": 79.5,
+        "money": 269770000,
+        "tier": 7
+      },
+      {
+        "seed": 11,
+        "joined": 43,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 79.6,
+        "money": 250090000,
+        "tier": 7
+      },
+      {
+        "seed": 12,
+        "joined": 36,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 81.3,
+        "money": 308630000,
+        "tier": 7
+      },
+      {
+        "seed": 13,
+        "joined": 50,
+        "pro": 53,
+        "stage": "pro",
+        "ovr": 79.1,
+        "money": 198330000,
+        "tier": 7
+      },
+      {
+        "seed": 14,
+        "joined": 34,
+        "pro": 45,
+        "stage": "pro",
+        "ovr": 82.3,
+        "money": 474080000,
+        "tier": 7
+      },
+      {
+        "seed": 15,
+        "joined": 41,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 79.6,
+        "money": 207660000,
+        "tier": 7
+      },
+      {
+        "seed": 16,
+        "joined": 50,
+        "pro": 59,
+        "stage": "pro",
+        "ovr": 80,
+        "money": 246680000,
+        "tier": 7
+      },
+      {
+        "seed": 17,
+        "joined": 37,
+        "pro": 41,
+        "stage": "pro",
+        "ovr": 81.3,
+        "money": 369920000,
+        "tier": 7
+      },
+      {
+        "seed": 18,
+        "joined": 43,
+        "pro": 44,
+        "stage": "pro",
+        "ovr": 79.2,
+        "money": 287170000,
+        "tier": 7
+      },
+      {
+        "seed": 19,
+        "joined": 40,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 80,
+        "money": 222990000,
+        "tier": 7
+      },
+      {
+        "seed": 20,
+        "joined": 50,
+        "pro": 60,
+        "stage": "pro",
+        "ovr": 79.4,
+        "money": 218750000,
+        "tier": 7
+      }
+    ]
+  },
+  {
+    "pos": "sup",
+    "samples": 20,
+    "joined": 20,
+    "pro": 20,
+    "firstJoinRange": [
+      29,
+      45,
+      60
+    ],
+    "runs": [
+      {
+        "seed": 1,
+        "joined": 39,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 79,
+        "money": 224800000,
+        "tier": 7
+      },
+      {
+        "seed": 2,
+        "joined": 44,
+        "pro": 45,
+        "stage": "pro",
+        "ovr": 77.8,
+        "money": 245030000,
+        "tier": 7
+      },
+      {
+        "seed": 3,
+        "joined": 56,
+        "pro": 58,
+        "stage": "pro",
+        "ovr": 71.7,
+        "money": 113260000,
+        "tier": 7
+      },
+      {
+        "seed": 4,
+        "joined": 41,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 81.1,
+        "money": 245890000,
+        "tier": 7
+      },
+      {
+        "seed": 5,
+        "joined": 43,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 77.2,
+        "money": 221390000,
+        "tier": 7
+      },
+      {
+        "seed": 6,
+        "joined": 51,
+        "pro": 76,
+        "stage": "pro",
+        "ovr": 80.6,
+        "money": 84800000,
+        "tier": 7
+      },
+      {
+        "seed": 7,
+        "joined": 51,
+        "pro": 54,
+        "stage": "pro",
+        "ovr": 76.6,
+        "money": 216960000,
+        "tier": 7
+      },
+      {
+        "seed": 8,
+        "joined": 60,
+        "pro": 64,
+        "stage": "pro",
+        "ovr": 73.2,
+        "money": 91240000,
+        "tier": 7
+      },
+      {
+        "seed": 9,
+        "joined": 54,
+        "pro": 55,
+        "stage": "pro",
+        "ovr": 76.2,
+        "money": 253040000,
+        "tier": 7
+      },
+      {
+        "seed": 10,
+        "joined": 50,
+        "pro": 54,
+        "stage": "pro",
+        "ovr": 77.3,
+        "money": 195840000,
+        "tier": 7
+      },
+      {
+        "seed": 11,
+        "joined": 43,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 78,
+        "money": 273280000,
+        "tier": 7
+      },
+      {
+        "seed": 12,
+        "joined": 41,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 78.8,
+        "money": 244240000,
+        "tier": 7
+      },
+      {
+        "seed": 13,
+        "joined": 45,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 78.7,
+        "money": 182750000,
+        "tier": 7
+      },
+      {
+        "seed": 14,
+        "joined": 42,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 78.9,
+        "money": 236150000,
+        "tier": 7
+      },
+      {
+        "seed": 15,
+        "joined": 40,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 78.6,
+        "money": 273520000,
+        "tier": 7
+      },
+      {
+        "seed": 16,
+        "joined": 52,
+        "pro": 76,
+        "stage": "pro",
+        "ovr": 78.9,
+        "money": 78470000,
+        "tier": 7
+      },
+      {
+        "seed": 17,
+        "joined": 29,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 79.3,
+        "money": 211840000,
+        "tier": 7
+      },
+      {
+        "seed": 18,
+        "joined": 53,
+        "pro": 56,
+        "stage": "pro",
+        "ovr": 79.9,
+        "money": 220640000,
+        "tier": 7
+      },
+      {
+        "seed": 19,
+        "joined": 45,
+        "pro": 50,
+        "stage": "pro",
+        "ovr": 79.1,
+        "money": 223210000,
+        "tier": 7
+      },
+      {
+        "seed": 20,
+        "joined": 41,
+        "pro": 42,
+        "stage": "pro",
+        "ovr": 75.1,
+        "money": 196430000,
+        "tier": 7
+      }
+    ]
+  }
+]

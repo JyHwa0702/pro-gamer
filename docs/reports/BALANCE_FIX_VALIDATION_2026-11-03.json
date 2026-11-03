@@ -1,0 +1,57 @@
+{
+  "version": "2.2.0",
+  "versionCode": 14,
+  "sourceSha256": "a7e70eef60d25c7c232b36f21b45ac191e6565b8b97f52bdf7a94a4d98c68d69",
+  "nodeTests": {
+    "total": 65,
+    "passed": 65,
+    "failed": 0
+  },
+  "pipeline": "SUCCESS: ALL TESTS PASSED",
+  "syntax": "SYNTAX_OK",
+  "versionSync": true,
+  "browser": {
+    "balance": {
+      "result": "BALANCE_BROWSER_PASS",
+      "checks": [
+        "v1 세이브 로드",
+        "스킨 탭 구매",
+        "임대 구매",
+        "주거·차량·팬클럽",
+        "재로드 보존",
+        "저장 DM 수락/중복 방지",
+        "갤러리 취소/복귀",
+        "협상 취소"
+      ],
+      "pageErrors": []
+    },
+    "keyboard": "BROWSER_PASS: 피드 진입, 캡션, 키보드 모의 높이, 메뉴 복원, 필터/사진/태그, 공유, 작성 닫기, DM 전환, 재진입 (pageerror 0)",
+    "safetyManual": {
+      "result": "SAFETY_MANUAL_BROWSER_PASS",
+      "minorChoices": [
+        "응원의 마음을 전한다",
+        "차분하게 이야기를 나눈다"
+      ],
+      "game": {
+        "win": true,
+        "rating": 9.66,
+        "mySetW": 3,
+        "mySetL": 0
+      },
+      "pageErrors": []
+    },
+    "offline": {
+      "result": "OFFLINE_WARM_CACHE_PASS",
+      "version": "2.2.0",
+      "scope": "기존에 캐시한 게임과 로컬 세이브 재실행·자산 메뉴"
+    }
+  },
+  "progression": "BALANCE_FIX_PROGRESSION_2026-11-03.json",
+  "limits": [
+    "합성 구버전 세이브 검사",
+    "함수 실험의 DOM/소리/모달 대기 대체",
+    "실제기기 키보드 미검증",
+    "APK/ZIP 재빌드 및 실행 미실시",
+    "오프라인은 기존 캐시 범위"
+  ]
+}

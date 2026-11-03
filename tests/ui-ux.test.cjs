@@ -1,0 +1,7 @@
+const {test}=require('node:test'),assert=require('node:assert/strict');const {game}=require('./game-harness.cjs');
+test('행동 요약이 비용과 체력/스트레스 변화를 보존한다',()=>{const g=game();const out=g.run("actionSummary(ACTS.find(a=>a.k==='care'))");assert.ok(out.includes('30만'));assert.ok(out.includes('20'));});
+test('홈 인연 요약은 해금된 인연 중심으로 표시한다',()=>{const g=game();const out=g.run('renderBondsQuickBar()');assert.ok(out.includes('jieun'));assert.ok(!out.includes('data-bhid="karina"'));});
+test('작은 인연 바로가기는 확대가 아닌 인연 메뉴를 정확히 안내한다',()=>{const g=game();const out=g.run('renderBondsQuickBar()');assert.ok(out.includes('이지은 인연 보기'));assert.ok(!out.includes('이미지 크게 보기'));});
+test('아이콘은 외부 요청 없이 접근성 장식용 SVG를 생성한다',()=>{const g=game();const out=g.run("uiIcon('heart')");assert.ok(out.includes('<svg'));assert.ok(out.includes('aria-hidden="true"'));assert.ok(!out.includes('http'));});
+test('기록 메뉴에서 순위와 커리어 모두 접근 가능하다',async()=>{const g=game();g.run('let standingsCalls=0,recordCalls=0;showStandings=()=>standingsCalls++;showRecord=async()=>recordCalls++;ask=async()=>1;');await g.run('showRecordsMenu()');assert.equal(g.run('recordCalls'),1);});
+test('생성 화면의 OVR 미리보기에 선택 특성이 반영된다',()=>{const g=game();g.run("P=null;cr={name:'검증',pos:'mid',perk:'mech',base:{mech:40,lane:40,macro:40,team:40,pool:40,mental:55},talent:1.15};renderCreate();");const output=g.nodes.get('#main').innerHTML;assert.ok(output.includes('data-preview-ovr="45"'));});

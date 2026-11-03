@@ -1,0 +1,365 @@
+{
+  "version": "2.6.0",
+  "versionCode": 18,
+  "date": "2026-11-04",
+  "node": {
+    "total": 131,
+    "pass": 131,
+    "fail": 0,
+    "skip": 0,
+    "command": "$env:CAREER_BASELINE='.system_generated/career-baseline.html'; $env:SEASON_BASELINE='.system_generated/career-baseline.html'; $env:BRIEFING_BASELINE='.system_generated/career-baseline.html'; node --test tests/*.test.cjs"
+  },
+  "baseline": {
+    "version": "2.5.0",
+    "sha256": "c0127340e4ff052503b4dd645915cf410d3290e784c5e4680e5f39bf95c026ee",
+    "uniqueCareers": 8,
+    "uniqueWeeks": 624,
+    "newCareerComparison": 390,
+    "exclusions": [
+      "career",
+      "seasonJourney",
+      "seasonArchive",
+      "weeklyBriefingHistory"
+    ],
+    "description": "시각 고정, 실제 업적 활성화, 기존 실질 P 상태/주가/커리어 종료 후 다음 난수 비교. 이전 비교 테스트에는 별도로 허용한 프리젠테이션 메타데이터 제외가 적용된다."
+  },
+  "pipeline": "[SUCCESS: ALL TESTS PASSED]",
+  "syntax": "SYNTAX_OK",
+  "versionSync": "VERSION_SYNC_OK 2.6.0/18",
+  "simulation": {
+    "file": "CAREER_BALANCE_SIMULATION_2026-11-04.json",
+    "careers": 50,
+    "totalWeeks": 3900,
+    "control": {
+      "careers": 25,
+      "pro": 25,
+      "academy": 0,
+      "amateur": 0,
+      "medianOvr": 80.3695,
+      "medianMoney": 392160000,
+      "medianFans": 91096,
+      "medianGames": 23,
+      "medianActivitySpend": 0,
+      "maxDirectIncome": 0,
+      "settledRelocations": 0
+    },
+    "activities": {
+      "careers": 25,
+      "pro": 25,
+      "academy": 0,
+      "amateur": 0,
+      "medianOvr": 81.4715,
+      "medianMoney": 387773109,
+      "medianFans": 88282,
+      "medianGames": 22,
+      "medianActivitySpend": 7545005,
+      "maxDirectIncome": 389512,
+      "settledRelocations": 41
+    }
+  },
+  "browser": [
+    {
+      "name": "browser",
+      "result": {
+        "result": "CAREER_26_WEEK_BROWSER_PASS",
+        "weeks": 26,
+        "scenes": [
+          "spring",
+          "summerStart",
+          "summerEnd",
+          "worldsEnd",
+          "final"
+        ],
+        "receipts": [
+          {
+            "name": "개인 분석 리포트",
+            "week": 1,
+            "cost": 2000000,
+            "income": 0
+          },
+          {
+            "name": "브랜드 공동 기획",
+            "week": 1,
+            "cost": 0,
+            "income": 135104
+          },
+          {
+            "name": "이적 정착 지원",
+            "week": 25,
+            "cost": 1312425,
+            "income": 0
+          }
+        ],
+        "motion": {
+          "frame": "9.37",
+          "target": "85.43",
+          "tone": "brief-metric result-card result-positive result-enter"
+        },
+        "contract": {
+          "key": "1:24:transfer:pro:8:퀀텀 e스포츠",
+          "year": 1,
+          "week": 24,
+          "kind": "transfer",
+          "from": {
+            "stage": "pro",
+            "id": 0,
+            "name": "한빛 타이탄즈",
+            "key": "pro:0:한빛 타이탄즈"
+          },
+          "to": {
+            "stage": "pro",
+            "id": 8,
+            "name": "퀀텀 e스포츠",
+            "key": "pro:8:퀀텀 e스포츠"
+          },
+          "salary": 31350000,
+          "settled": true
+        },
+        "promise": {
+          "year": 1,
+          "week": 1,
+          "path": "move",
+          "club": {
+            "stage": "pro",
+            "id": 0,
+            "name": "한빛 타이탄즈",
+            "key": "pro:0:한빛 타이탄즈"
+          },
+          "status": "kept"
+        },
+        "memories": 6,
+        "nextSeason": true,
+        "readOnlyReplay": true,
+        "widths": [
+          320,
+          390,
+          1100
+        ],
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "result-motion",
+      "result": {
+        "pass": true,
+        "checks": [
+          "역방향 색상",
+          "음수 색상",
+          "원문/aria-label",
+          "숫자 중간 프레임",
+          "800ms 내 완료",
+          "저장/게임 불변",
+          "observer 안정",
+          "DOM 재삽입",
+          "분리 시 취소",
+          "동작 줄이기/진행중 전환"
+        ],
+        "intermediate": 3245,
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "season-experience",
+      "result": {
+        "result": "SEASON_26_WEEK_BROWSER_PASS",
+        "committedWeeks": 26,
+        "rollbackDuringFinalReview": true,
+        "scenes": [
+          "spring",
+          "summerStart",
+          "summerEnd",
+          "worldsEnd",
+          "final",
+          "final"
+        ],
+        "activityReceipts": [
+          {
+            "name": "훈련 환경 지원",
+            "week": 1,
+            "cost": 1000000,
+            "income": 0
+          },
+          {
+            "name": "팬 초청 공개행사",
+            "week": 1,
+            "cost": 100000,
+            "income": 0
+          },
+          {
+            "name": "인터뷰 협업",
+            "week": 1,
+            "cost": 0,
+            "income": 32480
+          },
+          {
+            "name": "동행 기록집",
+            "week": 1,
+            "cost": 50000,
+            "income": 0
+          }
+        ],
+        "goal": {
+          "done": true,
+          "label": "핵심 훈련 11주",
+          "detail": "18/11주"
+        },
+        "officialGames": 26,
+        "rival": {
+          "id": 2,
+          "league": "pro",
+          "name": "네온 울브즈",
+          "games": 3,
+          "wins": 0
+        },
+        "readOnlyArchive": true,
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "balance-content",
+      "result": {
+        "result": "BALANCE_BROWSER_PASS",
+        "checks": [
+          "v1 세이브 로드",
+          "스킨 탭 구매",
+          "임대 구매",
+          "주거·차량·팬클럽",
+          "재로드 보존",
+          "저장 DM 수락/중복 방지",
+          "갤러리 취소/복귀",
+          "협상 취소"
+        ],
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "gamergram",
+      "result": "BROWSER_PASS: 피드 진입, 캡션, 키보드 모의 높이, 메뉴 복원, 필터/사진/태그, 공유, 작성 닫기, DM 전환, 재진입 (pageerror 0)"
+    },
+    {
+      "name": "safety-match",
+      "result": {
+        "result": "SAFETY_MANUAL_BROWSER_PASS",
+        "minorChoices": [
+          "응원의 마음을 전한다",
+          "차분하게 이야기를 나눈다"
+        ],
+        "game": {
+          "win": true,
+          "rating": 9.66,
+          "mySetW": 3,
+          "mySetL": 0
+        },
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "ui-ux",
+      "result": {
+        "result": "UI_UX_BROWSER_PASS",
+        "viewports": [
+          320,
+          390,
+          1100
+        ],
+        "checks": [
+          "본문/하단 메뉴 분리",
+          "일정 필터",
+          "능력치 접기",
+          "23인 카드/데이트 비용",
+          "기록 접근",
+          "자산/스킨 탭",
+          "Escape/배경 차단 복원"
+        ],
+        "pageErrors": [],
+        "failedResources": []
+      }
+    },
+    {
+      "name": "create-ui",
+      "result": {
+        "result": "CREATE_UI_PASS",
+        "viewports": [
+          320,
+          390,
+          1100
+        ],
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "weekly-briefing",
+      "result": {
+        "result": "WEEKLY_BRIEFING_BROWSER_PASS",
+        "widths": [
+          320,
+          390,
+          1100
+        ],
+        "readOnlyReplay": true,
+        "reload": true,
+        "matchCount": 1,
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "weekly-briefing-boundaries",
+      "result": {
+        "result": "BRIEFING_NARRATIVE_BOUNDARIES_PASS",
+        "soloSpeakers": [
+          "미야모토 린 (21세)",
+          "김민정 (21세)",
+          "강하린 (19세)",
+          "나유나 (20세)",
+          "유지민 (21세)",
+          "김채원 (21세)"
+        ],
+        "burnoutOrder": [
+          "인연 장면",
+          "번아웃 알림",
+          "주간 브리핑"
+        ],
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "offline",
+      "result": {
+        "result": "OFFLINE_WARM_CACHE_PASS",
+        "version": "2.6.0",
+        "seasonArchive": false,
+        "scope": "기존에 캐시한 게임과 로컬 세이브 재실행·자산 메뉴·가능한 시즌 결산 재열람"
+      }
+    },
+    {
+      "name": "offline-feature",
+      "result": {
+        "result": "CAREER_OFFLINE_PASS",
+        "version": "2.6.0",
+        "scope": "캐시된 게임·세이브 복구, 커리어 평가와 인연 기억 재열람",
+        "pageErrors": []
+      }
+    }
+  ],
+  "review": {
+    "fixed": [
+      "동일 구단ACA/1군 조직 정체성",
+      "확정한 진로와20주 답변 충돌",
+      "손상된 선택 커리어 요약 열람 오류",
+      "실제 같은 구단 승격 계약의 정착 지원 해금"
+    ],
+    "result": "최종 독립 재검토4건 해결 확인, 추가 중요 문제 없음"
+  },
+  "agents": {
+    "implementation": "결과 연출 독립 구현/단위와DOM검증",
+    "review": "커리어 독립 읽기 전용 검토",
+    "integration": "루트 커리어 구현/상태비교/자원실험/브라우저검증"
+  },
+  "scope": [
+    "1군 강제벤치·급여/계약 확률 변경은 적용하지 않음",
+    "지정정책의 장기실험이며 모든 플레이 스타일을 대표하지 않음",
+    "실제 사용자 세이브 전체·실제 Android/iOS·APK 실행 미검증",
+    "방문한 로컬캐시 오프라인 검사",
+    "로컬 미커밋/미배포,APK/ZIP미재빌드"
+  ]
+}

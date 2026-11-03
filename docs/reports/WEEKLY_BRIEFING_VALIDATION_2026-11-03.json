@@ -1,0 +1,165 @@
+{
+  "version": "2.4.0",
+  "versionCode": 16,
+  "nodeTests": {
+    "total": 84,
+    "pass": 84,
+    "fail": 0,
+    "skip": 0,
+    "command": "$env:BRIEFING_BASELINE='.system_generated/briefing-baseline.html'; node --test tests/*.test.cjs"
+  },
+  "balanceComparison": {
+    "careers": 8,
+    "weeksPerCareer": 78,
+    "totalWeeks": 624,
+    "proSeeds": [
+      97,
+      101,
+      777
+    ],
+    "amateurPositions": [
+      "top",
+      "jg",
+      "mid",
+      "adc",
+      "sup"
+    ],
+    "amateurSeed": 101,
+    "nativeAchievements": true,
+    "dateNowFixed": 1793700000000,
+    "compared": "각 주 전체 P(weeklyBriefingHistory 제외) 및 마지막 다음 난수; P.stockPrices 포함",
+    "baselineSha256": "09046d013e6bb172c5024af0e9054c591d5d16fa984e14c517bf7b13dc7e5a8e"
+  },
+  "pipeline": "[SUCCESS: ALL TESTS PASSED]",
+  "syntax": "SYNTAX_OK",
+  "versionSync": "VERSION_SYNC_OK 2.4.0/16",
+  "browser": [
+    {
+      "name": "briefing-browser",
+      "result": {
+        "result": "WEEKLY_BRIEFING_BROWSER_PASS",
+        "widths": [
+          320,
+          390,
+          1100
+        ],
+        "readOnlyReplay": true,
+        "reload": true,
+        "matchCount": 1,
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "briefing-boundaries-browser",
+      "result": {
+        "result": "BRIEFING_NARRATIVE_BOUNDARIES_PASS",
+        "soloSpeakers": [
+          "미야모토 린 (21세)",
+          "김민정 (21세)",
+          "강하린 (19세)",
+          "나유나 (20세)",
+          "유지민 (21세)"
+        ],
+        "burnoutOrder": [
+          "인연 장면",
+          "번아웃 알림",
+          "주간 브리핑"
+        ],
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "briefing-balance-content",
+      "result": {
+        "result": "BALANCE_BROWSER_PASS",
+        "checks": [
+          "v1 세이브 로드",
+          "스킨 탭 구매",
+          "임대 구매",
+          "주거·차량·팬클럽",
+          "재로드 보존",
+          "저장 DM 수락/중복 방지",
+          "갤러리 취소/복귀",
+          "협상 취소"
+        ],
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "briefing-gamergram",
+      "result": "BROWSER_PASS: 피드 진입, 캡션, 키보드 모의 높이, 메뉴 복원, 필터/사진/태그, 공유, 작성 닫기, DM 전환, 재진입 (pageerror 0)"
+    },
+    {
+      "name": "briefing-safety-match",
+      "result": {
+        "result": "SAFETY_MANUAL_BROWSER_PASS",
+        "minorChoices": [
+          "응원의 마음을 전한다",
+          "차분하게 이야기를 나눈다"
+        ],
+        "game": {
+          "win": true,
+          "rating": 9.66,
+          "mySetW": 3,
+          "mySetL": 0
+        },
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "briefing-ui-ux",
+      "result": {
+        "result": "UI_UX_BROWSER_PASS",
+        "viewports": [
+          320,
+          390,
+          1100
+        ],
+        "checks": [
+          "본문/하단 메뉴 분리",
+          "일정 필터",
+          "능력치 접기",
+          "23인 카드/데이트 비용",
+          "기록 접근",
+          "자산/스킨 탭",
+          "Escape/배경 차단 복원"
+        ],
+        "pageErrors": [],
+        "failedResources": []
+      }
+    },
+    {
+      "name": "briefing-create-ui",
+      "result": {
+        "result": "CREATE_UI_PASS",
+        "viewports": [
+          320,
+          390,
+          1100
+        ],
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "briefing-offline",
+      "result": {
+        "result": "OFFLINE_WARM_CACHE_PASS",
+        "version": "2.4.0",
+        "scope": "기존에 캐시한 게임과 로컬 세이브 재실행·자산 메뉴"
+      }
+    }
+  ],
+  "limitations": [
+    "실사용 사용자 세이브 전체를 수집한 검증은 아님",
+    "실제 Android/iOS 기기 및 APK 미검증",
+    "오프라인은 방문하여 캐시된 로컬 origin의 재실행 검사",
+    "미배포·APK/ZIP 미재빌드"
+  ],
+  "review": {
+    "result": "재리뷰에서 추가 조치 사항 없음",
+    "fixed": [
+      "손상된 랭크 기록 재열람 오류",
+      "번아웃 LP 해금 알림 모달 교착"
+    ]
+  }
+}

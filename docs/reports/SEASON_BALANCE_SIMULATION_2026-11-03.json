@@ -1,0 +1,798 @@
+{
+  "seedCount": 5,
+  "positions": [
+    "top",
+    "jg",
+    "mid",
+    "adc",
+    "sup"
+  ],
+  "seeds": [
+    17,
+    97,
+    101,
+    333,
+    777
+  ],
+  "careers": 50,
+  "weeksPerCareer": 78,
+  "totalCommittedWeeks": 3900,
+  "policy": "기존 추천 일정, 기본 특성, 빠른 경기. 활동군은 매년 첫 주에 가능한 활동4종을 각각1회 시도. 기존 업적 활성화.",
+  "control": {
+    "careers": 25,
+    "pro": 25,
+    "academy": 0,
+    "amateur": 0,
+    "medianOvr": 79.76949999999998,
+    "medianMoney": 357780000,
+    "medianFans": 90894,
+    "medianGames": 22,
+    "medianActivitySpend": 0,
+    "maxActivityIncome": 0
+  },
+  "activities": {
+    "careers": 25,
+    "pro": 25,
+    "academy": 0,
+    "amateur": 0,
+    "medianOvr": 81.17349999999999,
+    "medianMoney": 365304584,
+    "medianFans": 95091,
+    "medianGames": 22,
+    "medianActivitySpend": 1431688,
+    "maxActivityIncome": 49407
+  },
+  "rows": [
+    {
+      "pos": "top",
+      "seed": 17,
+      "free": {
+        "stage": "pro",
+        "ovr": 81.59649999999998,
+        "money": 357780000,
+        "fans": 73525,
+        "games": 19,
+        "wins": 10,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 79.8315,
+        "money": 363429282,
+        "fans": 77307,
+        "games": 21,
+        "wins": 13,
+        "years": 3,
+        "aff": 38,
+        "spent": 1228214,
+        "activityIncome": 27496,
+        "activities": 7
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 97,
+      "free": {
+        "stage": "pro",
+        "ovr": 79.2435,
+        "money": 321620000,
+        "fans": 40841,
+        "games": 16,
+        "wins": 4,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 79.3605,
+        "money": 329506796,
+        "fans": 62166,
+        "games": 17,
+        "wins": 6,
+        "years": 3,
+        "aff": 26,
+        "spent": 1431688,
+        "activityIncome": 28484,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 101,
+      "free": {
+        "stage": "pro",
+        "ovr": 78.5675,
+        "money": 380390000,
+        "fans": 118204,
+        "games": 22,
+        "wins": 17,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 79.182,
+        "money": 347357476,
+        "fans": 41155,
+        "games": 17,
+        "wins": 6,
+        "years": 3,
+        "aff": 26,
+        "spent": 460000,
+        "activityIncome": 27476,
+        "activities": 7
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 333,
+      "free": {
+        "stage": "pro",
+        "ovr": 79.28949999999999,
+        "money": 234410000,
+        "fans": 123666,
+        "games": 20,
+        "wins": 17,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 80.2355,
+        "money": 345180241,
+        "fans": 49596,
+        "games": 18,
+        "wins": 9,
+        "years": 3,
+        "aff": 26,
+        "spent": 1459441,
+        "activityIncome": 29682,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "top",
+      "seed": 777,
+      "free": {
+        "stage": "pro",
+        "ovr": 80.48,
+        "money": 817140000,
+        "fans": 277120,
+        "games": 31,
+        "wins": 27,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 81.9585,
+        "money": 353935228,
+        "fans": 31283,
+        "games": 19,
+        "wins": 6,
+        "years": 3,
+        "aff": 38,
+        "spent": 2984531,
+        "activityIncome": 29759,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 17,
+      "free": {
+        "stage": "pro",
+        "ovr": 79.141,
+        "money": 505410000,
+        "fans": 241468,
+        "games": 32,
+        "wins": 18,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 82.637,
+        "money": 365304584,
+        "fans": 22721,
+        "games": 15,
+        "wins": 8,
+        "years": 3,
+        "aff": 51,
+        "spent": 252900,
+        "activityIncome": 27484,
+        "activities": 7
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 97,
+      "free": {
+        "stage": "pro",
+        "ovr": 79.8435,
+        "money": 344790000,
+        "fans": 136839,
+        "games": 25,
+        "wins": 7,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 80.12650000000001,
+        "money": 337546463,
+        "fans": 133585,
+        "games": 20,
+        "wins": 8,
+        "years": 3,
+        "aff": 26,
+        "spent": 2968827,
+        "activityIncome": 45290,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 101,
+      "free": {
+        "stage": "pro",
+        "ovr": 77.27850000000001,
+        "money": 365420000,
+        "fans": 141294,
+        "games": 23,
+        "wins": 18,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 80.74199999999999,
+        "money": 337333793,
+        "fans": 95091,
+        "games": 19,
+        "wins": 9,
+        "years": 3,
+        "aff": 26,
+        "spent": 1428010,
+        "activityIncome": 41803,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 333,
+      "free": {
+        "stage": "pro",
+        "ovr": 73.3785,
+        "money": 219160000,
+        "fans": 44652,
+        "games": 9,
+        "wins": 6,
+        "years": 3,
+        "aff": 45,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 78.413,
+        "money": 702677263,
+        "fans": 242748,
+        "games": 26,
+        "wins": 21,
+        "years": 3,
+        "aff": 26,
+        "spent": 460000,
+        "activityIncome": 27263,
+        "activities": 7
+      }
+    },
+    {
+      "pos": "jg",
+      "seed": 777,
+      "free": {
+        "stage": "pro",
+        "ovr": 81.07,
+        "money": 391690000,
+        "fans": 55406,
+        "games": 23,
+        "wins": 6,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 85.505,
+        "money": 542032443,
+        "fans": 74978,
+        "games": 28,
+        "wins": 17,
+        "years": 3,
+        "aff": 26,
+        "spent": 3479808,
+        "activityIncome": 42251,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 17,
+      "free": {
+        "stage": "pro",
+        "ovr": 79.76949999999998,
+        "money": 350230000,
+        "fans": 91096,
+        "games": 17,
+        "wins": 6,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 81.689,
+        "money": 391161823,
+        "fans": 70035,
+        "games": 20,
+        "wins": 10,
+        "years": 3,
+        "aff": 26,
+        "spent": 1236035,
+        "activityIncome": 27858,
+        "activities": 7
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 97,
+      "free": {
+        "stage": "pro",
+        "ovr": 78.7045,
+        "money": 332160000,
+        "fans": 88340,
+        "games": 20,
+        "wins": 6,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 82.253,
+        "money": 199127504,
+        "fans": 87674,
+        "games": 22,
+        "wins": 16,
+        "years": 3,
+        "aff": 26,
+        "spent": 460000,
+        "activityIncome": 27504,
+        "activities": 7
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 101,
+      "free": {
+        "stage": "pro",
+        "ovr": 80.1745,
+        "money": 314100000,
+        "fans": 29387,
+        "games": 18,
+        "wins": 6,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 81.67649999999998,
+        "money": 387217482,
+        "fans": 128077,
+        "games": 18,
+        "wins": 10,
+        "years": 3,
+        "aff": 26,
+        "spent": 460000,
+        "activityIncome": 27482,
+        "activities": 7
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 333,
+      "free": {
+        "stage": "pro",
+        "ovr": 79.507,
+        "money": 329330000,
+        "fans": 116827,
+        "games": 20,
+        "wins": 6,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 80.329,
+        "money": 318578419,
+        "fans": 101945,
+        "games": 22,
+        "wins": 13,
+        "years": 3,
+        "aff": 26,
+        "spent": 1428840,
+        "activityIncome": 37259,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "mid",
+      "seed": 777,
+      "free": {
+        "stage": "pro",
+        "ovr": 82.64999999999999,
+        "money": 540310000,
+        "fans": 118461,
+        "games": 41,
+        "wins": 23,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 82.62950000000001,
+        "money": 427688962,
+        "fans": 97535,
+        "games": 31,
+        "wins": 15,
+        "years": 3,
+        "aff": 26,
+        "spent": 3610445,
+        "activityIncome": 49407,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 17,
+      "free": {
+        "stage": "pro",
+        "ovr": 82.78750000000001,
+        "money": 527550000,
+        "fans": 73325,
+        "games": 28,
+        "wins": 16,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 83.0195,
+        "money": 602263350,
+        "fans": 186340,
+        "games": 32,
+        "wins": 22,
+        "years": 3,
+        "aff": 26,
+        "spent": 2824899,
+        "activityIncome": 38249,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 97,
+      "free": {
+        "stage": "pro",
+        "ovr": 82.92399999999998,
+        "money": 372530000,
+        "fans": 117375,
+        "games": 24,
+        "wins": 8,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 82.04849999999999,
+        "money": 424892790,
+        "fans": 108179,
+        "games": 30,
+        "wins": 20,
+        "years": 3,
+        "aff": 26,
+        "spent": 2700809,
+        "activityIncome": 43599,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 101,
+      "free": {
+        "stage": "pro",
+        "ovr": 79.371,
+        "money": 360600000,
+        "fans": 78090,
+        "games": 20,
+        "wins": 9,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 82.26749999999998,
+        "money": 342882406,
+        "fans": 31857,
+        "games": 18,
+        "wins": 6,
+        "years": 3,
+        "aff": 26,
+        "spent": 1235074,
+        "activityIncome": 27480,
+        "activities": 7
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 333,
+      "free": {
+        "stage": "pro",
+        "ovr": 78.7845,
+        "money": 299370000,
+        "fans": 73800,
+        "games": 24,
+        "wins": 12,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 78.3455,
+        "money": 294171286,
+        "fans": 85162,
+        "games": 20,
+        "wins": 10,
+        "years": 3,
+        "aff": 26,
+        "spent": 2705363,
+        "activityIncome": 36649,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "adc",
+      "seed": 777,
+      "free": {
+        "stage": "pro",
+        "ovr": 81.59599999999999,
+        "money": 424340000,
+        "fans": 95560,
+        "games": 30,
+        "wins": 19,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 82.60099999999998,
+        "money": 927005715,
+        "fans": 277646,
+        "games": 35,
+        "wins": 25,
+        "years": 3,
+        "aff": 26,
+        "spent": 3748164,
+        "activityIncome": 43879,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 17,
+      "free": {
+        "stage": "pro",
+        "ovr": 81.4675,
+        "money": 515700000,
+        "fans": 177096,
+        "games": 27,
+        "wins": 18,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 81.17349999999999,
+        "money": 377166266,
+        "fans": 94515,
+        "games": 32,
+        "wins": 15,
+        "years": 3,
+        "aff": 51,
+        "spent": 3105703,
+        "activityIncome": 41969,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 97,
+      "free": {
+        "stage": "pro",
+        "ovr": 77.96699999999998,
+        "money": 223800000,
+        "fans": 90894,
+        "games": 18,
+        "wins": 17,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 80.7875,
+        "money": 397156160,
+        "fans": 113637,
+        "games": 27,
+        "wins": 14,
+        "years": 3,
+        "aff": 26,
+        "spent": 1394646,
+        "activityIncome": 30806,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 101,
+      "free": {
+        "stage": "pro",
+        "ovr": 79.89949999999999,
+        "money": 343080000,
+        "fans": 77521,
+        "games": 18,
+        "wins": 8,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 79.6085,
+        "money": 383407579,
+        "fans": 133201,
+        "games": 30,
+        "wins": 17,
+        "years": 3,
+        "aff": 26,
+        "spent": 3184721,
+        "activityIncome": 42300,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 333,
+      "free": {
+        "stage": "pro",
+        "ovr": 75.8145,
+        "money": 256200000,
+        "fans": 24378,
+        "games": 11,
+        "wins": 7,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 77.10600000000001,
+        "money": 298871541,
+        "fans": 117777,
+        "games": 23,
+        "wins": 11,
+        "years": 3,
+        "aff": 26,
+        "spent": 2733128,
+        "activityIncome": 44669,
+        "activities": 8
+      }
+    },
+    {
+      "pos": "sup",
+      "seed": 777,
+      "free": {
+        "stage": "pro",
+        "ovr": 83.676,
+        "money": 448940000,
+        "fans": 28784,
+        "games": 25,
+        "wins": 7,
+        "years": 3,
+        "aff": 20,
+        "spent": 0,
+        "activityIncome": 0,
+        "activities": 0
+      },
+      "active": {
+        "stage": "pro",
+        "ovr": 84.89099999999999,
+        "money": 490798355,
+        "fans": 119648,
+        "games": 26,
+        "wins": 21,
+        "years": 3,
+        "aff": 26,
+        "spent": 469200,
+        "activityIncome": 27555,
+        "activities": 7
+      }
+    }
+  ],
+  "scope": "지정25조건의 쌍 비교. 활동 이후 선택·경기·난수 경로가 달라질 수 있으며, 활동이 승리를 보장한다는 실험이 아님."
+}

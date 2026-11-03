@@ -1,0 +1,247 @@
+{
+  "version": "2.5.0",
+  "versionCode": 17,
+  "node": {
+    "total": 107,
+    "pass": 107,
+    "fail": 0,
+    "skip": 0,
+    "command": "$env:SEASON_BASELINE='.system_generated/season-baseline.html'; $env:BRIEFING_BASELINE='.system_generated/season-baseline.html'; node --test tests/*.test.cjs"
+  },
+  "baseline": {
+    "version": "2.4.0",
+    "sha256": "0e0c44c99ee140dbaa0102197c32825f9c9b660da893820e889d36669df28745",
+    "uniqueCareers": 8,
+    "uniqueWeeks": 624,
+    "exclusions": [
+      "seasonJourney",
+      "seasonArchive",
+      "weeklyBriefingHistory in prior weekly comparison"
+    ],
+    "preserved": "매주 전체 선수 상태/주가, 각 커리어 마지막 다음 난수 일치. 별도 신규 시즌 비교5역할390주는 weeklyBriefingHistory도 포함하여 비교."
+  },
+  "simulation": {
+    "file": "SEASON_BALANCE_SIMULATION_2026-11-03.json",
+    "careers": 50,
+    "totalWeeks": 3900,
+    "control": {
+      "careers": 25,
+      "pro": 25,
+      "academy": 0,
+      "amateur": 0,
+      "medianOvr": 79.76949999999998,
+      "medianMoney": 357780000,
+      "medianFans": 90894,
+      "medianGames": 22,
+      "medianActivitySpend": 0,
+      "maxActivityIncome": 0
+    },
+    "activities": {
+      "careers": 25,
+      "pro": 25,
+      "academy": 0,
+      "amateur": 0,
+      "medianOvr": 81.17349999999999,
+      "medianMoney": 365304584,
+      "medianFans": 95091,
+      "medianGames": 22,
+      "medianActivitySpend": 1431688,
+      "maxActivityIncome": 49407
+    }
+  },
+  "pipeline": "[SUCCESS: ALL TESTS PASSED]",
+  "syntax": "SYNTAX_OK",
+  "versionSync": "VERSION_SYNC_OK 2.5.0/17",
+  "browser": [
+    {
+      "name": "browser",
+      "result": {
+        "result": "SEASON_26_WEEK_BROWSER_PASS",
+        "committedWeeks": 26,
+        "rollbackDuringFinalReview": true,
+        "scenes": [
+          "spring",
+          "summerStart",
+          "summerEnd",
+          "worldsEnd",
+          "final",
+          "final"
+        ],
+        "activityReceipts": [
+          {
+            "name": "훈련 환경 지원",
+            "week": 1,
+            "cost": 1000000,
+            "income": 0
+          },
+          {
+            "name": "팬 초청 공개행사",
+            "week": 1,
+            "cost": 100000,
+            "income": 0
+          },
+          {
+            "name": "인터뷰 협업",
+            "week": 1,
+            "cost": 0,
+            "income": 32480
+          },
+          {
+            "name": "동행 기록집",
+            "week": 1,
+            "cost": 50000,
+            "income": 0
+          }
+        ],
+        "goal": {
+          "done": true,
+          "label": "핵심 훈련 11주",
+          "detail": "19/11주"
+        },
+        "officialGames": 16,
+        "rival": {
+          "id": 2,
+          "league": "pro",
+          "name": "네온 울브즈",
+          "games": 2,
+          "wins": 1
+        },
+        "readOnlyArchive": true,
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "balance-content",
+      "result": {
+        "result": "BALANCE_BROWSER_PASS",
+        "checks": [
+          "v1 세이브 로드",
+          "스킨 탭 구매",
+          "임대 구매",
+          "주거·차량·팬클럽",
+          "재로드 보존",
+          "저장 DM 수락/중복 방지",
+          "갤러리 취소/복귀",
+          "협상 취소"
+        ],
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "gamergram",
+      "result": "BROWSER_PASS: 피드 진입, 캡션, 키보드 모의 높이, 메뉴 복원, 필터/사진/태그, 공유, 작성 닫기, DM 전환, 재진입 (pageerror 0)"
+    },
+    {
+      "name": "safety-match",
+      "result": {
+        "result": "SAFETY_MANUAL_BROWSER_PASS",
+        "minorChoices": [
+          "응원의 마음을 전한다",
+          "차분하게 이야기를 나눈다"
+        ],
+        "game": {
+          "win": true,
+          "rating": 9.66,
+          "mySetW": 3,
+          "mySetL": 0
+        },
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "ui-ux",
+      "result": {
+        "result": "UI_UX_BROWSER_PASS",
+        "viewports": [
+          320,
+          390,
+          1100
+        ],
+        "checks": [
+          "본문/하단 메뉴 분리",
+          "일정 필터",
+          "능력치 접기",
+          "23인 카드/데이트 비용",
+          "기록 접근",
+          "자산/스킨 탭",
+          "Escape/배경 차단 복원"
+        ],
+        "pageErrors": [],
+        "failedResources": []
+      }
+    },
+    {
+      "name": "create-ui",
+      "result": {
+        "result": "CREATE_UI_PASS",
+        "viewports": [
+          320,
+          390,
+          1100
+        ],
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "weekly-briefing",
+      "result": {
+        "result": "WEEKLY_BRIEFING_BROWSER_PASS",
+        "widths": [
+          320,
+          390,
+          1100
+        ],
+        "readOnlyReplay": true,
+        "reload": true,
+        "matchCount": 1,
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "weekly-briefing-boundaries",
+      "result": {
+        "result": "BRIEFING_NARRATIVE_BOUNDARIES_PASS",
+        "soloSpeakers": [
+          "미야모토 린 (21세)",
+          "김민정 (21세)",
+          "강하린 (19세)",
+          "나유나 (20세)",
+          "유지민 (21세)",
+          "김채원 (21세)",
+          "유민아 (21세)"
+        ],
+        "burnoutOrder": [
+          "인연 장면",
+          "번아웃 알림",
+          "주간 브리핑"
+        ],
+        "pageErrors": []
+      }
+    },
+    {
+      "name": "offline",
+      "result": {
+        "result": "OFFLINE_WARM_CACHE_PASS",
+        "version": "2.5.0",
+        "seasonArchive": true,
+        "scope": "기존에 캐시한 게임과 로컬 세이브 재실행·자산 메뉴·가능한 시즌 결산 재열람"
+      }
+    }
+  ],
+  "review": {
+    "fixed": [
+      "부분 손상 시즌 필드로 슬롯 전체 로드 실패",
+      "결산 모달 중 새로고침에서 같은 주 재실행",
+      "아카데미/1군 동일ID 라이벌 합산",
+      "기록집 인연 후처리 누락"
+    ],
+    "result": "독립 재검토 추가 차단 사유 없음"
+  },
+  "browserDiscoveredFix": "기존 강화 이벤트로 syn>5가 될 때 음수 String.repeat로 홈이 깨지는 표시 오류; 계산/저장값 유지하며 표시만 안전화",
+  "scope": [
+    "지정 시드·정책 실험이며 모든 플레이 스타일을 보장하지 않음",
+    "실제 사용자 세이브 전체·실제 Android/iOS·APK 실행은 미검증",
+    "오프라인은 방문하여 캐시한 로컬 게임 재실행",
+    "커밋·push·배포·APK/ZIP 재빌드 미실시"
+  ]
+}

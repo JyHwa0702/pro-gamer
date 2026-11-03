@@ -1,0 +1,123 @@
+{
+  "version": "2.7.1",
+  "versionCode": 20,
+  "sourceSha256": "f8f5d63513fb8a194a39d3f4202dc735e6a9d939803991b95c135bbfa6864cdd",
+  "tests": {
+    "total": 168,
+    "pass": 164,
+    "fail": 0,
+    "skip": 4,
+    "skipReason": "기존 과거 기능별 선택 기준 파일 비교"
+  },
+  "pipeline": "[SUCCESS: ALL TESTS PASSED]",
+  "syntax": "SYNTAX_OK",
+  "browser": {
+    "image-viewer": {
+      "result": "IMAGE_VIEWER_BROWSER_PASS",
+      "results": [
+        {
+          "width": 320,
+          "size": {
+            "natural": 896,
+            "w": 296,
+            "h": 396.421875,
+            "fit": "contain"
+          }
+        },
+        {
+          "width": 390,
+          "size": {
+            "natural": 896,
+            "w": 366,
+            "h": 490.171875,
+            "fit": "contain"
+          }
+        },
+        {
+          "width": 1100,
+          "size": {
+            "natural": 896,
+            "w": 513.703125,
+            "h": 688,
+            "fit": "contain"
+          }
+        }
+      ],
+      "dialogPreserved": true,
+      "stateAndSaveUnchanged": true,
+      "roster": true,
+      "pageErrors": []
+    },
+    "image-viewer-touch": {
+      "result": "IMAGE_VIEWER_TOUCH_PASS",
+      "zoom": "182%",
+      "before": {
+        "x": 138,
+        "y": 90
+      },
+      "after": {
+        "x": 188,
+        "y": 145
+      },
+      "stateAndSaveUnchanged": true,
+      "pageErrors": []
+    },
+    "ui-ux": {
+      "result": "UI_UX_BROWSER_PASS",
+      "viewports": [
+        320,
+        390,
+        1100
+      ],
+      "checks": [
+        "본문/하단 메뉴 분리",
+        "일정 필터",
+        "능력치 접기",
+        "23인 카드/데이트 비용",
+        "기록 접근",
+        "자산/스킨 탭",
+        "Escape/배경 차단 복원"
+      ],
+      "pageErrors": [],
+      "failedResources": []
+    },
+    "safety-match": {
+      "result": "SAFETY_MANUAL_BROWSER_PASS",
+      "minorChoices": [
+        "응원의 마음을 전한다",
+        "차분하게 이야기를 나눈다"
+      ],
+      "game": {
+        "win": false,
+        "rating": 2.55,
+        "mySetW": 0,
+        "mySetL": 3
+      },
+      "pageErrors": []
+    },
+    "result-motion": {
+      "pass": true,
+      "checks": [
+        "역방향 색상",
+        "음수 색상",
+        "원문/aria-label",
+        "숫자 중간 프레임",
+        "800ms 내 완료",
+        "저장/게임 불변",
+        "observer 안정",
+        "DOM 재삽입",
+        "분리 시 취소",
+        "동작 줄이기/진행중 전환"
+      ],
+      "intermediate": 2556,
+      "pageErrors": []
+    },
+    "career-offline": {
+      "result": "CAREER_OFFLINE_PASS",
+      "version": "2.7.1",
+      "scope": "캐시된 게임·세이브 복구, 커리어 평가와 인연 기억 재열람",
+      "pageErrors": []
+    }
+  },
+  "scope": "Chromium PC/터치 입력 주입. 실제 Android/iOS OS 동작·APK 미검증. 미배포."
+}

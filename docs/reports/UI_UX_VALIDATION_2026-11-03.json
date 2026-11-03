@@ -1,0 +1,87 @@
+{
+  "version": "2.3.0",
+  "versionCode": 15,
+  "sourceSha256": "09046d013e6bb172c5024af0e9054c591d5d16fa984e14c517bf7b13dc7e5a8e",
+  "tests": {
+    "total": 70,
+    "passed": 70,
+    "failed": 0
+  },
+  "pipeline": "SUCCESS: ALL TESTS PASSED",
+  "syntax": "SYNTAX_OK",
+  "versionSync": true,
+  "browser": {
+    "responsive": {
+      "result": "UI_UX_BROWSER_PASS",
+      "viewports": [
+        320,
+        390,
+        1100
+      ],
+      "checks": [
+        "본문/하단 메뉴 분리",
+        "일정 필터",
+        "능력치 접기",
+        "23인 카드/데이트 비용",
+        "기록 접근",
+        "자산/스킨 탭",
+        "Escape/배경 차단 복원"
+      ],
+      "pageErrors": [],
+      "failedResources": []
+    },
+    "creation": {
+      "result": "CREATE_UI_PASS",
+      "viewports": [
+        320,
+        390,
+        1100
+      ],
+      "pageErrors": []
+    },
+    "keyboard": "BROWSER_PASS: 피드 진입, 캡션, 키보드 모의 높이, 메뉴 복원, 필터/사진/태그, 공유, 작성 닫기, DM 전환, 재진입 (pageerror 0)",
+    "saveAndAssets": {
+      "result": "BALANCE_BROWSER_PASS",
+      "checks": [
+        "v1 세이브 로드",
+        "스킨 탭 구매",
+        "임대 구매",
+        "주거·차량·팬클럽",
+        "재로드 보존",
+        "저장 DM 수락/중복 방지",
+        "갤러리 취소/복귀",
+        "협상 취소"
+      ],
+      "pageErrors": []
+    },
+    "safetyAndMatch": {
+      "result": "SAFETY_MANUAL_BROWSER_PASS",
+      "minorChoices": [
+        "응원의 마음을 전한다",
+        "차분하게 이야기를 나눈다"
+      ],
+      "game": {
+        "win": true,
+        "rating": 9.66,
+        "mySetW": 3,
+        "mySetL": 0
+      },
+      "pageErrors": []
+    },
+    "offline": {
+      "result": "OFFLINE_WARM_CACHE_PASS",
+      "version": "2.3.0",
+      "scope": "기존에 캐시한 게임과 로컬 세이브 재실행·자산 메뉴"
+    }
+  },
+  "accessibility": {
+    "stickyClose": true,
+    "focusAfterTabSwitch": true
+  },
+  "limits": [
+    "실제 Android/iOS 키보드 미검증",
+    "오프라인은 기존 캐시 범위",
+    "APK/ZIP 미재빌드",
+    "실제 사용자 사용성 조사 아님"
+  ]
+}

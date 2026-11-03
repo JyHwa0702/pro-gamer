@@ -1,0 +1,4323 @@
+{
+  "date": "2026-11-04",
+  "version": "2.6.0",
+  "sourceHash": "612c25fe76c0113a0fab8bda3cbea42b7b5001017125404924170e7f57842701",
+  "scope": "읽기전용 VM 실험. 렌더/소리는 기본하네스 대체, ask자동선택과 native인연화면 로직 사용. 실제 사람의 재미/피로/클릭시간 측정 아님.",
+  "aggregate": {
+    "careers": 9,
+    "weeks": 702,
+    "totalPrompts": 1481,
+    "actions": {
+      "lane": 98,
+      "vod": 346,
+      "solo": 60,
+      "mech": 2,
+      "rest": 89,
+      "pool": 38,
+      "scrim": 69
+    },
+    "maxPromptsInWeek": 10
+  },
+  "pacing": [
+    {
+      "pos": "mid",
+      "seed": 17,
+      "actions": {
+        "lane": 29,
+        "vod": 16,
+        "solo": 7,
+        "mech": 2,
+        "rest": 14,
+        "pool": 2,
+        "scrim": 8
+      },
+      "committedWeeks": 78,
+      "totalPrompts": 152,
+      "byType": {
+        "season": 18,
+        "other": 35,
+        "weekly": 78,
+        "heroine": 17,
+        "review": 3,
+        "career": 1
+      },
+      "mostPromptsInWeek": 7,
+      "zeroContact": true,
+      "contactWeeks": [
+        0,
+        0,
+        0
+      ],
+      "goalResults": [
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": false
+        }
+      ],
+      "money": 350230000,
+      "gearOwned": 0,
+      "aff": {
+        "jieun": 20,
+        "harin": 20,
+        "sora": 20,
+        "mina": 25,
+        "sea": 20,
+        "chloe": 20,
+        "seolah": 25,
+        "rin": 20,
+        "camila": 20,
+        "yejin": 25,
+        "nayuna": 25,
+        "elena": 30,
+        "serin": 25,
+        "karina": 20,
+        "wonyoung": 20,
+        "chaewon": 20,
+        "suzy": 20,
+        "winter": 20
+      },
+      "weeks": [
+        {
+          "at": "1:1",
+          "action": "lane",
+          "prompts": 3
+        },
+        {
+          "at": "1:2",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:3",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:4",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:5",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:6",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:7",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:8",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:10",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:11",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:12",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:13",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:14",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:15",
+          "action": "solo",
+          "prompts": 3
+        },
+        {
+          "at": "1:16",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "1:17",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:18",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:19",
+          "action": "mech",
+          "prompts": 2
+        },
+        {
+          "at": "1:20",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:21",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:22",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:24",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:25",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "1:26",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "2:1",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "2:2",
+          "action": "mech",
+          "prompts": 1
+        },
+        {
+          "at": "2:3",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:4",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:5",
+          "action": "solo",
+          "prompts": 5
+        },
+        {
+          "at": "2:6",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:8",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:9",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "2:10",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "2:11",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:12",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:13",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:14",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:15",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "2:16",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:17",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:18",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:19",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:20",
+          "action": "solo",
+          "prompts": 3
+        },
+        {
+          "at": "2:21",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:22",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:23",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "2:24",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:25",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "2:26",
+          "action": "scrim",
+          "prompts": 5
+        },
+        {
+          "at": "3:1",
+          "action": "scrim",
+          "prompts": 7
+        },
+        {
+          "at": "3:2",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:3",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:4",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:5",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:6",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "3:7",
+          "action": "rest",
+          "prompts": 3
+        },
+        {
+          "at": "3:8",
+          "action": "scrim",
+          "prompts": 4
+        },
+        {
+          "at": "3:9",
+          "action": "rest",
+          "prompts": 5
+        },
+        {
+          "at": "3:10",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "3:11",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "3:12",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "3:13",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:14",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:15",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:16",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:17",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:18",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:19",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:20",
+          "action": "lane",
+          "prompts": 3
+        },
+        {
+          "at": "3:21",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:22",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:23",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "3:24",
+          "action": "lane",
+          "prompts": 5
+        },
+        {
+          "at": "3:25",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:26",
+          "action": "lane",
+          "prompts": 5
+        }
+      ],
+      "stalls": []
+    },
+    {
+      "pos": "mid",
+      "seed": 97,
+      "actions": {
+        "lane": 34,
+        "vod": 14,
+        "solo": 8,
+        "pool": 4,
+        "rest": 11,
+        "scrim": 7
+      },
+      "committedWeeks": 78,
+      "totalPrompts": 163,
+      "byType": {
+        "season": 18,
+        "other": 45,
+        "weekly": 78,
+        "heroine": 17,
+        "review": 3,
+        "career": 2
+      },
+      "mostPromptsInWeek": 8,
+      "zeroContact": true,
+      "contactWeeks": [
+        0,
+        0,
+        0
+      ],
+      "goalResults": [
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": false
+        }
+      ],
+      "money": 332160000,
+      "gearOwned": 0,
+      "aff": {
+        "jieun": 20,
+        "harin": 20,
+        "sora": 20,
+        "mina": 25,
+        "sea": 20,
+        "chloe": 20,
+        "seolah": 25,
+        "rin": 20,
+        "camila": 20,
+        "yejin": 25,
+        "nayuna": 25,
+        "elena": 30,
+        "serin": 25,
+        "karina": 20,
+        "wonyoung": 20,
+        "chaewon": 20,
+        "suzy": 20,
+        "winter": 20
+      },
+      "weeks": [
+        {
+          "at": "1:1",
+          "action": "lane",
+          "prompts": 3
+        },
+        {
+          "at": "1:2",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:3",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:4",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:5",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:6",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:8",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:10",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:11",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:12",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:13",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:14",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:15",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:16",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:17",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:18",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "1:19",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "1:20",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "1:21",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "1:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:23",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:24",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:25",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:26",
+          "action": "vod",
+          "prompts": 5
+        },
+        {
+          "at": "2:1",
+          "action": "solo",
+          "prompts": 5
+        },
+        {
+          "at": "2:2",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:3",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "2:4",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:5",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "2:6",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:7",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "2:8",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:10",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:11",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:12",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "2:13",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:14",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:15",
+          "action": "lane",
+          "prompts": 5
+        },
+        {
+          "at": "2:16",
+          "action": "scrim",
+          "prompts": 8
+        },
+        {
+          "at": "2:17",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "2:18",
+          "action": "rest",
+          "prompts": 3
+        },
+        {
+          "at": "2:19",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "2:20",
+          "action": "pool",
+          "prompts": 3
+        },
+        {
+          "at": "2:21",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:22",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:23",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "2:24",
+          "action": "lane",
+          "prompts": 5
+        },
+        {
+          "at": "2:25",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:26",
+          "action": "rest",
+          "prompts": 5
+        },
+        {
+          "at": "3:1",
+          "action": "lane",
+          "prompts": 3
+        },
+        {
+          "at": "3:2",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:3",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:4",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "3:5",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:6",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:7",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "3:8",
+          "action": "rest",
+          "prompts": 3
+        },
+        {
+          "at": "3:9",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "3:10",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:11",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "3:12",
+          "action": "rest",
+          "prompts": 3
+        },
+        {
+          "at": "3:13",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:14",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:15",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:16",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:17",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:18",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "3:19",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:20",
+          "action": "lane",
+          "prompts": 3
+        },
+        {
+          "at": "3:21",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:22",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:23",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:24",
+          "action": "pool",
+          "prompts": 5
+        },
+        {
+          "at": "3:25",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:26",
+          "action": "lane",
+          "prompts": 5
+        }
+      ],
+      "stalls": []
+    },
+    {
+      "pos": "mid",
+      "seed": 101,
+      "actions": {
+        "vod": 15,
+        "lane": 29,
+        "rest": 13,
+        "solo": 7,
+        "pool": 6,
+        "scrim": 8
+      },
+      "committedWeeks": 78,
+      "totalPrompts": 158,
+      "byType": {
+        "season": 18,
+        "weekly": 78,
+        "other": 40,
+        "heroine": 17,
+        "review": 3,
+        "career": 2
+      },
+      "mostPromptsInWeek": 6,
+      "zeroContact": true,
+      "contactWeeks": [
+        0,
+        0,
+        0
+      ],
+      "goalResults": [
+        {
+          "focus": "challenge",
+          "done": false
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": false
+        }
+      ],
+      "money": 314100000,
+      "gearOwned": 0,
+      "aff": {
+        "jieun": 20,
+        "harin": 20,
+        "sora": 20,
+        "mina": 25,
+        "sea": 20,
+        "chloe": 20,
+        "seolah": 25,
+        "rin": 20,
+        "camila": 20,
+        "yejin": 25,
+        "nayuna": 25,
+        "elena": 30,
+        "serin": 25,
+        "karina": 20,
+        "wonyoung": 20,
+        "chaewon": 20,
+        "suzy": 20,
+        "winter": 20
+      },
+      "weeks": [
+        {
+          "at": "1:1",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:2",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:3",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:4",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:5",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:6",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:8",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:9",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:10",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:11",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:12",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:13",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:14",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:15",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:16",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:17",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:18",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:19",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:20",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:21",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:22",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:24",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "1:25",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "1:26",
+          "action": "solo",
+          "prompts": 6
+        },
+        {
+          "at": "2:1",
+          "action": "solo",
+          "prompts": 4
+        },
+        {
+          "at": "2:2",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "2:3",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:4",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "2:5",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "2:6",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "2:7",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "2:8",
+          "action": "solo",
+          "prompts": 4
+        },
+        {
+          "at": "2:9",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "2:10",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:11",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:12",
+          "action": "pool",
+          "prompts": 3
+        },
+        {
+          "at": "2:13",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:14",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:15",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:16",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "2:17",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:18",
+          "action": "rest",
+          "prompts": 4
+        },
+        {
+          "at": "2:19",
+          "action": "scrim",
+          "prompts": 5
+        },
+        {
+          "at": "2:20",
+          "action": "scrim",
+          "prompts": 4
+        },
+        {
+          "at": "2:21",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:22",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "2:23",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "2:24",
+          "action": "lane",
+          "prompts": 5
+        },
+        {
+          "at": "2:25",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:26",
+          "action": "lane",
+          "prompts": 4
+        },
+        {
+          "at": "3:1",
+          "action": "lane",
+          "prompts": 4
+        },
+        {
+          "at": "3:2",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "3:3",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:4",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "3:5",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:6",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "3:7",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:8",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "3:9",
+          "action": "pool",
+          "prompts": 3
+        },
+        {
+          "at": "3:10",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:11",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "3:12",
+          "action": "scrim",
+          "prompts": 5
+        },
+        {
+          "at": "3:13",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:14",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "3:15",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "3:16",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:17",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:18",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:19",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:20",
+          "action": "lane",
+          "prompts": 3
+        },
+        {
+          "at": "3:21",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:22",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:23",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "3:24",
+          "action": "lane",
+          "prompts": 5
+        },
+        {
+          "at": "3:25",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:26",
+          "action": "rest",
+          "prompts": 5
+        }
+      ],
+      "stalls": []
+    },
+    {
+      "pos": "jg",
+      "seed": 17,
+      "actions": {
+        "vod": 48,
+        "solo": 4,
+        "pool": 5,
+        "rest": 11,
+        "scrim": 10
+      },
+      "committedWeeks": 78,
+      "totalPrompts": 175,
+      "byType": {
+        "season": 18,
+        "other": 53,
+        "weekly": 78,
+        "heroine": 21,
+        "review": 3,
+        "career": 2
+      },
+      "mostPromptsInWeek": 7,
+      "zeroContact": true,
+      "contactWeeks": [
+        0,
+        0,
+        0
+      ],
+      "goalResults": [
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        }
+      ],
+      "money": 505410000,
+      "gearOwned": 0,
+      "aff": {
+        "jieun": 20,
+        "harin": 20,
+        "sora": 20,
+        "mina": 25,
+        "sea": 20,
+        "chloe": 20,
+        "seolah": 25,
+        "rin": 20,
+        "camila": 20,
+        "yejin": 25,
+        "nayuna": 25,
+        "elena": 30,
+        "serin": 25,
+        "karina": 20,
+        "wonyoung": 20,
+        "iu": 20,
+        "irene": 20,
+        "chaewon": 20,
+        "suzy": 20,
+        "miyeon": 20,
+        "giselle": 20,
+        "sohee": 20
+      },
+      "weeks": [
+        {
+          "at": "1:1",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "1:2",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:3",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:4",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:5",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:6",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:8",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:10",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:11",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:12",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:13",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:14",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "1:15",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:16",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:17",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:18",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "1:19",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:20",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:21",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:24",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:25",
+          "action": "solo",
+          "prompts": 5
+        },
+        {
+          "at": "1:26",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "2:1",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "2:2",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:3",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "2:4",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:5",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:6",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:8",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:10",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:11",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:12",
+          "action": "solo",
+          "prompts": 4
+        },
+        {
+          "at": "2:13",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "2:14",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "2:15",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "2:16",
+          "action": "pool",
+          "prompts": 3
+        },
+        {
+          "at": "2:17",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:18",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "2:19",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "2:20",
+          "action": "rest",
+          "prompts": 3
+        },
+        {
+          "at": "2:21",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "2:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:24",
+          "action": "vod",
+          "prompts": 5
+        },
+        {
+          "at": "2:25",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "2:26",
+          "action": "scrim",
+          "prompts": 5
+        },
+        {
+          "at": "3:1",
+          "action": "scrim",
+          "prompts": 6
+        },
+        {
+          "at": "3:2",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "3:3",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:4",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "3:5",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:6",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:7",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:8",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:9",
+          "action": "rest",
+          "prompts": 4
+        },
+        {
+          "at": "3:10",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:11",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:12",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "3:13",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:14",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:15",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:16",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:17",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:18",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:19",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "3:20",
+          "action": "vod",
+          "prompts": 7
+        },
+        {
+          "at": "3:21",
+          "action": "rest",
+          "prompts": 4
+        },
+        {
+          "at": "3:22",
+          "action": "pool",
+          "prompts": 3
+        },
+        {
+          "at": "3:23",
+          "action": "rest",
+          "prompts": 3
+        },
+        {
+          "at": "3:24",
+          "action": "vod",
+          "prompts": 5
+        },
+        {
+          "at": "3:25",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:26",
+          "action": "vod",
+          "prompts": 5
+        }
+      ],
+      "stalls": []
+    },
+    {
+      "pos": "jg",
+      "seed": 97,
+      "actions": {
+        "vod": 48,
+        "solo": 4,
+        "pool": 5,
+        "rest": 11,
+        "scrim": 10
+      },
+      "committedWeeks": 78,
+      "totalPrompts": 172,
+      "byType": {
+        "season": 18,
+        "other": 53,
+        "weekly": 78,
+        "heroine": 18,
+        "review": 3,
+        "career": 2
+      },
+      "mostPromptsInWeek": 10,
+      "zeroContact": true,
+      "contactWeeks": [
+        0,
+        0,
+        0
+      ],
+      "goalResults": [
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": false
+        }
+      ],
+      "money": 344790000,
+      "gearOwned": 0,
+      "aff": {
+        "jieun": 20,
+        "harin": 20,
+        "sora": 20,
+        "mina": 25,
+        "sea": 20,
+        "chloe": 20,
+        "seolah": 25,
+        "rin": 20,
+        "camila": 20,
+        "yejin": 25,
+        "nayuna": 25,
+        "elena": 30,
+        "serin": 25,
+        "karina": 20,
+        "wonyoung": 20,
+        "irene": 20,
+        "chaewon": 20,
+        "suzy": 20,
+        "sohee": 20
+      },
+      "weeks": [
+        {
+          "at": "1:1",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "1:2",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:3",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:4",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:5",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:6",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:8",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:10",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:11",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:12",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:13",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:14",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "1:15",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:16",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "1:17",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:18",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "1:19",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:20",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:21",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:23",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "1:24",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:25",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:26",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "2:1",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:2",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:3",
+          "action": "solo",
+          "prompts": 5
+        },
+        {
+          "at": "2:4",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:5",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:6",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "2:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:8",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "2:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:10",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:11",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:12",
+          "action": "vod",
+          "prompts": 5
+        },
+        {
+          "at": "2:13",
+          "action": "scrim",
+          "prompts": 10
+        },
+        {
+          "at": "2:14",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "2:15",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "2:16",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "2:17",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "2:18",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "2:19",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:20",
+          "action": "rest",
+          "prompts": 3
+        },
+        {
+          "at": "2:21",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "2:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:24",
+          "action": "scrim",
+          "prompts": 5
+        },
+        {
+          "at": "2:25",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "2:26",
+          "action": "vod",
+          "prompts": 5
+        },
+        {
+          "at": "3:1",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "3:2",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:3",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "3:4",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "3:5",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:6",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:7",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:8",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:9",
+          "action": "rest",
+          "prompts": 4
+        },
+        {
+          "at": "3:10",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:11",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:12",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "3:13",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:14",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:15",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:16",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:17",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:18",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:19",
+          "action": "rest",
+          "prompts": 3
+        },
+        {
+          "at": "3:20",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "3:21",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:23",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:24",
+          "action": "rest",
+          "prompts": 6
+        },
+        {
+          "at": "3:25",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:26",
+          "action": "vod",
+          "prompts": 5
+        }
+      ],
+      "stalls": []
+    },
+    {
+      "pos": "jg",
+      "seed": 101,
+      "actions": {
+        "vod": 53,
+        "solo": 6,
+        "pool": 8,
+        "rest": 8,
+        "scrim": 3
+      },
+      "committedWeeks": 78,
+      "totalPrompts": 163,
+      "byType": {
+        "season": 18,
+        "weekly": 78,
+        "other": 42,
+        "heroine": 21,
+        "review": 3,
+        "career": 1
+      },
+      "mostPromptsInWeek": 8,
+      "zeroContact": true,
+      "contactWeeks": [
+        0,
+        0,
+        0
+      ],
+      "goalResults": [
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        }
+      ],
+      "money": 365420000,
+      "gearOwned": 0,
+      "aff": {
+        "jieun": 20,
+        "harin": 20,
+        "sora": 20,
+        "mina": 25,
+        "sea": 20,
+        "chloe": 20,
+        "seolah": 25,
+        "rin": 20,
+        "camila": 20,
+        "yejin": 25,
+        "nayuna": 25,
+        "elena": 30,
+        "serin": 25,
+        "karina": 20,
+        "wonyoung": 20,
+        "iu": 20,
+        "irene": 20,
+        "chaewon": 20,
+        "suzy": 20,
+        "miyeon": 20,
+        "giselle": 20,
+        "sohee": 20
+      },
+      "weeks": [
+        {
+          "at": "1:1",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:2",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:3",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:4",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:5",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:6",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:8",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:10",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:11",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:12",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:13",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:14",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:15",
+          "action": "solo",
+          "prompts": 3
+        },
+        {
+          "at": "1:16",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "1:17",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "1:18",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "1:19",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "1:20",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "1:21",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "1:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:23",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "1:24",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:25",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:26",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "2:1",
+          "action": "pool",
+          "prompts": 3
+        },
+        {
+          "at": "2:2",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:3",
+          "action": "solo",
+          "prompts": 5
+        },
+        {
+          "at": "2:4",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:5",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:6",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:8",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:10",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:11",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "2:12",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:13",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:14",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:15",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:16",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:17",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:18",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:19",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:20",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:21",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "2:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:24",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:25",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:26",
+          "action": "solo",
+          "prompts": 4
+        },
+        {
+          "at": "3:1",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:2",
+          "action": "vod",
+          "prompts": 5
+        },
+        {
+          "at": "3:3",
+          "action": "scrim",
+          "prompts": 8
+        },
+        {
+          "at": "3:4",
+          "action": "scrim",
+          "prompts": 4
+        },
+        {
+          "at": "3:5",
+          "action": "rest",
+          "prompts": 3
+        },
+        {
+          "at": "3:6",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "3:7",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "3:8",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:9",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "3:10",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:11",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:12",
+          "action": "vod",
+          "prompts": 5
+        },
+        {
+          "at": "3:13",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:14",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:15",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:16",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:17",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:18",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:19",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:20",
+          "action": "rest",
+          "prompts": 7
+        },
+        {
+          "at": "3:21",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "3:22",
+          "action": "rest",
+          "prompts": 3
+        },
+        {
+          "at": "3:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:24",
+          "action": "vod",
+          "prompts": 5
+        },
+        {
+          "at": "3:25",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:26",
+          "action": "vod",
+          "prompts": 5
+        }
+      ],
+      "stalls": []
+    },
+    {
+      "pos": "sup",
+      "seed": 17,
+      "actions": {
+        "vod": 52,
+        "solo": 6,
+        "lane": 3,
+        "scrim": 8,
+        "pool": 2,
+        "rest": 7
+      },
+      "committedWeeks": 78,
+      "totalPrompts": 176,
+      "byType": {
+        "season": 18,
+        "other": 54,
+        "weekly": 78,
+        "heroine": 21,
+        "review": 3,
+        "career": 2
+      },
+      "mostPromptsInWeek": 9,
+      "zeroContact": true,
+      "contactWeeks": [
+        0,
+        0,
+        0
+      ],
+      "goalResults": [
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        }
+      ],
+      "money": 515700000,
+      "gearOwned": 0,
+      "aff": {
+        "jieun": 20,
+        "harin": 20,
+        "sora": 20,
+        "mina": 25,
+        "sea": 20,
+        "chloe": 20,
+        "seolah": 25,
+        "rin": 20,
+        "camila": 20,
+        "yejin": 25,
+        "nayuna": 25,
+        "elena": 30,
+        "serin": 25,
+        "karina": 20,
+        "wonyoung": 20,
+        "iu": 20,
+        "irene": 20,
+        "chaewon": 20,
+        "suzy": 20,
+        "miyeon": 20,
+        "giselle": 20,
+        "sohee": 20
+      },
+      "weeks": [
+        {
+          "at": "1:1",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "1:2",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:3",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:4",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:5",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:6",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:8",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:10",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:11",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:12",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:13",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:14",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "1:15",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:16",
+          "action": "solo",
+          "prompts": 3
+        },
+        {
+          "at": "1:17",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "1:18",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:19",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:20",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:21",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:24",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:25",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:26",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "2:1",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "2:2",
+          "action": "solo",
+          "prompts": 5
+        },
+        {
+          "at": "2:3",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:4",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:5",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:6",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:7",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:8",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:10",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:11",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:12",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:13",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:14",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:15",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:16",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "2:17",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "2:18",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "2:19",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "2:20",
+          "action": "rest",
+          "prompts": 3
+        },
+        {
+          "at": "2:21",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "2:22",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "2:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:24",
+          "action": "scrim",
+          "prompts": 6
+        },
+        {
+          "at": "2:25",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:26",
+          "action": "scrim",
+          "prompts": 4
+        },
+        {
+          "at": "3:1",
+          "action": "scrim",
+          "prompts": 9
+        },
+        {
+          "at": "3:2",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:3",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:4",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "3:5",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:6",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:7",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:8",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:9",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "3:10",
+          "action": "lane",
+          "prompts": 1
+        },
+        {
+          "at": "3:11",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:12",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "3:13",
+          "action": "vod",
+          "prompts": 5
+        },
+        {
+          "at": "3:14",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:15",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:16",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "3:17",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:18",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:19",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:20",
+          "action": "vod",
+          "prompts": 7
+        },
+        {
+          "at": "3:21",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "3:22",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "3:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:24",
+          "action": "rest",
+          "prompts": 6
+        },
+        {
+          "at": "3:25",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:26",
+          "action": "vod",
+          "prompts": 4
+        }
+      ],
+      "stalls": []
+    },
+    {
+      "pos": "sup",
+      "seed": 97,
+      "actions": {
+        "vod": 53,
+        "lane": 3,
+        "solo": 8,
+        "rest": 6,
+        "pool": 2,
+        "scrim": 6
+      },
+      "committedWeeks": 78,
+      "totalPrompts": 162,
+      "byType": {
+        "season": 18,
+        "other": 44,
+        "weekly": 78,
+        "heroine": 18,
+        "review": 3,
+        "career": 1
+      },
+      "mostPromptsInWeek": 7,
+      "zeroContact": true,
+      "contactWeeks": [
+        0,
+        0,
+        0
+      ],
+      "goalResults": [
+        {
+          "focus": "challenge",
+          "done": false
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        }
+      ],
+      "money": 223800000,
+      "gearOwned": 0,
+      "aff": {
+        "jieun": 20,
+        "harin": 20,
+        "sora": 20,
+        "mina": 25,
+        "chloe": 20,
+        "seolah": 25,
+        "rin": 20,
+        "camila": 20,
+        "yejin": 25,
+        "nayuna": 25,
+        "elena": 30,
+        "serin": 25,
+        "karina": 20,
+        "wonyoung": 20,
+        "iu": 20,
+        "irene": 20,
+        "chaewon": 20,
+        "suzy": 20,
+        "sohee": 20
+      },
+      "weeks": [
+        {
+          "at": "1:1",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "1:2",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:3",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:4",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:5",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:6",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:8",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:10",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:11",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:12",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:13",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:14",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:15",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:16",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:17",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:18",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "1:19",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:20",
+          "action": "lane",
+          "prompts": 2
+        },
+        {
+          "at": "1:21",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:24",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:25",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "1:26",
+          "action": "solo",
+          "prompts": 5
+        },
+        {
+          "at": "2:1",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:2",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:3",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:4",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:5",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:6",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:7",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:8",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "2:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:10",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:11",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:12",
+          "action": "solo",
+          "prompts": 6
+        },
+        {
+          "at": "2:13",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:14",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:15",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "2:16",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:17",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:18",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:19",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:20",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:21",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:24",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:25",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:26",
+          "action": "solo",
+          "prompts": 4
+        },
+        {
+          "at": "3:1",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "3:2",
+          "action": "lane",
+          "prompts": 5
+        },
+        {
+          "at": "3:3",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:4",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:5",
+          "action": "pool",
+          "prompts": 4
+        },
+        {
+          "at": "3:6",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "3:7",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:8",
+          "action": "vod",
+          "prompts": 5
+        },
+        {
+          "at": "3:9",
+          "action": "vod",
+          "prompts": 7
+        },
+        {
+          "at": "3:10",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:11",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:12",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "3:13",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:14",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:15",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:16",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:17",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:18",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:19",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:20",
+          "action": "vod",
+          "prompts": 6
+        },
+        {
+          "at": "3:21",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:23",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "3:24",
+          "action": "vod",
+          "prompts": 6
+        },
+        {
+          "at": "3:25",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:26",
+          "action": "scrim",
+          "prompts": 4
+        }
+      ],
+      "stalls": []
+    },
+    {
+      "pos": "sup",
+      "seed": 101,
+      "actions": {
+        "vod": 47,
+        "solo": 10,
+        "pool": 4,
+        "rest": 8,
+        "scrim": 9
+      },
+      "committedWeeks": 78,
+      "totalPrompts": 160,
+      "byType": {
+        "season": 18,
+        "weekly": 78,
+        "other": 42,
+        "heroine": 17,
+        "review": 3,
+        "career": 2
+      },
+      "mostPromptsInWeek": 9,
+      "zeroContact": true,
+      "contactWeeks": [
+        0,
+        0,
+        0
+      ],
+      "goalResults": [
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": true
+        },
+        {
+          "focus": "challenge",
+          "done": false
+        }
+      ],
+      "money": 343080000,
+      "gearOwned": 0,
+      "aff": {
+        "jieun": 20,
+        "harin": 20,
+        "sora": 20,
+        "mina": 25,
+        "sea": 20,
+        "chloe": 20,
+        "seolah": 25,
+        "rin": 20,
+        "camila": 20,
+        "yejin": 25,
+        "nayuna": 25,
+        "elena": 30,
+        "serin": 25,
+        "karina": 20,
+        "wonyoung": 20,
+        "iu": 20,
+        "chaewon": 20,
+        "suzy": 20
+      },
+      "weeks": [
+        {
+          "at": "1:1",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:2",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:3",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:4",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:5",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:6",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:7",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:8",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:9",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:10",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:11",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:12",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:13",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:14",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:15",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:16",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "1:17",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "1:18",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:19",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "1:20",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "1:21",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "1:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:24",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:25",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "1:26",
+          "action": "solo",
+          "prompts": 7
+        },
+        {
+          "at": "2:1",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:2",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:3",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:4",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:5",
+          "action": "solo",
+          "prompts": 1
+        },
+        {
+          "at": "2:6",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:7",
+          "action": "solo",
+          "prompts": 3
+        },
+        {
+          "at": "2:8",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "2:9",
+          "action": "rest",
+          "prompts": 2
+        },
+        {
+          "at": "2:10",
+          "action": "pool",
+          "prompts": 1
+        },
+        {
+          "at": "2:11",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:12",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "2:13",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:14",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:15",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:16",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:17",
+          "action": "solo",
+          "prompts": 2
+        },
+        {
+          "at": "2:18",
+          "action": "vod",
+          "prompts": 5
+        },
+        {
+          "at": "2:19",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "2:20",
+          "action": "scrim",
+          "prompts": 3
+        },
+        {
+          "at": "2:21",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "2:22",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "2:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "2:24",
+          "action": "vod",
+          "prompts": 6
+        },
+        {
+          "at": "2:25",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "2:26",
+          "action": "scrim",
+          "prompts": 4
+        },
+        {
+          "at": "3:1",
+          "action": "scrim",
+          "prompts": 9
+        },
+        {
+          "at": "3:2",
+          "action": "pool",
+          "prompts": 2
+        },
+        {
+          "at": "3:3",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:4",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:5",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:6",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:7",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:8",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:9",
+          "action": "vod",
+          "prompts": 3
+        },
+        {
+          "at": "3:10",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:11",
+          "action": "scrim",
+          "prompts": 2
+        },
+        {
+          "at": "3:12",
+          "action": "rest",
+          "prompts": 4
+        },
+        {
+          "at": "3:13",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:14",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:15",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:16",
+          "action": "scrim",
+          "prompts": 1
+        },
+        {
+          "at": "3:17",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:18",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:19",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:20",
+          "action": "vod",
+          "prompts": 4
+        },
+        {
+          "at": "3:21",
+          "action": "rest",
+          "prompts": 1
+        },
+        {
+          "at": "3:22",
+          "action": "vod",
+          "prompts": 1
+        },
+        {
+          "at": "3:23",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:24",
+          "action": "vod",
+          "prompts": 6
+        },
+        {
+          "at": "3:25",
+          "action": "vod",
+          "prompts": 2
+        },
+        {
+          "at": "3:26",
+          "action": "vod",
+          "prompts": 4
+        }
+      ],
+      "stalls": []
+    }
+  ],
+  "choiceComparison": [
+    {
+      "seed": 17,
+      "weeks": 78,
+      "identicalCoreEveryWeek": true,
+      "sameNextRandom": true,
+      "intentA": [
+        "stay",
+        "stay",
+        "stay"
+      ],
+      "intentB": [
+        "move",
+        "move",
+        "move"
+      ]
+    },
+    {
+      "seed": 97,
+      "weeks": 78,
+      "identicalCoreEveryWeek": true,
+      "sameNextRandom": true,
+      "intentA": [
+        "stay",
+        "stay",
+        "stay"
+      ],
+      "intentB": [
+        "move",
+        "move",
+        "move"
+      ]
+    },
+    {
+      "seed": 101,
+      "weeks": 78,
+      "identicalCoreEveryWeek": true,
+      "sameNextRandom": true,
+      "intentA": [
+        "stay",
+        "stay",
+        "stay"
+      ],
+      "intentB": [
+        "move",
+        "move",
+        "move"
+      ]
+    }
+  ],
+  "balancedGoalFollowingRecommend": {
+    "goal": {
+      "done": false,
+      "label": "훈련 7주 · 인연 소통 4주",
+      "detail": "훈련 25/7 · 소통 0/4"
+    },
+    "contactWeeks": 0,
+    "actions": [
+      "vod",
+      "lane",
+      "lane",
+      "vod",
+      "lane",
+      "vod",
+      "vod",
+      "lane",
+      "lane",
+      "vod",
+      "lane",
+      "vod",
+      "lane",
+      "vod",
+      "lane",
+      "vod",
+      "lane",
+      "lane",
+      "vod",
+      "lane",
+      "vod",
+      "lane",
+      "vod",
+      "lane",
+      "rest",
+      "solo"
+    ]
+  },
+  "minorDateData": {
+    "heroines": 23,
+    "courses": 66,
+    "uniqueNames": 1,
+    "uniqueDialogues": 1,
+    "scope": "전체데이터조회이며 초기에23인이전원해금된다는뜻이아님"
+  },
+  "analysisProjectAtZeroStress": {
+    "before": {
+      "money": 5000000,
+      "stress": 0,
+      "power": 49.346,
+      "evaluation": {
+        "role": "주전 경쟁",
+        "ovr": 28.7,
+        "threshold": 53,
+        "gap": -24.3,
+        "recent": null,
+        "trust": 50,
+        "task": "팀 기준까지 OVR 24.3 성장"
+      }
+    },
+    "after": {
+      "money": 3000000,
+      "stress": 0,
+      "power": 49.346,
+      "evaluation": {
+        "role": "주전 경쟁",
+        "ovr": 28.7,
+        "threshold": 53,
+        "gap": -24.3,
+        "recent": null,
+        "trust": 54,
+        "task": "팀 기준까지 OVR 24.3 성장"
+      }
+    }
+  },
+  "allGear": {
+    "cost": 26480000,
+    "before": 1,
+    "after": 3.48
+  },
+  "endingChecks": {
+    "aff70NoStory": {
+      "wedding": true,
+      "trueEnding": false,
+      "allTrophiesLine": false,
+      "proGrade": false,
+      "legendGrade": false
+    },
+    "twoAff70NoTitles": {
+      "wedding": false,
+      "trueEnding": true,
+      "allTrophiesLine": true,
+      "proGrade": false,
+      "legendGrade": false
+    },
+    "twoLckTitles": {
+      "wedding": false,
+      "trueEnding": false,
+      "allTrophiesLine": false,
+      "proGrade": true,
+      "legendGrade": false
+    }
+  },
+  "incentiveChecks": [
+    {
+      "choice": 1,
+      "salary": 100000,
+      "syn": 1,
+      "newFields": []
+    },
+    {
+      "choice": 4,
+      "salary": 110000,
+      "syn": 0,
+      "newFields": []
+    }
+  ],
+  "productionSourceUnchanged": true,
+  "sourceHashAfter": "612c25fe76c0113a0fab8bda3cbea42b7b5001017125404924170e7f57842701"
+}
