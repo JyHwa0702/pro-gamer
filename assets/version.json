@@ -1,6 +1,6 @@
 {
-  "version": "2.1.0",
-  "versionCode": 11,
+  "version": "2.1.1",
+  "versionCode": 12,
   "releaseDate": "2026-11-03",
   "title": "GamerGram & 23인 히로인 대확장 업데이트",
   "mandatory": false,
@@ -11,5 +11,6 @@
     "부동산 & 슈퍼카 & 팬덤 비즈니스 자산 시스템 (고시원 탈출, 펜트하우스 매매, 페라리/포르쉐 구입, 팬클럽 창단, 단독 팬미팅)"
   ],
   "downloadUrl": "https://github.com/JyHwa0702/pro-gamer/releases/latest/download/pro-gamer.apk",
-  "webUrl": "https://jyhwa0702.github.io/pro-gamer/"
+  "webUrl": "https://jyhwa0702.github.io/pro-gamer/",
+  "releaseNotes": "시네마틱 돌발 이벤트 8종 (디스패치 스캔들, 지하철 전광판, 커피차, 공항 마비 등) & 히로인 다이나믹 감정 표정/대사 반응 연출 추가 및 23인 히로인 이미지 무결성 전수 검증 완료"
 }

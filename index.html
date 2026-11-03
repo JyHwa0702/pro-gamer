@@ -412,6 +412,44 @@ tr.me td{background:#1d2a52;font-weight:800}
 .buff-pill.gold { background: rgba(250, 204, 21, 0.15); color: #fde047; border-color: rgba(250, 204, 21, 0.3); }
 .buff-pill.pink { background: rgba(244, 114, 182, 0.15); color: #f472b6; border-color: rgba(244, 114, 182, 0.3); }
 
+
+/* 🎬 대형 시네마틱 돌발 이벤트 & 히로인 표정/무드 스타일 */
+.cine-event-card { background: #0c101d; border: 1px solid #233560; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8); margin-bottom: 12px; }
+.cine-banner-wrap { position: relative; width: 100%; height: 180px; background: #050811; overflow: hidden; }
+.cine-banner-img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.9); }
+.cine-banner-tag { position: absolute; top: 10px; left: 10px; font-size: 11px; font-weight: 900; padding: 3px 10px; border-radius: 99px; letter-spacing: 0.5px; text-transform: uppercase; }
+.cine-banner-tag.red { background: #ef4444; color: #fff; box-shadow: 0 0 10px rgba(239,68,68,0.5); }
+.cine-banner-tag.gold { background: #f59e0b; color: #000; box-shadow: 0 0 10px rgba(245,158,11,0.5); }
+.cine-banner-tag.pink { background: #ec4899; color: #fff; box-shadow: 0 0 10px rgba(236,72,153,0.5); }
+.cine-banner-tag.blue { background: #3b82f6; color: #fff; box-shadow: 0 0 10px rgba(59,130,246,0.5); }
+.cine-banner-title { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px 14px 8px; background: linear-gradient(180deg, transparent, rgba(0,0,0,0.95)); font-size: 16px; font-weight: 900; color: #fff; }
+
+.cine-heroine-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px 6px; background: #0f1526; border-bottom: 1px solid #1c2744; }
+.cine-heroine-portrait-box { position: relative; width: 56px; height: 72px; border-radius: 10px; overflow: hidden; flex-shrink: 0; border: 2.5px solid #3b82f6; transition: all .2s; }
+.cine-heroine-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.cine-mood-badge { position: absolute; bottom: 0; left: 0; right: 0; font-size: 9px; font-weight: 800; text-align: center; background: rgba(0,0,0,0.85); color: #fff; padding: 1px 0; }
+
+.mood-shock { border-color: #ef4444 !important; box-shadow: 0 0 15px rgba(239,68,68,0.65) !important; animation: shake 0.4s; }
+.mood-shock .cine-mood-badge { background: #ef4444 !important; }
+.mood-blush { border-color: #ec4899 !important; box-shadow: 0 0 15px rgba(236,72,153,0.65) !important; }
+.mood-blush .cine-mood-badge { background: #ec4899 !important; }
+.mood-happy { border-color: #22c55e !important; box-shadow: 0 0 15px rgba(34,197,94,0.65) !important; }
+.mood-happy .cine-mood-badge { background: #22c55e !important; }
+.mood-alert { border-color: #f59e0b !important; box-shadow: 0 0 15px rgba(245,158,11,0.65) !important; }
+.mood-alert .cine-mood-badge { background: #f59e0b !important; color: #000 !important; }
+.mood-cool { border-color: #38bdf8 !important; box-shadow: 0 0 15px rgba(56,189,248,0.65) !important; }
+.mood-cool .cine-mood-badge { background: #38bdf8 !important; color: #000 !important; }
+
+@keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-4px); } 40%, 80% { transform: translateX(4px); } }
+
+.cine-dialogue-bubble { flex: 1; background: #151d33; border: 1px solid #28375c; border-radius: 10px; padding: 9px 12px; position: relative; }
+.cine-dialogue-bubble::before { content: ""; position: absolute; left: -6px; top: 18px; width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-right: 6px solid #28375c; }
+.cine-dialogue-speaker { font-size: 12.5px; font-weight: 800; color: #f472b6; margin-bottom: 3px; display: flex; align-items: center; justify-content: space-between; }
+.cine-dialogue-text { font-size: 12px; color: #f1f5f9; line-height: 1.45; }
+
+.cine-desc-text { padding: 12px 14px; font-size: 12.5px; color: #cbd5e1; line-height: 1.55; }
+.cine-buff-row { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 14px 12px; }
+
 </style>
 </head>
 <body>
@@ -3715,140 +3753,357 @@ async function scouting() {
 // ======================================================================
 // 랜덤 이벤트
 // ======================================================================
+
+// ======================================================================
+// 🎬 대형 시네마틱 돌발 이벤트 & 히로인 표정/대사 반응 엔진
+// ======================================================================
+
+function renderCinematicEventHtml(opt) {
+  const { bannerImg, tag, tagCls, title, heroine, desc, buffs } = opt;
+  let heroineHtml = '';
+  if (heroine) {
+    heroineHtml = `
+      <div class="cine-heroine-row">
+        <div class="cine-heroine-portrait-box ${heroine.moodCls || 'mood-shock'}">
+          <img src="${heroine.img}" class="cine-heroine-img" onerror="this.src='assets/jieun.jpg'">
+          <div class="cine-mood-badge">${heroine.moodText || '반응'}</div>
+        </div>
+        <div class="cine-dialogue-bubble">
+          <div class="cine-dialogue-speaker">
+            <span>${heroine.name}</span>
+            <span style="font-size:10.5px;color:#94a3b8;font-weight:normal">${heroine.role || ''}</span>
+          </div>
+          <div class="cine-dialogue-text">"${heroine.dialogue}"</div>
+        </div>
+      </div>
+    `;
+  }
+
+  const buffHtml = (buffs || []).map(b => `<span class="badge-pill ${b.cls}">${b.t}</span>`).join('');
+
+  return `
+    <div class="cine-event-card">
+      <div class="cine-banner-wrap">
+        <img src="${bannerImg}" class="cine-banner-img" onerror="this.src='event_paparazzi.jpg'">
+        <div class="cine-banner-tag ${tagCls || 'gold'}">${tag}</div>
+        <div class="cine-banner-title">${title}</div>
+      </div>
+      ${heroineHtml}
+      <div class="cine-desc-text">${desc}</div>
+      ${buffHtml ? `<div class="cine-buff-row">${buffHtml}</div>` : ''}
+    </div>
+  `;
+}
+
 const EVENTS = [
-  // 1. 단골 PC방 라면 야식 럭키 찬스
-  { c: () => P.stage === 'ama' || Math.random() < 0.4, f: async () => {
-    await ask(`<div class="em">🍜</div><h3>단골 PC방 사장님의 럭키 야식!</h3>
-      <p class="c">"총각, 밤새 연습하느라 고생하네! 이건 서비스야. 든든하게 먹고 해!"<br>
-      <b>특제 치즈라면 + 공기밥 + 웰치스 세트</b>를 받았습니다!</p>
-      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
-        <span class="badge-pill bg-green">❤️ 체력 +30</span>
-        <span class="badge-pill bg-green">😵 스트레스 -20</span>
-      </div>`, [{ t: '잘 먹겠습니다! (감사 인사)', cls: 'gold' }]);
-    hpAdd(30); stressAdd(-20);
-  }},
-  // 2. 아카데미 연습생의 1:1 맞짱 내기
-  { c: () => P.bestT >= 5, f: async () => {
-    const oppTier = TIERS[Math.min(9, P.rank.t + 1)];
-    const i = await ask(`<div class="em">⚔️</div><h3>아카데미 연습생의 도발!</h3>
-      <p class="c">다른 구단 아카데미 2군 연습생이 귓속말을 걸어왔습니다.<br>
-      "님 소문 듣고 왔는데 미드 1:1 퍼블빵 80만 원 내기빵 콜?"</p>`,
-      [{ t: '💪 1:1 맞짱 수락 (피지컬 승부)', cls: 'red' }, { t: '✋ 솔랭에 집중한다 (거절)', cls: 'gray' }]);
-    if (i === 0) {
-      if (Math.random() < clamp(sig((P.s.mech - 35) / 5.0), 0.35, 0.85)) {
-        playJackpotSound();
-        P.money += 800000; grow('mech', 2.0); grow('lane', 2.0);
-        await ask(`<div class="em">🎉</div><h3>1:1 압승!</h3><p class="c">화려한 콤보로 3분 만에 솔로킬을 따냈습니다!<br>
-        💰 +80만 원 획득 · 피지컬/라인전 +2.0!</p>`);
+  // 1. 📸 디스패치 파파라치 기습 촬영 & 열애설 스캔들 위기!
+  {
+    c: () => {
+      if ((P.fans || 0) < 50000) return false;
+      const anyLover = Object.keys(P.bonds || {}).some(k => (P.bonds[k]?.lv || 0) >= 3);
+      return anyLover && Math.random() < 0.45;
+    },
+    f: async () => {
+      const loverKeys = Object.keys(P.bonds || {}).filter(k => (P.bonds[k]?.lv || 0) >= 3);
+      const chosenKey = loverKeys[Math.floor(Math.random() * loverKeys.length)] || 'jieun';
+      const h = HEROINES[chosenKey] || HEROINES.jieun;
+
+      const html = renderCinematicEventHtml({
+        bannerImg: 'assets/event_paparazzi.jpg',
+        tag: '🚨 단독 보도 위기',
+        tagCls: 'red',
+        title: '📸 디스패치 파파라치 기습 촬영! 데이트 현장 발각',
+        heroine: {
+          name: h.name,
+          role: h.tag,
+          img: h.img,
+          moodCls: 'mood-shock',
+          moodText: '😱 당황/충격',
+          dialogue: `"어머, 자기야... 방금 골목에서 카메라 플래시 터진 거 봤어?! 디스패치 기자가 우리 손잡고 걸어가는 거 찍은 것 같아... 어떡하지?!"`
+        },
+        desc: '심야 데이트 중 모자와 마스크를 쓴 파파라치 취재진에게 둘만의 사적인 모습이 포착되었습니다! 다음 날 아침 포털 메인 단독 기사 엠바고가 걸려있습니다.',
+        buffs: [
+          { t: '선택 1: 공식 연인 인정 (팬덤 양분 / 멘탈 시험)', cls: 'bg-blue' },
+          { t: '선택 2: 친한 지인 해명 (호감도 감소 / 팬덤 수호)', cls: 'bg-green' },
+          { t: '선택 3: 소속사 법적 대응 (5,000만 원 소모)', cls: 'bg-gold' }
+        ]
+      });
+
+      const choices = [
+        { t: '💖 "당당하게 밝히자!" 당당한 공개 열애 선언', cls: 'pink' },
+        { t: '🛡️ "아직은 때가 아니야..." 단순 친한 지인 사이라고 해명', cls: 'gray' },
+        { t: '💼 구단 홍보팀 긴급 투입 & 보도 엠바고 협상 (💰 -5,000만 원)', cls: 'gold' }
+      ];
+
+      const sel = await ask(html, choices);
+      if (sel === 0) {
+        toast(`💍 [${h.name}]님과의 열애를 당당히 공개했습니다! 진성 팬들의 뜨거운 응원과 화제성 대폭발!`);
+        P.bonds[chosenKey].aff = (P.bonds[chosenKey].aff || 0) + 40;
+        P.fans = (P.fans || 0) + 30000;
+        stressAdd(-20);
+      } else if (sel === 1) {
+        toast(`🛡️ "친한 친구 사이일 뿐입니다" 공식 해명 발표. 팬들의 이탈을 막았으나 ${h.name}의 눈빛이 서운해 보입니다.`);
+        P.bonds[chosenKey].aff = Math.max(0, (P.bonds[chosenKey].aff || 0) - 15);
+        stressAdd(20);
       } else {
-        P.money = Math.max(0, P.money - 400000); stressAdd(15);
-        toast('아쉽게 석패했습니다... 스트레스↑');
+        if ((P.money || 0) >= 50000000) {
+          P.money -= 50000000;
+          toast('💼 5,000만 원을 투입해 사진을 전량 회수하고 기사를 내렸습니다. 완전한 비밀 유지!');
+          stressAdd(5);
+        } else {
+          toast('자금이 부족해 기사가 결국 보도되었습니다! 팬들의 질문 세례로 스트레스 급상승!');
+          stressAdd(35);
+        }
       }
     }
-  }},
-  // 3. 천상계 저격 매칭 역전승 & 숏폼 떡상
-  { c: () => P.rank.t >= 6, f: async () => {
-    playJackpotSound();
-    P.fans += 8000; grow('mental', 2.5);
-    await ask(`<div class="em">🔥</div><h3>천상계 혈투 숏폼 떡상!</h3>
-      <p class="c">솔랭에서 프로게이머 3명과 매칭된 50분 명경기에서 대역전승을 거두었습니다!<br>
-      당신의 한타 슈퍼플레이 클립이 유튜브 쇼츠 조회수 200만을 돌파했습니다!</p>
-      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
-        <span class="badge-pill bg-green">👥 팬 +8,000</span>
-        <span class="badge-pill bg-purple">🧠 멘탈 +2.5</span>
-      </div>`, [{ t: '영상 확인하기', cls: 'gold' }]);
-  }},
-  // 4. OP 신메타 꿀통 발굴
-  { c: () => true, f: async () => {
-    addLP(30); grow('lane', 2.0);
-    await ask(`<div class="em">💡</div><h3>OP 신메타 빌드 꿀통 발견!</h3>
-      <p class="c">밤샘 리플레이 분석 중 사기적인 룬과 아이템 트리 조합을 찾아냈습니다!<br>
-      솔로랭크에서 7연승을 달리며 점수를 폭풍 복사했습니다!</p>
-      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
-        <span class="badge-pill bg-green">🏅 솔랭 LP +30</span>
-        <span class="badge-pill bg-purple">⚔️ 라인전 +2.0</span>
-      </div>`, [{ t: '기분 최고다!', cls: 'gold' }]);
-  }},
-  // 5. 열혈팬의 기프티콘과 장비 조공
-  { c: () => P.fans > 500, f: async () => {
-    hpAdd(20); stressAdd(-15); grow('mech', 1.0);
-    await ask(`<div class="em">🎁</div><h3>열혈팬의 서프라이즈 선물</h3>
-      <p class="c">팬 한 분이 "선수님 늘 응원해요!"라며 프리미엄 비타민 박스와 최고급 마우스패드를 보내왔습니다.</p>
-      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
-        <span class="badge-pill bg-green">❤️ 체력 +20</span>
-        <span class="badge-pill bg-green">😵 스트레스 -15</span>
-        <span class="badge-pill bg-purple">🎯 피지컬 +1.0</span>
-      </div>`, [{ t: '감사히 받는다', cls: 'gold' }]);
-  }},
-  // 6. 소꿉친구/연인의 기습 도시락 방문
-  { c: () => Object.values(P.bonds || {}).some(b => b.unlocked && b.aff >= 30), f: async () => {
-    const unHeroines = Object.keys(P.bonds || {}).filter(k => P.bonds[k]?.unlocked && P.bonds[k]?.aff >= 30);
-    const hid = unHeroines.length > 0 ? pick(unHeroines) : 'jieun';
-    const h = HEROINES[hid] || HEROINES.jieun;
-    if (P.bonds && P.bonds[hid]) P.bonds[hid].aff = Math.min(100, (P.bonds[hid].aff || 0) + 8);
-    hpAdd(25); stressAdd(-30);
-    await showHeroineCutscene(hid, `<h3>🍱 사랑이 담긴 깜짝 도시락!</h3>
-      <div class="vn-dialogue">"너 맨날 컵라면만 먹는 거 다 알아. 밥은 든든하게 먹으면서 연습해야지! 내가 좋아하는 반찬 가득 싸왔어, 얼른 먹어봐!"</div>
-      <div style="display:flex;justify-content:center;gap:6px;margin-top:8px">
-        <span class="badge-pill bg-pink">💖 ${h.name} 호감도 +8♥</span>
-        <span class="badge-pill bg-green">❤️ 체력 +25</span>
-        <span class="badge-pill bg-green">😵 스트레스 -30</span>
-      </div>`, [{ t: '너무 감동이야', cls: 'pink' }], h.dates[0].img, '연습실 방문');
-  }},
-  // 7. 라이엇 서버 긴급 롤백 점검으로 꿀잠
-  { c: () => Math.random() < 0.35, f: async () => {
-    hpAdd(40); stressAdd(-25);
-    await ask(`<div class="em">⚡</div><h3>라이엇 서버 긴급 점검</h3>
-      <p class="c">서버 긴급 롤백 패치로 협곡이 6시간 동안 닫혔습니다.<br>
-      어쩔 수 없이 일찍 침대에 누워 모처럼 꿀잠을 잤습니다.</p>
-      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
-        <span class="badge-pill bg-green">❤️ 체력 +40</span>
-        <span class="badge-pill bg-green">😵 스트레스 -25</span>
-      </div>`, [{ t: '개운하다!', cls: 'gold' }]);
-  }},
-  // 8. 한방 스포츠 명의의 손목 침술 봉사
-  { c: () => true, f: async () => {
-    hpAdd(25); grow('mech', 1.8);
-    await ask(`<div class="em">🩺</div><h3>스포츠 의학 명의의 특별 케어</h3>
-      <p class="c">프로 선수 전담 한의학 명의가 방문하여 손목 신경 테라피 침술을 놓아주었습니다.<br>
-      손목 피로가 씻은 듯이 풀리며 손가락이 가벼워졌습니다!</p>
-      <div style="display:flex;justify-content:center;gap:6px;margin-top:6px">
-        <span class="badge-pill bg-green">❤️ 체력 +25</span>
-        <span class="badge-pill bg-purple">🎯 피지컬 +1.8</span>
-      </div>`, [{ t: '감사합니다 선생님!', cls: 'gold' }]);
-  }},
-  // 9. 악플 테러 대처
-  { c: () => P.fans > 800, f: async () => {
-    const i = await ask(`<div class="em">💬</div><h3>악플 테러</h3><p class="c">"쟤 왜 프로함?" "손이 느려졌네" 커뮤니티에 비난 글이 올라왔습니다.</p>`,
-      [{ t: '😶 무시한다 (멘탈 판정)' }, { t: '📡 방송에서 정면 반박' }, { t: '📴 SNS를 끊고 연습' }]);
-    if (i === 0) { if (Math.random() < P.s.mental / 100) { grow('mental', 1.5); toast('흔들리지 않았다! 멘탈↑'); } else { stressAdd(20); toast('신경이 쓰인다... 스트레스↑'); } }
-    if (i === 1) { if (Math.random() < .5) { P.fans += Math.round(P.fans * .08); toast('사이다 반박! 팬 증가'); } else { P.fans = Math.round(P.fans * .95); stressAdd(15); toast('역풍을 맞았다...'); } }
-    if (i === 2) { stressAdd(-5); P.fans = Math.round(P.fans * .98); toast('조용히 연습에 집중한다'); }
-  }},
-  // 10. 스폰서 브랜드 제안
-  { c: () => P.fans > 2000, f: async () => {
-    let mul = 1;
-    if (P.bonds?.sora?.aff >= 30) mul = 2;
-    if (P.bonds?.sea?.aff >= 75) { P.money += 10000000; }
-    if (P.hasSupercar) { stressAdd(-8); }
-    if (P.hasPenthouse) { hpAdd(15); }
-    const amt = (Math.round(P.fans * rnd(90, 180) / 10000) * 10000 + 800000) * mul;
-    await ask(`<div class="em">🤑</div><h3>스폰서 제안</h3><p class="c">게이밍 기어 브랜드에서 개인 스폰서 제안이 왔습니다!<br>💰 +${won(amt)}원 ${mul > 1 ? '(소라 버프 2배)' : ''}</p>`, [{ t: '감사합니다!', cls: 'gold' }]);
-    P.money += amt;
-  }},
-  // 11. 팀원과의 갈등 (프로 전용)
-  { c: () => P.stage !== 'ama', f: async () => {
-    if (P.bonds?.mina?.aff >= 30) {
-      toast('매니저 민아가 팀원 간의 소통을 원활히 조율했습니다.');
-      return;
+  },
+
+  // 2. 🚇 롤파크역 지하철 생일/데뷔 축하 전광판 조공 이벤트!
+  {
+    c: () => (P.fans || 0) >= 30000 && Math.random() < 0.4,
+    f: async () => {
+      const html = renderCinematicEventHtml({
+        bannerImg: 'assets/event_subway.jpg',
+        tag: '🚇 팬덤 서포트',
+        tagCls: 'pink',
+        title: '🚇 롤파크역 9호선에 내 얼굴이?! 초대형 축하 전광판 조공!',
+        heroine: {
+          name: '이지은 🌸',
+          role: '소꿉친구',
+          img: 'assets/jieun.jpg',
+          moodCls: 'mood-blush',
+          moodText: '🥰 벅찬 감동',
+          dialogue: '"대박이야... 지하철 9호선 롤파크역 개찰구 앞에 네 얼굴이 걸렸어! 팬들이 자발적으로 모금해서 전광판 걸어준 거래! 나 눈물 날 것 같아..."'
+        },
+        desc: '팬클럽 연합에서 수천만 원을 모금하여 지하철 환승 통로에 당신의 경기 명장면과 응원 문구가 담긴 LED 전광판을 게재했습니다. 수많은 시민들이 인증샷을 찍고 있습니다.',
+        buffs: [
+          { t: '💖 멘탈 풀충전 (스트레스 0)', cls: 'bg-green' },
+          { t: '👑 팬 +20,000명 급증', cls: 'bg-green' },
+          { t: '⚡ 경기 집중력(폼) 100% 상승', cls: 'bg-blue' }
+        ]
+      });
+
+      await ask(html, [{ t: '📸 직접 전광판 찾아가 인증 셀카를 찍어 인스타에 올린다', cls: 'gold' }]);
+      playJackpotSound();
+      P.stress = 0;
+      P.fans = (P.fans || 0) + 20000;
+      grow('mental', 5.0);
+      toast('🚇 롤파크역 인증샷이 화제가 되며 팬 +20,000명 급증 & 멘탈 풀회복!');
     }
-    const i = await ask(`<div class="em">😤</div><h3>팀원과의 갈등</h3><p class="c">스크림 도중 콜 문제로 정글러와 언성을 높였습니다.</p>`,
-      [{ t: '🗣️ 먼저 대화를 청한다' }, { t: '😑 그냥 참는다' }, { t: '📢 코치에게 말한다' }]);
-    if (i === 0) { P.syn = Math.min(5, P.syn + 1); grow('team', 1); toast('오해를 풀었다. 팀 호흡↑'); }
-    if (i === 1) { stressAdd(15); }
-    if (i === 2) { if (Math.random() < .5) { P.syn = Math.min(5, P.syn + .5); toast('코치가 잘 중재했다'); } else { P.syn = Math.max(0, P.syn - 1); stressAdd(8); toast('분위기가 더 어색해졌다...'); } }
-  }}
+  },
+
+  // 3. ☕ 팬클럽 연합의 롤파크 경기장 커피차 & 특상 한우 도시락 조공!
+  {
+    c: () => (P.fans || 0) >= 20000 && Math.random() < 0.45,
+    f: async () => {
+      const html = renderCinematicEventHtml({
+        bannerImg: 'assets/event_coffeetruck.jpg',
+        tag: '☕ 팬클럽 조공',
+        tagCls: 'gold',
+        title: '☕ 롤파크 경기장 앞 커피차 & 1++ 한우 도시락 100인분 도착!',
+        heroine: {
+          name: '강하린 ⚡',
+          role: '아카데미 라이벌',
+          img: 'assets/harin.jpg',
+          moodCls: 'mood-happy',
+          moodText: '😋 행복한 먹방',
+          dialogue: '"야, 밖에서 네 이름 박힌 커피차 왔길래 뭔가 했네! 코치님이랑 선수단 전원한테 한우 스테이크 도시락까지 싹 돌렸더라? 너 팬덤 진짜 장난 아니다?"'
+        },
+        desc: '팬클럽 운영진이 LCK 정규시즌 경기 날 경기장 앞으로 특급 커피차와 프리미엄 도시락을 보냈습니다. 팀원들과 중계진 모두 입을 모아 당신을 칭찬합니다.',
+        buffs: [
+          { t: '❤️ 선수단 체력 +40 즉시 회복', cls: 'bg-green' },
+          { t: '🤝 팀 시너지 +10 대폭 상승', cls: 'bg-blue' }
+        ]
+      });
+
+      await ask(html, [{ t: '🍖 팀원들과 든든하게 먹고 감사 인사를 전한다', cls: 'gold' }]);
+      hpAdd(40);
+      P.syn = clamp((P.syn || 1) + 10, 1, 100);
+      toast('☕ 든든한 한우 도시락으로 체력 +40 회복 & 팀워크 대폭 상승!');
+    }
+  },
+
+  // 4. ✈️ 인천공항 출국장 팬덤 운집 마비 사태!
+  {
+    c: () => (P.fans || 0) >= 80000 && (P.stage === 'lck' || P.stage === 'worlds') && Math.random() < 0.4,
+    f: async () => {
+      const html = renderCinematicEventHtml({
+        bannerImg: 'assets/event_airport.jpg',
+        tag: '✈️ 글로벌 인기',
+        tagCls: 'blue',
+        title: '✈️ 인천공항 제2터미널 마비! 수천 명의 팬들과 취재진 운집',
+        heroine: {
+          name: '유민아 🎧',
+          role: '인기 스트리머',
+          img: 'assets/mina.jpg',
+          moodCls: 'mood-shock',
+          moodText: '😲 깜짝 놀람',
+          dialogue: '"오빠 공항 출국 기사 떴길래 생방송 틀었는데 제2터미널 완전 마비됐어! 플래카드 든 팬들부터 외신 기자들까지... 완전 월드스타 다 됐잖아!"'
+        },
+        desc: '국제 대회 출국을 위해 도착한 인천공항에 당신을 보기 위해 수천 명의 인파가 몰려들어 경호 라인이 급파되었습니다. 외신 헤드라인을 장식했습니다.',
+        buffs: [
+          { t: '👑 글로벌 인지도 폭발 (팬 +45,000명)', cls: 'bg-green' },
+          { t: '💰 해외 스폰서 제안 보너스 (💰 +3,000만 원)', cls: 'bg-gold' }
+        ]
+      });
+
+      await ask(html, [{ t: '👋 팬들에게 정중하게 손을 흔들며 출국 게이트로 향한다', cls: 'gold' }]);
+      playJackpotSound();
+      P.fans = (P.fans || 0) + 45000;
+      P.money = (P.money || 0) + 30000000;
+      toast('✈️ 글로벌 공항 화제성 대폭발! 팬 +45,000명 / 스폰서 보너스 💰 +3,000만 원!');
+    }
+  },
+
+  // 5. ⚠️ 숙소 앞 사생팬 출몰 & 경호 강화
+  {
+    c: () => (P.fans || 0) >= 40000 && Math.random() < 0.35,
+    f: async () => {
+      const html = renderCinematicEventHtml({
+        bannerImg: 'assets/event_paparazzi.jpg',
+        tag: '⚠️ 보안 비상',
+        tagCls: 'red',
+        title: '⚠️ 팀 연습실 및 숙소 앞 사생팬 출몰! 구단 보안 강화',
+        heroine: {
+          name: '한세아 🎮',
+          role: '팀 코치',
+          img: 'assets/sea.jpg',
+          moodCls: 'mood-alert',
+          moodText: '🚨 단호한 경계',
+          dialogue: '"최근 숙소 주변에서 밤마다 서성이는 인원들이 적발됐어. 대표님께 즉시 건의해서 사설 보안요원 24시간 교대 배치했으니까 넌 연습에만 집중해."'
+        },
+        desc: '과열된 일부 악성 사생팬들이 개인 일정을 미행하거나 숙소 도어록을 엿보는 행위가 발생했습니다. 구단 차원의 즉각적인 법적 조치와 경호가 투입됩니다.',
+        buffs: [
+          { t: '선택 1: 전담 경호원 추가 고용 (💰 -1,000만 원 / 안전 보장)', cls: 'bg-gold' },
+          { t: '선택 2: SNS 엄중 경고문 발표 (팬덤 정화 / 멘탈 관리)', cls: 'bg-blue' }
+        ]
+      });
+
+      const sel = await ask(html, [
+        { t: '🛡️ 개인 사설 경호원 1:1 배치 (💰 -1,000만 원)', cls: 'gold' },
+        { t: '✍️ 개인 SNS에 사생 근절 단호한 입장문 게시', cls: 'red' }
+      ]);
+
+      if (sel === 0) {
+        P.money = Math.max(0, (P.money || 0) - 10000000);
+        stressAdd(-15);
+        toast('🛡️ 24시간 밀착 경호로 안전을 완벽히 확보했습니다. 안락한 휴식 보장.');
+      } else {
+        stressAdd(10);
+        grow('mental', 4.0);
+        toast('✍️ 단호하고 품격 있는 입장문으로 대중의 지지를 받았습니다. (프로 멘탈 +4)');
+      }
+    }
+  },
+
+  // 6. 🍜 단골 PC방 라면 야식 럭키 찬스
+  {
+    c: () => P.stage === 'ama' || Math.random() < 0.35,
+    f: async () => {
+      const html = renderCinematicEventHtml({
+        bannerImg: 'assets/jieun_cafe.jpg',
+        tag: '🍜 훈훈한 일상',
+        tagCls: 'gold',
+        title: '🍜 단골 PC방 사장님의 특제 럭키 야식!',
+        heroine: {
+          name: 'PC방 사장님 🧑‍🍳',
+          role: '단골 PC방 주인',
+          img: 'assets/jieun.jpg',
+          moodCls: 'mood-happy',
+          moodText: '😊 훈훈한 격려',
+          dialogue: '"총각, 밤새 연습하느라 눈 밑이 퀭하네! 이건 삼촌이 주는 특제 서비스야. 든든하게 먹고 꼭 프로 데뷔해라!"'
+        },
+        desc: '뜨끈한 치즈 계란 라면과 고봉밥, 웰치스 세트를 서비스로 받았습니다! 따뜻한 온기가 온몸을 녹입니다.',
+        buffs: [
+          { t: '❤️ 체력 +35', cls: 'bg-green' },
+          { t: '😵 스트레스 -25', cls: 'bg-green' }
+        ]
+      });
+      await ask(html, [{ t: '잘 먹겠습니다! (감사 인사)', cls: 'gold' }]);
+      hpAdd(35); stressAdd(-25);
+    }
+  },
+
+  // 7. ⚔️ 아카데미 연습생의 1:1 맞짱 내기
+  {
+    c: () => (P.bestT || 4) >= 5,
+    f: async () => {
+      const html = renderCinematicEventHtml({
+        bannerImg: 'assets/harin_stage.jpg',
+        tag: '⚔️ 1:1 도발',
+        tagCls: 'red',
+        title: '⚔️ 2군 아카데미 연습생의 퍼블빵 도발!',
+        heroine: {
+          name: '도발하는 연습생 😈',
+          role: '타 구단 유망주',
+          img: 'icon-512.png',
+          moodCls: 'mood-shock',
+          moodText: '🔥 승부욕',
+          dialogue: '"님 소문 듣고 왔는데 미드 1:1 퍼블빵 100만 원 내기빵 콜? 쫄리면 째시든가요 ㅋㅋㅋ"'
+        },
+        desc: '타 구단 2군 연습생이 솔랭 귓속말로 도발을 걸어왔습니다. 화려한 피지컬로 참교육할 수 있는 기회입니다!',
+        buffs: [
+          { t: '승리 시: 💰 +100만 원 / 피지컬 +2', cls: 'bg-green' },
+          { t: '패배 시: 💰 -50만 원 / 스트레스↑', cls: 'bg-red' }
+        ]
+      });
+
+      const choices = [
+        { t: '💪 1:1 맞짱 수락 (피지컬 정면 승부)', cls: 'red' },
+        { t: '✋ 가볍게 무시하고 연습에 집중한다', cls: 'gray' }
+      ];
+
+      const sel = await ask(html, choices);
+      if (sel === 0) {
+        if (Math.random() < clamp(sig(((P.phy || 50) - 35) / 5.0), 0.35, 0.85)) {
+          playJackpotSound();
+          P.money = (P.money || 0) + 1000000;
+          grow('phy', 2.0);
+          grow('lane', 2.0);
+          toast('⚔️ [1:1 압승] 화려한 콤보로 3분 만에 솔킬 참교육! (💰 +100만 원 / 피지컬 +2)');
+        } else {
+          P.money = Math.max(0, (P.money || 0) - 500000);
+          stressAdd(15);
+          toast('아쉽게 석패했습니다... 스트레스 상승.');
+        }
+      }
+    }
+  },
+
+  // 8. 🔥 천상계 혈투 숏폼 떡상!
+  {
+    c: () => (P.fans || 0) >= 1000,
+    f: async () => {
+      const html = renderCinematicEventHtml({
+        bannerImg: 'assets/chloe_interview.jpg',
+        tag: '🔥 숏폼 바이럴',
+        tagCls: 'gold',
+        title: '🔥 천상계 슈퍼플레이 쇼츠 300만 뷰 떡상!',
+        heroine: {
+          name: 'e스포츠 중계진 🎙️',
+          role: '글로벌 하이라이트 채널',
+          img: 'assets/chloe.jpg',
+          moodCls: 'mood-cool',
+          moodText: '🔥 대박 반응',
+          dialogue: '"3세트 바론 둥지 앞 1:4 펜타킬 역전 쇼츠가 유튜브와 틱톡에서 조회수 300만을 돌파했습니다! 실시간 댓글 1만 개 돌파!"'
+        },
+        desc: '당신의 믿을 수 없는 반응속도와 무빙 클립이 알고리즘을 타고 전 세계 게이머들에게 바이럴되었습니다.',
+        buffs: [
+          { t: '👥 팬 +12,000명 급증', cls: 'bg-green' },
+          { t: '🧠 멘탈 +2.5', cls: 'bg-green' }
+        ]
+      });
+
+      await ask(html, [{ t: '🏆 팬들의 뜨거운 반응을 확인한다', cls: 'gold' }]);
+      playJackpotSound();
+      P.fans = (P.fans || 0) + 12000;
+      grow('mental', 2.5);
+      toast('🔥 슈퍼플레이 쇼츠 떡상으로 팬 +12,000명 급증!');
+    }
+  }
 ];
+
+
 async function randomEvent() {
   const ev = shuffle(EVENTS).find(e => e.c());
   if (ev) await ev.f();
@@ -6846,8 +7101,8 @@ function renderCreate() {
 // ======================================================================
 // 회사 로고 오프닝 비디오 연출 & 인앱 자동 업데이트 (v1.7.0)
 // ======================================================================
-const CURRENT_VERSION = '2.1.0';
-const CURRENT_VERSION_CODE = 11;
+const CURRENT_VERSION = '2.1.1';
+const CURRENT_VERSION_CODE = 12;
 
 function initIntroVideo() {
   const splash = document.getElementById('introSplash');
