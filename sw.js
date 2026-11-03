@@ -1,5 +1,5 @@
 // Service Worker for Automatic Updates & Offline Play
-const CACHE_NAME = 'progamer-road-v2-release';
+const CACHE_NAME = 'progamer-road-v2-1-expansion';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();

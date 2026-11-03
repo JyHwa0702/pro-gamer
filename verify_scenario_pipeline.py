@@ -47,7 +47,7 @@ def test_syntax():
 
 def test_heroines_and_assets():
     log("2. 13인 히로인 시나리오 데이터 및 에셋 파일 검증 시작...")
-    expected_heroines = ['jieun', 'harin', 'sora', 'mina', 'sea', 'chloe', 'seolah', 'rin', 'camila', 'yejin', 'nayuna', 'elena', 'serin']
+    expected_heroines = ['jieun', 'harin', 'sora', 'mina', 'sea', 'chloe', 'seolah', 'rin', 'camila', 'yejin', 'nayuna', 'elena', 'serin', 'karina', 'wonyoung', 'iu', 'irene', 'chaewon', 'suzy', 'winter', 'miyeon', 'giselle', 'sohee']
     html_path = os.path.join(WORKSPACE, 'index.html')
     with open(html_path, 'r', encoding='utf-8') as f:
         code = f.read()

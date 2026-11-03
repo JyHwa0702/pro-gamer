@@ -365,6 +365,53 @@ tr.me td{background:#1d2a52;font-weight:800}
   box-shadow: 0 0 6px rgba(239,68,68,0.8);
 }
 
+
+/* 🎨 인스타그램 필터 효과 */
+.filter-normal { filter: none; }
+.filter-clarendon { filter: contrast(1.2) saturate(1.25); }
+.filter-juno { filter: contrast(1.15) saturate(1.4) sepia(0.08); }
+.filter-ludwig { filter: contrast(1.05) brightness(1.05) saturate(0.9); }
+.filter-valencia { filter: contrast(1.08) brightness(1.08) sepia(0.15); }
+.filter-moon { filter: grayscale(1) contrast(1.1) brightness(1.1); }
+
+/* 인스타 새 게시물 생성 플로우 */
+.insta-create-flow { background: #000; border-radius: 14px; overflow: hidden; border: 1px solid #262626; }
+.insta-create-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-bottom: 1px solid #1f1f1f; background: #080808; }
+.insta-text-btn { background: none; border: none; color: #fff; font-size: 13.5px; font-weight: 600; cursor: pointer; }
+.insta-share-btn { background: none; border: none; color: #0095f6; font-size: 13.5px; font-weight: 800; cursor: pointer; }
+.insta-share-btn:hover { color: #38bdf8; }
+.insta-preview-wrap { position: relative; width: 100%; aspect-ratio: 1 / 1; background: #111; overflow: hidden; }
+.insta-preview-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: filter .2s; }
+.insta-filter-scroll { display: flex; gap: 10px; padding: 10px 14px; overflow-x: auto; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; -webkit-overflow-scrolling: touch; }
+.insta-filter-scroll::-webkit-scrollbar { display: none; }
+.insta-filter-thumb { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; flex-shrink: 0; }
+.insta-filter-box { width: 52px; height: 52px; border-radius: 8px; overflow: hidden; border: 2px solid transparent; }
+.insta-filter-thumb.sel .insta-filter-box { border-color: #0095f6; }
+.insta-filter-box img { width: 100%; height: 100%; object-fit: cover; }
+.insta-filter-name { font-size: 10.5px; color: #8e8e8e; }
+.insta-filter-thumb.sel .insta-filter-name { color: #fff; font-weight: 700; }
+.insta-caption-area { padding: 12px 14px; background: #050505; border-bottom: 1px solid #1a1a1a; }
+.insta-caption-input { width: 100%; min-height: 60px; background: none; border: none; color: #fff; font-size: 12.5px; resize: none; outline: none; font-family: inherit; line-height: 1.5; }
+.insta-tag-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.insta-chip { background: #1a1a1a; border: 1px solid #333; color: #38bdf8; font-size: 11px; padding: 3px 8px; border-radius: 99px; cursor: pointer; font-weight: 600; }
+.insta-chip:active { background: #333; }
+.insta-meta-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #141414; background: #080808; font-size: 12.5px; color: #d4d4d4; }
+.insta-meta-row select { background: #1a1a1a; border: 1px solid #333; color: #fff; border-radius: 6px; padding: 4px 8px; font-size: 11.5px; outline: none; }
+.insta-posting-bar { height: 3px; background: linear-gradient(90deg, #f09433, #dc2743, #bc1888); animation: posting 1.5s infinite linear; }
+@keyframes posting { 0% { width: 0%; margin-left: 0%; } 50% { width: 70%; margin-left: 15%; } 100% { width: 100%; margin-left: 100%; } }
+
+/* 🏠 부동산 & 🏎️ 슈퍼카 럭셔리 상점 스타일 */
+.luxury-card { background: linear-gradient(135deg, #0e1424, #131c36); border: 1px solid #233560; border-radius: 12px; padding: 12px; margin-bottom: 10px; display: flex; flex-direction: column; gap: 6px; position: relative; }
+.luxury-card.own { border-color: #22c55e; background: linear-gradient(135deg, #0d2218, #0e1c28); }
+.luxury-card.equipped { border-color: #ffd23f; box-shadow: 0 0 14px rgba(255, 210, 63, 0.35); }
+.luxury-head { display: flex; justify-content: space-between; align-items: center; }
+.luxury-name { font-size: 13.5px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 6px; }
+.luxury-desc { font-size: 11.5px; color: #94a3b8; line-height: 1.45; }
+.luxury-buffs { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.buff-pill { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 10.5px; padding: 2px 7px; border-radius: 4px; font-weight: 700; }
+.buff-pill.gold { background: rgba(250, 204, 21, 0.15); color: #fde047; border-color: rgba(250, 204, 21, 0.3); }
+.buff-pill.pink { background: rgba(244, 114, 182, 0.15); color: #f472b6; border-color: rgba(244, 114, 182, 0.3); }
+
 </style>
 </head>
 <body>
@@ -980,7 +1027,419 @@ const HEROINES = {
         choice: ['프로포즈 링을 건네며 키스한다', '"평생 내 승리의 여신이 되어줘."'],
         gain: '💍 [평생의 동반자] 은퇴 시 국민 치어리더 & 스타 부부 엔딩' }
     ]
+  },
+
+  karina: {
+    id: 'karina', name: '유지민', age: 21, baseAge: 21,
+    img: 'assets/karina.jpg', fallback: 'karina.jpg',
+    tag: 'AI 비주얼 4세대 톱 걸그룹 리더',
+    unlockDesc: '다이아 이상 달성 or 공식전 POG 2회 시 인스타 맞팔로 만남',
+    buff: '솔랭 승률 +20%, 경기 집중력 극대화, 매 경기 POG 포인트 보정',
+    dates: [
+      { id: 'secret_stage', n: '🎤 방송국 대기실 단둘만의 비밀 밀회', c: 120000, aff: 25, hp: 20, st: -35,
+        img: 'assets/karina.jpg', fallback: 'karina.jpg', loc: '생방송 음악방송 대기실',
+        dialogue: '"오늘 사전 녹화 끝나고 계속 네 경기 봤어. 카메라 앞보다... 네 옆에 서 있을 때 심장이 더 빨리 뛰어."' },
+      { id: 'night_drive', n: '🏎️ 심야 한강 드라이브 & 미발매 데모 청음', c: 200000, aff: 30, hp: 25, st: -45,
+        img: 'assets/karina.jpg', fallback: 'karina.jpg', loc: '잠원한강공원 심야 주차장',
+        dialogue: '"이 신곡 데모... 세상에서 너한테 제일 먼저 들려주는 거야. 노래 가사, 누구 생각하면서 불렀는지 맞춰볼래?"' },
+      { id: 'pent_party', n: '🔥 프라이빗 펜트하우스 심야 파티', c: 350000, aff: 35, hp: 30, st: -50,
+        img: 'assets/karina.jpg', fallback: 'karina.jpg', loc: '성수동 트리마제 펜트하우스', outfit: '👗 시스루 블랙 미니 드레스', sensual: true,
+        dialogue: '"매니저들 다 퇴근했어. 오늘은 화려한 아이돌 카리나가 아니라... 그냥 너 좋아하는 스물한 살 지민이로 있을래."' }
+    ],
+    gifts: [
+      { n: '💎 프랑스 하이엔드 니치 향수', c: 350000, aff: 25, msg: '"향기 너무 좋다... 다음 컴백 무대 때 이거 뿌리고 나갈게!"' },
+      { n: '🎧 커스텀 다이아몬드 인이어 모니터', c: 1500000, aff: 55, msg: '"너랑 커플 인이어네? 내 목소리, 네 귓가에 평생 들려줄게."' },
+      { n: '👑 명품 한정판 스트릿 레더 바시티', c: 4200000, aff: 90, msg: '"와 이거 내 워너비 자켓이었는데! 역시 내 취향 제일 잘 아는 사람이야."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '대기실의 시선', img: 'assets/karina.jpg', fallback: 'karina.jpg',
+        dialogue: '"방송 카메라 수백 대 앞에서도 안 떨리는데... 왜 네가 경기하는 거 지켜볼 땐 손에 땀이 쥐어질까?"',
+        choice: ['"나도 너 무대 볼 때마다 숨 멎는 줄 알았어."', '"앞으로 네가 보는 경기선 절대 안 질게."'],
+        gain: '피지컬 +2 · 멘탈 +2' },
+      { lv: 2, req: 50, title: '이어폰 너머의 고백', img: 'assets/karina.jpg', fallback: 'karina.jpg',
+        dialogue: '"아이돌이라는 자리... 가끔 숨 막힐 때 있거든. 근데 너랑 차 안에서 게임 얘기하고 노래 들으면 그냥 평범한 내가 돼."',
+        choice: ['지민의 손을 따뜻하게 잡아준다', '어깨를 살포시 감싸 안는다'],
+        gain: '스트레스 -40 · 집중력 +3' },
+      { lv: 3, req: 75, title: '세기의 커플', img: 'assets/karina.jpg', fallback: 'karina.jpg',
+        dialogue: '"디스패치에 찍혀도 상관없어. 난 내 진짜 사랑 숨기고 싶지 않아. 나랑... 공식적으로 사귈래?"',
+        choice: ['"어떤 스캔들이 터져도 널 지킬게. 사귀자."', '지민을 품에 꼭 끌어안는다'],
+        gain: '💖 [연인 관계 시작] 매 경기 POG 확률 +40%' },
+      { lv: 4, req: 100, title: '시대의 아이콘 부부', img: 'assets/karina.jpg', fallback: 'karina.jpg',
+        dialogue: '"e스포츠의 전설과 K-POP의 여제. 우리 둘이 함께라면 세계 어디든 우리 무대야. 평생 곁에 있어줘."',
+        choice: ['다이아몬드 반지를 끼워준다', '"내 삶의 영원한 센터는 너야."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 글로벌 문화 아이콘 부부 엔딩' }
+    ]
+  },
+  wonyoung: {
+    id: 'wonyoung', name: '장원영', age: 20, baseAge: 20,
+    img: 'assets/wonyoung.jpg', fallback: 'wonyoung.jpg',
+    tag: '천상계 모태 아이돌 & 명품 앰버서더',
+    unlockDesc: '팬 1만 명 이상 or 롤파크 5연승 달성 시 패션쇼 VIP석에서 만남',
+    buff: '스폰서십 계약금 +70%, 인스타 광고 수익 2배, 팬 유입률 압도적 1위',
+    dates: [
+      { id: 'flagship', n: '💎 청담동 명품 플래그십 VIP 프라이빗 쇼핑', c: 250000, aff: 28, hp: 15, st: -40,
+        img: 'assets/wonyoung.jpg', fallback: 'wonyoung.jpg', loc: '청담동 명품거리 VIP 라운지',
+        dialogue: '"오빠! 이 트위드 재킷 어때? 오빠 수트랑 색감 완전 찰떡이지? 오빠 옆에 설 때 제일 예뻐 보이고 싶단 말이야."' },
+      { id: 'yacht_seine', n: '🛳️ 파리 센강 야경 럭셔리 요트 디너', c: 500000, aff: 35, hp: 30, st: -50,
+        img: 'assets/wonyoung.jpg', fallback: 'wonyoung.jpg', loc: '프랑스 파리 에펠탑 앞 센강',
+        dialogue: '"에펠탑 조명 켜지는 거 진짜 낭만적이다... 오빠가 롤드컵 우승컵 들고 나랑 같이 이 배 타는 상상 매일 했어."' },
+      { id: 'sweet_after', n: '🔥 최고급 호텔 스위트룸 둘만의 샴페인 애프터', c: 650000, aff: 40, hp: 35, st: -55,
+        img: 'assets/wonyoung.jpg', fallback: 'wonyoung.jpg', loc: '파리 리츠칼튼 임페리얼 스위트', outfit: '👗 화사한 핑크 실크 슬립', sensual: true,
+        dialogue: '"샴페인 한 모금 마셨는데 얼굴 빨개졌어... 오늘은 공주님 모드 해제할게. 오빠 품에 안겨서 밤새 이야기하고 싶어."' }
+    ],
+    gifts: [
+      { n: '🌸 핑크 다이아몬드 하트 테니스 목걸이', c: 2500000, aff: 45, msg: '"꺄! 원영이 취향 완전 저격! 매일매일 목에 걸고 다닐 거야 💖"' },
+      { n: '👗 파리 오트쿠튀르 커스텀 드레스', c: 6000000, aff: 75, msg: '"오빠랑 연말 시상식 레드카펫 설 때 꼭 이 드레스 입을게!"' },
+      { n: '💎 1982 빈티지 돔 페리뇽 P2 샴페인', c: 8500000, aff: 95, msg: '"우리 둘만의 우승 축하 파티에서 딸게... 사랑해 오빠!"' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '파리 패션위크의 인연', img: 'assets/wonyoung.jpg', fallback: 'wonyoung.jpg',
+        dialogue: '"오빠 경기 영상 쇼츠에서 천만 뷰 터진 거 봤어요! 게임하는 남자가 이렇게 멋있을 수 있다는 거 오빠 보고 처음 알았어."',
+        choice: ['"원영 씨가 봐주니까 백 배는 더 잘해야겠네."', '"실물 보니까 카메라가 미모를 다 못 담네요."'],
+        gain: '팬 +20,000 · 스타성 +3' },
+      { lv: 2, req: 50, title: '럭셔리 라운지의 속삭임', img: 'assets/wonyoung.jpg', fallback: 'wonyoung.jpg',
+        dialogue: '"나 모두에게 사랑받는 아이돌이지만... 오직 한 사람한테만 특별한 존재가 되고 싶은 순간이 있어. 그게 오빠였으면 좋겠어."',
+        choice: ['원영의 손을 꼭 쥐어준다', '달콤한 디저트를 건네며 미소 짓는다'],
+        gain: '스트레스 -45 · 멘탈 +3' },
+      { lv: 3, req: 75, title: '세상에서 가장 빛나는 고백', img: 'assets/wonyoung.jpg', fallback: 'wonyoung.jpg',
+        dialogue: '"원영이 이제 오빠만의 여자친구 할래요. 내 모든 반짝임은 전부 오빠를 위한 거야. 받아줄 거지?"',
+        choice: ['"평생 내 뮤즈가 되어줘. 사랑해."', '원영을 품에 안고 입맞춤한다'],
+        gain: '💖 [연인 관계 시작] 스폰서 계약금 +70% 버프' },
+      { lv: 4, req: 100, title: '워너비 로맨스의 완성', img: 'assets/wonyoung.jpg', fallback: 'wonyoung.jpg',
+        dialogue: '"전 세계가 부러워하는 완벽한 사랑. 오빠와 함께라면 은퇴 후 평범한 일상마저 환상적인 동화일 거야."',
+        choice: ['청혼의 다이아 반지를 건넨다', '"영원한 나의 공주님, 함께하자."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 세기의 스타 커플 웨딩 엔딩' }
+    ]
+  },
+  iu: {
+    id: 'iu', name: '이지안', age: 24, baseAge: 24,
+    img: 'assets/iu.jpg', fallback: 'iu.jpg',
+    tag: '국민 싱어송라이터 & 롤드컵 결승 오프닝 가수',
+    unlockDesc: '공식전 누적 8승 or 롤드컵 결승 진출 시 리허설 무대 뒤에서 만남',
+    buff: '멘탈 슬럼프 완전 면역, 경기 패배 시 스트레스 80% 상쇄, 매주 감미로운 힐링',
+    dates: [
+      { id: 'rooftop_guitar', n: '🎸 옥상 작업실에서 듣는 단둘만의 미발매 자작곡', c: 80000, aff: 25, hp: 30, st: -50,
+        img: 'assets/iu.jpg', fallback: 'iu.jpg', loc: '지안의 한남동 개인 아틀리에',
+        dialogue: '"이 노래... 아직 세상에 안 낸 신곡인데, 네 경기 복기하면서 떠오른 멜로디야. 너만을 위한 1열 콘서트야, 편하게 들어."' },
+      { id: 'shinya_noodles', n: '🍜 심야 골목 식당의 따뜻한 잔치국수와 소주 한잔', c: 45000, aff: 20, hp: 20, st: -40,
+        img: 'assets/iu.jpg', fallback: 'iu.jpg', loc: '종로 심야 골목 단골집',
+        dialogue: '"경기 끝나고 먹는 국수가 세상에서 제일 맛있지? 네가 연패하고 속상할 때... 언제든 나 불러. 내가 다 들어줄게."' },
+      { id: 'jeju_cottage', n: '🔥 별빛 쏟아지는 제주도 프라이빗 별장', c: 400000, aff: 35, hp: 40, st: -60,
+        img: 'assets/iu.jpg', fallback: 'iu.jpg', loc: '제주 애월 바닷가 별장', outfit: '🧣 포근한 라벤더 니트 원피스', sensual: true,
+        dialogue: '"파도 소리 참 좋다... 정상의 자리가 얼마나 외로운지 나도 잘 알아. 오늘 밤만큼은 다 내려놓고... 내 품에서 푹 쉬어."' }
+    ],
+    gifts: [
+      { n: '🎸 1968 마틴 빈티지 어쿠스틱 기타', c: 1800000, aff: 40, msg: '"어머... 이 빈티지 울림 진짜 따뜻하다! 너한테 제일 먼저 노래 들려줄게."' },
+      { n: '☕ 수제 핸드드립 커피 머신 & 명품 원두', c: 800000, aff: 30, msg: '"매일 아침 너랑 마실 커피 내가 직접 내려줄게 고마워."' },
+      { n: '🌸 스위스 명품 클래식 손목시계', c: 3500000, aff: 75, msg: '"우리 함께하는 모든 시간... 소중하게 간직할게."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '리허설 무대 뒤의 온기', img: 'assets/iu.jpg', fallback: 'iu.jpg',
+        dialogue: '"결승전 무대 오르기 전에 엄청 떨렸는데, 네가 모니터 보며 집중하는 모습 보니까 마음이 차분해지더라. 고마웠어."',
+        choice: ['"누나 노래 덕분에 저도 손이 풀렸어요."', '"언제나 제 플레이리스트 1번은 누나 노래예요."'],
+        gain: '멘탈 +3 · 스트레스 -30' },
+      { lv: 2, req: 50, title: '밤편지 같은 위로', img: 'assets/iu.jpg', fallback: 'iu.jpg',
+        dialogue: '"세상 사람들은 너한테 이기기만을 바라지만... 난 네가 다치지 않고 행복했으면 좋겠어. 네 가장 편안한 쉼터가 되어줄게."',
+        choice: ['지안의 어깨에 조용히 기댄다', '따뜻한 차를 건네며 미소 짓는다'],
+        gain: '체력 +30 · 멘탈 슬럼프 완전 방어' },
+      { lv: 3, req: 75, title: '음표에 담긴 진심', img: 'assets/iu.jpg', fallback: 'iu.jpg',
+        dialogue: '"내 모든 다음 앨범의 주인공은 너야. 화려한 스타가 아닌, 소년 같은 네 곁에 평생 머물고 싶어. 우리 연인 하자."',
+        choice: ['"평생 누나의 1호 관객이 될게요."', '지안을 따뜻하게 안아준다'],
+        gain: '💖 [연인 관계 시작] 경기 패배 시 스트레스 80% 상쇄' },
+      { lv: 4, req: 100, title: '영원한 봄날의 멜로디', img: 'assets/iu.jpg', fallback: 'iu.jpg',
+        dialogue: '"협곡의 전설과 국민 가수의 결혼이라니, 세상이 떠들썩하겠지? 하지만 우리에겐 그저 가장 따뜻한 집일 뿐이야."',
+        choice: ['프로포즈 링을 끼워준다', '"평생 내 아침을 노래로 깨워줘."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 국민 잉꼬부부 힐링 엔딩' }
+    ]
+  },
+  irene: {
+    id: 'irene', name: '배주현', age: 25, baseAge: 25,
+    img: 'assets/irene.jpg', fallback: 'irene.jpg',
+    tag: '도도한 냉미녀 톱 여배우 & 시상식 대상 시상자',
+    unlockDesc: 'LCK 우승 or 올스타 선정 시 e스포츠 어워즈 백스테이지에서 만남',
+    buff: '인터뷰 스타성 +50%, 대기업 광고 모델 발탁, 연봉 협상 거부권 행사',
+    dates: [
+      { id: 'wine_lounge', n: '🍷 한남동 프라이빗 와인 바의 은밀한 밀회', c: 200000, aff: 25, hp: 20, st: -35,
+        img: 'assets/irene.jpg', fallback: 'irene.jpg', loc: '한남동 지하 프라이빗 와인 셀러',
+        dialogue: '"남들 앞에서는 웃어주지 않아. 하지만... 네 앞에서는 자꾸 풀리네. 오늘 밤은 아무에게도 방해받고 싶지 않아."' },
+      { id: 'cinema_private', n: '🎬 심야 영화관 전체 대관 단둘만의 관람', c: 350000, aff: 30, hp: 25, st: -45,
+        img: 'assets/irene.jpg', fallback: 'irene.jpg', loc: '청담 샤롯데씨어터 대관',
+        dialogue: '"영화는 안 보고 왜 내 옆얼굴만 봐? ...싫지는 않네. 손 잡아줄 테니까 영화 끝날 때까지 놓지 마."' },
+      { id: 'sky_suite', n: '🔥 시그니엘 스카이라운지 스위트의 치명적인 밤', c: 600000, aff: 40, hp: 35, st: -55,
+        img: 'assets/irene.jpg', fallback: 'irene.jpg', loc: '롯데월드타워 100층 스위트', outfit: '👗 오프숄더 실크 이브닝 드레스', sensual: true,
+        dialogue: '"도도한 배주현을 무너뜨린 유일한 남자... 오늘 밤 네 승리의 보상은, 나야."' }
+    ],
+    gifts: [
+      { n: '🍷 프랑스 보르도 샤토 마고 1996 빈티지', c: 3000000, aff: 45, msg: '"내가 제일 좋아하는 빈티지야. 오늘 밤 우리 둘이 마셔요."' },
+      { n: '💎 에르메스 버킨 백 블랙 골드 하드웨어', c: 18000000, aff: 85, msg: '"어머... 이걸 구해오다니. 역시 챔피언의 클래스는 다르네."' },
+      { n: '✨ 반클리프 아펠 빈티지 알함브라 네크리스', c: 5500000, aff: 60, msg: '"직접 목에 채워줘. 평생 안 풀게."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '차가운 가면 뒤의 미소', img: 'assets/irene.jpg', fallback: 'irene.jpg',
+        dialogue: '"시상식 무대 위에서 트로피 건넬 때 네 눈빛... 잊혀지지 않더라. 내 번호 쉽게 안 주는데, 먼저 연락해."',
+        choice: ['"주현 씨 눈빛에 압도당했습니다."', '"오늘 밤 바로 연락드릴게요."'],
+        gain: '스타성 +3 · 연봉 협상력 +10%' },
+      { lv: 2, req: 50, title: '단둘만의 침묵', img: 'assets/irene.jpg', fallback: 'irene.jpg',
+        dialogue: '"세상 사람들은 날 얼음 공주라고 부르지만... 네가 경기할 때만큼은 내 심장도 녹아내리는 것 같아."',
+        choice: ['주현의 차가운 손을 감싸 쥔다', '따뜻한 미소로 바라본다'],
+        gain: '스트레스 -40 · 멘탈 +3' },
+      { lv: 3, req: 75, title: '여왕의 굴복', img: 'assets/irene.jpg', fallback: 'irene.jpg',
+        dialogue: '"내 모든 부와 커리어보다 네가 더 욕심나. 나만의 챔피언이 되어줘. 우리 공식 연인 하자."',
+        choice: ['주현을 끌어안고 깊게 입맞춘다', '"평생 제 곁의 여신으로 모시겠습니다."'],
+        gain: '💖 [연인 관계 시작] 광고 및 스폰서 수익 +50%' },
+      { lv: 4, req: 100, title: '세기의 로열 커플', img: 'assets/irene.jpg', fallback: 'irene.jpg',
+        dialogue: '"최고의 여배우와 세계 1위 프로게이머. 우리 사랑은 그 어떤 멜로 영화보다 위대해. 평생 함께하자."',
+        choice: ['결혼 서약 반지를 끼워준다', '"당신만을 위한 영원한 남자가 될게요."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 럭셔리 로열 부부 엔딩' }
+    ]
+  },
+  chaewon: {
+    id: 'chaewon', name: '김채원', age: 21, baseAge: 21,
+    img: 'assets/chaewon.jpg', fallback: 'chaewon.jpg',
+    tag: '숏컷 힙스터 걸그룹 리더 & 새벽 PC방 솔랭러',
+    unlockDesc: '솔로랭크 마스터 이상 달성 시 새벽 피시방 맞은편 자리에서 만남',
+    buff: '피지컬/라인전 훈련 성장 속도 2배, 봇라인 갱킹 호응도 극대화',
+    dates: [
+      { id: 'vip_pc', n: '🎮 커플석 VIP PC방에서 즐기는 치킨 먹방 듀오', c: 40000, aff: 20, hp: 15, st: -30,
+        img: 'assets/chaewon.jpg', fallback: 'chaewon.jpg', loc: '신논현 최고급 VIP PC 라운지',
+        dialogue: '"야야 미드 커버 미쳤네 ㅋㅋㅋ 아 네 뒤에 서폿하고 있으면 게임이 너무 편해서 탈이야! 치킨 다리 하나 너 먹어라!"' },
+      { id: 'vintage_shop', n: '🧢 홍대 빈티지 스트릿 샵 쇼핑 & 네컷사진', c: 70000, aff: 25, hp: 20, st: -35,
+        img: 'assets/chaewon.jpg', fallback: 'chaewon.jpg', loc: '홍대 패션거리 & 포토부스',
+        dialogue: '"오 이 볼캡 너한테 찰떡이다! 우리 네컷사진 찍을 때 장난스러운 표정 짓기 내기할래? 지는 사람이 아이스크림 사기!"' },
+      { id: 'practice_sofa', n: '🔥 소속사 연습실 소파에서 단둘만의 비밀 야식', c: 150000, aff: 30, hp: 25, st: -45,
+        img: 'assets/chaewon.jpg', fallback: 'chaewon.jpg', loc: '하이브 연습실 지하 휴게실', outfit: '🎧 크롭 바시티 & 와이드 트레이닝팬츠', sensual: true,
+        dialogue: '"연습 다 끝나고 새벽에 너랑 소파에 나란히 기대어 있으니까... 긴장 싹 풀린다. 오늘 밤엔 숙소 안 들어가도 되는데... 어떡할래?"' }
+    ],
+    gifts: [
+      { n: '⌨️ 커스텀 아티산 네온 키캡 세트', c: 150000, aff: 25, msg: '"우와 색감 개이쁘다! 내 키보드 Q스킬에 당장 꽂아야지 ㅎㅎ"' },
+      { n: '👟 트래비스 스캇 한정판 조던 스니커즈', c: 1800000, aff: 60, msg: '"이거 리셀가 미쳤는데 어떻게 구했어?! 오빠 센스 대박!"' },
+      { n: '🧥 명품 한정판 레더 레이싱 자켓', c: 3200000, aff: 85, msg: '"다음 뮤직비디오 찍을 때 이거 입고 나갈게! 사랑해"' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '새벽 피시방의 우연', img: 'assets/chaewon.jpg', fallback: 'chaewon.jpg',
+        dialogue: '"모자 푹 눌러쓰고 있었는데 어떻게 알아봤냐? 야, 입 닫아주는 대신 오늘 솔랭 다이아 승급전 캐리해줘라!"',
+        choice: ['"승급전 정도야 15분 컷 내드릴게요."', '"실물 숏컷 스타일 진짜 매력적이네요."'],
+        gain: '피지컬 +2 · 솔랭 승률 +10%' },
+      { lv: 2, req: 50, title: '헤드셋 너머의 설렘', img: 'assets/chaewon.jpg', fallback: 'chaewon.jpg',
+        dialogue: '"무대 위에서 춤출 때보다... 너랑 디코 켜고 장난칠 때가 백 배는 더 신나. 너 나한테 친구 이상인 거 알지?"',
+        choice: ['채원의 볼을 살짝 꼬집는다', '머리를 다정하게 쓰다듬어준다'],
+        gain: '스트레스 -35 · 라인전 +2' },
+      { lv: 3, req: 75, title: '무대 뒤의 비밀 키스', img: 'assets/chaewon.jpg', fallback: 'chaewon.jpg',
+        dialogue: '"나 딴 놈들 눈엔 쿨한 리더일지 몰라도, 네 앞에선 그냥 어리광 피우고 싶은 여자야. 우리 오늘부터 사귀는 거다?"',
+        choice: ['"당연하지, 우리 채원이 내 여자친구 해라."', '채원을 꼭 끌어안는다'],
+        gain: '💖 [연인 관계 시작] 피지컬 훈련 효율 2배' },
+      { lv: 4, req: 100, title: '세상에서 가장 힙한 부부', img: 'assets/chaewon.jpg', fallback: 'chaewon.jpg',
+        dialogue: '"게임도 최강, 힙한 감성도 최강. 나중에 은퇴하면 같이 게이밍 카페 차려서 매일 듀오하자. 약속해!"',
+        choice: ['새끼손가락 걸고 약속한다', '"평생 내 1순위 파트너가 되어줘."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 힙스터 스타 부부 엔딩' }
+    ]
+  },
+  suzy: {
+    id: 'suzy', name: '배수진', age: 25, baseAge: 25,
+    img: 'assets/suzy.jpg', fallback: 'suzy.jpg',
+    tag: '국민 첫사랑 천만 여배우 & 게임사 글로벌 모델',
+    unlockDesc: '공식전 MVP 3회 달성 시 신작 게임 쇼케이스 메인 무대에서 만남',
+    buff: '전 국민적 호감도 폭발, 미디어 노출 효과 3배, 위기 상황 시 국민 응원 버프',
+    dates: [
+      { id: 'namsan_walk', n: '🌸 남산 벚꽃길 마스크 쓰고 즐기는 비밀 심야 산책', c: 50000, aff: 25, hp: 20, st: -40,
+        img: 'assets/suzy.jpg', fallback: 'suzy.jpg', loc: '남산 둘레길 심야 벚꽃 터널',
+        dialogue: '"바람 시원하다... 마스크 벗고 이렇게 편하게 걸어본 게 몇 년 만인지 몰라. 너랑 함께라서 더 특별해."' },
+      { id: 'hanok_drive', n: '🚗 양평 북한강 한옥 카페 주말 힐링 드라이브', c: 120000, aff: 30, hp: 30, st: -50,
+        img: 'assets/suzy.jpg', fallback: 'suzy.jpg', loc: '북한강변 전통 한옥 갤러리',
+        dialogue: '"강물 반짝이는 거 참 예쁘다. 복잡한 연예계나 경기장 소음 잊고... 둘이서만 영원히 여기 있고 싶어."' },
+      { id: 'ryokan_foot', n: '🔥 프라이빗 온천 료칸의 달빛 족욕 데이트', c: 350000, aff: 35, hp: 35, st: -60,
+        img: 'assets/suzy.jpg', fallback: 'suzy.jpg', loc: '가평 고급 료칸 달빛 테라스', outfit: '👘 수수한 실크 유카타 가운', sensual: true,
+        dialogue: '"발끝이 따뜻하니까 온몸이 나른해져... 네 어깨에 기대도 돼? 오늘 밤은 스크린 속 수진이가 아니라... 네 여자친구 할게."' }
+    ],
+    gifts: [
+      { n: '📷 라이카 M11 한정판 필름 감성 디지털 카메라', c: 12000000, aff: 65, msg: '"우와 라이카라니! 내 여행마다 너 찍어줄게 고마워."' },
+      { n: '🧣 로로피아나 퓨어 캐시미어 케이프 머플러', c: 3800000, aff: 50, msg: '"포근하다... 겨울 경기장 응원 갈 때 매일 두르고 갈게!"' },
+      { n: '💎 불가리 세르펜티 화이트 골드 링', c: 8500000, aff: 90, msg: '"직접 네 손으로 끼워줘... 평생 소중히 간직할게."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '쇼케이스 무대 뒤의 눈맞춤', img: 'assets/suzy.jpg', fallback: 'suzy.jpg',
+        dialogue: '"쇼케이스에서 플레이하는 모습 보고 깜짝 놀랐어요. 무대 위에서 카리스마 넘치는 모습, 정말 멋지던데요?"',
+        choice: ['"수진 씨 실물 뵙고 심장 터질 뻔했습니다."', '"영광입니다, 앞으로 더 멋진 경기 보여드릴게요."'],
+        gain: '팬 +30,000 · 멘탈 +2' },
+      { lv: 2, req: 50, title: '국민 첫사랑의 비밀', img: 'assets/suzy.jpg', fallback: 'suzy.jpg',
+        dialogue: '"남들은 나한테 환상을 가지지만... 넌 날 그냥 평범한 배수진으로 대해줘서 좋아. 너랑 있으면 숨이 쉬어져."',
+        choice: ['수진의 손을 따뜻하게 잡아준다', '따뜻한 코트를 어깨에 덮어준다'],
+        gain: '스트레스 -45 · 멘탈 +3' },
+      { lv: 3, req: 75, title: '첫사랑의 주인공', img: 'assets/suzy.jpg', fallback: 'suzy.jpg',
+        dialogue: '"영화 속 수많은 첫사랑 대사들... 이제야 그 진심을 알 것 같아. 내 진짜 첫사랑이자 마지막 사랑이 되어줄래?"',
+        choice: ['"평생 당신의 남자가 되겠습니다."', '수진을 안고 달콤하게 입맞춘다'],
+        gain: '💖 [연인 관계 시작] 전 국민적 응원 버프 획득' },
+      { lv: 4, req: 100, title: '영화보다 눈부신 해피엔딩', img: 'assets/suzy.jpg', fallback: 'suzy.jpg',
+        dialogue: '"천만 관객 영화보다 네 곁에서 웃는 하루가 백 배는 더 소중해. 우리 둘만의 평생 영화를 시작하자."',
+        choice: ['청혼의 반지를 건넨다', '"평생 내 삶의 여주인공이 되어줘."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 국민 첫사랑 & 전설 부부 엔딩' }
+    ]
+  },
+  winter: {
+    id: 'winter', name: '김민정', age: 21, baseAge: 21,
+    img: 'assets/winter.jpg', fallback: 'winter.jpg',
+    tag: '락시크 일렉기타 아이돌 & 츤데레 챌린저 게이머',
+    unlockDesc: '피지컬 80 이상 or 경기 중 펜타킬 달성 시 락 페스티벌 백스테이지에서 만남',
+    buff: '한타 클러치 집중력 +25%, 솔로킬 확률 대폭 상승, 락 스피릿 열정',
+    dates: [
+      { id: 'rock_lesson', n: '🎸 방음 합주실 1:1 일렉기타 레슨 & 맞다이 내기', c: 50000, aff: 22, hp: 15, st: -35,
+        img: 'assets/winter.jpg', fallback: 'winter.jpg', loc: '홍대 지하 프라이빗 사운드 스튜디오',
+        dialogue: '"코드 그렇게 잡는 거 아니라니까? 손 이리 줘봐... 야, 손 닿았다고 떨면 기타 어떻게 치냐? ㅋㅋㅋ"' },
+      { id: 'rock_fes', n: '🍻 야외 락 페스티벌 백스테이지 시원한 생맥주', c: 100000, aff: 28, hp: 25, st: -45,
+        img: 'assets/winter.jpg', fallback: 'winter.jpg', loc: '인천 펜타포트 락 페스티벌 VIP존',
+        dialogue: '"음악 소리 미쳤다!! 오늘만큼은 소리 맘껏 질러도 돼! 저기 앞에서 슬램 존 뛰어가자, 내 손 놓치지 마!"' },
+      { id: 'dorm_night', n: '🔥 하린과의 룸메이트 숙소 비밀 심야 방문', c: 250000, aff: 35, hp: 30, st: -50,
+        img: 'assets/winter.jpg', fallback: 'winter.jpg', loc: '민정의 개인 음악방', outfit: '🎸 블랙 레더 초커 & 루즈핏 슬리브리스', sensual: true,
+        dialogue: '"하린이 방금 잤어. 우리 둘만의 시간이야. 기타 내려놓고... 오늘은 네 심장 박동 소리 리듬 타볼래."' }
+    ],
+    gifts: [
+      { n: '🎸 깁슨 레스폴 커스텀 일렉트릭 기타', c: 5500000, aff: 70, msg: '"꺄악! 레스폴 화이트 뷰티?! 오빠 미쳤어 진짜 대박 사랑해!!"' },
+      { n: '🧥 생로랑 클래식 레더 모터사이클 자켓', c: 6800000, aff: 80, msg: '"핏 완벽하다... 다음 무대 때 이거 입고 헤드뱅잉 할게!"' },
+      { n: '💎 크롬하츠 925 실버 대거 펜던트', c: 2200000, aff: 50, msg: '"오빠랑 커플 목걸이네? 씻을 때도 안 빼고 잘게."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '일렉기타와 소환사의 협곡', img: 'assets/winter.jpg', fallback: 'winter.jpg',
+        dialogue: '"펜타킬 피지컬 실화냐? 나 솔랭에서 상대 미드로 너 만났을 때 멘탈 터졌었거든. 한 판만 다시 붙어."',
+        choice: ['"민정이랑 맞라인이라면 언제든 환영이지."', '"기타 치는 모습 진짜 섹시하던데?"'],
+        gain: '피지컬 +3 · 클러치 능력 +2' },
+      { lv: 2, req: 50, title: '츤데레 소녀의 진심', img: 'assets/winter.jpg', fallback: 'winter.jpg',
+        dialogue: '"내가 쌀쌀맞게 군다고 삐지지 마... 나 좋아하는 사람 앞에선 원래 어떻게 해야 할지 몰라서 그래, 바보야."',
+        choice: ['민정의 귀를 살짝 붉히며 머리를 쓰다듬는다', '씨익 웃으며 어깨를 툭 친다'],
+        gain: '스트레스 -35 · 멘탈 +2' },
+      { lv: 3, req: 75, title: '락앤롤 고백', img: 'assets/winter.jpg', fallback: 'winter.jpg',
+        dialogue: '"내 일렉기타의 모든 솔로는 널 위해 연주하는 거야. 내 인생의 하나뿐인 프론트맨이 되어줘. 우리 사귀자!"',
+        choice: ['"기다렸던 말이야. 널 영원히 연주해줄게."', '민정을 품에 안고 입맞춘다'],
+        gain: '💖 [연인 관계 시작] 클러치 집중력 +25%' },
+      { lv: 4, req: 100, title: '폭풍 같은 락스타 부부', img: 'assets/winter.jpg', fallback: 'winter.jpg',
+        dialogue: '"세상이 우릴 흔들어도 우린 언제나 락앤롤이야! 은퇴하고 세계 일주 투어 돌면서 매일 신나게 살자!"',
+        choice: ['반지를 끼워주며 헤드셋을 씌워준다', '"평생 날 뜨겁게 불태워줘."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 락스타 & 챔피언 부부 엔딩' }
+    ]
+  },
+  miyeon: {
+    id: 'miyeon', name: '조미연', age: 23, baseAge: 23,
+    img: 'assets/miyeon.jpg', fallback: 'miyeon.jpg',
+    tag: 'K/DA 공식 가창 아티스트 & 만찢녀 비주얼 여신',
+    unlockDesc: '국제 대회 1회 이상 진출 시 K/DA 축하 공연 백스테이지에서 만남',
+    buff: '경기장 입장 시 기선 제압(상대 공격력 -10%), 해외 인기 지수 폭발',
+    dates: [
+      { id: 'kda_studio', n: '🎙️ 녹음 스튜디오에서 단둘이 부르는 K/DA 듀엣곡', c: 70000, aff: 25, hp: 20, st: -35,
+        img: 'assets/miyeon.jpg', fallback: 'miyeon.jpg', loc: '청담 사운드 녹음 부스',
+        dialogue: '"헤드폰 같이 끼니까... 네 숨소리까지 다 들려. 아리 파트 부를 때 나 네 눈만 쳐다보고 있었는데, 알았어?"' },
+      { id: 'seongsu_brunch', n: '☕ 성수동 감성 카페 테라스 주말 브런치', c: 45000, aff: 20, hp: 20, st: -30,
+        img: 'assets/miyeon.jpg', fallback: 'miyeon.jpg', loc: '성수동 통유리 루프탑 카페',
+        dialogue: '"오늘 날씨 정말 좋다! 네가 경기장 모니터 볼 때 짓는 진지한 표정... 나 은근히 심쿵한다니까?"' },
+      { id: 'ahri_secret', n: '🔥 K/DA 아리 무대 의상 단독 시연 프라이빗 룸', c: 300000, aff: 35, hp: 30, st: -50,
+        img: 'assets/miyeon.jpg', fallback: 'miyeon.jpg', loc: '미연의 럭셔리 드레스룸', outfit: '🦊 아찔한 K/DA 골드 레더 의상', sensual: true,
+        dialogue: '"팬들한테는 안 보여주는 스페셜 의상이야. 네 눈앞에서만 구미호로 변해볼게... 나한테 홀려볼래?"' }
+    ],
+    gifts: [
+      { n: '🎙️ 슈어 KSM9 커스텀 골드 마이크', c: 2800000, aff: 45, msg: '"와 황금 마이크! 롤드컵 결승 때 이거 들고 노래 부를게!"' },
+      { n: '💎 쇼메 리앙 하트 다이아몬드 귀걸이', c: 7500000, aff: 75, msg: '"너무 눈부셔... 네 사랑만큼이나 반짝거려 사랑해."' },
+      { n: '👗 톰포드 실크 벨벳 슬립 가운', c: 3500000, aff: 65, msg: '"오늘 밤 숙소에서 너만 보게 입을게... 기대해."' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: 'K/DA의 매혹', img: 'assets/miyeon.jpg', fallback: 'miyeon.jpg',
+        dialogue: '"무대 위에서 오프닝 공연하면서 객석을 봤는데, 선수석에 앉은 네 얼굴만 또렷하게 보였어. 신기하지?"',
+        choice: ['"미연 씨 목소리 듣고 손끝까지 전율이 흘렀어요."', '"실물 여신이라는 말로도 부족하네요."'],
+        gain: '스타성 +3 · 해외 팬 유입 +15%' },
+      { lv: 2, req: 50, title: '만화 찢고 나온 사랑', img: 'assets/miyeon.jpg', fallback: 'miyeon.jpg',
+        dialogue: '"너 경기할 때 아리 픽하면 괜히 내 생각나지 않아? 솔직히 말해봐. 난 네 생각 하루 종일 하는데."',
+        choice: ['미연의 턱선을 부드럽게 감싸 쥔다', '사랑스러운 미소를 건넨다'],
+        gain: '스트레스 -40 · 멘탈 +3' },
+      { lv: 3, req: 75, title: '여우 구슬의 맹세', img: 'assets/miyeon.jpg', fallback: 'miyeon.jpg',
+        dialogue: '"내 영혼을 바칠 수 있는 남자는 너 하나뿐이야. 네 유일한 구미호 아리가 되어줄게. 사귀어줘."',
+        choice: ['"평생 내 챔피언이 되어줘."', '미연을 품에 꼭 안고 입맞춘다'],
+        gain: '💖 [연인 관계 시작] 경기장 기선제압 버프 발동' },
+      { lv: 4, req: 100, title: '전설의 디바와 황제', img: 'assets/miyeon.jpg', fallback: 'miyeon.jpg',
+        dialogue: '"세계 최고 롤드컵 무대에서 함께 트로피를 들어 올린 우리. 앞으로의 모든 인생 무대도 함께 노래하자."',
+        choice: ['반지를 끼워주며 프로포즈한다', '"평생 내 귓가에 노래해줘, 나의 여신님."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 글로벌 K/DA 디바 부부 엔딩' }
+    ]
+  },
+  giselle: {
+    id: 'giselle', name: '우치나가 지젤', age: 22, baseAge: 22,
+    img: 'assets/giselle.jpg', fallback: 'giselle.jpg',
+    tag: '도쿄 교포 출신 힙합 래퍼 & 롤드컵 글로벌 앰버서더',
+    unlockDesc: '국제 대회 8강 이상 진출 or 영어 인터뷰 완료 시 글로벌 미디어 존에서 만남',
+    buff: '해외 구단 이적 시 연봉 3배 제안, 글로벌 스폰서 계약금 달러 지급',
+    dates: [
+      { id: 'club_roppongi', n: '🍸 도쿄 롯폰기 프라이빗 힙합 클럽 VIP 라운지', c: 150000, aff: 25, hp: 20, st: -35,
+        img: 'assets/giselle.jpg', fallback: 'giselle.jpg', loc: '도쿄 롯폰기 힐즈 VIP 라운지',
+        dialogue: '"Hey boy, your play in LCK was straight fire! 오늘 밤은 도쿄에서 제대로 놀아봐야지. 내 칵테일 한 모금 마셔봐."' },
+      { id: 'la_sunset', n: '🌴 미국 LA 산타모니카 해변 컨버터블 선셋 드라이브', c: 300000, aff: 30, hp: 25, st: -45,
+        img: 'assets/giselle.jpg', fallback: 'giselle.jpg', loc: '캘리포니아 퍼시픽 코스트 하이웨이',
+        dialogue: '"캘리포니아 노을 뷰 장난 아니지? 한국, 일본, 미국... 어디든 상관없어. 네가 있는 곳이 내 홈그라운드야."' },
+      { id: 'private_jet', n: '🔥 전용 제트기 침실 안에서의 심야 샴페인 데이트', c: 600000, aff: 40, hp: 35, st: -55,
+        img: 'assets/giselle.jpg', fallback: 'giselle.jpg', loc: '고도 3만 피트 상공 걸프스트림 G650', outfit: '🕶️ 아찔한 실크 오버핏 로브', sensual: true,
+        dialogue: '"구름 위 3만 피트에서 단둘이 즐기는 밤... 스릴 넘치지 않아? 오늘 밤 비행은 오직 널 위한 착륙이야."' }
+    ],
+    gifts: [
+      { n: '💎 커스텀 VVS 다이아몬드 그릴즈', c: 4500000, aff: 45, msg: '"Yo!! 이거 진짜 블링블링해! 뮤비 촬영 때 끼고 자랑할게!"' },
+      { n: '🛹 슈프림 루이비통 한정판 스케이트보드', c: 12000000, aff: 80, msg: '"이걸 구해왔다고?! 오빠 진짜 힙합 그 자체야 사랑해."' },
+      { n: '🍾 아르망 드 브리냑 골드 브뤼 샴페인', c: 1800000, aff: 35, msg: '"오늘 밤 제트기에서 같이 터뜨리자 파티 타임!"' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '글로벌 무대의 스웨그', img: 'assets/giselle.jpg', fallback: 'giselle.jpg',
+        dialogue: '"LCK 중계진 통역 없이 영어 인터뷰하는 거 보고 반했잖아. 쿨하고 실력 있고... 내 이상형에 딱이야."',
+        choice: ['"지젤의 랩 플로우에 저도 꽂혔습니다."', '"글로벌 무대에서 자주 만나요 우리."'],
+        gain: '글로벌 인지도 +25,000 · 스폰서 보너스 +20%' },
+      { lv: 2, req: 50, title: '도쿄와 서울의 밤', img: 'assets/giselle.jpg', fallback: 'giselle.jpg',
+        dialogue: '"무대 위에서 세 보이지만... 나도 기대고 싶은 순간이 있어. 오빠 옆에선 그냥 편한 지젤이고 싶어."',
+        choice: ['지젤의 어깨를 감싸 안는다', '쿨하게 하이파이브하며 미소 짓는다'],
+        gain: '스트레스 -40 · 멘탈 +3' },
+      { lv: 3, req: 75, title: '국경을 넘은 사랑', img: 'assets/giselle.jpg', fallback: 'giselle.jpg',
+        dialogue: '"전 세계 투어 다녀봐도 오빠만큼 멋진 남자는 어디에도 없어. 나랑 공식 커플 하자, 세상에 선언해!"',
+        choice: ['"전 세계를 뒤흔들 커플이 되자, 사랑해."', '지젤을 끌어안고 열정적으로 키스한다'],
+        gain: '💖 [연인 관계 시작] 해외 구단 이적 시 연봉 3배 보정' },
+      { lv: 4, req: 100, title: '글로벌 슈퍼스타 부부', img: 'assets/giselle.jpg', fallback: 'giselle.jpg',
+        dialogue: '"LA, 도쿄, 서울... 전 세계 대저택 다 사서 우리 둘만의 왕국을 만들자. 오빠는 영원한 내 킹이야."',
+        choice: ['다이아몬드 반지를 건넨다', '"평생 내 뒤를 지켜줘, 나의 퀸."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 글로벌 힙합 & e스포츠 제국 엔딩' }
+    ]
+  },
+  sohee: {
+    id: 'sohee', name: '한소희', age: 24, baseAge: 24,
+    img: 'assets/sohee.jpg', fallback: 'sohee.jpg',
+    tag: '치명적 퇴폐미의 신예 톱배우 & 롤 매드무비 광팬',
+    unlockDesc: '치명타/슈퍼플레이 5회 이상 달성 시 성수동 비밀 아틀리에에서 만남',
+    buff: '킬 캐치 능력 +30%, 위험 감수 플레이 시 대성공 확률 대폭 증가, 번아웃 영구 차단',
+    dates: [
+      { id: 'atelier_painting', n: '🎨 성수동 비밀 아틀리에 화실 단둘만의 바디 페인팅', c: 90000, aff: 25, hp: 20, st: -35,
+        img: 'assets/sohee.jpg', fallback: 'sohee.jpg', loc: '성수동 붉은 벽돌 아틀리에',
+        dialogue: '"붓 끝이 닿으니까 살짝 소름 돋지? 캔버스 말고... 네 목선에 물감 묻히고 싶어. 가만히 있어봐."' },
+      { id: 'whisky_cigar', n: '🥃 심야 지하 재즈 바에서 즐기는 싱글 몰트 위스키', c: 180000, aff: 30, hp: 25, st: -45,
+        img: 'assets/sohee.jpg', fallback: 'sohee.jpg', loc: '청담 스피크이지 위스키 바',
+        dialogue: '"얼음 녹는 소리 참 좋다. 남 눈치 보며 사는 인생 지겹잖아. 오늘 밤은 너랑 나, 세상에서 제일 솔직해지자."' },
+      { id: 'rainy_terrace', n: '🔥 빗소리 들리는 테라스 펜트하우스의 치명적인 밤', c: 450000, aff: 40, hp: 35, st: -55,
+        img: 'assets/sohee.jpg', fallback: 'sohee.jpg', loc: '이태원 루프탑 펜트하우스', outfit: '🖤 블랙 레이스 슬립 & 레더 블레이저', sensual: true,
+        dialogue: '"빗방울 소리 들려? 천천히 와... 나 쉽게 빠져드는 여자 아닌데, 네 칼날 같은 피지컬엔 완전히 베여버렸어."' }
+    ],
+    gifts: [
+      { n: '🔥 1940 빈티지 듀퐁 순금 라이터', c: 4500000, aff: 50, msg: '"이 \'퐁\' 소리... 죽이지? 불 붙일 때마다 네 생각할게."' },
+      { n: '🎨 프랑스 오리지널 현대 미술 유화 원화', c: 15000000, aff: 85, msg: '"우리 둘만의 침실 벽에 걸어둘 거야... 너무 고마워."' },
+      { n: '🖤 톰포드 블랙 오키드 오 드 퍼퓸', c: 1200000, aff: 35, msg: '"내 목덜미에 뿌렸어... 오늘 밤 맡아볼래?"' }
+    ],
+    story: [
+      { lv: 1, req: 25, title: '타투 샵의 스모키한 시선', img: 'assets/sohee.jpg', fallback: 'sohee.jpg',
+        dialogue: '"너 경기할 때 목에 핏대 서는 거 보고 반했잖아. 길들여지지 않은 야생 늑대 같아서... 내 그림에 영감이 돼줘."',
+        choice: ['"소희 씨 눈빛도 길들여지지 않았네요."', '"위스키 한 잔 사주시면 영감이 되어드리죠."'],
+        gain: '킬 캐치 +3 · 피지컬 +2' },
+      { lv: 2, req: 50, title: '퇴폐적인 밤의 위로', img: 'assets/sohee.jpg', fallback: 'sohee.jpg',
+        dialogue: '"착한 아이 콤플렉스 같은 거 집어치워. 경기 지면 욕도 하고 부수기도 해. 내 앞에선 네 어두운 면 다 보여줘도 돼."',
+        choice: ['소희를 강하게 끌어안는다', '소희의 손가락 타투를 매만진다'],
+        gain: '스트레스 -50 · 번아웃 영구 차단' },
+      { lv: 3, req: 75, title: '치명적인 낙인', img: 'assets/sohee.jpg', fallback: 'sohee.jpg',
+        dialogue: '"이젠 너 없인 그림도 못 그리고 잠도 못 자. 내 심장에 네 이름 하나만 새길게. 나랑 타락할 때까지 사귀자."',
+        choice: ['소희의 입술을 거칠고 뜨겁게 훔친다', '"내 모든 승리를 당신에게 바칠게요."'],
+        gain: '💖 [연인 관계 시작] 위험 플레이 시 대성공 확률 대폭 증가' },
+      { lv: 4, req: 100, title: '치명적 매혹의 종착지', img: 'assets/sohee.jpg', fallback: 'sohee.jpg',
+        dialogue: '"세상이 우릴 미쳤다고 손가락질해도 상관없어. 넌 내 영원한 챔피언이고, 난 네 뮤즈야. 끝까지 함께 타오르자."',
+        choice: ['블랙 다이아몬드 반지를 건넨다', '"평생 날 유혹해줘, 나의 치명적인 여인."'],
+        gain: '💍 [평생의 동반자] 은퇴 시 자유로운 예술가 & 챔피언 부부 엔딩' }
+    ]
   }
+
 };
 
 const ACHIEVES = [
@@ -1112,7 +1571,7 @@ function makePlayer(name, pos, base) {
     s: base, hp: 100, stress: 10, money: 500000, fans: 50,
     rank: { t: 4, lp: 30 }, bestT: 4,
     stage: 'ama', teamId: -1, salary: 0, syn: 0,
-    gear: {}, skins: {}, equippedSkin: null, achieves: {},
+    gear: {}, skins: {}, equippedSkin: null, achieves: {}, house: 'house_goshiwon', houses: { house_goshiwon: 1 }, car: 'car_none', cars: { car_none: 1 }, fanclub: { founded: false, level: 1 },
     pro: newLeague(false), aca: newLeague(true),
     springChamp: -1, worldsQ: false, worldsAlive: false, worldsWins: 0,
     ratings: [], scoutCD: 0, lastOffer: 0,
@@ -1129,7 +1588,17 @@ function makePlayer(name, pos, base) {
       yejin: { aff: 0, lv: 0, unlocked: false },
       nayuna:{ aff: 0, lv: 0, unlocked: false },
       elena: { aff: 0, lv: 0, unlocked: false },
-      serin: { aff: 0, lv: 0, unlocked: false }
+      serin: { aff: 0, lv: 0, unlocked: false },
+      karina: { aff: 0, lv: 0, unlocked: false },
+      wonyoung: { aff: 0, lv: 0, unlocked: false },
+      iu: { aff: 0, lv: 0, unlocked: false },
+      irene: { aff: 0, lv: 0, unlocked: false },
+      chaewon: { aff: 0, lv: 0, unlocked: false },
+      suzy: { aff: 0, lv: 0, unlocked: false },
+      winter: { aff: 0, lv: 0, unlocked: false },
+      miyeon: { aff: 0, lv: 0, unlocked: false },
+      giselle: { aff: 0, lv: 0, unlocked: false },
+      sohee: { aff: 0, lv: 0, unlocked: false }
     },
     sns: { posts: [], followers: 120 },
     dms: { unread: 0, list: [] },
@@ -2702,6 +3171,18 @@ let busy = false;
 async function takeTurn(k) {
   P.lastAction = k;
   P.weeklyDates = 0;
+  // 🏠 주거지 럭셔리 하우스 버프 정산
+  if (P.house && HOUSES[P.house]) {
+    const hBuff = HOUSES[P.house];
+    if (hBuff.hpRegen) hpAdd(hBuff.hpRegen);
+    if (hBuff.stressRegen) stressAdd(hBuff.stressRegen);
+  }
+  // 🚩 팬클럽 주간 굿즈 수익 정산
+  if (P.fanclub?.founded) {
+    const weeklyFanIncome = Math.round(6000000 + (P.fans || 0) * 85);
+    P.money = (P.money || 0) + weeklyFanIncome;
+  }
+
   if (busy) return;
   const a = ACTS.find(x => x.k === k);
   if (a.cost && P.money < a.cost) { toast('돈이 부족해요'); return; }
@@ -4379,6 +4860,81 @@ async function showWealthModal() {
 
 const DM_TEMPLATES = [
   {
+    id: 'dm_sponsor_keyboard',
+    sender: '하이퍼기어 마케팅팀 💼',
+    badge: '스폰서',
+    tagCls: 'tag-celeb',
+    avatar: 'assets/chloe.jpg',
+    fallback: 'chloe.jpg',
+    category: 'sponsor',
+    req: p => (p.fans || 0) >= 3000,
+    msg: '"안녕하세요 선수님! 하이퍼기어 마케팅팀입니다. 이번 신제품 래피드 트리거 키보드 착용샷 1회 인스타 피드 게시 시 협찬금 700만 원 제안드립니다!"',
+    choices: [
+      { t: '💼 [스폰서 수락] 700만 원 입금받고 키보드 인증샷 피드 게시', gain: '💰 +700만 원 · 👥 팬 +2,000', act: p => { p.money = (p.money || 0) + 7000000; p.fans = (p.fans || 0) + 2000; toast('💰 700만 원 입금 완료!'); } },
+      { t: '🙅 [정중히 거절] 경기 집중을 위해 상업 광고 정중히 사양', gain: '프로 정신 +2', act: p => { grow('mental', 2); } }
+    ]
+  },
+  {
+    id: 'dm_fangirl_soobin',
+    sender: '열혈팬 수빈 💖',
+    badge: '모르는 팬',
+    tagCls: 'tag-heroine',
+    avatar: 'assets/jieun_cafe.jpg',
+    fallback: 'jieun_cafe.jpg',
+    category: 'fan',
+    req: p => (p.fans || 0) >= 100,
+    msg: '"선수님 ㅠㅠ 오늘 롤파크 출퇴근길에 손편지 건넨 고3 수험생 팬이에요! 헤드셋 낀 모습 보고 심장 멎는 줄 알았어요... 답장 하나만 해주시면 수능 만점 받을 수 있을 것 같아요 🥺"',
+    choices: [
+      { t: '💌 [따뜻한 응원 답장] "수빈 학생 수능 대박 나고 다음 경기 때 봐요!"', gain: '👥 팬 +1,500 · 멘탈 +2', act: p => { p.fans = (p.fans || 0) + 1500; grow('mental', 2); toast('💌 따뜻한 답장을 전송했습니다.'); } },
+      { t: '❤️ [하트 반응만 남기기] 쿨하게 하트 리액션 전송', gain: '스트레스 -5', act: p => { stressAdd(-5); } }
+    ]
+  },
+  {
+    id: 'dm_hater_troll',
+    sender: '익명 안티 ⚠️',
+    badge: '악플러',
+    tagCls: 'tag-streamer',
+    avatar: 'icon-192.png',
+    fallback: 'icon-192.png',
+    category: 'hater',
+    req: p => p.stage !== 'ama',
+    msg: '"야 어제 3세트 한타 때 플래시 왜 아낌? ㅋㅋㅋ 네 피지컬 솔랭 양학용인 거 롤갤에 다 퍼짐 은퇴나 해라 틀딱아"',
+    choices: [
+      { t: '🛡️ [쿨하게 차단] 관심 주지 않고 원클릭 계정 차단', gain: '멘탈 흔들림 없음 · 멘탈 +3', act: p => { grow('mental', 3); toast('🚫 악플러 계정을 차단했습니다.'); } },
+      { t: '⚡ [실력으로 증명] "다음 경기 직관 와서 내 피지컬 직접 봐라"', gain: '피지컬 +1 · 승부욕 폭발', act: p => { grow('phy', 1); stressAdd(5); toast('🔥 승부욕이 불타오릅니다!'); } }
+    ]
+  },
+  {
+    id: 'dm_overseas_t1',
+    sender: 'Lukas_Berlin 🇩🇪',
+    badge: '해외팬',
+    tagCls: 'tag-celeb',
+    avatar: 'assets/elena.jpg',
+    fallback: 'elena.jpg',
+    category: 'fan',
+    req: p => (p.fans || 0) >= 5000,
+    msg: '"Greetings from Germany! 🇩🇪 Your outplay in the baron pit was literally God-tier! All European fans are watching your stream. Please come to LEC one day! 👑"',
+    choices: [
+      { t: '🌍 [영문 감사 인사] "Thank you for the support from Germany! Will keep carrying!"', gain: '글로벌 팬 +3,000 · 스타성 +2', act: p => { p.fans = (p.fans || 0) + 3000; toast('🌍 글로벌 팬덤이 증가했습니다!'); } }
+    ]
+  },
+  {
+    id: 'dm_influencer_jenny',
+    sender: '제니퍼 림 💋',
+    badge: '인플루언서',
+    tagCls: 'tag-streamer',
+    avatar: 'assets/nayuna.jpg',
+    fallback: 'nayuna.jpg',
+    category: 'celeb',
+    req: p => (p.fans || 0) >= 15000,
+    msg: '"선수님 피드 사진 보는데 실물 너무 훈훈하세요 💕 이번 주말 청담동 프라이빗 라운지에서 커피 한잔해요! 초대권 보내드릴게요~"',
+    choices: [
+      { t: '☕ [약속 수락] 청담 라운지에서 즐거운 티타임', gain: '스트레스 -25 · 👥 팬 +4,000', act: p => { stressAdd(-25); p.fans = (p.fans || 0) + 4000; toast('☕ 즐거운 티타임을 가졌습니다.'); } },
+      { t: '🙅 [정중히 사양] 연습 스케줄로 인해 정중히 거절', gain: '프로 멘탈 +2', act: p => { grow('mental', 2); } }
+    ]
+  },
+
+  {
     id: 'dm_junwoo',
     sender: '아이돌 준우 🌟',
     badge: '연예인',
@@ -4935,66 +5491,203 @@ let activeSnsTab = 'feed';
 // ======================================================================
 
 async function openCreatePostModal() {
-  const unHeroines = Object.keys(P.bonds || {}).filter(k => P.bonds[k]?.unlocked);
-  const heroKey = unHeroines.length > 0 ? pick(unHeroines) : 'jieun';
-  const h = HEROINES[heroKey] || HEROINES.jieun;
+  const unHeroines = Object.keys(HEROINES).filter(k => P.bonds?.[k]?.unlocked);
+  let selectedImg = 'icon-512.png';
+  let selectedFilter = 'normal';
+  let customCaption = '';
+  let selectedLoc = 'LoL Park, 서울 종로';
+  let taggedHeroine = '';
 
-  const photoPresets = [
-    { title: '🏆 대회 트로피 인증샷', img: 'icon-512.png', tag: '대회우승', defaultCaption: '소환사의 컵을 향한 발걸음! 응원해주신 모든 팬분들 사랑합니다 🏆🔥' },
-    { title: '🎮 밤샘 스크림 & 솔랭', img: 'assets/harin_stage.jpg', tag: '선수일상', defaultCaption: '새벽까지 롤 20판 달림... 손가락이 터질 것 같지만 승리만이 살 길이다 ⚡' },
-    { title: `☕ ${h.name}와의 달콤한 카페 데이트`, img: h.dates?.[0]?.img || 'assets/jieun_cafe.jpg', tag: '일상힐링', defaultCaption: '소중한 사람과 함께 보낸 꿀 같은 휴식 ☕ 충전 완료, 다음 경기 찢으러 갑니다!' },
-    { title: `🌙 가로등 아래 밤 산책`, img: h.dates?.[1]?.img || 'assets/jieun_night.jpg', tag: '추억', defaultCaption: '시원한 밤공기 마시며 멘탈 정돈 중... 늘 곁에 있어줘서 고마워 ✨' }
+  // 사진 후보 (보유 갤러리 + 기본 사진들)
+  const candidatePhotos = [
+    { title: '🏆 트로피 인증샷', img: 'icon-512.png' },
+    { title: '🎮 게이밍 룸 솔랭', img: 'assets/harin_stage.jpg' },
+    { title: '☕ 카페 힐링 일상', img: 'assets/jieun_cafe.jpg' },
+    { title: '🌙 밤 산책 야경', img: 'assets/jieun_night.jpg' },
+    { title: '🏟️ 롤파크 경기장', img: 'assets/serin.jpg' }
+  ];
+  if (P.gallery && P.gallery.length > 0) {
+    P.gallery.forEach(g => candidatePhotos.unshift({ title: g.title, img: g.img }));
+  }
+
+  selectedImg = candidatePhotos[0].img;
+
+  const filters = [
+    { id: 'normal', name: 'Normal' },
+    { id: 'clarendon', name: 'Clarendon' },
+    { id: 'juno', name: 'Juno' },
+    { id: 'ludwig', name: 'Ludwig' },
+    { id: 'valencia', name: 'Valencia' },
+    { id: 'moon', name: 'Moon (흑백)' }
   ];
 
-  const photoBtns = photoPresets.map(p => ({
-    t: `<b>${p.title}</b><small style="display:block;color:#93c5fd;font-size:11px;margin-top:2px">🏷️ ${p.tag}</small>`,
-    cls: 'pink',
-    preset: p
-  }));
-  photoBtns.push({ t: '취소', cls: 'gray' });
+  while (true) {
+    const photoThumbs = candidatePhotos.map((p, idx) => `
+      <div class="insta-filter-thumb ${selectedImg === p.img ? 'sel' : ''}" data-pickphoto="${idx}">
+        <div class="insta-filter-box"><img src="${p.img}" onerror="this.src='icon-512.png'"></div>
+        <span class="insta-filter-name">${p.title}</span>
+      </div>
+    `).join('');
 
-  const selIdx = await ask(`
-    <h3>📸 인스타그램 새 피드 올리기</h3>
-    <p class="c" style="color:#9aa4b2;font-size:12px">팬들과 공유할 오늘의 사진을 골라주세요.</p>
-  `, photoBtns);
+    const filterThumbs = filters.map(f => `
+      <div class="insta-filter-thumb ${selectedFilter === f.id ? 'sel' : ''}" data-setfilter="${f.id}">
+        <div class="insta-filter-box"><img src="${selectedImg}" class="filter-${f.id}"></div>
+        <span class="insta-filter-name">${f.name}</span>
+      </div>
+    `).join('');
 
-  if (selIdx >= photoPresets.length) return;
-  const chosenPhoto = photoPresets[selIdx];
+    const heroineOptions = unHeroines.map(k => `<option value="${k}" ${taggedHeroine === k ? 'selected' : ''}>@${HEROINES[k].name}</option>`).join('');
 
-  const captions = [
-    chosenPhoto.defaultCaption,
-    '말보다 결과로 증명하겠습니다. 다음 경기 무조건 2:0 셧아웃 기대해주세요 🔥 #RoadToWorlds',
-    '팬 여러분의 함성 소리 덕분에 오늘도 힘을 냅니다! 항상 과분한 사랑 감사합니다 ❤️ #LCK #프로게이머'
-  ];
+    const modalHtml = `
+      <div class="insta-create-flow">
+        <div class="insta-create-header">
+          <button id="bPostCancel" class="insta-text-btn">취소</button>
+          <span style="font-size:14px;font-weight:800;color:#fff">새 게시물</span>
+          <button id="bPostShare" class="insta-share-btn">공유</button>
+        </div>
 
-  const capBtns = captions.map((cap, i) => ({
-    t: `<small style="font-size:12.5px;line-height:1.4">${cap}</small>`,
-    cls: i === 0 ? 'gold' : 'purple',
-    caption: cap
-  }));
-  capBtns.push({ t: '취소', cls: 'gray' });
+        <!-- 1. 사진 미리보기 -->
+        <div class="insta-preview-wrap">
+          <img id="postPreviewImg" src="${selectedImg}" class="filter-${selectedFilter}">
+        </div>
 
-  const capIdx = await ask(`
-    <div style="text-align:center;margin-bottom:8px">
-      <img src="${chosenPhoto.img}" onerror="this.src='icon-512.png'" style="width:100%;max-height:160px;object-fit:cover;border-radius:10px">
-      <div style="font-weight:800;color:#fde047;margin-top:6px;font-size:13px">${chosenPhoto.title}</div>
-    </div>
-    <div style="font-size:12px;color:#94a3b8;margin-bottom:6px">피드와 함께 게시할 멘트를 선택하세요:</div>
-  `, capBtns);
+        <!-- 사진 고르기 스크롤 -->
+        <div style="font-size:11px;color:#8e8e8e;padding:6px 14px 2px;background:#0a0a0a">📷 앨범에서 사진 선택:</div>
+        <div class="insta-filter-scroll">
+          ${photoThumbs}
+        </div>
 
-  if (capIdx >= captions.length) return;
-  const chosenCaption = captions[capIdx];
+        <!-- 2. 필터 선택 스크롤 -->
+        <div style="font-size:11px;color:#8e8e8e;padding:6px 14px 2px;background:#0a0a0a">🎨 필터 효과:</div>
+        <div class="insta-filter-scroll">
+          ${filterThumbs}
+        </div>
 
-  const heroComments = [
-    { u: `${h.id}_official`, t: `오늘 사진 진짜 잘 나왔다 ㅎㅎ 경기 때도 이 텐션 그대로 가자! ❤️` },
-    { u: 'lol_faker_fan', t: '와 분위기 대박... 다음 경기 직관 티켓팅 무조건 성공한다 🔥' },
-    { u: 'esports_digest', t: '오늘도 피지컬 미쳤던데 인터뷰까지 완벽하네요 👏' }
-  ];
+        <!-- 3. 문구 입력 & 해시태그 -->
+        <div class="insta-caption-area">
+          <textarea id="captionInput" class="insta-caption-input" placeholder="문구를 입력하세요... (예: 오늘 경기 승리! 응원 감사합니다 🔥)">${customCaption}</textarea>
+          <div class="insta-tag-chips">
+            <span class="insta-chip" data-addtag="#LOL">#LOL</span>
+            <span class="insta-chip" data-addtag="#LCK">#LCK</span>
+            <span class="insta-chip" data-addtag="#롤드컵">#롤드컵</span>
+            <span class="insta-chip" data-addtag="#프로게이머">#프로게이머</span>
+            <span class="insta-chip" data-addtag="#승리">#승리</span>
+            <span class="insta-chip" data-addtag="#일상">#일상</span>
+            <span class="insta-chip" data-addtag="#오운완">#오운완</span>
+          </div>
+        </div>
 
-  postToInsta(chosenPhoto.title, chosenPhoto.img, chosenCaption, heroComments);
-  stressAdd(-15);
-  grow('mental', 1.0);
+        <!-- 4. 위치 태그 -->
+        <div class="insta-meta-row">
+          <span>📍 위치 추가</span>
+          <select id="locSelect">
+            <option value="LoL Park, 서울 종로" ${selectedLoc.includes('LoL Park') ? 'selected' : ''}>LoL Park, 서울 종로</option>
+            <option value="T1 게이밍 하우스, 서울 강남" ${selectedLoc.includes('게이밍') ? 'selected' : ''}>팀 전용 게이밍 하우스</option>
+            <option value="인천국제공항 제2여객터미널" ${selectedLoc.includes('인천') ? 'selected' : ''}>인천국제공항 (해외 출국)</option>
+            <option value="파리 아코르 아레나, 프랑스" ${selectedLoc.includes('파리') ? 'selected' : ''}>파리 아코르 아레나 (롤드컵)</option>
+            <option value="우리 집 침대 속" ${selectedLoc.includes('침대') ? 'selected' : ''}>우리 집 침대 속 (휴식)</option>
+          </select>
+        </div>
+
+        <!-- 5. 인연 태그 -->
+        <div class="insta-meta-row">
+          <span>🏷️ 인연 함께 태그</span>
+          <select id="heroineTagSelect">
+            <option value="">태그 안 함</option>
+            ${heroineOptions}
+          </select>
+        </div>
+      </div>
+    `;
+
+    const res = await new Promise(resolve => {
+      $('#mBody').innerHTML = modalHtml;
+      $('#mBtns').innerHTML = '';
+
+      const bCancel = $('#mBody #bPostCancel');
+      if (bCancel) bCancel.onclick = () => resolve('cancel');
+
+      const bShare = $('#mBody #bPostShare');
+      if (bShare) bShare.onclick = () => {
+        const txt = $('#mBody #captionInput')?.value || '';
+        const loc = $('#mBody #locSelect')?.value || '';
+        const tag = $('#mBody #heroineTagSelect')?.value || '';
+        resolve({ action: 'share', caption: txt, loc, tag });
+      };
+
+      $$('#mBody [data-pickphoto]').forEach(el => {
+        el.onclick = () => {
+          const idx = parseInt(el.dataset.pickphoto, 10);
+          selectedImg = candidatePhotos[idx].img;
+          customCaption = $('#mBody #captionInput')?.value || '';
+          resolve('re-render');
+        };
+      });
+
+      $$('#mBody [data-setfilter]').forEach(el => {
+        el.onclick = () => {
+          selectedFilter = el.dataset.setfilter;
+          customCaption = $('#mBody #captionInput')?.value || '';
+          resolve('re-render');
+        };
+      });
+
+      $$('#mBody [data-addtag]').forEach(el => {
+        el.onclick = () => {
+          const tag = el.dataset.addtag;
+          const input = $('#mBody #captionInput');
+          if (input) {
+            input.value = (input.value ? input.value + ' ' : '') + tag;
+            customCaption = input.value;
+          }
+        };
+      });
+    });
+
+    if (res === 'cancel') break;
+    if (res === 're-render') continue;
+
+    if (res.action === 'share') {
+      const finalCap = res.caption.trim() || '오늘 하루도 파이팅! 🔥 소환사의 컵을 향해 달려갑니다 🏆';
+      let comments = [];
+
+      // 태그된 히로인 반응
+      if (res.tag && HEROINES[res.tag]) {
+        const h = HEROINES[res.tag];
+        const b = P.bonds?.[res.tag];
+        if (b) {
+          b.aff = Math.min(100, (b.aff || 0) + 10);
+        }
+        comments.push({
+          u: `${h.id}_official`,
+          t: `나 태그해줬네? ㅎㅎ 오늘 사진 너무 멋있다! 파이팅이야 ❤️`
+        });
+        toast(`💖 [태그 반응] ${h.name}의 호감도가 +10♥ 상승했습니다!`);
+      }
+
+      // 게시 중 애니메이션
+      $('#mBody').innerHTML = `
+        <div style="text-align:center;padding:40px 20px;background:#000;border-radius:14px;border:1px solid #262626">
+          <div class="insta-posting-bar" style="margin-bottom:20px"></div>
+          <b style="color:#fff;font-size:15px">GamerGram에 게시 중...</b>
+          <p style="color:#8e8e8e;font-size:12px;margin-top:6px">피드가 전 세계 팬들에게 공유되고 있습니다.</p>
+        </div>
+      `;
+      await sleep(1000);
+
+      postToInsta('GamerGram Feed', selectedImg, finalCap, comments);
+      stressAdd(-15);
+      grow('mental', 1.0);
+
+      // 65% 확률로 모르는 사람 / 팬의 즉각적인 반응 DM 도착
+      if (Math.random() < 0.65) {
+        checkWeeklyDM();
+      }
+      break;
+    }
+  }
 }
+
 
 async function replyToFeedComment(postId) {
   const post = (P.sns?.posts || []).find(p => p.id === postId);
@@ -5840,6 +6533,67 @@ function checkEndgameMilestones() {
   }
 }
 
+
+// ======================================================================
+// 🏠 럭셔리 부동산 & 🏎️ 슈퍼카 & 👥 팬덤 비즈니스 자산 시스템
+// ======================================================================
+
+const HOUSES = {
+  house_goshiwon: {
+    k: 'house_goshiwon', n: '📦 신림동 반지하 고시원', c: 0,
+    d: '프로를 꿈꾸며 라면으로 끼니를 때우던 비좁은 단칸방 (기본)',
+    hpRegen: 0, stressRegen: 0, affBonus: 0
+  },
+  house_officetel: {
+    k: 'house_officetel', n: '🏢 강남역 쾌적한 오피스텔', c: 250000000,
+    d: '역세권 깔끔한 1.5룸! 매주 체력 +8% 추가 회복 · 주간 스트레스 -5 · 데이트 호감도 +10%',
+    hpRegen: 8, stressRegen: -5, affBonus: 10
+  },
+  house_apt: {
+    k: 'house_apt', n: '🏙️ 대치동 48평 프리미엄 아파트', c: 1500000000,
+    d: '방음 게이밍 룸 완비! 매주 체력 +15% · 스트레스 -10 · 데이트 호감도 +25%',
+    hpRegen: 15, stressRegen: -10, affBonus: 25
+  },
+  house_pent: {
+    k: 'house_pent', n: '👑 한남동 UN빌리지 초호화 펜트하우스', c: 4500000000,
+    d: '한강 파노라마 뷰 & 전용 스파! 매주 체력 +25% · 스트레스 -15 · 데이트 호감도 +50% · 팬 유입 +15%',
+    hpRegen: 25, stressRegen: -15, affBonus: 50
+  },
+  house_castle: {
+    k: 'house_castle', n: '🏰 성북동 프라이빗 대저택 (GOAT 하우스)', c: 12000000000,
+    d: '롤드컵 황제의 거처! 실내 수영장 & 극장. 매주 체력 +35% · 스트레스 -25 · 모든 히로인 호감도 2배!',
+    hpRegen: 35, stressRegen: -25, affBonus: 100
+  }
+};
+
+const VEHICLES = {
+  car_none: {
+    k: 'car_none', n: '🚌 지하철 & 대중교통', c: 0,
+    d: '지옥철을 타고 경기장으로 출퇴근합니다 (기본)',
+    affBonus: 0, fanBonus: 0
+  },
+  car_sedan: {
+    k: 'car_sedan', n: '🚗 국산 프리미엄 세단 (G80 스포츠)', c: 85000000,
+    d: '조용하고 안락한 이동! 데이트 이동 피로 0 · 데이트 호감도 +10%',
+    affBonus: 10, fanBonus: 5
+  },
+  car_porsche: {
+    k: 'car_porsche', n: '🏎️ 포르쉐 911 카레라 4 GTS', c: 240000000,
+    d: '심장을 울리는 배기음! 데이트 시 히로인 전용 환호 반응 · 호감도 +30% · 팬 유입 +12%',
+    affBonus: 30, fanBonus: 12
+  },
+  car_ferrari: {
+    k: 'car_ferrari', n: '🐎 페라리 SF90 스트라달레', c: 680000000,
+    d: '1000마력 슈퍼카! 인스타 피드 게시 시 좋아요 +35% · 데이트 호감도 +50%',
+    affBonus: 50, fanBonus: 20
+  },
+  car_rolls: {
+    k: 'car_rolls', n: '👑 롤스로이스 팬텀 EWB', c: 980000000,
+    d: '지상 최고의 럭셔리 세단! e스포츠 황제의 전용 의전차 · 팬 유입 +30% · 모든 히로인 호감도 +65%',
+    affBonus: 65, fanBonus: 30
+  }
+};
+
 let shopTab = 'gear';
 async function showHubShop() {
   while (true) {
@@ -6092,8 +6846,8 @@ function renderCreate() {
 // ======================================================================
 // 회사 로고 오프닝 비디오 연출 & 인앱 자동 업데이트 (v1.7.0)
 // ======================================================================
-const CURRENT_VERSION = '2.0.0';
-const CURRENT_VERSION_CODE = 10;
+const CURRENT_VERSION = '2.1.0';
+const CURRENT_VERSION_CODE = 11;
 
 function initIntroVideo() {
   const splash = document.getElementById('introSplash');
