@@ -1,0 +1,1899 @@
+{
+  "baselinePath": ".system_generated/pre-series-v280.html",
+  "sourceSha256": "4222e731292d4cff760f25b6282c96a8d8fd9812a063099f5fe6ecba6c49d6d8",
+  "generatedAt": "2026-11-04T15:42:34.692Z",
+  "seed": 102030,
+  "samplesPerFixture": 5000,
+  "totalSamples": 75000,
+  "method": "5 roles x 3 skill values. Full v2.8 actual draft/phase/QTE with fresh player per match. Observe terminal probability immediately before existing win draw without consuming extra RNG. For each BO3/5 and lambda, compare F(mean(0.5+lambda*(inverseF(rawTerminalProbability)-0.5))) against mean(rawTerminalProbability).",
+  "commonFixture": {
+    "stage": "pro",
+    "teamId": 0,
+    "teamStrength": 65,
+    "opponentStrength": 65,
+    "syn": 0,
+    "hp": 100,
+    "stress": 0,
+    "mastery": "fresh default lv1",
+    "allSixStats": "55/65/75",
+    "perk": "none",
+    "big": false,
+    "automatic": true
+  },
+  "boundaries": [
+    "정지 시점·연속 세트·숙련/피로·추가 대진/밴픽이 달라지는 실제 시리즈를 실행한 결과가 아니다.",
+    "고정 초기 조건에서 독립 동일분포 세트라는 가정하에 확률 평균을 다항식으로 집계한 보정 점검이다.",
+    "관측한 15조건 밖의 연속 능력치/수동 전술/스킨/특성/큰 경기/세이브 분포에 5%p 오차를 보장하지 않는다.",
+    "기존 커널과 성장/보상/승패 난수는 변경하지 않는다. 실제 index.html도 수정하지 않는다."
+  ],
+  "summary": [
+    {
+      "bestOf": 3,
+      "lambda": 0.8,
+      "maxAbsoluteError": 0.04333495857789872,
+      "meanAbsoluteError": 0.026689820283426924,
+      "meanSignedError": 0.0019065376311022833,
+      "worst": {
+        "role": "mid",
+        "skill": 55,
+        "signedError": 0.04333495857789872
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 3,
+      "lambda": 0.85,
+      "maxAbsoluteError": 0.02627011839292305,
+      "meanAbsoluteError": 0.01566436485735544,
+      "meanSignedError": 0.0029165105419858054,
+      "worst": {
+        "role": "mid",
+        "skill": 55,
+        "signedError": 0.02627011839292305
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 3,
+      "lambda": 0.88,
+      "maxAbsoluteError": 0.016372969199211815,
+      "meanAbsoluteError": 0.009573123450712935,
+      "meanSignedError": 0.003487732413349882,
+      "worst": {
+        "role": "mid",
+        "skill": 55,
+        "signedError": 0.016372969199211815
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 3,
+      "lambda": 0.9,
+      "maxAbsoluteError": 0.009922895993700678,
+      "meanAbsoluteError": 0.0056594321598336505,
+      "meanSignedError": 0.003853490384930583,
+      "worst": {
+        "role": "mid",
+        "skill": 55,
+        "signedError": 0.009922895993700678
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 3,
+      "lambda": 0.95,
+      "maxAbsoluteError": 0.015917088709249683,
+      "meanAbsoluteError": 0.009093817740641219,
+      "meanSignedError": 0.004713183450124311,
+      "worst": {
+        "role": "mid",
+        "skill": 75,
+        "signedError": 0.015917088709249683
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 3,
+      "lambda": 1,
+      "maxAbsoluteError": 0.030645153750122445,
+      "meanAbsoluteError": 0.019733949755319852,
+      "meanSignedError": 0.0054912960275994675,
+      "worst": {
+        "role": "mid",
+        "skill": 75,
+        "signedError": 0.030645153750122445
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 5,
+      "lambda": 0.8,
+      "maxAbsoluteError": 0.03383310525809023,
+      "meanAbsoluteError": 0.01992950111195506,
+      "meanSignedError": 0.004378716100290883,
+      "worst": {
+        "role": "mid",
+        "skill": 55,
+        "signedError": 0.03383310525809023
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 5,
+      "lambda": 0.85,
+      "maxAbsoluteError": 0.017616237471406213,
+      "meanAbsoluteError": 0.010071055133569174,
+      "meanSignedError": 0.005337037983758518,
+      "worst": {
+        "role": "mid",
+        "skill": 55,
+        "signedError": 0.017616237471406213
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 5,
+      "lambda": 0.88,
+      "maxAbsoluteError": 0.011168928755617813,
+      "meanAbsoluteError": 0.0060089193012313235,
+      "meanSignedError": 0.005868719227090973,
+      "worst": {
+        "role": "adc",
+        "skill": 65,
+        "signedError": 0.011168928755617813
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 5,
+      "lambda": 0.9,
+      "maxAbsoluteError": 0.012950757959862336,
+      "meanAbsoluteError": 0.006234306605110237,
+      "meanSignedError": 0.006205168444789338,
+      "worst": {
+        "role": "adc",
+        "skill": 65,
+        "signedError": 0.012950757959862336
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 5,
+      "lambda": 0.95,
+      "maxAbsoluteError": 0.02604899629230717,
+      "meanAbsoluteError": 0.015861582649171323,
+      "meanSignedError": 0.006983768481708733,
+      "worst": {
+        "role": "mid",
+        "skill": 75,
+        "signedError": 0.02604899629230717
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 5,
+      "lambda": 1,
+      "maxAbsoluteError": 0.039263175649909554,
+      "meanAbsoluteError": 0.025622830470718817,
+      "meanSignedError": 0.007674521900075154,
+      "worst": {
+        "role": "mid",
+        "skill": 75,
+        "signedError": 0.039263175649909554
+      },
+      "withinFivePercentagePoints": true
+    }
+  ],
+  "recommended": [
+    {
+      "bestOf": 3,
+      "lambda": 0.9,
+      "maxAbsoluteError": 0.009922895993700678,
+      "meanAbsoluteError": 0.0056594321598336505,
+      "meanSignedError": 0.003853490384930583,
+      "worst": {
+        "role": "mid",
+        "skill": 55,
+        "signedError": 0.009922895993700678
+      },
+      "withinFivePercentagePoints": true
+    },
+    {
+      "bestOf": 5,
+      "lambda": 0.88,
+      "maxAbsoluteError": 0.011168928755617813,
+      "meanAbsoluteError": 0.0060089193012313235,
+      "meanSignedError": 0.005868719227090973,
+      "worst": {
+        "role": "adc",
+        "skill": 65,
+        "signedError": 0.011168928755617813
+      },
+      "withinFivePercentagePoints": true
+    }
+  ],
+  "fixtures": [
+    {
+      "role": "top",
+      "skill": 55,
+      "n": 5000,
+      "meanRaw": 0.1269956066207602,
+      "empiricalWinRate": 0.129,
+      "minRaw": 0.04,
+      "medianRaw": 0.08,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.04428731145309939,
+        "bo5": 0.01677827049690122
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.26196158783494916,
+          "seriesProbability": 0.16991798277160597,
+          "signedError": 0.042922376150845765,
+          "absoluteError": 0.042922376150845765
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.2470841870746427,
+          "seriesProbability": 0.15298251298677548,
+          "signedError": 0.025986906366015278,
+          "absoluteError": 0.025986906366015278
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.23815774661846212,
+          "seriesProbability": 0.1431411448842173,
+          "signedError": 0.016145538263457104,
+          "absoluteError": 0.016145538263457104
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.23220678631432165,
+          "seriesProbability": 0.13671879889137115,
+          "signedError": 0.009723192270610942,
+          "absoluteError": 0.009723192270610942
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.21732938555399672,
+          "seriesProbability": 0.12116635552596129,
+          "signedError": -0.005829251094798912,
+          "absoluteError": 0.005829251094798912
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.20245198479370213,
+          "seriesProbability": 0.10636469793113516,
+          "signedError": -0.02063090868962504,
+          "absoluteError": 0.02063090868962504
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.29809760252567596,
+          "seriesProbability": 0.16057226613642386,
+          "signedError": 0.03357665951566366,
+          "absoluteError": 0.03357665951566366
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.2854787026835184,
+          "seriesProbability": 0.1444074019378135,
+          "signedError": 0.017411795317053308,
+          "absoluteError": 0.017411795317053308
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.2779073627782433,
+          "seriesProbability": 0.13510798925735623,
+          "signedError": 0.008112382636596027,
+          "absoluteError": 0.008112382636596027
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.2728598028413965,
+          "seriesProbability": 0.12907836011175833,
+          "signedError": 0.002082753490998124,
+          "absoluteError": 0.002082753490998124
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.2602409029992601,
+          "seriesProbability": 0.11461011704807209,
+          "signedError": -0.012385489572688119,
+          "absoluteError": 0.012385489572688119
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.2476220031570966,
+          "seriesProbability": 0.10102350234255816,
+          "signedError": -0.02597210427820204,
+          "absoluteError": 0.02597210427820204
+        }
+      ]
+    },
+    {
+      "role": "top",
+      "skill": 65,
+      "n": 5000,
+      "meanRaw": 0.5334564728991117,
+      "empiricalWinRate": 0.532,
+      "minRaw": 0.04,
+      "medianRaw": 0.632,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.55010981130775,
+        "bo5": 0.5625438930916669
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.5230623202915851,
+          "seriesProbability": 0.5345689480963209,
+          "signedError": 0.0011124751972092506,
+          "absoluteError": 0.0011124751972092506
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.5245037153098092,
+          "seriesProbability": 0.5367261473319962,
+          "signedError": 0.003269674432884506,
+          "absoluteError": 0.003269674432884506
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.5253685523207391,
+          "seriesProbability": 0.5380201759351624,
+          "signedError": 0.0045637030360506925,
+          "absoluteError": 0.0045637030360506925
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.52594511032803,
+          "seriesProbability": 0.5388827356548767,
+          "signedError": 0.005426262755764966,
+          "absoluteError": 0.005426262755764966
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.5273865053462717,
+          "seriesProbability": 0.5410386771289517,
+          "signedError": 0.007582204229840017,
+          "absoluteError": 0.007582204229840017
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.5288279003644792,
+          "seriesProbability": 0.5431939358180928,
+          "signedError": 0.009737462918981143,
+          "absoluteError": 0.009737462918981143
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.5203665862446072,
+          "seriesProbability": 0.5381451301545213,
+          "signedError": 0.004688657255409567,
+          "absoluteError": 0.004688657255409567
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.5216394978849007,
+          "seriesProbability": 0.5405234215963955,
+          "signedError": 0.007066948697283859,
+          "absoluteError": 0.007066948697283859
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.522403244869062,
+          "seriesProbability": 0.5419498964452463,
+          "signedError": 0.008493423546134582,
+          "absoluteError": 0.008493423546134582
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.5229124095251709,
+          "seriesProbability": 0.5429006631348969,
+          "signedError": 0.009444190235785244,
+          "absoluteError": 0.009444190235785244
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.5241853211654669,
+          "seriesProbability": 0.5452767932637459,
+          "signedError": 0.011820320364634207,
+          "absoluteError": 0.011820320364634207
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.5254582328057535,
+          "seriesProbability": 0.547651750519813,
+          "signedError": 0.014195277620701274,
+          "absoluteError": 0.014195277620701274
+        }
+      ]
+    },
+    {
+      "role": "top",
+      "skill": 75,
+      "n": 5000,
+      "meanRaw": 0.8896360830458269,
+      "empiricalWinRate": 0.8866,
+      "minRaw": 0.04,
+      "medianRaw": 0.98,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.9661479253783238,
+        "bo5": 0.9886845779312052
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.7584076297622855,
+          "seriesProbability": 0.8531013624841708,
+          "signedError": -0.036534720561656076,
+          "absoluteError": 0.036534720561656076
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.7745581066224103,
+          "seriesProbability": 0.8704435970311744,
+          "signedError": -0.01919248601465251,
+          "absoluteError": 0.01919248601465251
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.7842483927385059,
+          "seriesProbability": 0.8804396697537908,
+          "signedError": -0.009196413292036021,
+          "absoluteError": 0.009196413292036021
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.7907085834825097,
+          "seriesProbability": 0.8869264496493839,
+          "signedError": -0.002709633396442923,
+          "absoluteError": 0.002709633396442923
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.8068590603427299,
+          "seriesProbability": 0.9024993684607783,
+          "signedError": 0.012863285414951409,
+          "absoluteError": 0.012863285414951409
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.8230095372028409,
+          "seriesProbability": 0.9171118015869715,
+          "signedError": 0.02747571854114461,
+          "absoluteError": 0.02747571854114461
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.7231654367789196,
+          "seriesProbability": 0.8661849926149752,
+          "signedError": -0.023451090430851695,
+          "absoluteError": 0.023451090430851695
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.7371132765776085,
+          "seriesProbability": 0.8824287234421313,
+          "signedError": -0.007207359603695562,
+          "absoluteError": 0.007207359603695562
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.7454819804567367,
+          "seriesProbability": 0.8916619844988731,
+          "signedError": 0.002025901453046264,
+          "absoluteError": 0.002025901453046264
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.7510611163762103,
+          "seriesProbability": 0.8976003529091738,
+          "signedError": 0.007964269863346973,
+          "absoluteError": 0.007964269863346973
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.7650089561748812,
+          "seriesProbability": 0.911676723916548,
+          "signedError": 0.022040640870721107,
+          "absoluteError": 0.022040640870721107
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.7789567959736456,
+          "seriesProbability": 0.9246415206821637,
+          "signedError": 0.03500543763633679,
+          "absoluteError": 0.03500543763633679
+        }
+      ]
+    },
+    {
+      "role": "jg",
+      "skill": 55,
+      "n": 5000,
+      "meanRaw": 0.12984985415817776,
+      "empiricalWinRate": 0.1292,
+      "minRaw": 0.04,
+      "medianRaw": 0.04,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.04620416108568702,
+        "bo5": 0.017851064180922256
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.2634378528588628,
+          "seriesProbability": 0.17163359519594057,
+          "signedError": 0.041783741037762806,
+          "absoluteError": 0.041783741037762806
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.2486527186625537,
+          "seriesProbability": 0.1547370361369575,
+          "signedError": 0.024887181978779732,
+          "absoluteError": 0.024887181978779732
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.2397816381447688,
+          "seriesProbability": 0.1449130991902225,
+          "signedError": 0.01506324503204473,
+          "absoluteError": 0.01506324503204473
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.23386758446622652,
+          "seriesProbability": 0.13849981184909158,
+          "signedError": 0.008649957690913812,
+          "absoluteError": 0.008649957690913812
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.21908245026989617,
+          "seriesProbability": 0.1229607067306629,
+          "signedError": -0.006889147427514869,
+          "absoluteError": 0.006889147427514869
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.2042973160735957,
+          "seriesProbability": 0.10815850518000633,
+          "signedError": -0.021691348978171432,
+          "absoluteError": 0.021691348978171432
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.29923537703697745,
+          "seriesProbability": 0.16206987829381547,
+          "signedError": 0.03222002413563771,
+          "absoluteError": 0.03222002413563771
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.28668758810177575,
+          "seriesProbability": 0.14592021728778276,
+          "signedError": 0.016070363129604998,
+          "absoluteError": 0.016070363129604998
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.27915891474067545,
+          "seriesProbability": 0.13662418884156213,
+          "signedError": 0.00677433468338437,
+          "absoluteError": 0.00677433468338437
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.2741397991666126,
+          "seriesProbability": 0.13059441593688226,
+          "signedError": 0.0007445617787044945,
+          "absoluteError": 0.0007445617787044945
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.2615920102314311,
+          "seriesProbability": 0.11611742087863278,
+          "signedError": -0.013732433279544987,
+          "absoluteError": 0.013732433279544987
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.24904422129622372,
+          "seriesProbability": 0.10251014748860993,
+          "signedError": -0.027339706669567837,
+          "absoluteError": 0.027339706669567837
+        }
+      ]
+    },
+    {
+      "role": "jg",
+      "skill": 65,
+      "n": 5000,
+      "meanRaw": 0.5566763506273907,
+      "empiricalWinRate": 0.5506,
+      "minRaw": 0.04,
+      "medianRaw": 0.7033723258367914,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.5846504134056303,
+        "bo5": 0.6053613849041025
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.5369098644764277,
+          "seriesProbability": 0.5552642292856772,
+          "signedError": -0.0014121213417135348,
+          "absoluteError": 0.0014121213417135348
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.5392167310062029,
+          "seriesProbability": 0.5587044696102561,
+          "signedError": 0.002028118982865368,
+          "absoluteError": 0.002028118982865368
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.5406008509240614,
+          "seriesProbability": 0.5607674211381406,
+          "signedError": 0.004091070510749861,
+          "absoluteError": 0.004091070510749861
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.5415235975359758,
+          "seriesProbability": 0.5621422055701453,
+          "signedError": 0.005465854942754533,
+          "absoluteError": 0.005465854942754533
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.5438304640657693,
+          "seriesProbability": 0.5655772898498095,
+          "signedError": 0.008900939222418747,
+          "absoluteError": 0.008900939222418747
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.5461373305955316,
+          "seriesProbability": 0.5690095751336013,
+          "signedError": 0.01233322450621055,
+          "absoluteError": 0.01233322450621055
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.531844196012409,
+          "seriesProbability": 0.5595466055124003,
+          "signedError": 0.002870254885009582,
+          "absoluteError": 0.002870254885009582
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.5338344582631943,
+          "seriesProbability": 0.5632462118240879,
+          "signedError": 0.006569861196697113,
+          "absoluteError": 0.006569861196697113
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.5350286156136458,
+          "seriesProbability": 0.5654640694552673,
+          "signedError": 0.008787718827876545,
+          "absoluteError": 0.008787718827876545
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.5358247205139505,
+          "seriesProbability": 0.5669418158840024,
+          "signedError": 0.01026546525661165,
+          "absoluteError": 0.01026546525661165
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.5378149827647368,
+          "seriesProbability": 0.5706331846265575,
+          "signedError": 0.013956833999166807,
+          "absoluteError": 0.013956833999166807
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.5398052450155085,
+          "seriesProbability": 0.5743200853906981,
+          "signedError": 0.017643734763307384,
+          "absoluteError": 0.017643734763307384
+        }
+      ]
+    },
+    {
+      "role": "jg",
+      "skill": 75,
+      "n": 5000,
+      "meanRaw": 0.8913985136846446,
+      "empiricalWinRate": 0.8858,
+      "minRaw": 0.04,
+      "medianRaw": 0.98,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.9671789048009893,
+        "bo5": 0.9891871680300097
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.7600935444580981,
+          "seriesProbability": 0.8549503614024231,
+          "signedError": -0.036448152282221535,
+          "absoluteError": 0.036448152282221535
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.7763493909867101,
+          "seriesProbability": 0.8723150409932939,
+          "signedError": -0.01908347269135069,
+          "absoluteError": 0.01908347269135069
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.7861028989038996,
+          "seriesProbability": 0.8823165178718859,
+          "signedError": -0.009081995812758703,
+          "absoluteError": 0.009081995812758703
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.792605237515296,
+          "seriesProbability": 0.8888034082210944,
+          "signedError": -0.00259510546355024,
+          "absoluteError": 0.00259510546355024
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.8088610840440074,
+          "seriesProbability": 0.9043639152999075,
+          "signedError": 0.012965401615262828,
+          "absoluteError": 0.012965401615262828
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.8251169305726075,
+          "seriesProbability": 0.9189450144434441,
+          "signedError": 0.027546500758799497,
+          "absoluteError": 0.027546500758799497
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.724778607623618,
+          "seriesProbability": 0.8681176324359681,
+          "signedError": -0.023280881248676555,
+          "absoluteError": 0.023280881248676555
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.738827270600101,
+          "seriesProbability": 0.884351412104506,
+          "signedError": -0.007047101580138659,
+          "absoluteError": 0.007047101580138659
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.7472564683859038,
+          "seriesProbability": 0.8935696631467445,
+          "signedError": 0.0021711494620998417,
+          "absoluteError": 0.0021711494620998417
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.7528759335764942,
+          "seriesProbability": 0.8994942948042275,
+          "signedError": 0.008095781119582868,
+          "absoluteError": 0.008095781119582868
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.7669245965529567,
+          "seriesProbability": 0.9135234811965425,
+          "signedError": 0.022124967511897853,
+          "absoluteError": 0.022124967511897853
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.78097325952952,
+          "seriesProbability": 0.9264232641263301,
+          "signedError": 0.035024750441685515,
+          "absoluteError": 0.035024750441685515
+        }
+      ]
+    },
+    {
+      "role": "mid",
+      "skill": 55,
+      "n": 5000,
+      "meanRaw": 0.12047723331421432,
+      "empiricalWinRate": 0.1228,
+      "minRaw": 0.04,
+      "medianRaw": 0.04,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.04004689408423539,
+        "bo5": 0.014479101965434775
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.2566632753102346,
+          "seriesProbability": 0.16381219189211305,
+          "signedError": 0.04333495857789872,
+          "absoluteError": 0.04333495857789872
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.24145473001713444,
+          "seriesProbability": 0.14674735170713737,
+          "signedError": 0.02627011839292305,
+          "absoluteError": 0.02627011839292305
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.2323296028412767,
+          "seriesProbability": 0.13685020251342614,
+          "signedError": 0.016372969199211815,
+          "absoluteError": 0.016372969199211815
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.22624618472401561,
+          "seriesProbability": 0.130400129307915,
+          "signedError": 0.009922895993700678,
+          "absoluteError": 0.009922895993700678
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.211037639430896,
+          "seriesProbability": 0.11481273750539435,
+          "signedError": -0.005664495808819975,
+          "absoluteError": 0.005664495808819975
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.19582909413780997,
+          "seriesProbability": 0.10002738911053602,
+          "signedError": -0.020449844203678305,
+          "absoluteError": 0.020449844203678305
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.2932849058969158,
+          "seriesProbability": 0.15431033857230456,
+          "signedError": 0.03383310525809023,
+          "absoluteError": 0.03383310525809023
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.28036521251546,
+          "seriesProbability": 0.13809347078562054,
+          "signedError": 0.017616237471406213,
+          "absoluteError": 0.017616237471406213
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.2726133964866078,
+          "seriesProbability": 0.12878752726402934,
+          "signedError": 0.008310293949815015,
+          "absoluteError": 0.008310293949815015
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.2674455191340431,
+          "seriesProbability": 0.1227638476251672,
+          "signedError": 0.002286614310952881,
+          "absoluteError": 0.002286614310952881
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.2545258257526095,
+          "seriesProbability": 0.10834644654971332,
+          "signedError": -0.012130786764501009,
+          "absoluteError": 0.012130786764501009
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.24160613237114836,
+          "seriesProbability": 0.09486157986354099,
+          "signedError": -0.025615653450673334,
+          "absoluteError": 0.025615653450673334
+        }
+      ]
+    },
+    {
+      "role": "mid",
+      "skill": 65,
+      "n": 5000,
+      "meanRaw": 0.49657242605206203,
+      "empiricalWinRate": 0.4988,
+      "minRaw": 0.04,
+      "medianRaw": 0.5754113072144486,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.4948587196141746,
+        "bo5": 0.49357350018498164
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.4997622798382363,
+          "seriesProbability": 0.499643419784222,
+          "signedError": 0.0030709937321599656,
+          "absoluteError": 0.0030709937321599656
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.4997474223281295,
+          "seriesProbability": 0.49962113352442095,
+          "signedError": 0.0030487074723589136,
+          "absoluteError": 0.0030487074723589136
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.49973850782206025,
+          "seriesProbability": 0.499607761768851,
+          "signedError": 0.0030353357167889894,
+          "absoluteError": 0.0030353357167889894
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.4997325648180178,
+          "seriesProbability": 0.49959884726528153,
+          "signedError": 0.003026421213219499,
+          "absoluteError": 0.003026421213219499
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.4997177073079202,
+          "seriesProbability": 0.49957656100687164,
+          "signedError": 0.003004134954809612,
+          "absoluteError": 0.003004134954809612
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.4997028497977969,
+          "seriesProbability": 0.499554274749171,
+          "signedError": 0.002981848697108991,
+          "absoluteError": 0.002981848697108991
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.5006509997602999,
+          "seriesProbability": 0.5012206231710923,
+          "signedError": 0.004648197119030251,
+          "absoluteError": 0.004648197119030251
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.5006916872453255,
+          "seriesProbability": 0.5012969119303624,
+          "signedError": 0.004724485878300377,
+          "absoluteError": 0.004724485878300377
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.5007160997363331,
+          "seriesProbability": 0.50134268516955,
+          "signedError": 0.004770259117488018,
+          "absoluteError": 0.004770259117488018
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.5007323747303323,
+          "seriesProbability": 0.5013732006552452,
+          "signedError": 0.004800774603183122,
+          "absoluteError": 0.004800774603183122
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.5007730622153568,
+          "seriesProbability": 0.5014494893437882,
+          "signedError": 0.004877063291726158,
+          "absoluteError": 0.004877063291726158
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.5008137497003737,
+          "seriesProbability": 0.501525777993924,
+          "signedError": 0.0049533519418619165,
+          "absoluteError": 0.0049533519418619165
+        }
+      ]
+    },
+    {
+      "role": "mid",
+      "skill": 75,
+      "n": 5000,
+      "meanRaw": 0.8775204952971318,
+      "empiricalWinRate": 0.88,
+      "minRaw": 0.04,
+      "medianRaw": 0.98,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.9586709989966298,
+        "bo5": 0.9848367476091626
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.7503949511367857,
+          "seriesProbability": 0.8441940859260691,
+          "signedError": -0.03332640937106268,
+          "absoluteError": 0.03332640937106268
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.7660446355828131,
+          "seriesProbability": 0.8614058087824896,
+          "signedError": -0.016114686514642207,
+          "absoluteError": 0.016114686514642207
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.775434446250448,
+          "seriesProbability": 0.871360477798685,
+          "signedError": -0.006160017498446857,
+          "absoluteError": 0.006160017498446857
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.7816943200288211,
+          "seriesProbability": 0.8778356393636313,
+          "signedError": 0.00031514406649946203,
+          "absoluteError": 0.00031514406649946203
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.7973440044749484,
+          "seriesProbability": 0.8934375840063815,
+          "signedError": 0.015917088709249683,
+          "absoluteError": 0.015917088709249683
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.812993688920959,
+          "seriesProbability": 0.9081656490472543,
+          "signedError": 0.030645153750122445,
+          "absoluteError": 0.030645153750122445
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.7162888205437261,
+          "seriesProbability": 0.8577906813555649,
+          "signedError": -0.01972981394156692,
+          "absoluteError": 0.01972981394156692
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.7298068718277099,
+          "seriesProbability": 0.8740516226894233,
+          "signedError": -0.003468872607708562,
+          "absoluteError": 0.003468872607708562
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.7379177025980242,
+          "seriesProbability": 0.8833331158671094,
+          "signedError": 0.005812620569977556,
+          "absoluteError": 0.005812620569977556
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.7433249231116209,
+          "seriesProbability": 0.8893193258460845,
+          "signedError": 0.011798830548952699,
+          "absoluteError": 0.011798830548952699
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.7568429743955907,
+          "seriesProbability": 0.903569491589439,
+          "signedError": 0.02604899629230717,
+          "absoluteError": 0.02604899629230717
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.7703610256796495,
+          "seriesProbability": 0.9167836709470414,
+          "signedError": 0.039263175649909554,
+          "absoluteError": 0.039263175649909554
+        }
+      ]
+    },
+    {
+      "role": "adc",
+      "skill": 55,
+      "n": 5000,
+      "meanRaw": 0.1402951453293787,
+      "empiricalWinRate": 0.1492,
+      "minRaw": 0.04,
+      "medianRaw": 0.08,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.05352540109377588,
+        "bo5": 0.022128875232568814
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.27125008867097256,
+          "seriesProbability": 0.1808145075111365,
+          "signedError": 0.040519362181757806,
+          "absoluteError": 0.040519362181757806
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.25695321921291986,
+          "seriesProbability": 0.16414422016251082,
+          "signedError": 0.023849074833132117,
+          "absoluteError": 0.023849074833132117
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.2483750975380891,
+          "seriesProbability": 0.15442595377285231,
+          "signedError": 0.014130808443473614,
+          "absoluteError": 0.014130808443473614
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.2426563497548509,
+          "seriesProbability": 0.14807007934694166,
+          "signedError": 0.007774934017562962,
+          "absoluteError": 0.007774934017562962
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.22835948029677808,
+          "seriesProbability": 0.1326271525075664,
+          "signedError": -0.007667992821812297,
+          "absoluteError": 0.007667992821812297
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.21406261083873132,
+          "seriesProbability": 0.11785050708753789,
+          "signedError": -0.022444638241840814,
+          "absoluteError": 0.022444638241840814
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.30620748304703327,
+          "seriesProbability": 0.17138897209004186,
+          "signedError": 0.031093826760663162,
+          "absoluteError": 0.031093826760663162
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.2940954507374611,
+          "seriesProbability": 0.15535666574031717,
+          "signedError": 0.015061520410938473,
+          "absoluteError": 0.015061520410938473
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.2868282313517372,
+          "seriesProbability": 0.14609671735882063,
+          "signedError": 0.005801572029441926,
+          "absoluteError": 0.005801572029441926
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.2819834184279229,
+          "seriesProbability": 0.14007660912697195,
+          "signedError": -0.00021853620240674942,
+          "absoluteError": 0.00021853620240674942
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.26987138611837075,
+          "seriesProbability": 0.12557334585235844,
+          "signedError": -0.014721799477020264,
+          "absoluteError": 0.014721799477020264
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.25775935380879283,
+          "seriesProbability": 0.11186804128195374,
+          "signedError": -0.02842710404742496,
+          "absoluteError": 0.02842710404742496
+        }
+      ]
+    },
+    {
+      "role": "adc",
+      "skill": 65,
+      "n": 5000,
+      "meanRaw": 0.5680185415925514,
+      "empiricalWinRate": 0.5668,
+      "minRaw": 0.04,
+      "medianRaw": 0.707468105827568,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.601398433830604,
+        "bo5": 0.625970054591715
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.5446663888810978,
+          "seriesProbability": 0.5668213567209783,
+          "signedError": -0.0011971848715730538,
+          "absoluteError": 0.0011971848715730538
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.5474580381861645,
+          "seriesProbability": 0.570973281085623,
+          "signedError": 0.0029547394930715676,
+          "absoluteError": 0.0029547394930715676
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.5491330277691996,
+          "seriesProbability": 0.5734623220483102,
+          "signedError": 0.005443780455758773,
+          "absoluteError": 0.005443780455758773
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.5502496874912303,
+          "seriesProbability": 0.575120767190191,
+          "signedError": 0.007102225597639622,
+          "absoluteError": 0.007102225597639622
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.5530413367963155,
+          "seriesProbability": 0.5792635539605906,
+          "signedError": 0.011245012368039209,
+          "absoluteError": 0.011245012368039209
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.5558329861013719,
+          "seriesProbability": 0.5834013803226279,
+          "signedError": 0.015382838730076509,
+          "absoluteError": 0.015382838730076509
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.5385787924655578,
+          "seriesProbability": 0.5720486600449233,
+          "signedError": 0.004030118452371889,
+          "absoluteError": 0.004030118452371889
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.540989966994663,
+          "seriesProbability": 0.5765125303224168,
+          "signedError": 0.008493988729865398,
+          "absoluteError": 0.008493988729865398
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.5424366717121069,
+          "seriesProbability": 0.5791874703481692,
+          "signedError": 0.011168928755617813,
+          "absoluteError": 0.011168928755617813
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.5434011415237414,
+          "seriesProbability": 0.5809692995524137,
+          "signedError": 0.012950757959862336,
+          "absoluteError": 0.012950757959862336
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.5458123160528482,
+          "seriesProbability": 0.5854185561875378,
+          "signedError": 0.017400014594986413,
+          "absoluteError": 0.017400014594986413
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.5482234905819441,
+          "seriesProbability": 0.589859889736445,
+          "signedError": 0.021841348143893602,
+          "absoluteError": 0.021841348143893602
+        }
+      ]
+    },
+    {
+      "role": "adc",
+      "skill": 75,
+      "n": 5000,
+      "meanRaw": 0.9028333398551954,
+      "empiricalWinRate": 0.9028,
+      "minRaw": 0.04,
+      "medianRaw": 0.98,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.9735106912753868,
+        "bo5": 0.9921112669088554
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.768186713304187,
+          "seriesProbability": 0.8637018869072352,
+          "signedError": -0.03913145294796028,
+          "absoluteError": 0.03913145294796028
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.7849483828856831,
+          "seriesProbability": 0.8811494753734637,
+          "signedError": -0.021683864481731763,
+          "absoluteError": 0.021683864481731763
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.7950053846346011,
+          "seriesProbability": 0.8911605153136246,
+          "signedError": -0.011672824541570814,
+          "absoluteError": 0.011672824541570814
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.8017100524671454,
+          "seriesProbability": 0.8976363766641244,
+          "signedError": -0.005196963191070991,
+          "absoluteError": 0.005196963191070991
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.8184717220487404,
+          "seriesProbability": 0.913106079769046,
+          "signedError": 0.010272739913850581,
+          "absoluteError": 0.010272739913850581
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.8352333916302228,
+          "seriesProbability": 0.9275020736776745,
+          "signedError": 0.024668733822479028,
+          "absoluteError": 0.024668733822479028
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.7319018884724151,
+          "seriesProbability": 0.8764835149664236,
+          "signedError": -0.0263498248887718,
+          "absoluteError": 0.0263498248887718
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.7463957565019491,
+          "seriesProbability": 0.8926465482426584,
+          "signedError": -0.010186791612536994,
+          "absoluteError": 0.010186791612536994
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.7550920773195767,
+          "seriesProbability": 0.9017818392991428,
+          "signedError": -0.0010515005560526314,
+          "absoluteError": 0.0010515005560526314
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.7608896245313868,
+          "seriesProbability": 0.907634500808,
+          "signedError": 0.004801160952804584,
+          "absoluteError": 0.004801160952804584
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.7753834925608991,
+          "seriesProbability": 0.9214266054817697,
+          "signedError": 0.018593265626574262,
+          "absoluteError": 0.018593265626574262
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.7898773605905177,
+          "seriesProbability": 0.9340103845483543,
+          "signedError": 0.03117704469315885,
+          "absoluteError": 0.03117704469315885
+        }
+      ]
+    },
+    {
+      "role": "sup",
+      "skill": 55,
+      "n": 5000,
+      "meanRaw": 0.1327729468661359,
+      "empiricalWinRate": 0.1282,
+      "minRaw": 0.04,
+      "medianRaw": 0.08,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.04820474919987914,
+        "bo5": 0.018992113602283096
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.2658940646823083,
+          "seriesProbability": 0.17450172434747063,
+          "signedError": 0.041728777481334745,
+          "absoluteError": 0.041728777481334745
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.25126244372496404,
+          "seriesProbability": 0.15767263581274749,
+          "signedError": 0.024899688946611598,
+          "absoluteError": 0.024899688946611598
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.24248347115055807,
+          "seriesProbability": 0.14787950169408443,
+          "signedError": 0.015106554827948537,
+          "absoluteError": 0.015106554827948537
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.2366308227676031,
+          "seriesProbability": 0.14148255704046836,
+          "signedError": 0.008709610174332472,
+          "absoluteError": 0.008709610174332472
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.22199920181023805,
+          "seriesProbability": 0.12596907684020514,
+          "signedError": -0.006803870025930747,
+          "absoluteError": 0.006803870025930747
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.20736758085290272,
+          "seriesProbability": 0.11116978402154858,
+          "signedError": -0.021603162844587312,
+          "absoluteError": 0.021603162844587312
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.3015091303054171,
+          "seriesProbability": 0.16508230966196072,
+          "signedError": 0.03230936279582483,
+          "absoluteError": 0.03230936279582483
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.28910345094949313,
+          "seriesProbability": 0.14896635562378072,
+          "signedError": 0.016193408757644828,
+          "absoluteError": 0.016193408757644828
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.2816600433359597,
+          "seriesProbability": 0.139679196853156,
+          "signedError": 0.006906249987020108,
+          "absoluteError": 0.006906249987020108
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.2766977715936058,
+          "seriesProbability": 0.13365058375364008,
+          "signedError": 0.0008776368875041962,
+          "absoluteError": 0.0008776368875041962
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.26429209223770267,
+          "seriesProbability": 0.11915984970392084,
+          "signedError": -0.013613097162215052,
+          "absoluteError": 0.013613097162215052
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.25188641288177366,
+          "seriesProbability": 0.10551520103217658,
+          "signedError": -0.027257745833959304,
+          "absoluteError": 0.027257745833959304
+        }
+      ]
+    },
+    {
+      "role": "sup",
+      "skill": 65,
+      "n": 5000,
+      "meanRaw": 0.5501809317943823,
+      "empiricalWinRate": 0.5432,
+      "minRaw": 0.04,
+      "medianRaw": 0.6606728597060834,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.5750186738819174,
+        "bo5": 0.5934593467614506
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.532896431330919,
+          "seriesProbability": 0.5492734475924432,
+          "signedError": -0.0009074842019390905,
+          "absoluteError": 0.0009074842019390905
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.5349524582891031,
+          "seriesProbability": 0.5523432863907995,
+          "signedError": 0.0021623545964172264,
+          "absoluteError": 0.0021623545964172264
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.5361860744640048,
+          "seriesProbability": 0.5541843452893693,
+          "signedError": 0.004003413494987007,
+          "absoluteError": 0.004003413494987007
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.537008485247281,
+          "seriesProbability": 0.5554113521571151,
+          "signedError": 0.005230420362732802,
+          "absoluteError": 0.005230420362732802
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.5390645122054797,
+          "seriesProbability": 0.5584775405954284,
+          "signedError": 0.008296608801046101,
+          "absoluteError": 0.008296608801046101
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.5411205391636497,
+          "seriesProbability": 0.5615417474096636,
+          "signedError": 0.011360815615281239,
+          "absoluteError": 0.011360815615281239
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.5284465807691807,
+          "seriesProbability": 0.553222354708526,
+          "signedError": 0.0030414229141436655,
+          "absoluteError": 0.0030414229141436655
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.5302244920672631,
+          "seriesProbability": 0.5565330205855454,
+          "signedError": 0.006352088791163113,
+          "absoluteError": 0.006352088791163113
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.5312912388460963,
+          "seriesProbability": 0.5585180600605245,
+          "signedError": 0.00833712826614219,
+          "absoluteError": 0.00833712826614219
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.5320024033653182,
+          "seriesProbability": 0.5598408307937142,
+          "signedError": 0.00965989899933184,
+          "absoluteError": 0.00965989899933184
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.5337803146634024,
+          "seriesProbability": 0.5631456186956088,
+          "signedError": 0.01296468690122643,
+          "absoluteError": 0.01296468690122643
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.5355582259614721,
+          "seriesProbability": 0.5664472178838448,
+          "signedError": 0.016266286089462456,
+          "absoluteError": 0.016266286089462456
+        }
+      ]
+    },
+    {
+      "role": "sup",
+      "skill": 75,
+      "n": 5000,
+      "meanRaw": 0.8934623426667493,
+      "empiricalWinRate": 0.8938,
+      "minRaw": 0.04,
+      "medianRaw": 0.98,
+      "maxRaw": 0.98,
+      "rawIndependentProjection": {
+        "bo3": 0.9683676455794135,
+        "bo5": 0.9897577652783278
+      },
+      "corrected": [
+        {
+          "bestOf": 3,
+          "lambda": 0.8,
+          "meanCorrected": 0.7615542987756182,
+          "seriesProbability": 0.8565452483524407,
+          "signedError": -0.03691709431430856,
+          "absoluteError": 0.03691709431430856
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.85,
+          "meanCorrected": 0.7779014424490772,
+          "seriesProbability": 0.8739279450038542,
+          "signedError": -0.01953439766289511,
+          "absoluteError": 0.01953439766289511
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.88,
+          "meanCorrected": 0.7877097286531717,
+          "seriesProbability": 0.8839331610313388,
+          "signedError": -0.0095291816354105,
+          "absoluteError": 0.0095291816354105
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.9,
+          "meanCorrected": 0.7942485861225062,
+          "seriesProbability": 0.8904194814060404,
+          "signedError": -0.003042861260708851,
+          "absoluteError": 0.003042861260708851
+        },
+        {
+          "bestOf": 3,
+          "lambda": 0.95,
+          "meanCorrected": 0.810595729796064,
+          "seriesProbability": 0.9059674363680226,
+          "signedError": 0.012505093701273284,
+          "absoluteError": 0.012505093701273284
+        },
+        {
+          "bestOf": 3,
+          "lambda": 1,
+          "meanCorrected": 0.8269428734695102,
+          "seriesProbability": 0.9205193886984402,
+          "signedError": 0.0270570460316909,
+          "absoluteError": 0.0270570460316909
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.8,
+          "meanCorrected": 0.726060212666249,
+          "seriesProbability": 0.869643065589135,
+          "signedError": -0.02381927707761433,
+          "absoluteError": 0.02381927707761433
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.85,
+          "meanCorrected": 0.7401889759578979,
+          "seriesProbability": 0.8858673394472492,
+          "signedError": -0.007595003219500129,
+          "absoluteError": 0.007595003219500129
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.88,
+          "meanCorrected": 0.7486662339327989,
+          "seriesProbability": 0.8950726683445263,
+          "signedError": 0.0016103256777769692,
+          "absoluteError": 0.0016103256777769692
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.9,
+          "meanCorrected": 0.7543177392494548,
+          "seriesProbability": 0.9009857095333751,
+          "signedError": 0.0075233668666258025,
+          "absoluteError": 0.0075233668666258025
+        },
+        {
+          "bestOf": 5,
+          "lambda": 0.95,
+          "meanCorrected": 0.7684465025410824,
+          "seriesProbability": 0.9149756866951093,
+          "signedError": 0.021513344028360026,
+          "absoluteError": 0.021513344028360026
+        },
+        {
+          "bestOf": 5,
+          "lambda": 1,
+          "meanCorrected": 0.78257526583281,
+          "seriesProbability": 0.9278220784673867,
+          "signedError": 0.03435973580063745,
+          "absoluteError": 0.03435973580063745
+        }
+      ]
+    }
+  ],
+  "baselineGitRevision": "b1707be",
+  "baselineMatchesGitAfterNewlineNormalization": true
+}

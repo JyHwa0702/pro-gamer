@@ -1,0 +1,7083 @@
+{
+  "baselinePath": ".system_generated/pre-series-v280.html",
+  "baselineSha256": "4222e731292d4cff760f25b6282c96a8d8fd9812a063099f5fe6ecba6c49d6d8",
+  "sourceFile": "index.html",
+  "sourceSha256": "426bc21bc9c5e03c7170ff7db42f14fb97c6a302b6a8ed722fdd49a9c21858b5",
+  "sourceChangedDuringRun": false,
+  "generatedAt": "2026-11-04T15:53:24.215Z",
+  "seed": 102030,
+  "nPerFixture": 1000,
+  "totalBaselineMatches": 15000,
+  "totalNewSeries": 30000,
+  "method": "Actual baseline and actual new client through tests/game-harness.cjs, fresh player each match/series. Native draft, QTE and settlement. Achievements/unlocks disabled to isolate the match calculation. Same continuous seeded PRNG per fixture; samples are not paired identical RNG traces because actual series consume additional random draws.",
+  "fixture": {
+    "stage": "pro",
+    "teamId": 0,
+    "teamStrength": 65,
+    "opponentStrength": 65,
+    "stats": "all six 55/65/75",
+    "hp": 100,
+    "stress": 0,
+    "syn": 0,
+    "mastery": "fresh lv1",
+    "fans": 50,
+    "money": 500000,
+    "perk": "none",
+    "talent": "default 1",
+    "big": false,
+    "automatic": true
+  },
+  "boundaries": [
+    "실제 시리즈 정지·드래프트·QTE·대표 보상 세트·평균 평점을 실행한다.",
+    "100숙련/체력8/매치1회 기록을 매 실행 검증한다.",
+    "실제 유저 세이브·큰 경기·스킨·특성·부상 조건·브라우저 동작을 전수 보장하지 않는다.",
+    "평균 평점의 분산 감소와 대표 세트 POG는 의도한 집계 방식이며 확률 보정만으로 기존 분포와 동일해지지 않는다."
+  ],
+  "summary": [
+    {
+      "bestOf": 3,
+      "nPerFixture": 1000,
+      "series": 15000,
+      "maxAbsoluteWinRateDifference": 0.039000000000000035,
+      "meanAbsoluteWinRateDifference": 0.01746666666666666,
+      "worstFixture": {
+        "pos": "mid",
+        "skill": 65
+      },
+      "allWithinFivePercentagePoints": true,
+      "allEqualSkillWithin45To60": true,
+      "allResourceBudgetsValid": true
+    },
+    {
+      "bestOf": 5,
+      "nPerFixture": 1000,
+      "series": 15000,
+      "maxAbsoluteWinRateDifference": 0.031000000000000028,
+      "meanAbsoluteWinRateDifference": 0.014266666666666674,
+      "worstFixture": {
+        "pos": "mid",
+        "skill": 65
+      },
+      "allWithinFivePercentagePoints": true,
+      "allEqualSkillWithin45To60": true,
+      "allResourceBudgetsValid": true
+    }
+  ],
+  "pogCalibration": [
+    {
+      "bestOf": 3,
+      "k": 1,
+      "scope": "all15",
+      "maxAbsoluteError": 0.051833333333333495,
+      "meanAbsoluteError": 0.01727777777777787,
+      "meanSignedError": -0.016588888888888945,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.2383444444444444,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0018333333333333333,
+          "error": -0.007166666666666666
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1079999999999999,
+          "error": -0.028000000000000108
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.5936666666666669,
+          "error": 0.0016666666666669272
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0019999999999999996,
+          "error": 0.0019999999999999996
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.12216666666666649,
+          "error": -0.051833333333333495
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.5928333333333333,
+          "error": -0.03416666666666668
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.003666666666666667,
+          "error": -0.00033333333333333305
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.09733333333333329,
+          "error": -0.014666666666666717
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.5813333333333335,
+          "error": -0.016666666666666496
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0015,
+          "error": 0.0015
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.1288333333333332,
+          "error": -0.03716666666666682
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.617333333333333,
+          "error": -0.012666666666667048
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0019999999999999996,
+          "error": -0.0030000000000000005
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.12949999999999984,
+          "error": -0.016500000000000153
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.5931666666666664,
+          "error": -0.0318333333333336
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.051833333333333495,
+      "meanAbsoluteError": 0.029633333333333463,
+      "meanSignedError": -0.029633333333333463,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.11716666666666656,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1079999999999999,
+          "error": -0.028000000000000108
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.12216666666666649,
+          "error": -0.051833333333333495
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.09733333333333329,
+          "error": -0.014666666666666717
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.1288333333333332,
+          "error": -0.03716666666666682
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.12949999999999984,
+          "error": -0.016500000000000153
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.1,
+      "scope": "all15",
+      "maxAbsoluteError": 0.042216666666667124,
+      "meanAbsoluteError": 0.011901111111111317,
+      "meanSignedError": -0.005454444444444372,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.249478888888889,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0020166666666666666,
+          "error": -0.006983333333333333
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.11709999999999954,
+          "error": -0.018900000000000472
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.6175333333333348,
+          "error": 0.02553333333333485
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0022,
+          "error": 0.0022
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.13178333333333286,
+          "error": -0.042216666666667124
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.6161166666666673,
+          "error": -0.01088333333333269
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.004033333333333333,
+          "error": 0.00003333333333333313
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.10556666666666635,
+          "error": -0.006433333333333652
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.6050666666666674,
+          "error": 0.007066666666667443
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0016500000000000002,
+          "error": 0.0016500000000000002
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.13911666666666625,
+          "error": -0.02688333333333376
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.6418666666666665,
+          "error": 0.01186666666666647
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0022,
+          "error": -0.0028
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.1408499999999997,
+          "error": -0.005150000000000293
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.6150833333333336,
+          "error": -0.009916666666666352
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.1,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.042216666666667124,
+      "meanAbsoluteError": 0.01991666666666706,
+      "meanSignedError": -0.01991666666666706,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.12688333333333296,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.11709999999999954,
+          "error": -0.018900000000000472
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.13178333333333286,
+          "error": -0.042216666666667124
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.10556666666666635,
+          "error": -0.006433333333333652
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.13911666666666625,
+          "error": -0.02688333333333376
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.1408499999999997,
+          "error": -0.005150000000000293
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.2,
+      "scope": "all15",
+      "maxAbsoluteError": 0.049400000000001554,
+      "meanAbsoluteError": 0.014800000000000582,
+      "meanSignedError": 0.005680000000000573,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.26061333333333386,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0021999999999999997,
+          "error": -0.0068
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.12619999999999998,
+          "error": -0.009800000000000031
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.6414000000000015,
+          "error": 0.049400000000001554
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0024,
+          "error": 0.0024
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.14139999999999991,
+          "error": -0.03260000000000007
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.6394000000000013,
+          "error": 0.012400000000001299
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.004399999999999999,
+          "error": 0.0003999999999999993
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.11379999999999993,
+          "error": 0.0017999999999999267
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.6288000000000024,
+          "error": 0.03080000000000238
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0017999999999999997,
+          "error": 0.0017999999999999997
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.14940000000000003,
+          "error": -0.016599999999999976
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.6664000000000015,
+          "error": 0.03640000000000154
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0024,
+          "error": -0.0026000000000000003
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.15219999999999995,
+          "error": 0.0061999999999999555
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.637000000000002,
+          "error": 0.012000000000002009
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.2,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.03260000000000007,
+      "meanAbsoluteError": 0.013399999999999992,
+      "meanSignedError": -0.010200000000000039,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.13659999999999997,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.12619999999999998,
+          "error": -0.009800000000000031
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.14139999999999991,
+          "error": -0.03260000000000007
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.11379999999999993,
+          "error": 0.0017999999999999267
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.14940000000000003,
+          "error": -0.016599999999999976
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.15219999999999995,
+          "error": 0.0061999999999999555
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.3,
+      "scope": "all15",
+      "maxAbsoluteError": 0.07326666666666337,
+      "meanAbsoluteError": 0.022016666666665557,
+      "meanSignedError": 0.016814444444443504,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.2717477777777768,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0023833333333333332,
+          "error": -0.0066166666666666665
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.13530000000000034,
+          "error": -0.0006999999999996731
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.6652666666666633,
+          "error": 0.07326666666666337
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0026,
+          "error": 0.0026
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.15101666666666713,
+          "error": -0.022983333333332856
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.6626833333333303,
+          "error": 0.03568333333333029
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.004766666666666667,
+          "error": 0.0007666666666666672
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.12203333333333359,
+          "error": 0.010033333333333588
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.6525333333333301,
+          "error": 0.0545333333333301
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0019500000000000001,
+          "error": 0.0019500000000000001
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.15968333333333382,
+          "error": -0.006316666666666193
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.6909333333333297,
+          "error": 0.06093333333332973
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0026000000000000007,
+          "error": -0.0023999999999999994
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.16355000000000056,
+          "error": 0.017550000000000565
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.6589166666666636,
+          "error": 0.0339166666666636
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.3,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.022983333333332856,
+      "meanAbsoluteError": 0.011516666666666574,
+      "meanSignedError": -0.00048333333333291375,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.14631666666666707,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.13530000000000034,
+          "error": -0.0006999999999996731
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.15101666666666713,
+          "error": -0.022983333333332856
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.12203333333333359,
+          "error": 0.010033333333333588
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.15968333333333382,
+          "error": -0.006316666666666193
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.16355000000000056,
+          "error": 0.017550000000000565
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.4,
+      "scope": "all15",
+      "maxAbsoluteError": 0.09713333333333296,
+      "meanAbsoluteError": 0.030882222222222224,
+      "meanSignedError": 0.027948888888888905,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.2828822222222223,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0025666666666666663,
+          "error": -0.006433333333333333
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1444000000000002,
+          "error": 0.008400000000000185
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.6891333333333329,
+          "error": 0.09713333333333296
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0028,
+          "error": 0.0028
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.16063333333333335,
+          "error": -0.013366666666666638
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.6859666666666662,
+          "error": 0.05896666666666617
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.0051333333333333335,
+          "error": 0.0011333333333333334
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.13026666666666692,
+          "error": 0.018266666666666917
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.676266666666667,
+          "error": 0.07826666666666704
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0020999999999999994,
+          "error": 0.0020999999999999994
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.16996666666666677,
+          "error": 0.003966666666666757
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.7154666666666668,
+          "error": 0.0854666666666668
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0028,
+          "error": -0.0022
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.17489999999999994,
+          "error": 0.028899999999999954
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.6808333333333334,
+          "error": 0.0558333333333334
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.4,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.028899999999999954,
+      "meanAbsoluteError": 0.01458000000000009,
+      "meanSignedError": 0.009233333333333435,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.15603333333333344,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1444000000000002,
+          "error": 0.008400000000000185
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.16063333333333335,
+          "error": -0.013366666666666638
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.13026666666666692,
+          "error": 0.018266666666666917
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.16996666666666677,
+          "error": 0.003966666666666757
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.17489999999999994,
+          "error": 0.028899999999999954
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.5,
+      "scope": "all15",
+      "maxAbsoluteError": 0.121,
+      "meanAbsoluteError": 0.04068333333333333,
+      "meanSignedError": 0.03908333333333333,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.29401666666666665,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.00275,
+          "error": -0.0062499999999999995
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1535,
+          "error": 0.017499999999999988
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.713,
+          "error": 0.121
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.003,
+          "error": 0.003
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.17025,
+          "error": -0.0037499999999999756
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.70925,
+          "error": 0.08225000000000005
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.0055,
+          "error": 0.0014999999999999996
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.1385,
+          "error": 0.02650000000000001
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.7,
+          "error": 0.10199999999999998
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.00225,
+          "error": 0.00225
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.18025,
+          "error": 0.014249999999999985
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.74,
+          "error": 0.10999999999999999
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.003,
+          "error": -0.002
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.18625,
+          "error": 0.04025000000000001
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.70275,
+          "error": 0.07774999999999999
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.5,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.04025000000000001,
+      "meanAbsoluteError": 0.020449999999999992,
+      "meanSignedError": 0.01895,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.16575,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1535,
+          "error": 0.017499999999999988
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.17025,
+          "error": -0.0037499999999999756
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.1385,
+          "error": 0.02650000000000001
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.18025,
+          "error": 0.014249999999999985
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.18625,
+          "error": 0.04025000000000001
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.6,
+      "scope": "all15",
+      "maxAbsoluteError": 0.1375999999999984,
+      "meanAbsoluteError": 0.04825777777777713,
+      "meanSignedError": 0.04720888888888823,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.3021422222222216,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0029333333333333334,
+          "error": -0.006066666666666666
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.16166666666666665,
+          "error": 0.025666666666666643
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.7295999999999984,
+          "error": 0.1375999999999984
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0032,
+          "error": 0.0032
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.17926666666666677,
+          "error": 0.0052666666666667805
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.7241999999999982,
+          "error": 0.09719999999999818
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.005866666666666666,
+          "error": 0.0018666666666666658
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.14546666666666658,
+          "error": 0.033466666666666575
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.715399999999998,
+          "error": 0.11739999999999806
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0024000000000000002,
+          "error": 0.0024000000000000002
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.18893333333333334,
+          "error": 0.022933333333333333
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.7564666666666637,
+          "error": 0.12646666666666373
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0032,
+          "error": -0.0018
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.1956000000000002,
+          "error": 0.0496000000000002
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.7179333333333315,
+          "error": 0.09293333333333154
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.6,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.0496000000000002,
+      "meanAbsoluteError": 0.027386666666666705,
+      "meanSignedError": 0.027386666666666705,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.1741866666666667,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.16166666666666665,
+          "error": 0.025666666666666643
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.17926666666666677,
+          "error": 0.0052666666666667805
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.14546666666666658,
+          "error": 0.033466666666666575
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.18893333333333334,
+          "error": 0.022933333333333333
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.1956000000000002,
+          "error": 0.0496000000000002
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.7,
+      "scope": "all15",
+      "maxAbsoluteError": 0.15420000000000478,
+      "meanAbsoluteError": 0.05633222222222355,
+      "meanSignedError": 0.05533444444444577,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.3102677777777791,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.003116666666666667,
+          "error": -0.005883333333333332
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.16983333333333284,
+          "error": 0.03383333333333283
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.7462000000000047,
+          "error": 0.15420000000000478
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0034,
+          "error": 0.0034
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.18828333333333275,
+          "error": 0.01428333333333276
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.7391500000000045,
+          "error": 0.11215000000000452
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.006233333333333333,
+          "error": 0.002233333333333333
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.15243333333333295,
+          "error": 0.040433333333332946
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.7308000000000046,
+          "error": 0.13280000000000458
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0025499999999999997,
+          "error": 0.0025499999999999997
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.19761666666666608,
+          "error": 0.03161666666666607
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.7729333333333381,
+          "error": 0.14293333333333813
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0033999999999999994,
+          "error": -0.0016000000000000007
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.20494999999999933,
+          "error": 0.058949999999999336
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.7331166666666707,
+          "error": 0.10811666666667075
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.7,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.058949999999999336,
+      "meanAbsoluteError": 0.035823333333332784,
+      "meanSignedError": 0.035823333333332784,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.18262333333333278,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.16983333333333284,
+          "error": 0.03383333333333283
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.18828333333333275,
+          "error": 0.01428333333333276
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.15243333333333295,
+          "error": 0.040433333333332946
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.19761666666666608,
+          "error": 0.03161666666666607
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.20494999999999933,
+          "error": 0.058949999999999336
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.8,
+      "scope": "all15",
+      "maxAbsoluteError": 0.17079999999999762,
+      "meanAbsoluteError": 0.06440666666666585,
+      "meanSignedError": 0.06345999999999918,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.3183933333333326,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0033,
+          "error": -0.005699999999999999
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.17800000000000002,
+          "error": 0.04200000000000001
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.7627999999999976,
+          "error": 0.17079999999999762
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0036,
+          "error": 0.0036
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.1973000000000001,
+          "error": 0.0233000000000001
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.7540999999999979,
+          "error": 0.12709999999999788
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.006599999999999999,
+          "error": 0.002599999999999999
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.15940000000000004,
+          "error": 0.04740000000000004
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.7461999999999973,
+          "error": 0.14819999999999733
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0027,
+          "error": 0.0027
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.20629999999999996,
+          "error": 0.04029999999999995
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.7893999999999973,
+          "error": 0.15939999999999732
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0036,
+          "error": -0.0014000000000000002
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.21430000000000005,
+          "error": 0.06830000000000006
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.7482999999999974,
+          "error": 0.12329999999999741
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.8,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.06830000000000006,
+      "meanAbsoluteError": 0.04426000000000003,
+      "meanSignedError": 0.04426000000000003,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.19106000000000004,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.17800000000000002,
+          "error": 0.04200000000000001
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.1973000000000001,
+          "error": 0.0233000000000001
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.15940000000000004,
+          "error": 0.04740000000000004
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.20629999999999996,
+          "error": 0.04029999999999995
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.21430000000000005,
+          "error": 0.06830000000000006
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.9,
+      "scope": "all15",
+      "maxAbsoluteError": 0.187400000000002,
+      "meanAbsoluteError": 0.07248111111111173,
+      "meanSignedError": 0.0715855555555562,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.32651888888888947,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0034833333333333335,
+          "error": -0.005516666666666666
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.18616666666666645,
+          "error": 0.05016666666666644
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.779400000000002,
+          "error": 0.187400000000002
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0038,
+          "error": 0.0038
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.20631666666666615,
+          "error": 0.03231666666666616
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.7690500000000019,
+          "error": 0.1420500000000019
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.006966666666666665,
+          "error": 0.002966666666666665
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.16636666666666655,
+          "error": 0.05436666666666655
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.7616000000000023,
+          "error": 0.1636000000000023
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0028499999999999997,
+          "error": 0.0028499999999999997
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.21498333333333286,
+          "error": 0.04898333333333285
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.8058666666666696,
+          "error": 0.1758666666666696
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0038,
+          "error": -0.0012000000000000001
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.22364999999999938,
+          "error": 0.07764999999999939
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.7634833333333355,
+          "error": 0.1384833333333355
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 1.9,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.07764999999999939,
+      "meanAbsoluteError": 0.05269666666666628,
+      "meanSignedError": 0.05269666666666628,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.19949666666666627,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.18616666666666645,
+          "error": 0.05016666666666644
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.20631666666666615,
+          "error": 0.03231666666666616
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.16636666666666655,
+          "error": 0.05436666666666655
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.21498333333333286,
+          "error": 0.04898333333333285
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.22364999999999938,
+          "error": 0.07764999999999939
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 2,
+      "scope": "all15",
+      "maxAbsoluteError": 0.20399999999999963,
+      "meanAbsoluteError": 0.08055555555555532,
+      "meanSignedError": 0.07971111111111089,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.3346444444444442,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0036666666666666666,
+          "error": -0.005333333333333332
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.19433333333333316,
+          "error": 0.058333333333333154
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.7959999999999996,
+          "error": 0.20399999999999963
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.003999999999999999,
+          "error": 0.003999999999999999
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.21533333333333307,
+          "error": 0.04133333333333308
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.7839999999999993,
+          "error": 0.15699999999999925
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.007333333333333334,
+          "error": 0.003333333333333334
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.17333333333333328,
+          "error": 0.06133333333333328
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.7769999999999997,
+          "error": 0.17899999999999971
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.003,
+          "error": 0.003
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.22366666666666632,
+          "error": 0.05766666666666631
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.8223333333333329,
+          "error": 0.1923333333333329
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.003999999999999999,
+          "error": -0.0010000000000000009
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.23299999999999962,
+          "error": 0.08699999999999963
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.7786666666666662,
+          "error": 0.15366666666666617
+        }
+      ]
+    },
+    {
+      "bestOf": 3,
+      "k": 2,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.08699999999999963,
+      "meanAbsoluteError": 0.061133333333333095,
+      "meanSignedError": 0.061133333333333095,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.20793333333333308,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.19433333333333316,
+          "error": 0.058333333333333154
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.21533333333333307,
+          "error": 0.04133333333333308
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.17333333333333328,
+          "error": 0.06133333333333328
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.22366666666666632,
+          "error": 0.05766666666666631
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.23299999999999962,
+          "error": 0.08699999999999963
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1,
+      "scope": "all15",
+      "maxAbsoluteError": 0.0584666666666664,
+      "meanAbsoluteError": 0.019089999999999902,
+      "meanSignedError": -0.018592222222222152,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.23634111111111117,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0016166666666666664,
+          "error": -0.007383333333333333
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.09856666666666686,
+          "error": -0.03743333333333315
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.5948333333333331,
+          "error": 0.0028333333333331323
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.00065,
+          "error": 0.00065
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.11553333333333358,
+          "error": -0.0584666666666664
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.6113499999999995,
+          "error": -0.015650000000000497
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.0010500000000000002,
+          "error": -0.00295
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.0936333333333335,
+          "error": -0.018366666666666503
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.5771333333333339,
+          "error": -0.020866666666666034
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.00025,
+          "error": 0.00025
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.11938333333333354,
+          "error": -0.04661666666666647
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.6169999999999999,
+          "error": -0.013000000000000123
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0021000000000000003,
+          "error": -0.0029
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.09905000000000012,
+          "error": -0.04694999999999987
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.612966666666667,
+          "error": -0.012033333333333007
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.0584666666666664,
+      "meanAbsoluteError": 0.04156666666666649,
+      "meanSignedError": -0.04156666666666649,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.10523333333333351,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.09856666666666686,
+          "error": -0.03743333333333315
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.11553333333333358,
+          "error": -0.0584666666666664
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.0936333333333335,
+          "error": -0.018366666666666503
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.11938333333333354,
+          "error": -0.04661666666666647
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.09905000000000012,
+          "error": -0.04694999999999987
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.1,
+      "scope": "all15",
+      "maxAbsoluteError": 0.04721333333333344,
+      "meanAbsoluteError": 0.020325000000000672,
+      "meanSignedError": -0.0022314444444438615,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.25270188888888945,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0017783333333333332,
+          "error": -0.007221666666666666
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.10812333333333321,
+          "error": -0.0278766666666668
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.6331166666666685,
+          "error": 0.04111666666666858
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.000715,
+          "error": 0.000715
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.12678666666666655,
+          "error": -0.04721333333333344
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.6492850000000016,
+          "error": 0.022285000000001554
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.001155,
+          "error": -0.0028450000000000003
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.10299666666666649,
+          "error": -0.009003333333333516
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.6168466666666685,
+          "error": 0.018846666666668566
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.000275,
+          "error": 0.000275
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.13102166666666656,
+          "error": -0.034978333333333445
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.6554000000000019,
+          "error": 0.025400000000001866
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.00231,
+          "error": -0.00269
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.10865499999999984,
+          "error": -0.037345000000000156
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.6520633333333355,
+          "error": 0.02706333333333555
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.1,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.04721333333333344,
+      "meanAbsoluteError": 0.031283333333333475,
+      "meanSignedError": -0.031283333333333475,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.11551666666666653,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.10812333333333321,
+          "error": -0.0278766666666668
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.12678666666666655,
+          "error": -0.04721333333333344
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.10299666666666649,
+          "error": -0.009003333333333516
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.13102166666666656,
+          "error": -0.034978333333333445
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.10865499999999984,
+          "error": -0.037345000000000156
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.2,
+      "scope": "all15",
+      "maxAbsoluteError": 0.0793999999999987,
+      "meanAbsoluteError": 0.029814666666666323,
+      "meanSignedError": 0.01412933333333288,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.2690626666666662,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0019399999999999999,
+          "error": -0.0070599999999999994
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.11767999999999976,
+          "error": -0.018320000000000253
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.6713999999999987,
+          "error": 0.0793999999999987
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.00078,
+          "error": 0.00078
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.13803999999999983,
+          "error": -0.03596000000000016
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.6872199999999983,
+          "error": 0.060219999999998275
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.00126,
+          "error": -0.0027400000000000002
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.11235999999999971,
+          "error": 0.0003599999999997078
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.6565599999999998,
+          "error": 0.058559999999999834
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0003,
+          "error": 0.0003
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.14265999999999981,
+          "error": -0.023340000000000194
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.6937999999999984,
+          "error": 0.06379999999999841
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0025199999999999997,
+          "error": -0.0024800000000000004
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.11825999999999977,
+          "error": -0.027740000000000223
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.6911599999999991,
+          "error": 0.06615999999999911
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.2,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.03596000000000016,
+      "meanAbsoluteError": 0.021144000000000107,
+      "meanSignedError": -0.021000000000000223,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.12579999999999977,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.11767999999999976,
+          "error": -0.018320000000000253
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.13803999999999983,
+          "error": -0.03596000000000016
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.11235999999999971,
+          "error": 0.0003599999999997078
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.14265999999999981,
+          "error": -0.023340000000000194
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.11825999999999977,
+          "error": -0.027740000000000223
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.3,
+      "scope": "all15",
+      "maxAbsoluteError": 0.11600333333333201,
+      "meanAbsoluteError": 0.03996877777777749,
+      "meanSignedError": 0.0299434444444443,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.28487677777777765,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0021016666666666666,
+          "error": -0.006898333333333333
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.12723666666666703,
+          "error": -0.008763333333332984
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.708003333333332,
+          "error": 0.11600333333333201
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0008449999999999999,
+          "error": 0.0008449999999999999
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.1492533333333335,
+          "error": -0.0247466666666665
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.7234349999999997,
+          "error": 0.09643499999999972
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.001365,
+          "error": -0.002635
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.12172333333333368,
+          "error": 0.00972333333333368
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.6949933333333322,
+          "error": 0.09699333333333227
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.000325,
+          "error": 0.000325
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.1542583333333335,
+          "error": -0.011741666666666511
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.7307999999999992,
+          "error": 0.10079999999999922
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0027300000000000002,
+          "error": -0.00227
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.1278650000000004,
+          "error": -0.018134999999999596
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.7282166666666665,
+          "error": 0.10321666666666651
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.3,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.0247466666666665,
+      "meanAbsoluteError": 0.014621999999999854,
+      "meanSignedError": -0.010732666666666382,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.13606733333333362,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.12723666666666703,
+          "error": -0.008763333333332984
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.1492533333333335,
+          "error": -0.0247466666666665
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.12172333333333368,
+          "error": 0.00972333333333368
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.1542583333333335,
+          "error": -0.011741666666666511
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.1278650000000004,
+          "error": -0.018134999999999596
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.4,
+      "scope": "all15",
+      "maxAbsoluteError": 0.14467666666666412,
+      "meanAbsoluteError": 0.047595999999999396,
+      "meanSignedError": 0.04302088888888829,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.2979542222222216,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0022633333333333333,
+          "error": -0.006736666666666666
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1366933333333334,
+          "error": 0.0006933333333333791
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.7366766666666641,
+          "error": 0.14467666666666412
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0009099999999999999,
+          "error": 0.0009099999999999999
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.1600266666666668,
+          "error": -0.013973333333333199
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.7516299999999976,
+          "error": 0.12462999999999758
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.00147,
+          "error": -0.00253
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.13083666666666674,
+          "error": 0.018836666666666738
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.7254466666666661,
+          "error": 0.12744666666666615
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.00035,
+          "error": 0.00035
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.16566666666666655,
+          "error": -0.00033333333333346316
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.7599499999999987,
+          "error": 0.12994999999999868
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.00294,
+          "error": -0.00206
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.13732000000000003,
+          "error": -0.008679999999999966
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.757133333333331,
+          "error": 0.132133333333331
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.4,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.018836666666666738,
+      "meanAbsoluteError": 0.008503333333333349,
+      "meanSignedError": -0.0006913333333333022,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.1461086666666667,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1366933333333334,
+          "error": 0.0006933333333333791
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.1600266666666668,
+          "error": -0.013973333333333199
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.13083666666666674,
+          "error": 0.018836666666666738
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.16566666666666655,
+          "error": -0.00033333333333346316
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.13732000000000003,
+          "error": -0.008679999999999966
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.5,
+      "scope": "all15",
+      "maxAbsoluteError": 0.17022499999999963,
+      "meanAbsoluteError": 0.056903333333333216,
+      "meanSignedError": 0.05500333333333323,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.3099366666666666,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0024249999999999996,
+          "error": -0.006574999999999999
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1460999999999999,
+          "error": 0.010099999999999887
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.7622249999999996,
+          "error": 0.17022499999999963
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0009750000000000001,
+          "error": 0.0009750000000000001
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.17060000000000006,
+          "error": -0.003399999999999931
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.776675,
+          "error": 0.149675
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.0015750000000000002,
+          "error": -0.002425
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.13982499999999995,
+          "error": 0.027824999999999947
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.7525499999999993,
+          "error": 0.1545499999999993
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.000375,
+          "error": 0.000375
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.17700000000000002,
+          "error": 0.01100000000000001
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.7858750000000001,
+          "error": 0.1558750000000001
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0031500000000000005,
+          "error": -0.0018499999999999996
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.1466999999999999,
+          "error": 0.0006999999999999229
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.7829999999999996,
+          "error": 0.15799999999999959
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.5,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.027824999999999947,
+      "meanAbsoluteError": 0.010604999999999939,
+      "meanSignedError": 0.009244999999999967,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.156045,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1460999999999999,
+          "error": 0.010099999999999887
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.17060000000000006,
+          "error": -0.003399999999999931
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.13982499999999995,
+          "error": 0.027824999999999947
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.17700000000000002,
+          "error": 0.01100000000000001
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.1466999999999999,
+          "error": 0.0006999999999999229
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.6,
+      "scope": "all15",
+      "maxAbsoluteError": 0.18423999999999885,
+      "meanAbsoluteError": 0.06383999999999942,
+      "meanSignedError": 0.06243911111111055,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.31737244444444385,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0025199999999999997,
+          "error": -0.00648
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.15437333333333314,
+          "error": 0.01837333333333313
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.7762399999999988,
+          "error": 0.18423999999999885
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0010400000000000001,
+          "error": 0.0010400000000000001
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.17970666666666632,
+          "error": 0.005706666666666332
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.7889199999999981,
+          "error": 0.16191999999999807
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.00168,
+          "error": -0.00232
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.14781333333333307,
+          "error": 0.03581333333333307
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.7675866666666651,
+          "error": 0.1695866666666651
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0004,
+          "error": 0.0004
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.18686666666666654,
+          "error": 0.020866666666666533
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.7988666666666647,
+          "error": 0.16886666666666472
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.003293333333333333,
+          "error": -0.001706666666666667
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.15501333333333323,
+          "error": 0.009013333333333234
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.7962666666666658,
+          "error": 0.1712666666666658
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.6,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.03581333333333307,
+      "meanAbsoluteError": 0.01795466666666646,
+      "meanSignedError": 0.01795466666666646,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.16475466666666647,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.15437333333333314,
+          "error": 0.01837333333333313
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.17970666666666632,
+          "error": 0.005706666666666332
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.14781333333333307,
+          "error": 0.03581333333333307
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.18686666666666654,
+          "error": 0.020866666666666533
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.15501333333333323,
+          "error": 0.009013333333333234
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.7,
+      "scope": "all15",
+      "maxAbsoluteError": 0.19711500000000226,
+      "meanAbsoluteError": 0.07084200000000082,
+      "meanSignedError": 0.06948688888888971,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.324420222222223,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0026149999999999997,
+          "error": -0.006385
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.162586666666667,
+          "error": 0.02658666666666698
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.7891150000000022,
+          "error": 0.19711500000000226
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.001105,
+          "error": 0.001105
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.18869333333333368,
+          "error": 0.014693333333333697
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.8003250000000016,
+          "error": 0.17332500000000162
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.0017850000000000001,
+          "error": -0.002215
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.1557016666666669,
+          "error": 0.0437016666666669
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.7811233333333357,
+          "error": 0.18312333333333575
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.000425,
+          "error": 0.000425
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.19659333333333381,
+          "error": 0.030593333333333805
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.8110183333333358,
+          "error": 0.18101833333333583
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0034366666666666664,
+          "error": -0.0015633333333333337
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.16328666666666683,
+          "error": 0.01728666666666684
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.8084933333333353,
+          "error": 0.18349333333333528
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.7,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.0437016666666669,
+      "meanAbsoluteError": 0.026572333333333642,
+      "meanSignedError": 0.026572333333333642,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.17337233333333363,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.162586666666667,
+          "error": 0.02658666666666698
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.18869333333333368,
+          "error": 0.014693333333333697
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.1557016666666669,
+          "error": 0.0437016666666669
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.19659333333333381,
+          "error": 0.030593333333333805
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.16328666666666683,
+          "error": 0.01728666666666684
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.8,
+      "scope": "all15",
+      "maxAbsoluteError": 0.20771000000000117,
+      "meanAbsoluteError": 0.07706800000000029,
+      "meanSignedError": 0.07575866666666693,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.33069200000000026,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.00271,
+          "error": -0.006289999999999999
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.17068,
+          "error": 0.03467999999999999
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.7997100000000011,
+          "error": 0.20771000000000117
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0011700000000000002,
+          "error": 0.0011700000000000002
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.19743999999999998,
+          "error": 0.02343999999999999
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.8100500000000006,
+          "error": 0.1830500000000006
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.0018900000000000004,
+          "error": -0.00211
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.16339000000000012,
+          "error": 0.051390000000000116
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.7916600000000007,
+          "error": 0.19366000000000072
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.00045,
+          "error": 0.00045
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.20604000000000003,
+          "error": 0.04004000000000002
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.8214900000000009,
+          "error": 0.19149000000000094
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0035800000000000007,
+          "error": -0.0014199999999999994
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.1714800000000001,
+          "error": 0.025480000000000114
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.8186400000000006,
+          "error": 0.1936400000000006
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.8,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.051390000000000116,
+      "meanAbsoluteError": 0.03500600000000005,
+      "meanSignedError": 0.03500600000000005,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.18180600000000005,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.17068,
+          "error": 0.03467999999999999
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.19743999999999998,
+          "error": 0.02343999999999999
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.16339000000000012,
+          "error": 0.051390000000000116
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.20604000000000003,
+          "error": 0.04004000000000002
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.1714800000000001,
+          "error": 0.025480000000000114
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.9,
+      "scope": "all15",
+      "maxAbsoluteError": 0.21830500000000042,
+      "meanAbsoluteError": 0.08329400000000006,
+      "meanSignedError": 0.08203044444444453,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.33696377777777786,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.002805,
+          "error": -0.006194999999999999
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1787733333333329,
+          "error": 0.042773333333332886
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.8103050000000004,
+          "error": 0.21830500000000042
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0012349999999999998,
+          "error": 0.0012349999999999998
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.206186666666666,
+          "error": 0.032186666666666
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.8197750000000011,
+          "error": 0.19277500000000114
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.001995,
+          "error": -0.0020050000000000003
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.1710783333333329,
+          "error": 0.059078333333332886
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.8021966666666677,
+          "error": 0.2041966666666677
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.000475,
+          "error": 0.000475
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.21548666666666572,
+          "error": 0.04948666666666571
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.8319616666666679,
+          "error": 0.20196166666666793
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0037233333333333333,
+          "error": -0.0012766666666666668
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.17967333333333266,
+          "error": 0.03367333333333267
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.8287866666666673,
+          "error": 0.20378666666666734
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 1.9,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.059078333333332886,
+      "meanAbsoluteError": 0.04343966666666603,
+      "meanSignedError": 0.04343966666666603,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.19023966666666603,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.1787733333333329,
+          "error": 0.042773333333332886
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.206186666666666,
+          "error": 0.032186666666666
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.1710783333333329,
+          "error": 0.059078333333332886
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.21548666666666572,
+          "error": 0.04948666666666571
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.17967333333333266,
+          "error": 0.03367333333333267
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 2,
+      "scope": "all15",
+      "maxAbsoluteError": 0.22889999999999844,
+      "meanAbsoluteError": 0.0895199999999997,
+      "meanSignedError": 0.0883022222222219,
+      "meanBaseline": 0.25493333333333335,
+      "meanExpected": 0.34323555555555524,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 55,
+          "baseline": 0.009,
+          "expected": 0.0029,
+          "error": -0.0060999999999999995
+        },
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.186866666666667,
+          "error": 0.050866666666666976
+        },
+        {
+          "pos": "top",
+          "skill": 75,
+          "baseline": 0.592,
+          "expected": 0.8208999999999984,
+          "error": 0.22889999999999844
+        },
+        {
+          "pos": "jg",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0013,
+          "error": 0.0013
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.2149333333333337,
+          "error": 0.04093333333333371
+        },
+        {
+          "pos": "jg",
+          "skill": 75,
+          "baseline": 0.627,
+          "expected": 0.8294999999999991,
+          "error": 0.20249999999999913
+        },
+        {
+          "pos": "mid",
+          "skill": 55,
+          "baseline": 0.004,
+          "expected": 0.0021000000000000003,
+          "error": -0.0018999999999999998
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.17876666666666693,
+          "error": 0.06676666666666693
+        },
+        {
+          "pos": "mid",
+          "skill": 75,
+          "baseline": 0.598,
+          "expected": 0.812733333333332,
+          "error": 0.214733333333332
+        },
+        {
+          "pos": "adc",
+          "skill": 55,
+          "baseline": 0,
+          "expected": 0.0005,
+          "error": 0.0005
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.22493333333333365,
+          "error": 0.05893333333333364
+        },
+        {
+          "pos": "adc",
+          "skill": 75,
+          "baseline": 0.63,
+          "expected": 0.8424333333333319,
+          "error": 0.21243333333333192
+        },
+        {
+          "pos": "sup",
+          "skill": 55,
+          "baseline": 0.005,
+          "expected": 0.0038666666666666667,
+          "error": -0.0011333333333333334
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.18786666666666685,
+          "error": 0.04186666666666686
+        },
+        {
+          "pos": "sup",
+          "skill": 75,
+          "baseline": 0.625,
+          "expected": 0.8389333333333324,
+          "error": 0.21393333333333242
+        }
+      ]
+    },
+    {
+      "bestOf": 5,
+      "k": 2,
+      "scope": "equal65",
+      "maxAbsoluteError": 0.06676666666666693,
+      "meanAbsoluteError": 0.051873333333333625,
+      "meanSignedError": 0.051873333333333625,
+      "meanBaseline": 0.14679999999999999,
+      "meanExpected": 0.19867333333333365,
+      "rows": [
+        {
+          "pos": "top",
+          "skill": 65,
+          "baseline": 0.136,
+          "expected": 0.186866666666667,
+          "error": 0.050866666666666976
+        },
+        {
+          "pos": "jg",
+          "skill": 65,
+          "baseline": 0.174,
+          "expected": 0.2149333333333337,
+          "error": 0.04093333333333371
+        },
+        {
+          "pos": "mid",
+          "skill": 65,
+          "baseline": 0.112,
+          "expected": 0.17876666666666693,
+          "error": 0.06676666666666693
+        },
+        {
+          "pos": "adc",
+          "skill": 65,
+          "baseline": 0.166,
+          "expected": 0.22493333333333365,
+          "error": 0.05893333333333364
+        },
+        {
+          "pos": "sup",
+          "skill": 65,
+          "baseline": 0.146,
+          "expected": 0.18786666666666685,
+          "error": 0.04186666666666686
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "fixtures": [
+    {
+      "pos": "top",
+      "skill": 55,
+      "baseline": {
+        "n": 1000,
+        "wins": 142,
+        "winRate": 0.142,
+        "pogRate": 0.009,
+        "meanRating": 3.5830526337688946,
+        "ratingStdDev": 1.7728510630369365,
+        "meanFanDelta": 189.337,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.37522125,
+        "meanMechDelta": 0.72197,
+        "meanMentalDelta": 0.9697099999999996,
+        "meanTeamDelta": 0.46277999999999975,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 412,
+          "0:2": 446,
+          "2:1": 131,
+          "2:0": 11
+        },
+        "ratingBuckets": {
+          "below5": 792,
+          "5to7": 157,
+          "7to8.3": 42,
+          "8.3plus": 9
+        },
+        "phaseCounts": {
+          "0": 466,
+          "1": 445,
+          "2": 80,
+          "3": 9
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 155,
+        "winRate": 0.155,
+        "pogRate": 0.002,
+        "meanRating": 3.5269399999999997,
+        "ratingStdDev": 1.1312862751753028,
+        "meanFanDelta": 171.021,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.463906749999992,
+        "meanMechDelta": 0.7916100000000001,
+        "meanMentalDelta": 1.0496200000000009,
+        "meanTeamDelta": 0.4634999999999989,
+        "meanSets": 2.386,
+        "meanDistinctChampions": 2.154,
+        "meanRawP": 0.1314682222901185,
+        "meanEffectiveP": 0.2355359682332115,
+        "scoreCounts": {
+          "1:2": 300,
+          "0:2": 545,
+          "2:1": 86,
+          "2:0": 69
+        },
+        "ratingBuckets": {
+          "below5": 894,
+          "5to7": 102,
+          "7to8.3": 4,
+          "8.3plus": 0
+        },
+        "phaseCounts": {
+          "0": 475,
+          "1": 430,
+          "2": 91,
+          "3": 4
+        },
+        "pogSweep": {
+          "1.0": 0.0018333333333333333,
+          "1.1": 0.0020166666666666666,
+          "1.2": 0.0021999999999999997,
+          "1.3": 0.0023833333333333332,
+          "1.4": 0.0025666666666666663,
+          "1.5": 0.00275,
+          "1.6": 0.0029333333333333334,
+          "1.7": 0.003116666666666667,
+          "1.8": 0.0033,
+          "1.9": 0.0034833333333333335,
+          "2.0": 0.0036666666666666666
+        },
+        "pogCandidateDistribution": {
+          "loss:0/3": 296,
+          "loss:0/2": 544,
+          "win:0/3": 82,
+          "win:0/2": 68,
+          "win:1/3": 4,
+          "loss:1/3": 4,
+          "loss:1/2": 1,
+          "win:1/2": 1
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 133,
+        "winRate": 0.133,
+        "pogRate": 0.003,
+        "meanRating": 3.4551300000000036,
+        "ratingStdDev": 0.901191979047735,
+        "meanFanDelta": 149.68,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.473466499999995,
+        "meanMechDelta": 0.7442200000000003,
+        "meanMentalDelta": 0.9939299999999999,
+        "meanTeamDelta": 0.46303999999999906,
+        "meanSets": 3.865,
+        "meanDistinctChampions": 3.104,
+        "meanRawP": 0.12826373428317214,
+        "meanEffectiveP": 0.27826550820894724,
+        "scoreCounts": {
+          "1:3": 311,
+          "0:3": 367,
+          "3:2": 66,
+          "2:3": 189,
+          "3:1": 44,
+          "3:0": 23
+        },
+        "ratingBuckets": {
+          "below5": 955,
+          "5to7": 44,
+          "7to8.3": 1,
+          "8.3plus": 0
+        },
+        "phaseCounts": {
+          "0": 495,
+          "1": 417,
+          "2": 80,
+          "3": 8
+        },
+        "pogSweep": {
+          "1.0": 0.0016166666666666664,
+          "1.1": 0.0017783333333333332,
+          "1.2": 0.0019399999999999999,
+          "1.3": 0.0021016666666666666,
+          "1.4": 0.0022633333333333333,
+          "1.5": 0.0024249999999999996,
+          "1.6": 0.0025199999999999997,
+          "1.7": 0.0026149999999999997,
+          "1.8": 0.00271,
+          "1.9": 0.002805,
+          "2.0": 0.0029
+        },
+        "pogCandidateDistribution": {
+          "loss:0/4": 302,
+          "loss:0/3": 365,
+          "win:0/5": 65,
+          "loss:0/5": 183,
+          "win:0/4": 41,
+          "loss:1/4": 9,
+          "loss:1/5": 6,
+          "win:0/3": 22,
+          "win:2/3": 1,
+          "win:1/4": 3,
+          "loss:1/3": 2,
+          "win:1/5": 1
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0.013000000000000012,
+          "absoluteWinRateDifference": 0.013000000000000012,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.006999999999999999,
+          "meanRatingDifference": -0.05611263376889486,
+          "ratingStdDevRatio": 0.6381169285802171,
+          "fanDeltaDifference": -18.316000000000003,
+          "fanDeltaRatio": 0.9032624368190052,
+          "mechDeltaDifference": 0.06964000000000015,
+          "mentalDeltaDifference": 0.07991000000000126,
+          "teamDeltaDifference": 0.0007199999999991658,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": -0.00899999999999998,
+          "absoluteWinRateDifference": 0.00899999999999998,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.005999999999999999,
+          "meanRatingDifference": -0.12792263376889101,
+          "ratingStdDevRatio": 0.5083292092816705,
+          "fanDeltaDifference": -39.65699999999998,
+          "fanDeltaRatio": 0.7905480703718767,
+          "mechDeltaDifference": 0.022250000000000325,
+          "mentalDeltaDifference": 0.02422000000000024,
+          "teamDeltaDifference": 0.00025999999999931633,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "top",
+      "skill": 65,
+      "baseline": {
+        "n": 1000,
+        "wins": 517,
+        "winRate": 0.517,
+        "pogRate": 0.136,
+        "meanRating": 6.113856746582207,
+        "ratingStdDev": 2.016493745774988,
+        "meanFanDelta": 671.529,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 4.177117687500002,
+        "meanMechDelta": 0.8035200000000002,
+        "meanMentalDelta": 1.0192600000000067,
+        "meanTeamDelta": 0.4202199999999991,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 418,
+          "2:1": 246,
+          "2:0": 271,
+          "0:2": 65
+        },
+        "ratingBuckets": {
+          "below5": 341,
+          "5to7": 253,
+          "7to8.3": 266,
+          "8.3plus": 140
+        },
+        "phaseCounts": {
+          "0": 67,
+          "1": 358,
+          "2": 435,
+          "3": 140
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 533,
+        "winRate": 0.533,
+        "pogRate": 0.101,
+        "meanRating": 6.081910000000001,
+        "ratingStdDev": 1.3327858237166261,
+        "meanFanDelta": 639.905,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 4.07603925,
+        "meanMechDelta": 0.7989999999999998,
+        "meanMentalDelta": 1.0126900000000059,
+        "meanTeamDelta": 0.42049000000000036,
+        "meanSets": 2.511,
+        "meanDistinctChampions": 2.221,
+        "meanRawP": 0.5351006889520112,
+        "meanEffectiveP": 0.5264819361481862,
+        "scoreCounts": {
+          "0:2": 220,
+          "1:2": 247,
+          "2:1": 264,
+          "2:0": 269
+        },
+        "ratingBuckets": {
+          "below5": 207,
+          "5to7": 536,
+          "7to8.3": 220,
+          "8.3plus": 37
+        },
+        "phaseCounts": {
+          "0": 78,
+          "1": 374,
+          "2": 409,
+          "3": 139
+        },
+        "pogSweep": {
+          "1.0": 0.1079999999999999,
+          "1.1": 0.11709999999999954,
+          "1.2": 0.12619999999999998,
+          "1.3": 0.13530000000000034,
+          "1.4": 0.1444000000000002,
+          "1.5": 0.1535,
+          "1.6": 0.16166666666666665,
+          "1.7": 0.16983333333333284,
+          "1.8": 0.17800000000000002,
+          "1.9": 0.18616666666666645,
+          "2.0": 0.19433333333333316
+        },
+        "pogCandidateDistribution": {
+          "loss:0/2": 205,
+          "loss:1/3": 70,
+          "win:0/3": 146,
+          "win:0/2": 158,
+          "win:1/3": 104,
+          "loss:0/3": 174,
+          "win:1/2": 94,
+          "loss:1/2": 15,
+          "win:2/2": 17,
+          "loss:3/3": 2,
+          "win:2/3": 14,
+          "loss:2/3": 1
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 524,
+        "winRate": 0.524,
+        "pogRate": 0.088,
+        "meanRating": 6.133740000000007,
+        "ratingStdDev": 1.0477826169582694,
+        "meanFanDelta": 617.578,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 4.0081815625000035,
+        "meanMechDelta": 0.8186799999999993,
+        "meanMentalDelta": 1.0343600000000048,
+        "meanTeamDelta": 0.4212599999999995,
+        "meanSets": 4.117,
+        "meanDistinctChampions": 3.242,
+        "meanRawP": 0.544041369482235,
+        "meanEffectiveP": 0.5283952274783031,
+        "scoreCounts": {
+          "1:3": 170,
+          "2:3": 189,
+          "3:2": 193,
+          "3:1": 183,
+          "3:0": 148,
+          "0:3": 117
+        },
+        "ratingBuckets": {
+          "below5": 135,
+          "5to7": 651,
+          "7to8.3": 199,
+          "8.3plus": 15
+        },
+        "phaseCounts": {
+          "0": 79,
+          "1": 372,
+          "2": 420,
+          "3": 129
+        },
+        "pogSweep": {
+          "1.0": 0.09856666666666686,
+          "1.1": 0.10812333333333321,
+          "1.2": 0.11767999999999976,
+          "1.3": 0.12723666666666703,
+          "1.4": 0.1366933333333334,
+          "1.5": 0.1460999999999999,
+          "1.6": 0.15437333333333314,
+          "1.7": 0.162586666666667,
+          "1.8": 0.17068,
+          "1.9": 0.1787733333333329,
+          "2.0": 0.186866666666667
+        },
+        "pogCandidateDistribution": {
+          "loss:0/4": 110,
+          "loss:0/5": 96,
+          "win:1/5": 77,
+          "win:0/4": 75,
+          "win:2/5": 38,
+          "win:1/3": 52,
+          "win:0/5": 75,
+          "win:1/4": 80,
+          "win:0/3": 76,
+          "loss:1/4": 53,
+          "loss:0/3": 100,
+          "win:2/4": 26,
+          "loss:2/5": 29,
+          "loss:1/5": 61,
+          "win:2/3": 17,
+          "loss:1/3": 16,
+          "win:3/5": 3,
+          "loss:3/5": 3,
+          "loss:2/4": 7,
+          "loss:2/3": 1,
+          "win:3/3": 3,
+          "win:3/4": 2
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0.016000000000000014,
+          "absoluteWinRateDifference": 0.016000000000000014,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": true,
+          "pogRateDifference": -0.035,
+          "meanRatingDifference": -0.03194674658220631,
+          "ratingStdDevRatio": 0.6609422055035453,
+          "fanDeltaDifference": -31.624000000000024,
+          "fanDeltaRatio": 0.9529074693721343,
+          "mechDeltaDifference": -0.004520000000000413,
+          "mentalDeltaDifference": -0.006570000000000853,
+          "teamDeltaDifference": 0.0002700000000012692,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0.007000000000000006,
+          "absoluteWinRateDifference": 0.007000000000000006,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": true,
+          "pogRateDifference": -0.048000000000000015,
+          "meanRatingDifference": 0.01988325341779973,
+          "ratingStdDevRatio": 0.5196061823418058,
+          "fanDeltaDifference": -53.95100000000002,
+          "fanDeltaRatio": 0.9196594637014931,
+          "mechDeltaDifference": 0.015159999999999063,
+          "mentalDeltaDifference": 0.015099999999998115,
+          "teamDeltaDifference": 0.0010400000000004295,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "top",
+      "skill": 75,
+      "baseline": {
+        "n": 1000,
+        "wins": 889,
+        "winRate": 0.889,
+        "pogRate": 0.592,
+        "meanRating": 8.16545546416991,
+        "ratingStdDev": 1.395104680708297,
+        "meanFanDelta": 1353.756,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 1.1049718124999999,
+        "meanMechDelta": 0.5936399999999996,
+        "meanMentalDelta": 0.7560199999999985,
+        "meanTeamDelta": 0.32019000000000086,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 109,
+          "2:0": 794,
+          "2:1": 95,
+          "0:2": 2
+        },
+        "ratingBuckets": {
+          "below5": 44,
+          "5to7": 167,
+          "7to8.3": 176,
+          "8.3plus": 613
+        },
+        "phaseCounts": {
+          "0": 2,
+          "1": 55,
+          "2": 330,
+          "3": 613
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 901,
+        "winRate": 0.901,
+        "pogRate": 0.595,
+        "meanRating": 8.221139999999998,
+        "ratingStdDev": 0.9160181768939593,
+        "meanFanDelta": 1363.172,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 1.0487286249999996,
+        "meanMechDelta": 0.5740499999999998,
+        "meanMentalDelta": 0.7341499999999982,
+        "meanTeamDelta": 0.31891000000000064,
+        "meanSets": 2.326,
+        "meanDistinctChampions": 2.088,
+        "meanRawP": 0.8874328215446838,
+        "meanEffectiveP": 0.789742551380277,
+        "scoreCounts": {
+          "2:1": 267,
+          "2:0": 634,
+          "0:2": 40,
+          "1:2": 59
+        },
+        "ratingBuckets": {
+          "below5": 1,
+          "5to7": 110,
+          "7to8.3": 375,
+          "8.3plus": 514
+        },
+        "phaseCounts": {
+          "0": 2,
+          "1": 53,
+          "2": 308,
+          "3": 637
+        },
+        "pogSweep": {
+          "1.0": 0.5936666666666669,
+          "1.1": 0.6175333333333348,
+          "1.2": 0.6414000000000015,
+          "1.3": 0.6652666666666633,
+          "1.4": 0.6891333333333329,
+          "1.5": 0.713,
+          "1.6": 0.7295999999999984,
+          "1.7": 0.7462000000000047,
+          "1.8": 0.7627999999999976,
+          "1.9": 0.779400000000002,
+          "2.0": 0.7959999999999996
+        },
+        "pogCandidateDistribution": {
+          "win:1/3": 78,
+          "win:2/2": 291,
+          "win:1/2": 280,
+          "loss:2/2": 8,
+          "loss:2/3": 27,
+          "win:3/3": 64,
+          "win:2/3": 109,
+          "win:0/2": 63,
+          "win:0/3": 16,
+          "loss:1/3": 20,
+          "loss:0/2": 15,
+          "loss:0/3": 9,
+          "loss:1/2": 17,
+          "loss:3/3": 3
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 903,
+        "winRate": 0.903,
+        "pogRate": 0.589,
+        "meanRating": 8.285149999999998,
+        "ratingStdDev": 0.6859493986440012,
+        "meanFanDelta": 1370.495,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 0.9449978124999998,
+        "meanMechDelta": 0.5967899999999995,
+        "meanMentalDelta": 0.7596899999999984,
+        "meanTeamDelta": 0.3191800000000012,
+        "meanSets": 3.793,
+        "meanDistinctChampions": 3.045,
+        "meanRawP": 0.8939424706015745,
+        "meanEffectiveP": 0.7487914971814033,
+        "scoreCounts": {
+          "3:1": 320,
+          "3:0": 413,
+          "3:2": 170,
+          "2:3": 51,
+          "1:3": 31,
+          "0:3": 15
+        },
+        "ratingBuckets": {
+          "below5": 0,
+          "5to7": 40,
+          "7to8.3": 428,
+          "8.3plus": 532
+        },
+        "phaseCounts": {
+          "0": 1,
+          "1": 37,
+          "2": 319,
+          "3": 643
+        },
+        "pogSweep": {
+          "1.0": 0.5948333333333331,
+          "1.1": 0.6331166666666685,
+          "1.2": 0.6713999999999987,
+          "1.3": 0.708003333333332,
+          "1.4": 0.7366766666666641,
+          "1.5": 0.7622249999999996,
+          "1.6": 0.7762399999999988,
+          "1.7": 0.7891150000000022,
+          "1.8": 0.7997100000000011,
+          "1.9": 0.8103050000000004,
+          "2.0": 0.8208999999999984
+        },
+        "pogCandidateDistribution": {
+          "win:2/4": 95,
+          "win:1/3": 84,
+          "win:2/3": 173,
+          "win:4/4": 56,
+          "win:3/3": 145,
+          "win:3/5": 57,
+          "win:3/4": 125,
+          "win:4/5": 42,
+          "win:1/4": 41,
+          "win:5/5": 11,
+          "win:2/5": 44,
+          "win:1/5": 13,
+          "loss:3/5": 19,
+          "loss:3/4": 9,
+          "loss:2/3": 4,
+          "loss:2/4": 14,
+          "loss:5/5": 2,
+          "loss:2/5": 13,
+          "loss:0/3": 4,
+          "loss:1/4": 7,
+          "loss:1/3": 6,
+          "loss:1/5": 3,
+          "loss:4/5": 13,
+          "loss:3/3": 1,
+          "win:0/3": 11,
+          "loss:0/5": 1,
+          "win:0/4": 3,
+          "loss:4/4": 1,
+          "win:0/5": 3
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0.01200000000000001,
+          "absoluteWinRateDifference": 0.01200000000000001,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": 0.0030000000000000027,
+          "meanRatingDifference": 0.05568453583008903,
+          "ratingStdDevRatio": 0.6565945835898818,
+          "fanDeltaDifference": 9.41599999999994,
+          "fanDeltaRatio": 1.0069554631706157,
+          "mechDeltaDifference": -0.019589999999999774,
+          "mentalDeltaDifference": -0.021870000000000278,
+          "teamDeltaDifference": -0.0012800000000002254,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0.014000000000000012,
+          "absoluteWinRateDifference": 0.014000000000000012,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.0030000000000000027,
+          "meanRatingDifference": 0.11969453583008871,
+          "ratingStdDevRatio": 0.49168310316021846,
+          "fanDeltaDifference": 16.738999999999805,
+          "fanDeltaRatio": 1.012364857478009,
+          "mechDeltaDifference": 0.003149999999999875,
+          "mentalDeltaDifference": 0.003669999999999951,
+          "teamDeltaDifference": -0.0010099999999996778,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "jg",
+      "skill": 55,
+      "baseline": {
+        "n": 1000,
+        "wins": 129,
+        "winRate": 0.129,
+        "pogRate": 0,
+        "meanRating": 3.4463297503734216,
+        "ratingStdDev": 1.7707300640438852,
+        "meanFanDelta": 156.836,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.400657687499997,
+        "meanMechDelta": 0.7863800000000004,
+        "meanMentalDelta": 1.0307799999999996,
+        "meanTeamDelta": 0.4643499999999992,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 387,
+          "0:2": 484,
+          "2:1": 125,
+          "2:0": 4
+        },
+        "ratingBuckets": {
+          "below5": 798,
+          "5to7": 153,
+          "7to8.3": 48,
+          "8.3plus": 1
+        },
+        "phaseCounts": {
+          "0": 511,
+          "1": 395,
+          "2": 93,
+          "3": 1
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 143,
+        "winRate": 0.143,
+        "pogRate": 0.002,
+        "meanRating": 3.4934000000000016,
+        "ratingStdDev": 1.1131523884895513,
+        "meanFanDelta": 156.179,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.617582062499993,
+        "meanMechDelta": 0.7752500000000001,
+        "meanMentalDelta": 1.0281999999999998,
+        "meanTeamDelta": 0.4628799999999992,
+        "meanSets": 2.371,
+        "meanDistinctChampions": 2.115,
+        "meanRawP": 0.13518443180022227,
+        "meanEffectiveP": 0.23845935609108307,
+        "scoreCounts": {
+          "0:2": 569,
+          "2:1": 83,
+          "2:0": 60,
+          "1:2": 288
+        },
+        "ratingBuckets": {
+          "below5": 913,
+          "5to7": 84,
+          "7to8.3": 3,
+          "8.3plus": 0
+        },
+        "phaseCounts": {
+          "0": 496,
+          "1": 413,
+          "2": 87,
+          "3": 4
+        },
+        "pogSweep": {
+          "1.0": 0.0019999999999999996,
+          "1.1": 0.0022,
+          "1.2": 0.0024,
+          "1.3": 0.0026,
+          "1.4": 0.0028,
+          "1.5": 0.003,
+          "1.6": 0.0032,
+          "1.7": 0.0034,
+          "1.8": 0.0036,
+          "1.9": 0.0038,
+          "2.0": 0.003999999999999999
+        },
+        "pogCandidateDistribution": {
+          "loss:0/2": 569,
+          "win:0/3": 80,
+          "win:0/2": 58,
+          "loss:0/3": 282,
+          "loss:1/3": 6,
+          "win:1/3": 3,
+          "win:1/2": 2
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 131,
+        "winRate": 0.131,
+        "pogRate": 0.001,
+        "meanRating": 3.5143799999999983,
+        "ratingStdDev": 0.9290384360186698,
+        "meanFanDelta": 147.679,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.6832154375,
+        "meanMechDelta": 0.7491299999999996,
+        "meanMentalDelta": 0.9999300000000014,
+        "meanTeamDelta": 0.4634499999999986,
+        "meanSets": 3.816,
+        "meanDistinctChampions": 3.103,
+        "meanRawP": 0.1371159118235271,
+        "meanEffectiveP": 0.2838917705322235,
+        "scoreCounts": {
+          "1:3": 341,
+          "3:1": 55,
+          "3:2": 51,
+          "0:3": 369,
+          "2:3": 159,
+          "3:0": 25
+        },
+        "ratingBuckets": {
+          "below5": 937,
+          "5to7": 62,
+          "7to8.3": 1,
+          "8.3plus": 0
+        },
+        "phaseCounts": {
+          "0": 493,
+          "1": 407,
+          "2": 96,
+          "3": 4
+        },
+        "pogSweep": {
+          "1.0": 0.00065,
+          "1.1": 0.000715,
+          "1.2": 0.00078,
+          "1.3": 0.0008449999999999999,
+          "1.4": 0.0009099999999999999,
+          "1.5": 0.0009750000000000001,
+          "1.6": 0.0010400000000000001,
+          "1.7": 0.001105,
+          "1.8": 0.0011700000000000002,
+          "1.9": 0.0012349999999999998,
+          "2.0": 0.0013
+        },
+        "pogCandidateDistribution": {
+          "loss:0/4": 333,
+          "win:0/4": 54,
+          "win:0/5": 49,
+          "loss:0/3": 368,
+          "loss:0/5": 152,
+          "win:0/3": 25,
+          "loss:1/4": 8,
+          "loss:1/5": 7,
+          "win:1/5": 2,
+          "win:1/4": 1,
+          "loss:1/3": 1
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0.013999999999999985,
+          "absoluteWinRateDifference": 0.013999999999999985,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": 0.002,
+          "meanRatingDifference": 0.04707024962658002,
+          "ratingStdDevRatio": 0.6286403620139605,
+          "fanDeltaDifference": -0.6570000000000107,
+          "fanDeltaRatio": 0.9958109107602846,
+          "mechDeltaDifference": -0.011130000000000306,
+          "mentalDeltaDifference": -0.0025799999999998047,
+          "teamDeltaDifference": -0.0014700000000000268,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0.0020000000000000018,
+          "absoluteWinRateDifference": 0.0020000000000000018,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": 0.001,
+          "meanRatingDifference": 0.06805024962657669,
+          "ratingStdDevRatio": 0.5246640664681484,
+          "fanDeltaDifference": -9.15700000000001,
+          "fanDeltaRatio": 0.9416141702160218,
+          "mechDeltaDifference": -0.03725000000000078,
+          "mentalDeltaDifference": -0.030849999999998157,
+          "teamDeltaDifference": -0.0009000000000006225,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "jg",
+      "skill": 65,
+      "baseline": {
+        "n": 1000,
+        "wins": 579,
+        "winRate": 0.579,
+        "pogRate": 0.174,
+        "meanRating": 6.261879749090487,
+        "ratingStdDev": 2.0590820042263442,
+        "meanFanDelta": 753.05,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 3.6372470625000033,
+        "meanMechDelta": 0.8457099999999996,
+        "meanMentalDelta": 1.0714800000000062,
+        "meanTeamDelta": 0.42275999999999925,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 354,
+          "2:0": 345,
+          "0:2": 67,
+          "2:1": 234
+        },
+        "ratingBuckets": {
+          "below5": 305,
+          "5to7": 269,
+          "7to8.3": 248,
+          "8.3plus": 178
+        },
+        "phaseCounts": {
+          "0": 69,
+          "1": 324,
+          "2": 429,
+          "3": 178
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 541,
+        "winRate": 0.541,
+        "pogRate": 0.136,
+        "meanRating": 6.127370000000008,
+        "ratingStdDev": 1.3761903150000407,
+        "meanFanDelta": 687.621,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 3.953795937500002,
+        "meanMechDelta": 0.7916199999999992,
+        "meanMentalDelta": 1.005040000000006,
+        "meanTeamDelta": 0.4217800000000003,
+        "meanSets": 2.483,
+        "meanDistinctChampions": 2.223,
+        "meanRawP": 0.5474601977245354,
+        "meanEffectiveP": 0.5354066464265268,
+        "scoreCounts": {
+          "0:2": 228,
+          "1:2": 231,
+          "2:0": 289,
+          "2:1": 252
+        },
+        "ratingBuckets": {
+          "below5": 197,
+          "5to7": 535,
+          "7to8.3": 214,
+          "8.3plus": 54
+        },
+        "phaseCounts": {
+          "0": 68,
+          "1": 328,
+          "2": 437,
+          "3": 167
+        },
+        "pogSweep": {
+          "1.0": 0.12216666666666649,
+          "1.1": 0.13178333333333286,
+          "1.2": 0.14139999999999991,
+          "1.3": 0.15101666666666713,
+          "1.4": 0.16063333333333335,
+          "1.5": 0.17025,
+          "1.6": 0.17926666666666677,
+          "1.7": 0.18828333333333275,
+          "1.8": 0.1973000000000001,
+          "1.9": 0.20631666666666615,
+          "2.0": 0.21533333333333307
+        },
+        "pogCandidateDistribution": {
+          "loss:0/2": 211,
+          "loss:0/3": 163,
+          "win:1/2": 121,
+          "win:0/2": 142,
+          "win:0/3": 154,
+          "win:1/3": 89,
+          "loss:1/3": 63,
+          "loss:1/2": 17,
+          "win:2/2": 26,
+          "win:2/3": 9,
+          "loss:2/3": 5
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 573,
+        "winRate": 0.573,
+        "pogRate": 0.123,
+        "meanRating": 6.1913599999999995,
+        "ratingStdDev": 1.037145867465143,
+        "meanFanDelta": 692.969,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 3.6338710625000017,
+        "meanMechDelta": 0.80493,
+        "meanMentalDelta": 1.0217100000000041,
+        "meanTeamDelta": 0.4229800000000004,
+        "meanSets": 4.114,
+        "meanDistinctChampions": 3.272,
+        "meanRawP": 0.5618815811454658,
+        "meanEffectiveP": 0.5386052834769003,
+        "scoreCounts": {
+          "1:3": 163,
+          "2:3": 159,
+          "3:1": 219,
+          "3:2": 207,
+          "0:3": 105,
+          "3:0": 147
+        },
+        "ratingBuckets": {
+          "below5": 113,
+          "5to7": 672,
+          "7to8.3": 189,
+          "8.3plus": 26
+        },
+        "phaseCounts": {
+          "0": 57,
+          "1": 330,
+          "2": 442,
+          "3": 171
+        },
+        "pogSweep": {
+          "1.0": 0.11553333333333358,
+          "1.1": 0.12678666666666655,
+          "1.2": 0.13803999999999983,
+          "1.3": 0.1492533333333335,
+          "1.4": 0.1600266666666668,
+          "1.5": 0.17060000000000006,
+          "1.6": 0.17970666666666632,
+          "1.7": 0.18869333333333368,
+          "1.8": 0.19743999999999998,
+          "1.9": 0.206186666666666,
+          "2.0": 0.2149333333333337
+        },
+        "pogCandidateDistribution": {
+          "loss:0/4": 103,
+          "loss:1/5": 64,
+          "win:1/4": 86,
+          "win:1/5": 93,
+          "loss:0/5": 74,
+          "win:0/4": 97,
+          "loss:0/3": 82,
+          "win:0/5": 74,
+          "win:0/3": 61,
+          "loss:1/4": 52,
+          "win:2/5": 33,
+          "loss:3/5": 3,
+          "win:1/3": 62,
+          "win:2/4": 27,
+          "loss:2/5": 18,
+          "win:2/3": 22,
+          "loss:2/4": 8,
+          "win:3/5": 6,
+          "loss:1/3": 23,
+          "win:3/4": 8,
+          "win:4/5": 1,
+          "win:3/3": 2,
+          "win:4/4": 1
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": -0.03799999999999992,
+          "absoluteWinRateDifference": 0.03799999999999992,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": true,
+          "pogRateDifference": -0.03799999999999998,
+          "meanRatingDifference": -0.13450974909047897,
+          "ratingStdDevRatio": 0.6683513877423811,
+          "fanDeltaDifference": -65.42899999999997,
+          "fanDeltaRatio": 0.9131146670207821,
+          "mechDeltaDifference": -0.054090000000000416,
+          "mentalDeltaDifference": -0.06644000000000028,
+          "teamDeltaDifference": -0.0009799999999989262,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": -0.006000000000000005,
+          "absoluteWinRateDifference": 0.006000000000000005,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": true,
+          "pogRateDifference": -0.05099999999999999,
+          "meanRatingDifference": -0.07051974909048742,
+          "ratingStdDevRatio": 0.5036933280638467,
+          "fanDeltaDifference": -60.080999999999904,
+          "fanDeltaRatio": 0.9202164530907644,
+          "mechDeltaDifference": -0.040779999999999594,
+          "mentalDeltaDifference": -0.04977000000000209,
+          "teamDeltaDifference": 0.0002200000000011637,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "jg",
+      "skill": 75,
+      "baseline": {
+        "n": 1000,
+        "wins": 877,
+        "winRate": 0.877,
+        "pogRate": 0.627,
+        "meanRating": 8.253250642483275,
+        "ratingStdDev": 1.3930914158326917,
+        "meanFanDelta": 1374.802,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 1.2317846249999997,
+        "meanMechDelta": 0.5879200000000007,
+        "meanMentalDelta": 0.7547499999999979,
+        "meanTeamDelta": 0.3201300000000006,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 119,
+          "2:0": 796,
+          "2:1": 81,
+          "0:2": 4
+        },
+        "ratingBuckets": {
+          "below5": 41,
+          "5to7": 146,
+          "7to8.3": 161,
+          "8.3plus": 652
+        },
+        "phaseCounts": {
+          "0": 4,
+          "1": 52,
+          "2": 292,
+          "3": 652
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 894,
+        "winRate": 0.894,
+        "pogRate": 0.608,
+        "meanRating": 8.262289999999998,
+        "ratingStdDev": 0.875615472624902,
+        "meanFanDelta": 1378.309,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 1.0562694375,
+        "meanMechDelta": 0.57702,
+        "meanMentalDelta": 0.7331899999999973,
+        "meanTeamDelta": 0.3189200000000008,
+        "meanSets": 2.341,
+        "meanDistinctChampions": 2.092,
+        "meanRawP": 0.890343385026529,
+        "meanEffectiveP": 0.7918462419736593,
+        "scoreCounts": {
+          "2:1": 276,
+          "2:0": 618,
+          "1:2": 65,
+          "0:2": 41
+        },
+        "ratingBuckets": {
+          "below5": 0,
+          "5to7": 96,
+          "7to8.3": 375,
+          "8.3plus": 529
+        },
+        "phaseCounts": {
+          "1": 40,
+          "2": 296,
+          "3": 664
+        },
+        "pogSweep": {
+          "1.0": 0.5928333333333333,
+          "1.1": 0.6161166666666673,
+          "1.2": 0.6394000000000013,
+          "1.3": 0.6626833333333303,
+          "1.4": 0.6859666666666662,
+          "1.5": 0.70925,
+          "1.6": 0.7241999999999982,
+          "1.7": 0.7391500000000045,
+          "1.8": 0.7540999999999979,
+          "1.9": 0.7690500000000019,
+          "2.0": 0.7839999999999993
+        },
+        "pogCandidateDistribution": {
+          "win:1/3": 78,
+          "win:2/3": 125,
+          "win:1/2": 247,
+          "win:2/2": 309,
+          "win:0/2": 62,
+          "win:0/3": 22,
+          "loss:2/3": 23,
+          "loss:1/3": 23,
+          "win:3/3": 51,
+          "loss:2/2": 6,
+          "loss:1/2": 23,
+          "loss:0/2": 12,
+          "loss:0/3": 7,
+          "loss:3/3": 12
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 892,
+        "winRate": 0.892,
+        "pogRate": 0.615,
+        "meanRating": 8.327089999999998,
+        "ratingStdDev": 0.6795083751507469,
+        "meanFanDelta": 1368.942,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 0.9835036874999998,
+        "meanMechDelta": 0.6292799999999997,
+        "meanMentalDelta": 0.789159999999998,
+        "meanTeamDelta": 0.31845000000000095,
+        "meanSets": 3.765,
+        "meanDistinctChampions": 3.067,
+        "meanRawP": 0.8953887446610551,
+        "meanEffectiveP": 0.7514044590765715,
+        "scoreCounts": {
+          "3:1": 320,
+          "3:0": 427,
+          "3:2": 145,
+          "2:3": 60,
+          "1:3": 35,
+          "0:3": 13
+        },
+        "ratingBuckets": {
+          "below5": 0,
+          "5to7": 39,
+          "7to8.3": 388,
+          "8.3plus": 573
+        },
+        "phaseCounts": {
+          "0": 2,
+          "1": 41,
+          "2": 281,
+          "3": 676
+        },
+        "pogSweep": {
+          "1.0": 0.6113499999999995,
+          "1.1": 0.6492850000000016,
+          "1.2": 0.6872199999999983,
+          "1.3": 0.7234349999999997,
+          "1.4": 0.7516299999999976,
+          "1.5": 0.776675,
+          "1.6": 0.7889199999999981,
+          "1.7": 0.8003250000000016,
+          "1.8": 0.8100500000000006,
+          "1.9": 0.8197750000000011,
+          "2.0": 0.8294999999999991
+        },
+        "pogCandidateDistribution": {
+          "win:2/4": 102,
+          "win:2/3": 192,
+          "win:1/3": 63,
+          "win:4/4": 52,
+          "win:3/3": 166,
+          "win:5/5": 14,
+          "win:3/4": 126,
+          "win:4/5": 43,
+          "win:3/5": 42,
+          "win:1/4": 37,
+          "win:0/3": 6,
+          "loss:3/5": 19,
+          "loss:3/4": 13,
+          "loss:1/3": 3,
+          "loss:2/4": 14,
+          "win:2/5": 34,
+          "loss:4/5": 16,
+          "win:1/5": 12,
+          "loss:0/3": 4,
+          "loss:1/4": 5,
+          "loss:1/5": 5,
+          "loss:2/5": 17,
+          "loss:2/3": 4,
+          "loss:0/5": 1,
+          "win:0/4": 3,
+          "loss:5/5": 2,
+          "loss:4/4": 3,
+          "loss:3/3": 2
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0.017000000000000015,
+          "absoluteWinRateDifference": 0.017000000000000015,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.019000000000000017,
+          "meanRatingDifference": 0.009039357516723356,
+          "ratingStdDevRatio": 0.6285412878676888,
+          "fanDeltaDifference": 3.507000000000062,
+          "fanDeltaRatio": 1.0025509127859866,
+          "mechDeltaDifference": -0.010900000000000687,
+          "mentalDeltaDifference": -0.02156000000000058,
+          "teamDeltaDifference": -0.0012099999999997668,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0.015000000000000013,
+          "absoluteWinRateDifference": 0.015000000000000013,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.01200000000000001,
+          "meanRatingDifference": 0.07383935751672333,
+          "ratingStdDevRatio": 0.4877701257993789,
+          "fanDeltaDifference": -5.8599999999999,
+          "fanDeltaRatio": 0.995737568027978,
+          "mechDeltaDifference": 0.041359999999999064,
+          "mentalDeltaDifference": 0.03441000000000005,
+          "teamDeltaDifference": -0.0016799999999996262,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "mid",
+      "skill": 55,
+      "baseline": {
+        "n": 1000,
+        "wins": 122,
+        "winRate": 0.122,
+        "pogRate": 0.004,
+        "meanRating": 3.4296515427000775,
+        "ratingStdDev": 1.755469599913846,
+        "meanFanDelta": 160.37,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.356795437499994,
+        "meanMechDelta": 0.8150299999999996,
+        "meanMentalDelta": 1.0642,
+        "meanTeamDelta": 0.4645899999999994,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 380,
+          "0:2": 498,
+          "2:1": 112,
+          "2:0": 10
+        },
+        "ratingBuckets": {
+          "below5": 806,
+          "5to7": 143,
+          "7to8.3": 47,
+          "8.3plus": 4
+        },
+        "phaseCounts": {
+          "0": 514,
+          "1": 395,
+          "2": 87,
+          "3": 4
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 142,
+        "winRate": 0.142,
+        "pogRate": 0.003,
+        "meanRating": 3.4464999999999977,
+        "ratingStdDev": 1.1379939147464837,
+        "meanFanDelta": 155.366,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.587418750000003,
+        "meanMechDelta": 0.7393400000000001,
+        "meanMentalDelta": 0.9788799999999994,
+        "meanTeamDelta": 0.46189999999999976,
+        "meanSets": 2.354,
+        "meanDistinctChampions": 2.091,
+        "meanRawP": 0.12630219652987987,
+        "meanEffectiveP": 0.23055912231529593,
+        "scoreCounts": {
+          "1:2": 267,
+          "0:2": 591,
+          "2:1": 87,
+          "2:0": 55
+        },
+        "ratingBuckets": {
+          "below5": 903,
+          "5to7": 97,
+          "7to8.3": 0,
+          "8.3plus": 0
+        },
+        "phaseCounts": {
+          "0": 507,
+          "1": 409,
+          "2": 77,
+          "3": 7
+        },
+        "pogSweep": {
+          "1.0": 0.003666666666666667,
+          "1.1": 0.004033333333333333,
+          "1.2": 0.004399999999999999,
+          "1.3": 0.004766666666666667,
+          "1.4": 0.0051333333333333335,
+          "1.5": 0.0055,
+          "1.6": 0.005866666666666666,
+          "1.7": 0.006233333333333333,
+          "1.8": 0.006599999999999999,
+          "1.9": 0.006966666666666665,
+          "2.0": 0.007333333333333334
+        },
+        "pogCandidateDistribution": {
+          "loss:0/3": 260,
+          "loss:0/2": 591,
+          "win:0/3": 79,
+          "win:0/2": 53,
+          "win:1/2": 2,
+          "loss:1/3": 7,
+          "win:1/3": 8
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 122,
+        "winRate": 0.122,
+        "pogRate": 0,
+        "meanRating": 3.405890000000004,
+        "ratingStdDev": 0.90831349648675,
+        "meanFanDelta": 140.874,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.636302937499996,
+        "meanMechDelta": 0.7625000000000003,
+        "meanMentalDelta": 1.0171,
+        "meanTeamDelta": 0.4608899999999992,
+        "meanSets": 3.861,
+        "meanDistinctChampions": 3.016,
+        "meanRawP": 0.11998594615253037,
+        "meanEffectiveP": 0.2722151075369096,
+        "scoreCounts": {
+          "1:3": 310,
+          "0:3": 377,
+          "2:3": 191,
+          "3:2": 68,
+          "3:1": 33,
+          "3:0": 21
+        },
+        "ratingBuckets": {
+          "below5": 944,
+          "5to7": 56,
+          "7to8.3": 0,
+          "8.3plus": 0
+        },
+        "phaseCounts": {
+          "0": 498,
+          "1": 411,
+          "2": 85,
+          "3": 6
+        },
+        "pogSweep": {
+          "1.0": 0.0010500000000000002,
+          "1.1": 0.001155,
+          "1.2": 0.00126,
+          "1.3": 0.001365,
+          "1.4": 0.00147,
+          "1.5": 0.0015750000000000002,
+          "1.6": 0.00168,
+          "1.7": 0.0017850000000000001,
+          "1.8": 0.0018900000000000004,
+          "1.9": 0.001995,
+          "2.0": 0.0021000000000000003
+        },
+        "pogCandidateDistribution": {
+          "loss:0/4": 307,
+          "loss:0/3": 376,
+          "loss:0/5": 186,
+          "loss:1/4": 3,
+          "win:0/5": 64,
+          "win:0/4": 32,
+          "win:0/3": 21,
+          "win:1/5": 4,
+          "win:1/4": 1,
+          "loss:1/5": 5,
+          "loss:1/3": 1
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0.01999999999999999,
+          "absoluteWinRateDifference": 0.01999999999999999,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.001,
+          "meanRatingDifference": 0.016848457299920128,
+          "ratingStdDevRatio": 0.6482561217820767,
+          "fanDeltaDifference": -5.003999999999991,
+          "fanDeltaRatio": 0.9687971565754194,
+          "mechDeltaDifference": -0.07568999999999948,
+          "mentalDeltaDifference": -0.08532000000000062,
+          "teamDeltaDifference": -0.002689999999999637,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0,
+          "absoluteWinRateDifference": 0,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.004,
+          "meanRatingDifference": -0.02376154270007369,
+          "ratingStdDevRatio": 0.5174190977339213,
+          "fanDeltaDifference": -19.49600000000001,
+          "fanDeltaRatio": 0.8784311280164618,
+          "mechDeltaDifference": -0.0525299999999993,
+          "mentalDeltaDifference": -0.04710000000000014,
+          "teamDeltaDifference": -0.003700000000000203,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "mid",
+      "skill": 65,
+      "baseline": {
+        "n": 1000,
+        "wins": 481,
+        "winRate": 0.481,
+        "pogRate": 0.112,
+        "meanRating": 5.913828939052294,
+        "ratingStdDev": 2.037875039641731,
+        "meanFanDelta": 622.43,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 4.545528312499998,
+        "meanMechDelta": 0.7466299999999997,
+        "meanMentalDelta": 0.966180000000007,
+        "meanTeamDelta": 0.41877999999999993,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 442,
+          "2:0": 229,
+          "2:1": 252,
+          "0:2": 77
+        },
+        "ratingBuckets": {
+          "below5": 355,
+          "5to7": 285,
+          "7to8.3": 241,
+          "8.3plus": 119
+        },
+        "phaseCounts": {
+          "0": 82,
+          "1": 393,
+          "2": 406,
+          "3": 119
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 520,
+        "winRate": 0.52,
+        "pogRate": 0.11,
+        "meanRating": 5.966660000000003,
+        "ratingStdDev": 1.3933208691467995,
+        "meanFanDelta": 642.254,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 4.183953874999999,
+        "meanMechDelta": 0.7835199999999997,
+        "meanMentalDelta": 1.0031100000000055,
+        "meanTeamDelta": 0.4217000000000002,
+        "meanSets": 2.509,
+        "meanDistinctChampions": 2.205,
+        "meanRawP": 0.5029586777564592,
+        "meanEffectiveP": 0.503549559077988,
+        "scoreCounts": {
+          "0:2": 245,
+          "1:2": 235,
+          "2:1": 274,
+          "2:0": 246
+        },
+        "ratingBuckets": {
+          "below5": 238,
+          "5to7": 520,
+          "7to8.3": 202,
+          "8.3plus": 40
+        },
+        "phaseCounts": {
+          "0": 73,
+          "1": 374,
+          "2": 415,
+          "3": 138
+        },
+        "pogSweep": {
+          "1.0": 0.09733333333333329,
+          "1.1": 0.10556666666666635,
+          "1.2": 0.11379999999999993,
+          "1.3": 0.12203333333333359,
+          "1.4": 0.13026666666666692,
+          "1.5": 0.1385,
+          "1.6": 0.14546666666666658,
+          "1.7": 0.15243333333333295,
+          "1.8": 0.15940000000000004,
+          "1.9": 0.16636666666666655,
+          "2.0": 0.17333333333333328
+        },
+        "pogCandidateDistribution": {
+          "loss:0/2": 222,
+          "loss:1/3": 49,
+          "win:0/3": 163,
+          "win:0/2": 153,
+          "win:1/2": 78,
+          "loss:0/3": 184,
+          "win:1/3": 92,
+          "loss:1/2": 23,
+          "win:2/2": 15,
+          "win:2/3": 19,
+          "loss:2/3": 2
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 512,
+        "winRate": 0.512,
+        "pogRate": 0.094,
+        "meanRating": 6.014949999999996,
+        "ratingStdDev": 1.0271705785798406,
+        "meanFanDelta": 612.04,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 4.165632312500002,
+        "meanMechDelta": 0.8084599999999995,
+        "meanMentalDelta": 1.025830000000006,
+        "meanTeamDelta": 0.42196,
+        "meanSets": 4.14,
+        "meanDistinctChampions": 3.186,
+        "meanRawP": 0.5072119236669372,
+        "meanEffectiveP": 0.5067314294353449,
+        "scoreCounts": {
+          "1:3": 182,
+          "3:1": 190,
+          "2:3": 180,
+          "3:2": 204,
+          "0:3": 126,
+          "3:0": 118
+        },
+        "ratingBuckets": {
+          "below5": 144,
+          "5to7": 693,
+          "7to8.3": 149,
+          "8.3plus": 14
+        },
+        "phaseCounts": {
+          "0": 87,
+          "1": 351,
+          "2": 416,
+          "3": 146
+        },
+        "pogSweep": {
+          "1.0": 0.0936333333333335,
+          "1.1": 0.10299666666666649,
+          "1.2": 0.11235999999999971,
+          "1.3": 0.12172333333333368,
+          "1.4": 0.13083666666666674,
+          "1.5": 0.13982499999999995,
+          "1.6": 0.14781333333333307,
+          "1.7": 0.1557016666666669,
+          "1.8": 0.16339000000000012,
+          "1.9": 0.1710783333333329,
+          "2.0": 0.17876666666666693
+        },
+        "pogCandidateDistribution": {
+          "loss:0/4": 122,
+          "win:1/4": 77,
+          "win:0/4": 89,
+          "loss:0/5": 98,
+          "loss:1/5": 65,
+          "win:1/5": 79,
+          "loss:1/4": 55,
+          "loss:0/3": 101,
+          "loss:1/3": 24,
+          "win:1/3": 55,
+          "win:0/5": 85,
+          "win:3/4": 5,
+          "win:2/4": 19,
+          "win:0/3": 48,
+          "win:3/5": 5,
+          "win:2/3": 15,
+          "loss:2/5": 15,
+          "win:2/5": 35,
+          "loss:3/5": 2,
+          "loss:2/4": 5,
+          "loss:2/3": 1
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0.039000000000000035,
+          "absoluteWinRateDifference": 0.039000000000000035,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": true,
+          "pogRateDifference": -0.0020000000000000018,
+          "meanRatingDifference": 0.05283106094770851,
+          "ratingStdDevRatio": 0.6837126134052619,
+          "fanDeltaDifference": 19.82400000000007,
+          "fanDeltaRatio": 1.0318493645871827,
+          "mechDeltaDifference": 0.03688999999999998,
+          "mentalDeltaDifference": 0.036929999999998464,
+          "teamDeltaDifference": 0.0029200000000002557,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0.031000000000000028,
+          "absoluteWinRateDifference": 0.031000000000000028,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": true,
+          "pogRateDifference": -0.018000000000000002,
+          "meanRatingDifference": 0.10112106094770201,
+          "ratingStdDevRatio": 0.5040400213942571,
+          "fanDeltaDifference": -10.389999999999986,
+          "fanDeltaRatio": 0.9833073598637598,
+          "mechDeltaDifference": 0.06182999999999983,
+          "mentalDeltaDifference": 0.05964999999999898,
+          "teamDeltaDifference": 0.0031800000000000717,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "mid",
+      "skill": 75,
+      "baseline": {
+        "n": 1000,
+        "wins": 879,
+        "winRate": 0.879,
+        "pogRate": 0.598,
+        "meanRating": 8.189242742284568,
+        "ratingStdDev": 1.362249507446898,
+        "meanFanDelta": 1352.581,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 1.1986858125,
+        "meanMechDelta": 0.5910899999999997,
+        "meanMentalDelta": 0.7531099999999984,
+        "meanTeamDelta": 0.32026000000000066,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 120,
+          "2:0": 765,
+          "2:1": 114,
+          "0:2": 1
+        },
+        "ratingBuckets": {
+          "below5": 37,
+          "5to7": 175,
+          "7to8.3": 171,
+          "8.3plus": 617
+        },
+        "phaseCounts": {
+          "0": 1,
+          "1": 49,
+          "2": 333,
+          "3": 617
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 879,
+        "winRate": 0.879,
+        "pogRate": 0.585,
+        "meanRating": 8.240060000000005,
+        "ratingStdDev": 0.8889335162991717,
+        "meanFanDelta": 1340.03,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 1.0848471875,
+        "meanMechDelta": 0.5472899999999994,
+        "meanMentalDelta": 0.7131999999999968,
+        "meanTeamDelta": 0.31931000000000065,
+        "meanSets": 2.337,
+        "meanDistinctChampions": 2.062,
+        "meanRawP": 0.8810036035545606,
+        "meanEffectiveP": 0.7850239806041462,
+        "scoreCounts": {
+          "2:1": 268,
+          "2:0": 611,
+          "1:2": 69,
+          "0:2": 52
+        },
+        "ratingBuckets": {
+          "below5": 0,
+          "5to7": 107,
+          "7to8.3": 361,
+          "8.3plus": 532
+        },
+        "phaseCounts": {
+          "0": 2,
+          "1": 41,
+          "2": 315,
+          "3": 642
+        },
+        "pogSweep": {
+          "1.0": 0.5813333333333335,
+          "1.1": 0.6050666666666674,
+          "1.2": 0.6288000000000024,
+          "1.3": 0.6525333333333301,
+          "1.4": 0.676266666666667,
+          "1.5": 0.7,
+          "1.6": 0.715399999999998,
+          "1.7": 0.7308000000000046,
+          "1.8": 0.7461999999999973,
+          "1.9": 0.7616000000000023,
+          "2.0": 0.7769999999999997
+        },
+        "pogCandidateDistribution": {
+          "win:1/3": 75,
+          "win:2/3": 125,
+          "win:1/2": 258,
+          "win:2/2": 293,
+          "win:3/3": 51,
+          "win:0/3": 17,
+          "win:0/2": 60,
+          "loss:2/3": 23,
+          "loss:1/3": 30,
+          "loss:0/2": 28,
+          "loss:0/3": 7,
+          "loss:1/2": 17,
+          "loss:3/3": 9,
+          "loss:2/2": 7
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 899,
+        "winRate": 0.899,
+        "pogRate": 0.564,
+        "meanRating": 8.261499999999998,
+        "ratingStdDev": 0.6692060594466028,
+        "meanFanDelta": 1350.394,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 0.9368838749999998,
+        "meanMechDelta": 0.6011499999999999,
+        "meanMentalDelta": 0.7564399999999978,
+        "meanTeamDelta": 0.31980000000000025,
+        "meanSets": 3.798,
+        "meanDistinctChampions": 3.007,
+        "meanRawP": 0.884465030490797,
+        "meanEffectiveP": 0.742986290479467,
+        "scoreCounts": {
+          "3:1": 325,
+          "3:0": 401,
+          "3:2": 173,
+          "2:3": 47,
+          "0:3": 21,
+          "1:3": 33
+        },
+        "ratingBuckets": {
+          "below5": 0,
+          "5to7": 46,
+          "7to8.3": 423,
+          "8.3plus": 531
+        },
+        "phaseCounts": {
+          "1": 42,
+          "2": 334,
+          "3": 624
+        },
+        "pogSweep": {
+          "1.0": 0.5771333333333339,
+          "1.1": 0.6168466666666685,
+          "1.2": 0.6565599999999998,
+          "1.3": 0.6949933333333322,
+          "1.4": 0.7254466666666661,
+          "1.5": 0.7525499999999993,
+          "1.6": 0.7675866666666651,
+          "1.7": 0.7811233333333357,
+          "1.8": 0.7916600000000007,
+          "1.9": 0.8021966666666677,
+          "2.0": 0.812733333333332
+        },
+        "pogCandidateDistribution": {
+          "win:2/4": 95,
+          "win:1/3": 80,
+          "win:2/3": 181,
+          "win:4/4": 41,
+          "win:5/5": 11,
+          "win:3/4": 134,
+          "win:3/3": 128,
+          "win:3/5": 75,
+          "win:2/5": 39,
+          "win:1/4": 52,
+          "win:4/5": 32,
+          "win:1/5": 13,
+          "loss:3/5": 8,
+          "loss:2/3": 10,
+          "loss:1/5": 12,
+          "loss:2/5": 9,
+          "loss:1/3": 6,
+          "loss:4/5": 15,
+          "win:0/3": 12,
+          "loss:4/4": 4,
+          "win:0/4": 3,
+          "loss:3/4": 12,
+          "loss:2/4": 9,
+          "loss:1/4": 8,
+          "loss:5/5": 3,
+          "win:0/5": 3,
+          "loss:0/3": 2,
+          "loss:3/3": 3
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0,
+          "absoluteWinRateDifference": 0,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.013000000000000012,
+          "meanRatingDifference": 0.05081725771543688,
+          "ratingStdDevRatio": 0.6525482383658144,
+          "fanDeltaDifference": -12.55099999999993,
+          "fanDeltaRatio": 0.9907207036029636,
+          "mechDeltaDifference": -0.04380000000000028,
+          "mentalDeltaDifference": -0.039910000000001555,
+          "teamDeltaDifference": -0.0009500000000000064,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0.020000000000000018,
+          "absoluteWinRateDifference": 0.020000000000000018,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.03400000000000003,
+          "meanRatingDifference": 0.0722572577154299,
+          "ratingStdDevRatio": 0.4912507259413997,
+          "fanDeltaDifference": -2.186999999999898,
+          "fanDeltaRatio": 0.9983830912899118,
+          "mechDeltaDifference": 0.01006000000000018,
+          "mentalDeltaDifference": 0.003329999999999389,
+          "teamDeltaDifference": -0.00046000000000040453,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "adc",
+      "skill": 55,
+      "baseline": {
+        "n": 1000,
+        "wins": 144,
+        "winRate": 0.144,
+        "pogRate": 0,
+        "meanRating": 3.6073554536593533,
+        "ratingStdDev": 1.7463754902182556,
+        "meanFanDelta": 183.264,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.328290999999993,
+        "meanMechDelta": 0.7196900000000003,
+        "meanMentalDelta": 0.9672699999999999,
+        "meanTeamDelta": 0.46405999999999903,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 414,
+          "0:2": 442,
+          "2:0": 5,
+          "2:1": 139
+        },
+        "ratingBuckets": {
+          "below5": 777,
+          "5to7": 172,
+          "7to8.3": 51,
+          "8.3plus": 0
+        },
+        "phaseCounts": {
+          "0": 460,
+          "1": 440,
+          "2": 100
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 139,
+        "winRate": 0.139,
+        "pogRate": 0.002,
+        "meanRating": 3.497460000000001,
+        "ratingStdDev": 1.1632444061331113,
+        "meanFanDelta": 162.923,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.669212874999989,
+        "meanMechDelta": 0.7368299999999998,
+        "meanMentalDelta": 0.98436,
+        "meanTeamDelta": 0.46340999999999927,
+        "meanSets": 2.37,
+        "meanDistinctChampions": 2.108,
+        "meanRawP": 0.13562362643012718,
+        "meanEffectiveP": 0.23874459207488286,
+        "scoreCounts": {
+          "1:2": 281,
+          "0:2": 580,
+          "2:1": 89,
+          "2:0": 50
+        },
+        "ratingBuckets": {
+          "below5": 899,
+          "5to7": 95,
+          "7to8.3": 6,
+          "8.3plus": 0
+        },
+        "phaseCounts": {
+          "0": 473,
+          "1": 437,
+          "2": 87,
+          "3": 3
+        },
+        "pogSweep": {
+          "1.0": 0.0015,
+          "1.1": 0.0016500000000000002,
+          "1.2": 0.0017999999999999997,
+          "1.3": 0.0019500000000000001,
+          "1.4": 0.0020999999999999994,
+          "1.5": 0.00225,
+          "1.6": 0.0024000000000000002,
+          "1.7": 0.0025499999999999997,
+          "1.8": 0.0027,
+          "1.9": 0.0028499999999999997,
+          "2.0": 0.003
+        },
+        "pogCandidateDistribution": {
+          "loss:0/3": 275,
+          "loss:0/2": 580,
+          "win:0/3": 89,
+          "win:0/2": 47,
+          "loss:1/3": 6,
+          "win:1/2": 3
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 133,
+        "winRate": 0.133,
+        "pogRate": 0,
+        "meanRating": 3.5705300000000033,
+        "ratingStdDev": 0.9457708068554392,
+        "meanFanDelta": 164.477,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.418780374999997,
+        "meanMechDelta": 0.8168800000000004,
+        "meanMentalDelta": 1.0785400000000005,
+        "meanTeamDelta": 0.46270999999999884,
+        "meanSets": 3.834,
+        "meanDistinctChampions": 3.059,
+        "meanRawP": 0.1429764375919597,
+        "meanEffectiveP": 0.28769856070602146,
+        "scoreCounts": {
+          "1:3": 305,
+          "0:3": 382,
+          "2:3": 180,
+          "3:2": 59,
+          "3:0": 23,
+          "3:1": 51
+        },
+        "ratingBuckets": {
+          "below5": 930,
+          "5to7": 70,
+          "7to8.3": 0,
+          "8.3plus": 0
+        },
+        "phaseCounts": {
+          "0": 450,
+          "1": 451,
+          "2": 94,
+          "3": 5
+        },
+        "pogSweep": {
+          "1.0": 0.00025,
+          "1.1": 0.000275,
+          "1.2": 0.0003,
+          "1.3": 0.000325,
+          "1.4": 0.00035,
+          "1.5": 0.000375,
+          "1.6": 0.0004,
+          "1.7": 0.000425,
+          "1.8": 0.00045,
+          "1.9": 0.000475,
+          "2.0": 0.0005
+        },
+        "pogCandidateDistribution": {
+          "loss:0/4": 298,
+          "loss:0/3": 378,
+          "loss:0/5": 175,
+          "win:0/5": 59,
+          "win:0/3": 23,
+          "win:0/4": 50,
+          "loss:1/4": 7,
+          "loss:1/5": 5,
+          "loss:1/3": 4,
+          "win:1/4": 1
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": -0.004999999999999977,
+          "absoluteWinRateDifference": 0.004999999999999977,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": 0.002,
+          "meanRatingDifference": -0.10989545365935216,
+          "ratingStdDevRatio": 0.666090661858598,
+          "fanDeltaDifference": -20.341000000000008,
+          "fanDeltaRatio": 0.8890071154181944,
+          "mechDeltaDifference": 0.01713999999999949,
+          "mentalDeltaDifference": 0.01709000000000016,
+          "teamDeltaDifference": -0.0006499999999997619,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": -0.010999999999999982,
+          "absoluteWinRateDifference": 0.010999999999999982,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": 0,
+          "meanRatingDifference": -0.03682545365934997,
+          "ratingStdDevRatio": 0.5415621165968381,
+          "fanDeltaDifference": -18.787000000000006,
+          "fanDeltaRatio": 0.8974866858739304,
+          "mechDeltaDifference": 0.09719000000000011,
+          "mentalDeltaDifference": 0.11127000000000065,
+          "teamDeltaDifference": -0.0013500000000001844,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "adc",
+      "skill": 65,
+      "baseline": {
+        "n": 1000,
+        "wins": 572,
+        "winRate": 0.572,
+        "pogRate": 0.166,
+        "meanRating": 6.3061257503132016,
+        "ratingStdDev": 1.9950534368917452,
+        "meanFanDelta": 742.479,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 3.939755750000003,
+        "meanMechDelta": 0.7679899999999988,
+        "meanMentalDelta": 0.9935900000000065,
+        "meanTeamDelta": 0.41912999999999967,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 381,
+          "2:0": 313,
+          "2:1": 259,
+          "0:2": 47
+        },
+        "ratingBuckets": {
+          "below5": 304,
+          "5to7": 275,
+          "7to8.3": 250,
+          "8.3plus": 171
+        },
+        "phaseCounts": {
+          "0": 52,
+          "1": 347,
+          "2": 430,
+          "3": 171
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 573,
+        "winRate": 0.573,
+        "pogRate": 0.12,
+        "meanRating": 6.184569999999998,
+        "ratingStdDev": 1.3651936914225828,
+        "meanFanDelta": 693.874,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 3.6298325000000027,
+        "meanMechDelta": 0.7831899999999998,
+        "meanMentalDelta": 0.9959200000000068,
+        "meanTeamDelta": 0.42152000000000034,
+        "meanSets": 2.497,
+        "meanDistinctChampions": 2.226,
+        "meanRawP": 0.5582706541381088,
+        "meanEffectiveP": 0.54375812349666,
+        "scoreCounts": {
+          "0:2": 211,
+          "1:2": 216,
+          "2:1": 281,
+          "2:0": 292
+        },
+        "ratingBuckets": {
+          "below5": 199,
+          "5to7": 518,
+          "7to8.3": 222,
+          "8.3plus": 61
+        },
+        "phaseCounts": {
+          "0": 60,
+          "1": 351,
+          "2": 442,
+          "3": 147
+        },
+        "pogSweep": {
+          "1.0": 0.1288333333333332,
+          "1.1": 0.13911666666666625,
+          "1.2": 0.14940000000000003,
+          "1.3": 0.15968333333333382,
+          "1.4": 0.16996666666666677,
+          "1.5": 0.18025,
+          "1.6": 0.18893333333333334,
+          "1.7": 0.19761666666666608,
+          "1.8": 0.20629999999999996,
+          "1.9": 0.21498333333333286,
+          "2.0": 0.22366666666666632
+        },
+        "pogCandidateDistribution": {
+          "loss:0/2": 196,
+          "loss:0/3": 154,
+          "win:1/3": 100,
+          "win:0/2": 159,
+          "win:1/2": 107,
+          "loss:1/2": 14,
+          "win:0/3": 157,
+          "loss:1/3": 55,
+          "win:2/2": 26,
+          "win:2/3": 24,
+          "loss:2/3": 7,
+          "loss:2/2": 1
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 596,
+        "winRate": 0.596,
+        "pogRate": 0.122,
+        "meanRating": 6.223970000000003,
+        "ratingStdDev": 1.0359270915947623,
+        "meanFanDelta": 705.408,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 3.462366437499999,
+        "meanMechDelta": 0.80904,
+        "meanMentalDelta": 1.032170000000004,
+        "meanTeamDelta": 0.4219799999999993,
+        "meanSets": 4.109,
+        "meanDistinctChampions": 3.29,
+        "meanRawP": 0.5690586995726788,
+        "meanEffectiveP": 0.5425775016419186,
+        "scoreCounts": {
+          "1:3": 159,
+          "2:3": 151,
+          "3:2": 212,
+          "3:1": 224,
+          "3:0": 160,
+          "0:3": 94
+        },
+        "ratingBuckets": {
+          "below5": 117,
+          "5to7": 647,
+          "7to8.3": 222,
+          "8.3plus": 14
+        },
+        "phaseCounts": {
+          "0": 64,
+          "1": 344,
+          "2": 434,
+          "3": 158
+        },
+        "pogSweep": {
+          "1.0": 0.11938333333333354,
+          "1.1": 0.13102166666666656,
+          "1.2": 0.14265999999999981,
+          "1.3": 0.1542583333333335,
+          "1.4": 0.16566666666666655,
+          "1.5": 0.17700000000000002,
+          "1.6": 0.18686666666666654,
+          "1.7": 0.19659333333333381,
+          "1.8": 0.20604000000000003,
+          "1.9": 0.21548666666666572,
+          "2.0": 0.22493333333333365
+        },
+        "pogCandidateDistribution": {
+          "loss:0/4": 98,
+          "loss:0/5": 79,
+          "win:1/5": 83,
+          "win:0/4": 83,
+          "win:0/5": 88,
+          "win:2/4": 38,
+          "win:1/3": 62,
+          "win:0/3": 73,
+          "win:1/4": 100,
+          "win:2/5": 33,
+          "loss:0/3": 71,
+          "loss:1/5": 57,
+          "loss:1/3": 21,
+          "loss:1/4": 57,
+          "win:2/3": 22,
+          "win:3/3": 3,
+          "win:3/5": 7,
+          "win:3/4": 3,
+          "loss:2/3": 2,
+          "win:4/5": 1,
+          "loss:2/4": 4,
+          "loss:2/5": 13,
+          "loss:3/5": 2
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0.0010000000000000009,
+          "absoluteWinRateDifference": 0.0010000000000000009,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": true,
+          "pogRateDifference": -0.04600000000000001,
+          "meanRatingDifference": -0.12155575031320343,
+          "ratingStdDevRatio": 0.6842892857794969,
+          "fanDeltaDifference": -48.60500000000002,
+          "fanDeltaRatio": 0.9345368690562291,
+          "mechDeltaDifference": 0.01520000000000099,
+          "mentalDeltaDifference": 0.0023300000000002763,
+          "teamDeltaDifference": 0.0023900000000006694,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0.02400000000000002,
+          "absoluteWinRateDifference": 0.02400000000000002,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": true,
+          "pogRateDifference": -0.04400000000000001,
+          "meanRatingDifference": -0.08215575031319844,
+          "ratingStdDevRatio": 0.519247791782819,
+          "fanDeltaDifference": -37.071000000000026,
+          "fanDeltaRatio": 0.9500713151483072,
+          "mechDeltaDifference": 0.04105000000000114,
+          "mentalDeltaDifference": 0.038579999999997505,
+          "teamDeltaDifference": 0.0028499999999996306,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "adc",
+      "skill": 75,
+      "baseline": {
+        "n": 1000,
+        "wins": 889,
+        "winRate": 0.889,
+        "pogRate": 0.63,
+        "meanRating": 8.280528191723553,
+        "ratingStdDev": 1.3350531857490147,
+        "meanFanDelta": 1391.653,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 1.138525125,
+        "meanMechDelta": 0.5846700000000007,
+        "meanMentalDelta": 0.751979999999998,
+        "meanTeamDelta": 0.32019000000000053,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "2:0": 832,
+          "1:2": 110,
+          "2:1": 57,
+          "0:2": 1
+        },
+        "ratingBuckets": {
+          "below5": 33,
+          "5to7": 152,
+          "7to8.3": 159,
+          "8.3plus": 656
+        },
+        "phaseCounts": {
+          "0": 1,
+          "1": 47,
+          "2": 296,
+          "3": 656
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 904,
+        "winRate": 0.904,
+        "pogRate": 0.628,
+        "meanRating": 8.334400000000002,
+        "ratingStdDev": 0.8216038218021683,
+        "meanFanDelta": 1402.153,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 0.9258845625,
+        "meanMechDelta": 0.5956800000000002,
+        "meanMentalDelta": 0.7560799999999964,
+        "meanTeamDelta": 0.3201500000000006,
+        "meanSets": 2.312,
+        "meanDistinctChampions": 2.096,
+        "meanRawP": 0.9022003725371514,
+        "meanEffectiveP": 0.8011890303782334,
+        "scoreCounts": {
+          "2:0": 651,
+          "2:1": 253,
+          "1:2": 59,
+          "0:2": 37
+        },
+        "ratingBuckets": {
+          "below5": 1,
+          "5to7": 69,
+          "7to8.3": 373,
+          "8.3plus": 557
+        },
+        "phaseCounts": {
+          "1": 38,
+          "2": 292,
+          "3": 670
+        },
+        "pogSweep": {
+          "1.0": 0.617333333333333,
+          "1.1": 0.6418666666666665,
+          "1.2": 0.6664000000000015,
+          "1.3": 0.6909333333333297,
+          "1.4": 0.7154666666666668,
+          "1.5": 0.74,
+          "1.6": 0.7564666666666637,
+          "1.7": 0.7729333333333381,
+          "1.8": 0.7893999999999973,
+          "1.9": 0.8058666666666696,
+          "2.0": 0.8223333333333329
+        },
+        "pogCandidateDistribution": {
+          "win:2/2": 327,
+          "win:1/2": 278,
+          "win:1/3": 77,
+          "loss:2/3": 24,
+          "win:2/3": 121,
+          "win:3/3": 45,
+          "win:0/2": 46,
+          "loss:1/2": 17,
+          "loss:1/3": 26,
+          "loss:0/2": 12,
+          "loss:0/3": 3,
+          "loss:2/2": 8,
+          "win:0/3": 10,
+          "loss:3/3": 6
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 908,
+        "winRate": 0.908,
+        "pogRate": 0.633,
+        "meanRating": 8.320679999999992,
+        "ratingStdDev": 0.6679948634533384,
+        "meanFanDelta": 1418.413,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 0.9113765624999999,
+        "meanMechDelta": 0.5744699999999997,
+        "meanMentalDelta": 0.739529999999998,
+        "meanTeamDelta": 0.3199200000000003,
+        "meanSets": 3.699,
+        "meanDistinctChampions": 3.021,
+        "meanRawP": 0.9033298962057971,
+        "meanEffectiveP": 0.7555897941101241,
+        "scoreCounts": {
+          "3:0": 457,
+          "3:1": 326,
+          "3:2": 125,
+          "0:3": 15,
+          "2:3": 46,
+          "1:3": 31
+        },
+        "ratingBuckets": {
+          "below5": 0,
+          "5to7": 44,
+          "7to8.3": 396,
+          "8.3plus": 560
+        },
+        "phaseCounts": {
+          "1": 29,
+          "2": 284,
+          "3": 687
+        },
+        "pogSweep": {
+          "1.0": 0.6169999999999999,
+          "1.1": 0.6554000000000019,
+          "1.2": 0.6937999999999984,
+          "1.3": 0.7307999999999992,
+          "1.4": 0.7599499999999987,
+          "1.5": 0.7858750000000001,
+          "1.6": 0.7988666666666647,
+          "1.7": 0.8110183333333358,
+          "1.8": 0.8214900000000009,
+          "1.9": 0.8319616666666679,
+          "2.0": 0.8424333333333319
+        },
+        "pogCandidateDistribution": {
+          "win:2/3": 194,
+          "win:3/4": 129,
+          "win:3/3": 172,
+          "win:1/3": 86,
+          "win:1/4": 37,
+          "win:4/5": 35,
+          "loss:1/3": 8,
+          "win:5/5": 10,
+          "loss:5/5": 3,
+          "win:2/4": 106,
+          "loss:2/5": 14,
+          "loss:2/4": 10,
+          "loss:1/4": 7,
+          "win:4/4": 51,
+          "win:2/5": 31,
+          "win:3/5": 42,
+          "loss:3/4": 14,
+          "loss:4/5": 11,
+          "loss:0/3": 1,
+          "win:1/5": 7,
+          "loss:3/5": 15,
+          "loss:2/3": 6,
+          "loss:1/5": 3,
+          "win:0/3": 5,
+          "win:0/4": 3
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0.015000000000000013,
+          "absoluteWinRateDifference": 0.015000000000000013,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.0020000000000000018,
+          "meanRatingDifference": 0.05387180827644933,
+          "ratingStdDevRatio": 0.6154090567869158,
+          "fanDeltaDifference": 10.5,
+          "fanDeltaRatio": 1.007544984274097,
+          "mechDeltaDifference": 0.01100999999999952,
+          "mentalDeltaDifference": 0.004099999999998438,
+          "teamDeltaDifference": -0.00003999999999992898,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0.019000000000000017,
+          "absoluteWinRateDifference": 0.019000000000000017,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": 0.0030000000000000027,
+          "meanRatingDifference": 0.04015180827643938,
+          "ratingStdDevRatio": 0.500350750504796,
+          "fanDeltaDifference": 26.75999999999999,
+          "fanDeltaRatio": 1.0192289313499845,
+          "mechDeltaDifference": -0.010200000000000986,
+          "mentalDeltaDifference": -0.012449999999999961,
+          "teamDeltaDifference": -0.0002700000000002145,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "sup",
+      "skill": 55,
+      "baseline": {
+        "n": 1000,
+        "wins": 132,
+        "winRate": 0.132,
+        "pogRate": 0.005,
+        "meanRating": 3.6046545215402688,
+        "ratingStdDev": 1.7756814268508865,
+        "meanFanDelta": 179.204,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.561376812499995,
+        "meanMechDelta": 0.7852299999999999,
+        "meanMentalDelta": 1.0298999999999998,
+        "meanTeamDelta": 0.4657000000000002,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 427,
+          "2:1": 122,
+          "0:2": 441,
+          "2:0": 10
+        },
+        "ratingBuckets": {
+          "below5": 794,
+          "5to7": 148,
+          "7to8.3": 53,
+          "8.3plus": 5
+        },
+        "phaseCounts": {
+          "0": 462,
+          "1": 437,
+          "2": 96,
+          "3": 5
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 161,
+        "winRate": 0.161,
+        "pogRate": 0.004,
+        "meanRating": 3.5800200000000033,
+        "ratingStdDev": 1.1696641396571827,
+        "meanFanDelta": 180.41,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.18499499999999,
+        "meanMechDelta": 0.7659600000000005,
+        "meanMentalDelta": 1.01485,
+        "meanTeamDelta": 0.4648199999999989,
+        "meanSets": 2.387,
+        "meanDistinctChampions": 2.131,
+        "meanRawP": 0.1421063544129132,
+        "meanEffectiveP": 0.24303440525939105,
+        "scoreCounts": {
+          "0:2": 550,
+          "2:1": 98,
+          "1:2": 289,
+          "2:0": 63
+        },
+        "ratingBuckets": {
+          "below5": 880,
+          "5to7": 117,
+          "7to8.3": 3,
+          "8.3plus": 0
+        },
+        "phaseCounts": {
+          "0": 464,
+          "1": 429,
+          "2": 102,
+          "3": 5
+        },
+        "pogSweep": {
+          "1.0": 0.0019999999999999996,
+          "1.1": 0.0022,
+          "1.2": 0.0024,
+          "1.3": 0.0026000000000000007,
+          "1.4": 0.0028,
+          "1.5": 0.003,
+          "1.6": 0.0032,
+          "1.7": 0.0033999999999999994,
+          "1.8": 0.0036,
+          "1.9": 0.0038,
+          "2.0": 0.003999999999999999
+        },
+        "pogCandidateDistribution": {
+          "loss:0/2": 549,
+          "win:1/3": 3,
+          "loss:0/3": 285,
+          "win:0/2": 61,
+          "win:0/3": 95,
+          "loss:1/3": 4,
+          "win:1/2": 2,
+          "loss:1/2": 1
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 156,
+        "winRate": 0.156,
+        "pogRate": 0.002,
+        "meanRating": 3.5298700000000003,
+        "ratingStdDev": 0.939086621723472,
+        "meanFanDelta": 163.423,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 8.492417562499996,
+        "meanMechDelta": 0.7416099999999998,
+        "meanMentalDelta": 0.9947099999999992,
+        "meanTeamDelta": 0.46488999999999964,
+        "meanSets": 3.881,
+        "meanDistinctChampions": 3.054,
+        "meanRawP": 0.13503753272820118,
+        "meanEffectiveP": 0.28307047001868074,
+        "scoreCounts": {
+          "1:3": 314,
+          "3:1": 57,
+          "0:3": 349,
+          "3:2": 74,
+          "2:3": 181,
+          "3:0": 25
+        },
+        "ratingBuckets": {
+          "below5": 949,
+          "5to7": 50,
+          "7to8.3": 1,
+          "8.3plus": 0
+        },
+        "phaseCounts": {
+          "0": 473,
+          "1": 422,
+          "2": 101,
+          "3": 4
+        },
+        "pogSweep": {
+          "1.0": 0.0021000000000000003,
+          "1.1": 0.00231,
+          "1.2": 0.0025199999999999997,
+          "1.3": 0.0027300000000000002,
+          "1.4": 0.00294,
+          "1.5": 0.0031500000000000005,
+          "1.6": 0.003293333333333333,
+          "1.7": 0.0034366666666666664,
+          "1.8": 0.0035800000000000007,
+          "1.9": 0.0037233333333333333,
+          "2.0": 0.0038666666666666667
+        },
+        "pogCandidateDistribution": {
+          "loss:0/4": 309,
+          "win:0/4": 55,
+          "loss:0/3": 349,
+          "win:0/5": 71,
+          "loss:0/5": 178,
+          "win:0/3": 23,
+          "win:1/3": 1,
+          "win:1/5": 3,
+          "win:2/3": 1,
+          "loss:1/5": 3,
+          "loss:1/4": 5,
+          "win:1/4": 2
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0.028999999999999998,
+          "absoluteWinRateDifference": 0.028999999999999998,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.001,
+          "meanRatingDifference": -0.024634521540265464,
+          "ratingStdDevRatio": 0.6587128310124549,
+          "fanDeltaDifference": 1.2059999999999889,
+          "fanDeltaRatio": 1.0067297604964174,
+          "mechDeltaDifference": -0.019269999999999343,
+          "mentalDeltaDifference": -0.015049999999999786,
+          "teamDeltaDifference": -0.0008800000000013242,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0.023999999999999994,
+          "absoluteWinRateDifference": 0.023999999999999994,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.003,
+          "meanRatingDifference": -0.07478452154026849,
+          "ratingStdDevRatio": 0.5288598548833795,
+          "fanDeltaDifference": -15.781000000000006,
+          "fanDeltaRatio": 0.9119383495904109,
+          "mechDeltaDifference": -0.0436200000000001,
+          "mentalDeltaDifference": -0.03519000000000061,
+          "teamDeltaDifference": -0.000810000000000588,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "sup",
+      "skill": 65,
+      "baseline": {
+        "n": 1000,
+        "wins": 536,
+        "winRate": 0.536,
+        "pogRate": 0.146,
+        "meanRating": 6.064593127265404,
+        "ratingStdDev": 2.0246136857055252,
+        "meanFanDelta": 696.584,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 4.1017605625000035,
+        "meanMechDelta": 0.8390799999999995,
+        "meanMentalDelta": 1.0576400000000055,
+        "meanTeamDelta": 0.41989999999999916,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "1:2": 402,
+          "2:0": 291,
+          "2:1": 245,
+          "0:2": 62
+        },
+        "ratingBuckets": {
+          "below5": 355,
+          "5to7": 277,
+          "7to8.3": 213,
+          "8.3plus": 155
+        },
+        "phaseCounts": {
+          "0": 66,
+          "1": 381,
+          "2": 398,
+          "3": 155
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 568,
+        "winRate": 0.568,
+        "pogRate": 0.128,
+        "meanRating": 6.180669999999999,
+        "ratingStdDev": 1.3586416198173792,
+        "meanFanDelta": 693.163,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 3.696883875,
+        "meanMechDelta": 0.8336899999999997,
+        "meanMentalDelta": 1.0458000000000052,
+        "meanTeamDelta": 0.42265999999999965,
+        "meanSets": 2.502,
+        "meanDistinctChampions": 2.203,
+        "meanRawP": 0.5584781038184281,
+        "meanEffectiveP": 0.5435455100591585,
+        "scoreCounts": {
+          "0:2": 213,
+          "1:2": 219,
+          "2:1": 283,
+          "2:0": 285
+        },
+        "ratingBuckets": {
+          "below5": 195,
+          "5to7": 493,
+          "7to8.3": 266,
+          "8.3plus": 46
+        },
+        "phaseCounts": {
+          "0": 63,
+          "1": 353,
+          "2": 424,
+          "3": 160
+        },
+        "pogSweep": {
+          "1.0": 0.12949999999999984,
+          "1.1": 0.1408499999999997,
+          "1.2": 0.15219999999999995,
+          "1.3": 0.16355000000000056,
+          "1.4": 0.17489999999999994,
+          "1.5": 0.18625,
+          "1.6": 0.1956000000000002,
+          "1.7": 0.20494999999999933,
+          "1.8": 0.21430000000000005,
+          "1.9": 0.22364999999999938,
+          "2.0": 0.23299999999999962
+        },
+        "pogCandidateDistribution": {
+          "loss:0/2": 195,
+          "loss:0/3": 155,
+          "win:0/3": 145,
+          "win:0/2": 154,
+          "loss:1/3": 61,
+          "win:1/3": 108,
+          "win:1/2": 115,
+          "win:2/2": 16,
+          "loss:1/2": 18,
+          "win:2/3": 30,
+          "loss:2/3": 3
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 538,
+        "winRate": 0.538,
+        "pogRate": 0.103,
+        "meanRating": 6.150200000000004,
+        "ratingStdDev": 1.0176169023753001,
+        "meanFanDelta": 656.283,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 4.047481500000001,
+        "meanMechDelta": 0.7896000000000002,
+        "meanMentalDelta": 1.0106000000000046,
+        "meanTeamDelta": 0.4191800000000005,
+        "meanSets": 4.087,
+        "meanDistinctChampions": 3.184,
+        "meanRawP": 0.5539442835854786,
+        "meanEffectiveP": 0.5336384076122893,
+        "scoreCounts": {
+          "1:3": 175,
+          "2:3": 173,
+          "3:2": 185,
+          "3:1": 196,
+          "0:3": 114,
+          "3:0": 157
+        },
+        "ratingBuckets": {
+          "below5": 133,
+          "5to7": 658,
+          "7to8.3": 198,
+          "8.3plus": 11
+        },
+        "phaseCounts": {
+          "0": 58,
+          "1": 331,
+          "2": 458,
+          "3": 153
+        },
+        "pogSweep": {
+          "1.0": 0.09905000000000012,
+          "1.1": 0.10865499999999984,
+          "1.2": 0.11825999999999977,
+          "1.3": 0.1278650000000004,
+          "1.4": 0.13732000000000003,
+          "1.5": 0.1466999999999999,
+          "1.6": 0.15501333333333323,
+          "1.7": 0.16328666666666683,
+          "1.8": 0.1714800000000001,
+          "1.9": 0.17967333333333266,
+          "2.0": 0.18786666666666685
+        },
+        "pogCandidateDistribution": {
+          "loss:0/4": 121,
+          "loss:1/5": 77,
+          "win:1/5": 82,
+          "loss:0/5": 75,
+          "win:0/4": 83,
+          "loss:0/3": 97,
+          "loss:1/4": 46,
+          "win:0/5": 73,
+          "win:2/4": 26,
+          "win:0/3": 77,
+          "win:2/3": 16,
+          "loss:2/5": 20,
+          "win:1/3": 61,
+          "win:1/4": 84,
+          "loss:1/3": 16,
+          "win:2/5": 28,
+          "loss:2/4": 7,
+          "loss:3/4": 1,
+          "win:3/3": 3,
+          "win:3/4": 3,
+          "win:3/5": 2,
+          "loss:3/3": 1,
+          "loss:3/5": 1
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": 0.03199999999999992,
+          "absoluteWinRateDifference": 0.03199999999999992,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": true,
+          "pogRateDifference": -0.017999999999999988,
+          "meanRatingDifference": 0.11607687273459533,
+          "ratingStdDevRatio": 0.6710621534418444,
+          "fanDeltaDifference": -3.4209999999999354,
+          "fanDeltaRatio": 0.9950888909305986,
+          "mechDeltaDifference": -0.005389999999999784,
+          "mentalDeltaDifference": -0.011840000000000295,
+          "teamDeltaDifference": 0.0027600000000004843,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0.0020000000000000018,
+          "absoluteWinRateDifference": 0.0020000000000000018,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": true,
+          "pogRateDifference": -0.043,
+          "meanRatingDifference": 0.08560687273460044,
+          "ratingStdDevRatio": 0.5026227519649938,
+          "fanDeltaDifference": -40.30099999999993,
+          "fanDeltaRatio": 0.9421448095276378,
+          "mechDeltaDifference": -0.0494799999999993,
+          "mentalDeltaDifference": -0.04704000000000086,
+          "teamDeltaDifference": -0.0007199999999986662,
+          "resourceBudgetValid": true
+        }
+      }
+    },
+    {
+      "pos": "sup",
+      "skill": 75,
+      "baseline": {
+        "n": 1000,
+        "wins": 891,
+        "winRate": 0.891,
+        "pogRate": 0.625,
+        "meanRating": 8.261773720335558,
+        "ratingStdDev": 1.3253398149686613,
+        "meanFanDelta": 1388.665,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 1.1337374999999996,
+        "meanMechDelta": 0.5846700000000007,
+        "meanMentalDelta": 0.751979999999998,
+        "meanTeamDelta": 0.32019000000000053,
+        "meanSets": 1,
+        "meanDistinctChampions": 1,
+        "meanRawP": 0,
+        "meanEffectiveP": 0,
+        "scoreCounts": {
+          "2:0": 810,
+          "2:1": 81,
+          "1:2": 108,
+          "0:2": 1
+        },
+        "ratingBuckets": {
+          "below5": 31,
+          "5to7": 156,
+          "7to8.3": 165,
+          "8.3plus": 648
+        },
+        "phaseCounts": {
+          "0": 1,
+          "1": 49,
+          "2": 302,
+          "3": 648
+        },
+        "pogSweep": {
+          "1.0": 0,
+          "1.1": 0,
+          "1.2": 0,
+          "1.3": 0,
+          "1.4": 0,
+          "1.5": 0,
+          "1.6": 0,
+          "1.7": 0,
+          "1.8": 0,
+          "1.9": 0,
+          "2.0": 0
+        },
+        "pogCandidateDistribution": {},
+        "errors": []
+      },
+      "bo3": {
+        "n": 1000,
+        "wins": 880,
+        "winRate": 0.88,
+        "pogRate": 0.606,
+        "meanRating": 8.306899999999988,
+        "ratingStdDev": 0.8458528181664909,
+        "meanFanDelta": 1361.619,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 1.1263755,
+        "meanMechDelta": 0.6020500000000001,
+        "meanMentalDelta": 0.7621399999999982,
+        "meanTeamDelta": 0.3188400000000009,
+        "meanSets": 2.321,
+        "meanDistinctChampions": 2.078,
+        "meanRawP": 0.8955081984154163,
+        "meanEffectiveP": 0.7958599292263967,
+        "scoreCounts": {
+          "2:0": 633,
+          "2:1": 247,
+          "1:2": 74,
+          "0:2": 46
+        },
+        "ratingBuckets": {
+          "below5": 1,
+          "5to7": 81,
+          "7to8.3": 378,
+          "8.3plus": 540
+        },
+        "phaseCounts": {
+          "1": 37,
+          "2": 306,
+          "3": 657
+        },
+        "pogSweep": {
+          "1.0": 0.5931666666666664,
+          "1.1": 0.6150833333333336,
+          "1.2": 0.637000000000002,
+          "1.3": 0.6589166666666636,
+          "1.4": 0.6808333333333334,
+          "1.5": 0.70275,
+          "1.6": 0.7179333333333315,
+          "1.7": 0.7331166666666707,
+          "1.8": 0.7482999999999974,
+          "1.9": 0.7634833333333355,
+          "2.0": 0.7786666666666662
+        },
+        "pogCandidateDistribution": {
+          "win:2/2": 313,
+          "win:1/2": 253,
+          "win:1/3": 76,
+          "loss:2/3": 22,
+          "win:3/3": 61,
+          "win:2/3": 101,
+          "loss:1/3": 35,
+          "win:0/2": 67,
+          "loss:2/2": 11,
+          "loss:3/3": 8,
+          "loss:0/2": 15,
+          "loss:0/3": 9,
+          "loss:1/2": 20,
+          "win:0/3": 9
+        },
+        "errors": []
+      },
+      "bo5": {
+        "n": 1000,
+        "wins": 921,
+        "winRate": 0.921,
+        "pogRate": 0.632,
+        "meanRating": 8.297029999999996,
+        "ratingStdDev": 0.6696765481186583,
+        "meanFanDelta": 1414.53,
+        "meanMoneyDelta": 0,
+        "meanHpDelta": -8,
+        "meanStressDelta": 0.7819112499999997,
+        "meanMechDelta": 0.5938799999999996,
+        "meanMentalDelta": 0.7567699999999977,
+        "meanTeamDelta": 0.31871000000000094,
+        "meanSets": 3.733,
+        "meanDistinctChampions": 3.009,
+        "meanRawP": 0.9009211756536445,
+        "meanEffectiveP": 0.7531767659144551,
+        "scoreCounts": {
+          "3:0": 453,
+          "3:1": 309,
+          "3:2": 159,
+          "0:3": 15,
+          "2:3": 42,
+          "1:3": 22
+        },
+        "ratingBuckets": {
+          "below5": 0,
+          "5to7": 34,
+          "7to8.3": 421,
+          "8.3plus": 545
+        },
+        "phaseCounts": {
+          "0": 1,
+          "1": 35,
+          "2": 300,
+          "3": 664
+        },
+        "pogSweep": {
+          "1.0": 0.612966666666667,
+          "1.1": 0.6520633333333355,
+          "1.2": 0.6911599999999991,
+          "1.3": 0.7282166666666665,
+          "1.4": 0.757133333333331,
+          "1.5": 0.7829999999999996,
+          "1.6": 0.7962666666666658,
+          "1.7": 0.8084933333333353,
+          "1.8": 0.8186400000000006,
+          "1.9": 0.8287866666666673,
+          "2.0": 0.8389333333333324
+        },
+        "pogCandidateDistribution": {
+          "win:2/3": 189,
+          "win:3/4": 122,
+          "win:3/3": 169,
+          "win:3/5": 52,
+          "win:1/3": 77,
+          "loss:1/3": 4,
+          "win:5/5": 13,
+          "loss:5/5": 3,
+          "win:1/4": 40,
+          "win:4/5": 51,
+          "win:2/5": 32,
+          "win:2/4": 102,
+          "win:4/4": 40,
+          "win:0/3": 18,
+          "loss:2/3": 6,
+          "loss:1/5": 5,
+          "win:1/5": 10,
+          "loss:3/4": 3,
+          "loss:4/4": 2,
+          "loss:2/5": 14,
+          "loss:1/4": 7,
+          "loss:4/5": 7,
+          "loss:3/5": 13,
+          "win:0/4": 5,
+          "loss:3/3": 2,
+          "loss:0/3": 3,
+          "loss:2/4": 8,
+          "loss:0/4": 2,
+          "win:0/5": 1
+        },
+        "errors": []
+      },
+      "comparison": {
+        "bo3": {
+          "winRateDifference": -0.01100000000000001,
+          "absoluteWinRateDifference": 0.01100000000000001,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": -0.019000000000000017,
+          "meanRatingDifference": 0.04512627966443006,
+          "ratingStdDevRatio": 0.6382158059489761,
+          "fanDeltaDifference": -27.04600000000005,
+          "fanDeltaRatio": 0.9805237404269568,
+          "mechDeltaDifference": 0.017379999999999396,
+          "mentalDeltaDifference": 0.010160000000000169,
+          "teamDeltaDifference": -0.0013499999999996293,
+          "resourceBudgetValid": true
+        },
+        "bo5": {
+          "winRateDifference": 0.030000000000000027,
+          "absoluteWinRateDifference": 0.030000000000000027,
+          "withinFivePercentagePoints": true,
+          "equalSkillWithin45To60": null,
+          "pogRateDifference": 0.007000000000000006,
+          "meanRatingDifference": 0.035256279664437784,
+          "ratingStdDevRatio": 0.5052866748249718,
+          "fanDeltaDifference": 25.86500000000001,
+          "fanDeltaRatio": 1.0186258024793597,
+          "mechDeltaDifference": 0.009209999999998941,
+          "mentalDeltaDifference": 0.004789999999999739,
+          "teamDeltaDifference": -0.0014799999999995928,
+          "resourceBudgetValid": true
+        }
+      }
+    }
+  ]
+}

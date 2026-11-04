@@ -1,0 +1,254 @@
+{
+  "generatedAt": "2026-11-04T16:16:20.420Z",
+  "version": "2.9.0",
+  "versionCode": 22,
+  "sourceSha256": "3f7127adbe2bf8a0a6374a24c7270e0646c9a7bf3b3e239921b28b81cde732d7",
+  "baseline": "git:b1707be8a78c2f0be4c8eae618fc9bcdb755238e:index.html",
+  "deployed": false,
+  "nativePackageRebuilt": false,
+  "pipeline": "SUCCESS: ALL TESTS PASSED",
+  "syntax": "SYNTAX_OK",
+  "versionsSynchronized": true,
+  "regression": {
+    "total": 226,
+    "pass": 222,
+    "fail": 0,
+    "skipped": 4,
+    "skips": [
+      "ok 69 - 신규 활동 미사용5포지션78주 실질 상태·주가·난수는2.5와 같다 # SKIP",
+      "ok 164 - 활동 미사용5포지션78주 정산/주가/다음난수는 수정 전과 같다 # SKIP",
+      "ok 215 - 아마추어 5포지션의 78주 성장·해금·스카우트도 수정 전후가 같다 # SKIP",
+      "ok 216 - 동일 시드의 수정 전후 78주 정산·주가·다음 난수가 같다 # SKIP"
+    ]
+  },
+  "matchComparison": {
+    "baselineMatches": 30000,
+    "newSeries": 60000,
+    "summary": [
+      {
+        "bestOf": 3,
+        "nPerFixture": 2000,
+        "series": 30000,
+        "maxAbsoluteWinRateDifference": 0.023500000000000076,
+        "meanAbsoluteWinRateDifference": 0.010966666666666663,
+        "worstFixture": {
+          "pos": "jg",
+          "skill": 65
+        },
+        "allWithinFivePercentagePoints": true,
+        "allEqualSkillWithin45To60": true,
+        "allResourceBudgetsValid": true
+      },
+      {
+        "bestOf": 5,
+        "nPerFixture": 2000,
+        "series": 30000,
+        "maxAbsoluteWinRateDifference": 0.024999999999999967,
+        "meanAbsoluteWinRateDifference": 0.010999999999999998,
+        "worstFixture": {
+          "pos": "mid",
+          "skill": 65
+        },
+        "allWithinFivePercentagePoints": true,
+        "allEqualSkillWithin45To60": true,
+        "allResourceBudgetsValid": true
+      }
+    ],
+    "passed": true
+  },
+  "seasonComparison": {
+    "summary": [
+      {
+        "version": "baseline",
+        "runs": 90,
+        "passed": 90,
+        "completedWeeks": 2340,
+        "prompts": 0,
+        "checkpointErrors": 0,
+        "matches": 1127,
+        "actualSets": 0
+      },
+      {
+        "version": "series",
+        "runs": 90,
+        "passed": 90,
+        "completedWeeks": 2340,
+        "prompts": 0,
+        "checkpointErrors": 0,
+        "matches": 1185,
+        "actualSets": 3000
+      }
+    ],
+    "passed": true
+  },
+  "browser": {
+    "result": "SERIES_CAREER_BROWSER_PASS",
+    "bo5": {
+      "wins": 2,
+      "losses": 3,
+      "sets": [
+        {
+          "win": false,
+          "championId": "viktor"
+        },
+        {
+          "win": true,
+          "championId": "azir"
+        },
+        {
+          "win": false,
+          "championId": "taliyah"
+        },
+        {
+          "win": true,
+          "championId": "zed"
+        },
+        {
+          "win": false,
+          "championId": "taliyah"
+        }
+      ],
+      "games": 1,
+      "mastery": 100,
+      "hp": 92
+    },
+    "season": {
+      "year": 2,
+      "week": 1,
+      "games": 16,
+      "records": 16,
+      "summary": {
+        "series": 16,
+        "wins": 4,
+        "setWins": 12,
+        "setLosses": 26,
+        "legacyWithoutSets": 0,
+        "rating": 4.341875
+      },
+      "contract": {
+        "key": "1:24:renew:pro:0:한빛 타이탄즈",
+        "year": 1,
+        "week": 24,
+        "kind": "renew",
+        "from": {
+          "stage": "pro",
+          "id": 0,
+          "name": "한빛 타이탄즈",
+          "key": "pro:0:한빛 타이탄즈"
+        },
+        "to": {
+          "stage": "pro",
+          "id": 0,
+          "name": "한빛 타이탄즈",
+          "key": "pro:0:한빛 타이탄즈"
+        },
+        "salary": 13550000,
+        "settled": false,
+        "evidence": {
+          "performance": {
+            "scope": "현재 평가기간",
+            "count": 8,
+            "average": 5.03125,
+            "recent": 3.9266666666666663,
+            "recordedSeries": 16,
+            "seriesWins": 4,
+            "setWins": 12,
+            "setLosses": 26,
+            "recentSeries": [
+              {
+                "id": "series:1:17:14",
+                "label": "LCK 서머 6라운드",
+                "rating": 2.28,
+                "win": false,
+                "mySetW": 0,
+                "mySetL": 2,
+                "bestOf": 3,
+                "club": {
+                  "stage": "pro",
+                  "id": 0,
+                  "name": "한빛 타이탄즈",
+                  "key": "pro:0:한빛 타이탄즈"
+                }
+              },
+              {
+                "id": "series:1:18:15",
+                "label": "LCK 서머 7라운드",
+                "rating": 3.16,
+                "win": false,
+                "mySetW": 1,
+                "mySetL": 2,
+                "bestOf": 3,
+                "club": {
+                  "stage": "pro",
+                  "id": 0,
+                  "name": "한빛 타이탄즈",
+                  "key": "pro:0:한빛 타이탄즈"
+                }
+              },
+              {
+                "id": "series:1:19:16",
+                "label": "LCK 서머 8라운드",
+                "rating": 6.34,
+                "win": false,
+                "mySetW": 0,
+                "mySetL": 2,
+                "bestOf": 3,
+                "club": {
+                  "stage": "pro",
+                  "id": 0,
+                  "name": "한빛 타이탄즈",
+                  "key": "pro:0:한빛 타이탄즈"
+                }
+              }
+            ]
+          },
+          "role": "폼 재정비",
+          "ovr": 77.278,
+          "offeredThreshold": 59,
+          "offeredClub": {
+            "id": 0,
+            "name": "한빛 타이탄즈",
+            "stage": "pro"
+          },
+          "terms": {
+            "baseSalary": 13550000,
+            "renew": true,
+            "finalSalary": 13550000
+          }
+        }
+      },
+      "pending": false,
+      "control": "auto"
+    },
+    "animatedTotalsSettled": true,
+    "readOnlyArchive": true,
+    "reload": true,
+    "midSeriesCheckpoint": true,
+    "manualToSeriesAuto": {
+      "sets": 4,
+      "games": 1,
+      "pending": false
+    },
+    "widths": [
+      320,
+      390,
+      1100
+    ],
+    "offline": true,
+    "pageErrors": []
+  },
+  "review": {
+    "boundaryTests": 8,
+    "sideEffectsTests": 3,
+    "actualNativeAchievementRedThenGreen": true,
+    "fix": "세트 계산 중 업적/부분저장 보류, 최종시리즈에서1회확정"
+  },
+  "limits": [
+    "실제 모든 사용자 세이브·모바일 기기·사람의 재미 미검증",
+    "실제 세트는 일반 드래프트이며 피어리스 미지원",
+    "시리즈 승률/개별 난수/성과급 횟수의 완전 동일성을 주장하지 않음",
+    "프로 시작 시즌 POG 평균5.07→4.57 편차 남음",
+    "시즌 자동 일반계약 실험은 인센티브 지급0; 별도 BO5 성과급 통합 테스트로 확인",
+    "공개 웹v2.8유지, 새Android패키지미빌드"
+  ]
+}
