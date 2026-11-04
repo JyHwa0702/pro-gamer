@@ -349,3 +349,30 @@ python build_aab.py
 - 대상은 모바일 입력/밸런스 수정부터 시즌·커리어·청춘·밝은UI·이미지 확대까지의 누적 변경과 설계/검증 기록이다. APK/ZIP 재빌드는 포함하지 않는다.
 - 배포 직전 전체168검사 중164PASS/0FAIL/4기존 선택기준SKIP, 필수pipeline ALL PASSED·SYNTAX_OK·v2.7.1/20 버전동기화·diff점검을 재확인했다.
 - 완료 판정은 push 성공 외에 해당 커밋의 `pages build and deployment` 성공과 공개 `version.json`/`assets/version.json`/`sw.js`/`index.html`의 실제 응답을 확인한 뒤 한다. 실행 결과는 GitHub Actions 및 공개 서비스에서 확인할 수 있다.
+
+## 19. 안드로이드 업로드 패키지 — 2026-11-04 · v2.7.1 / 코드20 / API36
+
+- 사용자가 업로드 파일과 안내 문구를 요청했다. 기존 APK/AAB는2.0.0/10이므로 현재 웹 릴리스로 새로 빌드했다. 기존 Python 명령은 실행 가능한 인터프리터가 없어, 설치된 JDK/Android SDK를 사용하는 `node build_android.cjs`를 추가했다.
+- manifest는 version.json과 동기화하고 targetSdk36/minSdk24, 기존 패키지ID·MainActivity·file저장origin을 유지한다. 기존 키스토어를 재사용하고 이전 APK 인증서와 새 APK/AAB 인증서 일치를 확인했다. 새 빌더는 서명 비밀번호를 인수에 직접 노출하지 않으며 환경변수 사용을 우선한다.
+- `node tests/verify-android-package.cjs`: APK/AAB 버전20·API36·서명·bundletool검증, 최신 HTML/양쪽version/sw 바이트 일치, 23인 초상화 이중배치 및 챔피언 이미지 포함, 개발파일/키스토어 미포함 확인. APK82,402,052바이트, AAB82,398,827바이트.
+- 기존 스크립트 `build_apk.py`/`build_aab.py`는 이전 버전 하드코딩이 남아 있으므로 최신 릴리스는 새 Node 명령을 사용한다. 환경변수 이름은 ANDROID_HOME/JAVA_HOME/BUNDLETOOL_JAR/ANDROID_KEYSTORE_PATH/ANDROID_KEY_ALIAS/ANDROID_KEYSTORE_PASSWORD/ANDROID_KEY_PASSWORD다. 실제 값은 문서에 기록하지 않는다.
+- 새 산출물과 출시노트는 사용자의 outputs폴더에 전달한다. Google Play 콘솔 업로드/심사/출시는 수행하지 않는다. 실제 Android 기기 설치/실행 검증은 미포함이다.
+
+## 20. 핵심 경험 재정렬 — 로컬 v2.8.0 / 코드21 · 최종검증2026-11-05
+
+- 사용자 요청: StageShow 적용, 관리 분산 축소·간단한UI·완전자동 시즌·밴픽 확대·말에 맞는 이미지·사진/문구 선택 인스타·실제 질투/발각/이별. 관계 제한은 사용자 답변으로 **연인1+썸2** 확정.
+- 설계 `CORE_GAME_RESET_DESIGN_2026-11-04.md`, 결과 `reports/CORE_GAME_AUDIT_AND_RESET_2026-11-04.md`. 홈4개 메뉴/수동 일정 접기/자동26주·중지·3전략·중요선택 직접 모드. 개막 파티원 선택 제거, 기존 아카이브 보존. 자산/장비/활동은 더보기.
+- 챔피언45명·역할별9명, 대회10밴/양팀10픽 고유, 블라인드 내부모드 미러허용. 수동밴1개/내픽+팀추천. 숙련/상성/조합/QTE 양팀 공통 판정, 자동·수동 계산 경로 통합. 실시간패치승률/Riot경기API·실제다전제·피어리스 구현이 아님.
+- 관계상태 별도1+2, 친구친분49상한(기존 높은값은보존), 명시적고백/거절/4주냉각. 실제다른상대데이트·공개사진으로발각, 사과신뢰−15/거짓−25/반복이별. 이전무작위질투무료보상제거.
+- 실제공개장소만남후 커플기념사진·준비문구3개로게시. 대표3인함께찍은컷3/공용카페·공원2/걱정표정3=8PNG 원본 루트/assets동일. private/unknown장소는사진생성안함. 사진히로인변조/DM선수교체/선물중관계종료/중복사건/주간제한검사. 구세이브5종의친분/혼인/스토리/피드보존, 공식연인자동배정안함.
+- 전체203중199PASS/0FAIL/기존4SKIP. 실제15,000전의동급승률48.1~57.9%,90자동시즌2340주 입력대기0·저장일치. Chromium독립임시컨텍스트 실제1+2→데이트→사진확대/게시→발각신뢰85→저장→자동26주/중지/재개/오프라인PASS. 실제수동밴픽→국면1회→자동경기/숙련/대기해제PASS,320/390/1100넘침0. pipeline ALL PASSED·독립SYNTAX_OK·버전2.8/21동기화·Git점검.
+- StageShow독립데모는 게임과분리, 실제코드는Vanilla유지. 포스터/상태gate PASS, 영상중간프레임coverage inconclusive. 상세REHEARSAL/이미지프롬프트/증거는reports/core-career에보존.
+- 실제기기/사람의재미/모든사용자세이브는미검증. APK/AAB/ZIP는2.7.1/20유지, 이번웹변경미배포/미커밋/push없음. 빌더는현재2.8버전을읽으므로추후릴리스에새로실행해야하며 과거패키지를현재클라이언트와일치한다고보고하지말것.
+- 다음: 실제BO3/BO5·평가/계약/결산을한커리어로, 이어서대표3인관계후속. 피어리스전챔프풀/복수포지션확보필수. 아마첫시즌진척/고액인연해금업적과급여비중은후속플레이/경제체감검토대상,이번기존보상소급차감없음. FA/새경영가지확장은보류.
+
+## 21. v2.8.0 웹 배포 — 2026-11-05
+
+- 사용자 명시 승인으로 기존 GitHub Pages `https://jyhwa0702.github.io/pro-gamer/`에 v2.8.0/21을 배포한다. 도메인·경로·localStorage키를 유지하며 사용자의 실제 브라우저 저장소를 초기화하지 않는다. Android/APK/AAB 재빌드는 이번 웹 배포 범위에 포함하지 않는다.
+- 배포 전 pipeline ALL PASSED·SYNTAX_OK·전체203개 중199PASS/0FAIL/기존4SKIP·버전동기화·diff검사를 재실행했다.
+- 공개 v2.7.1에서 별도 임시 BrowserContext5개를 사용해 각 저장키(v4/v3/v2/v1/progamer_save)에 합성 진행 데이터를 저장하고, 배포 후 같은 컨텍스트에서 새로고침해 주요기록 보존·진행·재저장·오프라인을 검사한다. 이는 실제 모든 사용자 세이브를 전수검사했다는 뜻이 아니다.
+- 완료 판정은 해당 커밋의 Pages 작업 성공, 공개 HTML/양쪽version/sw/신규 이미지 응답과 기존세이브 검증을 직접 확인한 뒤 한다. 실행 결과는 별도 `reports/WEB_RELEASE_V280_2026-11-05.json` 및 사용자 outputs의 배포 결과에 기록한다.

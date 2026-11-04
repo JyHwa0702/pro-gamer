@@ -1,0 +1,74 @@
+[
+  {
+    "name": "couple_jieun_cafe.png",
+    "bytes": 2797479,
+    "width": 1312,
+    "height": 1199,
+    "sha256": "195f640d3927fc048e4416442f372149ac81fc0f9fb494b7425c870fbdbf4576",
+    "rootAssetsIdentical": true,
+    "visualQA": "two people, public setting, fully clothed, no contact or text"
+  },
+  {
+    "name": "couple_harin_game.png",
+    "bytes": 2374507,
+    "width": 1312,
+    "height": 1199,
+    "sha256": "073041c18b9d988c8c75f3c2e1ada71a4dd234f6b35cc1b0cf3e2fbab52e901e",
+    "rootAssetsIdentical": true,
+    "visualQA": "two people, public setting, fully clothed, no contact or text"
+  },
+  {
+    "name": "couple_mina_lounge.png",
+    "bytes": 2480199,
+    "width": 1312,
+    "height": 1199,
+    "sha256": "c9d6f740ec3b8fa4a0218438021db47dbb2084d9fb9e9b179bd45cdca6d36d19",
+    "rootAssetsIdentical": true,
+    "visualQA": "two people, public setting, fully clothed, no contact or text"
+  },
+  {
+    "name": "couple_walk_shared.png",
+    "bytes": 2664784,
+    "width": 1254,
+    "height": 1254,
+    "sha256": "668e56ee8cc33d0f2a781b65f5154fe5e8499b1166e56c6f941925a37de5df97",
+    "rootAssetsIdentical": true,
+    "visualQA": "two people, public setting, fully clothed, no contact or text"
+  },
+  {
+    "name": "jieun_concerned.png",
+    "bytes": 1827380,
+    "width": 1084,
+    "height": 1451,
+    "sha256": "0a61cd66ad094fafefe22b04cdcd0264569524774103b6fe9ecdd89ab6f9a405",
+    "rootAssetsIdentical": true,
+    "visualQA": "Original portrait identity preserved; calm concerned/slightly disappointed; fully clothed; bright public background; no tears, anger, writing or UI"
+  },
+  {
+    "name": "harin_concerned.png",
+    "bytes": 2122070,
+    "width": 1084,
+    "height": 1451,
+    "sha256": "616626980273194c16fe82e5d09da5757e4d75320ea6d4e65e8fb8c270241ebe",
+    "rootAssetsIdentical": true,
+    "visualQA": "Original portrait identity preserved; calm concerned/slightly disappointed; fully clothed; bright public background; no tears, anger, writing or UI"
+  },
+  {
+    "name": "mina_concerned.png",
+    "bytes": 1890791,
+    "width": 1084,
+    "height": 1451,
+    "sha256": "05beea4b08f49191b64830dc161ba0db8aedebc28805956f0872461a9c9ae413",
+    "rootAssetsIdentical": true,
+    "visualQA": "Original portrait identity preserved; calm concerned/slightly disappointed; fully clothed; bright public background; no tears, anger, writing or UI"
+  },
+  {
+    "name": "couple_cafe_shared.png",
+    "bytes": 2486674,
+    "width": 1254,
+    "height": 1254,
+    "sha256": "930b1fca1f3cf075c59646e6e6126bfec6131f670bc2e8d58bc8c54b987cb8cc",
+    "rootAssetsIdentical": true,
+    "visualQA": "Two anonymous hooded people seated in separate chairs at a sunny public bakery cafe; faces and identifying hair hidden, no touching, text, logos or suggestive content"
+  }
+]

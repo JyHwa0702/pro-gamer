@@ -1,6 +1,8 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const {game}=require('./game-harness.cjs');
+const {game:baseGame}=require('./game-harness.cjs');
+// 이 파일은 명시적으로 썸을 선택한 선수의 추천 일정·기회비용을 검사한다.
+function game(...args){const g=baseGame(...args);assert.equal(g.run("tryBeginFlirt('jieun').ok"),true);return g;}
 const plain=v=>JSON.parse(JSON.stringify(v));
 
 test('균형 목표 소통은 시즌에 분산되고 이미 소통한 주에는 중복 추천하지 않는다',()=>{
@@ -22,7 +24,7 @@ test('지갑에 맞는 실제 코스만 추천하고 횟수·체력 경계를 �
   g.run('P.weeklyDates=0;P.hp=7');assert.equal(g.run('recommend()'),'rest');
 });
 
-test('동행이 미해금·비용부족이면 가능한 다른 인연으로 안내하고 비용은 방송 일정으로 마련한다',()=>{
+test('다른 인물이 미해금이어도 선택한 썸의 가능한 코스를 안내하고 비용은 방송 일정으로 마련한다',()=>{
   const g=game();g.run("const s=ensureSeasonJourney();s.opened=true;s.companion='harin';P.week=7;P.hp=100;P.stress=0;P.money=50000");
   assert.equal(g.run('recommendationPlan().date.hid'),'jieun');
   g.run('P.money=0');const plan=plain(g.run('recommendationPlan()'));assert.equal(plan.key,'stream');assert.ok(plan.reason.includes('비용'));assert.ok(g.run('ACTS.some(a=>a.k===recommend() && !a.cost)'));
@@ -39,7 +41,7 @@ test('실제 정규시즌 상대의 전력차만 설명하고 추천은 가상 �
 });
 
 test('추천 진행은 안내한 인물·코스의 비용과 주간 소통을 실제 적용한다',async()=>{
-  const g=game();g.run("const s=ensureSeasonJourney();s.opened=true;P.week=7;P.hp=100;P.money=500000;P.bonds.harin.unlocked=true;s.companion='harin';let offered='';ask=async html=>{offered+=html;return 0;};weekEnd=async()=>{P.week++;P.weeklyDates=0;};");
+  const g=game();g.run("const s=ensureSeasonJourney();s.opened=true;P.week=7;P.hp=100;P.money=500000;P.bonds.harin.unlocked=true;endRelationship('jieun');tryBeginFlirt('harin');let offered='';ask=async html=>{offered+=html;return 0;};weekEnd=async()=>{P.week++;P.weeklyDates=0;};");
   const plan=plain(g.run('recommendationPlan()'));const before=plain(g.run('P'));assert.equal(plan.date.hid,'harin');
   await g.run('runRecommendedTurn()');assert.equal(g.run('P.money'),before.money-plan.date.cost);assert.equal(g.run('P.hp'),before.hp-8);assert.equal(g.run('P.week'),8);assert.ok(g.run('offered').includes(plan.date.name));assert.deepEqual(plain(g.run('P.seasonJourney.contactWeeks')),[7]);
 });

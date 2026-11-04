@@ -1,0 +1,276 @@
+{
+  "source": "Riot Data Dragon",
+  "patch": "16.22.1",
+  "downloaded": [
+    {
+      "id": "ahri",
+      "dd": "Ahri",
+      "files": [
+        "champs/ahri.png",
+        "champ_ahri.png",
+        "assets/champ_ahri.png"
+      ]
+    },
+    {
+      "id": "taliyah",
+      "dd": "Taliyah",
+      "files": [
+        "champs/taliyah.png",
+        "champ_taliyah.png",
+        "assets/champ_taliyah.png"
+      ]
+    },
+    {
+      "id": "viktor",
+      "dd": "Viktor",
+      "files": [
+        "champs/viktor.png",
+        "champ_viktor.png",
+        "assets/champ_viktor.png"
+      ]
+    },
+    {
+      "id": "renekton",
+      "dd": "Renekton",
+      "files": [
+        "champs/renekton.png",
+        "champ_renekton.png",
+        "assets/champ_renekton.png"
+      ]
+    },
+    {
+      "id": "jax",
+      "dd": "Jax",
+      "files": [
+        "champs/jax.png",
+        "champ_jax.png",
+        "assets/champ_jax.png"
+      ]
+    },
+    {
+      "id": "gnar",
+      "dd": "Gnar",
+      "files": [
+        "champs/gnar.png",
+        "champ_gnar.png",
+        "assets/champ_gnar.png"
+      ]
+    },
+    {
+      "id": "ornn",
+      "dd": "Ornn",
+      "files": [
+        "champs/ornn.png",
+        "champ_ornn.png",
+        "assets/champ_ornn.png"
+      ]
+    },
+    {
+      "id": "camille",
+      "dd": "Camille",
+      "files": [
+        "champs/camille.png",
+        "champ_camille.png",
+        "assets/champ_camille.png"
+      ]
+    },
+    {
+      "id": "jayce",
+      "dd": "Jayce",
+      "files": [
+        "champs/jayce.png",
+        "champ_jayce.png",
+        "assets/champ_jayce.png"
+      ]
+    },
+    {
+      "id": "gwen",
+      "dd": "Gwen",
+      "files": [
+        "champs/gwen.png",
+        "champ_gwen.png",
+        "assets/champ_gwen.png"
+      ]
+    },
+    {
+      "id": "sejuani",
+      "dd": "Sejuani",
+      "files": [
+        "champs/sejuani.png",
+        "champ_sejuani.png",
+        "assets/champ_sejuani.png"
+      ]
+    },
+    {
+      "id": "wukong",
+      "dd": "MonkeyKing",
+      "files": [
+        "champs/wukong.png",
+        "champ_wukong.png",
+        "assets/champ_wukong.png"
+      ]
+    },
+    {
+      "id": "viego",
+      "dd": "Viego",
+      "files": [
+        "champs/viego.png",
+        "champ_viego.png",
+        "assets/champ_viego.png"
+      ]
+    },
+    {
+      "id": "maokai",
+      "dd": "Maokai",
+      "files": [
+        "champs/maokai.png",
+        "champ_maokai.png",
+        "assets/champ_maokai.png"
+      ]
+    },
+    {
+      "id": "xinzhao",
+      "dd": "XinZhao",
+      "files": [
+        "champs/xinzhao.png",
+        "champ_xinzhao.png",
+        "assets/champ_xinzhao.png"
+      ]
+    },
+    {
+      "id": "nidalee",
+      "dd": "Nidalee",
+      "files": [
+        "champs/nidalee.png",
+        "champ_nidalee.png",
+        "assets/champ_nidalee.png"
+      ]
+    },
+    {
+      "id": "nocturne",
+      "dd": "Nocturne",
+      "files": [
+        "champs/nocturne.png",
+        "champ_nocturne.png",
+        "assets/champ_nocturne.png"
+      ]
+    },
+    {
+      "id": "xayah",
+      "dd": "Xayah",
+      "files": [
+        "champs/xayah.png",
+        "champ_xayah.png",
+        "assets/champ_xayah.png"
+      ]
+    },
+    {
+      "id": "aphelios",
+      "dd": "Aphelios",
+      "files": [
+        "champs/aphelios.png",
+        "champ_aphelios.png",
+        "assets/champ_aphelios.png"
+      ]
+    },
+    {
+      "id": "ezreal",
+      "dd": "Ezreal",
+      "files": [
+        "champs/ezreal.png",
+        "champ_ezreal.png",
+        "assets/champ_ezreal.png"
+      ]
+    },
+    {
+      "id": "varus",
+      "dd": "Varus",
+      "files": [
+        "champs/varus.png",
+        "champ_varus.png",
+        "assets/champ_varus.png"
+      ]
+    },
+    {
+      "id": "ashe",
+      "dd": "Ashe",
+      "files": [
+        "champs/ashe.png",
+        "champ_ashe.png",
+        "assets/champ_ashe.png"
+      ]
+    },
+    {
+      "id": "sivir",
+      "dd": "Sivir",
+      "files": [
+        "champs/sivir.png",
+        "champ_sivir.png",
+        "assets/champ_sivir.png"
+      ]
+    },
+    {
+      "id": "leona",
+      "dd": "Leona",
+      "files": [
+        "champs/leona.png",
+        "champ_leona.png",
+        "assets/champ_leona.png"
+      ]
+    },
+    {
+      "id": "rakan",
+      "dd": "Rakan",
+      "files": [
+        "champs/rakan.png",
+        "champ_rakan.png",
+        "assets/champ_rakan.png"
+      ]
+    },
+    {
+      "id": "alistar",
+      "dd": "Alistar",
+      "files": [
+        "champs/alistar.png",
+        "champ_alistar.png",
+        "assets/champ_alistar.png"
+      ]
+    },
+    {
+      "id": "braum",
+      "dd": "Braum",
+      "files": [
+        "champs/braum.png",
+        "champ_braum.png",
+        "assets/champ_braum.png"
+      ]
+    },
+    {
+      "id": "lulu",
+      "dd": "Lulu",
+      "files": [
+        "champs/lulu.png",
+        "champ_lulu.png",
+        "assets/champ_lulu.png"
+      ]
+    },
+    {
+      "id": "renata",
+      "dd": "Renata",
+      "files": [
+        "champs/renata.png",
+        "champ_renata.png",
+        "assets/champ_renata.png"
+      ]
+    },
+    {
+      "id": "karma",
+      "dd": "Karma",
+      "files": [
+        "champs/karma.png",
+        "champ_karma.png",
+        "assets/champ_karma.png"
+      ]
+    }
+  ]
+}

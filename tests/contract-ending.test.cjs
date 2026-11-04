@@ -40,7 +40,7 @@ test('엔딩 리그 평가는 LCK·구 KCL 우승만 세고 챌린저스·진출
 test('엔딩은 친밀도만으로 웨딩·트루엔딩·트로피 획득을 지어내지 않는다',async()=>{
  const g=game();g.run('P.age=28;P.year=12;P.bonds.jieun.aff=70;P.bonds.jieun.lv=0;');assert.doesNotMatch(await endingHtml(g),/웨딩|영원한 약속/);
  g.run('P.bonds.harin.aff=70;P.bonds.harin.unlocked=true');let html=await endingHtml(g);assert.doesNotMatch(html,/트루 엔딩|모든 트로피/);assert.match(html,/우승 기록 없이/);
- g.run('P.bonds.harin.aff=0;P.bonds.jieun.lv=4');assert.match(await endingHtml(g),/웨딩/);
+ g.run("P.bonds.harin.aff=0;P.bonds.jieun.lv=4;tryBeginFlirt('jieun');confirmRelationship('jieun')");assert.match(await endingHtml(g),/웨딩/);
  g.run('P.age=18;P.year=2');assert.doesNotMatch(await endingHtml(g),/웨딩|영원한 약속/);
 });
 test('실제 스토브리그의 성과급 계약과 일반 재계약에 옵션 확정이 연결된다',async()=>{
@@ -64,8 +64,8 @@ test('실제 월즈 결승·국가대표 우승 경로에서 기존 상금 외 �
 });
 test('청춘4단계의 성인화는 결혼을 만들지 않고 성인 약속·실제 혼인기록을 존중한다',async()=>{
  const g=game();g.run('P.age=28;P.year=12;P.bonds.jieun.aff=100;P.bonds.jieun.lv=4;P.bonds.jieun.youthMilestones=[1,2,3,4]');assert.doesNotMatch(await endingHtml(g),/웨딩/);
- g.run('P.bonds.jieun.adultLifetimePromise=true');assert.match(await endingHtml(g),/웨딩/);
- g.run('P.bonds.jieun.lv=0;P.bonds.jieun.adultLifetimePromise=false;P.bonds.jieun.married=true');assert.match(await endingHtml(g),/웨딩/);
+ g.run("tryBeginFlirt('jieun');confirmRelationship('jieun');P.bonds.jieun.adultLifetimePromise=true");assert.match(await endingHtml(g),/웨딩/);
+ g.run('P.bonds.jieun.lv=0;P.bonds.jieun.adultLifetimePromise=false;P.bonds.jieun.married=true');assert.match(await endingHtml(g),/웨딩/);assert.equal(g.run('P.bonds.jieun.married'),true);
  g.run('P.year=1');assert.doesNotMatch(await endingHtml(g),/웨딩/);
 });
 test('24주 이후 스토브리그 옵션은 다음 시즌에만 지급하고 3년차에는 만료된다',async()=>{

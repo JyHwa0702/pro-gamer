@@ -1,0 +1,231 @@
+{
+  "sourceSha256": "f8f5d63513fb8a194a39d3f4202dc735e6a9d939803991b95c135bbfa6864cdd",
+  "policy": "Only actual openSendDmModal, 3 different characters per week, coffee choice, mocked dialogue confirmations",
+  "rows": [
+    {
+      "week": 1,
+      "aff": [
+        [
+          "jieun",
+          15,
+          0
+        ],
+        [
+          "harin",
+          15,
+          0
+        ],
+        [
+          "sora",
+          15,
+          0
+        ],
+        [
+          "mina",
+          0,
+          0
+        ]
+      ],
+      "money": 10000000
+    },
+    {
+      "week": 2,
+      "aff": [
+        [
+          "jieun",
+          30,
+          1
+        ],
+        [
+          "harin",
+          30,
+          1
+        ],
+        [
+          "sora",
+          15,
+          0
+        ],
+        [
+          "mina",
+          15,
+          0
+        ]
+      ],
+      "money": 10000000
+    },
+    {
+      "week": 3,
+      "aff": [
+        [
+          "jieun",
+          45,
+          1
+        ],
+        [
+          "harin",
+          30,
+          1
+        ],
+        [
+          "sora",
+          30,
+          1
+        ],
+        [
+          "mina",
+          30,
+          1
+        ]
+      ],
+      "money": 10000000
+    },
+    {
+      "week": 4,
+      "aff": [
+        [
+          "jieun",
+          45,
+          1
+        ],
+        [
+          "harin",
+          45,
+          1
+        ],
+        [
+          "sora",
+          45,
+          1
+        ],
+        [
+          "mina",
+          45,
+          1
+        ]
+      ],
+      "money": 10000000
+    },
+    {
+      "week": 5,
+      "aff": [
+        [
+          "jieun",
+          60,
+          2
+        ],
+        [
+          "harin",
+          60,
+          2
+        ],
+        [
+          "sora",
+          60,
+          2
+        ],
+        [
+          "mina",
+          45,
+          1
+        ]
+      ],
+      "money": 10000000
+    },
+    {
+      "week": 6,
+      "aff": [
+        [
+          "jieun",
+          75,
+          3
+        ],
+        [
+          "harin",
+          75,
+          3
+        ],
+        [
+          "sora",
+          60,
+          2
+        ],
+        [
+          "mina",
+          60,
+          2
+        ]
+      ],
+      "money": 10000000
+    },
+    {
+      "week": 7,
+      "aff": [
+        [
+          "jieun",
+          90,
+          3
+        ],
+        [
+          "harin",
+          75,
+          3
+        ],
+        [
+          "sora",
+          75,
+          3
+        ],
+        [
+          "mina",
+          75,
+          3
+        ]
+      ],
+      "money": 10000000
+    },
+    {
+      "week": 8,
+      "aff": [
+        [
+          "jieun",
+          90,
+          3
+        ],
+        [
+          "harin",
+          90,
+          3
+        ],
+        [
+          "sora",
+          90,
+          3
+        ],
+        [
+          "mina",
+          90,
+          3
+        ]
+      ],
+      "money": 10000000
+    }
+  ],
+  "aff50Count": 4,
+  "moneySpent": 0,
+  "jealousy": {
+    "affBefore": 90,
+    "affAfter": 90,
+    "stressAfter": 45.46875
+  },
+  "postFields": [
+    "id",
+    "title",
+    "img",
+    "caption",
+    "likes",
+    "comments",
+    "time"
+  ],
+  "hasExplicitRelationshipState": []
+}

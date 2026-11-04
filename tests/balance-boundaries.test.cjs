@@ -22,14 +22,14 @@ test('공통 경기 정산은 승패 결과가 같으면 연출 모드와 무관
 test('같은 주의 수익 정산을 두 번 호출해도 중복되지 않는다',()=>{
   const g=game();g.run('P.fanclub.founded=true;P.hallOfFame=true;P.salary=100000;settleWeeklyResources();');const value=g.run('P.money');g.run('settleWeeklyResources();');assert.equal(g.run('P.money'),value);g.run('P.week++;settleWeeklyResources();');assert.ok(g.run('P.money')>value);
 });
-test('미성년 참여자에게 동일 ID의 건전한 대체 데이트만 실행한다',async()=>{const g=game();g.run('P.age=18;P.year=5;P.bonds.sora.unlocked=true;P.bonds.sora.aff=100;');const id=g.run('HEROINE_ORIGINALS.sora.dates.find(d=>d.sensual).id');assert.equal(await g.run(`performHeroineDate('sora',${JSON.stringify(id)})`),true);assert.equal(g.run('HEROINES.sora.dates.some(d=>d.sensual)'),false);});
+test('미성년 참여자에게 동일 ID의 건전한 대체 데이트만 실행한다',async()=>{const g=game();g.run("P.age=18;P.year=5;P.bonds.sora.unlocked=true;P.bonds.sora.aff=100;tryBeginFlirt('sora');");const id=g.run('HEROINE_ORIGINALS.sora.dates.find(d=>d.sensual).id');assert.equal(await g.run(`performHeroineDate('sora',${JSON.stringify(id)})`),true);assert.equal(g.run('HEROINES.sora.dates.some(d=>d.sensual)'),false);});
 test('주간 DM 보상은 서로 다른 인물도 최대 세 명이다',async()=>{
   const g=game();g.run("P.bonds.harin.unlocked=P.bonds.sora.unlocked=P.bonds.mina.unlocked=true;let who=0;let count=0;ask=async()=>[who,2,0][count++%3];");
   for(let i=0;i<3;i++){g.run(`who=${i};`);await g.run('openSendDmModal()');}
   g.run('who=3;');const before=g.run('P.bonds.mina.aff');await g.run('openSendDmModal()');assert.equal(g.run('P.bonds.mina.aff'),before);
 });
 test('선물은 같은 인물에게 같은 주 두 번 비용을 청구하지 않는다',async()=>{
-  const g=game();g.run('showHeroineCutscene=async(h,b,btns=[])=>btns.length===5?3:0;');await g.run("openHeroineDirectMenu('jieun')");const money=g.run('P.money');await g.run("openHeroineDirectMenu('jieun')");assert.equal(g.run('P.money'),money);
+  const g=game();g.run("tryBeginFlirt('jieun');showHeroineCutscene=async(h,b,btns=[])=>b.includes('인연 일정')?btns.findIndex(x=>x.t.includes('맞춤 선물')):0;");await g.run("openHeroineDirectMenu('jieun')");const money=g.run('P.money');await g.run("openHeroineDirectMenu('jieun')");assert.equal(g.run('P.money'),money);
 });
 test('주식 가격을 저장하고 재로드해도 유지한다',()=>{const g=game();g.run('STOCKS[0].p=12345;save();STOCKS[0].p=99999;P=load();');assert.equal(g.run('STOCKS[0].p'),12345);});
 test('새 게시물을 계속 만들어도 댓글 성장 보상은 전체 주1회다',async()=>{
@@ -58,6 +58,6 @@ test('최대 체력 패시브는 세이브 재로드로 중복 지급되지 않�
   const g=game();g.run('P.bonds.camila.aff=75;save();P=load();');const max=g.run('P.maxHp');g.run('save();P=load();');assert.equal(g.run('P.maxHp'),max);assert.equal(max,140);
 });
 test('스타 답글의 표시와 실제 팬 보상이 일치한다',async()=>{const g=game();g.run("P.sns.posts=[{id:'one',title:'검증',caption:'검증',comments:[]}];ask=async()=>1;");await g.run("replyToFeedComment('one')");assert.equal(g.run('P.fans'),53);});
-test('받은 인연 DM도 스토리와 상호작용 시점을 갱신한다',async()=>{const g=game();g.run("const t=DM_TEMPLATES.find(t=>t.id==='dm_jieun_sweet');P.dms.list=[{templateId:t.id,sender:t.sender,msg:t.msg,choices:t.choices,read:false}];ask=async()=>0;");await g.run('openDmChat(0)');assert.equal(g.run('P.bonds.jieun.lv'),1);assert.equal(g.run('P.bonds.jieun.lastInteractWeek'),1);});
+test('받은 인연 DM도 스토리와 상호작용 시점을 갱신한다',async()=>{const g=game();g.run("tryBeginFlirt('jieun');const t=DM_TEMPLATES.find(t=>t.id==='dm_jieun_sweet');P.dms.list=[{templateId:t.id,sender:t.sender,msg:t.msg,choices:t.choices,read:false}];ask=async()=>0;");await g.run('openDmChat(0)');assert.equal(g.run('P.bonds.jieun.lv'),1);assert.equal(g.run('P.bonds.jieun.lastInteractWeek'),1);});
 test('PC방 대회 결승 패배가 준우승 보상으로 연결된다',async()=>{const g=game();g.run('P.s={mech:80,lane:80,macro:80,team:80,pool:80,mental:80};let calls=0;Math.random=()=>++calls<=5?.1:.99;');await g.run('playPcBangTournament()');assert.equal(g.run('P.money'),1400000);assert.equal(g.run('P.fans'),1250);});
 test('부분적으로 null인 옛 SNS/DM/기록도 재개된다',()=>{const g=game();const p=g.run('({...P,sns:{posts:null},dms:{list:null},hist:{titles:null,log:null,wins:0}})');g.storage.set('proRoadSave_v2',JSON.stringify(p));g.run('P=load();');assert.equal(g.run('P.sns.posts.length+P.dms.list.length+P.hist.titles.length+P.hist.log.length'),0);});

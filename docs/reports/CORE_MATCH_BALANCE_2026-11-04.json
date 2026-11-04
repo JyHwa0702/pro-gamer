@@ -1,0 +1,376 @@
+{
+  "sourceFile": "index.html",
+  "sourceSha256": "4222e731292d4cff760f25b6282c96a8d8fd9812a063099f5fe6ecba6c49d6d8",
+  "generatedAt": "2026-11-04T15:09:32.682Z",
+  "seed": 102030,
+  "perScenario": 1000,
+  "totalMatches": 15000,
+  "method": "Actual client source through tests/game-harness.cjs; 5 roles x 3 skill conditions. Fresh player fixture each match, deterministic continuous PRNG sequence per condition. Full draft, shared manual/automatic phase engine and actual QTE. Achievement and heroine unlock presentation disabled by harness to isolate match calculation.",
+  "boundaries": [
+    "게임용 추정 밸런스의 고정 조건 실험이며 실제 LoL 승률이나 사람이 느끼는 재미를 측정하지 않는다.",
+    "각 경기에서 체력100/스트레스0/시너지0/아군팀전력65/상대65/숙련Lv1로 초기화한다.",
+    "세트별 BO3/BO5 시리즈 및 피어리스는 검사 범위에 포함되지 않는다.",
+    "실제 브라우저 렌더링과 기기 실행을 증명하지 않는다."
+  ],
+  "champions": {
+    "count": 45,
+    "roleCounts": {
+      "top": 9,
+      "jg": 9,
+      "mid": 9,
+      "adc": 9,
+      "sup": 9
+    },
+    "missingIcons": []
+  },
+  "results": [
+    {
+      "pos": "top",
+      "skill": 55,
+      "n": 1000,
+      "wins": 142,
+      "winRate": 0.142,
+      "rating": 3.5830526337688946,
+      "champs": {
+        "jax": 95,
+        "gnar": 244,
+        "camille": 140,
+        "ornn": 107,
+        "jayce": 135,
+        "renekton": 142,
+        "aatrox": 93,
+        "gwen": 44
+      }
+    },
+    {
+      "pos": "top",
+      "skill": 65,
+      "n": 1000,
+      "wins": 517,
+      "winRate": 0.517,
+      "rating": 6.113856746582207,
+      "champs": {
+        "jax": 116,
+        "gnar": 243,
+        "camille": 114,
+        "jayce": 137,
+        "ornn": 101,
+        "aatrox": 93,
+        "renekton": 153,
+        "gwen": 43
+      }
+    },
+    {
+      "pos": "top",
+      "skill": 75,
+      "n": 1000,
+      "wins": 889,
+      "winRate": 0.889,
+      "rating": 8.16545546416991,
+      "champs": {
+        "jax": 97,
+        "gnar": 265,
+        "camille": 120,
+        "jayce": 122,
+        "ornn": 107,
+        "aatrox": 99,
+        "renekton": 150,
+        "gwen": 40
+      }
+    },
+    {
+      "pos": "jg",
+      "skill": 55,
+      "n": 1000,
+      "wins": 129,
+      "winRate": 0.129,
+      "rating": 3.4463297503734216,
+      "champs": {
+        "xinzhao": 132,
+        "nocturne": 53,
+        "viego": 166,
+        "wukong": 113,
+        "maokai": 123,
+        "leesin": 60,
+        "sejuani": 243,
+        "nidalee": 110
+      }
+    },
+    {
+      "pos": "jg",
+      "skill": 65,
+      "n": 1000,
+      "wins": 579,
+      "winRate": 0.579,
+      "rating": 6.261879749090487,
+      "champs": {
+        "xinzhao": 111,
+        "nocturne": 77,
+        "viego": 169,
+        "nidalee": 106,
+        "leesin": 63,
+        "sejuani": 240,
+        "maokai": 112,
+        "wukong": 122
+      }
+    },
+    {
+      "pos": "jg",
+      "skill": 75,
+      "n": 1000,
+      "wins": 877,
+      "winRate": 0.877,
+      "rating": 8.253250642483275,
+      "champs": {
+        "xinzhao": 116,
+        "nocturne": 63,
+        "viego": 142,
+        "nidalee": 118,
+        "leesin": 60,
+        "maokai": 141,
+        "wukong": 127,
+        "sejuani": 233
+      }
+    },
+    {
+      "pos": "mid",
+      "skill": 55,
+      "n": 1000,
+      "wins": 122,
+      "winRate": 0.122,
+      "rating": 3.4296515427000775,
+      "champs": {
+        "ahri": 110,
+        "yasuo": 36,
+        "zed": 139,
+        "azir": 274,
+        "viktor": 89,
+        "leblanc": 84,
+        "sylas": 183,
+        "taliyah": 85
+      }
+    },
+    {
+      "pos": "mid",
+      "skill": 65,
+      "n": 1000,
+      "wins": 481,
+      "winRate": 0.481,
+      "rating": 5.913828939052294,
+      "champs": {
+        "ahri": 113,
+        "yasuo": 28,
+        "taliyah": 81,
+        "zed": 154,
+        "azir": 290,
+        "viktor": 99,
+        "leblanc": 88,
+        "sylas": 147
+      }
+    },
+    {
+      "pos": "mid",
+      "skill": 75,
+      "n": 1000,
+      "wins": 879,
+      "winRate": 0.879,
+      "rating": 8.189242742284568,
+      "champs": {
+        "ahri": 101,
+        "yasuo": 26,
+        "taliyah": 90,
+        "zed": 155,
+        "azir": 268,
+        "viktor": 98,
+        "leblanc": 95,
+        "sylas": 167
+      }
+    },
+    {
+      "pos": "adc",
+      "skill": 55,
+      "n": 1000,
+      "wins": 144,
+      "winRate": 0.144,
+      "rating": 3.6073554536593533,
+      "champs": {
+        "xayah": 188,
+        "sivir": 167,
+        "ashe": 135,
+        "aphelios": 148,
+        "kaisa": 109,
+        "ezreal": 159,
+        "jinx": 60,
+        "varus": 34
+      }
+    },
+    {
+      "pos": "adc",
+      "skill": 65,
+      "n": 1000,
+      "wins": 572,
+      "winRate": 0.572,
+      "rating": 6.3061257503132016,
+      "champs": {
+        "xayah": 217,
+        "sivir": 172,
+        "ashe": 138,
+        "ezreal": 149,
+        "aphelios": 122,
+        "varus": 31,
+        "jinx": 61,
+        "kaisa": 110
+      }
+    },
+    {
+      "pos": "adc",
+      "skill": 75,
+      "n": 1000,
+      "wins": 889,
+      "winRate": 0.889,
+      "rating": 8.280528191723553,
+      "champs": {
+        "xayah": 188,
+        "sivir": 159,
+        "ashe": 147,
+        "ezreal": 167,
+        "aphelios": 135,
+        "varus": 34,
+        "jinx": 72,
+        "kaisa": 98
+      }
+    },
+    {
+      "pos": "sup",
+      "skill": 55,
+      "n": 1000,
+      "wins": 132,
+      "winRate": 0.132,
+      "rating": 3.6046545215402688,
+      "champs": {
+        "alistar": 155,
+        "leona": 165,
+        "braum": 271,
+        "renata": 45,
+        "rakan": 72,
+        "lulu": 101,
+        "nautilus": 82,
+        "karma": 109
+      }
+    },
+    {
+      "pos": "sup",
+      "skill": 65,
+      "n": 1000,
+      "wins": 536,
+      "winRate": 0.536,
+      "rating": 6.064593127265404,
+      "champs": {
+        "alistar": 164,
+        "leona": 168,
+        "braum": 264,
+        "nautilus": 80,
+        "karma": 111,
+        "renata": 47,
+        "lulu": 87,
+        "rakan": 79
+      }
+    },
+    {
+      "pos": "sup",
+      "skill": 75,
+      "n": 1000,
+      "wins": 891,
+      "winRate": 0.891,
+      "rating": 8.261773720335558,
+      "champs": {
+        "alistar": 158,
+        "leona": 179,
+        "braum": 245,
+        "nautilus": 92,
+        "karma": 109,
+        "renata": 47,
+        "lulu": 101,
+        "rakan": 69
+      }
+    }
+  ],
+  "checks": [
+    {
+      "pos": "top",
+      "skill": 55,
+      "ok": true
+    },
+    {
+      "pos": "top",
+      "skill": 65,
+      "ok": true
+    },
+    {
+      "pos": "top",
+      "skill": 75,
+      "ok": true
+    },
+    {
+      "pos": "jg",
+      "skill": 55,
+      "ok": true
+    },
+    {
+      "pos": "jg",
+      "skill": 65,
+      "ok": true
+    },
+    {
+      "pos": "jg",
+      "skill": 75,
+      "ok": true
+    },
+    {
+      "pos": "mid",
+      "skill": 55,
+      "ok": true
+    },
+    {
+      "pos": "mid",
+      "skill": 65,
+      "ok": true
+    },
+    {
+      "pos": "mid",
+      "skill": 75,
+      "ok": true
+    },
+    {
+      "pos": "adc",
+      "skill": 55,
+      "ok": true
+    },
+    {
+      "pos": "adc",
+      "skill": 65,
+      "ok": true
+    },
+    {
+      "pos": "adc",
+      "skill": 75,
+      "ok": true
+    },
+    {
+      "pos": "sup",
+      "skill": 55,
+      "ok": true
+    },
+    {
+      "pos": "sup",
+      "skill": 65,
+      "ok": true
+    },
+    {
+      "pos": "sup",
+      "skill": 75,
+      "ok": true
+    }
+  ],
+  "passed": true
+}

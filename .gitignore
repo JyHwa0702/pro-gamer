@@ -3,6 +3,7 @@
 __pycache__/
 *.pyc
 .system_generated/
+.playwright-cli/
 *.tmp
 
 # IDE & OS

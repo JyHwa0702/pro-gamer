@@ -298,8 +298,8 @@ tr.me td{background:#1d2a52;font-weight:800}
 
 /* ⚔️ LCK 챔피언 선택창 & 조합 시너지 스타일 */
 .lck-draft-box{background:#0c111e;border:1px solid #1f2b48;border-radius:14px;padding:12px;margin-bottom:10px}
-.draft-teams{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.draft-team-col{background:#11182c;border-radius:10px;padding:8px;border:1px solid #233054}
+.draft-teams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:10px}
+.draft-team-col{min-width:0;overflow-wrap:anywhere;background:#11182c;border-radius:10px;padding:8px;border:1px solid #233054}
 .draft-team-col.my-col{border-color:#3b82f6;background:linear-gradient(180deg,#111c38,#0d152a)}
 .draft-team-col.opp-col{border-color:#ef4444;background:linear-gradient(180deg,#2b1118,#1c0d12)}
 .draft-slot{display:flex;align-items:center;gap:6px;padding:4px 6px;border-radius:6px;margin-bottom:4px;font-size:11.5px}
@@ -609,6 +609,11 @@ img[data-image-viewer]{cursor:zoom-in}img[data-image-viewer]:focus-visible{outli
 #imageViewerStage{flex:1;min-height:0;display:flex;overflow:auto;overscroll-behavior:contain;touch-action:none;cursor:grab;scrollbar-color:#7487a6 #152035}#imageViewerStage:active{cursor:grabbing}#imageViewerCanvas{flex:none;margin:auto;position:relative}#imageViewerImage{display:block;width:100%;height:100%;max-width:none;max-height:none;object-fit:contain;pointer-events:none;user-select:none;-webkit-user-drag:none}
 .image-viewer-controls{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:10px 12px max(10px,env(safe-area-inset-bottom));background:#192438;border-top:1px solid #34415b;flex-shrink:0}#imageZoomValue{min-width:50px;text-align:center;font-size:13px;font-variant-numeric:tabular-nums}.image-viewer-status{font-size:12px;color:#d8e4fb;margin:0;max-width:180px}
 @keyframes imageViewerEnter{from{opacity:0}to{opacity:1}}@media(prefers-reduced-motion:reduce){#imageViewer[open]{animation:none}}
+/* StageShow 원칙을 실제 UI에 적용: 대표 행동 하나, 상세는 펼쳐서 읽는다. */
+#gameNav.bottom-nav-dock{grid-template-columns:repeat(4,minmax(0,1fr))!important}.core-auto{padding:18px}.core-primary{width:100%;min-height:54px;display:flex;align-items:center;justify-content:center;gap:10px;background:#4166cf;color:#fff;border:0;font-size:16px;font-weight:800;box-shadow:0 6px 18px #4166cf25}.core-primary:disabled{opacity:.6}
+.core-field{display:grid;gap:7px;font-size:13px;margin:16px 0}.core-field select{min-height:44px;border:1px solid #c8d4e8;border-radius:9px;padding:8px;background:#fff;color:#263b5e}.auto-progress{display:flex;align-items:center;flex-wrap:wrap;gap:9px;padding:12px;margin-top:12px;border-radius:11px;background:#edf3ff;color:#3454a3}.auto-progress b{font-size:12px}.auto-progress span{font-size:11px}.auto-progress button{margin-left:auto}.core-season{padding:15px 17px}.core-season:before{display:none}.core-season>p{margin-bottom:0}.action-panel>summary{font-size:14px;color:#3e5b86;min-height:30px}.action-panel[open]>.section-head{margin-top:15px}.dashboard-side{display:grid;gap:16px}
+.quick-post-preview{display:block;width:100%;max-height:360px;object-fit:contain;border-radius:13px;background:#edf2f8;margin:12px 0;cursor:zoom-in}.quick-photo-options{display:flex;gap:9px;overflow:auto;padding:5px 0 12px}.quick-photo{min-width:84px;max-width:100px;padding:5px;border-radius:10px;background:#f2f5fa;color:#425777;border:2px solid transparent;font-size:11px}.quick-photo img{display:block;width:100%;height:68px;object-fit:cover;border-radius:6px;margin-bottom:5px}.quick-photo.selected{border-color:#4166cf;background:#edf2ff}.quick-caption-options{display:grid;gap:8px}.quick-caption{min-height:44px;text-align:left;border:1px solid #d4deef;border-radius:10px;padding:10px 12px;background:#fff;color:#3a4f70;font-size:13px}.quick-caption.selected{border-color:#4166cf;background:#edf3ff;color:#294dad;font-weight:700}
+@media(max-width:359px){.core-auto{padding:14px}.core-primary{font-size:14px}.quick-post-preview{max-height:290px}}
 </style>
 </head>
 <body>
@@ -737,10 +742,17 @@ if (mCloseBtn) {
 }
 
 function ask(html, btns = [{ t: '확인' }]) {
+  let pausedRun=null;
+  if(automaticMatchDialogs>0&&!isCareerAutoPlaying())return Promise.resolve(automaticDialogChoice(html,btns));
+  if(isCareerAutoPlaying()){
+    const important=/연봉 협상|스토브리그 - 계약 제안|숨긴 만남|마음을 고백|관계를 정리/.test(html);
+    if(!automaticSeason.interactive || !important || automaticSeason.stop)return Promise.resolve(automaticDialogChoice(html,btns));
+    pausedRun=automaticSeason;pausedRun.paused=true;
+  }
   return new Promise(res => {
     $('#mBody').innerHTML = html;
     renderButtons(btns, res);
-  });
+  }).finally(()=>{if(pausedRun)pausedRun.paused=false;});
 }
 
 // GamerGram처럼 본문에 별도 이벤트를 연결하는 화면에서도 같은 모달 수명주기를 사용한다.
@@ -1811,6 +1823,249 @@ function renderYouthJournal(hid) {
   return `<div class="season-note"><b>${uiText(arc.subject)}</b><p>${a.step===1?'다음 만남 전 준비: '+uiText(actionLabel(a.task))+(a.prepared?' · 완료':' · 아직 준비 중'):a.step>=2?(a.outcome==='kept'?'준비한 약속을 이행했다.':'일정을 바꾸고 다음 약속을 다시 정했다.'):'새 이야기'}</p></div><div class="season-journal">${a.log.map(x=>`<article><small>${x.year}년차 ${x.week}주</small><b>${uiText(x.title)}</b><p>${uiText(x.label)}</p></article>`).join('')}</div>`;
 }
 
+// 명시적 관계는 기존 친분(aff)/이야기(lv, storyChoices)와 별도로 보존한다.
+function ensureRelationships() {
+  if (!P) return null;
+  if (!P.relationships || typeof P.relationships !== 'object' || Array.isArray(P.relationships)) P.relationships = {};
+  const r=P.relationships, known=hid=>typeof hid==='string' && Object.prototype.hasOwnProperty.call(HEROINES,hid) && !!P.bonds?.[hid];
+  r.schema=1;
+  r.partner=known(r.partner)?r.partner:null;
+  r.flirts=Array.isArray(r.flirts)?[...new Set(r.flirts.filter(hid=>known(hid)&&hid!==r.partner))].slice(0,2):[];
+  r.trust=Number.isFinite(r.trust)?clamp(r.trust,0,100):100;
+  r.incidents=Array.isArray(r.incidents)?r.incidents.filter(x=>x&&typeof x==='object'&&!Array.isArray(x)&&typeof x.id==='string'&&known(x.partner)&&known(x.other)&&x.partner!==x.other).slice(-20):[];
+  if (!r.cooldowns || typeof r.cooldowns!=='object' || Array.isArray(r.cooldowns)) r.cooldowns={};
+  for(const [hid,value] of Object.entries(r.cooldowns))if(!known(hid)||!Number.isFinite(value)||value<0)delete r.cooldowns[hid];
+  if(typeof r.setupComplete!=='boolean')r.setupComplete=false;
+  return r;
+}
+function relationshipStatus(hid) {
+  const r=ensureRelationships();
+  if(!r)return 'friend';
+  if(r.partner===hid)return 'partner';
+  if(r.flirts.includes(hid))return 'flirt';
+  return (r.cooldowns[hid] || 0)>careerWeek()?'cooldown':'friend';
+}
+function relationshipLabel(hid) {
+  return {friend:'친분',flirt:'썸',partner:'연인',cooldown:'거리두기'}[relationshipStatus(hid)];
+}
+function canRomanticInteract(hid) {
+  const r=ensureRelationships();
+  return !!(r && P.bonds?.[hid]?.unlocked && (r.partner===hid || r.flirts.includes(hid)) && (r.cooldowns[hid] || 0)<=careerWeek());
+}
+function tryBeginFlirt(hid) {
+  const r=ensureRelationships();
+  if(!r || !HEROINES[hid] || !P.bonds?.[hid]?.unlocked)return {ok:false,reason:'아직 연락할 수 없는 인연입니다.'};
+  if(r.partner===hid || r.flirts.includes(hid))return {ok:true,already:true,reason:relationshipLabel(hid)+' 관계입니다.'};
+  const remaining=(r.cooldowns[hid] || 0)-careerWeek();
+  if(remaining>0)return {ok:false,reason:'상대가 거리를 두고 있습니다. '+remaining+'주 후에 다시 이야기하세요.',cooldown:true};
+  if(r.flirts.length>=2 || r.flirts.length+(r.partner?1:0)>=3)return {ok:false,reason:'연인 1명과 썸 2명까지만 관계를 이어갈 수 있습니다. 먼저 현재 관계를 정리하세요.',full:true};
+  r.flirts.push(hid);r.setupComplete=true;
+  return {ok:true,reason:HEROINES[hid].name+'와 서로를 알아보기로 했습니다.'};
+}
+function confirmRelationship(hid) {
+  const r=ensureRelationships();
+  if(!r || !HEROINES[hid] || !P.bonds?.[hid]?.unlocked)return {ok:false,reason:'아직 연락할 수 없는 인연입니다.'};
+  if(r.partner===hid)return {ok:true,already:true,reason:'이미 서로 마음을 확인한 연인입니다.'};
+  if(r.partner)return {ok:false,reason:'이미 연인이 있습니다. 새 고백 전에 현재 관계를 정리해야 합니다.'};
+  const remaining=(r.cooldowns[hid] || 0)-careerWeek();
+  if(remaining>0)return {ok:false,reason:'상대의 답을 존중해주세요. '+remaining+'주 후에 다시 이야기하세요.',cooldown:true};
+  if(!r.flirts.includes(hid))return {ok:false,reason:'먼저 서로 알아가는 시간을 가져보세요.'};
+  if((P.bonds[hid].aff || 0)<50){
+    r.flirts=r.flirts.filter(k=>k!==hid);r.cooldowns[hid]=careerWeek()+4;
+    return {ok:false,rejected:true,reason:'아직 연인이 될 마음의 준비가 되지 않았어. 당분간은 각자의 일에 집중하자.'};
+  }
+  r.partner=hid;r.flirts=r.flirts.filter(k=>k!==hid);r.trust=100;r.confirmedAt=careerWeek();r.setupComplete=true;
+  return {ok:true,reason:'서로의 마음을 확인하고 연인이 되었습니다.'};
+}
+function endRelationship(hid) {
+  const r=ensureRelationships();
+  if(!r || (r.partner!==hid && !r.flirts.includes(hid)))return {ok:false,reason:'현재 이어가는 연애 관계가 없습니다.'};
+  const wasPartner=r.partner===hid;
+  if(wasPartner)r.partner=null;
+  r.flirts=r.flirts.filter(k=>k!==hid);r.cooldowns[hid]=careerWeek()+4;
+  return {ok:true,wasPartner,reason:'관계를 정리했습니다. 4주 동안 서로 거리를 둡니다.'};
+}
+function recordRelationshipEncounter(hid, options={}) {
+  const r=ensureRelationships();
+  if(!r?.partner || r.partner===hid || !canRomanticInteract(hid))return null;
+  const kind=options.kind || 'date', publicEvidence=options.publicEvidence===true;
+  if(!['date','post'].includes(kind) || (kind==='post' && !publicEvidence))return null;
+  const week=careerWeek(),partner=r.partner;
+  // 한 주의 같은 만남/공개를 재호출하거나 피드를 재열람해도 벌점을 중복 생성하지 않는다.
+  let incident=r.incidents.find(x=>x.partner===partner&&x.other===hid&&x.week===week);
+  if(incident){
+    if(publicEvidence && !incident.publicEvidence && !incident.resolved){incident.publicEvidence=true;incident.discovered=true;incident.postId=options.postId || null;incident.evidenceKind='post';return incident;}
+    return null;
+  }
+  if(kind==='date' && r.incidents.some(x=>x.partner===partner&&x.week===week&&x.kind==='date'))return null;
+  const privateCount=r.incidents.filter(x=>x.partner===partner&&x.kind==='date'&&week-x.week>=0&&week-x.week<4).length;
+  const discovered=publicEvidence || Math.random()<Math.min(.6,.15+privateCount*.15);
+  incident={id:'relationship_'+week+'_'+partner+'_'+hid,partner,other:hid,week,kind,publicEvidence,discovered,resolved:false,postId:options.postId || null};
+  r.incidents.push(incident);r.incidents=r.incidents.slice(-20);
+  return incident;
+}
+function resolveRelationshipIncident(choice, incidentId=null) {
+  const r=ensureRelationships();
+  if(!r || !['apologize','lie','breakup'].includes(choice))return {ok:false,reason:'대화 방식을 선택해주세요.'};
+  const incident=incidentId?r.incidents.find(x=>x.id===incidentId):r.incidents.find(x=>x.discovered&&!x.resolved&&x.partner===r.partner);
+  if(!incident || !incident.discovered || incident.resolved || incident.partner!==r.partner)return {ok:false,reason:'현재 확인할 관계 사건이 없습니다.'};
+  const trustLoss=choice==='apologize'?15:choice==='lie'?25:20;
+  const previous=r.incidents.filter(x=>x.partner===incident.partner&&x.resolved&&x.discovered).length;
+  r.trust=Math.max(0,r.trust-trustLoss);
+  incident.resolved=true;incident.choice=choice;incident.resolvedAt=careerWeek();incident.trustLoss=trustLoss;
+  const brokenUp=choice==='breakup' || previous>=1 || r.trust<=55;
+  if(brokenUp){
+    const oldPartner=r.partner;
+    endRelationship(oldPartner);
+    P.bonds[oldPartner].aff=Math.max(0,(P.bonds[oldPartner].aff || 0)-10);
+  }
+  return {ok:true,brokenUp,trustLoss,partner:incident.partner,other:incident.other,reason:brokenUp?'상대는 반복된 거짓과 숨김을 받아들이지 못하고 관계를 정리했습니다.':choice==='apologize'?'상대는 사과를 들었지만, 잃은 신뢰를 회복하려면 시간이 필요하다고 말했습니다.':'해명으로 사실을 지울 수는 없습니다. 상대의 신뢰가 더 낮아졌습니다.'};
+}
+
+// 선수 생활의 자동 진행과 사생활은 별도다. 상태 기록은 기존 주간 저장 경계를 따른다.
+let automaticSeason=null;
+let automaticMatchDialogs=0;
+let autoYield=()=>new Promise(resolve=>setTimeout(resolve,60));
+function isCareerAutoPlaying(){return !!(automaticSeason && automaticSeason.player===P);}
+function automaticDialogChoice(html,buttons){
+ const enabled=buttons.map((b,i)=>({b,i,text:String(b.t||'').replace(/<[^>]*>/g,'')})).filter(x=>!x.b.disabled);
+ if(!enabled.length)return -1;
+ if(/커리어 종료|은퇴<\/h3>|새 커리어 시작/.test(html+enabled.map(x=>x.text).join(' ')))return -1;
+ if(/프러포즈|평생의 약속|동거 제안/.test(html))return -1;
+ const immediate=enabled.find(x=>/1\. 제시액|즉시 서명|솔직히 사과|사실대로|현재 팀에 남/.test(x.text));
+ if(immediate)return immediate.i;
+ if(/스토브리그 - 계약 제안/.test(html)){const renew=enabled.find(x=>/재계약|잔류/.test(x.text));if(renew)return renew.i;}
+ return enabled[0].i;
+}
+function stopAutomaticSeason(){if(automaticSeason){automaticSeason.stop=true;if(automaticSeason.paused)$('#mCloseBtn')?.click();}}
+function autoTurnPlan(strategy){
+ const s=ensureSeasonJourney();s.focus=strategy==='growth'?'foundation':strategy==='balanced'?'balance':'challenge';
+ const plan=recommendationPlan();
+ if(plan.key==='date' && (!plan.date || !canRomanticInteract(plan.date.hid)))return {key:'rest',date:null};
+ if(strategy==='growth' && plan.key==='solo'){
+  const training=['lane','mech','vod','pool'];return {key:training[P.week%training.length],date:null};
+ }
+ if(strategy==='career' && P.stage==='ama' && P.rank.t<7 && P.week%3===0 && P.hp>=40 && P.stress<=65 && ovr()*condF()>=tierSkill()-8 && !['rest','date'].includes(plan.key))return {key:'solo',date:null};
+ return plan;
+}
+function sendFriendlyCheckIn(hid){
+ if(!P.bonds?.[hid]?.unlocked)return false;const w=weeklyState();
+ if(w.dm[hid] || Object.keys(w.dm).length>=3)return false;
+ w.dm[hid]=true;const before=P.bonds[hid].aff || 0;
+ if(before<49)affectionGain(hid,Math.min(2,49-before));
+ P.bonds[hid].lastInteractWeek=careerWeek();recordSeasonContact(hid);return true;
+}
+async function startAutomaticSeason(options={}){
+ if(!P || busy || automaticSeason)return {weeks:0,reason:'이미 진행 중입니다.'};
+ const preferences={strategy:['career','growth','balanced'].includes(options.strategy)?options.strategy:'career',interactive:options.interactive===true};
+ P.autoPreferences=preferences;
+ const state={player:P,...preferences,startYear:P.year,startWeek:P.week,completed:0,stop:false,paused:false};
+ const remaining=YEAR_WEEKS-P.week+1,limit=Math.min(remaining,Math.max(1,Math.min(26,Number.isInteger(options.maxWeeks)?options.maxWeeks:remaining)));
+ automaticSeason=state;
+ try{
+  for(let i=0;i<limit&&!state.stop&&P===state.player&&(P.age || 17)<RETIRE_AGE;i++){
+   const before=careerWeek();
+   const plan=autoTurnPlan(state.strategy);
+   if(state.strategy==='balanced' && !ensureSeasonJourney().contactWeeks.includes(P.week)){
+    const s=ensureSeasonJourney(),span=YEAR_WEEKS-s.startWeek+1,target=Math.max(1,Math.ceil(span/7));
+    if(s.contactWeeks.length<Math.floor((P.week-s.startWeek+1)*target/span))sendFriendlyCheckIn(ensureRelationships().partner || 'jieun');
+   }
+   await takeTurn(plan.key,plan.date);
+   if(P!==state.player || careerWeek()===before)break;
+   state.completed++;render();await autoYield();
+  }
+ }finally{automaticSeason=null;if(P===state.player){save();render();}}
+ return {weeks:state.completed,stopped:state.stop,year:P?.year,week:P?.week};
+}
+async function showAutomaticSeasonSetup(){
+ if(!P||busy||automaticSeason)return;const player=P,p=P.autoPreferences || {};
+ const answer=await ask('<h3>시즌 자동 진행</h3><p class="dialog-intro">일정·밴픽·경기·일반 대화를 맡깁니다. 언제든 현재 주를 마치고 멈출 수 있습니다.</p><label class="core-field">방향<select id="autoStrategy"><option value="career">승급과 우승</option><option value="growth">기본기 성장</option><option value="balanced">생활과 회복</option></select></label><label class="core-field">선택 처리<select id="autoDecisions"><option value="auto">완전자동 · 안전한 기본 선택</option><option value="manual">중요한 계약·관계는 직접 선택</option></select></label>',[{t:'자동 진행 시작',cls:'gold'},{t:'취소',cls:'gray'}]);
+ if(answer!==0||P!==player)return;
+ const strategy=$('#autoStrategy')?.value || p.strategy || 'career',interactive=$('#autoDecisions')?.value==='manual';
+ return startAutomaticSeason({strategy,interactive});
+}
+function renderAutoProgress(){
+ if(!isCareerAutoPlaying())return '';
+ const s=automaticSeason;return '<div class="auto-progress" role="status"><b>'+(s.paused?'중요한 선택을 기다립니다':s.stop?'현재 주를 마무리합니다':'시즌 자동 진행 중')+'</b><span>'+s.completed+'주 완료 · '+P.week+'주차</span><button class="text-button" id="bStopAuto">중지</button></div>';
+}
+async function showMoreMenu(){
+ const answer=await ask('<h3>더보기</h3><p class="dialog-intro">경기 외의 관리는 필요할 때 열어보세요.</p>',[{t:'자산과 생활',cls:'gray'},{t:'장비와 상점',cls:'gray'},{t:'업적',cls:'gray'},{t:'시즌 상세와 기록',cls:'gray'},{t:'닫기',cls:'gray'}]);
+ if(answer===0)return showWealthModal();if(answer===1)return showHubShop();if(answer===2)return showAchievementsModal();if(answer===3)return showSeasonHub();
+}
+async function showRelationshipControl(hid){
+ const b=P.bonds?.[hid];if(!b?.unlocked)return;
+ while(true){
+  const player=P,status=relationshipStatus(hid),r=ensureRelationships();
+  const answer=await ask('<h3>'+uiText(HEROINES[hid].name)+' · '+relationshipLabel(hid)+'</h3><p class="dialog-intro">연인 '+(r.partner?'1':'0')+'/1 · 썸 '+r.flirts.length+'/2 · 친분 '+(b.aff || 0)+'</p><p class="subtle">친분이 높아도 자동으로 사귀지 않습니다. 상대의 답과 거리두기를 존중하세요.</p>',[{t:'서로 알아가기',cls:'pink',disabled:status==='partner'||status==='flirt'},{t:'마음을 고백한다',cls:'pink',disabled:status!=='flirt'},{t:'관계를 정리한다',cls:'gray',disabled:status!=='partner'&&status!=='flirt'},{t:'닫기',cls:'gray'}]);
+  if(P!==player || answer<0 || answer>=3)return;
+  let result;if(answer===0)result=tryBeginFlirt(hid);else if(answer===1)result=confirmRelationship(hid);else{
+   const confirm=await ask('<h3>관계를 정리할까요?</h3><p class="dialog-intro">이후 4주 동안 서로 거리를 둡니다.</p>',[{t:'정리한다',cls:'gray'},{t:'돌아가기',cls:'pink'}]);if(P!==player)return;if(confirm!==0)continue;result=endRelationship(hid);
+  }
+  save();render();await showYouthPresentation(hid,safeRelationshipPresentation(hid,result.reason));return result;
+ }
+}
+function safeRelationshipPresentation(hid,text,title='서로의 마음'){
+ const scene={hid,title,text,options:[{t:'알겠어',tag:'acknowledged'}],place:'공개된 만남의 자리'};SAFE_YOUTH_PRESENTATIONS.add(scene);return scene;
+}
+async function presentRelationshipIncident(incident){
+ if(!incident?.discovered||incident.resolved)return;
+ const player=P,other=HEROINES[incident.other]?.name || '다른 사람';
+ const scene=safeRelationshipPresentation(incident.partner,'네가 '+other+'와 '+(incident.publicEvidence?'함께 찍은 사진을 공개한 걸 봤어.':'따로 만났다는 이야기를 들었어.')+' 우리 관계를 어떻게 생각하는지 솔직하게 말해줘.','숨긴 만남이 드러난 날');
+ scene.options=[{t:'사실대로 인정하고 사과한다',tag:'apologize'},{t:'관계가 아니라고 둘러댄다',tag:'lie'},{t:'관계를 정리한다',tag:'breakup'}];
+ const choice=await showYouthPresentation(incident.partner,scene);if(P!==player)return;
+ // 닫기는 미해결로 남기며 재열람만으로 신뢰를 중복 차감하지 않는다.
+ if(choice<0)return;const result=resolveRelationshipIncident(['apologize','lie','breakup'][choice],incident.id);save();render();toast(result.reason);
+}
+const SHARED_PHOTOS={jieun:{img:'assets/couple_jieun_cafe.png',title:'카페에서 함께 남긴 하루',loc:'동네 베이커리'},harin:{img:'assets/couple_harin_game.png',title:'듀오 연습 뒤 기념사진',loc:'공개 게이밍 카페'},mina:{img:'assets/couple_mina_lounge.png',title:'상담회 뒤 함께 남긴 순간',loc:'구단 공개 라운지'}};
+const COMMON_SHARED_PHOTOS={cafe:{img:'assets/couple_cafe_shared.png',title:'창가에 나란히 남긴 하루',loc:'동네 카페'},walk:{img:'assets/couple_walk_shared.png',title:'같이 걸었던 공원의 하루',loc:'동네 공원'}};
+function sharedPhotoForDate(hid,date){
+ const loc=String(date?.loc || '');
+ if(/숙소|집|침실|호텔|옥상|프라이빗/.test(loc))return null;
+ if(hid==='harin' && /공개.*(게이밍|라운지)|PC방|PC 카페/.test(loc))return SHARED_PHOTOS.harin;
+ if(hid==='mina' && /공개.*(상담|라운지)/.test(loc))return SHARED_PHOTOS.mina;
+ if(/카페|베이커리/.test(loc))return hid==='jieun'?SHARED_PHOTOS.jieun:COMMON_SHARED_PHOTOS.cafe;
+ if(/공원|산책|숲길/.test(loc))return COMMON_SHARED_PHOTOS.walk;
+ return null;
+}
+function rememberSharedPhoto(hid,date){
+ const image=sharedPhotoForDate(hid,date);if(!image)return false;
+ const key='shared_'+hid+'_'+careerWeek();P.photoMemories=validPhotoMemories(P.photoMemories || []);
+ if(P.photoMemories.some(x=>x.key===key))return;
+ P.photoMemories.push({key,hid,year:P.year,week:P.week,kind:'together',people:['player',hid],...image,loc:date.loc});P.photoMemories=P.photoMemories.slice(-60);return true;
+}
+function validPhotoMemories(list){
+ if(!Array.isArray(list))return [];
+ const imageFor=p=>[SHARED_PHOTOS[p.hid],...Object.values(COMMON_SHARED_PHOTOS)].find(image=>image?.img===p.img);
+ return list.filter(p=>p&&typeof p.key==='string'&&Object.prototype.hasOwnProperty.call(HEROINES,p.hid)&&p.kind==='together'&&Array.isArray(p.people)&&p.people.includes('player')&&p.people.includes(p.hid)&&imageFor(p)&&Number.isInteger(p.year)&&p.year>=1&&Number.isInteger(p.week)&&p.week>=1&&p.week<=YEAR_WEEKS).slice(-60).map(p=>({...p,...imageFor(p),loc:typeof p.loc==='string'?p.loc.slice(0,80):imageFor(p).loc}));
+}
+function sharedPhotoOptions(){return validPhotoMemories(P?.photoMemories || []).slice().reverse();}
+function sharedPhotoImage(photo,preview=false){
+ const fallback=photo.img.split('/').pop();
+ return `<img ${preview?'class="quick-post-preview" data-image-viewer="1"':''} src="${photo.img}" alt="${uiText(photo.title)}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${fallback}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${fallback}';}else{this.onerror=null;this.src='assets/jieun.jpg';}">`;
+}
+function sharedCaptions(photo){return ['경기 다음 날, 너와 충전.','같이 보낸 오늘을 남겨둔다.','응원해주는 네가 있어 든든해.'].map((text,i)=>({id:i,text:photo.hid==='harin'&&i===0?'오늘의 듀오는 여기까지.':text}));}
+function publishSharedPhoto(key,captionId){
+ const photo=sharedPhotoOptions().find(p=>p.key===key),caption=photo&&sharedCaptions(photo).find(c=>c.id===captionId);
+ if(!photo||!caption)return {ok:false,reason:'사진과 문구를 골라주세요.'};
+ const before=(P.sns?.posts || []).length,rewarded=!weeklyState().postRewarded;
+ postToInsta(photo.title,photo.img,caption.text);
+ const post=P.sns?.posts?.[0];if(!post||P.sns.posts.length<=before)return {ok:false,reason:'게시하지 못했습니다.'};
+ Object.assign(post,{kind:'together',partnerId:photo.hid,people:['player',photo.hid],memoryKey:photo.key,captionId,location:photo.loc});
+ if(rewarded&&canRomanticInteract(photo.hid)){affectionGain(photo.hid,2);recordSeasonContact(photo.hid);}
+ const incident=recordRelationshipEncounter(photo.hid,{kind:'post',publicEvidence:true,postId:post.id});save();return {ok:true,post,incident};
+}
+async function openQuickPostModal(){
+ const player=P,photos=sharedPhotoOptions();if(!photos.length){await ask('<h3>함께 남긴 사진이 아직 없어요</h3><p class="dialog-intro">연인이나 썸 관계와 공개 카페·공원 등 사진을 남길 수 있는 장소에서 만나면 두 사람이 함께 나온 기념사진이 생깁니다.</p>');return;}
+ let selected=0,caption=0;
+ while(P===player){
+  const photo=photos[selected],captions=sharedCaptions(photo);
+  const body='<h3>추억 올리기</h3><p class="dialog-intro">사진과 문구만 고르면 됩니다.</p>'+sharedPhotoImage(photo,true)+'<div class="quick-photo-options">'+photos.map((p,i)=>'<button class="quick-photo '+(i===selected?'selected':'')+'" data-quick-photo="'+i+'">'+sharedPhotoImage(p)+'<span>'+uiText(HEROINES[p.hid].name)+'</span></button>').join('')+'</div><div class="quick-caption-options">'+captions.map(c=>'<button class="quick-caption '+(c.id===caption?'selected':'')+'" data-quick-caption="'+c.id+'">'+uiText(c.text)+'</button>').join('')+'</div><p class="subtle">사진 속 상대: '+uiText(HEROINES[photo.hid].name)+' · 공개 피드에 함께 표시됩니다.</p>';
+  const selection=await new Promise(resolve=>{$('#mBody').innerHTML=body;renderButtons([{t:'공유하기',cls:'pink'},{t:'취소',cls:'gray'}],resolve);$$('[data-quick-photo]').forEach(b=>b.onclick=()=>{selected=+b.dataset.quickPhoto;resolve('change');});$$('[data-quick-caption]').forEach(b=>b.onclick=()=>{caption=+b.dataset.quickCaption;resolve('change');});});
+  if(P!==player)return;if(selection==='change')continue;if(selection!==0)return;
+  const result=publishSharedPhoto(photo.key,caption);if(result.ok){$('#modal').classList.add('hidden');await presentRelationshipIncident(result.incident);}return;
+ }
+}
+
 function safeHeroineDate(hid, date) {
   const h = HEROINES[hid], youth=youthDatePresentation(hid);
   if(youth)return {...date,sensual:false,n:youth.title,loc:youth.place,img:h.img,fallback:h.fallback,outfit:'편안한 일상복',dialogue:youth.text,youthScene:youth};
@@ -1821,13 +2076,15 @@ function safeHeroineDate(hid, date) {
 function getHeroineDates(hid) {
   syncHeroineAges();
   return HEROINES[hid].dates.filter(d => !d.sensual || (canAdultRomance(hid) && (P.bonds?.[hid]?.aff || 0) >= 100))
-    .map(d => ({ ...(canAdultRomance(hid) ? d : safeHeroineDate(hid, d)), hp: -8 }));
+    .filter(d=>!d.sensual || ensureRelationships().partner===hid)
+    .map(d => ({ ...(canAdultRomance(hid) && ensureRelationships().partner===hid ? d : safeHeroineDate(hid, d)), hp: -8 }));
 }
 function affectionGain(hid, amount) {
   const house = HOUSES[P.house] || {};
   const car = VEHICLES[P.car] || {};
   const multiplier = 1 + (P.perk === 'love' ? 0.3 : 0) + ((house.affBonus || 0) + (car.affBonus || 0)) / 100;
-  const gain = Math.round(amount * multiplier);
+  const requested=Math.round(amount*multiplier),role=relationshipStatus(hid),current=P.bonds[hid].aff || 0;
+  const gain=(role==='friend'||role==='cooldown')?Math.min(requested,Math.max(0,49-current)):requested;
   P.bonds[hid].aff = Math.min(100, (P.bonds[hid].aff || 0) + gain);
   syncHeroineInteraction(hid);
   return gain;
@@ -1840,6 +2097,7 @@ async function performHeroineDate(hid, dateId) {
   const bond = P.bonds?.[hid];
   const date = getHeroineDates(hid).find(d => (d.id || d.n) === dateId);
   if (!bond?.unlocked || !date || (P.weeklyDates || 0) >= 1 || P.money < date.c || P.hp < 8) return false;
+  if(!canRomanticInteract(hid)){toast('먼저 서로 알아가는 관계를 정해주세요. 연인 1명·썸 2명까지 가능합니다.');return false;}
   // 실제 실행 시에도 성인 조건을 재검사한다. 메뉴를 열어둔 사이 세이브가 바뀌어도 보호.
   if (date.sensual && (!canAdultRomance(hid) || bond.aff < 100)) return false;
   P.weeklyDates = (P.weeklyDates || 0) + 1;
@@ -1853,9 +2111,12 @@ async function performHeroineDate(hid, dateId) {
   else await showHeroineCutscene(hid, `<h4>데이트</h4><div class="vn-dialogue">${date.dialogue}</div><div class="c">호감도 ${bond.aff}/100 · 체력 -8 · 스트레스 회복</div>`,
     [{ t: '대화 마치기', cls: 'pink' }], date.img, date.loc, date.outfit);
   if(P!==datePlayer)return false;
+  rememberSharedPhoto(hid,date);
   await checkBondMilestone(hid);
   if(P!==datePlayer)return false;
   await triggerDatingJackpot(hid);
+  if(P!==datePlayer)return false;
+  await presentRelationshipIncident(recordRelationshipEncounter(hid,{kind:'date'}));
   checkAchievements(); save(); render();
   return true;
 }
@@ -1895,7 +2156,7 @@ const ACHIEVES = [
   { k: 'a_sea', n: '재벌가의 연인 👑', d: '한세아 호감도 75 달성', r: '💰 3,000만 원 · 위상 +1만', m: 30000000, check: () => P.bonds?.sea?.aff >= 75, f: () => P.fans += 10000 },
   { k: 'a_chloe', n: '국경을 넘은 사랑 🌍', d: '클로에 호감도 75 달성', r: '멘탈 +10 · 💰 2,000만 원', m: 20000000, check: () => P.bonds?.chloe?.aff >= 75, f: () => grow('mental', 10) },
   { k: 'a_seolah', n: '나만의 수호 닥터 🩺', d: '백설아 호감도 75 달성', r: '피지컬 +10 · 멘탈 +10', check: () => P.bonds?.seolah?.aff >= 75, f: () => { grow('mech', 10); grow('mental', 10); } },
-  { k: 'a_grand_harem', n: '모두가 사랑하는 별 ⭐', d: '5명 이상의 히로인과 깊은 연인 관계 달성', r: '전설의 트로피 · 💰 5,000만 원', m: 50000000, check: () => Object.values(P.bonds || {}).filter(b => b.aff >= 75).length >= 5 },
+  { k: 'a_grand_harem', n: '모두가 사랑하는 별 ⭐', d: '친분 75 이상인 인연 5명 기록 (과거 기록 포함)', r: '전설의 트로피 · 💰 5,000만 원', m: 50000000, check: () => Object.values(P.bonds || {}).filter(b => b.aff >= 75).length >= 5 },
   { k: 'a_solo', n: '소환사의 첫걸음', d: '솔로랭크 1회 플레이', r: '💰 50만 원', m: 500000, check: () => P.hist.games >= 0 && P.rank.lp !== 30 },
   { k: 'a_dia', n: '천상계의 문턱', d: '솔로랭크 다이아몬드 달성', r: '멘탈 +2 · 💰 100만 원', m: 1000000, check: () => P.bestT >= 6, f: () => grow('mental', 2) },
   { k: 'a_master', n: '진정한 고수', d: '솔로랭크 마스터 이상 달성', r: '💰 300만 원 · 👥 팬 +500', m: 3000000, check: () => P.bestT >= 7, f: () => P.fans += 500 },
@@ -1906,7 +2167,7 @@ const ACHIEVES = [
   { k: 'a_worlds', n: '소환사의 컵', d: '월드 챔피언십 우승 제패', r: '💰 1억 원 · 영구 전설 칭호', m: 100000000, check: () => P.hist.titles.some(t => t.includes('월드 챔피언십 우승')) },
   { k: 'a_date', n: '설레는 만남', d: '인연 데이트 1회 완료', r: '스트레스 -30', check: () => Object.values(P.bonds).some(b => b.aff > 20), f: () => stressAdd(-30) },
   { k: 'a_love', n: '우리 사귑니다', d: '어느 히로인이든 호감도 75 달성', r: '멘탈 +5 · 💰 1,000만 원', m: 10000000, check: () => Object.values(P.bonds).some(b => b.aff >= 75), f: () => grow('mental', 5) },
-  { k: 'a_harem', n: '빛나는 매력남 💖', d: '3명 이상의 히로인과 연인 관계 달성', r: '멘탈 +10 · 💰 2,000만 원', m: 20000000, check: () => Object.values(P.bonds).filter(b => b.aff >= 75).length >= 3, f: () => grow('mental', 10) },
+  { k: 'a_harem', n: '빛나는 매력남 💖', d: '친분 75 이상인 인연 3명 기록', r: '멘탈 +10 · 💰 2,000만 원', m: 20000000, check: () => Object.values(P.bonds).filter(b => b.aff >= 75).length >= 3, f: () => grow('mental', 10) },
   { k: 'a_marry', n: '영원한 서약', d: '히로인 호감도 100 달성', r: '💍 결혼 반지 트로피', check: () => Object.values(P.bonds).some(b => b.aff >= 100) }
 ];
 
@@ -2016,7 +2277,7 @@ function makePlayer(name, pos, base) {
     gear: {}, skins: {}, equippedSkin: null, achieves: {}, house: 'house_goshiwon', houses: { house_goshiwon: 1 }, car: 'car_none', cars: { car_none: 1 }, fanclub: { founded: false, level: 1 },
     pro: newLeague(false), aca: newLeague(true),
     springChamp: -1, worldsQ: false, worldsAlive: false, worldsWins: 0,
-    ratings: [], scoutCD: 0, lastOffer: 0, weeklyBriefingHistory: [], seasonJourney: null, seasonArchive: [], career: null,
+    ratings: [], scoutCD: 0, lastOffer: 0, weeklyBriefingHistory: [], seasonJourney: null, seasonArchive: [], career: null, relationships: {schema:1,partner:null,flirts:[],trust:100,incidents:[],cooldowns:{},setupComplete:false}, photoMemories: [], autoPreferences: {strategy:'career',interactive:false},
     contractBonus: null, contractBonusHistory: [],
     bonds: {
       jieun: { aff: 20, lv: 0, unlocked: true },
@@ -2569,7 +2830,7 @@ async function presentHeroineCutscene(hid, bodyHtml, btns, sceneImg, sceneLabel,
     bodyHtml='<h4>'+uiText(youthScene.title)+'</h4><div class="vn-dialogue">'+uiText(youthScene.text)+'</div>';
     btns=youthScene.options.map(x=>({t:uiText(x.t),cls:'pink'}));
   }
-  if (!authored && !canAdultRomance(hid)) {
+  if (!authored && (!canAdultRomance(hid) || ensureRelationships().partner!==hid)) {
     const narrative = bodyHtml.includes('class="vn-dialogue');
     // 미성년 참여자에게는 원본 CG/복장/신체 접촉 문구가 렌더링되지 않도록 공통 경계에서 보호한다.
     sceneImg = h.img; sceneLabel = '함께 나누는 응원'; outfitLabel = '편안한 일상복'; mood = 'normal';
@@ -2578,6 +2839,9 @@ async function presentHeroineCutscene(hid, bodyHtml, btns, sceneImg, sceneLabel,
     bodyHtml = bodyHtml.replace(/<h[34][^>]*>[\s\S]*?<\/h[34]>/g, '<h4>인연 이야기</h4>');
     btns = btns.map((b, i) => narrative ? { ...b, t: btns.length === 1 ? '대화 마치기' : i === 0 ? '응원의 마음을 전한다' : '차분하게 이야기를 나눈다' } : b);
   }
+  const concerned=/서운|거절|거리|숨긴|실망|신뢰|사과|아쉬|들켰/.test(bodyHtml+(youthScene?.title || '')+(youthScene?.text || ''));
+  if(concerned && ['jieun','harin','mina'].includes(hid))sceneImg='assets/'+hid+'_concerned.png';
+  else if(authored && /한 시즌|전시|해설|상담회/.test(youthScene?.title || '') && P.photoMemories?.some(p=>p.hid===hid))sceneImg=SHARED_PHOTOS[hid]?.img || h.img;
   const imgSrc = sceneImg || h.img;
   const fallbackSrc = h.fallback;
   const labelHtml = sceneLabel ? `<span class="vn-scene">📍 ${sceneLabel}</span>` : '';
@@ -3067,6 +3331,7 @@ async function handleDatingAction() {
 async function checkBondMilestone(hid) {
   const player=P,h = HEROINES[hid], b = P.bonds[hid];
   for (const st of h.story) {
+    if(st.lv>=3 && ensureRelationships().partner!==hid)continue;
     if (b.aff >= st.req && b.lv < st.lv) {
       b.lv = st.lv;
       const chBtns = st.choice.map((c, i) => ({ t: c, cls: i === 0 ? 'pink' : 'purple' }));
@@ -3089,7 +3354,7 @@ async function checkBondMilestone(hid) {
     }
   }
   // 청춘의 완주를 성인 동반자 약속으로 오인하지 않는다. 성인 도달 후 새 의사를 묻는다.
-  if(canAdultRomance(hid) && b.aff>=100 && b.lv>=4 && Array.isArray(b.youthMilestones) && b.youthMilestones.includes(4) && !b.adultLifetimePromise && !b.married){
+  if(ensureRelationships().partner===hid && canAdultRomance(hid) && b.aff>=100 && b.lv>=4 && Array.isArray(b.youthMilestones) && b.youthMilestones.includes(4) && !b.adultLifetimePromise && !b.married){
     const st=h.story.find(x=>x.lv===4);if(!st)return;
     const choice=await showHeroineCutscene(hid,'<h4>'+uiText(st.title)+'</h4><div class="vn-dialogue">'+uiText(st.dialogue)+'</div>',st.choice.map(t=>({t,cls:'pink'})),st.img,st.title);
     if(P!==player || choice<0)return;
@@ -3443,32 +3708,18 @@ function settleMatchResult({ win, rating, phaseWins, big, label = '공식 경기
 }
 
 async function playMatch(opp, label, big = false, isFastAuto = false) {
-  if (P.fastSkip || isFastAuto) {
-    // 빠른 진행: 챔피언 선택 모달 생략 & AI 최적 픽 자동 시뮬레이션
-    const myPos = P.pos || 'mid';
-    const myCandidates = CHAMPIONS.filter(c => c.role === myPos);
-    const selChamp = myCandidates[0] || CHAMPIONS[0];
-    const myPow = teamPow();
-    const opPow = opp.str;
-    const winProb = clamp(0.5 + (myPow - opPow) * 0.035, 0.1, 0.9);
-    const isWin = Math.random() < winProb;
-    const phaseWins = isWin ? (Math.random() < .5 ? 3 : 2) : (Math.random() < .4 ? 1 : 0);
-    const rating = phaseWins === 3 ? 8.7 : phaseWins === 2 ? 7.1 : phaseWins === 1 ? 4.5 : 2;
-    const adv = isWin ? 3.5 : -3.5;
-    const sets = matchSetScore(label, isWin, phaseWins, adv, rating);
-    const rewards = settleMatchResult({ win: isWin, rating, phaseWins, big, label, opponent:opp });
-    addChampMastery(selChamp.id, 80); P.currentChamp = selChamp;
-    await checkHeroineUnlocks();
-    toast('[' + label + '] ' + (isWin ? '승리 ' : '패배 ') + sets.mySetW + ':' + sets.mySetL);
-    return { win: isWin, rating, ...sets, ...rewards, adv };
-  }
-  const bp = await showLckChampionSelectModal(opp);
+  const fastMode=!!(P.fastSkip || isFastAuto || isCareerAutoPlaying());
+  let autoRemaining=fastMode;
+  // 화면의 입력 대기만 바꾸고 확률·난수 순서·보상은 모든 모드가 공유한다.
+  const bp=await showLckChampionSelectModal(opp,{auto:fastMode});
+  autoRemaining=autoRemaining || !!bp?.autoPlay;
   const main = $('#main');
   main.dataset.view = 'match';
-  const my = teamPow(), op = opp.str;
+  const masteryPower=championMatchPower();
+  const my = teamPow()+masteryPower, op = opp.str+(bp?.oppMasteryPower || 0);
   const isCounter = !!bp?.isCounter;
   const synergy = bp?.synergy;
-  let adv = (my - op) * 0.08 + (isCounter ? 1.5 : 0), perf = 0, kills = 0, deaths = 0, assists = 0, bdWin = null;
+  let adv = (my - op) * 0.08 + (isCounter ? 1.5 : 0) - (bp?.oppCounter ? 1.5 : 0), perf = 0, kills = 0, deaths = 0, assists = 0, bdWin = null;
   let phaseWins = 0;
   const myName = teamName();
 
@@ -3489,11 +3740,12 @@ async function playMatch(opp, label, big = false, isFastAuto = false) {
   };
   let log = '';
   const draw = (choices = '') => {
+    if(autoRemaining)return;
     main.innerHTML = renderHead() + `<div class="card log">${log || '<p class="neu">경기가 시작됩니다. 소환사의 협곡에 오신 것을 환영합니다!</p>'}</div>` + choices;
     main.scrollTop = main.scrollHeight;
   };
   draw();
-  await sleep(400);
+  if(!autoRemaining)await sleep(400);
   const mentalVar = (1.25 - P.s.mental / 200) * (big ? 1.15 : 1) * (P.perk === 'clutch' ? .88 : 1);
 
   const curPhases = PHASES_BY_POS[P.pos || 'mid'] || PHASES_BY_POS.mid;
@@ -3501,8 +3753,11 @@ async function playMatch(opp, label, big = false, isFastAuto = false) {
     // 3단계 직전 클러치 QTE: 팽팽하거나 중요한 승부처일 때 확률적 등장
     if (pi === 2 && Math.random() < 0.5) {
       try {
-        const qteRes = await triggerClutchQTE();
+        const qteRes = await triggerClutchQTE(autoRemaining);
         adv += qteRes.adv;
+        // 같은 승부처에 상대도 클러치 판정을 받는다. 숨은 플레이어 전용 확률 이득을 만들지 않는다.
+        const opponentClutch=Math.random()<clamp(sig((op-50)/4.5),.35,.90);
+        adv += opponentClutch?-2.5:2.5;
         kills += qteRes.kills;
         assists += qteRes.assists;
         if (!qteRes.success) deaths += 1;
@@ -3511,8 +3766,7 @@ async function playMatch(opp, label, big = false, isFastAuto = false) {
       }
     }
     const ph = curPhases[pi];
-    let fastSkipped = false;
-    const choice = await new Promise(res => {
+    const choice = autoRemaining?bestPhaseChoice(ph):await new Promise(res => {
       draw(`<div class="card choices">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
           <h4 style="margin:0">${ph.n} — 어떻게 할까요?</h4>
@@ -3520,32 +3774,26 @@ async function playMatch(opp, label, big = false, isFastAuto = false) {
         </div>
         ${ph.opts.map((o, i) =>
         `<button class="btn" data-i="${i}">${o.t}<small>${o.d} · 내 능력 ${Math.round(statMix(o.st))}</small></button>`).join('')}
-        <button class="btn gray" data-i="auto" style="text-align:center">🤖 자동 선택</button></div>`);
+        <button class="btn gray" data-i="auto" style="text-align:center">남은 경기 자동 진행</button></div>`);
       const skipBtn = document.querySelector('#bFastSkip');
-      if (skipBtn) skipBtn.onclick = () => { fastSkipped = true; res(ph.opts[0]); };
+      if (skipBtn) skipBtn.onclick = () => { autoRemaining=true; res(bestPhaseChoice(ph)); };
       main.querySelectorAll('.choices .btn').forEach(b => b.onclick = () => {
         if (b.disabled) return;
         main.querySelectorAll('.choices .btn').forEach(btn => btn.disabled = true);
         let i = b.dataset.i;
-        if (i === 'auto') {
-          let best = 0, bv = -1;
-          ph.opts.forEach((o, j) => {
-            if (o.bd) return;
-            const v = statMix(o.st) - o.risk * 3;
-            if (v > bv) { bv = v; best = j; }
-          });
-          i = best;
-        }
+        if (i === 'auto') { autoRemaining=true; res(bestPhaseChoice(ph)); return; }
         res(ph.opts[+i]);
       });
     });
 
     let sv = (statMix(choice.st) + (big && P.perk === 'clutch' ? 8 : 0)) * condF();
-    if (pi === 0 && isCounter) sv *= 1.15;
-    if (pi === 0 && synergy?.key === 'poke') sv *= 1.18;
-    if ((pi === 1 || pi === 2) && synergy?.key === 'dive') sv *= 1.18;
-    if (pi === 2 && synergy?.key === 'wombo') sv *= 1.22;
-    const oppStat = op * 0.96;
+    if(pi===0 && isCounter)sv*=1.15;
+    sv*=phaseCompMultiplier(synergy,pi);
+    // 양 팀에 같은 국면 조합·상성 계수를 적용한다. 수치는 게임용 추정 밸런스다.
+    let opponentPhase=op;
+    if(pi===0 && bp?.oppCounter)opponentPhase*=1.15;
+    opponentPhase*=phaseCompMultiplier(bp?.oppSynergy,pi);
+    const oppStat=opponentPhase*.45+op*.55;
     let score = (sv * 0.45 + my * 0.55 - oppStat) / 9 + gauss() * 0.75 * mentalVar;
 
     if (P.equippedSkin === 'skin_mythic' && pi === 2 && score < 0) {
@@ -3574,7 +3822,7 @@ async function playMatch(opp, label, big = false, isFastAuto = false) {
 
     const txt = pick(good ? choice.g : choice.b);
     log += `<p class="${good ? 'good' : 'bad'}"><span class="ph">${ph.n} · ${choice.t}</span>${txt}</p>`;
-    draw(); await sleep(500);
+    draw(); if(!autoRemaining)await sleep(500);
     if (bdWin) break;
   }
 
@@ -3636,13 +3884,18 @@ async function playMatch(opp, label, big = false, isFastAuto = false) {
     <div class="kda"><div><b>${kills}/${deaths}/${assists}</b>KDA</div><div><b>${rating.toFixed(1)}</b>평점</div><div><b>${fanGain >= 0 ? '+' : ''}${num(fanGain)}</b>팬</div></div>
     ${coachComment}
     ${mvp ? '<div style="color:#fde047;font-weight:900;margin-top:6px">🏅 POG(Player of the Game) 만장일치 선정!</div>' : ''}</div>`;
-  draw(`<button class="btn wide" id="nextBtn">계속</button>`);
-  await new Promise(r => $('#nextBtn').onclick = r);
+  if(!autoRemaining){
+    draw(`<button class="btn wide" id="nextBtn">계속</button>`);
+    await new Promise(r => $('#nextBtn').onclick = r);
+  }else toast('['+label+'] '+(win?'승리 ':'패배 ')+mySetW+':'+mySetL);
 
-  if (win) await checkHeroineUnlocks();
+  if (win) {
+    if(autoRemaining)automaticMatchDialogs++;
+    try{await checkHeroineUnlocks();}finally{if(autoRemaining)automaticMatchDialogs--;}
+  }
   checkAchievements();
 
-  return { win, rating, mySetW, mySetL };
+  return { win, rating, mySetW, mySetL, masteryPower, phaseWins, adv, draft:bp?.draft };
 }
 function statMix(st) { let t = 0; for (const k in st) t += P.s[k] * st[k]; return t; }
 
@@ -3908,17 +4161,14 @@ function renderSeasonScene(s,id) {
   return `<div class="season-scene" data-season-scene="${uiText(id)}"><span class="eyebrow">${s.year}년차 · ${P.week}주</span><h3>${d.title}</h3><p class="dialog-intro">${uiText(d.context)}</p><div class="season-note"><b>${P.stage==='ama'?'훈련 노트':'코칭 노트'}</b><p>${uiText(d.coach)}</p></div><div class="season-dialogue">${seasonPortrait(s)}<div><b>${uiText(seasonCompanion(s).name)}</b><p>${uiText(d.line)}</p></div></div></div>`;
 }
 async function beginSeasonJourney() {
-  const player=P,s=ensureSeasonJourney();ensureCareer();if(s.opened)return s;
-  const previous=validSeasonArchive(P.seasonArchive || []).at(-1),memory=previous?.scenes.at(-1)?.label;
-  const body=`<div data-season-scene="opening"><span class="eyebrow">${s.year}년차 · ${s.startWeek===1?'새 시즌':s.startWeek+'주부터 합류'}</span><h3>어떤 시즌을 만들까요?</h3><p class="dialog-intro">목표는 기록과 후일담으로 남습니다. 현재 경기·성장 규칙은 그대로 적용됩니다.</p><div class="season-note"><b>함께 돌아볼 인연</b><label for="seasonCompanion">동행 인연</label><select id="seasonCompanion">${Object.entries(HEROINES).filter(([k])=>P.bonds?.[k]?.unlocked).map(([k,h])=>`<option value="${k}" ${k===s.companion?'selected':''}>${uiText(h.name)}</option>`).join('')}</select><p>경기와 일상의 중요한 순간을 기억합니다. 데이트 횟수나 능력치 보너스는 추가되지 않습니다.</p></div></div>`;
-  const choice=await ask(body+(memory?`<div class="season-note"><b>지난 시즌에서 이어진 약속</b><p>${uiText(seasonCompanion(previous).name)} · ${uiText(memory)}</p></div>`:'')+(careerCarryoverText()?`<p class="subtle">${uiText(careerCarryoverText())}</p>`:''),Object.values(SEASON_FOCUS).map(t=>({t,cls:'gray'})));
+  const s=ensureSeasonJourney();ensureCareer();if(s.opened)return s;
+  const player=P;
+  const choice=isCareerAutoPlaying()?(['challenge','foundation','balance'].indexOf(automaticSeason.strategy==='growth'?'foundation':automaticSeason.strategy==='balanced'?'balance':'challenge')):await ask('<div data-season-scene="opening"><h3>이번 시즌의 목표</h3><p class="dialog-intro">큰 방향만 정하세요. 주간 일정은 추천과 자동 진행으로 맡길 수 있습니다.</p></div>',Object.values(SEASON_FOCUS).map(t=>({t,cls:'gray'})));
   if(P!==player || P.seasonJourney!==s)return null;
-  const companion=$('#seasonCompanion')?.value;
-  if(companion && P.bonds?.[companion]?.unlocked)s.companion=companion;
-  s.focus=Object.keys(SEASON_FOCUS)[choice] || 'balance';s.opened=true;
-  s.scenes.push({id:'opening',week:P.week,title:'시즌의 약속',choice:Number.isInteger(choice)?choice:-1,label:SEASON_FOCUS[s.focus],text:`${seasonCompanion(s).name}와 ${s.startWeek}주부터 기록 시작`});
-  save();return s;
+  s.focus=Object.keys(SEASON_FOCUS)[choice] || 'challenge';s.opened=true;
+  s.scenes.push({id:'opening',week:P.week,title:'시즌의 목표',choice:Number.isInteger(choice)?choice:-1,label:SEASON_FOCUS[s.focus],text:s.startWeek+'주부터 선수 생활을 기록합니다.'});save();return s;
 }
+
 async function playSeasonScene(s,id) {
   if(s.scenes.some(x=>x.id===id))return;
   const player=P,data=seasonSceneData(s,id),choice=await ask(renderSeasonScene(s,id),data.options.map(t=>({t,cls:'gray'})));
@@ -3961,10 +4211,10 @@ async function finishSeasonJourney(s) {
 function seasonProjectOffer(id) {
   if(!SEASON_PROJECT_IDS.includes(id))return null;
   const s=ensureSeasonJourney(),o=ovr(),money=P.money || 0,fees={support:Math.max(P.stage==='pro'?1000000:P.stage==='aca'?250000:30000,Math.floor(money*.01)),fanmeet:Math.max(100000,Math.floor(money*.005)),interview:0,album:Math.max(50000,Math.floor(money*.002))};
-  const extra=careerProjectOffer(id),info={support:{name:'훈련 환경 지원',icon:'target',effect:'체력 +6 · 스트레스 -6 · 팀 호흡 최대 +0.3',hp:0},fanmeet:{name:'팬 초청 공개행사',icon:'users',effect:'체력 -8 · 스트레스 -4 · 팬 최대 +300',hp:8},interview:{name:'인터뷰 협업',icon:'camera',effect:'체력 -6 · 스트레스 +6 · 출연료 최대 50만원',hp:6},album:{name:'동행 기록집',icon:'book',effect:'동행 호감도 +2 · 기록집 전용 후일담',hp:0}}[id] || extra;
+  const extra=careerProjectOffer(id),info={support:{name:'훈련 환경 지원',icon:'target',effect:'체력 +6 · 스트레스 -6 · 팀 호흡 최대 +0.3',hp:0},fanmeet:{name:'팬 초청 공개행사',icon:'users',effect:'체력 -8 · 스트레스 -4 · 팬 최대 +300',hp:8},interview:{name:'인터뷰 협업',icon:'camera',effect:'체력 -6 · 스트레스 +6 · 출연료 최대 50만원',hp:6},album:{name:'추억 기록집',icon:'book',effect:'인연 친분 +2 · 기록집 전용 후일담',hp:0}}[id] || extra;
   if(!info)return null;
   const cost=extra?.cost ?? fees[id],income=extra?.income ?? (id==='interview'?Math.min(500000,Math.floor(25000+Math.sqrt(Math.max(0,P.fans || 0))*120*Math.min(1.3,o/80))):0);
-  const reason=s.projects[id]?'이번 시즌 완료':extra?.reason?extra.reason:id==='interview' && ((P.fans || 0)<500 || o<40)?'팬 500명 · OVR 40 필요':id==='fanmeet' && ((P.fans || 0)<1000 || o<40)?'팬 1,000명 · OVR 40 필요':id==='album' && !P.bonds?.[s.companion]?.unlocked?'해금된 동행 인연 필요':money<cost?'현금 부족':P.hp<info.hp?'체력 부족':'';
+  const reason=s.projects[id]?'이번 시즌 완료':extra?.reason?extra.reason:id==='interview' && ((P.fans || 0)<500 || o<40)?'팬 500명 · OVR 40 필요':id==='fanmeet' && ((P.fans || 0)<1000 || o<40)?'팬 1,000명 · OVR 40 필요':id==='album' && !P.bonds?.[s.companion]?.unlocked?'해금된 인연 필요':money<cost?'현금 부족':P.hp<info.hp?'체력 부족':'';
   return {id,...info,cost,income,available:!reason,reason};
 }
 function applySeasonProject(id) {
@@ -3974,7 +4224,7 @@ function applySeasonProject(id) {
   if(id==='support'){hpAdd(6);stressAdd(-6);if(P.stage!=='ama')P.syn=Math.max(P.syn || 0,Math.min(5,(P.syn || 0)+.3));}
   if(id==='fanmeet'){hpAdd(-8);stressAdd(-4);P.fans+=Math.min(300,Math.floor(15+Math.sqrt(Math.max(0,P.fans || 0))*Math.min(1,ovr()/80)));}
   if(id==='interview'){hpAdd(-6);stressAdd(6);}
-  if(id==='album'){P.bonds[s.companion].aff=Math.min(100,(P.bonds[s.companion].aff || 0)+2);syncHeroineInteraction(s.companion);recordSeasonContact(s.companion);}
+  if(id==='album'){P.bonds[s.companion].aff=Math.min(100,(P.bonds[s.companion].aff || 0)+(canRomanticInteract(s.companion)?2:Math.min(2,Math.max(0,49-(P.bonds[s.companion].aff || 0)))));syncHeroineInteraction(s.companion);recordSeasonContact(s.companion);}
   if(extraCareerProject(id))applyCareerProject(id,offer);
   save();render();return true;
 }
@@ -3999,8 +4249,9 @@ function seasonCompanionPreview(s) {
 }
 function renderSeasonCard() {
   const s=validSeasonJourney(P.seasonJourney,P.year)?P.seasonJourney:null,p=s?seasonGoalProgress(s):null;
-  return `<section class="season-card"><div class="section-head"><h2>${uiIcon('trophy',17)} ${P.year}년차 시즌</h2><button class="text-button" id="bSeason">시즌 보기 ${uiIcon('arrow',14)}</button></div><div class="season-track">${[['스프링',9],['서머',20],['월즈',23],['계약·결산',26]].map(([t,end],i)=>`<span class="${P.week<=(i?([9,20,23][i-1]):0)?'':P.week<=end?'current':'done'}">${t}</span>`).join('')}</div><b>${uiText(p?p.label:'시즌 목표와 함께할 인연을 정해보세요')}</b><p>${uiText(p?p.detail:'다음 일정 전에 시즌의 약속을 정합니다.')}</p>${s?`<small>${uiText(seasonCompanion(s).name)}와 동행 · ${s.weeks.length}주 기록</small><div class="season-companion-preview">${seasonPortrait(s)}<div><b>${uiText(seasonCompanion(s).name)} · 이번 시즌의 동행</b><p>${uiText(seasonCompanionPreview(s))}</p></div></div>`:''}</section>`;
+  return '<section class="season-card core-season"><div class="section-head"><h2>'+uiIcon('trophy',17)+' '+P.year+'년차 · '+uiText(phaseOf(P.week).sp)+'</h2><button class="text-button" id="bSeason">시즌 기록 '+uiIcon('arrow',14)+'</button></div><b>'+uiText(p?p.label:'마스터를 거쳐 월즈까지')+'</b><p>'+uiText(p?p.detail:'큰 목표를 정하고 선수 생활을 시작하세요.')+'</p></section>';
 }
+
 function renderSeasonReview(r) {
   const delta=(a,b)=>(b-a>=0?'+':'')+(b-a).toLocaleString('ko-KR',{maximumFractionDigits:2});
   const moneyDelta=r.result.money-r.baseline.money,shortMoney=(moneyDelta>=0?'+':'-')+won(Math.abs(moneyDelta));
@@ -4026,7 +4277,7 @@ async function showSeasonHub() {
     if(tab==='career'){
       body+=renderCareerPanel()+`<div class="season-journal">${(P.career?.contracts || []).slice().reverse().map(x=>`<article><small>${x.year}년차 ${x.week}주</small><b>${uiText(x.from.name)} → ${uiText(x.to.name)}</b><p>주급 ${num(x.salary)}원</p></article>`).join('')}</div>`;
       body+=renderContractBonusLedger();
-      buttons.push({t:'이번 시즌 커리어 방향 정하기',id:'careerIntent',cls:'gray',disabled:!!P.career?.intentions?.some(x=>x.year===P.year)},{t:'동행 인연의 선택 기억',id:'bondMemory',cls:'gray'});
+      buttons.push({t:'이번 시즌 커리어 방향 정하기',id:'careerIntent',cls:'gray',disabled:!!P.career?.intentions?.some(x=>x.year===P.year)},{t:'인연의 선택 기억',id:'bondMemory',cls:'gray'});
     }
     if(tab==='activities'){
       body+=`<p class="dialog-intro">현금 ${won(P.money)}원 · 팬 ${num(P.fans)} · OVR ${Math.round(ovr())}<br>팬 수와 실력이 기회를 열고, 돈은 준비와 관계에 쓰입니다.</p><div class="season-projects">`;
@@ -4166,7 +4417,7 @@ async function takeTurn(k, recommendedDate = null) {
 async function weekEnd(isFastAuto = false, beforeCareerEnd = null) {
   // 동거 중인 히로인이 있으면 아침밥 버프 적용
   if (P.bonds) {
-    const cohabiter = Object.keys(P.bonds).find(k => P.bonds[k]?.cohabiting && canAdultRomance(k));
+    const cohabiter = Object.keys(P.bonds).find(k => P.bonds[k]?.cohabiting && ensureRelationships().partner===k && canAdultRomance(k));
     if (cohabiter) {
       hpAdd(P.perk === 'love' ? 30 : 20);
       P.stress = Math.max(0, P.stress - 15);
@@ -4224,13 +4475,10 @@ async function weekEnd(isFastAuto = false, beforeCareerEnd = null) {
     await ask(`<div class="em">🤒</div><h3>몸살</h3><p class="c">무리한 일정에 몸이 버티지 못했다.</p>`);
   }
 
-  // 복수 연인 질투/삼자대면 이벤트 (호감도 50 이상 히로인이 2명 이상일 때)
-  const highLoves = Object.keys(P.bonds).filter(k => P.bonds[k].aff >= 50);
-  if (highLoves.length >= 2 && Math.random() < 0.2) {
-    await triggerJealousyEvent(highLoves);
-  } else if (ph.t !== 'po' && !ph.t.startsWith('w') && Math.random() < .45) {
-    await randomEvent();
-  }
+  // 질투는 실제 만남과 공개 사진의 증거에서만 발생한다.
+  const pending=ensureRelationships().incidents.find(x=>x.discovered&&!x.resolved&&x.partner===P.relationships.partner);
+  if(pending)await presentRelationshipIncident(pending);
+  if (ph.t !== 'po' && !ph.t.startsWith('w') && Math.random() < .45) await randomEvent();
 
   await scouting();
   checkAchievements();
@@ -4257,26 +4505,9 @@ async function weekEnd(isFastAuto = false, beforeCareerEnd = null) {
 }
 
 // 질투/삼자대면 이벤트
-async function triggerJealousyEvent(loves) {
-  const [a, b] = shuffle(loves).slice(0, 2);
-  const ha = HEROINES[a], hb = HEROINES[b];
-
-  const response = await showHeroineCutscene(a, `
-    <h4 style="color:#f472b6;margin:0 0 8px;text-align:center">⚡ [깜짝 질투] 소문의 진실은?!</h4>
-    <div class="vn-dialogue">"너 요즘... <b>${hb.name}</b> 씨랑 엄청 가깝게 지낸다는 소문 들었는데, 진짜야? 나한테 숨기는 거 없지?"</div>
-    <div class="c" style="color:#ffd23f;font-weight:700">위기의 순간! 어떻게 대처할까요?</div>
-  `, [
-    { t: '💖 "내 마음속 1순위는 언제나 너야." (다정하게 포옹)', cls: 'pink' },
-    { t: '🎮 "프로게이머로서의 비즈니스 관계일 뿐이야!" (철벽 해명)', cls: 'gray' },
-    { t: '🎁 "너 주려고 산 선물이 있는데..." (선물로 위기 모면)', cls: 'gold' }
-  ], ha.dates[0].img, '질투의 순간');
-
-  if (response < 0) return;
-  P.bonds[a].lastJealousyChoice = response;
-  if (response === 0) { affectionGain(a, 3); stressAdd(-5); }
-  else if (response === 1) { P.bonds[a].aff = Math.max(0, P.bonds[a].aff - 2); grow('mental', .3); }
-  else if (P.money >= 30000) { P.money -= 30000; affectionGain(a, 5); }
-  toast('선택한 방식으로 관계를 정리했습니다.');
+async function triggerJealousyEvent() {
+  const pending=ensureRelationships().incidents.find(x=>x.discovered&&!x.resolved&&x.partner===P.relationships.partner);
+  if(pending)await presentRelationshipIncident(pending);
 }
 
 async function checkCallUp() {
@@ -4526,7 +4757,7 @@ async function worlds(t) {
       // 💍 롤드컵 결승 무대 위 공식 프러포즈 이벤트
       const proposalCandidates = Object.keys(P.bonds || {}).filter(k => {
         const b = P.bonds[k];
-    return b && b.unlocked && canAdultRomance(k) && (b.aff >= 80 || b.cohabiting) && !b.married;
+    return b && b.unlocked && ensureRelationships().partner===k && canAdultRomance(k) && (b.aff >= 80 || b.cohabiting) && !b.married;
       });
 
       if (proposalCandidates.length > 0) {
@@ -4753,65 +4984,16 @@ function renderCinematicEventHtml(opt) {
 }
 
 const EVENTS = [
-  // 1. 📸 디스패치 파파라치 기습 촬영 & 열애설 스캔들 위기!
+  // 공개 보도는 실제로 기록된 비밀 만남을 근거로 한다. 무료 호감도 이벤트가 아니다.
   {
-    c: () => {
-      if ((P.fans || 0) < 50000) return false;
-      const anyLover = Object.keys(P.bonds || {}).some(k => (P.bonds[k]?.lv || 0) >= 3 && canAdultRomance(k));
-      return anyLover && Math.random() < 0.45;
-    },
-    f: async () => {
-      const loverKeys = Object.keys(P.bonds || {}).filter(k => (P.bonds[k]?.lv || 0) >= 3 && canAdultRomance(k));
-      const chosenKey = loverKeys[Math.floor(Math.random() * loverKeys.length)] || 'jieun';
-      const h = HEROINES[chosenKey] || HEROINES.jieun;
-
-      const html = renderCinematicEventHtml({
-        bannerImg: 'assets/event_paparazzi.jpg',
-        tag: '🚨 단독 보도 위기',
-        tagCls: 'red',
-        title: '📸 디스패치 파파라치 기습 촬영! 데이트 현장 발각',
-        heroine: {
-          name: h.name,
-          role: h.tag,
-          img: h.img,
-          moodCls: 'mood-shock',
-          moodText: '😱 당황/충격',
-          dialogue: `"어머, 자기야... 방금 골목에서 카메라 플래시 터진 거 봤어?! 디스패치 기자가 우리 손잡고 걸어가는 거 찍은 것 같아... 어떡하지?!"`
-        },
-        desc: '심야 데이트 중 모자와 마스크를 쓴 파파라치 취재진에게 둘만의 사적인 모습이 포착되었습니다! 다음 날 아침 포털 메인 단독 기사 엠바고가 걸려있습니다.',
-        buffs: [
-          { t: '선택 1: 공식 연인 인정 (팬덤 양분 / 멘탈 시험)', cls: 'bg-blue' },
-          { t: '선택 2: 친한 지인 해명 (호감도 감소 / 팬덤 수호)', cls: 'bg-green' },
-          { t: '선택 3: 소속사 법적 대응 (5,000만 원 소모)', cls: 'bg-gold' }
-        ]
-      });
-
-      const choices = [
-        { t: '💖 "당당하게 밝히자!" 당당한 공개 열애 선언', cls: 'pink' },
-        { t: '🛡️ "아직은 때가 아니야..." 단순 친한 지인 사이라고 해명', cls: 'gray' },
-        { t: '💼 구단 홍보팀 긴급 투입 & 보도 엠바고 협상 (💰 -5,000만 원)', cls: 'gold' }
-      ];
-
-      const sel = await ask(html, choices);
-      if (sel === 0) {
-        toast(`💍 [${h.name}]님과의 열애를 당당히 공개했습니다! 진성 팬들의 뜨거운 응원과 화제성 대폭발!`);
-        P.bonds[chosenKey].aff = (P.bonds[chosenKey].aff || 0) + 40;
-        P.fans = (P.fans || 0) + 30000;
-        stressAdd(-20);
-      } else if (sel === 1) {
-        toast(`🛡️ "친한 친구 사이일 뿐입니다" 공식 해명 발표. 팬들의 이탈을 막았으나 ${h.name}의 눈빛이 서운해 보입니다.`);
-        P.bonds[chosenKey].aff = Math.max(0, (P.bonds[chosenKey].aff || 0) - 15);
-        stressAdd(20);
-      } else {
-        if ((P.money || 0) >= 50000000) {
-          P.money -= 50000000;
-          toast('💼 5,000만 원을 투입해 사진을 전량 회수하고 기사를 내렸습니다. 완전한 비밀 유지!');
-          stressAdd(5);
-        } else {
-          toast('자금이 부족해 기사가 결국 보도되었습니다! 팬들의 질문 세례로 스트레스 급상승!');
-          stressAdd(35);
-        }
-      }
+    c:()=>!!((P.fans || 0)>=50000 && P.relationships?.incidents?.some(x=>x.partner===P.relationships.partner&&x.kind==='date'&&!x.resolved&&careerWeek()-x.week<4) && Math.random()<.25),
+    f:async()=>{
+      const r=ensureRelationships(),e=r.incidents.filter(x=>x.partner===r.partner&&x.kind==='date'&&!x.resolved&&careerWeek()-x.week<4).at(-1);if(!e)return;
+      const player=P,h=HEROINES[e.other],choice=await ask('<h3>함께 있던 사진이 보도됐습니다</h3><p class="dialog-intro">'+uiText(h.name)+'와 따로 만났던 사진이 퍼지고 있습니다. 현재 연인에게도 사실이 전해집니다.</p>',[{t:'확인된 사실을 말하고 직접 설명한다',cls:'gray'},{t:'관계를 숨기려 한다',cls:'gray'},{t:'사생활 침해에 대응한다 · 5천만원',cls:'gray',disabled:P.money<50000000}]);
+      if(P!==player)return;e.publicEvidence=true;e.discovered=true;e.evidenceKind='media';
+      if(choice===2&&P.money>=50000000){P.money-=50000000;stressAdd(-5);}
+      if(choice===1){const result=resolveRelationshipIncident('lie',e.id);toast(result.reason);save();}
+      else await presentRelationshipIncident(e);
     }
   },
 
@@ -5086,7 +5268,7 @@ async function ending(natural) {
   const loves80 = Object.keys(P.bonds || {}).filter(k => HEROINES[k] && P.bonds[k]?.unlocked && P.bonds[k].aff >= 70);
   const endingWeddingReady = k => {
     const b = P.bonds[k];
-    return canAdultRomance(k) && (b.married === true || ((b.lv || 0) >= 4 && (!Array.isArray(b.youthMilestones) || !b.youthMilestones.includes(4) || b.adultLifetimePromise === true)));
+    return ensureRelationships().partner===k && canAdultRomance(k) && (b.married === true || ((b.lv || 0) >= 4 && (!Array.isArray(b.youthMilestones) || !b.youthMilestones.includes(4) || b.adultLifetimePromise === true)));
   };
   const goldMedals=h.titles.filter(t=>typeof t==='string' && t.includes('금메달')).length;
   const achievementLine = winningTitles.length ? `커리어에 ${winningTitles.length}회의 우승을 남긴 당신은` : goldMedals?`국가대표 금메달 ${goldMedals}개를 남긴 당신은`:'우승 기록 없이도 끝까지 자신의 길을 걸어온 당신은';
@@ -5237,7 +5419,7 @@ function nextSchedule() {
 }
 function feasibleRecommendedDate(companion, affordable = true) {
   if ((P.weeklyDates || 0)>=1 || P.hp<8) return null;
-  const unlocked=Object.keys(HEROINES).filter(hid=>P.bonds?.[hid]?.unlocked);
+  const unlocked=Object.keys(HEROINES).filter(hid=>P.bonds?.[hid]?.unlocked && canRomanticInteract(hid));
   unlocked.sort((a,b)=>Number(b===companion)-Number(a===companion) || (P.bonds[a].lastInteractWeek || 0)-(P.bonds[b].lastInteractWeek || 0));
   for (const hid of unlocked) {
     const date=getHeroineDates(hid).filter(d=>Number.isFinite(d.c) && d.c>=0 && (!affordable || d.c<=P.money)).sort((a,b)=>a.c-b.c)[0];
@@ -5258,7 +5440,7 @@ function recommendationPlan() {
   const s=validSeasonJourney(P.seasonJourney,P.year)?P.seasonJourney:null,opponent=recommendationOpponent();
   const result=(key,reason,date=null)=>({key,reason,date,opponent});
   if(P.hp<30)return result('rest','체력이 30 미만입니다. 주말 경기 전에 컨디션을 회복하세요.');
-  const date=feasibleRecommendedDate(s?.companion);
+  const date=feasibleRecommendedDate(P.relationships?.partner || P.relationships?.flirts?.[0]);
   if(P.stress>75)return date?result('date',`스트레스가 높습니다. 가능한 ${HEROINES[date.hid].name} 인연 일정으로 회복하세요.`,date):result('rest','스트레스가 높습니다. 이번 주 데이트 횟수·체력·코스 비용을 고려해 휴식으로 회복하세요.');
   let contactDue=false,contactNote='';
   if(s?.focus==='balance'){
@@ -5271,7 +5453,7 @@ function recommendationPlan() {
     if(contactDue)contactNote=' 인연 소통도 남아 있지만 이번 주 횟수·체력·비용에 맞는 데이트가 없어 가능한 준비를 먼저 합니다.';
   }
   const youth=s && YOUTH_ARCS[s.companion]?youthArcState(s.companion,false):null;
-  if(youth?.step===1 && !youth.prepared && !(P.weeklyDates || 0))return result(youth.task,'동행과의 약속 · '+actionLabel(youth.task)+' 일정으로 '+YOUTH_ARCS[s.companion].subject+' 준비를 마칩니다. 다음 만남의 약속 이행 선택으로 이어집니다.');
+  if(youth?.step===1 && !youth.prepared && !(P.weeklyDates || 0))return result(youth.task,'개인적인 약속 · '+actionLabel(youth.task)+' 일정으로 '+YOUTH_ARCS[s.companion].subject+' 준비를 마칩니다. 다음 만남의 약속 이행 선택으로 이어집니다.');
   if(P.stage!=='ama' && P.syn<2)return result('scrim','팀 호흡이 2 미만입니다. 스크림은 한타·운영을 훈련하고 실제 팀 호흡을 높입니다.'+contactNote);
   const options = ['lane', 'mech', 'vod', 'pool'];
   const weights = POS[P.pos]?.w || POS.mid.w;
@@ -5282,8 +5464,8 @@ function recommendationPlan() {
   })[0];
   const promise=s?.scenes.filter(x=>x.id==='summerStart' && P.week-x.week>=0 && P.week-x.week<3).at(-1);
   let promiseNote='';
-  if(promise?.choice===0){bestTraining='vod';promiseNote=' 동행과 약속한 상대 분석을 경기 분석 일정으로 준비합니다.';}
-  if(promise?.choice===1)promiseNote=' 동행에게 말한 장점 다듬기를 포지션별 성장 효율에 맞춰 이어갑니다.';
+  if(promise?.choice===0){bestTraining='vod';promiseNote=' 소중한 사람과 약속한 상대 분석을 경기 분석 일정으로 준비합니다.';}
+  if(promise?.choice===1)promiseNote=' 소중한 사람에게 말한 장점 다듬기를 포지션별 성장 효율에 맞춰 이어갑니다.';
   const training=s?.weeks.filter(w=>SEASON_TRAINING.includes(w.action)).length || 0;
   const trainTarget=s?Math.max(1,Math.ceil((YEAR_WEEKS-s.startWeek+1)*(s.focus==='balance'?.25:.4))):0;
   if(s?.focus==='foundation' && training<trainTarget)return result(bestTraining,`기본기 목표 · 핵심 훈련 ${training}/${trainTarget}주. 포지션 성장 효율을 고려한 훈련입니다.`+promiseNote+contactNote);
@@ -5344,9 +5526,9 @@ function renderGameNavigation() {
   if (!dock) return;
   dock.hidden = !P;
   if (!P) { dock.innerHTML = ''; return; }
-  const items = [['bBond','heart','인연',showBondsModal],['bSns','camera','인스타',showSnsModal],['bWealth','wallet','자산',showWealthModal],['bShop','bag','상점',showHubShop],['bAch','trophy','업적',showAchievementsModal],['bStand','chart','기록',showRecordsMenu]];
+  const items = [['bBond','heart','사생활',showBondsModal],['bSns','camera','인스타',showSnsModal],['bStand','chart','기록',showRecordsMenu],['bMore','bag','더보기',showMoreMenu]];
   dock.innerHTML = items.map(([id,icon,label]) => `<button class="nav-tab" id="${id}" aria-label="${label}" aria-haspopup="dialog" aria-expanded="false">${uiIcon(icon)}<span class="nav-label">${label}</span>${id === 'bSns' && (P.dms?.unread || 0) > 0 ? `<span class="nav-unread-dot" aria-label="읽지 않은 메시지 ${P.dms.unread}개">${P.dms.unread > 9 ? '9+' : P.dms.unread}</span>` : ''}</button>`).join('');
-  for (const [id,, , handler] of items) $('#' + id).onclick = () => { dock.querySelectorAll('button').forEach(b => b.setAttribute('aria-expanded',String(b.id === id))); return handler(); };
+  for (const [id,, , handler] of items) $('#' + id).onclick = () => { if(busy || isCareerAutoPlaying())return;dock.querySelectorAll('button').forEach(b => b.setAttribute('aria-expanded',String(b.id === id))); return handler(); };
 }
 async function showRecordsMenu() {
   const choice = await ask('<h3>시즌 기록</h3><p class="dialog-intro">리그 순위와 나의 커리어를 확인하세요.</p>',[{t:uiIcon('chart')+' 리그 순위',cls:'gray'},{t:uiIcon('trophy')+' 나의 커리어',cls:'gray'},{t:uiIcon('book')+' 주간 브리핑',cls:'gray'},{t:uiIcon('trophy')+' 시즌 결산',cls:'gray'},{t:'닫기',cls:'gray'}]);
@@ -5392,13 +5574,17 @@ function render() {
   $('#main').innerHTML = `<div class="dashboard"><div class="dashboard-core">
     <section class="career-card"><div class="career-caption"><span class="eyebrow">MY CAREER</span><span class="stage-badge">${P.isOwnerMode ? '구단주 후원 회차' : P.stage === 'pro' ? 'LCK 1군' : P.stage === 'aca' ? '아카데미' : '아마추어'}</span></div><div class="career-overview"><img class="champion-avatar" src="${getChampIcon(champ)}" alt="${champ.n}" onerror="this.onerror=null;this.src='icon-192.png'"><div class="career-name"><h1>${uiText(myTeam()?.name || '프로를 향한 첫 시즌')}</h1><button class="rank-link" id="bRank">${tierName()} ${uiIcon('arrow',12)}</button><span>${P.stage === 'ama' ? '이번 목표 · 프로 스카우트' : teamSynergyDisplay()}</span></div><div class="ovr-mark"><strong>${Math.round(ovr())}</strong><small>OVR</small></div></div></section>
     ${renderSeasonCard()}
+    <section class="core-auto card"><div class="section-head"><h2>내 선수 생활</h2><button class="text-button" id="bAutoSettings">방향 설정</button></div><button class="btn blue core-primary" id="bAutoSeason" ${isCareerAutoPlaying()?'disabled':''}>${uiIcon('play',20)} 이번 시즌 자동 진행</button><p class="subtle">훈련·회복·밴픽·경기를 맡기고, 언제든 멈추세요.</p>${renderAutoProgress()}</section>
     <section class="week-card"><div class="section-head"><h2>이번 주</h2><span class="status-tag">${phaseOf(P.week).sp}</span></div><div class="schedule-line">${uiIcon(P.stage === 'ama' ? 'target' : 'trophy',24)}<div>${scheduleText}</div></div>${plan.opponent?`<p class="opponent-threat">${uiText(plan.opponent.threat)}</p>`:''}<div class="recommended-action"><span class="action-symbol">${uiIcon(actionIcon(rec),25)}</span><div><small>추천 일정</small><b>${actionLabel(rec)}${plan.date?' · '+uiText(HEROINES[plan.date.hid].name):''}</b><div class="effect-row">${plan.date?`<span class="effect-chip">체력 -8</span><span class="effect-chip">스트레스 ${plan.date.stress}</span><span class="effect-chip">${won(plan.date.cost)}원</span>`:actionSummary(action)}</div>${plan.date?`<small>${uiText(plan.date.name)}</small>`:''}</div><button class="btn gold" id="bFastTurn" aria-label="추천 일정 ${actionLabel(rec)} 진행">진행 ${uiIcon('play',14)}</button></div><p class="recommendation-reason">${uiText(plan.reason)}</p></section>
-    <section class="card action-panel"><div class="section-head"><h2>직접 일정 선택</h2><span class="subtle">1회 진행 = 1주</span></div><div class="cat-tabs" aria-label="일정 분류">${[['all','전체'],['match','경기'],['train','훈련'],['life','여가']].map(([key,label])=>`<button class="cat-tab ${activeActCat===key?'active':''}" data-cat="${key}" aria-pressed="${activeActCat===key}">${label}</button>`).join('')}</div><div class="acts">${ACTS.filter(a=>(!a.team||P.stage!=='ama')&&(activeActCat==='all'||a.cat===activeActCat)).map(a=>`<button class="act action-tile ${a.k===rec?'rec':''}" data-a="${a.k}" ${a.cost && P.money<a.cost || a.k==='date'&&(P.weeklyDates||0)>=1 ? 'disabled':''} aria-label="${actionLabel(a.k)} · 체력 ${a.k==='date'?-8:a.hp} · 스트레스 ${a.st}${a.cost?' · '+won(a.cost)+'원':''}"><span class="action-symbol">${uiIcon(actionIcon(a.k),22)}</span><b>${actionLabel(a.k)}</b><div class="effect-row">${actionSummary(a)}</div></button>`).join('')}</div><details class="actions-help"><summary>일정 효과 자세히</summary><dl>${ACTS.filter(a=>!a.team||P.stage!=='ama').map(a=>`<div><dt>${actionLabel(a.k)}</dt><dd>${a.k==='date'?'주 1회 · 체력 8과 코스 비용으로 인연과 멘탈 회복':a.d}</dd></div>`).join('')}</dl></details><div class="week-allowance"><span>${uiIcon('heart',14)} 데이트 <b>${P.weeklyDates||0}/1</b></span><span>${uiIcon('camera',14)} 피드 보상 <b>${P.weeklyState?.key===`${P.year}:${P.week}`&&P.weeklyState.postRewarded?'완료':'가능'}</b></span>${P.lastAction?`<button class="text-button" id="bQuickRepeat" aria-label="직전 일정 반복">${uiIcon('repeat',14)} 반복</button>`:''}</div></section>
-    ${renderLatestWeeklyResult()}</div><aside class="dashboard-side">${renderBondsQuickBar()}<details class="card stats-panel"><summary><span>${uiIcon('chart',18)} 선수 능력치</span><small>6종 스탯</small></summary><div class="bars">${Object.keys(STATS).map(k=>bar(STATS[k].n,P.s[k]+skinStatBonus(k),STATS[k].c,130,true)).join('')}</div><p class="subtle">보유 기어·장착 스킨과 인연 패시브가 성장에 반영됩니다.</p></details><details class="card roadmap-panel"><summary><span>${uiIcon('trophy',18)} 성장 로드맵</span><small>${steps.filter(s=>s[2]).length}/5</small></summary><div class="roadmap">${steps.map(([icon,label,done])=>`<div class="roadmap-step ${done?'done':''}">${uiIcon(done?'check':icon,18)}<span>${label}</span></div>`).join('')}</div><p class="subtle">마스터 달성 또는 다이아+PC방 우승으로 스카우트 기회가 열립니다.</p></details></aside></div>`;
+    <details class="card action-panel"><summary>직접 일정 고르기</summary><div class="section-head"><h2>한 주의 선택</h2><span class="subtle">1회 진행 = 1주</span></div><div class="cat-tabs" aria-label="일정 분류">${[['all','전체'],['match','경기'],['train','훈련'],['life','여가']].map(([key,label])=>`<button class="cat-tab ${activeActCat===key?'active':''}" data-cat="${key}" aria-pressed="${activeActCat===key}">${label}</button>`).join('')}</div><div class="acts">${ACTS.filter(a=>(!a.team||P.stage!=='ama')&&(activeActCat==='all'||a.cat===activeActCat)).map(a=>`<button class="act action-tile ${a.k===rec?'rec':''}" data-a="${a.k}" ${a.cost && P.money<a.cost || a.k==='date'&&(P.weeklyDates||0)>=1 ? 'disabled':''} aria-label="${actionLabel(a.k)} · 체력 ${a.k==='date'?-8:a.hp} · 스트레스 ${a.st}${a.cost?' · '+won(a.cost)+'원':''}"><span class="action-symbol">${uiIcon(actionIcon(a.k),22)}</span><b>${actionLabel(a.k)}</b><div class="effect-row">${actionSummary(a)}</div></button>`).join('')}</div><details class="actions-help"><summary>일정 효과 자세히</summary><dl>${ACTS.filter(a=>!a.team||P.stage!=='ama').map(a=>`<div><dt>${actionLabel(a.k)}</dt><dd>${a.k==='date'?'주 1회 · 체력 8과 코스 비용으로 인연과 멘탈 회복':a.d}</dd></div>`).join('')}</dl></details><div class="week-allowance"><span>${uiIcon('heart',14)} 데이트 <b>${P.weeklyDates||0}/1</b></span><span>${uiIcon('camera',14)} 피드 보상 <b>${P.weeklyState?.key===`${P.year}:${P.week}`&&P.weeklyState.postRewarded?'완료':'가능'}</b></span>${P.lastAction?`<button class="text-button" id="bQuickRepeat" aria-label="직전 일정 반복">${uiIcon('repeat',14)} 반복</button>`:''}</div></details>
+    ${renderLatestWeeklyResult()}</div><aside class="dashboard-side"><details class="card stats-panel"><summary><span>${uiIcon('chart',18)} 선수 능력치</span><small>6종 스탯</small></summary><div class="bars">${Object.keys(STATS).map(k=>bar(STATS[k].n,P.s[k]+skinStatBonus(k),STATS[k].c,130,true)).join('')}</div><p class="subtle">보유 기어·장착 스킨과 인연 패시브가 성장에 반영됩니다.</p></details><details class="card roadmap-panel"><summary><span>${uiIcon('trophy',18)} 성장 로드맵</span><small>${steps.filter(s=>s[2]).length}/5</small></summary><div class="roadmap">${steps.map(([icon,label,done])=>`<div class="roadmap-step ${done?'done':''}">${uiIcon(done?'check':icon,18)}<span>${label}</span></div>`).join('')}</div><p class="subtle">마스터 달성 또는 다이아+PC방 우승으로 스카우트 기회가 열립니다.</p></details></aside></div>`;
   $('#main').querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>takeTurn(b.dataset.a));
   $('#main').querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{const scroll=$('#main').scrollTop;activeActCat=b.dataset.cat;render();$('#main').scrollTop=scroll;});
   $('#main').querySelectorAll('[data-bhid]').forEach(b=>b.onclick=()=>openHeroineDirectMenu(b.dataset.bhid));
   $('#bFastTurn').onclick=runRecommendedTurn;
+  $('#bAutoSeason').onclick=()=>startAutomaticSeason(P.autoPreferences || {});
+  $('#bAutoSettings').onclick=showAutomaticSeasonSetup;
+  if($('#bStopAuto'))$('#bStopAuto').onclick=stopAutomaticSeason;
   $('#bRank').onclick=showLeaderboardModal;
   if ($('#bQuickRepeat')) $('#bQuickRepeat').onclick=()=>takeTurn(P.lastAction);
   if ($('#bSeason')) $('#bSeason').onclick=showSeasonHub;
@@ -5411,9 +5597,9 @@ async function showBondsModal() {
   let rosterScroll = 0;
   while (true) {
     const entries=Object.entries(HEROINES).sort(([a],[b])=>Number(!!P.bonds[b]?.unlocked)-Number(!!P.bonds[a]?.unlocked));
-    const body=`<h3>인연</h3><p class="dialog-intro">${Object.values(P.bonds).filter(b=>b.unlocked).length}명의 인연과 함께하는 여정</p><div class="roster-grid">${entries.map(([hid,h], index)=>{
+    const body=`<h3>사생활</h3><p class="dialog-intro">연인 ${P.relationships?.partner?'1':'0'}/1 · 썸 ${P.relationships?.flirts?.length || 0}/2 · 친구들과의 소통</p><div class="roster-grid">${entries.map(([hid,h], index)=>{
       const b=P.bonds[hid]||{},aff=b.aff||0;
-      return `<article class="roster-card ${b.unlocked?'':'locked'}"><button class="roster-open" data-image-trigger ${b.unlocked?'':'disabled'} aria-label="${h.name} 이미지 크게 보기" aria-haspopup="dialog"><img loading="${index < 6 ? 'eager' : 'lazy'}" src="${h.img}" alt="${h.name}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${h.fallback}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${h.fallback}';}else{this.onerror=null;this.src='assets/jieun.jpg';}"><span class="roster-zoom-hint">확대</span><span class="roster-state">${uiIcon(b.unlocked?'heart':'lock',12)} ${b.unlocked?aff:'미해금'}</span></button><div class="roster-info"><b>${h.name} <small>${getHeroineAge(hid)}세</small></b><button class="roster-profile" data-roster="${hid}" ${b.unlocked?'':'disabled'}>${b.unlocked?'인연 보기':'미해금'}</button><span class="roster-role">${h.tag}</span><details><summary>${b.unlocked?'효과·다음 이야기':'해금 조건'}</summary><p>${b.unlocked?h.buff:h.unlockDesc}</p>${b.unlocked?`<small>다음 이야기 ${h.story.find(s=>s.req>aff)?.req||100}♥</small>`:''}</details></div></article>`;
+      return `<article class="roster-card ${b.unlocked?'':'locked'}"><button class="roster-open" data-image-trigger ${b.unlocked?'':'disabled'} aria-label="${h.name} 이미지 크게 보기" aria-haspopup="dialog"><img loading="${index < 6 ? 'eager' : 'lazy'}" src="${h.img}" alt="${h.name}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='${h.fallback}';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='assets/${h.fallback}';}else{this.onerror=null;this.src='assets/jieun.jpg';}"><span class="roster-zoom-hint">확대</span><span class="roster-state">${uiIcon(b.unlocked?'heart':'lock',12)} ${b.unlocked?relationshipLabel(hid)+' · '+aff:'미해금'}</span></button><div class="roster-info"><b>${h.name} <small>${getHeroineAge(hid)}세</small></b><button class="roster-profile" data-roster="${hid}" ${b.unlocked?'':'disabled'}>${b.unlocked?'인연 보기':'미해금'}</button><span class="roster-role">${h.tag}</span><details><summary>${b.unlocked?'효과·다음 이야기':'해금 조건'}</summary><p>${b.unlocked?h.buff:h.unlockDesc}</p>${b.unlocked?`<small>다음 이야기 ${h.story.find(s=>s.req>aff)?.req||100}♥</small>`:''}</details></div></article>`;
     }).join('')}</div>`;
     const pending=ask(body,[{t:'닫기',cls:'gray'}]);
     $('#modal .box').scrollTop = rosterScroll;
@@ -5471,7 +5657,37 @@ const CHAMPIONS = [
   { id: 'nautilus', n: '노틸러스', role: 'sup', t: '폭뢰 닻줄', st: { team: 1.4, lane: 1.1 }, strongVs: ['thresh'] },
   { id: 'thresh', n: '쓰레쉬', role: 'sup', t: '사형선고 랜턴', st: { mech: 1.3, macro: 1.3 }, strongVs: ['nautilus'] },
   { id: 'aatrox', n: '아트록스', role: 'top', t: '세계의 종말', st: { mech: 1.3, lane: 1.3 }, strongVs: ['ksante'] },
-  { id: 'ksante', n: '크산테', role: 'top', t: '총공세 격퇴', st: { team: 1.4, lane: 1.2 }, strongVs: ['aatrox'] }
+  { id: 'ksante', n: '크산테', role: 'top', t: '총공세 격퇴', st: { team: 1.4, lane: 1.2 }, strongVs: ['aatrox'] },
+  {"id":"ahri","n":"아리","role":"mid","t":"매혹 연계","st":{"mech":1.3,"macro":1.2},"strongVs":["azir","leblanc"],"comp":"poke"},
+  {"id":"taliyah","n":"탈리야","role":"mid","t":"바위술사 합류","st":{"macro":1.4,"team":1.1},"strongVs":["sylas","yasuo"],"comp":"wombo"},
+  {"id":"viktor","n":"빅토르","role":"mid","t":"중력장 통제","st":{"lane":1.3,"team":1.3},"strongVs":["orianna","taliyah"],"comp":"wombo"},
+  {"id":"renekton","n":"레넥톤","role":"top","t":"강신 다이브","st":{"lane":1.4,"mech":1.2},"strongVs":["aatrox","camille"],"comp":"dive"},
+  {"id":"jax","n":"잭스","role":"top","t":"반격 사이드","st":{"mech":1.3,"macro":1.3},"strongVs":["camille","ksante"],"comp":"poke"},
+  {"id":"gnar","n":"나르","role":"top","t":"분노 한타","st":{"lane":1.3,"team":1.3},"strongVs":["renekton","ornn"],"comp":"wombo"},
+  {"id":"ornn","n":"오른","role":"top","t":"대장장이 이니시","st":{"team":1.5,"macro":1.1},"strongVs":["ksante","jayce"],"comp":"wombo"},
+  {"id":"camille","n":"카밀","role":"top","t":"마법공학 격리","st":{"mech":1.4,"macro":1.2},"strongVs":["jayce","gnar"],"comp":"dive"},
+  {"id":"jayce","n":"제이스","role":"top","t":"가속 관문 포킹","st":{"lane":1.4,"mech":1.2},"strongVs":["aatrox","gnar"],"comp":"poke"},
+  {"id":"gwen","n":"그웬","role":"top","t":"신성한 안개","st":{"mech":1.3,"team":1.3},"strongVs":["ornn","ksante"],"comp":"dive"},
+  {"id":"sejuani","n":"세주아니","role":"jg","t":"빙하 감옥","st":{"team":1.4,"macro":1.2},"strongVs":["leesin","wukong"],"comp":"wombo"},
+  {"id":"wukong","n":"오공","role":"jg","t":"회전격 진입","st":{"team":1.4,"mech":1.2},"strongVs":["viego","vi"],"comp":"dive"},
+  {"id":"viego","n":"비에고","role":"jg","t":"지배의 군주","st":{"mech":1.4,"team":1.2},"strongVs":["sejuani","maokai"],"comp":"dive"},
+  {"id":"maokai","n":"마오카이","role":"jg","t":"대자연 시야 통제","st":{"macro":1.4,"team":1.2},"strongVs":["vi","xinzhao"],"comp":"wombo"},
+  {"id":"xinzhao","n":"신 짜오","role":"jg","t":"초승달 수호","st":{"mech":1.3,"team":1.3},"strongVs":["viego","nidalee"],"comp":"dive"},
+  {"id":"nidalee","n":"니달리","role":"jg","t":"창 투척 카정","st":{"mech":1.4,"macro":1.2},"strongVs":["maokai","sejuani"],"comp":"poke"},
+  {"id":"nocturne","n":"녹턴","role":"jg","t":"피해망상 합류","st":{"macro":1.3,"team":1.3},"strongVs":["nidalee","leesin"],"comp":"dive"},
+  {"id":"xayah","n":"자야","role":"adc","t":"깃부르미 반격","st":{"mech":1.3,"team":1.3},"strongVs":["kaisa","sivir"],"comp":"wombo"},
+  {"id":"aphelios","n":"아펠리오스","role":"adc","t":"만월총 화력","st":{"mech":1.3,"team":1.4},"strongVs":["jinx","xayah"],"comp":"wombo"},
+  {"id":"ezreal","n":"이즈리얼","role":"adc","t":"신비한 화살 포킹","st":{"mech":1.4,"lane":1.1},"strongVs":["aphelios","varus"],"comp":"poke"},
+  {"id":"varus","n":"바루스","role":"adc","t":"부패의 사슬","st":{"lane":1.4,"team":1.2},"strongVs":["jinx","zeri"],"comp":"poke"},
+  {"id":"ashe","n":"애쉬","role":"adc","t":"마법의 수정화살","st":{"lane":1.3,"team":1.3},"strongVs":["ezreal","xayah"],"comp":"poke"},
+  {"id":"sivir","n":"시비르","role":"adc","t":"사냥 개시","st":{"macro":1.3,"team":1.3},"strongVs":["varus","ashe"],"comp":"wombo"},
+  {"id":"leona","n":"레오나","role":"sup","t":"흑점 폭발","st":{"team":1.4,"lane":1.2},"strongVs":["lulu","renata"],"comp":"dive"},
+  {"id":"rakan","n":"라칸","role":"sup","t":"매혹의 질주","st":{"team":1.4,"macro":1.2},"strongVs":["thresh","braum"],"comp":"dive"},
+  {"id":"alistar","n":"알리스타","role":"sup","t":"분쇄 진입","st":{"team":1.5,"lane":1.1},"strongVs":["leona","rakan"],"comp":"dive"},
+  {"id":"braum","n":"브라움","role":"sup","t":"불굴의 방패","st":{"team":1.4,"lane":1.2},"strongVs":["nautilus","alistar"],"comp":"wombo"},
+  {"id":"lulu","n":"룰루","role":"sup","t":"급성장 보호","st":{"team":1.4,"macro":1.2},"strongVs":["rakan","alistar"],"comp":"wombo"},
+  {"id":"renata","n":"레나타 글라스크","role":"sup","t":"적대적 인수","st":{"team":1.4,"macro":1.2},"strongVs":["nautilus","rakan"],"comp":"wombo"},
+  {"id":"karma","n":"카르마","role":"sup","t":"만트라 포킹","st":{"lane":1.4,"macro":1.2},"strongVs":["braum","lulu"],"comp":"poke"}
 ];
 
 function getChampMastery(id) {
@@ -5792,7 +6008,7 @@ const CHAMP_QTE_TABLE = {
   }
 };
 
-async function triggerClutchQTE() {
+async function triggerClutchQTE(automatic = false) {
   playJackpotSound();
   const pos = P.pos || 'mid';
   const myRoleChamps = CHAMPIONS.filter(c => c.role === pos);
@@ -5810,7 +6026,7 @@ async function triggerClutchQTE() {
     sub: `${c.n} 슈퍼플레이 캐리`
   };
 
-  const qteIdx = await ask(`
+  const qteIdx = automatic?[0,1,2].reduce((best,i)=>clutchChoicePower(i)>clutchChoicePower(best)?i:best,0):await ask(`
     <div class="clutch-box">
       <div style="font-size:38px">⚡🚨</div>
       <h3 style="color:#fde047;margin:4px 0">승부처! 장로 드래곤 클러치 한타!</h3>
@@ -5824,11 +6040,13 @@ async function triggerClutchQTE() {
     cls: opt.cls
   })));
 
-  const success = Math.random() < clamp(sig((ovr() - 50) / 4.5), 0.35, 0.90);
+  // 대사의 선택을 실제 능력 판정에 연결한다. OVR 50% + 선택 국면 능력 50%.
+  const selectedPower=(ovr()+clutchChoicePower(qteIdx))/2;
+  const success = Math.random() < clamp(sig((selectedPower - 50) / 4.5), 0.35, 0.90);
   if (success) {
     playJackpotSound();
     grow('mech', 2.0); grow('mental', 2.0);
-    await ask(`
+    if(!automatic)await ask(`
       <div style="text-align:center">
         <div style="font-size:52px">🔥👑</div>
         <h3 style="color:#4ade80">슈퍼플레이 작렬! ${qteData.sub}!</h3>
@@ -6279,27 +6497,40 @@ const DM_TEMPLATES = [
 
 // 💖 메인 화면에서 히로인 터치 시 즉시 1:1 만남 메뉴
 async function openHeroineDirectMenu(hid) {
+  const menuPlayer=P;
   const h = HEROINES[hid], b = P.bonds?.[hid];
   if (!h || !b?.unlocked) return false;
+  if(!canRomanticInteract(hid)){
+    const player=P,choice=await showYouthPresentation(hid,(()=>{const scene=safeRelationshipPresentation(hid,'친구로 응원할 수도, 시간을 두고 서로를 알아갈 수도 있어요. 연인 1명·썸 2명까지 관계를 이어갑니다.','어떤 관계로 지낼까요?');scene.options=[{t:'서로 알아가기',tag:'flirt'},{t:'친구로 안부 묻기',tag:'friend'},{t:'지난 대화 보기',tag:'memory'},{t:'닫기',tag:'close'}];return scene;})());
+    if(P!==player)return false;
+    if(choice===0){const result=tryBeginFlirt(hid);save();render();toast(result.reason);}
+    else if(choice===1){sendFriendlyCheckIn(hid);save();render();toast('서로의 하루를 응원했습니다.');}
+    else if(choice===2)await showCareerBondMemory(hid);
+    return false;
+  }
   const dates = getHeroineDates(hid);
   const choices = dates.map(d => ({ t: d.n + ' · ' + won(d.c) + '원 · 체력 -8', cls: 'pink',
     disabled: (P.weeklyDates || 0) >= 1 || P.money < d.c || P.hp < 8 }));
   choices.push({ t: '맞춤 선물하기 (인물별 주 1회)', cls: 'gold', disabled: !!weeklyState().gifts[hid] });
   choices.push({ t: '함께한 선택 기억', cls: 'gray' });
+  choices.push({ t:'관계 정하기 · '+relationshipLabel(hid),cls:'gray' });
   choices.push({ t: '닫기', cls: 'gray' });
-  const index = await showHeroineCutscene(hid, '<h4>인연 일정</h4><div class="c">주간 데이트 ' + (P.weeklyDates || 0) + '/1 · 호감도 ' + b.aff + '/100</div>', choices);
-  if (index < 0 || index >= choices.length - 1) return false;
+  const index = await showHeroineCutscene(hid, '<h4>'+relationshipLabel(hid)+' · 인연 일정</h4><div class="c">주간 데이트 ' + (P.weeklyDates || 0) + '/1 · 호감도 ' + b.aff + '/100</div>', choices);
+  if (P!==menuPlayer || index < 0 || index >= choices.length - 1) return false;
   if (index < dates.length) return performHeroineDate(hid, dates[index].id || dates[index].n);
   if (index===dates.length+1) { await showCareerBondMemory(hid);return false; }
+  if(index===dates.length+2){await showRelationshipControl(hid);return false;}
+  if(!canRomanticInteract(hid)){toast('맞춤 선물은 현재 썸·연인 관계에서 선택할 수 있습니다.');return false;}
   // 선물 상점의 기회비용과 취소를 보존하고 보상은 인물별 주1회로 제한한다.
   if (weeklyState().gifts[hid]) return false;
   const gi = await showHeroineCutscene(hid, '<h4>선물 고르기</h4>', h.gifts.map(g => ({ t: g.n + ' · ' + won(g.c) + '원', cls: 'gold', disabled: P.money < g.c })).concat({ t: '취소', cls: 'gray' }));
   const gift = h.gifts[gi];
-  if (!gift || P.money < gift.c || weeklyState().gifts[hid]) return false;
+  if (P!==menuPlayer || !gift || !canRomanticInteract(hid) || P.money < gift.c || weeklyState().gifts[hid]) return false;
   weeklyState().gifts[hid] = true; P.money -= gift.c;
   recordSeasonContact(hid);
   affectionGain(hid, gift.aff); stressAdd(-25); playCoinSound();
   await showHeroineCutscene(hid, '<h4>선물 전달</h4><div class="vn-dialogue">' + gift.msg + '</div>');
+  if(P!==menuPlayer)return false;
   await checkBondMilestone(hid); checkAchievements(); save(); render();
   return true;
 }
@@ -6635,7 +6866,9 @@ let activeSnsTab = 'feed';
 // 📱 인스타그램 피드 & DM 시스템 고도화
 // ======================================================================
 
-async function openCreatePostModal() {
+async function openCreatePostModal(){return openQuickPostModal();}
+
+async function openAdvancedPostModal() {
   const unHeroines = Object.keys(HEROINES).filter(k => P.bonds?.[k]?.unlocked);
   let selectedImg = 'icon-512.png';
   let selectedFilter = 'normal';
@@ -6890,15 +7123,17 @@ async function replyToFeedComment(postId) {
 async function handleReplyToComments(postId) { return replyToFeedComment(postId); }
 async function openPickGalleryModal() { return openPhotoGalleryPicker(); }
 async function openDmChat(index) {
+  const player=P;
   const dm = P.dms?.list?.[index];
   if (!dm) return;
   const choices = dm.choices || [];
   const indexChosen = await ask(`<h3>${dm.sender}</h3><p>${dm.msg}</p>`, choices.map(c => ({ t: c.t, cls: 'pink' })).concat({ t: '닫기', cls: 'gray' }));
-  if (indexChosen < 0) return;
+  if (P!==player || indexChosen < 0) return;
   const choice = choices[indexChosen];
   if (choice && !dm.claimed && !dm.read) {
     const template = DM_TEMPLATES.find(t => t.id === dm.templateId);
     const heroineId = template?.category === 'heroine' ? Object.keys(HEROINES).find(k => dm.templateId.includes('_' + k + '_')) : dm.isNeglected ? Object.keys(HEROINES).find(k => HEROINES[k].name === dm.sender) : null;
+    if(heroineId && !canRomanticInteract(heroineId)){sendFriendlyCheckIn(heroineId);dm.claimed=true;dm.read=true;P.dms.unread=P.dms.list.filter(d=>!d.read).length;save();return;}
     if (heroineId && (weeklyState().dm[heroineId] || Object.keys(weeklyState().dm).length >= 3)) { toast('이번 주 인연 소통 보상은 이미 받았습니다.'); return; }
     const beforeAff = Object.fromEntries(Object.entries(P.bonds).map(([k,b]) => [k,b.aff || 0]));
     // JSON에는 함수를 저장할 수 없으므로 템플릿 식별자로 실행 시 다시 연결한다.
@@ -6925,6 +7160,7 @@ async function openDmChat(index) {
 }
 
 async function openSendDmModal() {
+  const player=P;
   const unHeroines = Object.keys(P.bonds || {}).filter(k => P.bonds[k]?.unlocked);
   if (unHeroines.length === 0) {
     toast('아직 연락할 수 있는 인연이 없습니다.');
@@ -6947,11 +7183,15 @@ async function openSendDmModal() {
     <p class="c" style="color:#9aa4b2;font-size:12px">원하는 인연에게 직접 선톡을 보내 대화를 나눌 수 있습니다.</p>
   `, hBtns);
 
-  if (hIdx < 0 || hIdx >= unHeroines.length) return;
+  if (P!==player || hIdx < 0 || hIdx >= unHeroines.length) return;
   const targetHid = unHeroines[hIdx];
   const weekly = weeklyState();
   if (weekly.dm[targetHid] || Object.keys(weekly.dm).length >= 3) { toast('이번 주 소통 보상을 이미 받았습니다. 다음 주에 다시 연락해주세요.'); return; }
   const h = HEROINES[targetHid];
+  if(!canRomanticInteract(targetHid)){
+    const player=P,choice=await ask('<h3>'+uiText(h.name)+' · 친분 대화</h3><p class="dialog-intro">각자의 하루를 응원하는 친구의 연락입니다. 연애는 서로 알아가기로 선택한 관계에서 이어집니다.</p>',[{t:'오늘의 연습을 응원한다',cls:'gray'},{t:'취소',cls:'gray'}]);
+    if(P===player && choice===0){sendFriendlyCheckIn(targetHid);save();toast('서로의 하루를 응원했습니다.');}return;
+  }
 
   const dmChoices = [
     {
@@ -6988,7 +7228,8 @@ async function openSendDmModal() {
     </div>
   `, msgBtns);
 
-  if (mIdx < 0 || mIdx >= dmChoices.length) return;
+  if (P!==player || mIdx < 0 || mIdx >= dmChoices.length || !canRomanticInteract(targetHid)) return;
+  if(weeklyState().dm[targetHid] || Object.keys(weeklyState().dm).length>=3)return;
   const chosenDm = dmChoices[mIdx];
 
   // Send DM and receive reply
@@ -7022,7 +7263,8 @@ async function openSendDmModal() {
       <div class="c" style="color:#f472b6;font-weight:800">💖 ${h.name} 호감도 +${chosenDm.aff}♥ · 스트레스 -15 해소</div>
     </div>
   `, [{ t: '대화 완료', cls: 'pink' }]);
-  await checkBondMilestone(targetHid); checkAchievements(); save();
+  if(P!==player)return;
+  await checkBondMilestone(targetHid); if(P!==player)return;checkAchievements(); save();
 }
 
 async function showSnsModal() {
@@ -7476,10 +7718,11 @@ async function openPhotoGalleryPicker() {
     });
 
     if (!choiceIdx || choiceIdx.type === 'cancel') break;
+    currentAskResolve=null;
     if (choiceIdx.type === 'reselect') continue;
 
     if (choiceIdx.type === 'publish') {
-      postToInsta(selPhoto.title, selPhoto.img, selPhoto.caption);
+      await openQuickPostModal();
       break;
     }
   }
@@ -7487,67 +7730,129 @@ async function openPhotoGalleryPicker() {
 
 
 // ======================================================================
-// ⚔️ Riot API 공식 연동 LCK 챔피언 선택 & 조합 시너지 시스템
+// 공식 Data Dragon 이미지 · 게임용 밴픽과 조합 판정
 // ======================================================================
 
 // ======================================================================
-// ⚔️ Riot API 공식 연동 LCK 챔피언 선택 & 조합 시너지 시스템
+// 공식 Data Dragon 이미지 · 게임용 밴픽과 조합 판정
 // ======================================================================
 
 const TEAM_COMPS = {
-  dive: { name: '🔥 돌진·이니시 조합 (Dive)', desc: '한타 개시력 +18% · 킬 캐치', champs: ['vi', 'nautilus', 'kaisa', 'sylas', 'aatrox'] },
-  wombo: { name: '🛡️ 밸런스 한타 조합 (Wombo)', desc: '후반 30분 한타 승률 +22%', champs: ['orianna', 'azir', 'ksante', 'jinx', 'thresh'] },
-  poke: { name: '⚡ 포킹·암살 조합 (Poke & Pick)', desc: '초반 라인전 주도권 +18%', champs: ['zed', 'leblanc', 'zeri', 'leesin', 'yasuo'] }
+  dive: { name: '🔥 돌진·이니시 조합 (Dive)', desc: '중·후반 국면 능력 ×1.18', champs: ['vi', 'nautilus', 'kaisa', 'sylas', 'aatrox'] },
+  wombo: { name: '🛡️ 밸런스 한타 조합 (Wombo)', desc: '후반 한타 국면 능력 ×1.22', champs: ['orianna', 'azir', 'ksante', 'jinx', 'thresh'] },
+  poke: { name: '⚡ 포킹·암살 조합 (Poke & Pick)', desc: '초반 국면 능력 ×1.18', champs: ['zed', 'leblanc', 'zeri', 'leesin', 'yasuo'] }
 };
+
+for(const c of CHAMPIONS){if(c.comp && TEAM_COMPS[c.comp])TEAM_COMPS[c.comp].champs.push(c.id);}
+
+// 경기 자동/수동은 같은 드래프트·국면·정산을 사용한다. 이 드래프트는 한 경기용이며
+// 세트별 기록을 재현하지 않는 현재 커리어의 BO 점수에 피어리스를 적용했다고 표시하지 않는다.
+function championMatchPower(champ = P.currentChamp) {
+  return masteryMatchPower(getChampMastery(champ?.id).lv);
+}
+function masteryMatchPower(rawLevel) {
+  const level=Number(rawLevel);
+  return Number.isFinite(level)?clamp(level-1,0,6)/5:0;
+}
+function phaseCompMultiplier(synergy,index) {
+  if(index===0 && synergy?.key==='poke')return 1.18;
+  if((index===1 || index===2) && synergy?.key==='dive')return 1.18;
+  if(index===2 && synergy?.key==='wombo')return 1.22;
+  return 1;
+}
+function clutchChoicePower(index) {
+  const mixes=[{mech:.75,lane:.25},{macro:.7,mental:.3},{team:.65,macro:.35}];
+  return statMix(mixes[index] || mixes[0]);
+}
+function bestPhaseChoice(ph) {
+  return ph.opts.filter(o=>!o.bd).reduce((best,o)=>!best || statMix(o.st)-o.risk*3>statMix(best.st)-best.risk*3?o:best,null) || ph.opts[0];
+}
+function draftCandidates(draft,role) {
+  const myUsed=new Set(Object.entries(draft.myRoster || {}).filter(([p])=>p!==role).map(([,c])=>c.id));
+  const enemyUsed=new Set(Object.values(draft.oppRoster || {}).map(c=>c.id));
+  return CHAMPIONS.filter(c=>c.role===role && !draft.bans.includes(c.id) && !myUsed.has(c.id) && (draft.mode==='blind' || !enemyUsed.has(c.id)));
+}
+function recommendDraftChampion(candidates,opponent,allies=[]) {
+  const value=c=>championMatchPower(c)+(c.strongVs || []).includes(opponent?.id)*1.5+
+    Object.values(TEAM_COMPS).reduce((best,comp)=>Math.max(best,comp.champs.includes(c.id)?allies.filter(a=>comp.champs.includes(a.id)).length*.25:0),0);
+  return candidates.reduce((best,c)=>!best || value(c)>value(best)?c:best,null);
+}
+function createMatchDraft(mode='tournament',preferredBan=null) {
+  const roles=['top','jg','mid','adc','sup'];
+  const draft={mode:mode==='blind'?'blind':'tournament',bans:[],myRoster:{},oppRoster:{}};
+  if(draft.mode==='tournament'){
+    if(CHAMPIONS.some(c=>c.id===preferredBan))draft.bans.push(preferredBan);
+    // 45명으로 드래프트가 막히지 않도록 각 역할에 최소 2명을 남기는 게임용 추천 밴.
+    // 실제 대회 전체 챔피언 풀/시리즈 피어리스 재현과는 구분한다.
+    while(draft.bans.length<10){
+      const candidates=CHAMPIONS.filter(c=>!draft.bans.includes(c.id) && CHAMPIONS.filter(x=>x.role===c.role&&!draft.bans.includes(x.id)).length>2);
+      if(!candidates.length)throw new Error('챔피언 풀이 부족해 드래프트를 생성할 수 없습니다.');
+      draft.bans.push(pick(candidates).id);
+    }
+  }
+  for(const role of roles){
+    const available=CHAMPIONS.filter(c=>c.role===role&&!draft.bans.includes(c.id));
+    draft.oppRoster[role]=pick(available);
+  }
+  for(const role of roles){
+    const candidates=draftCandidates(draft,role);
+    if(!candidates.length)throw new Error('해당 역할에 선택할 챔피언이 없습니다.');
+    draft.myRoster[role]=role===(P.pos || 'mid')?recommendDraftChampion(candidates,draft.oppRoster[role],Object.values(draft.myRoster)):pick(candidates);
+  }
+  // 내 픽 추천은 모든 동료의 조합을 본 뒤 동일한 정책으로 확정한다.
+  const role=P.pos || 'mid';
+  draft.myRoster[role]=recommendDraftChampion(draftCandidates(draft,role),draft.oppRoster[role],Object.entries(draft.myRoster).filter(([p])=>p!==role).map(([,c])=>c));
+  return draft;
+}
 
 function getChampIcon(c) {
   return `assets/champs/${c.id}.png`;
 }
 
 function analyzeCompSynergy(champList) {
-  const ids = champList.map(c => c.id);
-  for (const [k, comp] of Object.entries(TEAM_COMPS)) {
-    const matchCount = ids.filter(id => comp.champs.includes(id)).length;
-    if (matchCount >= 2) {
-      return { key: k, ...comp, count: matchCount };
-    }
-  }
-  return { key: 'standard', name: '⚖️ 스탠다드 밸런스 조합', desc: '모든 국면 안정적인 경기력', count: 1 };
+  const ids=champList.filter(Boolean).map(c=>c.id);
+  const ranked=Object.entries(TEAM_COMPS).map(([key,comp])=>({key,...comp,count:ids.filter(id=>comp.champs.includes(id)).length})).sort((a,b)=>b.count-a.count);
+  return ranked[0]?.count>=2?ranked[0]:{key:'standard',name:'스탠다드 밸런스 조합',desc:'기본 국면 판정',count:1};
 }
-
-async function showLckChampionSelectModal(opp) {
-  const myPos = P.pos || 'mid';
-  const posOrder = ['top', 'jg', 'mid', 'adc', 'sup'];
-
-  // 상대팀 5인 픽 생성
-  const oppRoster = {};
-  posOrder.forEach(p => {
-    const cand = CHAMPIONS.filter(c => c.role === p);
-    oppRoster[p] = cand.length > 0 ? pick(cand) : pick(CHAMPIONS);
-  });
-
-  // 우리팀 4인 픽 생성 (내 포지션 제외)
-  const myTeamRoster = {};
-  posOrder.forEach(p => {
-    if (p !== myPos) {
-      const cand = CHAMPIONS.filter(c => c.role === p && c.id !== oppRoster[p]?.id);
-      myTeamRoster[p] = cand.length > 0 ? pick(cand) : pick(CHAMPIONS);
-    }
-  });
-
-  const oppLaner = oppRoster[myPos] || CHAMPIONS[0];
-
-  // 추천 기본 픽
-  const myCandidates = CHAMPIONS.filter(c => c.role === myPos);
-  let selectedChamp = myCandidates.sort((a,b) => getChampMastery(b.id).lv - getChampMastery(a.id).lv)[0] || CHAMPIONS[0];
+async function showLckChampionSelectModal(opp, options = {}) {
+  const myPos=P.pos || 'mid',posOrder=['top','jg','mid','adc','sup'];
+  const mode=options.mode==='blind'?'blind':'tournament';
+  const rolePool=CHAMPIONS.filter(c=>c.role===myPos);
+  const comfort=rolePool.reduce((best,c)=>!best || championMatchPower(c)>championMatchPower(best)?c:best,null);
+  const recommendedBans=rolePool.filter(c=>c.id!==comfort?.id).sort((a,b)=>Number((b.strongVs || []).includes(comfort?.id))-Number((a.strongVs || []).includes(comfort?.id))).slice(0,3);
+  let preferredBan=mode==='tournament'?recommendedBans[0]?.id:null;
+  if(mode==='tournament' && !options.auto){
+    const choice=await ask('<h3>경기 준비 · 팀 추천 밴</h3><p class="dialog-intro">이번 경기에서 제외할 챔피언 한 명을 고릅니다. 나머지 9밴은 코칭스태프가 정합니다. 한 경기 드래프트이며 세트별 피어리스는 아직 재현하지 않습니다.</p>',recommendedBans.map(c=>({t:c.n+' 제외',cls:'gray'})));
+    preferredBan=recommendedBans[choice]?.id || preferredBan;
+  }
+  const draft=createMatchDraft(mode,preferredBan),oppRoster=draft.oppRoster;
+  const myTeamRoster=Object.fromEntries(Object.entries(draft.myRoster).filter(([p])=>p!==myPos));
+  const oppLaner=oppRoster[myPos],myCandidates=draftCandidates(draft,myPos);
+  let selectedChamp=draft.myRoster[myPos];
+  const finish=()=>{
+    draft.myRoster[myPos]=selectedChamp;
+    const isCounter=(selectedChamp.strongVs || []).includes(oppLaner.id);
+    const synergy=analyzeCompSynergy(Object.values(draft.myRoster));
+    const oppSynergy=analyzeCompSynergy(Object.values(draft.oppRoster));
+    P.currentChamp=selectedChamp;
+    // 자동/수동 모두 경기당 같은 숙련도를 지급한다.
+    addChampMastery(selectedChamp.id,100);
+    const oppCounter=(oppLaner.strongVs || []).includes(selectedChamp.id);
+    const oppMasteryPower=masteryMatchPower(opp.champs?.[oppLaner.id]?.lv ?? opp.championMastery ?? 1);
+    return {myChamp:selectedChamp,bannedChamp:preferredBan,bonus:isCounter?15:5,isCounter,oppCounter,synergy,oppSynergy,oppMasteryPower,draft,autoPlay:!!options.auto};
+  };
+  if(options.auto)return finish();
 
   while (true) {
     const fullMyTeam = Object.values(myTeamRoster).concat([selectedChamp]);
     const synergy = analyzeCompSynergy(fullMyTeam);
     const isCounter = (selectedChamp.strongVs || []).includes(oppLaner.id);
+    const oppCounter=(oppLaner.strongVs || []).includes(selectedChamp.id);
 
     const draftHtml = `
-      <h3>⚔️ LCK 공식 밴픽 &amp; 챔피언 선택</h3>
+      <h3>경기 챔피언 선택 · ${mode==='blind'?'블라인드':'대회 드래프트'}</h3>
+      <p class="dialog-intro">${mode==='blind'?'같은 팀 내 중복 불가 · 상대 팀과 같은 챔피언 가능':'양 팀 10픽 중복 불가 · 10밴 적용 · 세트별 피어리스 미지원'}</p>
+      ${draft.bans.length?'<p class="dialog-intro">제외: '+draft.bans.map(id=>CHAMPIONS.find(c=>c.id===id)?.n || id).join(', ')+'</p>':''}
       <div class="c" style="color:#9aa4b2;font-size:12px;margin-bottom:8px">
         상대: <b>${opp.name}</b> (전력 ${opp.str}) vs 우리 팀 (전력 ${Math.round(teamPow())})
       </div>
@@ -7593,8 +7898,9 @@ async function showLckChampionSelectModal(opp) {
       <div style="background:#11182c;border:1px solid #28375c;border-radius:10px;padding:9px 12px;margin-bottom:8px">
         <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
           <span>맞라인 상성:</span>
-          <b>${isCounter ? `<span style="color:#4ade80">🎯 카운터 우세! (${selectedChamp.n} > ${oppLaner.n} 라인전 +15%)</span>` : `<span style="color:#cbd5e1">⚖️ 팽팽한 호각세</span>`}</b>
+          <b>${isCounter===oppCounter?`<span style="color:#cbd5e1">대등한 상성</span>`:isCounter?`<span style="color:#4ade80">카운터 우세 · 라인전 능력 ×1.15</span>`:`<span style="color:#fca5a5">역상성 · 상대 라인전 능력 ×1.15</span>`}</b>
         </div>
+        <p style="font-size:11px;color:#94a3b8">숙련 전력 +${championMatchPower(selectedChamp).toFixed(1)} · 상대 조합: ${analyzeCompSynergy(Object.values(oppRoster)).name}<br>상성·조합의 국면 계수는 상대 팀에도 똑같이 적용됩니다.</p>
         <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-top:4px">
           <span>팀 시너지:</span>
           <b style="color:#fde047">${synergy.name} <small style="color:#94a3b8">(${synergy.desc})</small></b>
@@ -7602,7 +7908,7 @@ async function showLckChampionSelectModal(opp) {
       </div>
 
       <!-- 챔피언 선택 그리드 -->
-      <div style="font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:4px">내 챔피언 선택 (Riot Data Dragon 연동):</div>
+      <div style="font-size:12px;font-weight:800;color:#cbd5e1;margin-bottom:4px">내 챔피언 · 숙련도와 조합을 보고 고르세요</div>
       <div class="champ-pick-grid">
         ${myCandidates.map(c => {
           const isSel = c.id === selectedChamp.id;
@@ -7621,12 +7927,12 @@ async function showLckChampionSelectModal(opp) {
 
     const choiceIdx = await new Promise(res => {
       // 주간 경기의 밴픽을 닫으면 추천 픽으로 이어가 비동기 진행이 멈추지 않는다.
-      currentAskResolve = () => res({ type: 'auto' });
+      currentAskResolve = () => res({ type: 'confirm' });
       $('#mBody').innerHTML = draftHtml;
 
       $('#mBody').querySelectorAll('[data-cid]').forEach(card => {
         card.onclick = () => {
-          const cObj = CHAMPIONS.find(x => x.id === card.dataset.cid);
+          const cObj = myCandidates.find(x => x.id === card.dataset.cid);
           if (cObj) {
             selectedChamp = cObj;
             res({ type: 'reselect' });
@@ -7637,7 +7943,7 @@ async function showLckChampionSelectModal(opp) {
       const f = $('#mBtns'); f.innerHTML = '';
       const btns = [
         { t: `✨ [${selectedChamp.n}] 출전 확정!`, cls: 'gold', type: 'confirm' },
-        { t: '⚡ [AI 최적 추천 픽으로 즉시 출전]', cls: 'purple', type: 'auto' }
+        { t: '⚡ [팀 추천 픽으로 즉시 출전]', cls: 'purple', type: 'auto' }
       ];
       btns.forEach((b, i) => {
         const e = document.createElement('button');
@@ -7649,22 +7955,17 @@ async function showLckChampionSelectModal(opp) {
       $('#modal').classList.remove('hidden');
     });
 
+    currentAskResolve=null;
     if (choiceIdx.type === 'reselect') continue;
 
     if (choiceIdx.type === 'auto') {
       // 카운터 또는 최고 숙련도 픽
-      const counterPick = myCandidates.find(c => (c.strongVs || []).includes(oppLaner.id));
-      selectedChamp = counterPick || myCandidates[0];
-      toast(`⚡ [AI 최적 픽] ${selectedChamp.n} 자동 선택 완료!`);
+      selectedChamp = recommendDraftChampion(myCandidates,oppLaner,Object.values(myTeamRoster));
+      options.auto=true;
+      toast(`⚡ [팀 추천 픽] ${selectedChamp.n} 자동 선택 완료!`);
     }
 
-    const finalIsCounter = (selectedChamp.strongVs || []).includes(oppLaner.id);
-    const finalFullTeam = Object.values(myTeamRoster).concat([selectedChamp]);
-    const finalSynergy = analyzeCompSynergy(finalFullTeam);
-    addChampMastery(selectedChamp.id, 100);
-    P.currentChamp = selectedChamp;
-    const bonusVal = finalIsCounter ? 15 : 5;
-    return { myChamp: selectedChamp, bannedChamp: oppRoster.mid?.id, bonus: bonusVal, isCounter: finalIsCounter, synergy: finalSynergy };
+    return finish();
   }
 }
 
@@ -8038,8 +8339,8 @@ function renderCreate() {
 // ======================================================================
 // 회사 로고 오프닝 비디오 연출 & 인앱 자동 업데이트 (v1.7.0)
 // ======================================================================
-const CURRENT_VERSION = '2.7.1';
-const CURRENT_VERSION_CODE = 20;
+const CURRENT_VERSION = '2.8.0';
+const CURRENT_VERSION_CODE = 21;
 
 function initIntroVideo() {
   const splash = document.getElementById('introSplash');

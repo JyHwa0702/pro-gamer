@@ -1,0 +1,329 @@
+{
+  "generatedAt": "2026-11-04T15:11:40.101Z",
+  "localVersion": "2.8.0",
+  "versionCode": 21,
+  "sourceSha256": "4222e731292d4cff760f25b6282c96a8d8fd9812a063099f5fe6ecba6c49d6d8",
+  "deployed": false,
+  "nativePackageUpdated": false,
+  "pipeline": "SUCCESS: ALL TESTS PASSED",
+  "syntax": "SYNTAX_OK",
+  "regression": {
+    "total": 203,
+    "passed": 199,
+    "failed": 0,
+    "skipped": 4,
+    "skipTests": [
+      "ok 69 - 신규 활동 미사용5포지션78주 실질 상태·주가·난수는2.5와 같다 # SKIP",
+      "ok 164 - 활동 미사용5포지션78주 정산/주가/다음난수는 수정 전과 같다 # SKIP",
+      "ok 192 - 아마추어 5포지션의 78주 성장·해금·스카우트도 수정 전후가 같다 # SKIP",
+      "ok 193 - 동일 시드의 수정 전후 78주 정산·주가·다음 난수가 같다 # SKIP"
+    ]
+  },
+  "match": {
+    "passed": true,
+    "totalMatches": 15000,
+    "sourceSha256": "4222e731292d4cff760f25b6282c96a8d8fd9812a063099f5fe6ecba6c49d6d8"
+  },
+  "season": {
+    "passed": true,
+    "runs": 90,
+    "weeks": 2340,
+    "sourceSha256": "4222e731292d4cff760f25b6282c96a8d8fd9812a063099f5fe6ecba6c49d6d8"
+  },
+  "browser": {
+    "core": {
+      "result": "CORE_CAREER_BROWSER_PASS",
+      "isolatedContext": true,
+      "widths": [
+        320,
+        390,
+        1100
+      ],
+      "relationshipCap": "1+2",
+      "actualDate": true,
+      "weeklyDateLimit": true,
+      "photoAndCaption": true,
+      "photoZoom": true,
+      "discovery": true,
+      "trustAfterApology": 85,
+      "reload": true,
+      "stopAndResume": true,
+      "automatic": {
+        "year": 2,
+        "week": 1,
+        "archive": 1,
+        "fastSkip": false,
+        "pending": false,
+        "games": 16,
+        "money": 155980000
+      },
+      "icons": {
+        "count": 45,
+        "loaded": 45
+      },
+      "offline": true,
+      "pageErrors": []
+    },
+    "draft": {
+      "result": "MANUAL_DRAFT_BROWSER_PASS",
+      "candidates": 5,
+      "widths": [
+        320,
+        390,
+        1100
+      ],
+      "manualPhase": true,
+      "remainingAutomatic": true,
+      "state": {
+        "match": {
+          "win": true,
+          "rating": 8.453633576828537,
+          "mySetW": 2,
+          "mySetL": 0,
+          "masteryPower": 0,
+          "phaseWins": 3,
+          "adv": 2.9674628252268906,
+          "draft": {
+            "mode": "tournament",
+            "bans": [
+              "zed",
+              "xinzhao",
+              "jinx",
+              "aphelios",
+              "leesin",
+              "lulu",
+              "azir",
+              "sylas",
+              "viego",
+              "karma"
+            ],
+            "myRoster": {
+              "top": {
+                "id": "aatrox",
+                "n": "아트록스",
+                "role": "top",
+                "t": "세계의 종말",
+                "st": {
+                  "mech": 1.3,
+                  "lane": 1.3
+                },
+                "strongVs": [
+                  "ksante"
+                ]
+              },
+              "jg": {
+                "id": "nocturne",
+                "n": "녹턴",
+                "role": "jg",
+                "t": "피해망상 합류",
+                "st": {
+                  "macro": 1.3,
+                  "team": 1.3
+                },
+                "strongVs": [
+                  "nidalee",
+                  "leesin"
+                ],
+                "comp": "dive"
+              },
+              "mid": {
+                "id": "viktor",
+                "n": "빅토르",
+                "role": "mid",
+                "t": "중력장 통제",
+                "st": {
+                  "lane": 1.3,
+                  "team": 1.3
+                },
+                "strongVs": [
+                  "orianna",
+                  "taliyah"
+                ],
+                "comp": "wombo"
+              },
+              "adc": {
+                "id": "ashe",
+                "n": "애쉬",
+                "role": "adc",
+                "t": "마법의 수정화살",
+                "st": {
+                  "lane": 1.3,
+                  "team": 1.3
+                },
+                "strongVs": [
+                  "ezreal",
+                  "xayah"
+                ],
+                "comp": "poke"
+              },
+              "sup": {
+                "id": "alistar",
+                "n": "알리스타",
+                "role": "sup",
+                "t": "분쇄 진입",
+                "st": {
+                  "team": 1.5,
+                  "lane": 1.1
+                },
+                "strongVs": [
+                  "leona",
+                  "rakan"
+                ],
+                "comp": "dive"
+              }
+            },
+            "oppRoster": {
+              "top": {
+                "id": "gwen",
+                "n": "그웬",
+                "role": "top",
+                "t": "신성한 안개",
+                "st": {
+                  "mech": 1.3,
+                  "team": 1.3
+                },
+                "strongVs": [
+                  "ornn",
+                  "ksante"
+                ],
+                "comp": "dive"
+              },
+              "jg": {
+                "id": "vi",
+                "n": "바이",
+                "role": "jg",
+                "t": "기동타격 록온",
+                "st": {
+                  "team": 1.3,
+                  "macro": 1.2
+                },
+                "strongVs": [
+                  "leesin"
+                ]
+              },
+              "mid": {
+                "id": "yasuo",
+                "n": "야스오",
+                "role": "mid",
+                "t": "바람 장막",
+                "st": {
+                  "mech": 1.5,
+                  "team": 1.1
+                },
+                "strongVs": [
+                  "orianna",
+                  "azir"
+                ]
+              },
+              "adc": {
+                "id": "xayah",
+                "n": "자야",
+                "role": "adc",
+                "t": "깃부르미 반격",
+                "st": {
+                  "mech": 1.3,
+                  "team": 1.3
+                },
+                "strongVs": [
+                  "kaisa",
+                  "sivir"
+                ],
+                "comp": "wombo"
+              },
+              "sup": {
+                "id": "thresh",
+                "n": "쓰레쉬",
+                "role": "sup",
+                "t": "사형선고 랜턴",
+                "st": {
+                  "mech": 1.3,
+                  "macro": 1.3
+                },
+                "strongVs": [
+                  "nautilus"
+                ]
+              }
+            }
+          }
+        },
+        "games": 1,
+        "selected": "viktor",
+        "mastery": 100,
+        "pending": false
+      },
+      "pageErrors": []
+    }
+  },
+  "versionsSynchronized": true,
+  "assets": [
+    {
+      "file": "couple_jieun_cafe.png",
+      "bytes": 2797479,
+      "sha256": "195f640d3927fc048e4416442f372149ac81fc0f9fb494b7425c870fbdbf4576",
+      "dualIdentical": true
+    },
+    {
+      "file": "couple_harin_game.png",
+      "bytes": 2374507,
+      "sha256": "073041c18b9d988c8c75f3c2e1ada71a4dd234f6b35cc1b0cf3e2fbab52e901e",
+      "dualIdentical": true
+    },
+    {
+      "file": "couple_mina_lounge.png",
+      "bytes": 2480199,
+      "sha256": "c9d6f740ec3b8fa4a0218438021db47dbb2084d9fb9e9b179bd45cdca6d36d19",
+      "dualIdentical": true
+    },
+    {
+      "file": "couple_walk_shared.png",
+      "bytes": 2664784,
+      "sha256": "668e56ee8cc33d0f2a781b65f5154fe5e8499b1166e56c6f941925a37de5df97",
+      "dualIdentical": true
+    },
+    {
+      "file": "jieun_concerned.png",
+      "bytes": 1827380,
+      "sha256": "0a61cd66ad094fafefe22b04cdcd0264569524774103b6fe9ecdd89ab6f9a405",
+      "dualIdentical": true
+    },
+    {
+      "file": "harin_concerned.png",
+      "bytes": 2122070,
+      "sha256": "616626980273194c16fe82e5d09da5757e4d75320ea6d4e65e8fb8c270241ebe",
+      "dualIdentical": true
+    },
+    {
+      "file": "mina_concerned.png",
+      "bytes": 1890791,
+      "sha256": "05beea4b08f49191b64830dc161ba0db8aedebc28805956f0872461a9c9ae413",
+      "dualIdentical": true
+    },
+    {
+      "file": "couple_cafe_shared.png",
+      "bytes": 2486674,
+      "sha256": "930b1fca1f3cf075c59646e6e6126bfec6131f670bc2e8d58bc8c54b987cb8cc",
+      "dualIdentical": true
+    }
+  ],
+  "championAssetPaths": {
+    "checked": 90,
+    "missing": 0
+  },
+  "stageShow": {
+    "separateIllustrativeDemo": true,
+    "statesAndPosterGate": "rehearsal passed",
+    "coverage": "inconclusive",
+    "maxGapMs": [
+      149.6,
+      152.1
+    ],
+    "actualGameRuntime": "Vanilla single HTML, no demo React runtime"
+  },
+  "limits": [
+    "실제 모바일 OS/설치 APK 실행 미검증",
+    "사람이 느끼는 재미/모든 실제 사용자 세이브 전수 미검증",
+    "자체 경기 수치이며 실제 LoL 패치 승률/전투 엔진 아님",
+    "실제 다전제 세트·피어리스 미구현",
+    "기존 패키지 v2.7.1/20, 이번 로컬웹 v2.8.0/21 미배포"
+  ]
+}

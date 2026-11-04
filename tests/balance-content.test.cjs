@@ -34,7 +34,7 @@ test('같은 팬 수의 좋아요가 실제 OVR을 반영한다',()=>{
   const likes=[20,100].map(n=>{const g=game(777);g.run(`Object.keys(P.s).forEach(k=>P.s[k]=${n});P.fans=10000;`);return g.run('calculateInstaMetrics().likes');});assert.ok(likes[1]>likes[0]);
 });
 test('같은 인물의 DM을 반복해도 호감도와 멘탈 보상은 주1회다',async()=>{
-  const g=game();g.run('let dialog=0;ask=async()=>[0,2,0][dialog++%3];P.stress=90;');
+  const g=game();g.run("tryBeginFlirt('jieun');let dialog=0;ask=async()=>[0,2,0][dialog++%3];P.stress=90;");
   await g.run('openSendDmModal()');const before=g.run('[P.bonds.jieun.aff,P.stress]');
   await g.run('openSendDmModal()');assert.deepEqual(plain(g.run('[P.bonds.jieun.aff,P.stress]')),plain(before));
 });
@@ -50,7 +50,7 @@ test('직접 메뉴와 일정은 같은 주간 데이트 제한을 공유한다'
   const g=game();g.run('P.weeklyDates=1;let ends=0;weekEnd=async()=>ends++;');await g.run("takeTurn('date')");assert.equal(g.run('ends'),0);assert.equal(g.run('P.money'),500000);
 });
 test('데이트 실행은 체력과 돈을 지불하고 주1회만 허용한다',async()=>{
-  const g=game();assert.equal(await g.run("performHeroineDate('jieun','cafe')"),true);
+  const g=game();assert.equal(g.run("tryBeginFlirt('jieun').ok"),true);assert.equal(await g.run("performHeroineDate('jieun','cafe')"),true);
   assert.equal(g.run('P.money'),470000);assert.equal(g.run('P.hp'),92);
   assert.equal(await g.run("performHeroineDate('jieun','cafe')"),false);assert.equal(g.run('P.money'),470000);
 });

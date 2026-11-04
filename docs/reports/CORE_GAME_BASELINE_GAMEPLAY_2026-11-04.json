@@ -1,0 +1,822 @@
+{
+  "sourceSha256": "f8f5d63513fb8a194a39d3f4202dc735e6a9d939803991b95c135bbfa6864cdd",
+  "method": "Actual application functions in tests/game-harness.cjs. VM DOM drives clicks; no app source edits. No live browser or human fun claim.",
+  "samples": [
+    {
+      "name": "manual_baseline",
+      "n": 2000,
+      "wins": 1248,
+      "winRate": 0.624,
+      "meanRating": 6.927955652517794,
+      "input": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "9f6aede377da5700713d0bb6dd88e51eb316fdeccafa4ce5842859a8506c9a2c",
+      "fast": false,
+      "counter": false,
+      "synergy": "standard",
+      "stats": 65,
+      "mastery": 1,
+      "policy": "auto",
+      "realQte": false
+    },
+    {
+      "name": "fast_baseline",
+      "n": 2000,
+      "wins": 979,
+      "winRate": 0.4895,
+      "meanRating": 5.40605000000007,
+      "input": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "8121f7277c005fb919b472338e4a9e9a8ba2d6e3c0a9c33244f9bcde8f3bbccf",
+      "fast": true,
+      "counter": false,
+      "synergy": "standard",
+      "stats": 65,
+      "mastery": 1,
+      "policy": "auto",
+      "realQte": false
+    },
+    {
+      "name": "manual_counter",
+      "n": 2000,
+      "wins": 1530,
+      "winRate": 0.765,
+      "meanRating": 7.376728069195567,
+      "input": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "5c1b10374806cec7c1f7bbc6f6a931a35cdeb4e523c21662af4808bcaf6ceba3",
+      "fast": false,
+      "counter": true,
+      "synergy": "standard",
+      "stats": 65,
+      "mastery": 1,
+      "policy": "auto",
+      "realQte": false
+    },
+    {
+      "name": "manual_dive",
+      "n": 2000,
+      "wins": 1597,
+      "winRate": 0.7985,
+      "meanRating": 7.958352021378208,
+      "input": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "62bcdbb659140ae27186c13c6fb3472bffdbe44ff09e7f3b76b33f8dca7c4ddb",
+      "fast": false,
+      "counter": false,
+      "synergy": "dive",
+      "stats": 65,
+      "mastery": 1,
+      "policy": "auto",
+      "realQte": false
+    },
+    {
+      "name": "manual_wombo",
+      "n": 2000,
+      "wins": 1462,
+      "winRate": 0.731,
+      "meanRating": 7.552710023833849,
+      "input": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "af9cfbe3d1d4b92ca16f1bdfb6ca668ef23e73c21d14c4920beef91a17533359",
+      "fast": false,
+      "counter": false,
+      "synergy": "wombo",
+      "stats": 65,
+      "mastery": 1,
+      "policy": "auto",
+      "realQte": false
+    },
+    {
+      "name": "manual_poke",
+      "n": 2000,
+      "wins": 1436,
+      "winRate": 0.718,
+      "meanRating": 7.492768483191245,
+      "input": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "3258c8e30ab4980e291740e9950de45c6b15f23a1809f332838bba14b749aef2",
+      "fast": false,
+      "counter": false,
+      "synergy": "poke",
+      "stats": 65,
+      "mastery": 1,
+      "policy": "auto",
+      "realQte": false
+    },
+    {
+      "name": "manual_mastery7",
+      "n": 2000,
+      "wins": 1248,
+      "winRate": 0.624,
+      "meanRating": 6.927955652517794,
+      "input": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "9f6aede377da5700713d0bb6dd88e51eb316fdeccafa4ce5842859a8506c9a2c",
+      "fast": false,
+      "counter": false,
+      "synergy": "standard",
+      "stats": 65,
+      "mastery": 7,
+      "policy": "auto",
+      "realQte": false
+    },
+    {
+      "name": "fast_mastery7",
+      "n": 2000,
+      "wins": 979,
+      "winRate": 0.4895,
+      "meanRating": 5.40605000000007,
+      "input": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "8121f7277c005fb919b472338e4a9e9a8ba2d6e3c0a9c33244f9bcde8f3bbccf",
+      "fast": true,
+      "counter": false,
+      "synergy": "standard",
+      "stats": 65,
+      "mastery": 7,
+      "policy": "auto",
+      "realQte": false
+    },
+    {
+      "name": "manual_stats75",
+      "n": 2000,
+      "wins": 1880,
+      "winRate": 0.94,
+      "meanRating": 8.734953943389657,
+      "input": {
+        "ovr": 75,
+        "teamPow": 68.8,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "830efa80520357da8c4ed1f3cf86d85eb3d0a2253224d19e44b36de72c58be6e",
+      "fast": false,
+      "counter": false,
+      "synergy": "standard",
+      "stats": 75,
+      "mastery": 1,
+      "policy": "auto",
+      "realQte": false
+    },
+    {
+      "name": "fast_stats75",
+      "n": 2000,
+      "wins": 1287,
+      "winRate": 0.6435,
+      "meanRating": 6.149700000000123,
+      "input": {
+        "ovr": 75,
+        "teamPow": 68.8,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "990ff28295816e513f6d14089d0de5eded1d0a30602fa4201691512da5a67bb8",
+      "fast": true,
+      "counter": false,
+      "synergy": "standard",
+      "stats": 75,
+      "mastery": 1,
+      "policy": "auto",
+      "realQte": false
+    },
+    {
+      "name": "manual_first_choice",
+      "n": 2000,
+      "wins": 1305,
+      "winRate": 0.6525,
+      "meanRating": 6.927955652517794,
+      "input": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "6a9bd1a3fca31ebca11aaa013346b1ad722c640c3df4733b08ee535e0658bb93",
+      "fast": false,
+      "counter": false,
+      "synergy": "standard",
+      "stats": 65,
+      "mastery": 1,
+      "policy": "0",
+      "realQte": false
+    },
+    {
+      "name": "manual_realqte_choice0",
+      "n": 2000,
+      "wins": 1364,
+      "winRate": 0.682,
+      "meanRating": 6.959446325376127,
+      "input": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "490230a2837533bf23258774c778df966555054cbcbe64c207b7e246144ba854",
+      "fast": false,
+      "counter": false,
+      "synergy": "standard",
+      "stats": 65,
+      "mastery": 1,
+      "policy": "auto",
+      "realQte": true
+    },
+    {
+      "name": "manual_realqte_choice2",
+      "n": 2000,
+      "wins": 1364,
+      "winRate": 0.682,
+      "meanRating": 6.959446325376127,
+      "input": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0
+      },
+      "signature": "490230a2837533bf23258774c778df966555054cbcbe64c207b7e246144ba854",
+      "fast": false,
+      "counter": false,
+      "synergy": "standard",
+      "stats": 65,
+      "mastery": 1,
+      "policy": "auto",
+      "realQte": true
+    }
+  ],
+  "drafts": {
+    "roleCounts": {
+      "top": 2,
+      "jg": 2,
+      "mid": 6,
+      "adc": 3,
+      "sup": 2
+    },
+    "n": 500,
+    "mirror": 199,
+    "sameTeamDuplicate": 0,
+    "offRole": 0,
+    "examples": [
+      {
+        "pos": "top",
+        "my": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          },
+          {
+            "role": "jg",
+            "id": "leesin"
+          },
+          {
+            "role": "mid",
+            "id": "zed"
+          },
+          {
+            "role": "adc",
+            "id": "zeri"
+          },
+          {
+            "role": "sup",
+            "id": "thresh"
+          }
+        ],
+        "opp": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          },
+          {
+            "role": "jg",
+            "id": "vi"
+          },
+          {
+            "role": "mid",
+            "id": "leblanc"
+          },
+          {
+            "role": "adc",
+            "id": "jinx"
+          },
+          {
+            "role": "sup",
+            "id": "nautilus"
+          }
+        ],
+        "shared": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          }
+        ]
+      },
+      {
+        "pos": "top",
+        "my": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          },
+          {
+            "role": "jg",
+            "id": "vi"
+          },
+          {
+            "role": "mid",
+            "id": "azir"
+          },
+          {
+            "role": "adc",
+            "id": "jinx"
+          },
+          {
+            "role": "sup",
+            "id": "nautilus"
+          }
+        ],
+        "opp": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          },
+          {
+            "role": "jg",
+            "id": "leesin"
+          },
+          {
+            "role": "mid",
+            "id": "leblanc"
+          },
+          {
+            "role": "adc",
+            "id": "kaisa"
+          },
+          {
+            "role": "sup",
+            "id": "thresh"
+          }
+        ],
+        "shared": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          }
+        ]
+      },
+      {
+        "pos": "top",
+        "my": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          },
+          {
+            "role": "jg",
+            "id": "leesin"
+          },
+          {
+            "role": "mid",
+            "id": "orianna"
+          },
+          {
+            "role": "adc",
+            "id": "kaisa"
+          },
+          {
+            "role": "sup",
+            "id": "nautilus"
+          }
+        ],
+        "opp": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          },
+          {
+            "role": "jg",
+            "id": "vi"
+          },
+          {
+            "role": "mid",
+            "id": "azir"
+          },
+          {
+            "role": "adc",
+            "id": "zeri"
+          },
+          {
+            "role": "sup",
+            "id": "thresh"
+          }
+        ],
+        "shared": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          }
+        ]
+      },
+      {
+        "pos": "top",
+        "my": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          },
+          {
+            "role": "jg",
+            "id": "vi"
+          },
+          {
+            "role": "mid",
+            "id": "orianna"
+          },
+          {
+            "role": "adc",
+            "id": "kaisa"
+          },
+          {
+            "role": "sup",
+            "id": "nautilus"
+          }
+        ],
+        "opp": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          },
+          {
+            "role": "jg",
+            "id": "leesin"
+          },
+          {
+            "role": "mid",
+            "id": "yasuo"
+          },
+          {
+            "role": "adc",
+            "id": "jinx"
+          },
+          {
+            "role": "sup",
+            "id": "thresh"
+          }
+        ],
+        "shared": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          }
+        ]
+      },
+      {
+        "pos": "top",
+        "my": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          },
+          {
+            "role": "jg",
+            "id": "leesin"
+          },
+          {
+            "role": "mid",
+            "id": "leblanc"
+          },
+          {
+            "role": "adc",
+            "id": "zeri"
+          },
+          {
+            "role": "sup",
+            "id": "thresh"
+          }
+        ],
+        "opp": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          },
+          {
+            "role": "jg",
+            "id": "vi"
+          },
+          {
+            "role": "mid",
+            "id": "zed"
+          },
+          {
+            "role": "adc",
+            "id": "jinx"
+          },
+          {
+            "role": "sup",
+            "id": "nautilus"
+          }
+        ],
+        "shared": [
+          {
+            "role": "top",
+            "id": "aatrox"
+          }
+        ]
+      }
+    ]
+  },
+  "automation": {
+    "fastResultButton": {
+      "phaseButtons": 3,
+      "skipButtons": 3,
+      "continueButtons": 1
+    },
+    "regular": {
+      "calls": [
+        {
+          "label": "LCK 스프링 2라운드",
+          "big": false,
+          "fastArg": true,
+          "fastSkip": null
+        }
+      ],
+      "asks": 0,
+      "phase": {
+        "sp": "스프링",
+        "t": "reg",
+        "r": 3
+      }
+    },
+    "playoffs": {
+      "calls": [
+        {
+          "label": "LCK 스프링 준결승 1경기",
+          "big": true,
+          "fastArg": null,
+          "fastSkip": null
+        },
+        {
+          "label": "LCK 스프링 그랜드 파이널 (결승전)",
+          "big": true,
+          "fastArg": null,
+          "fastSkip": null
+        }
+      ],
+      "asks": 4,
+      "phase": {
+        "sp": "서머",
+        "t": "reg",
+        "r": 1
+      }
+    },
+    "worlds_final": {
+      "calls": [
+        {
+          "label": "🏆 월드 챔피언십 결승전 🏆",
+          "big": true,
+          "fastArg": null,
+          "fastSkip": null
+        }
+      ],
+      "asks": 1,
+      "phase": {
+        "sp": "비시즌",
+        "t": "off"
+      }
+    }
+  },
+  "qte": {
+    "choice0vs2Identical": true
+  },
+  "training": [
+    {
+      "action": "rest",
+      "before": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0,
+        "stats": {
+          "mech": 65,
+          "lane": 65,
+          "macro": 65,
+          "team": 65,
+          "pool": 65,
+          "mental": 65
+        }
+      },
+      "after": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0,
+        "stats": {
+          "mech": 65,
+          "lane": 65,
+          "macro": 65,
+          "team": 65,
+          "pool": 65,
+          "mental": 65
+        }
+      },
+      "fastTheoreticalWinProbBefore": 0.5,
+      "fastTheoreticalWinProbAfter": 0.5
+    },
+    {
+      "action": "lane",
+      "before": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0,
+        "stats": {
+          "mech": 65,
+          "lane": 65,
+          "macro": 65,
+          "team": 65,
+          "pool": 65,
+          "mental": 65
+        }
+      },
+      "after": {
+        "ovr": 65.7765,
+        "teamPow": 64.59520803999999,
+        "hp": 86,
+        "stress": 5.0625,
+        "stats": {
+          "mech": 65.83,
+          "lane": 67.11,
+          "macro": 65,
+          "team": 65,
+          "pool": 65,
+          "mental": 65
+        }
+      },
+      "fastTheoreticalWinProbBefore": 0.5,
+      "fastTheoreticalWinProbAfter": 0.4858322813999996
+    },
+    {
+      "action": "mech",
+      "before": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0,
+        "stats": {
+          "mech": 65,
+          "lane": 65,
+          "macro": 65,
+          "team": 65,
+          "pool": 65,
+          "mental": 65
+        }
+      },
+      "after": {
+        "ovr": 65.66,
+        "teamPow": 64.5521776,
+        "hp": 86,
+        "stress": 5.0625,
+        "stats": {
+          "mech": 67.2,
+          "lane": 65,
+          "macro": 65,
+          "team": 65,
+          "pool": 65,
+          "mental": 65
+        }
+      },
+      "fastTheoreticalWinProbBefore": 0.5,
+      "fastTheoreticalWinProbAfter": 0.48432621599999975
+    },
+    {
+      "action": "vod",
+      "before": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0,
+        "stats": {
+          "mech": 65,
+          "lane": 65,
+          "macro": 65,
+          "team": 65,
+          "pool": 65,
+          "mental": 65
+        }
+      },
+      "after": {
+        "ovr": 65.5345,
+        "teamPow": 64.85446646,
+        "hp": 93,
+        "stress": 3.375,
+        "stats": {
+          "mech": 65,
+          "lane": 65,
+          "macro": 67.11,
+          "team": 65.75,
+          "pool": 65,
+          "mental": 65
+        }
+      },
+      "fastTheoreticalWinProbBefore": 0.5,
+      "fastTheoreticalWinProbAfter": 0.4949063260999999
+    },
+    {
+      "action": "pool",
+      "before": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0,
+        "stats": {
+          "mech": 65,
+          "lane": 65,
+          "macro": 65,
+          "team": 65,
+          "pool": 65,
+          "mental": 65
+        }
+      },
+      "after": {
+        "ovr": 65.244,
+        "teamPow": 64.5968656,
+        "hp": 90,
+        "stress": 4.21875,
+        "stats": {
+          "mech": 65,
+          "lane": 65,
+          "macro": 65,
+          "team": 65,
+          "pool": 67.44,
+          "mental": 65
+        }
+      },
+      "fastTheoreticalWinProbBefore": 0.5,
+      "fastTheoreticalWinProbAfter": 0.48589029600000005
+    },
+    {
+      "action": "scrim",
+      "before": {
+        "ovr": 65,
+        "teamPow": 65,
+        "hp": 100,
+        "stress": 0,
+        "stats": {
+          "mech": 65,
+          "lane": 65,
+          "macro": 65,
+          "team": 65,
+          "pool": 65,
+          "mental": 65
+        }
+      },
+      "after": {
+        "ovr": 65.53649999999999,
+        "teamPow": 65.4567539,
+        "hp": 85,
+        "stress": 5.90625,
+        "stats": {
+          "mech": 65,
+          "lane": 65,
+          "macro": 66.16,
+          "team": 67.03,
+          "pool": 65,
+          "mental": 65
+        }
+      },
+      "fastTheoreticalWinProbBefore": 0.5,
+      "fastTheoreticalWinProbAfter": 0.5159863864999998
+    }
+  ]
+}

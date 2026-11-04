@@ -13,7 +13,7 @@ function game(seed = 12345, htmlOverride) {
   math.random = () => { state = (Math.imul(state, 1664525) + 1013904223) >>> 0; return state / 4294967296; };
   const context = vm.createContext({ console, Math: math, Date, window: {}, document: { querySelector: element, querySelectorAll: () => [], createElement: () => element(Symbol()) }, localStorage: { getItem: k => storage.get(k) || null, setItem: (k, v) => storage.set(k, v), removeItem: k => storage.delete(k) }, setTimeout: () => 0, clearTimeout() {} });
   vm.runInContext(gameSource.slice(0, gameSource.lastIndexOf('P = load();')).replace('const sleep =', 'let sleep ='), context);
-  vm.runInContext('globalThis.__nativeCutscene=showHeroineCutscene;globalThis.__nativeAchievements=checkAchievements;globalThis.__nativeRender=render;', context);
+  vm.runInContext('globalThis.__nativeAsk=ask;globalThis.__nativeCutscene=showHeroineCutscene;globalThis.__nativeAchievements=checkAchievements;globalThis.__nativeRender=render;', context);
   const run = code => vm.runInContext(code, context);
   run(`toast=()=>{}; render=()=>{}; renderTop=()=>{}; playJackpotSound=()=>{}; playDateSound=()=>{}; playCoinSound=()=>{}; sleep=async()=>{};
     ask=async()=>0; showHeroineCutscene=async()=>0; checkAchievements=()=>{};

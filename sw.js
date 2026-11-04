@@ -1,5 +1,5 @@
 // Service Worker for Automatic Updates & Offline Play
-const CACHE_NAME = 'progamer-road-v2-7-1-image-viewer';
+const CACHE_NAME = 'progamer-road-v2-8-0-core-career';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
