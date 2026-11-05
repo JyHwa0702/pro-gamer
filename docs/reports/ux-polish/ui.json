@@ -1,0 +1,354 @@
+{
+  "result": "UI_COMPLETENESS_BROWSER_PASS",
+  "screens": [
+    {
+      "view": "home",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 320,
+      "scroll": 320
+    },
+    {
+      "view": "season",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    },
+    {
+      "view": "record",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    },
+    {
+      "view": "rank",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    },
+    {
+      "view": "standings",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    },
+    {
+      "view": "bonds",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    },
+    {
+      "view": "sns",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    },
+    {
+      "view": "wealth",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    },
+    {
+      "view": "shop",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    },
+    {
+      "view": "achievements",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    },
+    {
+      "view": "home",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "client": 390,
+      "scroll": 390
+    },
+    {
+      "view": "season",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "client": 365,
+      "scroll": 365
+    },
+    {
+      "view": "record",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "client": 365,
+      "scroll": 365
+    },
+    {
+      "view": "rank",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "client": 365,
+      "scroll": 365
+    },
+    {
+      "view": "standings",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "client": 365,
+      "scroll": 365
+    },
+    {
+      "view": "bonds",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "client": 365,
+      "scroll": 365
+    },
+    {
+      "view": "sns",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "client": 365,
+      "scroll": 365
+    },
+    {
+      "view": "wealth",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "client": 365,
+      "scroll": 365
+    },
+    {
+      "view": "shop",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "client": 365,
+      "scroll": 365
+    },
+    {
+      "view": "achievements",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "client": 365,
+      "scroll": 365
+    },
+    {
+      "view": "home",
+      "width": 1100,
+      "height": 844,
+      "documentWidth": 1100,
+      "client": 1100,
+      "scroll": 1100
+    },
+    {
+      "view": "season",
+      "width": 1100,
+      "height": 844,
+      "documentWidth": 1100,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "record",
+      "width": 1100,
+      "height": 844,
+      "documentWidth": 1100,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "rank",
+      "width": 1100,
+      "height": 844,
+      "documentWidth": 1100,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "standings",
+      "width": 1100,
+      "height": 844,
+      "documentWidth": 1100,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "bonds",
+      "width": 1100,
+      "height": 844,
+      "documentWidth": 1100,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "sns",
+      "width": 1100,
+      "height": 844,
+      "documentWidth": 1100,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "wealth",
+      "width": 1100,
+      "height": 844,
+      "documentWidth": 1100,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "shop",
+      "width": 1100,
+      "height": 844,
+      "documentWidth": 1100,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "achievements",
+      "width": 1100,
+      "height": 844,
+      "documentWidth": 1100,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "home",
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "client": 844,
+      "scroll": 844
+    },
+    {
+      "view": "season",
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "record",
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "rank",
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "standings",
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "bonds",
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "sns",
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "wealth",
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "shop",
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "achievements",
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "client": 679,
+      "scroll": 679
+    },
+    {
+      "view": "sns-long-legacy",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    },
+    {
+      "view": "draft",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    },
+    {
+      "view": "offline-season",
+      "width": 320,
+      "height": 844,
+      "documentWidth": 320,
+      "client": 295,
+      "scroll": 295
+    }
+  ],
+  "portraits": 23,
+  "fallbackRequests": 3,
+  "imageZoom": "150%",
+  "offline": "PASS",
+  "pageErrors": []
+}

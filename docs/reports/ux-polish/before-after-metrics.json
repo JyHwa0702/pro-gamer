@@ -1,0 +1,20 @@
+{
+  "result": "UI_FLOW_BROWSER_PASS",
+  "before": {
+    "autoBottom": 481.125,
+    "oneWeekBottom": 905.46875,
+    "navTop": 779.3333740234375,
+    "sameHub": false
+  },
+  "after": {
+    "autoBottom": 461.9583435058594,
+    "oneWeekBottom": 535.7916870117188,
+    "navTop": 779.3333740234375,
+    "sameHub": true
+  },
+  "smallBefore": 133,
+  "smallAfter": 0,
+  "observationsIncludeRepeatedViews": true,
+  "screenConditions": 23,
+  "observedTargets": 303
+}

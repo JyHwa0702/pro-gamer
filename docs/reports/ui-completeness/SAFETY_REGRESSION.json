@@ -1,0 +1,786 @@
+{
+  "result": "SAFETY_MANUAL_BROWSER_PASS",
+  "minorChoices": [
+    "응원의 마음을 전한다",
+    "차분하게 이야기를 나눈다"
+  ],
+  "game": {
+    "id": "series:1:1:2",
+    "seq": 2,
+    "year": 1,
+    "week": 1,
+    "club": {
+      "stage": "pro",
+      "id": 0,
+      "name": "한빛 타이탄즈",
+      "key": "pro:0:한빛 타이탄즈"
+    },
+    "opponent": {
+      "name": "브라우저 검증팀",
+      "str": 70
+    },
+    "label": "LCK 그랜드 파이널 (결승전)",
+    "bestOf": 5,
+    "big": true,
+    "win": false,
+    "rating": 7.82,
+    "mySetW": 0,
+    "mySetL": 3,
+    "sets": [
+      {
+        "win": false,
+        "rating": 7.82,
+        "masteryPower": 0,
+        "phaseWins": 2,
+        "adv": 0.6963607999999998,
+        "rawWinProb": 0.7297990639999999,
+        "effectiveWinProb": 0.6126822828594596,
+        "championId": "azir",
+        "kda": {
+          "kills": 4,
+          "deaths": 2,
+          "assists": 7
+        },
+        "draft": {
+          "mode": "tournament",
+          "bans": [
+            "orianna",
+            "alistar",
+            "rakan",
+            "leona",
+            "sivir",
+            "braum",
+            "ashe",
+            "varus",
+            "ezreal",
+            "aphelios"
+          ],
+          "myRoster": {
+            "top": {
+              "id": "jayce",
+              "n": "제이스",
+              "role": "top",
+              "t": "가속 관문 포킹",
+              "st": {
+                "lane": 1.4,
+                "mech": 1.2
+              },
+              "strongVs": [
+                "aatrox",
+                "gnar"
+              ],
+              "comp": "poke"
+            },
+            "jg": {
+              "id": "nidalee",
+              "n": "니달리",
+              "role": "jg",
+              "t": "창 투척 카정",
+              "st": {
+                "mech": 1.4,
+                "macro": 1.2
+              },
+              "strongVs": [
+                "maokai",
+                "sejuani"
+              ],
+              "comp": "poke"
+            },
+            "mid": {
+              "id": "azir",
+              "n": "아지르",
+              "role": "mid",
+              "t": "황제의 진형",
+              "st": {
+                "macro": 1.3,
+                "team": 1.2
+              },
+              "strongVs": [
+                "sylas",
+                "zed"
+              ]
+            },
+            "adc": {
+              "id": "jinx",
+              "n": "징크스",
+              "role": "adc",
+              "t": "신난다 난사",
+              "st": {
+                "team": 1.5,
+                "lane": 1
+              },
+              "strongVs": [
+                "zeri"
+              ]
+            },
+            "sup": {
+              "id": "renata",
+              "n": "레나타 글라스크",
+              "role": "sup",
+              "t": "적대적 인수",
+              "st": {
+                "team": 1.4,
+                "macro": 1.2
+              },
+              "strongVs": [
+                "nautilus",
+                "rakan"
+              ],
+              "comp": "wombo"
+            }
+          },
+          "oppRoster": {
+            "top": {
+              "id": "gwen",
+              "n": "그웬",
+              "role": "top",
+              "t": "신성한 안개",
+              "st": {
+                "mech": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "ornn",
+                "ksante"
+              ],
+              "comp": "dive"
+            },
+            "jg": {
+              "id": "nocturne",
+              "n": "녹턴",
+              "role": "jg",
+              "t": "피해망상 합류",
+              "st": {
+                "macro": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "nidalee",
+                "leesin"
+              ],
+              "comp": "dive"
+            },
+            "mid": {
+              "id": "viktor",
+              "n": "빅토르",
+              "role": "mid",
+              "t": "중력장 통제",
+              "st": {
+                "lane": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "orianna",
+                "taliyah"
+              ],
+              "comp": "wombo"
+            },
+            "adc": {
+              "id": "xayah",
+              "n": "자야",
+              "role": "adc",
+              "t": "깃부르미 반격",
+              "st": {
+                "mech": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "kaisa",
+                "sivir"
+              ],
+              "comp": "wombo"
+            },
+            "sup": {
+              "id": "karma",
+              "n": "카르마",
+              "role": "sup",
+              "t": "만트라 포킹",
+              "st": {
+                "lane": 1.4,
+                "macro": 1.2
+              },
+              "strongVs": [
+                "braum",
+                "lulu"
+              ],
+              "comp": "poke"
+            }
+          }
+        },
+        "effects": {
+          "stats": {
+            "mech": 0,
+            "lane": 0,
+            "macro": 0,
+            "team": 0,
+            "pool": 0,
+            "mental": 0
+          },
+          "stress": 0
+        },
+        "index": 1
+      },
+      {
+        "win": false,
+        "rating": 7.82,
+        "masteryPower": 0,
+        "phaseWins": 2,
+        "adv": 0.6963607999999998,
+        "rawWinProb": 0.7297990639999999,
+        "effectiveWinProb": 0.6126822828594596,
+        "championId": "azir",
+        "kda": {
+          "kills": 4,
+          "deaths": 2,
+          "assists": 7
+        },
+        "draft": {
+          "mode": "tournament",
+          "bans": [
+            "orianna",
+            "alistar",
+            "rakan",
+            "leona",
+            "sivir",
+            "braum",
+            "ashe",
+            "varus",
+            "ezreal",
+            "aphelios"
+          ],
+          "myRoster": {
+            "top": {
+              "id": "jayce",
+              "n": "제이스",
+              "role": "top",
+              "t": "가속 관문 포킹",
+              "st": {
+                "lane": 1.4,
+                "mech": 1.2
+              },
+              "strongVs": [
+                "aatrox",
+                "gnar"
+              ],
+              "comp": "poke"
+            },
+            "jg": {
+              "id": "nidalee",
+              "n": "니달리",
+              "role": "jg",
+              "t": "창 투척 카정",
+              "st": {
+                "mech": 1.4,
+                "macro": 1.2
+              },
+              "strongVs": [
+                "maokai",
+                "sejuani"
+              ],
+              "comp": "poke"
+            },
+            "mid": {
+              "id": "azir",
+              "n": "아지르",
+              "role": "mid",
+              "t": "황제의 진형",
+              "st": {
+                "macro": 1.3,
+                "team": 1.2
+              },
+              "strongVs": [
+                "sylas",
+                "zed"
+              ]
+            },
+            "adc": {
+              "id": "jinx",
+              "n": "징크스",
+              "role": "adc",
+              "t": "신난다 난사",
+              "st": {
+                "team": 1.5,
+                "lane": 1
+              },
+              "strongVs": [
+                "zeri"
+              ]
+            },
+            "sup": {
+              "id": "renata",
+              "n": "레나타 글라스크",
+              "role": "sup",
+              "t": "적대적 인수",
+              "st": {
+                "team": 1.4,
+                "macro": 1.2
+              },
+              "strongVs": [
+                "nautilus",
+                "rakan"
+              ],
+              "comp": "wombo"
+            }
+          },
+          "oppRoster": {
+            "top": {
+              "id": "gwen",
+              "n": "그웬",
+              "role": "top",
+              "t": "신성한 안개",
+              "st": {
+                "mech": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "ornn",
+                "ksante"
+              ],
+              "comp": "dive"
+            },
+            "jg": {
+              "id": "nocturne",
+              "n": "녹턴",
+              "role": "jg",
+              "t": "피해망상 합류",
+              "st": {
+                "macro": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "nidalee",
+                "leesin"
+              ],
+              "comp": "dive"
+            },
+            "mid": {
+              "id": "viktor",
+              "n": "빅토르",
+              "role": "mid",
+              "t": "중력장 통제",
+              "st": {
+                "lane": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "orianna",
+                "taliyah"
+              ],
+              "comp": "wombo"
+            },
+            "adc": {
+              "id": "xayah",
+              "n": "자야",
+              "role": "adc",
+              "t": "깃부르미 반격",
+              "st": {
+                "mech": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "kaisa",
+                "sivir"
+              ],
+              "comp": "wombo"
+            },
+            "sup": {
+              "id": "karma",
+              "n": "카르마",
+              "role": "sup",
+              "t": "만트라 포킹",
+              "st": {
+                "lane": 1.4,
+                "macro": 1.2
+              },
+              "strongVs": [
+                "braum",
+                "lulu"
+              ],
+              "comp": "poke"
+            }
+          }
+        },
+        "effects": {
+          "stats": {
+            "mech": 0,
+            "lane": 0,
+            "macro": 0,
+            "team": 0,
+            "pool": 0,
+            "mental": 0
+          },
+          "stress": 0
+        },
+        "index": 2
+      },
+      {
+        "win": false,
+        "rating": 7.82,
+        "masteryPower": 0,
+        "phaseWins": 2,
+        "adv": 0.6963607999999998,
+        "rawWinProb": 0.7297990639999999,
+        "effectiveWinProb": 0.6126822828594596,
+        "championId": "azir",
+        "kda": {
+          "kills": 4,
+          "deaths": 2,
+          "assists": 7
+        },
+        "draft": {
+          "mode": "tournament",
+          "bans": [
+            "orianna",
+            "alistar",
+            "rakan",
+            "leona",
+            "sivir",
+            "braum",
+            "ashe",
+            "varus",
+            "ezreal",
+            "aphelios"
+          ],
+          "myRoster": {
+            "top": {
+              "id": "jayce",
+              "n": "제이스",
+              "role": "top",
+              "t": "가속 관문 포킹",
+              "st": {
+                "lane": 1.4,
+                "mech": 1.2
+              },
+              "strongVs": [
+                "aatrox",
+                "gnar"
+              ],
+              "comp": "poke"
+            },
+            "jg": {
+              "id": "nidalee",
+              "n": "니달리",
+              "role": "jg",
+              "t": "창 투척 카정",
+              "st": {
+                "mech": 1.4,
+                "macro": 1.2
+              },
+              "strongVs": [
+                "maokai",
+                "sejuani"
+              ],
+              "comp": "poke"
+            },
+            "mid": {
+              "id": "azir",
+              "n": "아지르",
+              "role": "mid",
+              "t": "황제의 진형",
+              "st": {
+                "macro": 1.3,
+                "team": 1.2
+              },
+              "strongVs": [
+                "sylas",
+                "zed"
+              ]
+            },
+            "adc": {
+              "id": "jinx",
+              "n": "징크스",
+              "role": "adc",
+              "t": "신난다 난사",
+              "st": {
+                "team": 1.5,
+                "lane": 1
+              },
+              "strongVs": [
+                "zeri"
+              ]
+            },
+            "sup": {
+              "id": "renata",
+              "n": "레나타 글라스크",
+              "role": "sup",
+              "t": "적대적 인수",
+              "st": {
+                "team": 1.4,
+                "macro": 1.2
+              },
+              "strongVs": [
+                "nautilus",
+                "rakan"
+              ],
+              "comp": "wombo"
+            }
+          },
+          "oppRoster": {
+            "top": {
+              "id": "gwen",
+              "n": "그웬",
+              "role": "top",
+              "t": "신성한 안개",
+              "st": {
+                "mech": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "ornn",
+                "ksante"
+              ],
+              "comp": "dive"
+            },
+            "jg": {
+              "id": "nocturne",
+              "n": "녹턴",
+              "role": "jg",
+              "t": "피해망상 합류",
+              "st": {
+                "macro": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "nidalee",
+                "leesin"
+              ],
+              "comp": "dive"
+            },
+            "mid": {
+              "id": "viktor",
+              "n": "빅토르",
+              "role": "mid",
+              "t": "중력장 통제",
+              "st": {
+                "lane": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "orianna",
+                "taliyah"
+              ],
+              "comp": "wombo"
+            },
+            "adc": {
+              "id": "xayah",
+              "n": "자야",
+              "role": "adc",
+              "t": "깃부르미 반격",
+              "st": {
+                "mech": 1.3,
+                "team": 1.3
+              },
+              "strongVs": [
+                "kaisa",
+                "sivir"
+              ],
+              "comp": "wombo"
+            },
+            "sup": {
+              "id": "karma",
+              "n": "카르마",
+              "role": "sup",
+              "t": "만트라 포킹",
+              "st": {
+                "lane": 1.4,
+                "macro": 1.2
+              },
+              "strongVs": [
+                "braum",
+                "lulu"
+              ],
+              "comp": "poke"
+            }
+          }
+        },
+        "effects": {
+          "stats": {
+            "mech": 0,
+            "lane": 0,
+            "macro": 0,
+            "team": 0,
+            "pool": 0,
+            "mental": 0
+          },
+          "stress": 0
+        },
+        "index": 3
+      }
+    ],
+    "rewardSetIndex": 2,
+    "pogSetIndex": null,
+    "mvp": false,
+    "fanGain": 522,
+    "settled": true,
+    "masteryPower": 0,
+    "phaseWins": 2,
+    "adv": 0.6963607999999998,
+    "draft": {
+      "mode": "tournament",
+      "bans": [
+        "orianna",
+        "alistar",
+        "rakan",
+        "leona",
+        "sivir",
+        "braum",
+        "ashe",
+        "varus",
+        "ezreal",
+        "aphelios"
+      ],
+      "myRoster": {
+        "top": {
+          "id": "jayce",
+          "n": "제이스",
+          "role": "top",
+          "t": "가속 관문 포킹",
+          "st": {
+            "lane": 1.4,
+            "mech": 1.2
+          },
+          "strongVs": [
+            "aatrox",
+            "gnar"
+          ],
+          "comp": "poke"
+        },
+        "jg": {
+          "id": "nidalee",
+          "n": "니달리",
+          "role": "jg",
+          "t": "창 투척 카정",
+          "st": {
+            "mech": 1.4,
+            "macro": 1.2
+          },
+          "strongVs": [
+            "maokai",
+            "sejuani"
+          ],
+          "comp": "poke"
+        },
+        "mid": {
+          "id": "azir",
+          "n": "아지르",
+          "role": "mid",
+          "t": "황제의 진형",
+          "st": {
+            "macro": 1.3,
+            "team": 1.2
+          },
+          "strongVs": [
+            "sylas",
+            "zed"
+          ]
+        },
+        "adc": {
+          "id": "jinx",
+          "n": "징크스",
+          "role": "adc",
+          "t": "신난다 난사",
+          "st": {
+            "team": 1.5,
+            "lane": 1
+          },
+          "strongVs": [
+            "zeri"
+          ]
+        },
+        "sup": {
+          "id": "renata",
+          "n": "레나타 글라스크",
+          "role": "sup",
+          "t": "적대적 인수",
+          "st": {
+            "team": 1.4,
+            "macro": 1.2
+          },
+          "strongVs": [
+            "nautilus",
+            "rakan"
+          ],
+          "comp": "wombo"
+        }
+      },
+      "oppRoster": {
+        "top": {
+          "id": "gwen",
+          "n": "그웬",
+          "role": "top",
+          "t": "신성한 안개",
+          "st": {
+            "mech": 1.3,
+            "team": 1.3
+          },
+          "strongVs": [
+            "ornn",
+            "ksante"
+          ],
+          "comp": "dive"
+        },
+        "jg": {
+          "id": "nocturne",
+          "n": "녹턴",
+          "role": "jg",
+          "t": "피해망상 합류",
+          "st": {
+            "macro": 1.3,
+            "team": 1.3
+          },
+          "strongVs": [
+            "nidalee",
+            "leesin"
+          ],
+          "comp": "dive"
+        },
+        "mid": {
+          "id": "viktor",
+          "n": "빅토르",
+          "role": "mid",
+          "t": "중력장 통제",
+          "st": {
+            "lane": 1.3,
+            "team": 1.3
+          },
+          "strongVs": [
+            "orianna",
+            "taliyah"
+          ],
+          "comp": "wombo"
+        },
+        "adc": {
+          "id": "xayah",
+          "n": "자야",
+          "role": "adc",
+          "t": "깃부르미 반격",
+          "st": {
+            "mech": 1.3,
+            "team": 1.3
+          },
+          "strongVs": [
+            "kaisa",
+            "sivir"
+          ],
+          "comp": "wombo"
+        },
+        "sup": {
+          "id": "karma",
+          "n": "카르마",
+          "role": "sup",
+          "t": "만트라 포킹",
+          "st": {
+            "lane": 1.4,
+            "macro": 1.2
+          },
+          "strongVs": [
+            "braum",
+            "lulu"
+          ],
+          "comp": "poke"
+        }
+      }
+    }
+  },
+  "pageErrors": []
+}

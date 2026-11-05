@@ -1,0 +1,101 @@
+{
+  "result": "SEASON_FLOW_PRESERVATION_PASS",
+  "baselineSha256": "59d0f3bfbf94df08b791d331af4c5629f3db0deb98d4be78d4d27502518757ed",
+  "pairedCareers": 10,
+  "pairedWeeks": 260,
+  "executedWeeks": 520,
+  "excludedMetadata": [],
+  "sameSaveBytes": true,
+  "results": [
+    {
+      "stage": "ama",
+      "pos": "top",
+      "weeks": 26,
+      "games": 0,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "ama",
+      "pos": "jg",
+      "weeks": 26,
+      "games": 0,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "ama",
+      "pos": "mid",
+      "weeks": 26,
+      "games": 0,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "ama",
+      "pos": "adc",
+      "weeks": 26,
+      "games": 0,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "ama",
+      "pos": "sup",
+      "weeks": 26,
+      "games": 0,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "pro",
+      "pos": "top",
+      "weeks": 26,
+      "games": 23,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "pro",
+      "pos": "jg",
+      "weeks": 26,
+      "games": 18,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "pro",
+      "pos": "mid",
+      "weeks": 26,
+      "games": 24,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "pro",
+      "pos": "adc",
+      "weeks": 26,
+      "games": 22,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "pro",
+      "pos": "sup",
+      "weeks": 26,
+      "games": 16,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    }
+  ]
+}

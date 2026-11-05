@@ -1,0 +1,37 @@
+{
+  "result": "BETA1_MENU_BROWSER_PASS",
+  "sizes": [
+    {
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "height": 699,
+      "scroll": 699,
+      "width": 365,
+      "scrollWidth": 365
+    },
+    {
+      "viewportWidth": 320,
+      "viewportHeight": 568,
+      "height": 535,
+      "scroll": 758,
+      "width": 278,
+      "scrollWidth": 278
+    },
+    {
+      "viewportWidth": 844,
+      "viewportHeight": 390,
+      "height": 357,
+      "scroll": 651,
+      "width": 662,
+      "scrollWidth": 662
+    }
+  ],
+  "purchaseAndSell": true,
+  "cancelPreservesState": true,
+  "closeAfterScroll": true,
+  "categoryAndCloseInAllViewports": true,
+  "groupMemory": true,
+  "hud": true,
+  "reload": true,
+  "pageErrors": []
+}

@@ -1,0 +1,20 @@
+{
+  "result": "UX_FLOW_26_WEEKS_PRESERVED",
+  "version": "2.9.5",
+  "weeks": 26,
+  "games": 23,
+  "wins": 12,
+  "archive": 1,
+  "year": 2,
+  "week": 1,
+  "sameFullPlayerState": true,
+  "sameNextRandom": true,
+  "beforeConfirmations": 20,
+  "afterConfirmations": 20,
+  "photoPlace": "park",
+  "photoMood": "concerned",
+  "imageZoom": "150%",
+  "reload": true,
+  "offline": true,
+  "pageErrors": []
+}

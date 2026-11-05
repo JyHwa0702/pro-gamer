@@ -1,0 +1,102 @@
+{
+  "result": "UI_PRESERVATION_PASS",
+  "baselineCommit": "b7dd185ae9577d7a7ccab1fac4c69b0eb3a1ac16",
+  "pairedCareers": 10,
+  "pairedWeeks": 260,
+  "executedWeeks": 520,
+  "excludedMetadata": [
+    "weeklyBriefingHistory[].notices"
+  ],
+  "results": [
+    {
+      "stage": "ama",
+      "pos": "top",
+      "weeks": 26,
+      "games": 0,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "ama",
+      "pos": "jg",
+      "weeks": 26,
+      "games": 0,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "ama",
+      "pos": "mid",
+      "weeks": 26,
+      "games": 0,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "ama",
+      "pos": "adc",
+      "weeks": 26,
+      "games": 0,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "ama",
+      "pos": "sup",
+      "weeks": 26,
+      "games": 0,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "pro",
+      "pos": "top",
+      "weeks": 26,
+      "games": 23,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "pro",
+      "pos": "jg",
+      "weeks": 26,
+      "games": 18,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "pro",
+      "pos": "mid",
+      "weeks": 26,
+      "games": 24,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "pro",
+      "pos": "adc",
+      "weeks": 26,
+      "games": 22,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    },
+    {
+      "stage": "pro",
+      "pos": "sup",
+      "weeks": 26,
+      "games": 16,
+      "sameGameplayState": true,
+      "sameRandom": true,
+      "sameSavedGameplay": true
+    }
+  ]
+}

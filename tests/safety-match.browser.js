@@ -15,16 +15,13 @@ async page => {
     await page.evaluate(()=>{
       P.age=19;P.fastSkip=false;P.hp=100;P.stress=10;P.stage='pro';P.teamId=0;
       P.__oldGames=P.hist.games;window.__savedRandom=Math.random;Math.random=()=>.9;
-      window.__matchResult=null;playMatch({name:'브라우저 검증팀',str:70},'LCK 그랜드 파이널 (결승전)',true).then(r=>window.__matchResult=r);
+      window.__matchResult=null;playMatch({name:'브라우저 검증팀',str:70},'LCK 그랜드 파이널 (결승전)',true,false,{bestOf:5,control:'manual'}).then(r=>window.__matchResult=r);
     });
-    await page.locator('#mCloseBtn').click();
-    for(let i=0;i<3;i++)await page.locator('.choices button[data-i="auto"]').click();
-    await page.locator('#nextBtn').click();
-    for(let i=0;i<30;i++){
-      if(await page.evaluate(()=>!!window.__matchResult))break;
-      if(await page.locator('#modal').isVisible())await page.locator('#mCloseBtn').click();
-      else await page.waitForTimeout(50);
-    }
+    await page.locator('#mBody').filter({hasText:'팀 추천 밴'}).waitFor();
+    await page.locator('#mBtns button').first().click();
+    await page.locator('#mBtns button').filter({hasText:'출전 확정'}).click();
+    await page.locator('.choices .btn[data-i="auto"]').click();
+    await page.waitForFunction(()=>!!window.__matchResult);
     const result=await page.evaluate(()=>({r:window.__matchResult,games:P.hist.games,oldGames:P.__oldGames}));
     check(result.r&&result.games===result.oldGames+1,'수동 경기 개인 기록 미정산');
     check((result.r.win?result.r.mySetW:result.r.mySetL)===3,'수동 결승 3선승 미반영');

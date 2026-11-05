@@ -1,0 +1,394 @@
+{
+  "result": "MIDNIGHT_THEME_BROWSER_PASS",
+  "screens": [
+    {
+      "name": "create",
+      "width": 390,
+      "doc": 390,
+      "client": 390,
+      "scroll": 390,
+      "bg": "rgba(0, 0, 0, 0)",
+      "issues": []
+    },
+    {
+      "name": "home",
+      "width": 390,
+      "doc": 390,
+      "client": 390,
+      "scroll": 390,
+      "bg": "rgba(0, 0, 0, 0)",
+      "issues": []
+    },
+    {
+      "name": "stats",
+      "width": 390,
+      "doc": 390,
+      "client": 390,
+      "scroll": 390,
+      "bg": "rgba(0, 0, 0, 0)",
+      "issues": []
+    },
+    {
+      "name": "match-preview",
+      "width": 390,
+      "doc": 390,
+      "client": 390,
+      "scroll": 390,
+      "bg": "rgba(0, 0, 0, 0)",
+      "issues": []
+    },
+    {
+      "name": "actions",
+      "width": 390,
+      "doc": 390,
+      "client": 390,
+      "scroll": 390,
+      "bg": "rgba(0, 0, 0, 0)",
+      "issues": []
+    },
+    {
+      "name": "season",
+      "width": 320,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "season",
+      "width": 390,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "season",
+      "width": 1100,
+      "doc": 1100,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "season",
+      "width": 844,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "record",
+      "width": 320,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "record",
+      "width": 390,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "record",
+      "width": 1100,
+      "doc": 1100,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "record",
+      "width": 844,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "rank",
+      "width": 320,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "rank",
+      "width": 390,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "rank",
+      "width": 1100,
+      "doc": 1100,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "rank",
+      "width": 844,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "bonds",
+      "width": 320,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "bonds",
+      "width": 390,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "bonds",
+      "width": 1100,
+      "doc": 1100,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "bonds",
+      "width": 844,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "sns",
+      "width": 320,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "sns",
+      "width": 390,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "sns",
+      "width": 1100,
+      "doc": 1100,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "sns",
+      "width": 844,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "wealth",
+      "width": 320,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "wealth",
+      "width": 390,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "wealth",
+      "width": 1100,
+      "doc": 1100,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "wealth",
+      "width": 844,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "shop",
+      "width": 320,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "shop",
+      "width": 390,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "shop",
+      "width": 1100,
+      "doc": 1100,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "shop",
+      "width": 844,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "auto-setup",
+      "width": 320,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "auto-setup",
+      "width": 390,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "auto-setup",
+      "width": 1100,
+      "doc": 1100,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "auto-setup",
+      "width": 844,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "dialogue",
+      "width": 320,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "dialogue",
+      "width": 390,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "dialogue",
+      "width": 1100,
+      "doc": 1100,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "dialogue",
+      "width": 844,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "sns-post-time",
+      "width": 390,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    },
+    {
+      "name": "sns-dm",
+      "width": 390,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "bg": "rgb(29, 43, 58)",
+      "issues": []
+    }
+  ],
+  "contrastIssues": [],
+  "pageErrors": []
+}

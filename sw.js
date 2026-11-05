@@ -1,5 +1,5 @@
 // Service Worker for Automatic Updates & Offline Play
-const CACHE_NAME = 'progamer-road-v2-9-0-series-career';
+const CACHE_NAME = 'progamer-road-v2-9-5-ui-flow';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();

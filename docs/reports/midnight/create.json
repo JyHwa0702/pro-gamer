@@ -1,0 +1,12 @@
+{
+  "result": "NEW_PLAYER_CREATE_26_WEEKS_PASS",
+  "name": "첫시즌검증",
+  "year": 2,
+  "week": 1,
+  "stage": "ama",
+  "archive": 1,
+  "games": 0,
+  "briefings": 26,
+  "pending": false,
+  "pageErrors": []
+}

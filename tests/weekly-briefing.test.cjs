@@ -42,9 +42,9 @@ test('솔랭에서 시작한 비동기 인연 장면이 끝나기 전에 주간 
   const g=game();g.run(`P.rank={t:4,lp:99};P.s={mech:90,lane:90,macro:90,team:90,pool:90,mental:70};randomEvent=async()=>{};scouting=async()=>{};let releaseUnlocks=[];showHeroineCutscene=()=>new Promise(r=>releaseUnlocks.push(r));`);
   const turn=g.run("takeTurn('solo')");for(let i=0;i<35;i++)await Promise.resolve();assert.equal(g.run('P.week'),1);assert.equal(g.run('P.weeklyBriefingHistory.length'),0);g.run('showHeroineCutscene=async()=>0;releaseUnlocks.forEach(r=>r(0))');await turn;assert.equal(g.run('P.week'),2);assert.equal(g.run('P.weeklyBriefingHistory.length'),1);
 });
-test('번아웃 LP 차감에서 생긴 인연 장면도 번아웃 알림과 겹치지 않는다',async()=>{
-  const g=game();g.run(`P.s.mech=79.9;P.stress=99;Object.values(P.bonds).forEach(b=>{b.unlocked=true;b.aff=0;});P.bonds.winter.unlocked=false;randomEvent=async()=>{};scouting=async()=>{};showHeroineCutscene=__nativeCutscene;let notices=[],release=[];ask=html=>{if(html.includes('vn-portrait')||html.includes('<h3>번아웃</h3>')){notices.push(html.includes('vn-portrait')?'scene':'burnout');return new Promise(r=>release.push(r));}return Promise.resolve(0);};`);
-  const turn=g.run("takeTurn('lane')");for(let i=0;i<50;i++)await Promise.resolve();assert.equal(g.run('notices.length'),1);assert.equal(g.run('notices[0]'),'scene');g.run('release[0](0)');for(let i=0;i<50;i++)await Promise.resolve();assert.equal(g.run('notices[1]'),'burnout');g.run('release[1](0)');await turn;assert.equal(g.run('P.week'),2);assert.equal(g.run('busy'),false);
+test('번아웃 LP 차감의 인연 장면이 끝난 뒤 일반 알림을 주간 소식에 기록한다',async()=>{
+  const g=game();g.run(`P.s.mech=79.9;P.stress=99;Object.values(P.bonds).forEach(b=>{b.unlocked=true;b.aff=0;});P.bonds.winter.unlocked=false;randomEvent=async()=>{};scouting=async()=>{};showHeroineCutscene=__nativeCutscene;let notices=[],release=[];ask=html=>{if(html.includes('vn-portrait')){notices.push('scene');return new Promise(r=>release.push(r));}return Promise.resolve(0);};`);
+  const turn=g.run("takeTurn('lane')");for(let i=0;i<50;i++)await Promise.resolve();assert.equal(g.run('notices.length'),1);assert.equal(g.run('notices[0]'),'scene');assert.equal(g.run('activeWeekBriefing.notices?.length || 0'),0);g.run('release[0](0)');await turn;assert.equal(g.run('P.weeklyBriefingHistory[0].notices[0].title'),'번아웃');assert.equal(g.run('P.stress'),55);assert.equal(g.run('P.week'),2);assert.equal(g.run('busy'),false);
 });
 const baselineFile=process.env.BRIEFING_BASELINE;
 test('아마추어 5포지션의 78주 성장·해금·스카우트도 수정 전후가 같다',{skip:!baselineFile},async()=>{

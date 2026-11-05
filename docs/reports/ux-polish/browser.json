@@ -1,0 +1,243 @@
+{
+  "result": "UI_FLOW_BROWSER_PASS",
+  "home": {
+    "autoBottom": 461.9583435058594,
+    "oneWeekBottom": 535.7916870117188,
+    "navTop": 779.3333740234375,
+    "sameHub": true
+  },
+  "screens": [
+    {
+      "name": "home",
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "doc": 390,
+      "client": 390,
+      "scroll": 390,
+      "small": [],
+      "targets": 30
+    },
+    {
+      "name": "actions",
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "doc": 390,
+      "client": 390,
+      "scroll": 390,
+      "small": [],
+      "targets": 30
+    },
+    {
+      "name": "auto-setup",
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "small": [],
+      "targets": 5
+    },
+    {
+      "name": "auto-setup",
+      "viewportWidth": 320,
+      "viewportHeight": 568,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "small": [],
+      "targets": 5
+    },
+    {
+      "name": "auto-setup",
+      "viewportWidth": 844,
+      "viewportHeight": 390,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "small": [],
+      "targets": 5
+    },
+    {
+      "name": "season",
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "small": [],
+      "targets": 9
+    },
+    {
+      "name": "season",
+      "viewportWidth": 320,
+      "viewportHeight": 568,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "small": [],
+      "targets": 9
+    },
+    {
+      "name": "season",
+      "viewportWidth": 844,
+      "viewportHeight": 390,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "small": [],
+      "targets": 9
+    },
+    {
+      "name": "bonds",
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "small": [],
+      "targets": 31
+    },
+    {
+      "name": "bonds",
+      "viewportWidth": 320,
+      "viewportHeight": 568,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "small": [],
+      "targets": 31
+    },
+    {
+      "name": "bonds",
+      "viewportWidth": 844,
+      "viewportHeight": 390,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "small": [],
+      "targets": 31
+    },
+    {
+      "name": "sns",
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "small": [],
+      "targets": 6
+    },
+    {
+      "name": "sns",
+      "viewportWidth": 320,
+      "viewportHeight": 568,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "small": [],
+      "targets": 6
+    },
+    {
+      "name": "sns",
+      "viewportWidth": 844,
+      "viewportHeight": 390,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "small": [],
+      "targets": 6
+    },
+    {
+      "name": "wealth",
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "small": [],
+      "targets": 10
+    },
+    {
+      "name": "wealth",
+      "viewportWidth": 320,
+      "viewportHeight": 568,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "small": [],
+      "targets": 10
+    },
+    {
+      "name": "wealth",
+      "viewportWidth": 844,
+      "viewportHeight": 390,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "small": [],
+      "targets": 10
+    },
+    {
+      "name": "shop",
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "small": [],
+      "targets": 13
+    },
+    {
+      "name": "shop",
+      "viewportWidth": 320,
+      "viewportHeight": 568,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "small": [],
+      "targets": 13
+    },
+    {
+      "name": "shop",
+      "viewportWidth": 844,
+      "viewportHeight": 390,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "small": [],
+      "targets": 13
+    },
+    {
+      "name": "more",
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "doc": 390,
+      "client": 365,
+      "scroll": 365,
+      "small": [],
+      "targets": 7
+    },
+    {
+      "name": "more",
+      "viewportWidth": 320,
+      "viewportHeight": 568,
+      "doc": 320,
+      "client": 295,
+      "scroll": 295,
+      "small": [],
+      "targets": 7
+    },
+    {
+      "name": "more",
+      "viewportWidth": 844,
+      "viewportHeight": 390,
+      "doc": 844,
+      "client": 679,
+      "scroll": 679,
+      "small": [],
+      "targets": 7
+    }
+  ],
+  "small": [],
+  "pageErrors": []
+}

@@ -1,0 +1,79 @@
+{
+  "result": "UI_FLOW_INTERACTION_PASS",
+  "home": [
+    {
+      "width": 320,
+      "height": 568,
+      "settings": true,
+      "rankFocus": true,
+      "explanation": true,
+      "sameState": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "settings": true,
+      "rankFocus": true,
+      "explanation": true,
+      "sameState": true
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "settings": true,
+      "rankFocus": true,
+      "explanation": true,
+      "sameState": true
+    }
+  ],
+  "keyboard": {
+    "boxTop": 28,
+    "boxBottom": 356,
+    "inputTop": 215.8541717529297,
+    "inputBottom": 259.8541717529297,
+    "inputHeight": 44,
+    "font": 16,
+    "dock": "hidden"
+  },
+  "replyDraftPreserved": true,
+  "snsStatePreserved": true,
+  "sets": 5,
+  "pictures": [
+    {
+      "x": 40.66666793823242,
+      "y": 261.24188232421875,
+      "w": 44,
+      "h": 44
+    },
+    {
+      "x": 89.33333587646484,
+      "y": 261.24188232421875,
+      "w": 44,
+      "h": 44
+    },
+    {
+      "x": 138,
+      "y": 261.24188232421875,
+      "w": 44,
+      "h": 44
+    },
+    {
+      "x": 186.6666717529297,
+      "y": 261.24188232421875,
+      "w": 44,
+      "h": 44
+    },
+    {
+      "x": 235.33334350585938,
+      "y": 261.24188232421875,
+      "w": 44,
+      "h": 44
+    }
+  ],
+  "recap": {
+    "client": 295,
+    "scroll": 295
+  },
+  "imageZoom": "150%",
+  "pageErrors": []
+}

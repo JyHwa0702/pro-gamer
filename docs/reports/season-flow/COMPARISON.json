@@ -1,0 +1,134 @@
+{
+  "result": "SEASON_FLOW_COMPARISON_PASS",
+  "baselineVersion": "2.9.1",
+  "version": "2.9.2",
+  "weeks": 26,
+  "scenario": "같은 시드101·같은 추천 일정·같은 첫 활성 선택",
+  "before": {
+    "confirmations": 28,
+    "games": 23
+  },
+  "after": {
+    "confirmations": 20,
+    "games": 23
+  },
+  "removedAcknowledgements": 8,
+  "notices": [
+    {
+      "title": "이번 주 소식",
+      "image": ""
+    },
+    {
+      "title": "이번 주 소식",
+      "image": ""
+    },
+    {
+      "title": "이번 주 소식",
+      "image": "assets/event_subway.jpg"
+    },
+    {
+      "title": "이번 주 소식",
+      "image": "assets/event_coffeetruck.jpg"
+    },
+    {
+      "title": "이번 주 소식",
+      "image": "assets/event_subway.jpg"
+    },
+    {
+      "title": "이번 주 소식",
+      "image": "assets/event_coffeetruck.jpg"
+    },
+    {
+      "title": "이번 주 소식",
+      "image": "assets/event_subway.jpg"
+    },
+    {
+      "title": "2년차 시즌 시작",
+      "image": ""
+    }
+  ],
+  "gameplayStateEqual": true,
+  "nextRandomEqual": true,
+  "comparisonExcludes": [
+    "weeklyBriefingHistory[].notices"
+  ],
+  "countScope": "주간 진행 중 확인·선택 버튼. 일정 진행26회 및 검증용 재열람 조작 제외",
+  "automatic": {
+    "blocking": 0,
+    "pending": false,
+    "year": 2,
+    "week": 1,
+    "games": 23
+  },
+  "browserChecks": [
+    {
+      "label": "주간 1",
+      "width": 390,
+      "doc": 390,
+      "client": 379,
+      "scroll": 379
+    },
+    {
+      "label": "주간 9",
+      "width": 390,
+      "doc": 390,
+      "client": 379,
+      "scroll": 379
+    },
+    {
+      "label": "주간 20",
+      "width": 390,
+      "doc": 390,
+      "client": 379,
+      "scroll": 379
+    },
+    {
+      "label": "주간 24",
+      "width": 390,
+      "doc": 390,
+      "client": 379,
+      "scroll": 379
+    },
+    {
+      "label": "주간 26",
+      "width": 390,
+      "doc": 390,
+      "client": 379,
+      "scroll": 379
+    },
+    {
+      "label": "시즌 마지막 브리핑",
+      "width": 320,
+      "doc": 320,
+      "client": 278,
+      "scroll": 278
+    },
+    {
+      "label": "시즌 마지막 브리핑",
+      "width": 390,
+      "doc": 390,
+      "client": 348,
+      "scroll": 348
+    },
+    {
+      "label": "시즌 마지막 브리핑",
+      "width": 1100,
+      "doc": 1100,
+      "client": 662,
+      "scroll": 662
+    },
+    {
+      "label": "오프라인 브리핑",
+      "width": 390,
+      "doc": 390,
+      "client": 348,
+      "scroll": 348
+    }
+  ],
+  "photoPlace": "park",
+  "photoMood": "concerned",
+  "imageZoom": "150%",
+  "reload": true,
+  "offline": true,
+  "pageErrors": []
+}

@@ -5,7 +5,7 @@ function game(seed = 12345, htmlOverride) {
   const gameSource = htmlOverride ? htmlOverride.match(/<script(?![^>]*src=)[^>]*>([\s\S]*?)<\/script>/i)[1] : source;
   const storage = new Map(), nodes = new Map();
   const element = key => {
-    if (!nodes.has(key)) nodes.set(key, { innerHTML: '', style: {}, dataset: {}, scrollTop: 0, classList: { add() {}, remove() {}, contains() { return false; } }, querySelectorAll() { return []; }, appendChild() {} });
+    if (!nodes.has(key)) nodes.set(key, { innerHTML: '', style: {}, dataset: {}, scrollTop: 0, classList: { add() {}, remove() {}, toggle() {}, contains() { return false; } }, querySelectorAll() { return []; }, appendChild() {}, remove() {} });
     return nodes.get(key);
   };
   let state = seed;

@@ -19,7 +19,7 @@ async originalPage=>{
   const stable=await page.evaluate(()=>JSON.stringify({hist:P.hist,series:P.seriesHistory,archive:P.seasonArchive,career:P.career}));
   await page.locator('#bStand').click();await choose('시즌 결산');await page.locator('#mBtns button').first().click();await page.locator('.season-review .series-summary').waitFor();await page.waitForTimeout(750);
   check(await page.locator('.season-review .season-result-grid>div>b').first().innerText()===String(season.games),'수치 애니메이션 완료 후 실제 경기 수');await page.screenshot({path:'docs/reports/series-career/season-review-mobile.png',animations:'disabled'});
-  await page.locator('.season-review>details>summary').click();await page.locator('[data-contract-evidence]>summary').first().click();await page.locator('[data-contract-evidence]').first().screenshot({path:'docs/reports/series-career/contract-evidence.png'});
+  await page.locator('.season-review>details>summary').filter({hasText:'이번 시즌의 선택과 기록'}).click();await page.locator('[data-contract-evidence]>summary').first().click();await page.locator('[data-contract-evidence]').first().screenshot({path:'docs/reports/series-career/contract-evidence.png'});
   await close();await close();check(await page.evaluate(()=>JSON.stringify({hist:P.hist,series:P.seriesHistory,archive:P.seasonArchive,career:P.career}))===stable,'결산 재열람 무변경');
   await page.reload();await intro();check(await page.evaluate(()=>JSON.stringify({hist:P.hist,series:P.seriesHistory,archive:P.seasonArchive,career:P.career}))===stable,'시리즈/계약/결산 저장 복원');
   // 직접 경기에서 세트1 완료·세트2 대기 중 새로고침: 주간 시작 저장으로 돌아간다.
@@ -39,7 +39,8 @@ async originalPage=>{
   await fixture('수동에서 시리즈 자동');await page.evaluate(()=>{window.__manualDone=null;playMatch({name:'검증',str:65},'직접 BO5',true,false,{bestOf:5,control:'manual'}).then(r=>window.__manualDone=r);});
   await page.locator('#mBody').filter({hasText:'팀 추천 밴'}).waitFor();await page.locator('#mBtns button').first().click();await choose('출전 확정');await page.locator('.choices .btn[data-i="auto"]').click();await page.waitForFunction(()=>!!window.__manualDone);
   const transition=await page.evaluate(()=>({sets:__manualDone.sets.length,games:P.hist.games,pending:!!currentAskResolve}));check(transition.sets>=3&&transition.games===1&&!transition.pending,'수동→전체 자동');
-  await page.evaluate(async()=>{await navigator.serviceWorker.ready;});await page.waitForFunction(()=>!!navigator.serviceWorker.controller);await page.reload();await intro();await page.waitForFunction(async()=>!!(await caches.match(location.href)));await context.setOffline(true);await page.reload();await intro();check(await page.evaluate(()=>CURRENT_VERSION==='2.9.0'&&P.hist.games===1),'오프라인 기록 복원');
+  const expectedVersion=await page.evaluate(()=>CURRENT_VERSION);
+  await page.evaluate(async()=>{await navigator.serviceWorker.ready;});await page.waitForFunction(()=>!!navigator.serviceWorker.controller);await page.reload();await intro();await page.waitForFunction(async()=>!!(await caches.match(location.href)));await context.setOffline(true);await page.reload();await intro();check(await page.evaluate(version=>CURRENT_VERSION===version&&P.hist.games===1,expectedVersion),'오프라인 기록 복원');
   check(!errors.length,errors.join('\n'));return {result:'SERIES_CAREER_BROWSER_PASS',bo5,season,animatedTotalsSettled:true,readOnlyArchive:true,reload:true,midSeriesCheckpoint:true,manualToSeriesAuto:transition,widths:[320,390,1100],offline:true,pageErrors:errors};
  }catch(error){await page.screenshot({path:'docs/reports/series-career/failure.png',fullPage:true});throw error;}
  finally{await context.close();}

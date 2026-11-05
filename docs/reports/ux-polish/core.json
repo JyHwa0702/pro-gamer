@@ -1,0 +1,33 @@
+{
+  "result": "CORE_CAREER_BROWSER_PASS",
+  "isolatedContext": true,
+  "widths": [
+    320,
+    390,
+    1100
+  ],
+  "relationshipCap": "1+2",
+  "actualDate": true,
+  "weeklyDateLimit": true,
+  "photoAndCaption": true,
+  "photoZoom": true,
+  "discovery": true,
+  "trustAfterApology": 85,
+  "reload": true,
+  "stopAndResume": true,
+  "automatic": {
+    "year": 2,
+    "week": 1,
+    "archive": 1,
+    "fastSkip": false,
+    "pending": false,
+    "games": 16,
+    "money": 171670000
+  },
+  "icons": {
+    "count": 45,
+    "loaded": 45
+  },
+  "offline": true,
+  "pageErrors": []
+}
